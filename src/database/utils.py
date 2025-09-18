@@ -1,17 +1,15 @@
 """
-Database utilities and helper functions
+Database utility functions
 """
 
 import logging
+from typing import Dict, Any, Optional, List
 from datetime import datetime, timedelta
-from typing import Optional, Dict, Any, List
-
-from sqlalchemy import text
+from sqlalchemy import text, inspect
 from sqlalchemy.orm import Session
-from sqlalchemy.exc import SQLAlchemyError
 
-from .models import CallRecording, ProcessingStatus
-from .connection import get_db_session
+from src.database.models import CallRecording, ProcessingHistory, SystemMetric, ProcessingState
+from src.database.session import SessionManager
 
 logger = logging.getLogger(__name__)
 
@@ -22,305 +20,329 @@ class DatabaseUtils:
     """
 
     @staticmethod
-    def check_database_health() -> Dict[str, Any]:
+    def check_database_health(session_manager: SessionManager = None) -> Dict[str, Any]:
         """
         Check database health and connectivity
 
-        Returns:
-            Dictionary with health status
-        """
-        try:
-            with get_db_session() as session:
-                # Test basic query
-                result = session.execute(text("SELECT 1")).scalar()
-
-                # Get database size
-                db_size = session.execute(
-                    text("SELECT pg_database_size(current_database())")
-                ).scalar()
-
-                # Get active connections
-                active_connections = session.execute(
-                    text("""
-                        SELECT count(*)
-                        FROM pg_stat_activity
-                        WHERE state = 'active'
-                    """)
-                ).scalar()
-
-                # Get table counts
-                recordings_count = session.query(CallRecording).count()
-
-                return {
-                    'status': 'healthy',
-                    'database_size_bytes': db_size,
-                    'active_connections': active_connections,
-                    'total_recordings': recordings_count,
-                    'timestamp': datetime.utcnow().isoformat()
-                }
-
-        except SQLAlchemyError as e:
-            logger.error(f"Database health check failed: {e}")
-            return {
-                'status': 'unhealthy',
-                'error': str(e),
-                'timestamp': datetime.utcnow().isoformat()
-            }
-
-    @staticmethod
-    def reset_stuck_recordings(
-        session: Session,
-        stuck_threshold_hours: int = 6
-    ) -> int:
-        """
-        Reset recordings stuck in IN_PROGRESS status
-
         Args:
-            session: Database session
-            stuck_threshold_hours: Hours before considering stuck
+            session_manager: Optional SessionManager instance
 
         Returns:
-            Number of reset recordings
+            Health status dictionary
         """
-        threshold = datetime.utcnow() - timedelta(hours=stuck_threshold_hours)
+        if session_manager is None:
+            from src.database.session import get_session_manager
+            session_manager = get_session_manager()
 
-        # Find stuck downloads
-        stuck_downloads = session.query(CallRecording).filter(
-            CallRecording.download_status == ProcessingStatus.IN_PROGRESS,
-            CallRecording.updated_at < threshold
-        ).all()
-
-        for recording in stuck_downloads:
-            recording.download_status = ProcessingStatus.PENDING
-            recording.download_attempts += 1
-            logger.info(f"Reset stuck download: {recording.recording_id}")
-
-        # Find stuck transcriptions
-        stuck_transcriptions = session.query(CallRecording).filter(
-            CallRecording.transcription_status == ProcessingStatus.IN_PROGRESS,
-            CallRecording.updated_at < threshold
-        ).all()
-
-        for recording in stuck_transcriptions:
-            recording.transcription_status = ProcessingStatus.PENDING
-            recording.transcription_attempts += 1
-            logger.info(f"Reset stuck transcription: {recording.recording_id}")
-
-        # Find stuck uploads
-        stuck_uploads = session.query(CallRecording).filter(
-            CallRecording.upload_status == ProcessingStatus.IN_PROGRESS,
-            CallRecording.updated_at < threshold
-        ).all()
-
-        for recording in stuck_uploads:
-            recording.upload_status = ProcessingStatus.PENDING
-            recording.upload_attempts += 1
-            logger.info(f"Reset stuck upload: {recording.recording_id}")
-
-        total_reset = len(stuck_downloads) + len(stuck_transcriptions) + len(stuck_uploads)
-
-        session.commit()
-        return total_reset
-
-    @staticmethod
-    def batch_insert_recordings(
-        session: Session,
-        recordings_data: List[Dict[str, Any]]
-    ) -> int:
-        """
-        Batch insert call recordings
-
-        Args:
-            session: Database session
-            recordings_data: List of recording data dictionaries
-
-        Returns:
-            Number of inserted recordings
-        """
-        inserted_count = 0
-
-        for data in recordings_data:
-            # Check if recording already exists
-            existing = session.query(CallRecording).filter_by(
-                recording_id=data.get('recording_id')
-            ).first()
-
-            if not existing:
-                recording = CallRecording(**data)
-                session.add(recording)
-                inserted_count += 1
-            else:
-                logger.debug(f"Recording already exists: {data.get('recording_id')}")
-
-        session.commit()
-        return inserted_count
-
-    @staticmethod
-    def get_processing_summary(
-        session: Session,
-        start_date: Optional[datetime] = None,
-        end_date: Optional[datetime] = None
-    ) -> Dict[str, Any]:
-        """
-        Get processing summary for a date range
-
-        Args:
-            session: Database session
-            start_date: Start date (optional)
-            end_date: End date (optional)
-
-        Returns:
-            Processing summary dictionary
-        """
-        query = session.query(CallRecording)
-
-        if start_date:
-            query = query.filter(CallRecording.start_time >= start_date)
-        if end_date:
-            query = query.filter(CallRecording.start_time <= end_date)
-
-        recordings = query.all()
-
-        summary = {
-            'total': len(recordings),
-            'downloads': {
-                'pending': 0,
-                'in_progress': 0,
-                'completed': 0,
-                'failed': 0
-            },
-            'transcriptions': {
-                'pending': 0,
-                'in_progress': 0,
-                'completed': 0,
-                'failed': 0
-            },
-            'uploads': {
-                'pending': 0,
-                'in_progress': 0,
-                'completed': 0,
-                'failed': 0
-            },
-            'total_duration_seconds': 0,
-            'average_confidence': 0.0
+        health_status = {
+            'status': 'unknown',
+            'connected': False,
+            'tables_exist': False,
+            'connection_info': {},
+            'statistics': {},
+            'error': None
         }
 
-        total_confidence = 0
-        confidence_count = 0
+        try:
+            # Check basic connectivity
+            if session_manager.health_check():
+                health_status['connected'] = True
+                health_status['status'] = 'healthy'
 
-        for recording in recordings:
-            # Download status
-            if recording.download_status:
-                status = recording.download_status.lower()
-                if status in summary['downloads']:
-                    summary['downloads'][status] += 1
+                # Get connection pool info
+                health_status['connection_info'] = session_manager.get_connection_info()
 
-            # Transcription status
-            if recording.transcription_status:
-                status = recording.transcription_status.lower()
-                if status in summary['transcriptions']:
-                    summary['transcriptions'][status] += 1
+                # Check if tables exist
+                inspector = inspect(session_manager.engine)
+                tables = inspector.get_table_names()
+                expected_tables = ['call_recordings', 'processing_history', 'system_metrics', 'processing_states']
+                health_status['tables_exist'] = all(table in tables for table in expected_tables)
 
-            # Upload status
-            if recording.upload_status:
-                status = recording.upload_status.lower()
-                if status in summary['uploads']:
-                    summary['uploads'][status] += 1
+                # Get statistics
+                with session_manager.get_session() as session:
+                    health_status['statistics'] = {
+                        'total_recordings': session.query(CallRecording).count(),
+                        'pending_downloads': session.query(CallRecording).filter_by(
+                            download_status='pending'
+                        ).count(),
+                        'completed_uploads': session.query(CallRecording).filter_by(
+                            upload_status='completed'
+                        ).count(),
+                        'failed_recordings': session.query(CallRecording).filter(
+                            (CallRecording.download_status == 'failed') |
+                            (CallRecording.transcription_status == 'failed') |
+                            (CallRecording.upload_status == 'failed')
+                        ).count()
+                    }
+            else:
+                health_status['status'] = 'unhealthy'
+                health_status['error'] = 'Failed to connect to database'
 
-            # Duration
-            if recording.duration:
-                summary['total_duration_seconds'] += recording.duration
+        except Exception as e:
+            health_status['status'] = 'unhealthy'
+            health_status['error'] = str(e)
+            logger.error(f"Database health check failed: {e}")
 
-            # Confidence
-            if recording.transcript_confidence:
-                total_confidence += recording.transcript_confidence
-                confidence_count += 1
-
-        if confidence_count > 0:
-            summary['average_confidence'] = total_confidence / confidence_count
-
-        return summary
+        return health_status
 
     @staticmethod
-    def optimize_database(session: Session):
+    def cleanup_old_records(
+        session: Session,
+        days: int = 90,
+        dry_run: bool = False
+    ) -> Dict[str, int]:
         """
-        Run database optimization tasks
+        Clean up old records from database
 
         Args:
             session: Database session
+            days: Age threshold in days
+            dry_run: If True, only count records without deleting
+
+        Returns:
+            Dictionary with cleanup statistics
         """
+        cutoff_date = datetime.utcnow() - timedelta(days=days)
+        stats = {}
+
         try:
-            # Analyze tables for query optimization
-            tables = ['call_recordings', 'processing_history', 'system_metrics']
+            # Count old completed recordings
+            old_completed = session.query(CallRecording).filter(
+                CallRecording.created_at < cutoff_date,
+                CallRecording.upload_status == 'completed'
+            )
+            stats['completed_recordings'] = old_completed.count()
 
-            for table in tables:
-                session.execute(text(f"ANALYZE {table}"))
-                logger.info(f"Analyzed table: {table}")
+            # Count old processing history
+            old_history = session.query(ProcessingHistory).filter(
+                ProcessingHistory.started_at < cutoff_date
+            )
+            stats['processing_history'] = old_history.count()
 
-            # Reindex if needed (be careful with this in production)
-            # session.execute(text("REINDEX DATABASE call_recordings"))
+            # Count old metrics
+            old_metrics = session.query(SystemMetric).filter(
+                SystemMetric.timestamp < cutoff_date
+            )
+            stats['system_metrics'] = old_metrics.count()
+
+            if not dry_run:
+                # Delete old records
+                old_completed.delete()
+                old_history.delete()
+                old_metrics.delete()
+                session.commit()
+                logger.info(f"Cleaned up old records: {stats}")
+            else:
+                logger.info(f"Dry run - would clean up: {stats}")
+
+        except Exception as e:
+            session.rollback()
+            logger.error(f"Cleanup failed: {e}")
+            raise
+
+        return stats
+
+    @staticmethod
+    def reset_failed_recordings(
+        session: Session,
+        max_retries: int = 3
+    ) -> int:
+        """
+        Reset failed recordings for retry
+
+        Args:
+            session: Database session
+            max_retries: Maximum retry count
+
+        Returns:
+            Number of recordings reset
+        """
+        count = 0
+
+        try:
+            # Find failed recordings under retry limit
+            failed_recordings = session.query(CallRecording).filter(
+                ((CallRecording.download_status == 'failed') |
+                 (CallRecording.transcription_status == 'failed') |
+                 (CallRecording.upload_status == 'failed')),
+                CallRecording.retry_count < max_retries
+            ).all()
+
+            for recording in failed_recordings:
+                # Reset status based on failure point
+                if recording.download_status == 'failed':
+                    recording.download_status = 'pending'
+                    recording.download_error = None
+                elif recording.transcription_status == 'failed':
+                    recording.transcription_status = 'pending'
+                    recording.transcription_error = None
+                elif recording.upload_status == 'failed':
+                    recording.upload_status = 'pending'
+                    recording.upload_error = None
+
+                recording.retry_count += 1
+                recording.last_updated = datetime.utcnow()
+                count += 1
 
             session.commit()
-            logger.info("Database optimization completed")
+            logger.info(f"Reset {count} failed recordings for retry")
 
-        except SQLAlchemyError as e:
-            logger.error(f"Database optimization failed: {e}")
+        except Exception as e:
             session.rollback()
+            logger.error(f"Reset failed: {e}")
+            raise
+
+        return count
 
     @staticmethod
-    def export_recordings_to_csv(
-        session: Session,
-        output_path: str,
-        start_date: Optional[datetime] = None,
-        end_date: Optional[datetime] = None
-    ):
+    def get_processing_statistics(session: Session) -> Dict[str, Any]:
         """
-        Export recordings to CSV for reporting
+        Get detailed processing statistics
 
         Args:
             session: Database session
-            output_path: Path for CSV file
-            start_date: Start date filter
-            end_date: End date filter
+
+        Returns:
+            Statistics dictionary
         """
-        import csv
+        stats = {
+            'total_recordings': 0,
+            'status_breakdown': {},
+            'daily_counts': [],
+            'error_summary': {},
+            'average_processing_time': None,
+            'success_rate': 0.0
+        }
 
-        query = session.query(CallRecording)
+        try:
+            # Total recordings
+            stats['total_recordings'] = session.query(CallRecording).count()
 
-        if start_date:
-            query = query.filter(CallRecording.start_time >= start_date)
-        if end_date:
-            query = query.filter(CallRecording.start_time <= end_date)
+            # Status breakdown
+            status_query = session.query(
+                CallRecording.download_status,
+                CallRecording.transcription_status,
+                CallRecording.upload_status,
+                text('COUNT(*)')
+            ).group_by(
+                CallRecording.download_status,
+                CallRecording.transcription_status,
+                CallRecording.upload_status
+            ).all()
 
-        recordings = query.all()
-
-        with open(output_path, 'w', newline='') as csvfile:
-            fieldnames = [
-                'recording_id', 'call_id', 'start_time', 'duration',
-                'direction', 'from_number', 'to_number',
-                'download_status', 'transcription_status', 'upload_status',
-                'transcript_confidence', 'language_detected',
-                'google_drive_file_id'
+            stats['status_breakdown'] = [
+                {
+                    'download': row[0],
+                    'transcription': row[1],
+                    'upload': row[2],
+                    'count': row[3]
+                }
+                for row in status_query
             ]
 
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            writer.writeheader()
+            # Daily counts for last 30 days
+            daily_query = session.query(
+                text("DATE(call_start_time) as date"),
+                text("COUNT(*) as count")
+            ).group_by(
+                text("DATE(call_start_time)")
+            ).order_by(
+                text("DATE(call_start_time) DESC")
+            ).limit(30).all()
 
-            for recording in recordings:
-                writer.writerow({
-                    'recording_id': recording.recording_id,
-                    'call_id': recording.call_id,
-                    'start_time': recording.start_time,
-                    'duration': recording.duration,
-                    'direction': recording.direction,
-                    'from_number': recording.from_number,
-                    'to_number': recording.to_number,
-                    'download_status': recording.download_status,
-                    'transcription_status': recording.transcription_status,
-                    'upload_status': recording.upload_status,
-                    'transcript_confidence': recording.transcript_confidence,
-                    'language_detected': recording.language_detected,
-                    'google_drive_file_id': recording.google_drive_file_id
-                })
+            stats['daily_counts'] = [
+                {'date': str(row[0]), 'count': row[1]}
+                for row in daily_query
+            ]
 
-        logger.info(f"Exported {len(recordings)} recordings to {output_path}")
+            # Error summary
+            error_types = ['download_error', 'transcription_error', 'upload_error']
+            for error_type in error_types:
+                error_count = session.query(CallRecording).filter(
+                    getattr(CallRecording, error_type).isnot(None)
+                ).count()
+                stats['error_summary'][error_type] = error_count
+
+            # Calculate success rate
+            completed = session.query(CallRecording).filter_by(
+                upload_status='completed'
+            ).count()
+            if stats['total_recordings'] > 0:
+                stats['success_rate'] = (completed / stats['total_recordings']) * 100
+
+        except Exception as e:
+            logger.error(f"Failed to get statistics: {e}")
+
+        return stats
+
+    @staticmethod
+    def migrate_data(
+        source_session: Session,
+        target_session: Session,
+        batch_size: int = 100
+    ) -> Dict[str, int]:
+        """
+        Migrate data between databases
+
+        Args:
+            source_session: Source database session
+            target_session: Target database session
+            batch_size: Batch size for migration
+
+        Returns:
+            Migration statistics
+        """
+        stats = {'recordings': 0, 'history': 0, 'metrics': 0}
+
+        try:
+            # Migrate call recordings
+            recordings = source_session.query(CallRecording).all()
+            for i in range(0, len(recordings), batch_size):
+                batch = recordings[i:i + batch_size]
+                for record in batch:
+                    # Create new instance to avoid session conflicts
+                    new_record = CallRecording(**{
+                        col.name: getattr(record, col.name)
+                        for col in CallRecording.__table__.columns
+                        if col.name != 'id'
+                    })
+                    target_session.add(new_record)
+                    stats['recordings'] += 1
+
+                target_session.commit()
+
+            logger.info(f"Migrated {stats['recordings']} recordings")
+
+        except Exception as e:
+            target_session.rollback()
+            logger.error(f"Migration failed: {e}")
+            raise
+
+        return stats
+
+    @staticmethod
+    def create_backup_table(session: Session, table_name: str) -> bool:
+        """
+        Create backup of a table
+
+        Args:
+            session: Database session
+            table_name: Table to backup
+
+        Returns:
+            True if successful
+        """
+        backup_name = f"{table_name}_backup_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+
+        try:
+            session.execute(
+                text(f"CREATE TABLE {backup_name} AS SELECT * FROM {table_name}")
+            )
+            session.commit()
+            logger.info(f"Created backup table: {backup_name}")
+            return True
+
+        except Exception as e:
+            session.rollback()
+            logger.error(f"Backup failed: {e}")
+            return False

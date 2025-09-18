@@ -2,13 +2,20 @@
 Database package for RingCentral Call Recording System
 """
 
-from .connection import DatabaseConnection, get_db_session
-from .models import CallRecording, ProcessingHistory, SystemMetric
+from .models import Base, CallRecording, ProcessingHistory, SystemMetric, ProcessingState
+from .config import DatabaseConfig
+from .session import SessionManager, DatabaseTransaction, get_session_manager
+from .utils import DatabaseUtils
 
 __all__ = [
-    'DatabaseConnection',
-    'get_db_session',
+    'Base',
     'CallRecording',
     'ProcessingHistory',
-    'SystemMetric'
+    'SystemMetric',
+    'ProcessingState',
+    'DatabaseConfig',
+    'SessionManager',
+    'DatabaseTransaction',
+    'get_session_manager',
+    'DatabaseUtils'
 ]
