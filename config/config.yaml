@@ -1,0 +1,60 @@
+# RingCentral Call Recording System Configuration
+# This is the main configuration file template
+
+ringcentral:
+  jwt_token: ${RINGCENTRAL_JWT}
+  base_url: https://platform.ringcentral.com/restapi/v1.0
+  rate_limit:
+    calls_per_minute: 40
+    downloads_per_minute: 10
+    retry_attempts: 5
+    backoff_multiplier: 2
+
+whisper:
+  model: base  # Options: tiny, base, small, medium, large
+  device: cpu  # Options: cpu, cuda
+  compute_type: int8
+  threads: 4
+  language: null  # Auto-detect
+  initial_prompt: null
+  temperature: 0.0
+  compression_ratio_threshold: 2.4
+  logprob_threshold: -1.0
+  no_speech_threshold: 0.6
+
+google_drive:
+  credentials_path: /opt/call_recordings/credentials/google_sa.json
+  folder_id: ${GOOGLE_DRIVE_FOLDER_ID}
+  upload_timeout: 300
+  chunk_size: 5242880  # 5MB
+  retry_attempts: 3
+
+database:
+  url: ${DATABASE_URL}
+  pool_size: 20
+  max_overflow: 40
+  pool_timeout: 30
+  echo: false
+
+storage:
+  base_path: /opt/call_recordings
+  temp_dir: /opt/call_recordings/temp
+  archive_dir: /opt/call_recordings/archive
+  max_temp_size_gb: 50
+  cleanup_interval_hours: 6
+
+processing:
+  batch_size: 10
+  max_concurrent: 4
+  timeout_seconds: 300
+  initial_lookback_days: 60
+  daily_schedule: "02:00"
+  timezone: UTC
+
+monitoring:
+  sentry_dsn: ${SENTRY_DSN}
+  prometheus_port: 9090
+  health_check_port: 8080
+  log_level: INFO
+  alert_email: admin@company.com
+  slack_webhook: ${SLACK_WEBHOOK}

@@ -1,0 +1,63 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# Environment and secrets
+.env
+*.env
+config/google_service_account.json
+config/*.json
+!config/example.json
+
+# Data and logs
+data/audio/
+data/transcripts/
+logs/
+*.log
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+
+# Temporary files
+*.tmp
+*.bak
+*.backup
+*~
+tmp/
+temp/
+
+# Deployment
+deployment.tar.gz
+*.tar.gz
+*.zip
+
+# Documentation build
+docs/_build/
+docs/.doctrees/
+
+# Local development
+local_settings.py
+scratch/
+notes.md
