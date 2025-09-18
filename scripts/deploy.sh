@@ -82,7 +82,26 @@ set -e
 
 echo "Installing system dependencies..."
 apt-get update > /dev/null 2>&1
-apt-get install -y python3.10 python3.10-venv python3-pip postgresql postgresql-contrib ffmpeg > /dev/null 2>&1
+
+# Check if Python 3.11 is available, otherwise use 3.10
+if command -v python3.11 > /dev/null 2>&1; then
+    echo "Using Python 3.11"
+    PYTHON_CMD="python3.11"
+    apt-get install -y python3.11-venv python3.11-dev > /dev/null 2>&1
+elif command -v python3.10 > /dev/null 2>&1; then
+    echo "Using Python 3.10"
+    PYTHON_CMD="python3.10"
+    apt-get install -y python3.10-venv python3.10-dev > /dev/null 2>&1
+else
+    echo "Installing Python 3.11..."
+    apt-get install -y software-properties-common > /dev/null 2>&1
+    add-apt-repository -y ppa:deadsnakes/ppa > /dev/null 2>&1
+    apt-get update > /dev/null 2>&1
+    apt-get install -y python3.11 python3.11-venv python3.11-dev > /dev/null 2>&1
+    PYTHON_CMD="python3.11"
+fi
+
+apt-get install -y python3-pip postgresql postgresql-contrib ffmpeg git > /dev/null 2>&1
 
 echo "Creating application directory..."
 mkdir -p /opt/call_recording_system
@@ -92,9 +111,11 @@ echo "Extracting files..."
 tar -xzf /tmp/deployment.tar.gz
 rm /tmp/deployment.tar.gz
 
-echo "Creating Python virtual environment..."
-python3.10 -m venv venv
+echo "Creating Python virtual environment with $PYTHON_CMD..."
+$PYTHON_CMD -m venv venv
 source venv/bin/activate
+
+echo "Python version: $(python --version)"
 
 echo "Installing Python dependencies..."
 pip install --upgrade pip > /dev/null 2>&1

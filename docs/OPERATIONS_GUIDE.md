@@ -72,13 +72,19 @@ cd /opt/call_recording_system
 # 3. Activate virtual environment
 source venv/bin/activate
 
-# 4. Test all connections
+# 4. Verify Python version (should be 3.10, 3.11, or 3.12)
+python --version
+
+# 5. Check Python compatibility
+python scripts/check_python_version.py
+
+# 6. Test all connections
 python scripts/test_connections.py
 
-# 5. Initialize database
+# 7. Initialize database
 alembic upgrade head
 
-# 6. Process historical data (first run only)
+# 8. Process historical data (first run only)
 python -m src.cli.scheduler_cli process-historical --days 60
 ```
 

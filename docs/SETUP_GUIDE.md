@@ -108,8 +108,14 @@ apt update && apt upgrade -y
 
 ### Step 2: Install System Dependencies
 ```bash
-# Install Python 3.10+
-apt install python3.10 python3.10-venv python3-pip -y
+# Option A: Install Python 3.11 (RECOMMENDED - 25% faster)
+apt install software-properties-common -y
+add-apt-repository ppa:deadsnakes/ppa
+apt update
+apt install python3.11 python3.11-venv python3.11-dev python3-pip -y
+
+# Option B: Use Python 3.10 (Default on Ubuntu 22.04)
+# apt install python3.10 python3.10-venv python3.10-dev python3-pip -y
 
 # Install PostgreSQL
 apt install postgresql postgresql-contrib -y
@@ -157,15 +163,25 @@ git clone https://github.com/your-repo/call_recording_system.git .
 
 ### Step 5: Setup Python Environment
 ```bash
-# Create virtual environment
-python3.10 -m venv venv
+# Create virtual environment (use the Python version you installed)
+# For Python 3.11:
+python3.11 -m venv venv
+
+# OR for Python 3.10:
+# python3.10 -m venv venv
 
 # Activate virtual environment
 source venv/bin/activate
 
+# Verify Python version
+python --version
+
 # Install dependencies
 pip install --upgrade pip
 pip install -r requirements.txt
+
+# If you encounter memory errors (common on 4GB VPS):
+# pip install --no-cache-dir -r requirements.txt
 ```
 
 ### Step 6: Configure Environment Variables

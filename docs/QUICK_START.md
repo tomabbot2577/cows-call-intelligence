@@ -35,10 +35,18 @@
 # SSH into your VPS
 ssh root@YOUR_VPS_IP
 
-# Run this one-liner to install dependencies
+# Run this to install dependencies with Python 3.11 (RECOMMENDED)
 apt update && apt upgrade -y && \
-apt install -y python3.10 python3.10-venv python3-pip postgresql postgresql-contrib ffmpeg git nginx supervisor && \
+apt install -y software-properties-common && \
+add-apt-repository ppa:deadsnakes/ppa -y && \
+apt update && \
+apt install -y python3.11 python3.11-venv python3.11-dev python3-pip postgresql postgresql-contrib ffmpeg git nginx supervisor && \
 systemctl enable postgresql
+
+# OR use Python 3.10 (simpler, already on Ubuntu 22.04)
+# apt update && apt upgrade -y && \
+# apt install -y python3.10-venv python3.10-dev python3-pip postgresql postgresql-contrib ffmpeg git nginx supervisor && \
+# systemctl enable postgresql
 ```
 
 ---
@@ -64,10 +72,13 @@ EOF
 cd /opt && \
 git clone https://github.com/your-repo/call_recording_system.git && \
 cd call_recording_system && \
-python3.10 -m venv venv && \
+python3.11 -m venv venv && \
 source venv/bin/activate && \
+python --version && \
 pip install --upgrade pip && \
 pip install -r requirements.txt
+
+# Note: Replace python3.11 with python3.10 if you chose Python 3.10
 ```
 
 ---

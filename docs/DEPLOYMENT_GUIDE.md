@@ -102,7 +102,17 @@ ssh root@YOUR_VPS_IP
 
 # Install system dependencies
 apt update && apt upgrade -y
-apt install -y python3.10 python3.10-venv python3-pip
+
+# Option A: Python 3.11 (RECOMMENDED - Better Performance)
+apt install -y software-properties-common
+add-apt-repository ppa:deadsnakes/ppa
+apt update
+apt install -y python3.11 python3.11-venv python3.11-dev python3-pip
+
+# Option B: Python 3.10 (Default on Ubuntu 22.04)
+# apt install -y python3.10 python3.10-venv python3.10-dev python3-pip
+
+# Install other dependencies
 apt install -y postgresql postgresql-contrib
 apt install -y ffmpeg git curl wget
 apt install -y supervisor nginx
@@ -131,9 +141,18 @@ git clone https://github.com/yourusername/call-recording-system.git call_recordi
 ```bash
 cd /opt/call_recording_system
 
-# Create virtual environment
-python3.10 -m venv venv
+# Create virtual environment based on Python version installed
+# For Python 3.11 (Recommended):
+python3.11 -m venv venv
+
+# OR for Python 3.10:
+# python3.10 -m venv venv
+
+# Activate virtual environment
 source venv/bin/activate
+
+# Verify Python version
+python --version
 
 # Upgrade pip
 pip install --upgrade pip
@@ -141,8 +160,16 @@ pip install --upgrade pip
 # Install dependencies
 pip install -r requirements.txt
 
-# If you get memory errors with Whisper:
+# If you get memory errors with Whisper (common on 4GB VPS):
 pip install --no-cache-dir -r requirements.txt
+
+# OR add temporary swap space:
+# fallocate -l 2G /swapfile
+# chmod 600 /swapfile
+# mkswap /swapfile
+# swapon /swapfile
+# pip install -r requirements.txt
+# swapoff /swapfile && rm /swapfile
 ```
 
 ### Step 4: Configure Application
@@ -498,6 +525,29 @@ chmod +x smoke_test.sh
 ---
 
 ## Common Deployment Issues
+
+### Issue: Wrong Python Version
+
+```bash
+# Check current Python version
+python3 --version
+
+# Install correct Python version (3.11 recommended)
+add-apt-repository ppa:deadsnakes/ppa
+apt update
+apt install python3.11 python3.11-venv python3.11-dev
+
+# Recreate virtual environment with correct version
+cd /opt/call_recording_system
+rm -rf venv
+python3.11 -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+
+# Verify
+python --version  # Should show Python 3.11.x
+```
 
 ### Issue: Module Import Errors
 
