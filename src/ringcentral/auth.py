@@ -45,6 +45,8 @@ class RingCentralAuth:
     def __init__(
         self,
         jwt_token: Optional[str] = None,
+        client_id: Optional[str] = None,
+        client_secret: Optional[str] = None,
         sandbox: bool = False,
         timeout: int = 30,
         max_retries: int = 3
@@ -54,11 +56,15 @@ class RingCentralAuth:
 
         Args:
             jwt_token: JWT token for authentication
+            client_id: Client ID for the app
+            client_secret: Client secret for the app
             sandbox: Whether to use sandbox environment
             timeout: Request timeout in seconds
             max_retries: Maximum number of retry attempts
         """
         self.jwt_token = jwt_token or os.getenv('RINGCENTRAL_JWT')
+        self.client_id = client_id or os.getenv('RINGCENTRAL_CLIENT_ID')
+        self.client_secret = client_secret or os.getenv('RINGCENTRAL_CLIENT_SECRET')
 
         if not self.jwt_token:
             raise ValueError("JWT token is required")
@@ -143,6 +149,13 @@ class RingCentralAuth:
             "Content-Type": "application/x-www-form-urlencoded",
             "Accept": "application/json"
         }
+
+        # Add Basic authentication if client credentials are available
+        if self.client_id and self.client_secret:
+            import base64
+            credentials = f"{self.client_id}:{self.client_secret}"
+            encoded_credentials = base64.b64encode(credentials.encode()).decode()
+            headers["Authorization"] = f"Basic {encoded_credentials}"
 
         data = {
             "grant_type": "urn:ietf:params:oauth:grant-type:jwt-bearer",

@@ -30,21 +30,19 @@ def create_scheduler() -> ProcessingScheduler:
 
     # Initialize components
     ringcentral_auth = RingCentralAuth(
+        jwt_token=settings.ringcentral_jwt_token,
         client_id=settings.ringcentral_client_id,
         client_secret=settings.ringcentral_client_secret,
-        jwt_token=settings.ringcentral_jwt_token,
-        server_url=settings.ringcentral_server_url
+        sandbox=getattr(settings, 'ringcentral_sandbox', False)
     )
 
     transcription_pipeline = TranscriptionPipeline(
-        session_manager=session_manager,
         model_name=settings.whisper_model,
         device=settings.whisper_device
     )
 
     drive_manager = GoogleDriveManager(
-        credentials_path=settings.google_credentials_path,
-        session_manager=session_manager
+        credentials_path=settings.google_credentials_path
     )
 
     metrics_collector = MetricsCollector(
