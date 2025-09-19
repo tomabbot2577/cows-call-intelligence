@@ -102,13 +102,12 @@ class ProcessingScheduler:
     def initialize_clients(self):
         """Initialize API clients"""
         try:
-            # Authenticate RingCentral
-            self.ringcentral_auth.authenticate()
+            # Verify RingCentral authentication by getting a token
+            self.ringcentral_auth.get_access_token()
 
             # Create RingCentral client
             self.ringcentral_client = RingCentralClient(
-                auth_handler=self.ringcentral_auth,
-                session_manager=self.session_manager
+                auth=self.ringcentral_auth
             )
 
             logger.info("API clients initialized successfully")
@@ -195,12 +194,13 @@ class ProcessingScheduler:
                 return
 
             # Get or create processing state
-            state = self._get_or_create_state()
+            state_data = self._get_or_create_state()
 
             # Determine date range
-            if state.last_successful_run:
+            last_run = state_data.get('last_successful_run')
+            if last_run:
                 # Process from last successful run
-                start_date = state.last_successful_run.date()
+                start_date = datetime.fromisoformat(last_run).date()
             else:
                 # Initial run - process historical data
                 start_date = (datetime.utcnow() - timedelta(days=self.historical_days)).date()
@@ -216,12 +216,12 @@ class ProcessingScheduler:
                     self._process_day_recordings(current_date, stats)
 
                     # Update state checkpoint
-                    state.last_checkpoint = datetime.utcnow()
-                    state.checkpoint_data = {
+                    state_data['last_checkpoint'] = datetime.utcnow().isoformat()
+                    state_data['checkpoint_data'] = {
                         'current_date': current_date.isoformat(),
                         'stats': asdict(stats)
                     }
-                    self._save_state(state)
+                    self._save_state_data(state_data)
 
                     current_date += timedelta(days=1)
 
@@ -235,11 +235,11 @@ class ProcessingScheduler:
 
             # Update final state
             stats.end_time = datetime.utcnow()
-            state.last_successful_run = datetime.utcnow()
-            state.total_processed += stats.total_recordings
-            state.total_succeeded += stats.successful_uploads
-            state.total_failed += (stats.failed_downloads + stats.failed_transcriptions + stats.failed_uploads)
-            self._save_state(state)
+            state_data['last_successful_run'] = datetime.utcnow().isoformat()
+            state_data['total_processed'] = state_data.get('total_processed', 0) + stats.total_recordings
+            state_data['total_succeeded'] = state_data.get('total_succeeded', 0) + stats.successful_uploads
+            state_data['total_failed'] = state_data.get('total_failed', 0) + (stats.failed_downloads + stats.failed_transcriptions + stats.failed_uploads)
+            self._save_state_data(state_data)
 
             # Send completion alert
             self._send_completion_alert(stats)
@@ -370,8 +370,8 @@ class ProcessingScheduler:
                 logger.error(f"Error processing recording {recording_id}: {e}")
                 raise
 
-    def _get_or_create_state(self) -> ProcessingState:
-        """Get or create processing state"""
+    def _get_or_create_state(self) -> dict:
+        """Get or create processing state and return its data"""
         with self.session_manager.get_session() as session:
             state = session.query(ProcessingState).filter_by(
                 state_key='main_processor'
@@ -380,18 +380,32 @@ class ProcessingScheduler:
             if not state:
                 state = ProcessingState(
                     state_key='main_processor',
+                    state_value={},
                     is_active=True
                 )
                 session.add(state)
                 session.commit()
+                return {}
 
-            return state
+            return state.state_value or {}
 
-    def _save_state(self, state: ProcessingState):
-        """Save processing state to database"""
+    def _save_state_data(self, state_data: dict):
+        """Save processing state data to database"""
         with self.session_manager.get_session() as session:
-            session.merge(state)
-            session.commit()
+            state = session.query(ProcessingState).filter_by(
+                state_key='main_processor'
+            ).first()
+            if state:
+                state.state_value = state_data
+                session.commit()
+            else:
+                state = ProcessingState(
+                    state_key='main_processor',
+                    state_value=state_data,
+                    is_active=True
+                )
+                session.add(state)
+                session.commit()
 
     def run_health_check(self):
         """Run system health check"""
@@ -533,15 +547,15 @@ Daily processing completed:
         Returns:
             Status dictionary
         """
-        state = self._get_or_create_state()
+        state_data = self._get_or_create_state()
 
         return {
             'is_running': self.is_running,
             'daily_schedule_time': self.daily_schedule_time,
-            'last_successful_run': state.last_successful_run.isoformat() if state.last_successful_run else None,
-            'total_processed': state.total_processed,
-            'total_succeeded': state.total_succeeded,
-            'total_failed': state.total_failed,
+            'last_successful_run': state_data.get('last_successful_run'),
+            'total_processed': state_data.get('total_processed', 0),
+            'total_succeeded': state_data.get('total_succeeded', 0),
+            'total_failed': state_data.get('total_failed', 0),
             'current_stats': asdict(self.current_stats) if self.current_stats else None,
             'next_run': schedule.next_run().isoformat() if schedule.next_run() else None
         }

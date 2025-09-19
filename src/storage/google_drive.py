@@ -36,6 +36,7 @@ class GoogleDriveManager:
 
     # OAuth2 scopes for Google Drive
     SCOPES = [
+        'https://www.googleapis.com/auth/drive',
         'https://www.googleapis.com/auth/drive.file',
         'https://www.googleapis.com/auth/drive.metadata'
     ]
@@ -55,6 +56,7 @@ class GoogleDriveManager:
         self,
         credentials_path: Optional[str] = None,
         folder_id: Optional[str] = None,
+        impersonate_email: Optional[str] = None,
         upload_timeout: int = 300,
         chunk_size: int = 5 * 1024 * 1024  # 5MB chunks
     ):
@@ -64,11 +66,13 @@ class GoogleDriveManager:
         Args:
             credentials_path: Path to service account JSON file
             folder_id: Default folder ID for uploads
+            impersonate_email: Email to impersonate via domain-wide delegation
             upload_timeout: Timeout for uploads in seconds
             chunk_size: Chunk size for resumable uploads
         """
-        self.credentials_path = credentials_path or os.getenv('GOOGLE_SERVICE_ACCOUNT_PATH')
+        self.credentials_path = credentials_path or os.getenv('GOOGLE_CREDENTIALS_PATH')
         self.folder_id = folder_id or os.getenv('GOOGLE_DRIVE_FOLDER_ID')
+        self.impersonate_email = impersonate_email or os.getenv('GOOGLE_IMPERSONATE_EMAIL')
         self.upload_timeout = upload_timeout
         self.chunk_size = chunk_size
 
@@ -99,6 +103,11 @@ class GoogleDriveManager:
                 self.credentials_path,
                 scopes=self.SCOPES
             )
+
+            # If impersonate_email is provided, use domain-wide delegation
+            if self.impersonate_email:
+                self.credentials = self.credentials.with_subject(self.impersonate_email)
+                logger.info(f"Using domain-wide delegation to impersonate: {self.impersonate_email}")
 
             # Build Drive service
             self.service = build('drive', 'v3', credentials=self.credentials)

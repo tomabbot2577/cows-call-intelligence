@@ -196,6 +196,7 @@ class ProcessingState(Base):
     # State information
     state_key = Column(String(50), unique=True, nullable=False)
     state_value = Column(JSON, nullable=False)
+    is_active = Column(Boolean, default=True)
 
     # Metadata
     description = Column(Text)

@@ -227,8 +227,8 @@ class WhisperTranscriber:
                 'condition_on_previous_text': True,
                 'initial_prompt': self.initial_prompt,
                 'word_timestamps': True,  # Enable word-level timestamps
-                'prepend_punctuations': "\"'"¿([{-",
-                'append_punctuations': "\"'.。,，!！?？:：")]}、",
+                'prepend_punctuations': '"\'([{-',
+                'append_punctuations': '"\'.?!:)]}',
                 'verbose': False
             }
 
