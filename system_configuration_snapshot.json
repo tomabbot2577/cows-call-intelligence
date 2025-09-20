@@ -1,0 +1,62 @@
+{
+  "timestamp": "2025-09-20T00:43:33.645756",
+  "working_directory": "/var/www/call-recording-system",
+  "python_version": "3.11",
+  "virtual_env": "venv",
+  "components": {
+    "salad_transcription": {
+      "status": "working",
+      "organization": "mst",
+      "features": [
+        "diarization",
+        "summarization",
+        "timestamps"
+      ],
+      "last_test": "2025-09-20T00:24:40"
+    },
+    "google_drive": {
+      "status": "working",
+      "root_folder": "1IbGtmzk85Q5gYAfdb2AwA9kLNE1EJLx0",
+      "transcripts_folder": "1obRW7K6EQFLtMlgYaO21aYS_o-77hOJ1",
+      "uploads_working": true
+    },
+    "data_organization": {
+      "status": "working",
+      "folders": [
+        "by_date",
+        "by_phone",
+        "by_employee",
+        "by_extension",
+        "human_review",
+        "n8n_workflows",
+        "ml_datasets"
+      ]
+    },
+    "markdown_generation": {
+      "status": "working",
+      "output_folders": [
+        "human_review/pending_review",
+        "human_review/by_date"
+      ]
+    }
+  },
+  "test_results": {
+    "last_run": "2025-09-20T00:24:44",
+    "total_tests": 3,
+    "passed": 3,
+    "failed": 0
+  },
+  "files_created": {
+    "transcripts": 3,
+    "markdown": 6,
+    "json": 15
+  },
+  "key_files": [
+    "src/transcription/salad_transcriber_enhanced.py",
+    "src/storage/structured_data_organizer.py",
+    "src/storage/markdown_transcript_generator.py",
+    "test_complete_pipeline.py",
+    ".env",
+    "requirements.txt"
+  ]
+}

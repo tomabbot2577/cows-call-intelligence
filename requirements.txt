@@ -9,16 +9,20 @@ pydantic==2.5.0
 pydantic-settings==2.1.0
 typing-extensions==4.9.0
 click==8.1.7
+aiohttp>=3.9.3
+aiofiles>=23.2.1
 
-# Whisper and ML
-# Note: Whisper has best compatibility with Python 3.10/3.11
-openai-whisper==20231117
-torch>=2.0.0,<2.2.0  # Pinned for Whisper compatibility
-numpy>=1.24.0,<1.27.0  # Avoid newest versions for compatibility
-scipy>=1.10.0,<1.12.0
-librosa>=0.10.0,<0.11.0
-soundfile==0.12.1
-ffmpeg-python==0.2.0
+# Salad Cloud Transcription SDK (replacing Whisper)
+salad-cloud-transcription-sdk==1.0.0a1
+
+# OpenAI for LLM enrichment
+openai>=1.12.0
+
+# Anthropic (optional for enrichment)
+anthropic>=0.18.0
+
+# RingCentral SDK
+ringcentral>=0.7.9
 
 # Authentication
 PyJWT==2.8.0

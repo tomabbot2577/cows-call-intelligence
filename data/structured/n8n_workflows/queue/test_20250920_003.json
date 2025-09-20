@@ -1,0 +1,90 @@
+{
+  "id": "test_20250920_003",
+  "document_type": "call_transcript",
+  "schema_version": "2.0",
+  "content": {
+    "text": "",
+    "segments": [],
+    "summary": null
+  },
+  "call_info": {
+    "recording_id": "test_20250920_003",
+    "start_time": "2025-09-20T00:23:33.996229+00:00",
+    "duration_seconds": 90,
+    "direction": "outbound",
+    "participants": {
+      "from": {
+        "number": "+12125551003",
+        "name": null,
+        "extension": null,
+        "type": "caller"
+      },
+      "to": {
+        "number": "+18005551234",
+        "name": null,
+        "extension": null,
+        "type": "recipient"
+      }
+    }
+  },
+  "temporal": {
+    "year": 2025,
+    "month": 9,
+    "day": 20,
+    "hour": 0,
+    "day_of_week": "Saturday",
+    "week_of_year": 38,
+    "quarter": 3,
+    "is_business_hours": false,
+    "timestamp_iso": "2025-09-20T00:23:33.996229+00:00"
+  },
+  "features": {
+    "entities": {
+      "phone_numbers": [],
+      "emails": [],
+      "amounts": [],
+      "dates": [],
+      "potential_names": []
+    },
+    "keywords": [],
+    "metrics": {
+      "word_count": 0,
+      "duration_seconds": 90,
+      "confidence_score": 0,
+      "speaking_rate": 0.0
+    }
+  },
+  "language_info": {
+    "language": "en-US",
+    "confidence": 0,
+    "transcription_confidence": 0
+  },
+  "metadata": {
+    "created_at": "2025-09-20T00:24:40.929951+00:00",
+    "processing": {
+      "processed_at": "2025-09-20T00:24:40.929925+00:00",
+      "schema_version": "2.0",
+      "organizer_version": "1.0"
+    },
+    "source": "salad_cloud",
+    "audio_deleted": true,
+    "retention_policy": "transcript_only"
+  },
+  "n8n_hints": {
+    "workflow_ready": true,
+    "requires_sentiment_analysis": true,
+    "requires_entity_extraction": true,
+    "requires_summarization": false,
+    "priority": "high"
+  },
+  "search_tags": [
+    "year:2025",
+    "month:9",
+    "day:20",
+    "hour:0",
+    "saturday",
+    "from:+12125551003",
+    "to:+18005551234",
+    "low_confidence"
+  ]
+}

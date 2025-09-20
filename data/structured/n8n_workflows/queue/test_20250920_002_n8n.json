@@ -1,0 +1,27 @@
+{
+  "id": "test_20250920_002",
+  "timestamp": "2025-09-20T00:24:16.755767+00:00",
+  "transcript_text": "",
+  "duration_seconds": 80,
+  "from_number": "+12125551002",
+  "to_number": "+18005551234",
+  "direction": "inbound",
+  "confidence": 0,
+  "word_count": 0,
+  "entities": {
+    "phone_numbers": [],
+    "emails": [],
+    "amounts": [],
+    "dates": [],
+    "potential_names": []
+  },
+  "workflow_hints": {
+    "workflow_ready": true,
+    "requires_sentiment_analysis": true,
+    "requires_entity_extraction": true,
+    "requires_summarization": false,
+    "priority": "high"
+  },
+  "webhook_url": "",
+  "callback_url": "/api/transcripts/test_20250920_002/processed"
+}

@@ -18,6 +18,7 @@ from src.ringcentral.client import RingCentralClient
 from src.ringcentral.auth import RingCentralAuth
 from src.transcription.pipeline import TranscriptionPipeline
 from src.storage.google_drive import GoogleDriveManager
+from src.storage.secure_storage_handler import SecureStorageHandler
 from src.monitoring.metrics import MetricsCollector
 from src.monitoring.health_check import HealthChecker
 from src.monitoring.alerts import AlertManager, Alert, AlertPriority, AlertChannel
@@ -77,6 +78,13 @@ class ProcessingScheduler:
         self.ringcentral_auth = ringcentral_auth
         self.transcription_pipeline = transcription_pipeline
         self.drive_manager = drive_manager
+        # Initialize secure storage handler that deletes audio after transcription
+        self.secure_storage = SecureStorageHandler(
+            google_drive_manager=drive_manager,
+            local_backup_dir=config.get('transcript_backup_dir'),
+            enable_audit_log=True,
+            verify_deletion=True
+        )
         self.metrics = metrics_collector
         self.health_checker = health_checker
         self.alert_manager = alert_manager
@@ -349,22 +357,51 @@ class ProcessingScheduler:
                     stats.failed_transcriptions += 1
                     return
 
-                # Upload to Google Drive
-                logger.debug(f"Uploading transcript for {recording_id}")
+                # SECURE STORAGE: Save transcript and DELETE audio file
+                logger.info(f"Processing transcript and deleting audio for {recording_id}")
+
+                # Get recording metadata
                 with self.session_manager.get_session() as session:
                     recording = session.query(CallRecording).filter_by(
                         recording_id=recording_id
                     ).first()
 
-                    if recording:
-                        upload_result = self.drive_manager.upload_transcript(
-                            recording=recording
+                    if recording and audio_path and transcript:
+                        # Prepare call metadata
+                        call_metadata = {
+                            'recording_id': recording_id,
+                            'call_start_time': str(recording.call_start_time),
+                            'duration': recording.duration,
+                            'from_number': recording.from_number,
+                            'to_number': recording.to_number,
+                            'direction': recording.direction
+                        }
+
+                        # Process with secure storage (saves transcript and DELETES audio)
+                        storage_result = self.secure_storage.process_transcription(
+                            audio_file_path=audio_path,
+                            transcription_result=transcript,
+                            call_metadata=call_metadata
                         )
 
-                        if upload_result:
+                        if storage_result['success']:
                             stats.successful_uploads += 1
+
+                            # Update database to reflect audio deletion
+                            recording.audio_deleted = True
+                            recording.audio_deletion_time = datetime.utcnow()
+                            recording.drive_file_id = storage_result.get('drive_file_id')
+                            session.commit()
+
+                            # Log confirmation
+                            if storage_result['audio_deleted']:
+                                logger.info(f"✅ CONFIRMED: Audio file DELETED for recording {recording_id}")
+                                logger.info(f"   Deletion verified: {storage_result['deletion_verified']}")
+                            else:
+                                logger.error(f"⚠️ WARNING: Audio deletion failed for {recording_id}")
                         else:
                             stats.failed_uploads += 1
+                            logger.error(f"Failed to process recording {recording_id}: {storage_result.get('error')}")
 
             except Exception as e:
                 logger.error(f"Error processing recording {recording_id}: {e}")

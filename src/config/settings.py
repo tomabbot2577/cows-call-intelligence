@@ -21,7 +21,33 @@ class Settings:
         self.google_credentials_path = os.getenv('GOOGLE_CREDENTIALS_PATH', '/var/www/call-recording-system/config/google_service_account.json')
         self.google_drive_folder_id = os.getenv('GOOGLE_DRIVE_FOLDER_ID')
         
-        # Whisper Settings
+        # Transcription Settings
+        self.transcription_service = os.getenv('TRANSCRIPTION_SERVICE', 'salad')  # 'salad' or 'whisper'
+
+        # Salad Cloud Settings (Best Practices Configuration)
+        self.salad_api_key = os.getenv('SALAD_API_KEY', 'salad_cloud_user_eG0tAkgYi0w0IPPUHpikdfhZG2Auw9MIin9Ld8PdLDQ0HGYCn')
+        self.salad_org_name = os.getenv('SALAD_ORG_NAME', 'default')
+        self.salad_engine = 'full'  # Always use 'full' for best quality
+        self.salad_language = os.getenv('SALAD_LANGUAGE', 'en-US')  # American English
+        self.salad_webhook_url = os.getenv('SALAD_WEBHOOK_URL', '')
+
+        # Salad Advanced Features
+        self.salad_enable_diarization = os.getenv('SALAD_ENABLE_DIARIZATION', 'false').lower() == 'true'
+        self.salad_enable_summarization = os.getenv('SALAD_ENABLE_SUMMARIZATION', 'false').lower() == 'true'
+        self.salad_custom_vocabulary = os.getenv('SALAD_CUSTOM_VOCABULARY', '')
+        self.salad_initial_prompt = os.getenv('SALAD_INITIAL_PROMPT',
+            'Professional business call transcription. Focus on accuracy, proper names, and technical terms.')
+
+        # Salad Performance Settings
+        self.salad_max_retries = int(os.getenv('SALAD_MAX_RETRIES', '3'))
+        self.salad_retry_delay = int(os.getenv('SALAD_RETRY_DELAY', '5'))
+        self.salad_polling_interval = int(os.getenv('SALAD_POLLING_INTERVAL', '3'))
+        self.salad_max_wait_time = int(os.getenv('SALAD_MAX_WAIT_TIME', '3600'))
+
+        # Monitoring and Metrics
+        self.salad_enable_monitoring = os.getenv('SALAD_ENABLE_MONITORING', 'true').lower() == 'true'
+
+        # Whisper Settings (kept for backward compatibility)
         self.whisper_model = os.getenv('WHISPER_MODEL', 'base')
         self.whisper_device = os.getenv('WHISPER_DEVICE', 'cpu')
         self.whisper_compute_type = os.getenv('WHISPER_COMPUTE_TYPE', 'int8')
