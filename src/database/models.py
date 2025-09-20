@@ -90,6 +90,12 @@ class CallRecording(Base):
     google_drive_file_id = Column(String(100))
     google_drive_url = Column(String(500))
 
+    # Audio deletion tracking (SECURITY COMPLIANCE)
+    audio_deleted = Column(Boolean, default=False, nullable=False)
+    audio_deletion_time = Column(DateTime(timezone=True))
+    audio_deletion_verified = Column(Boolean, default=False)
+    audio_file_hash = Column(String(64))  # SHA-256 hash before deletion
+
     # General metadata
     error_message = Column(Text)
     processing_notes = Column(JSON)  # Additional metadata as JSON

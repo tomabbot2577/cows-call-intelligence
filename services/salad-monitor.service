@@ -1,0 +1,28 @@
+[Unit]
+Description=Salad Cloud Transcription Monitoring Service
+After=network.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/call-recording-system
+Environment="PYTHONPATH=/var/www/call-recording-system"
+
+# Main monitoring service
+ExecStart=/usr/bin/python3 /var/www/call-recording-system/src/monitoring/salad_monitor.py --refresh 30 --log-dir /var/www/call-recording-system/logs/monitoring
+
+# Restart on failure
+Restart=on-failure
+RestartSec=30
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+
+# Process limits
+LimitNOFILE=4096
+
+[Install]
+WantedBy=multi-user.target
