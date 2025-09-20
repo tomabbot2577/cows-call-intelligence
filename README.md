@@ -1,22 +1,61 @@
-# RingCentral Call Recording Transcription System
+# 📞 RingCentral Call Recording System with AI Transcription
 
-Automated system for downloading, transcribing, and archiving RingCentral call recordings using OpenAI's Whisper.
+**Version 2.0** | **Status: Production Ready** | **Last Updated: 2025-09-20**
 
-## Features
+## 🚀 Overview
 
-- 🎯 Automated daily retrieval of RingCentral call recordings
-- 🎙️ Local transcription using OpenAI Whisper
-- ☁️ Google Drive integration for transcript storage
-- 🔄 Complete error handling and recovery mechanisms
-- 📊 Monitoring and alerting capabilities
-- 🔐 Secure credential management
+Enterprise-grade call recording system that automatically transcribes RingCentral calls using Salad Cloud AI, organizes them for human review and automated processing, and integrates with N8N workflows and LLM analysis pipelines.
 
-## Architecture
+### ✨ Key Features
+
+- **🎯 Automatic Call Recording**: Captures all RingCentral calls
+- **🤖 AI Transcription**: Salad Cloud API with diarization and summarization
+- **📝 Human Review**: Markdown transcripts for easy reading
+- **📁 Smart Organization**: Multi-dimensional filing system
+- **🔄 N8N Integration**: Workflow automation ready
+- **🧠 LLM Ready**: Structured data for AI analysis
+- **🔍 Full-Text Search**: SQLite FTS5 indexing
+- **☁️ Google Drive Backup**: Automatic cloud storage with visual folder organization
+- **🔒 Security Compliant**: Audio deletion after transcription
+- **👥 Employee Tracking**: Organization by employee/extension
+
+## 🏗️ System Architecture
 
 ```
-RingCentral API → Download → Transcribe (Whisper) → Upload (Google Drive)
-                     ↓            ↓                      ↓
-                PostgreSQL Database (State Management)
+┌─────────────────┐
+│  RingCentral    │
+│     Calls       │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐     ┌─────────────────┐
+│  Call Recording │────▶│  Salad Cloud    │
+│    Webhook      │     │  Transcription  │
+└─────────────────┘     │  - Diarization  │
+                        │  - Summarization│
+                        └────────┬────────┘
+                                 │
+                                 ▼
+                        ┌─────────────────┐
+                        │   Enrichment    │
+                        │   Pipeline      │
+                        └────────┬────────┘
+                                 │
+         ┌───────────────────────┼───────────────────────┐
+         ▼                       ▼                       ▼
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   By Date/Time  │    │  By Employee/   │    │  Human Review   │
+│   Organization  │    │   Extension     │    │   Markdown      │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+         │                       │                       │
+         └───────────────────────┼───────────────────────┘
+                                 ▼
+                  ┌──────────────────────────────┐
+                  │      Output Channels         │
+                  ├─────────┬─────────┬─────────┤
+                  │ Google  │  N8N    │  LLM    │
+                  │ Drive   │Workflows│Analysis │
+                  └─────────┴─────────┴─────────┘
 ```
 
 ## Quick Start
