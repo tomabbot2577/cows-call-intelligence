@@ -209,6 +209,11 @@ class SaladTranscriberEnhanced:
         if not self.api_key:
             raise ValueError("Salad Cloud API key is required")
 
+        # Get OpenAI API key for enhanced features (optional)
+        self.openai_api_key = os.environ.get('OPENAI_API_KEY')
+        if self.openai_api_key:
+            logger.info("OpenAI API key detected - enhanced features available")
+
         # Get organization name - updated to 'mst'
         self.organization_name = organization_name or os.environ.get('SALAD_ORG_NAME', 'mst')
 
