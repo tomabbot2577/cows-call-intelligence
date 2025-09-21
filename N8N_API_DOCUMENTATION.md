@@ -1,5 +1,22 @@
 # N8N Integration API Documentation
-## Call Recording Transcription System
+## Call Recording Transcription System with AI-Powered Insights
+
+---
+
+## 🧠 NEW: AI-Powered Insights Integration
+
+The system now includes OpenAI-powered analysis providing comprehensive business intelligence. All insights can be customized for your specific industry and use cases.
+
+### Available AI Analysis Types:
+- **Call Quality Scoring** (1-10 scale with detailed metrics)
+- **Customer Sentiment Analysis** (emotion tracking, satisfaction prediction)
+- **Employee Performance Coaching** (personalized recommendations)
+- **Sales Intelligence** (deal probability, opportunity assessment)
+- **Compliance Monitoring** (risk detection, escalation alerts)
+- **Quick Wins** (immediate actionable improvements)
+
+### Customization:
+All AI prompts and analysis categories can be customized. See [AI_INSIGHTS_GUIDE.md](AI_INSIGHTS_GUIDE.md) for detailed customization instructions.
 
 ---
 

@@ -31,6 +31,15 @@ A production-ready automated call recording system that downloads, transcribes, 
 - **📝 Comprehensive Logging** - Detailed logs for debugging and monitoring
 - **🗂️ Smart Organization** - Date-based directory structure (YYYY/MM/DD)
 
+### 🧠 AI-Powered Insights (NEW)
+- **Call Quality Analysis** - Automated scoring and improvement suggestions
+- **Employee Coaching** - Personalized development recommendations
+- **Customer Sentiment** - Emotion tracking and satisfaction prediction
+- **Sales Intelligence** - Deal probability and opportunity assessment
+- **Compliance Monitoring** - Risk detection and escalation alerts
+- **Quick Wins** - Immediate actionable improvements
+- **Customizable Prompts** - Tailor analysis to your industry needs
+
 ## 📊 Current Status (September 21, 2025)
 
 - **Total Recordings:** 1,494 downloaded from RingCentral
