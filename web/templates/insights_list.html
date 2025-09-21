@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+
+{% block title %}All Insights - AI Insights{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="fas fa-list me-2"></i>All Insights</h1>
+    <div class="text-muted">
+        Showing {{ insights|length }} insights
+    </div>
+</div>
+
+<!-- Filters -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5><i class="fas fa-filter me-2"></i>Filters</h5>
+    </div>
+    <div class="card-body">
+        <form method="GET" class="row g-3">
+            <div class="col-md-3">
+                <label for="start_date" class="form-label">Start Date</label>
+                <input type="date" class="form-control" id="start_date" name="start_date"
+                       value="{{ filters.start_date or '' }}">
+            </div>
+            <div class="col-md-3">
+                <label for="end_date" class="form-label">End Date</label>
+                <input type="date" class="form-control" id="end_date" name="end_date"
+                       value="{{ filters.end_date or '' }}">
+            </div>
+            <div class="col-md-2">
+                <label for="sentiment" class="form-label">Sentiment</label>
+                <select class="form-select" id="sentiment" name="sentiment">
+                    <option value="">All</option>
+                    <option value="positive" {{ 'selected' if filters.sentiment == 'positive' }}>Positive</option>
+                    <option value="neutral" {{ 'selected' if filters.sentiment == 'neutral' }}>Neutral</option>
+                    <option value="negative" {{ 'selected' if filters.sentiment == 'negative' }}>Negative</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="limit" class="form-label">Limit</label>
+                <select class="form-select" id="limit" name="limit">
+                    <option value="25" {{ 'selected' if request.args.get('limit') == '25' }}>25</option>
+                    <option value="50" {{ 'selected' if request.args.get('limit') == '50' or not request.args.get('limit') }}>50</option>
+                    <option value="100" {{ 'selected' if request.args.get('limit') == '100' }}>100</option>
+                    <option value="200" {{ 'selected' if request.args.get('limit') == '200' }}>200</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">&nbsp;</label>
+                <div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search me-1"></i>Filter
+                    </button>
+                    <a href="{{ url_for('insights_list') }}" class="btn btn-outline-secondary ms-1">
+                        <i class="fas fa-times me-1"></i>Clear
+                    </a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Insights List -->
+{% if insights %}
+    <div class="row">
+        {% for insight in insights %}
+            <div class="col-12 mb-3">
+                <div class="card insight-card">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h6 class="mb-1">
+                                    <a href="{{ url_for('insight_detail', recording_id=insight.recording_id) }}"
+                                       class="text-decoration-none">
+                                        Recording {{ insight.recording_id }}
+                                    </a>
+                                </h6>
+                                <p class="mb-2 text-muted">{{ insight.summary or 'No summary available' }}</p>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    {% if insight.customer_sentiment %}
+                                        <span class="badge bg-light text-dark sentiment-{{ insight.customer_sentiment }}">
+                                            <i class="fas fa-{{ 'smile' if insight.customer_sentiment == 'positive' else 'meh' if insight.customer_sentiment == 'neutral' else 'frown' }} me-1"></i>
+                                            {{ insight.customer_sentiment|title }}
+                                        </span>
+                                    {% endif %}
+                                    {% if insight.call_quality_score %}
+                                        <span class="badge bg-light text-dark quality-{{ 'high' if insight.call_quality_score >= 8 else 'medium' if insight.call_quality_score >= 6 else 'low' }}">
+                                            <i class="fas fa-star me-1"></i>
+                                            Quality: {{ insight.call_quality_score }}/10
+                                        </span>
+                                    {% endif %}
+                                    {% if insight.escalation_required %}
+                                        <span class="badge bg-warning text-dark">
+                                            <i class="fas fa-exclamation-triangle me-1"></i>
+                                            Escalation Required
+                                        </span>
+                                    {% endif %}
+                                    {% if insight.follow_up_needed %}
+                                        <span class="badge bg-info text-dark">
+                                            <i class="fas fa-clock me-1"></i>
+                                            Follow-up Needed
+                                        </span>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <div class="text-muted small">
+                                    {% if insight.call_date %}
+                                        <i class="fas fa-calendar me-1"></i>
+                                        {{ insight.call_date }}
+                                    {% endif %}
+                                </div>
+                                {% if insight.agent_name %}
+                                    <div class="text-muted small">
+                                        <i class="fas fa-user me-1"></i>
+                                        {{ insight.agent_name }}
+                                    </div>
+                                {% endif %}
+                                <div class="mt-2">
+                                    <a href="{{ url_for('insight_detail', recording_id=insight.recording_id) }}"
+                                       class="btn btn-sm btn-outline-primary">
+                                        <i class="fas fa-eye me-1"></i>View Details
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination Info -->
+    {% if insights|length >= 50 %}
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle me-2"></i>
+            Showing {{ insights|length }} insights. Use filters to narrow results or increase the limit.
+        </div>
+    {% endif %}
+
+{% else %}
+    <div class="card">
+        <div class="card-body text-center py-5">
+            <div class="text-muted">
+                <i class="fas fa-search fa-3x mb-3"></i>
+                <h5>No insights found</h5>
+                <p>Try adjusting your filters or check back later as new recordings are processed.</p>
+                <a href="{{ url_for('dashboard') }}" class="btn btn-primary">
+                    <i class="fas fa-arrow-left me-1"></i>Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Auto-submit form when filters change
+document.querySelectorAll('select').forEach(select => {
+    select.addEventListener('change', function() {
+        // Auto-submit after a short delay to allow multiple selections
+        setTimeout(() => {
+            this.form.submit();
+        }, 100);
+    });
+});
+</script>
+{% endblock %}

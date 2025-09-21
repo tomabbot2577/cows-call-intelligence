@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% block title %}Insight Detail - {{ recording_id }}{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="fas fa-eye me-2"></i>Insight Detail</h1>
+    <div>
+        <a href="{{ url_for('insights_list') }}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-1"></i>Back to List
+        </a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <!-- Main Insight Card -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5><i class="fas fa-phone me-2"></i>Recording {{ recording_id }}</h5>
+            </div>
+            <div class="card-body">
+                {% if insight.sentiment_analysis %}
+                    <h6><i class="fas fa-heart me-2"></i>Sentiment Analysis</h6>
+                    {% if insight.sentiment_analysis.get('SATISFACTION INDICATORS') %}
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <strong>Satisfaction Level:</strong>
+                                {{ insight.sentiment_analysis['SATISFACTION INDICATORS'].get('Satisfaction level', 'N/A') }}/10
+                            </div>
+                            <div class="col-md-6">
+                                <strong>NPS Score:</strong>
+                                {{ insight.sentiment_analysis['SATISFACTION INDICATORS'].get('Likelihood to recommend (NPS)', 'N/A') }}/10
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    {% if insight.sentiment_analysis.get('EMOTIONAL JOURNEY') %}
+                        <div class="mb-3">
+                            <strong>Emotional Journey:</strong>
+                            <ul class="list-unstyled ms-3">
+                                <li><strong>Starting:</strong> {{ insight.sentiment_analysis['EMOTIONAL JOURNEY'].get('Starting sentiment', 'N/A') }}</li>
+                                <li><strong>Final:</strong> {{ insight.sentiment_analysis['EMOTIONAL JOURNEY'].get('Final sentiment', 'N/A') }}</li>
+                            </ul>
+                        </div>
+                    {% endif %}
+
+                    {% if insight.sentiment_analysis.get('PAIN POINTS') %}
+                        <div class="mb-3">
+                            <strong>Pain Points:</strong>
+                            {% if insight.sentiment_analysis['PAIN POINTS'].get('Main frustrations') %}
+                                <ul class="ms-3">
+                                    {% for frustration in insight.sentiment_analysis['PAIN POINTS']['Main frustrations'] %}
+                                        <li>{{ frustration }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+
+                    {% if insight.sentiment_analysis.get('POSITIVE MOMENTS') %}
+                        <div class="mb-3">
+                            <strong>Positive Moments:</strong>
+                            {% if insight.sentiment_analysis['POSITIVE MOMENTS'].get('What delighted them') %}
+                                <ul class="ms-3">
+                                    {% for moment in insight.sentiment_analysis['POSITIVE MOMENTS']['What delighted them'] %}
+                                        <li>{{ moment }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endif %}
+
+                {% if insight.support_analysis %}
+                    <hr>
+                    <h6><i class="fas fa-headset me-2"></i>Support Analysis</h6>
+                    <div class="row">
+                        {% for key, value in insight.support_analysis.items() %}
+                            <div class="col-md-6 mb-2">
+                                <strong>{{ key|replace('_', ' ')|title }}:</strong>
+                                {% if value is string %}
+                                    {{ value }}
+                                {% elif value is number %}
+                                    {{ value }}
+                                {% else %}
+                                    {{ value|string }}
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <!-- Metadata Card -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h6><i class="fas fa-info-circle me-2"></i>Metadata</h6>
+            </div>
+            <div class="card-body">
+                <div class="mb-2">
+                    <strong>Recording ID:</strong><br>
+                    <code>{{ recording_id }}</code>
+                </div>
+                <div class="mb-2">
+                    <strong>Generated:</strong><br>
+                    {{ insight.generated_at or 'Unknown' }}
+                </div>
+                {% if insight.sentiment_analysis and insight.sentiment_analysis.get('SATISFACTION INDICATORS') %}
+                    <div class="mb-2">
+                        <strong>Churn Risk:</strong><br>
+                        <span class="badge bg-{{ 'danger' if (insight.sentiment_analysis['SATISFACTION INDICATORS'].get('Churn risk level', 0)|int) > 7 else 'warning' if (insight.sentiment_analysis['SATISFACTION INDICATORS'].get('Churn risk level', 0)|int) > 4 else 'success' }}">
+                            {{ insight.sentiment_analysis['SATISFACTION INDICATORS'].get('Churn risk level', 'N/A') }}/10
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Quick Actions Card -->
+        <div class="card">
+            <div class="card-header">
+                <h6><i class="fas fa-bolt me-2"></i>Quick Actions</h6>
+            </div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-outline-primary btn-sm" onclick="copyToClipboard('{{ recording_id }}')">
+                        <i class="fas fa-copy me-1"></i>Copy Recording ID
+                    </button>
+                    <a href="#" class="btn btn-outline-info btn-sm">
+                        <i class="fas fa-download me-1"></i>Export JSON
+                    </a>
+                    <a href="{{ url_for('insights_list') }}" class="btn btn-outline-secondary btn-sm">
+                        <i class="fas fa-list me-1"></i>View All Insights
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Raw JSON (Collapsible) -->
+<div class="card mt-4">
+    <div class="card-header">
+        <button class="btn btn-link text-decoration-none p-0" type="button" data-bs-toggle="collapse" data-bs-target="#rawJson">
+            <i class="fas fa-code me-2"></i>Raw JSON Data
+        </button>
+    </div>
+    <div class="collapse" id="rawJson">
+        <div class="card-body">
+            <pre class="bg-light p-3 rounded"><code>{{ insight|tojson(indent=2) }}</code></pre>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        // Show success message
+        const btn = event.target.closest('button');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-check me-1"></i>Copied!';
+        btn.classList.remove('btn-outline-primary');
+        btn.classList.add('btn-success');
+
+        setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.classList.remove('btn-success');
+            btn.classList.add('btn-outline-primary');
+        }, 2000);
+    });
+}
+</script>
+{% endblock %}
