@@ -27,7 +27,7 @@ load_dotenv('/var/www/call-recording-system/.env')
 sys.path.insert(0, '/var/www/call-recording-system')
 
 from src.transcription.salad_transcriber_enhanced import SaladTranscriberEnhanced
-from src.transcription.call_insights_analyzer import CallInsightsAnalyzer
+from src.insights.enhanced_call_analyzer import get_enhanced_analyzer
 from src.storage.google_drive import GoogleDriveManager
 from src.storage.enhanced_organizer import EnhancedStorageOrganizer
 
@@ -69,7 +69,7 @@ class QueueBatchProcessor:
             enable_monitoring=True
         )
 
-        self.insights_analyzer = CallInsightsAnalyzer()
+        self.insights_analyzer = get_enhanced_analyzer()
         self.drive_manager = GoogleDriveManager()
         self.storage_organizer = EnhancedStorageOrganizer()
 
@@ -213,14 +213,38 @@ class QueueBatchProcessor:
                 'job_id': transcription_result.job_id
             }
 
-            # Step 4: Upload transcription JSON to Google Drive
+            # Step 4: Analyze Customer-Employee Correlation
+            logger.info("🔍 Analyzing customer-employee correlation...")
+            participants_data = {}
+            try:
+                # Import customer/employee identifier
+                import sys
+                sys.path.insert(0, '/var/www/call-recording-system')
+                from src.insights.customer_employee_identifier import get_customer_employee_identifier
+
+                # Initialize identifier and analyze participants
+                identifier = get_customer_employee_identifier()
+                full_transcript_data = {
+                    'recording_id': recording_id,
+                    'transcription': transcription_dict,
+                    'call_metadata': call_metadata
+                }
+                participants_data = identifier.analyze_call_participants(full_transcript_data)
+                logger.info(f"👤 Identified Employee: {participants_data.get('primary_employee', {}).get('name', 'Unknown')}")
+                logger.info(f"👥 Identified Customer: {participants_data.get('primary_customer', {}).get('name', 'Unknown')}")
+            except Exception as e:
+                logger.warning(f"⚠️ Customer-employee correlation failed: {e}")
+                participants_data = {}
+
+            # Step 5: Upload transcription JSON to Google Drive
             logger.info("☁️ Uploading transcription to Google Drive...")
             try:
-                # Create transcription data dictionary
+                # Create transcription data dictionary with correlation data
                 transcription_data = {
                     'recording_id': recording_id,
                     'transcription': transcription_dict,
                     'call_metadata': call_metadata,
+                    'participants': participants_data,  # Add correlation data
                     'processed_at': datetime.now().isoformat()
                 }
 
@@ -240,20 +264,14 @@ class QueueBatchProcessor:
                 logger.warning(f"⚠️ Google Drive error: {e}, continuing anyway")
                 google_drive_id = None
 
-            # Step 5: Generate AI Insights
-            logger.info("🧠 Generating AI insights...")
+            # Step 6: Generate AI Insights
+            logger.info("🧠 Generating comprehensive AI insights with task-optimized models...")
             try:
-                # Generate various insights
-                support_analysis = self.insights_analyzer.analyze_support_call(transcription_result.text)
-                sentiment_analysis = self.insights_analyzer.analyze_customer_sentiment(transcription_result.text)
+                # Generate comprehensive insights using task-optimized models
+                insights_data = self.insights_analyzer.generate_comprehensive_insights(full_transcript_data)
 
-                # Store insights locally
-                insights_data = {
-                    'recording_id': recording_id,
-                    'support_analysis': support_analysis,
-                    'sentiment_analysis': sentiment_analysis,
-                    'generated_at': datetime.now().isoformat()
-                }
+                # Add correlation data to insights
+                insights_data['participants'] = participants_data  # Include correlation data
 
                 # Save insights to local file
                 insights_dir = Path('/var/www/call-recording-system/data/transcriptions/insights')
@@ -268,18 +286,20 @@ class QueueBatchProcessor:
             except Exception as e:
                 logger.warning(f"⚠️ AI insights generation failed: {str(e)}")
 
-            # Step 6: Save with enhanced organizer
+            # Step 7: Save with enhanced organizer
             logger.info("💾 Saving in dual format (JSON + Markdown)...")
+            # Include correlation data in call metadata for storage
+            enhanced_call_metadata = {**call_metadata, 'participants': participants_data}
             saved_paths = self.storage_organizer.save_transcription(
                 recording_id=recording_id,
                 transcription_result=transcription_dict,
-                call_metadata=call_metadata,
+                call_metadata=enhanced_call_metadata,
                 google_drive_id=google_drive_id
             )
 
             logger.info(f"✅ Saved: {saved_paths['json']}")
 
-            # Step 6: Update database
+            # Step 8: Update database
             self._update_database(
                 recording_id,
                 status='completed',

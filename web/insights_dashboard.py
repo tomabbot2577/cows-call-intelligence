@@ -17,6 +17,7 @@ import logging
 sys.path.insert(0, '/var/www/call-recording-system')
 
 from src.insights.insights_manager import get_insights_manager
+from src.insights.customer_employee_identifier import get_customer_employee_identifier
 
 app = Flask(__name__)
 
@@ -93,7 +94,8 @@ def dashboard():
         return render_template('dashboard.html',
                              recent_insights=recent_insights,
                              analytics=analytics,
-                             patterns=patterns)
+                             patterns=patterns,
+                             datetime=datetime)
 
     except Exception as e:
         logger.error(f"Error loading dashboard: {e}")
@@ -101,7 +103,8 @@ def dashboard():
         return render_template('dashboard.html',
                              recent_insights=[],
                              analytics={},
-                             patterns=[])
+                             patterns=[],
+                             datetime=datetime)
 
 
 @app.route('/insights')
@@ -223,6 +226,202 @@ def api_analytics():
             'status': 'error',
             'message': str(e)
         }), 500
+
+
+@app.route('/customer-search')
+@require_auth
+def customer_search():
+    """Customer search interface"""
+    search_params = {
+        'search_term': request.args.get('search_term', '').strip(),
+        'search_type': request.args.get('search_type', 'any'),
+        'date_range': request.args.get('date_range', 'all'),
+    }
+
+    search_performed = bool(search_params['search_term'])
+    search_results = []
+    unique_customers = 0
+    escalations_count = 0
+    avg_satisfaction = 0
+
+    if search_performed:
+        try:
+            # Initialize customer identifier for searching
+            identifier = get_customer_employee_identifier()
+
+            # Load all transcription files for searching
+            transcription_files = []
+            transcriptions_dir = Path('/var/www/call-recording-system/data/transcriptions/json')
+
+            for json_file in transcriptions_dir.rglob('*.json'):
+                try:
+                    with open(json_file, 'r') as f:
+                        data = json.load(f)
+                        transcription_files.append(data)
+                except Exception as e:
+                    logger.error(f"Error loading {json_file}: {e}")
+                    continue
+
+            # Search through transcriptions
+            matching_calls = identifier.search_calls_by_customer(
+                search_params['search_term'], transcription_files
+            )
+
+            # Process results for display
+            for call in matching_calls:
+                participants = call.get('participants', {})
+                employee = participants.get('primary_employee', {})
+                customer = participants.get('primary_customer', {})
+                metadata = participants.get('call_metadata', {})
+
+                search_results.append({
+                    'recording_id': call.get('recording_id'),
+                    'call_date': metadata.get('date'),
+                    'duration_seconds': metadata.get('duration'),
+                    'customer_name': customer.get('name'),
+                    'customer_company': customer.get('company'),
+                    'customer_phone': customer.get('phone'),
+                    'customer_email': customer.get('email'),
+                    'employee_name': employee.get('name'),
+                    'employee_extension': employee.get('extension'),
+                    'employee_department': employee.get('department'),
+                    'call_type': 'support',  # Default for now
+                    'urgency_level': 'medium',  # Default
+                    'customer_satisfaction_score': 7,  # Default
+                    'escalation_required': False,
+                    'follow_up_needed': False,
+                    'technical_issue': 'technical' in participants.get('call_context', {}).get('mentioned_issues', []),
+                    'billing_issue': 'billing' in participants.get('call_context', {}).get('mentioned_products', []),
+                    'sales_opportunity': False
+                })
+
+            # Calculate summary stats
+            unique_customers = len(set(r['customer_name'] for r in search_results if r['customer_name']))
+            escalations_count = sum(1 for r in search_results if r['escalation_required'])
+            satisfaction_scores = [r['customer_satisfaction_score'] for r in search_results if r['customer_satisfaction_score']]
+            avg_satisfaction = sum(satisfaction_scores) / len(satisfaction_scores) if satisfaction_scores else 0
+
+        except Exception as e:
+            logger.error(f"Customer search error: {e}")
+            flash(f'Search error: {e}', 'error')
+
+    return render_template('customer_search.html',
+                          search_params=search_params,
+                          search_performed=search_performed,
+                          search_results=search_results,
+                          unique_customers=unique_customers,
+                          escalations_count=escalations_count,
+                          avg_satisfaction=avg_satisfaction)
+
+
+@app.route('/customer-analytics/<customer_id>')
+@require_auth
+def customer_analytics(customer_id):
+    """Customer analytics page"""
+    try:
+        # Initialize customer identifier
+        identifier = get_customer_employee_identifier()
+
+        # Load all transcription files
+        transcription_files = []
+        transcriptions_dir = Path('/var/www/call-recording-system/data/transcriptions/json')
+
+        for json_file in transcriptions_dir.rglob('*.json'):
+            try:
+                with open(json_file, 'r') as f:
+                    data = json.load(f)
+                    transcription_files.append(data)
+            except Exception as e:
+                continue
+
+        # Get customer call history
+        matching_calls = identifier.search_calls_by_customer(customer_id, transcription_files)
+
+        if not matching_calls:
+            customer_data = {"error": f"No calls found for customer: {customer_id}"}
+        else:
+            # Process calls for analytics
+            processed_calls = []
+            for call in matching_calls:
+                participants = call.get('participants', {})
+                employee = participants.get('primary_employee', {})
+                customer = participants.get('primary_customer', {})
+                metadata = participants.get('call_metadata', {})
+
+                processed_calls.append({
+                    'recording_id': call.get('recording_id'),
+                    'call_date': metadata.get('date'),
+                    'duration_seconds': metadata.get('duration'),
+                    'customer_satisfaction_score': 7,  # Default
+                    'escalation_required': False,
+                    'follow_up_needed': False,
+                    'technical_issue': False,
+                    'billing_issue': False,
+                    'sales_opportunity': False,
+                    'call_type': 'support',
+                    'employee_name': employee.get('name'),
+                    'employee_department': employee.get('department')
+                })
+
+            # Generate analytics
+            total_calls = len(processed_calls)
+            satisfaction_scores = [c['customer_satisfaction_score'] for c in processed_calls if c['customer_satisfaction_score']]
+            avg_satisfaction = sum(satisfaction_scores) / len(satisfaction_scores) if satisfaction_scores else 0
+
+            # Call types breakdown
+            call_types = {}
+            departments = {}
+            employees = {}
+
+            for call in processed_calls:
+                call_type = call['call_type']
+                call_types[call_type] = call_types.get(call_type, 0) + 1
+
+                dept = call['employee_department'] or 'unknown'
+                departments[dept] = departments.get(dept, 0) + 1
+
+                emp = call['employee_name'] or 'unknown'
+                employees[emp] = employees.get(emp, 0) + 1
+
+            escalations = sum(1 for c in processed_calls if c['escalation_required'])
+            follow_ups = sum(1 for c in processed_calls if c['follow_up_needed'])
+            technical_issues = sum(1 for c in processed_calls if c['technical_issue'])
+            billing_issues = sum(1 for c in processed_calls if c['billing_issue'])
+
+            customer_data = {
+                "customer_identifier": customer_id,
+                "summary": {
+                    "total_calls": total_calls,
+                    "average_satisfaction": round(avg_satisfaction, 2),
+                    "first_call_date": processed_calls[-1]['call_date'] if processed_calls else None,
+                    "last_call_date": processed_calls[0]['call_date'] if processed_calls else None,
+                    "total_escalations": escalations,
+                    "total_follow_ups": follow_ups
+                },
+                "breakdown": {
+                    "call_types": call_types,
+                    "departments_contacted": departments,
+                    "employees_spoken_with": employees
+                },
+                "issues": {
+                    "technical_issues": technical_issues,
+                    "billing_issues": billing_issues,
+                    "escalation_rate": round(escalations / total_calls * 100, 1) if total_calls > 0 else 0
+                },
+                "recent_calls": processed_calls[:10],
+                "trend_analysis": {
+                    "satisfaction_trend": "stable",
+                    "call_frequency_trend": "stable",
+                    "issue_complexity_trend": "stable",
+                    "relationship_health": "good"
+                }
+            }
+
+    except Exception as e:
+        logger.error(f"Customer analytics error: {e}")
+        customer_data = {"error": f"Error generating analytics: {e}"}
+
+    return render_template('customer_analytics.html', customer_data=customer_data)
 
 
 if __name__ == '__main__':

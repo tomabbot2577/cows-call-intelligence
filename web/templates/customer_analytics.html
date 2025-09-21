@@ -1,0 +1,407 @@
+{% extends "base.html" %}
+
+{% block title %}Customer Analytics - {{ customer_data.customer_identifier }}{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="fas fa-chart-line me-2"></i>Customer Analytics</h1>
+    <div>
+        <a href="{{ url_for('customer_search') }}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-1"></i>Back to Search
+        </a>
+    </div>
+</div>
+
+{% if customer_data and not customer_data.get('error') %}
+    <!-- Customer Header -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5><i class="fas fa-user me-2"></i>Customer Profile</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-8">
+                    <h4>{{ customer_data.customer_identifier }}</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p><strong>First Contact:</strong> {{ customer_data.summary.first_call_date or 'Unknown' }}</p>
+                            <p><strong>Last Contact:</strong> {{ customer_data.summary.last_call_date or 'Unknown' }}</p>
+                            <p><strong>Total Calls:</strong> {{ customer_data.summary.total_calls }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Average Satisfaction:</strong>
+                                <span class="badge bg-{{ 'success' if customer_data.summary.average_satisfaction >= 8 else 'warning' if customer_data.summary.average_satisfaction >= 6 else 'danger' }}">
+                                    {{ customer_data.summary.average_satisfaction }}/10
+                                </span>
+                            </p>
+                            <p><strong>Escalations:</strong> {{ customer_data.summary.total_escalations }}</p>
+                            <p><strong>Follow-ups:</strong> {{ customer_data.summary.total_follow_ups }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 text-end">
+                    <!-- Relationship Health Indicator -->
+                    <div class="text-center">
+                        <h6>Relationship Health</h6>
+                        {% set health = customer_data.trend_analysis.relationship_health %}
+                        <div class="relationship-indicator">
+                            {% if health == 'good' %}
+                                <div class="circle bg-success mb-2 mx-auto" style="width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-heart text-white fa-2x"></i>
+                                </div>
+                                <span class="badge bg-success">Healthy</span>
+                            {% elif health == 'at_risk' %}
+                                <div class="circle bg-warning mb-2 mx-auto" style="width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-exclamation-triangle text-white fa-2x"></i>
+                                </div>
+                                <span class="badge bg-warning">At Risk</span>
+                            {% else %}
+                                <div class="circle bg-secondary mb-2 mx-auto" style="width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-question text-white fa-2x"></i>
+                                </div>
+                                <span class="badge bg-secondary">Unknown</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Analytics Row -->
+    <div class="row mb-4">
+        <!-- Call Types Breakdown -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="fas fa-chart-pie me-2"></i>Call Types</h5>
+                </div>
+                <div class="card-body">
+                    {% if customer_data.breakdown.call_types %}
+                        <canvas id="callTypesChart" width="400" height="300"></canvas>
+                    {% else %}
+                        <div class="text-center text-muted py-4">
+                            <i class="fas fa-chart-pie fa-2x mb-2"></i>
+                            <p>No call type data available</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Department Contacts -->
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="fas fa-building me-2"></i>Departments Contacted</h5>
+                </div>
+                <div class="card-body">
+                    {% if customer_data.breakdown.departments_contacted %}
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                    <tr>
+                                        <th>Department</th>
+                                        <th>Calls</th>
+                                        <th>Percentage</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for dept, count in customer_data.breakdown.departments_contacted.items() %}
+                                        <tr>
+                                            <td>{{ dept|title }}</td>
+                                            <td>{{ count }}</td>
+                                            <td>
+                                                <div class="progress" style="height: 8px;">
+                                                    <div class="progress-bar" style="width: {{ (count / customer_data.summary.total_calls * 100)|round(1) }}%"></div>
+                                                </div>
+                                                {{ (count / customer_data.summary.total_calls * 100)|round(1) }}%
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="text-center text-muted py-4">
+                            <i class="fas fa-building fa-2x mb-2"></i>
+                            <p>No department data available</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Issues Analysis -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card metric-card text-center p-3">
+                <div class="card-body">
+                    <h3 class="text-danger">{{ customer_data.issues.technical_issues }}</h3>
+                    <p class="mb-0">Technical Issues</p>
+                    <small class="text-muted">Total</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card metric-card text-center p-3">
+                <div class="card-body">
+                    <h3 class="text-warning">{{ customer_data.issues.billing_issues }}</h3>
+                    <p class="mb-0">Billing Issues</p>
+                    <small class="text-muted">Total</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card metric-card text-center p-3">
+                <div class="card-body">
+                    <h3 class="text-info">{{ customer_data.issues.escalation_rate }}%</h3>
+                    <p class="mb-0">Escalation Rate</p>
+                    <small class="text-muted">Percentage</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trends Analysis -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5><i class="fas fa-trending-up me-2"></i>Trends & Insights</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <h6>Satisfaction Trend</h6>
+                        {% set trend = customer_data.trend_analysis.satisfaction_trend %}
+                        {% if trend == 'improving' %}
+                            <i class="fas fa-arrow-up text-success fa-2x"></i>
+                            <br><span class="badge bg-success">Improving</span>
+                        {% elif trend == 'declining' %}
+                            <i class="fas fa-arrow-down text-danger fa-2x"></i>
+                            <br><span class="badge bg-danger">Declining</span>
+                        {% else %}
+                            <i class="fas fa-minus text-secondary fa-2x"></i>
+                            <br><span class="badge bg-secondary">Stable</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <h6>Call Frequency</h6>
+                        {% set freq = customer_data.trend_analysis.call_frequency_trend %}
+                        {% if freq == 'increasing' %}
+                            <i class="fas fa-arrow-up text-info fa-2x"></i>
+                            <br><span class="badge bg-info">Increasing</span>
+                        {% elif freq == 'decreasing' %}
+                            <i class="fas fa-arrow-down text-warning fa-2x"></i>
+                            <br><span class="badge bg-warning">Decreasing</span>
+                        {% else %}
+                            <i class="fas fa-minus text-secondary fa-2x"></i>
+                            <br><span class="badge bg-secondary">Stable</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <h6>Issue Complexity</h6>
+                        {% set complexity = customer_data.trend_analysis.issue_complexity_trend %}
+                        {% if complexity == 'increasing' %}
+                            <i class="fas fa-arrow-up text-danger fa-2x"></i>
+                            <br><span class="badge bg-danger">Increasing</span>
+                        {% elif complexity == 'decreasing' %}
+                            <i class="fas fa-arrow-down text-success fa-2x"></i>
+                            <br><span class="badge bg-success">Decreasing</span>
+                        {% else %}
+                            <i class="fas fa-minus text-secondary fa-2x"></i>
+                            <br><span class="badge bg-secondary">Stable</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center">
+                        <h6>Relationship Health</h6>
+                        {% set health = customer_data.trend_analysis.relationship_health %}
+                        {% if health == 'good' %}
+                            <i class="fas fa-heart text-success fa-2x"></i>
+                            <br><span class="badge bg-success">Good</span>
+                        {% elif health == 'at_risk' %}
+                            <i class="fas fa-exclamation-triangle text-warning fa-2x"></i>
+                            <br><span class="badge bg-warning">At Risk</span>
+                        {% else %}
+                            <i class="fas fa-question text-secondary fa-2x"></i>
+                            <br><span class="badge bg-secondary">Unknown</span>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Employees Contacted -->
+    <div class="card mb-4">
+        <div class="card-header">
+            <h5><i class="fas fa-users me-2"></i>Team Members Contacted</h5>
+        </div>
+        <div class="card-body">
+            {% if customer_data.breakdown.employees_spoken_with %}
+                <div class="row">
+                    {% for employee, count in customer_data.breakdown.employees_spoken_with.items() %}
+                        <div class="col-md-4 mb-3">
+                            <div class="card bg-light">
+                                <div class="card-body text-center">
+                                    <h6>{{ employee }}</h6>
+                                    <h4 class="text-primary">{{ count }}</h4>
+                                    <small class="text-muted">calls</small>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="text-center text-muted py-4">
+                    <i class="fas fa-users fa-2x mb-2"></i>
+                    <p>No employee interaction data available</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Recent Calls -->
+    <div class="card">
+        <div class="card-header">
+            <h5><i class="fas fa-history me-2"></i>Recent Call History</h5>
+        </div>
+        <div class="card-body">
+            {% if customer_data.recent_calls %}
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Employee</th>
+                                <th>Department</th>
+                                <th>Call Type</th>
+                                <th>Duration</th>
+                                <th>Satisfaction</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for call in customer_data.recent_calls %}
+                                <tr>
+                                    <td>{{ call.call_date or 'Unknown' }}</td>
+                                    <td>{{ call.employee_name or 'Unknown' }}</td>
+                                    <td>
+                                        {% if call.employee_department %}
+                                            <span class="badge bg-secondary">{{ call.employee_department }}</span>
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ call.call_type|title if call.call_type else '-' }}</td>
+                                    <td>
+                                        {% if call.duration_seconds %}
+                                            {{ (call.duration_seconds/60)|round(1) }} min
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if call.customer_satisfaction_score %}
+                                            <span class="badge bg-{{ 'success' if call.customer_satisfaction_score >= 8 else 'warning' if call.customer_satisfaction_score >= 6 else 'danger' }}">
+                                                {{ call.customer_satisfaction_score }}/10
+                                            </span>
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if call.escalation_required %}
+                                            <span class="badge bg-warning">Escalated</span>
+                                        {% elif call.follow_up_needed %}
+                                            <span class="badge bg-info">Follow-up</span>
+                                        {% else %}
+                                            <span class="badge bg-success">Resolved</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a href="{{ url_for('insight_detail', recording_id=call.recording_id) }}"
+                                           class="btn btn-outline-primary btn-sm">
+                                            <i class="fas fa-eye"></i> View
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% else %}
+                <div class="text-center text-muted py-4">
+                    <i class="fas fa-history fa-2x mb-2"></i>
+                    <p>No recent call history available</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% else %}
+    <!-- Error State -->
+    <div class="card">
+        <div class="card-body text-center py-5">
+            <div class="text-muted">
+                <i class="fas fa-exclamation-triangle fa-3x mb-3"></i>
+                <h5>Customer Not Found</h5>
+                <p>{{ customer_data.error if customer_data else 'No customer data available for the provided identifier.' }}</p>
+                <a href="{{ url_for('customer_search') }}" class="btn btn-primary">
+                    <i class="fas fa-search me-1"></i>Search Customers
+                </a>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+{% if customer_data and not customer_data.get('error') %}
+<script>
+// Call Types Chart
+{% if customer_data.breakdown.call_types %}
+const callTypesData = {{ customer_data.breakdown.call_types|tojson }};
+const callTypesCtx = document.getElementById('callTypesChart').getContext('2d');
+
+new Chart(callTypesCtx, {
+    type: 'doughnut',
+    data: {
+        labels: Object.keys(callTypesData).map(type => type.replace('_', ' ').toUpperCase()),
+        datasets: [{
+            data: Object.values(callTypesData),
+            backgroundColor: [
+                '#28a745',  // Green
+                '#007bff',  // Blue
+                '#ffc107',  // Yellow
+                '#dc3545',  // Red
+                '#6c757d',  // Gray
+                '#17a2b8',  // Cyan
+                '#e83e8c'   // Pink
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }
+});
+{% endif %}
+</script>
+{% endif %}
+{% endblock %}

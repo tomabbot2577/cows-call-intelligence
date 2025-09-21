@@ -6,9 +6,14 @@ Provides comprehensive business intelligence from call transcriptions
 import os
 import logging
 import json
+import sys
 from typing import Optional, Dict, Any, List
 from openai import OpenAI
 from datetime import datetime
+
+# Add config path
+sys.path.insert(0, '/var/www/call-recording-system')
+from config.llm_config import LLMConfig
 
 logger = logging.getLogger(__name__)
 
@@ -16,17 +21,17 @@ logger = logging.getLogger(__name__)
 class CallInsightsAnalyzer:
     """
     Analyzes call transcriptions to provide actionable business insights
-    using OpenAI's GPT-3.5-turbo for cost-effective analysis
+    using configurable LLM provider for cost-effective analysis
     """
 
     def __init__(self):
-        """Initialize OpenAI client with cost-optimized settings"""
-        self.api_key = os.environ.get('OPENAI_API_KEY')
-        self.model = os.environ.get('OPENAI_MODEL', 'gpt-3.5-turbo')
+        """Initialize with configurable LLM provider"""
+        client_config = LLMConfig.get_client_config()
+        self.model = LLMConfig.get_model_name()
 
-        if self.api_key:
-            self.client = OpenAI(api_key=self.api_key)
-            logger.info(f"Call Insights Analyzer initialized with {self.model}")
+        if client_config['api_key']:
+            self.client = OpenAI(**client_config)
+            logger.info(f"Call Insights Analyzer initialized with {LLMConfig.CURRENT_PROVIDER}/{self.model}")
         else:
             self.client = None
             logger.warning("OpenAI API key not found - insights features disabled")

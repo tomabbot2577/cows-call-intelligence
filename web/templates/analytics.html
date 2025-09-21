@@ -1,0 +1,242 @@
+{% extends "base.html" %}
+
+{% block title %}Analytics - AI Insights{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="fas fa-chart-bar me-2"></i>Analytics</h1>
+    <div class="btn-group" role="group">
+        <a href="{{ url_for('analytics', period='daily') }}"
+           class="btn btn-outline-primary {{ 'active' if period == 'daily' else '' }}">Daily</a>
+        <a href="{{ url_for('analytics', period='weekly') }}"
+           class="btn btn-outline-primary {{ 'active' if period == 'weekly' else '' }}">Weekly</a>
+        <a href="{{ url_for('analytics', period='monthly') }}"
+           class="btn btn-outline-primary {{ 'active' if period == 'monthly' else '' }}">Monthly</a>
+    </div>
+</div>
+
+{% if report %}
+    <!-- Summary Stats -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card metric-card text-center p-3">
+                <div class="card-body">
+                    <h3 class="text-primary">{{ report.statistics.total_calls or 0 }}</h3>
+                    <p class="mb-0">Total Calls</p>
+                    <small class="text-muted">{{ period|title }}</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card metric-card text-center p-3">
+                <div class="card-body">
+                    <h3 class="text-success">{{ "%.1f"|format(report.statistics.avg_quality or 0) }}</h3>
+                    <p class="mb-0">Avg Quality</p>
+                    <small class="text-muted">Out of 10</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card metric-card text-center p-3">
+                <div class="card-body">
+                    <h3 class="text-warning">{{ report.statistics.total_escalations or 0 }}</h3>
+                    <p class="mb-0">Escalations</p>
+                    <small class="text-muted">{{ period|title }}</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card metric-card text-center p-3">
+                <div class="card-body">
+                    <h3 class="text-info">{{ report.statistics.total_follow_ups or 0 }}</h3>
+                    <p class="mb-0">Follow-ups</p>
+                    <small class="text-muted">Needed</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Charts Row -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="fas fa-chart-pie me-2"></i>Sentiment Distribution</h5>
+                </div>
+                <div class="card-body">
+                    <canvas id="sentimentChart" width="400" height="300"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="fas fa-chart-bar me-2"></i>Top Issues</h5>
+                </div>
+                <div class="card-body">
+                    {% if report.top_issues %}
+                        <canvas id="issuesChart" width="400" height="300"></canvas>
+                    {% else %}
+                        <div class="text-center text-muted py-4">
+                            <i class="fas fa-chart-bar fa-2x mb-2"></i>
+                            <p>No issues data available for this period</p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agent Leaderboard -->
+    {% if report.agent_leaderboard %}
+        <div class="card mb-4">
+            <div class="card-header">
+                <h5><i class="fas fa-trophy me-2"></i>Agent Leaderboard</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Agent</th>
+                                <th>Avg Score</th>
+                                <th>Total Calls</th>
+                                <th>Performance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for agent in report.agent_leaderboard %}
+                                <tr>
+                                    <td>
+                                        <span class="badge bg-{{ 'warning' if loop.index == 1 else 'secondary' if loop.index == 2 else 'info' if loop.index == 3 else 'light text-dark' }}">
+                                            #{{ loop.index }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <strong>{{ agent.agent_name or 'Unknown' }}</strong>
+                                        <br><small class="text-muted">{{ agent.agent_id }}</small>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-{{ 'success' if agent.avg_score >= 8 else 'warning' if agent.avg_score >= 6 else 'danger' }}">
+                                            {{ "%.1f"|format(agent.avg_score or 0) }}/10
+                                        </span>
+                                    </td>
+                                    <td>{{ agent.total_calls or 0 }}</td>
+                                    <td>
+                                        <div class="progress" style="height: 8px;">
+                                            <div class="progress-bar bg-{{ 'success' if agent.avg_score >= 8 else 'warning' if agent.avg_score >= 6 else 'danger' }}"
+                                                 style="width: {{ (agent.avg_score or 0) * 10 }}%"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Raw Report Data (Collapsible) -->
+    <div class="card">
+        <div class="card-header">
+            <button class="btn btn-link text-decoration-none p-0" type="button" data-bs-toggle="collapse" data-bs-target="#rawReport">
+                <i class="fas fa-database me-2"></i>Raw Report Data
+            </button>
+        </div>
+        <div class="collapse" id="rawReport">
+            <div class="card-body">
+                <pre class="bg-light p-3 rounded"><code>{{ report|tojson(indent=2) }}</code></pre>
+            </div>
+        </div>
+    </div>
+
+{% else %}
+    <!-- No Data State -->
+    <div class="card">
+        <div class="card-body text-center py-5">
+            <div class="text-muted">
+                <i class="fas fa-chart-bar fa-3x mb-3"></i>
+                <h5>No analytics data available</h5>
+                <p>There's no data for the selected {{ period }} period. Check back after some recordings have been processed.</p>
+                <a href="{{ url_for('dashboard') }}" class="btn btn-primary">
+                    <i class="fas fa-arrow-left me-1"></i>Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+{% endif %}
+{% endblock %}
+
+{% block scripts %}
+{% if report %}
+<script>
+// Sentiment Chart
+const sentimentData = {{ report.sentiment_breakdown|tojson if report.sentiment_breakdown else '{}' }};
+const sentimentCtx = document.getElementById('sentimentChart').getContext('2d');
+
+new Chart(sentimentCtx, {
+    type: 'doughnut',
+    data: {
+        labels: Object.keys(sentimentData),
+        datasets: [{
+            data: Object.values(sentimentData),
+            backgroundColor: [
+                '#28a745',  // Positive - Green
+                '#6c757d',  // Neutral - Gray
+                '#dc3545'   // Negative - Red
+            ],
+            borderWidth: 0
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                position: 'bottom'
+            }
+        }
+    }
+});
+
+// Issues Chart
+{% if report.top_issues %}
+const issuesData = {{ report.top_issues|tojson }};
+const issuesCtx = document.getElementById('issuesChart').getContext('2d');
+
+new Chart(issuesCtx, {
+    type: 'bar',
+    data: {
+        labels: issuesData.map(item => item.category || 'Unknown'),
+        datasets: [{
+            label: 'Count',
+            data: issuesData.map(item => item.count),
+            backgroundColor: '#667eea',
+            borderColor: '#667eea',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: {
+                    stepSize: 1
+                }
+            }
+        }
+    }
+});
+{% endif %}
+</script>
+{% endif %}
+{% endblock %}

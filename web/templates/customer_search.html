@@ -1,0 +1,347 @@
+{% extends "base.html" %}
+
+{% block title %}Customer Search - AI Insights{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1><i class="fas fa-search me-2"></i>Customer Search</h1>
+    <div class="text-muted">
+        Advanced customer lookup by name, phone, email, or company
+    </div>
+</div>
+
+<!-- Search Form -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5><i class="fas fa-magnifying-glass me-2"></i>Search Customers & Calls</h5>
+    </div>
+    <div class="card-body">
+        <form method="GET" class="row g-3">
+            <div class="col-md-4">
+                <label for="search_term" class="form-label">Search Term</label>
+                <input type="text" class="form-control" id="search_term" name="search_term"
+                       value="{{ search_params.search_term or '' }}"
+                       placeholder="Enter name, phone, email, or company">
+            </div>
+            <div class="col-md-3">
+                <label for="search_type" class="form-label">Search Type</label>
+                <select class="form-select" id="search_type" name="search_type">
+                    <option value="any" {{ 'selected' if search_params.search_type == 'any' else '' }}>Any Field</option>
+                    <option value="name" {{ 'selected' if search_params.search_type == 'name' else '' }}>Customer Name</option>
+                    <option value="phone" {{ 'selected' if search_params.search_type == 'phone' else '' }}>Phone Number</option>
+                    <option value="email" {{ 'selected' if search_params.search_type == 'email' else '' }}>Email Address</option>
+                    <option value="company" {{ 'selected' if search_params.search_type == 'company' else '' }}>Company</option>
+                    <option value="employee" {{ 'selected' if search_params.search_type == 'employee' else '' }}>Employee</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="date_range" class="form-label">Date Range</label>
+                <select class="form-select" id="date_range" name="date_range">
+                    <option value="all" {{ 'selected' if search_params.date_range == 'all' else '' }}>All Time</option>
+                    <option value="7days" {{ 'selected' if search_params.date_range == '7days' else '' }}>Last 7 Days</option>
+                    <option value="30days" {{ 'selected' if search_params.date_range == '30days' else '' }}>Last 30 Days</option>
+                    <option value="90days" {{ 'selected' if search_params.date_range == '90days' else '' }}>Last 90 Days</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label">&nbsp;</label>
+                <div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-search me-1"></i>Search
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% if search_performed %}
+    {% if search_results %}
+        <!-- Search Results Summary -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card metric-card text-center p-3">
+                    <div class="card-body">
+                        <h3 class="text-primary">{{ search_results|length }}</h3>
+                        <p class="mb-0">Total Calls</p>
+                        <small class="text-muted">Found</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card metric-card text-center p-3">
+                    <div class="card-body">
+                        <h3 class="text-info">{{ unique_customers }}</h3>
+                        <p class="mb-0">Unique Customers</p>
+                        <small class="text-muted">Identified</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card metric-card text-center p-3">
+                    <div class="card-body">
+                        <h3 class="text-warning">{{ escalations_count }}</h3>
+                        <p class="mb-0">Escalations</p>
+                        <small class="text-muted">Total</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card metric-card text-center p-3">
+                    <div class="card-body">
+                        <h3 class="text-success">{{ avg_satisfaction|round(1) }}</h3>
+                        <p class="mb-0">Avg Satisfaction</p>
+                        <small class="text-muted">Out of 10</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customer Analytics Button -->
+        {% if search_params.search_term and unique_customers == 1 %}
+            <div class="alert alert-info">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <strong>Single Customer Detected!</strong>
+                        View comprehensive analytics for this customer.
+                    </div>
+                    <a href="{{ url_for('customer_analytics', customer_id=search_params.search_term) }}"
+                       class="btn btn-info btn-sm">
+                        <i class="fas fa-chart-line me-1"></i>View Customer Analytics
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Search Results -->
+        <div class="card">
+            <div class="card-header">
+                <h5><i class="fas fa-list me-2"></i>Search Results ({{ search_results|length }} calls)</h5>
+                <small class="text-muted">Sorted by most recent calls first</small>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Customer</th>
+                                <th>Company</th>
+                                <th>Employee</th>
+                                <th>Call Type</th>
+                                <th>Satisfaction</th>
+                                <th>Flags</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for call in search_results %}
+                                <tr>
+                                    <td>
+                                        <small class="text-muted">{{ call.call_date or 'Unknown' }}</small>
+                                        {% if call.duration_seconds %}
+                                            <br><small class="badge bg-light text-dark">{{ (call.duration_seconds/60)|round(1) }}min</small>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <strong>{{ call.customer_name or 'Unknown Customer' }}</strong>
+                                        {% if call.customer_phone %}
+                                            <br><small class="text-muted">📞 {{ call.customer_phone }}</small>
+                                        {% endif %}
+                                        {% if call.customer_email %}
+                                            <br><small class="text-muted">✉️ {{ call.customer_email }}</small>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {{ call.customer_company or '-' }}
+                                    </td>
+                                    <td>
+                                        <strong>{{ call.employee_name or 'Unknown' }}</strong>
+                                        {% if call.employee_extension %}
+                                            <br><small class="text-muted">Ext: {{ call.employee_extension }}</small>
+                                        {% endif %}
+                                        {% if call.employee_department %}
+                                            <br><small class="badge bg-secondary">{{ call.employee_department }}</small>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if call.call_type %}
+                                            <span class="badge bg-light text-dark">{{ call.call_type|title }}</span>
+                                        {% else %}
+                                            <span class="text-muted">Unknown</span>
+                                        {% endif %}
+                                        {% if call.urgency_level %}
+                                            <br><small class="badge bg-{{ 'danger' if call.urgency_level == 'critical' else 'warning' if call.urgency_level == 'high' else 'info' }}">
+                                                {{ call.urgency_level|title }}
+                                            </small>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if call.customer_satisfaction_score %}
+                                            <span class="badge bg-{{ 'success' if call.customer_satisfaction_score >= 8 else 'warning' if call.customer_satisfaction_score >= 6 else 'danger' }}">
+                                                {{ call.customer_satisfaction_score }}/10
+                                            </span>
+                                        {% else %}
+                                            <span class="text-muted">-</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if call.escalation_required %}
+                                            <span class="badge bg-warning text-dark mb-1">
+                                                <i class="fas fa-exclamation-triangle"></i> Escalation
+                                            </span>
+                                        {% endif %}
+                                        {% if call.follow_up_needed %}
+                                            <span class="badge bg-info text-dark mb-1">
+                                                <i class="fas fa-clock"></i> Follow-up
+                                            </span>
+                                        {% endif %}
+                                        {% if call.technical_issue %}
+                                            <span class="badge bg-danger mb-1">
+                                                <i class="fas fa-wrench"></i> Technical
+                                            </span>
+                                        {% endif %}
+                                        {% if call.billing_issue %}
+                                            <span class="badge bg-warning mb-1">
+                                                <i class="fas fa-dollar-sign"></i> Billing
+                                            </span>
+                                        {% endif %}
+                                        {% if call.sales_opportunity %}
+                                            <span class="badge bg-success mb-1">
+                                                <i class="fas fa-chart-line"></i> Sales Opp
+                                            </span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <div class="btn-group-vertical btn-group-sm">
+                                            <a href="{{ url_for('insight_detail', recording_id=call.recording_id) }}"
+                                               class="btn btn-outline-primary btn-sm">
+                                                <i class="fas fa-eye"></i> View Details
+                                            </a>
+                                            {% if call.customer_name or call.customer_phone or call.customer_email %}
+                                                <a href="{{ url_for('customer_analytics', customer_id=(call.customer_name or call.customer_phone or call.customer_email)) }}"
+                                                   class="btn btn-outline-info btn-sm">
+                                                    <i class="fas fa-chart-line"></i> Customer Analytics
+                                                </a>
+                                            {% endif %}
+                                        </div>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Export Options -->
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5><i class="fas fa-download me-2"></i>Export Results</h5>
+            </div>
+            <div class="card-body">
+                <div class="btn-group">
+                    <a href="{{ url_for('customer_search') }}?{{ request.query_string.decode() }}&export=csv"
+                       class="btn btn-outline-success">
+                        <i class="fas fa-file-csv me-1"></i>Export CSV
+                    </a>
+                    <a href="{{ url_for('customer_search') }}?{{ request.query_string.decode() }}&export=json"
+                       class="btn btn-outline-primary">
+                        <i class="fas fa-file-code me-1"></i>Export JSON
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    {% else %}
+        <!-- No Results -->
+        <div class="card">
+            <div class="card-body text-center py-5">
+                <div class="text-muted">
+                    <i class="fas fa-search fa-3x mb-3"></i>
+                    <h5>No results found</h5>
+                    <p>Try adjusting your search criteria or check the spelling.</p>
+
+                    <div class="mt-4">
+                        <h6>Search Tips:</h6>
+                        <ul class="list-unstyled text-start d-inline-block">
+                            <li>• Try partial names or phone numbers</li>
+                            <li>• Use "Any Field" search for broader results</li>
+                            <li>• Check different date ranges</li>
+                            <li>• Search by employee name or extension</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% else %}
+    <!-- Initial State -->
+    <div class="card">
+        <div class="card-body text-center py-5">
+            <div class="text-muted">
+                <i class="fas fa-search fa-3x mb-3"></i>
+                <h5>Customer & Call Search</h5>
+                <p>Search for customers by name, phone number, email address, or company.<br>
+                   You can also search by employee name or extension number.</p>
+
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h6><i class="fas fa-users me-2"></i>Customer Search Examples:</h6>
+                        <ul class="list-unstyled">
+                            <li><code>John Smith</code> - Search by customer name</li>
+                            <li><code>614-555-1234</code> - Search by phone number</li>
+                            <li><code>ABC Corp</code> - Search by company name</li>
+                            <li><code>john@example.com</code> - Search by email</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6><i class="fas fa-headset me-2"></i>Employee Search Examples:</h6>
+                        <ul class="list-unstyled">
+                            <li><code>Robin Montoni</code> - Search by employee name</li>
+                            <li><code>5466</code> - Search by extension number</li>
+                            <li><code>Customer Service</code> - Search by department</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Auto-focus search input
+document.getElementById('search_term').focus();
+
+// Auto-submit on Enter
+document.getElementById('search_term').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        this.form.submit();
+    }
+});
+
+// Highlight search terms in results
+document.addEventListener('DOMContentLoaded', function() {
+    const searchTerm = '{{ search_params.search_term|e }}';
+    if (searchTerm) {
+        highlightSearchTerms(searchTerm);
+    }
+});
+
+function highlightSearchTerms(term) {
+    if (!term || term.length < 2) return;
+
+    const regex = new RegExp(`(${term})`, 'gi');
+    const elements = document.querySelectorAll('tbody td');
+
+    elements.forEach(element => {
+        if (element.innerHTML && !element.querySelector('a')) {
+            element.innerHTML = element.innerHTML.replace(regex, '<mark>$1</mark>');
+        }
+    });
+}
+</script>
+{% endblock %}

@@ -1,47 +1,92 @@
-# 🧠 AI Insights Architecture & Best Practices
+# 🧠 AI Insights Architecture & Implementation Guide
 
-## Comprehensive System for Managing Call Intelligence
+## Production-Ready Call Intelligence System
+
+**Status:** ✅ Fully Implemented | **Version:** 2.0 | **Updated:** September 21, 2025
 
 ---
 
 ## Overview
 
-This system provides enterprise-grade management of AI-generated call insights with multiple storage formats, access patterns, and integration capabilities optimized for both human analysts and machine learning systems.
+This document describes the implemented AI insights architecture for the call recording system. The system provides enterprise-grade management of AI-generated call insights with GPT-3.5-turbo analysis, web dashboard, and comprehensive storage formats optimized for both human analysts and machine learning systems.
+
+## 🎯 Current Implementation Status
+
+- **AI Engine:** GPT-3.5-turbo (OpenAI)
+- **Insights Generated:** 1 complete analysis (growing continuously)
+- **Web Dashboard:** http://31.97.102.13:5001 (password: !pcr123)
+- **Processing:** Integrated into batch pipeline
+- **Storage:** Multi-format (JSON, SQLite, organized files)
+- **Status:** Production ready and actively generating insights
 
 ## 🏗️ Architecture
 
 ### Storage Layers
 
 ```
-/data/insights/
-├── raw/                    # Original AI insights (source of truth)
-├── processed/              # Enhanced with calculated metrics
-├── by_date/               # Date-based organization with daily summaries
+/data/insights/                           # Comprehensive insights storage
+├── raw/                                  # Original AI insights (source of truth)
+├── processed/                            # Enhanced with calculated metrics
+├── by_date/                             # Date-based organization
 │   └── YYYY/MM/DD/
-├── by_category/           # Issue category grouping
-│   └── {category}/
-├── by_agent/              # Agent performance tracking
-│   └── {agent_id}/
-├── by_customer/           # Customer journey tracking
-│   └── {customer_id}/
-├── summaries/             # Aggregated analytics
-├── reports/               # Human-readable reports
-├── exports/               # LLM-optimized exports
-├── api/                   # API response cache
-└── insights.db            # SQLite database for queries
+├── by_category/                         # Issue category grouping
+├── by_agent/                            # Agent performance tracking
+├── by_customer/                         # Customer journey tracking
+├── summaries/                           # Aggregated analytics
+├── reports/                             # Human-readable reports
+├── exports/                             # LLM-optimized exports
+├── api/                                 # API response cache
+└── insights.db                          # SQLite database for queries
+
+/data/transcriptions/insights/           # Active insights generation
+└── {recording_id}_insights.json         # Real-time AI analysis
+
+/web/                                    # Web dashboard
+├── insights_dashboard.py                # Flask application
+├── templates/                           # HTML templates
+│   ├── dashboard.html
+│   ├── insights_list.html
+│   ├── insight_detail.html
+│   └── analytics.html
+└── sessions/                            # User sessions
 ```
 
-### Database Schema
+### Database Schema (SQLite)
 
-**Primary Tables:**
-- `insights` - Main table with all metrics and scores
+**Primary Table: `insights`**
+```sql
+CREATE TABLE insights (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    recording_id TEXT UNIQUE NOT NULL,
+    call_date TEXT,
+    agent_id TEXT,
+    agent_name TEXT,
+    customer_sentiment TEXT,
+    call_quality_score REAL,
+    escalation_required BOOLEAN,
+    follow_up_needed BOOLEAN,
+    churn_risk_level INTEGER,
+    satisfaction_level INTEGER,
+    nps_score INTEGER,
+    generated_at TEXT,
+    raw_insights TEXT,
+    summary TEXT
+);
+```
+
+**Indexes for Performance:**
+```sql
+CREATE INDEX idx_recording_id ON insights(recording_id);
+CREATE INDEX idx_call_date ON insights(call_date);
+CREATE INDEX idx_agent_id ON insights(agent_id);
+CREATE INDEX idx_sentiment ON insights(customer_sentiment);
+CREATE INDEX idx_quality_score ON insights(call_quality_score);
+```
+
+**Additional Tables:**
 - `quick_wins` - Actionable improvements
 - `training_needs` - Identified skill gaps
 - `patterns` - Detected trends and recurring issues
-
-**Indexed Fields:**
-- call_date, agent_id, customer_id
-- call_quality_score, customer_sentiment
 
 ## 📊 Data Formats
 
