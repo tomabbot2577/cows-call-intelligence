@@ -27,6 +27,7 @@ load_dotenv('/var/www/call-recording-system/.env')
 sys.path.insert(0, '/var/www/call-recording-system')
 
 from src.transcription.salad_transcriber_enhanced import SaladTranscriberEnhanced
+from src.transcription.call_insights_analyzer import CallInsightsAnalyzer
 from src.storage.google_drive import GoogleDriveManager
 from src.storage.enhanced_organizer import EnhancedStorageOrganizer
 
@@ -68,6 +69,7 @@ class QueueBatchProcessor:
             enable_monitoring=True
         )
 
+        self.insights_analyzer = CallInsightsAnalyzer()
         self.drive_manager = GoogleDriveManager()
         self.storage_organizer = EnhancedStorageOrganizer()
 
@@ -238,7 +240,35 @@ class QueueBatchProcessor:
                 logger.warning(f"⚠️ Google Drive error: {e}, continuing anyway")
                 google_drive_id = None
 
-            # Step 5: Save with enhanced organizer
+            # Step 5: Generate AI Insights
+            logger.info("🧠 Generating AI insights...")
+            try:
+                # Generate various insights
+                support_analysis = self.insights_analyzer.analyze_support_call(transcription_result.text)
+                sentiment_analysis = self.insights_analyzer.analyze_customer_sentiment(transcription_result.text)
+
+                # Store insights locally
+                insights_data = {
+                    'recording_id': recording_id,
+                    'support_analysis': support_analysis,
+                    'sentiment_analysis': sentiment_analysis,
+                    'generated_at': datetime.now().isoformat()
+                }
+
+                # Save insights to local file
+                insights_dir = Path('/var/www/call-recording-system/data/transcriptions/insights')
+                insights_dir.mkdir(parents=True, exist_ok=True)
+
+                insights_file = insights_dir / f"{recording_id}_insights.json"
+                with open(insights_file, 'w') as f:
+                    json.dump(insights_data, f, indent=2)
+
+                logger.info(f"💡 AI insights saved: {insights_file}")
+
+            except Exception as e:
+                logger.warning(f"⚠️ AI insights generation failed: {str(e)}")
+
+            # Step 6: Save with enhanced organizer
             logger.info("💾 Saving in dual format (JSON + Markdown)...")
             saved_paths = self.storage_organizer.save_transcription(
                 recording_id=recording_id,
