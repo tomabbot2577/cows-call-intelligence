@@ -19,6 +19,16 @@ config/*.json
 # Data and logs
 data/audio/
 data/transcripts/
+data/audio_queue/*.mp3
+data/audio_queue/*.wav
+data/processed/*.mp3
+data/failed/*.mp3
+data/transcriptions/json/*/*/*/*
+data/transcriptions/markdown/*/*/*/*
+data/n8n_integration/queue/*.json
+data/n8n_integration/processing/*.json
+data/n8n_integration/completed/*.json
+data/n8n_integration/failed/*.json
 logs/
 *.log
 
@@ -47,6 +57,13 @@ htmlcov/
 *~
 tmp/
 temp/
+*.out
+downloaded_ids.txt
+batch_processing_summary.json
+queue_summary.json
+ringcentral_recordings.json
+test_batch_results.json
+test_output/
 
 # Deployment
 deployment.tar.gz
