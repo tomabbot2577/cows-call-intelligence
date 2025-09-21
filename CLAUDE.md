@@ -25,12 +25,14 @@ This is a **production-ready call recording system** that automatically:
 - **Date Range:** June - September 2024
 - **Status:** Ready for transcription
 
-### Processing Status
-- **Downloaded:** 1,315 recordings (awaiting processing)
-- **Transcribed:** ~10 test recordings only
-- **Google Drive:** ~10 test files uploaded
-- **Pending:** ~1,305 recordings need transcription
-- **Status:** NEED TO RUN BATCH PROCESSING
+### Processing Status (As of Sep 21, 2025)
+- **Downloaded:** 1,494 recordings total
+- **In Queue:** 1,489 recordings
+- **Processing:** Currently batch processing at ~20/minute
+- **Transcribed:** 5+ recordings (actively processing)
+- **Google Drive:** All transcriptions uploading successfully
+- **Rate Limit:** 3 seconds between requests (optimized from 15s)
+- **Status:** BATCH PROCESSING ACTIVE
 
 ### Storage
 - **JSON Files:** `/data/transcriptions/json/YYYY/MM/DD/`
@@ -179,20 +181,23 @@ DATABASE_URL=postgresql://call_user:SecureCallPass2024!@localhost/call_recording
 ## 🎯 NEXT STEPS & TASKS
 
 ### Immediate Tasks
-1. **⚠️ PROCESS THE 1,305 PENDING RECORDINGS**
+1. **🚀 BATCH PROCESSING IN PROGRESS**
    ```bash
    cd /var/www/call-recording-system
    source venv/bin/activate
 
-   # Process in batches to avoid rate limits
-   python process_batch_transcriptions.py --limit 50
-
-   # Or use the scheduler processor
-   python src/scheduler/transcription_processor.py --limit 50
+   # Currently running with optimized settings:
+   python process_queue_batch_final.py --limit 100 --rate-limit 3
 
    # Monitor progress
-   watch -n 5 'ls -1 data/audio_queue/*.mp3 | wc -l'
+   tail -f logs/batch_processing_*.log
+
+   # Check queue status
+   python process_queue_batch_final.py --status
    ```
+
+   **Nginx Setup:** Audio files served at http://31.97.102.13:8080/audio/
+   **Rate Limit:** 3 seconds between requests (230 requests/minute safe limit)
 
 2. **Monitor Daily Operations**
    ```bash
