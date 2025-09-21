@@ -62,7 +62,7 @@ class RingCentralAuth:
             timeout: Request timeout in seconds
             max_retries: Maximum number of retry attempts
         """
-        self.jwt_token = jwt_token or os.getenv('RINGCENTRAL_JWT')
+        self.jwt_token = jwt_token or os.getenv('RINGCENTRAL_JWT_TOKEN') or os.getenv('RINGCENTRAL_JWT')
         self.client_id = client_id or os.getenv('RINGCENTRAL_CLIENT_ID')
         self.client_secret = client_secret or os.getenv('RINGCENTRAL_CLIENT_SECRET')
 

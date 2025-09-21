@@ -178,7 +178,7 @@ class SaladTranscriber:
                 auto_poll=False  # We'll poll manually for better control
             )
 
-            job_id = job.id
+            job_id = job.id_  # Note: Salad SDK uses id_ with underscore
             logger.info(f"Transcription job created: {job_id}")
 
             # Poll for completion
