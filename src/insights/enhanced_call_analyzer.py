@@ -35,6 +35,52 @@ class EnhancedCallAnalyzer:
         logger.info(f"Available tasks: {list(self.task_config.TASK_MODELS.keys())}")
         self.__init_prompts__()
 
+    def _safe_json_parse(self, response_content: str, fallback_data: dict = None) -> dict:
+        """Safely parse JSON response with fallback handling"""
+        if fallback_data is None:
+            fallback_data = {}
+
+        try:
+            # Clean the response content
+            content = response_content.strip()
+
+            # Remove markdown code blocks if present
+            if content.startswith('```'):
+                lines = content.split('\n')
+                # Find start and end of JSON
+                start_idx = 0
+                end_idx = len(lines)
+                for i, line in enumerate(lines):
+                    if line.strip().startswith('{'):
+                        start_idx = i
+                        break
+                for i in range(len(lines) - 1, -1, -1):
+                    if line.strip().endswith('}'):
+                        end_idx = i + 1
+                        break
+                content = '\n'.join(lines[start_idx:end_idx])
+
+            # Try to parse JSON
+            return json.loads(content)
+
+        except json.JSONDecodeError as e:
+            logger.warning(f"JSON parsing failed: {e}")
+            logger.debug(f"Raw content: {response_content[:200]}...")
+
+            # Try to extract JSON from text using regex
+            try:
+                import re
+                json_match = re.search(r'\{.*\}', response_content, re.DOTALL)
+                if json_match:
+                    return json.loads(json_match.group())
+            except:
+                pass
+
+            return fallback_data
+        except Exception as e:
+            logger.error(f"Unexpected error parsing JSON: {e}")
+            return fallback_data
+
     def _get_client_for_task(self, task: str) -> OpenAI:
         """Get OpenAI client configured for specific task"""
         client_config = self.task_config.get_client_config_for_task(task)
@@ -70,6 +116,8 @@ class EnhancedCallAnalyzer:
         - Relationship duration indicators
         - Trust level indicators
 
+        IMPORTANT: Return ONLY valid JSON format. No additional text or explanations.
+
         Return structured JSON with extracted information.
         """
 
@@ -99,6 +147,8 @@ class EnhancedCallAnalyzer:
         - Communication clarity
         - Technical knowledge demonstrated
         - Empathy and rapport building
+
+        IMPORTANT: Return ONLY valid JSON format. No additional text or explanations.
 
         Return detailed JSON analysis.
         """
@@ -133,6 +183,8 @@ class EnhancedCallAnalyzer:
         - Unresolved hesitations
         - Competitive comparisons
 
+        IMPORTANT: Return ONLY valid JSON format. No additional text or explanations.
+
         Return comprehensive sales intelligence JSON.
         """
 
@@ -163,6 +215,8 @@ class EnhancedCallAnalyzer:
         - Information style preferences
         - Decision-making patterns
 
+        IMPORTANT: Return ONLY valid JSON format. No additional text or explanations.
+
         Return relationship intelligence JSON.
         """
 
@@ -182,6 +236,8 @@ class EnhancedCallAnalyzer:
         Identify their roles and relationships:
 
         {transcript[:2000]}...
+
+        IMPORTANT: Return ONLY valid JSON format. No additional text or explanations.
 
         Return JSON format:
         {{
@@ -205,7 +261,10 @@ class EnhancedCallAnalyzer:
                 messages=[{"role": "user", "content": name_prompt}],
                 temperature=0.1
             )
-            name_analysis = json.loads(response.choices[0].message.content)
+            name_analysis = self._safe_json_parse(
+                response.choices[0].message.content,
+                {"participants": [], "mentioned_contacts": []}
+            )
         except Exception as e:
             logger.error(f"Name extraction failed: {e}")
             name_analysis = {"participants": [], "mentioned_contacts": []}
@@ -259,6 +318,8 @@ class EnhancedCallAnalyzer:
         - Exclude: names mentioned casually or as examples
         - Exclude: employee names from Main Sequence staff
 
+        IMPORTANT: Return ONLY valid JSON format. No additional text or explanations.
+
         Return JSON with validated participants and confidence scores:
         {{
             "validated_participants": [
@@ -296,7 +357,13 @@ class EnhancedCallAnalyzer:
                 temperature=0.1
             )
 
-            validation_result = json.loads(response.choices[0].message.content)
+            fallback_validation = {
+                "validated_participants": participants,
+                "excluded_participants": []
+            }
+            validation_result = self._safe_json_parse(
+                response.choices[0].message.content, fallback_validation
+            )
             validated = validation_result.get("validated_participants", [])
             excluded = validation_result.get("excluded_participants", [])
 
@@ -355,7 +422,7 @@ class EnhancedCallAnalyzer:
                 ],
                 temperature=0.2
             )
-            return json.loads(response.choices[0].message.content)
+            return self._safe_json_parse(response.choices[0].message.content, {})
         except Exception as e:
             logger.error(f"Customer profile analysis failed: {e}")
             return {}
@@ -375,7 +442,7 @@ class EnhancedCallAnalyzer:
                 ],
                 temperature=0.2
             )
-            return json.loads(response.choices[0].message.content)
+            return self._safe_json_parse(response.choices[0].message.content, {})
         except Exception as e:
             logger.error(f"Support analysis failed: {e}")
             return {}
@@ -395,7 +462,7 @@ class EnhancedCallAnalyzer:
                 ],
                 temperature=0.2
             )
-            return json.loads(response.choices[0].message.content)
+            return self._safe_json_parse(response.choices[0].message.content, {})
         except Exception as e:
             logger.error(f"Sales analysis failed: {e}")
             return {}
@@ -415,7 +482,7 @@ class EnhancedCallAnalyzer:
                 ],
                 temperature=0.2
             )
-            return json.loads(response.choices[0].message.content)
+            return self._safe_json_parse(response.choices[0].message.content, {})
         except Exception as e:
             logger.error(f"Relationship analysis failed: {e}")
             return {}
@@ -454,6 +521,8 @@ class EnhancedCallAnalyzer:
         - escalated
         - follow_up_required
 
+        IMPORTANT: Return ONLY valid JSON format. No additional text or explanations.
+
         Return JSON with classifications.
 
         Transcript: {transcript[:1500]}...
@@ -469,7 +538,13 @@ class EnhancedCallAnalyzer:
                 messages=[{"role": "user", "content": classification_prompt}],
                 temperature=0.1
             )
-            return json.loads(response.choices[0].message.content)
+            fallback_classification = {
+                "call_type": "other",
+                "call_purpose": ["general_inquiry"],
+                "urgency_level": "medium",
+                "outcome_status": "pending"
+            }
+            return self._safe_json_parse(response.choices[0].message.content, fallback_classification)
         except Exception as e:
             logger.error(f"Call classification failed: {e}")
             return {
