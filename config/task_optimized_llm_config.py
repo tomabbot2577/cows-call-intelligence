@@ -51,7 +51,7 @@ class TaskOptimizedLLMConfig:
         # Sales opportunity detection - Claude good at sales context
         'sales_analysis': {
             'provider': 'openrouter',
-            'model': 'anthropic/claude-3-sonnet',
+            'model': 'anthropic/claude-3-sonnet-20240229',
             'api_key_env': 'OPENROUTER_API_KEY',
             'base_url': 'https://openrouter.ai/api/v1',
             'reason': 'Claude Sonnet balances cost and sales insight quality'
@@ -145,7 +145,7 @@ class TaskOptimizedLLMConfig:
         """Rough cost estimates per task (relative)"""
         cost_mapping = {
             'openai/gpt-4-turbo': 'High',
-            'anthropic/claude-3-sonnet': 'Medium-High',
+            'anthropic/claude-3-sonnet-20240229': 'Medium-High',
             'anthropic/claude-3-haiku': 'Medium',
             'meta-llama/llama-3.1-70b-instruct': 'Medium',
             'openai/gpt-3.5-turbo': 'Low-Medium',
