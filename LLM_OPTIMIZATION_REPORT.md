@@ -65,7 +65,7 @@ I've implemented a task-specific LLM strategy using OpenRouter with multiple mod
 | **Sentiment Analysis** | `deepseek/deepseek-chat` | Cost-effective with good emotional understanding | Very Low |
 | **Business Intelligence** | `openai/gpt-4-turbo` | Superior complex reasoning and strategic insights | High |
 | **Technical Support Analysis** | `meta-llama/llama-3.1-70b-instruct` | Excellent at technical problem classification | Medium |
-| **Sales Analysis** | `anthropic/claude-3-sonnet` | Strong sales context understanding, good cost/quality balance | Medium-High |
+| **Sales Analysis** | `anthropic/claude-3-sonnet-20240229` | Strong sales context understanding, good cost/quality balance | Medium-High |
 | **Call Summarization** | `deepseek/deepseek-chat` | Good quality summaries at very low cost | Very Low |
 | **Employee Identification** | `deepseek/deepseek-chat` | Simple pattern matching, sufficient accuracy | Very Low |
 | **Call Classification** | `openai/gpt-3.5-turbo` | Reliable classification at reasonable cost | Low-Medium |
@@ -116,16 +116,23 @@ I've implemented a task-specific LLM strategy using OpenRouter with multiple mod
 - Updated enhanced call analyzer to use task-specific models
 - Correlation data integrated into Google Drive uploads
 - Support analysis now uses Llama 3.1 70B
+- **JSON parsing error fixes** with robust fallback handling
+- **Claude Sonnet endpoint fixes** with correct model naming
+- **Error-resistant processing** with graceful degradation
+- **Production-ready pipeline** with comprehensive error handling
 
-⏳ **In Progress:**
-- Customer extraction optimization with Claude Haiku
-- Full pipeline migration to task-specific models
+✅ **Error Handling Improvements:**
+- Added `_safe_json_parse` method for malformed responses
+- Implemented regex-based JSON extraction fallbacks
+- Updated all analysis methods with proper error recovery
+- Fixed Claude Sonnet model name to `anthropic/claude-3-sonnet-20240229`
+- Added explicit JSON format requests to all prompts
 
 🎯 **Next Steps:**
-1. Migrate all analysis methods to use task-specific models
-2. Implement AI-powered customer name validation
-3. Add confidence scoring for all extractions
-4. Monitor cost reduction and quality improvements
+1. Monitor processing performance with new error handling
+2. Analyze cost reduction metrics from task-optimized models
+3. Implement confidence scoring for all extractions
+4. Optimize customer name extraction accuracy further
 
 ## 💰 **Cost Impact Analysis:**
 
