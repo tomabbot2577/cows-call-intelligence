@@ -35,16 +35,17 @@ This is a **production-ready AI-powered call recording system** that automatical
 - **Date Range:** June - September 2024
 - **Status:** Ready for transcription
 
-### Processing Status (As of Sep 22, 2025 - MASSIVE PARALLEL PROCESSING)
+### Processing Status (As of Sep 23, 2025 - ENHANCED 4-LAYER AI PROCESSING) 🚀
 - **Downloaded:** 1,485 recordings total
 - **Total Transcripts:** 1,424 with content (98% complete)
-- **Vector Embeddings:** 818/1,424 (57% complete, 20+ parallel processes running)
-- **AI Insights Generated:** 468/818 embedded transcripts (57% complete)
-- **Call Recommendations:** 442/818 (54% complete)
-- **Call Resolutions:** 534/818 (65% complete)
-- **BREAKTHROUGH:** 43+ parallel processes achieving 3.3x acceleration
-- **Processing Rate:** 600 AI insights/hour (up from 180/hour)
-- **ETA:** ~35 minutes to complete all AI processing
+- **Layer 1 Name Extraction:** 1,201/1,424 (84% complete) ✅
+- **Layer 2 Sentiment Analysis:** 550+/1,424 (40%+ processing - enhanced with reasoning) 🔄
+- **Layer 3 Call Resolution:** ACTIVE - Processing with 25+ new insights 🔄
+- **Layer 4 Recommendations:** 1,340/1,424 (94% complete)
+- **Vector Embeddings:** Processing in parallel
+- **Cost Optimization:** Using Google Gemini Flash (often FREE) via OpenRouter
+- **Processing Rate:** 10-20 parallel processes per layer
+- **Total Cost:** <$0.001 per call with optimized models
 
 #### 🧠 AI Analysis Per Call (4 Layers):
 
@@ -53,20 +54,40 @@ This is a **production-ready AI-powered call recording system** that automatical
 - ✅ Customer names and companies identified
 - ✅ Phone numbers extracted when available
 
-**Layer 2 - Sentiment & Quality:**
-- ✅ Customer mood analysis (positive/negative/neutral)
-- ✅ Call quality scoring (1-10)
+**Layer 2 - Enhanced Sentiment & Quality (NEW FEATURES):**
+- ✅ Customer mood analysis with 1-sentence reasoning
+- ✅ Call quality scoring (1-10) with performance justification
+- ✅ Overall call rating (1-10) combining all factors
 - ✅ Call type classification (support/billing/complaint/etc)
-- ✅ 3-5 key topics extracted
+- ✅3-5 key topics extracted
 - ✅ One-sentence summary generated
+- ✅ Enhanced coaching notes with actionable insights
 
-**Layer 3 - Resolution Tracking:**
-- ✅ Problem identification status
-- ✅ Solution provided tracking
-- ✅ Issue resolved confirmation
-- ✅ Follow-up requirements
-- ✅ Loop closure quality (6 metrics)
-- ✅ Best practices compliance
+**Layer 3 - Enhanced Resolution Tracking (25+ NEW INSIGHTS):**
+- ✅ Problem complexity assessment (simple/medium/complex)
+- ✅ Resolution effectiveness scoring (0-10)
+- ✅ Empathy score & emotional intelligence (0-10)
+- ✅ Communication clarity rating (0-10)
+- ✅ Active listening score (0-10)
+- ✅ Employee knowledge level & training needs
+- ✅ Churn risk assessment (none/low/medium/high)
+- ✅ Revenue impact analysis
+- ✅ Customer lifetime value impact
+- ✅ Customer effort score (1-10, lower is better)
+- ✅ Upsell/cross-sell opportunities identified
+- ✅ Frustration points & delight moments tracked
+- ✅ Process gaps & automation opportunities
+- ✅ Knowledge base gaps identified
+- ✅ Handoff quality & callback commitments
+- ✅ Loop closure quality (8 enhanced metrics):
+  - Solution summarized
+  - Understanding confirmed
+  - Asked if anything else
+  - Next steps provided
+  - Timeline given
+  - Contact info provided
+  - Thanked customer
+  - Confirmed satisfaction
 
 **Layer 4 - Recommendations:**
 - ✅ 2-3 process improvements per call
@@ -145,11 +166,13 @@ This is a **production-ready AI-powered call recording system** that automatical
   - SRT generation: ON
   - Confidence scoring: ON
 
-### 3. AI Insights Generation ✅
-- **Multiple AI Engines via OpenRouter:**
-  - **Claude-3-Opus:** Employee/customer name extraction (highest accuracy)
-  - **Claude-3-Haiku:** Sentiment analysis and recommendations (fast)
-  - **GPT-3.5-turbo:** General insights and analysis
+### 3. AI Insights Generation ✅ COST-OPTIMIZED
+- **Smart Model Selection via OpenRouter:**
+  - **Google Gemini Flash 1.5:** Primary model for ALL layers (often FREE)
+  - **Gemini Flash 8B:** Backup for extraction ($0.00002/1K tokens)
+  - **Mistral 7B:** Complex analysis fallback ($0.00006/1K tokens)
+  - **DeepSeek/Claude:** Only for advanced reasoning when needed
+- **Total Cost:** $0-$0.001 per call (vs $0.01+ with premium models)
 
 #### 🔍 Name & Entity Extraction (`extract_names_advanced.py`)
 - **Employee Identification:**
@@ -279,18 +302,37 @@ This is a **production-ready AI-powered call recording system** that automatical
 - Issue resolution status
 - Follow-up requirements
 
-**`call_resolution` Table:**
-- Problem identification and resolution status
-- Loop closure metrics (6 fields):
+**`call_resolutions` Table (25+ NEW COLUMNS):**
+- Problem complexity (simple/medium/complex)
+- Resolution effectiveness (0-10)
+- Empathy score & demonstration (0-10)
+- Communication clarity (0-10)
+- Active listening score (0-10)
+- Employee knowledge level (0-10)
+- Confidence in solution (0-10)
+- Training needs identified
+- Churn risk assessment (none/low/medium/high)
+- Revenue impact (positive/neutral/negative)
+- Customer lifetime value impact
+- Customer effort score (1-10)
+- Upsell/cross-sell opportunities
+- Frustration points array
+- Delight moments array
+- Process gaps found
+- Automation opportunities
+- Knowledge base gaps
+- Handoff quality assessment
+- Callback commitments and timeframes
+- First contact resolution status
+- Loop closure metrics (8 enhanced fields):
   - Solution summarized
   - Understanding confirmed
   - Asked if anything else
   - Next steps provided
   - Timeline given
   - Contact info provided
-- Closure quality score
-- Best practices missed
-- Improvement suggestions
+  - Thanked customer
+  - Confirmed satisfaction
 
 **`call_recommendations` Table:**
 - Process improvements array
@@ -329,12 +371,15 @@ src/scheduler/ringcentral_checker.py
 # Processes transcription queue
 src/scheduler/transcription_processor.py
 
-# MASSIVE PARALLEL AI PROCESSING (NEW!)
+# MASSIVE PARALLEL AI PROCESSING (ENHANCED!)
 process_complete_insights.py          # Unified 4-layer AI pipeline
 generate_all_embeddings.py           # Vector embeddings generation
-analyze_sentiment.py                 # DeepSeek R1 sentiment analysis
+layer2_sentiment_enhanced.py         # Enhanced sentiment with reasoning
+layer3_resolution_enhanced.py        # 25+ new resolution insights
 generate_call_recommendations.py     # Process improvement recommendations
 analyze_call_resolution.py           # Loop closure tracking
+monitor_layer2_processing.sh         # Auto-restart Layer 2 monitoring
+monitor_layer3_processing.sh         # Auto-restart Layer 3 monitoring
 
 # Enhanced storage with dual format
 src/storage/enhanced_organizer.py
