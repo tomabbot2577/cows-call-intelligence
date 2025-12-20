@@ -81,6 +81,10 @@ class QueryRouter:
         Returns:
             Tuple of (RAGSystem, optional filters dict)
         """
+        if not query or not isinstance(query, str):
+            logger.warning("Empty or invalid query received, defaulting to Gemini")
+            return (RAGSystem.GEMINI, None)
+
         query_lower = query.lower()
 
         # First check for explicit Vertex patterns
@@ -103,6 +107,12 @@ class QueryRouter:
     def _extract_filters(self, query: str) -> Dict[str, Any]:
         """Extract structured filters from query text."""
         filters = {}
+
+        # Validate query
+        if not query or not isinstance(query, str):
+            logger.warning("Empty or invalid query in _extract_filters")
+            return filters
+
         query_lower = query.lower()
 
         # Score patterns

@@ -53,11 +53,11 @@ DB_CONFIG = {
     'port': 5432
 }
 
-# Model configuration - Using OpenAI (gpt-3.5-turbo is cheapest at $0.0005/1K input)
-PRIMARY_MODEL = 'gpt-3.5-turbo'
-SECONDARY_MODEL = 'gpt-4o-mini'
-OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '')
-OPENAI_URL = "https://api.openai.com/v1/chat/completions"
+# Model configuration - Using OpenRouter (paid Gemini for speed)
+PRIMARY_MODEL = 'google/gemini-2.0-flash-001'
+SECONDARY_MODEL = 'google/gemini-2.0-flash-001'
+OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY', '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')
+OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 
 def get_db_connection():
@@ -66,14 +66,14 @@ def get_db_connection():
 
 
 def call_llm(prompt: str, max_tokens: int = 500, model: str = None) -> dict:
-    """Call OpenAI LLM with fallback to secondary model"""
+    """Call OpenRouter LLM with fallback to secondary model"""
     model = model or PRIMARY_MODEL
 
     try:
         response = requests.post(
-            OPENAI_URL,
+            OPENROUTER_URL,
             headers={
-                "Authorization": f"Bearer {OPENAI_API_KEY}",
+                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
                 "Content-Type": "application/json"
             },
             json={
@@ -84,6 +84,12 @@ def call_llm(prompt: str, max_tokens: int = 500, model: str = None) -> dict:
             },
             timeout=60
         )
+
+        # Rate limit handling - wait and retry on 429
+        if response.status_code == 429:
+            logger.warning(f"Rate limited on {model}, waiting 5s...")
+            time.sleep(5)
+            return call_llm(prompt, max_tokens, model)  # Retry same model
 
         if response.status_code == 200:
             content = response.json()['choices'][0]['message']['content']

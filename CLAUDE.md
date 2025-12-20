@@ -35,19 +35,21 @@ This is a **production-ready AI-powered call recording system** that automatical
 - **Date Range:** June - September 2024
 - **Status:** Ready for transcription
 
-### Processing Status (As of Sep 23, 2025 - ENHANCED 4-LAYER AI PROCESSING) 🚀
-- **Downloaded:** 1,485 recordings total
-- **Total Transcripts:** 1,424 with content (98% complete)
-- **Layer 1 Name Extraction:** 1,201/1,424 (84% complete) ✅
-- **Layer 2 Sentiment Analysis:** 550+/1,424 (40%+ processing - enhanced with reasoning) 🔄
-- **Layer 3 Call Resolution:** ACTIVE - Processing with 25+ new insights 🔄
-- **Layer 4 Recommendations:** 1,340/1,424 (94% complete)
-- **Vector Embeddings:** Processing in parallel
-- **Cost Optimization:** Using Google Gemini Flash (often FREE) via OpenRouter
+### Processing Status (As of Dec 20, 2025 - 5-LAYER AI PROCESSING COMPLETE) 🚀
+- **Downloaded:** 3,194+ recordings total
+- **Total Transcripts:** 3,194 with content
+- **Layer 1 Name Extraction:** 2,468/3,194 (77% complete) ✅
+- **Layer 2 Sentiment Analysis:** 2,461/3,194 (77% complete) ✅
+- **Layer 3 Call Resolution:** 1,803/3,194 (56% complete) ✅
+- **Layer 4 Recommendations:** 2,289/3,194 (72% complete) ✅
+- **Layer 5 Advanced Metrics:** 1,651/3,194 (52% complete) ✅
+- **All 5 Layers Complete:** 1,341 calls ready for RAG export ✅
+- **RAG Integration:** Gemini + Vertex AI with 16 JSONL files ✅
+- **Cost Optimization:** Using Google Gemini Flash via direct API
 - **Processing Rate:** 10-20 parallel processes per layer
 - **Total Cost:** <$0.001 per call with optimized models
 
-#### 🧠 AI Analysis Per Call (4 Layers):
+#### 🧠 AI Analysis Per Call (5 Layers):
 
 **Layer 1 - Entity Extraction:**
 - ✅ Employee names validated against list
@@ -484,6 +486,99 @@ OPENROUTER_API_KEY=REDACTED_OPENROUTER_KEY
     - Queue system implemented
     - RESTful API endpoints
 12. **Complete Documentation**
+13. **🔍 COWS Hybrid RAG Integration** (NEW - December 2025)
+    - Gemini RAG for semantic queries
+    - Vertex AI RAG for structured queries
+    - 1,341 calls with all 5 layers ready
+    - Web UI at http://31.97.102.13:8081
+    - GCS bucket: `call-recording-rag-data`
+
+---
+
+## 🔍 RAG INTEGRATION (COWS - December 2025)
+
+### Overview
+The COWS (Call Observation & Workflow System) Hybrid RAG adds intelligent querying:
+- **Gemini RAG**: Semantic queries ("What are customers complaining about?")
+- **Vertex AI RAG**: Structured queries ("Calls with churn risk > 7")
+
+### Current Status
+| Metric | Value |
+|--------|-------|
+| Total Transcripts | 3,194 |
+| All 5 Layers Complete | **1,341 calls** |
+| Files in Gemini | 16 JSONL files |
+| Files in GCS | 16 JSONL files |
+| GCS Bucket | `gs://call-recording-rag-data` |
+| Web UI | http://31.97.102.13:8081 |
+
+### Quick Start
+```bash
+# Access RAG Web UI
+http://31.97.102.13:8081
+Password: !pcr123
+
+# Check RAG status
+source venv/bin/activate
+python -c "
+from rag_integration.services.db_reader import DatabaseReader
+stats = DatabaseReader().get_statistics()
+print(f'Ready for RAG: {stats[\"all_5_layers_complete\"]} calls')
+"
+
+# Test a query
+python -c "
+from rag_integration.services.gemini_file_search import GeminiFileSearchService
+from rag_integration.services.db_reader import DatabaseReader
+
+db = DatabaseReader()
+service = GeminiFileSearchService()
+calls = list(db.get_calls_for_export(limit=50, require_all_layers=True, min_layers=5))
+summaries = [{'call_id': c.get('recording_id'), 'summary': c.get('summary', '')[:200]} for c in calls]
+result = service.analyze_calls_batch('What are top customer complaints?', summaries)
+print(result['response'][:500])
+"
+```
+
+### Key Files
+```
+rag_integration/
+├── services/
+│   ├── db_reader.py          # Read-only PostgreSQL (5-layer verification)
+│   ├── gemini_file_search.py # Gemini RAG (google.genai SDK)
+│   ├── gcs_uploader.py       # GCS upload
+│   └── query_router.py       # Auto-routing
+├── api/
+│   ├── main.py               # FastAPI + Web UI
+│   └── templates/            # Jinja2 templates
+└── exports/                  # 16 JSONL files
+```
+
+### Environment Variables
+```bash
+# RAG Integration
+GEMINI_API_KEY=your_key
+GCS_RAG_BUCKET=call-recording-rag-data
+GCS_RAG_PREFIX=transcripts/
+RAG_API_PORT=8081
+RAG_API_PASSWORD=!pcr123
+RAG_DATABASE_URL=postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights
+```
+
+### Service Management
+```bash
+# Start RAG API
+source venv/bin/activate
+nohup python -m uvicorn rag_integration.api.main:app --host 0.0.0.0 --port 8081 > logs/rag_api.log 2>&1 &
+
+# Stop RAG API
+pkill -f "uvicorn rag_integration"
+
+# Check health
+curl http://localhost:8081/health
+```
+
+See `RAG_INTEGRATION.md` for full documentation.
 
 ---
 
@@ -691,13 +786,14 @@ python src/monitoring/health_check.py
 
 ## 🎉 PROJECT SUCCESS METRICS
 
-- ✅ **1,485** recordings downloaded and registered
-- ✅ **27+** recordings fully transcribed and analyzed
-- ✅ **4-Layer AI Analysis Per Call:**
+- ✅ **3,194** recordings downloaded and registered
+- ✅ **1,341** recordings with all 5 layers complete
+- ✅ **5-Layer AI Analysis Per Call:**
   - Name extraction (employee/customer/company)
   - Sentiment analysis (mood, quality, topics)
   - Resolution tracking (problems, follow-ups, loop closure)
   - Process recommendations (improvements, coaching)
+  - Advanced metrics (detailed performance analysis)
 - ✅ **Enhanced Dashboard Features:**
   - Semantic search with call summaries
   - Full transcript viewer with metadata
@@ -716,7 +812,12 @@ python src/monitoring/health_check.py
   - Google Drive with folder structure
   - N8N queue system
   - RESTful API endpoints
-- ⏳ **~1,458** recordings pending processing
+- ✅ **COWS RAG Integration:**
+  - Gemini RAG for semantic queries
+  - Vertex AI RAG for structured queries
+  - 16 JSONL files in GCS bucket
+  - Web UI at http://31.97.102.13:8081
+- ⏳ **~1,853** recordings pending 5-layer completion
 - ✅ **6x** daily automated checks
 - ✅ **100%** documentation coverage
 

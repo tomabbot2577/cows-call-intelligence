@@ -48,13 +48,14 @@ Focus areas:
 - Upsell/cross-sell opportunities
 """
 
-    def upload_file(self, file_path: str, display_name: Optional[str] = None) -> Dict[str, Any]:
+    def upload_file(self, file_path: str, display_name: Optional[str] = None, mime_type: Optional[str] = None) -> Dict[str, Any]:
         """
         Upload a file to Gemini for processing.
 
         Args:
             file_path: Path to the file
             display_name: Optional display name
+            mime_type: Optional MIME type (auto-detected for common types)
 
         Returns:
             File metadata dict
@@ -62,10 +63,22 @@ Focus areas:
         try:
             display_name = display_name or os.path.basename(file_path)
 
+            # Auto-detect mime type for common file types
+            if mime_type is None:
+                if file_path.endswith('.jsonl'):
+                    mime_type = 'application/jsonl'
+                elif file_path.endswith('.json'):
+                    mime_type = 'application/json'
+                elif file_path.endswith('.txt'):
+                    mime_type = 'text/plain'
+                elif file_path.endswith('.csv'):
+                    mime_type = 'text/csv'
+
             uploaded_file = self.client.files.upload(
                 file=file_path,
                 config=types.UploadFileConfig(
-                    display_name=display_name
+                    display_name=display_name,
+                    mime_type=mime_type
                 )
             )
 
@@ -120,6 +133,15 @@ Focus areas:
         Returns:
             Response dict with answer and citations
         """
+        # Validate query
+        if not query or not isinstance(query, str):
+            return {
+                "response": "Error: Query cannot be empty",
+                "citations": [],
+                "system": "gemini",
+                "error": "Empty or invalid query"
+            }
+
         try:
             # Build content parts
             contents = []

@@ -48,9 +48,9 @@ class RAGConfig:
         """Load configuration from environment variables."""
         return cls(
             # Google Cloud
-            gcp_project=os.getenv("GOOGLE_CLOUD_PROJECT", "mst-pcrecruiter"),
-            gcs_bucket=os.getenv("GCS_RAG_BUCKET", "mst-call-intelligence"),
-            vertex_location=os.getenv("VERTEX_AI_LOCATION", "us-central1"),
+            gcp_project=os.getenv("GOOGLE_CLOUD_PROJECT", "call-recording-481713"),
+            gcs_bucket=os.getenv("GCS_RAG_BUCKET", "call-recording-rag-data"),
+            vertex_location=os.getenv("VERTEX_AI_LOCATION", "us-west1"),
             google_credentials_path=os.getenv(
                 "GOOGLE_APPLICATION_CREDENTIALS",
                 "/var/www/call-recording-system/config/google_service_account.json"

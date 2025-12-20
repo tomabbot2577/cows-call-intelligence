@@ -21,11 +21,11 @@ class VertexRAGService:
     def __init__(
         self,
         project_id: Optional[str] = None,
-        location: str = "us-central1",
+        location: str = "us-west1",
         corpus_name: str = "mst_call_intelligence",
         credentials_path: Optional[str] = None
     ):
-        self.project_id = project_id or os.getenv("GOOGLE_CLOUD_PROJECT", "mst-pcrecruiter")
+        self.project_id = project_id or os.getenv("GOOGLE_CLOUD_PROJECT", "call-recording-481713")
         self.location = location
         self.corpus_display_name = corpus_name
         self.corpus = None
@@ -148,6 +148,15 @@ When providing analysis:
         Returns:
             Response dict with answer and metadata
         """
+        # Validate query
+        if not query or not isinstance(query, str):
+            return {
+                "response": "Error: Query cannot be empty",
+                "filters_applied": None,
+                "system": "vertex",
+                "error": "Empty or invalid query"
+            }
+
         if not self.corpus_name:
             self.initialize_corpus()
 

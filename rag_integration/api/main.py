@@ -232,7 +232,24 @@ async def reports_page(request: Request):
     if not check_auth(request):
         return RedirectResponse(url="/login", status_code=303)
 
-    return templates.TemplateResponse("reports.html", {"request": request})
+    # Get list of agents from database
+    agents = []
+    try:
+        db = get_db()
+        with db.get_connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute("""
+                    SELECT DISTINCT employee_name
+                    FROM transcripts
+                    WHERE employee_name IS NOT NULL
+                    AND employee_name != ''
+                    ORDER BY employee_name
+                """)
+                agents = [row[0] for row in cur.fetchall()]
+    except Exception as e:
+        logger.error(f"Failed to get agents: {e}")
+
+    return templates.TemplateResponse("reports.html", {"request": request, "agents": agents})
 
 
 @app.get("/export", response_class=HTMLResponse)

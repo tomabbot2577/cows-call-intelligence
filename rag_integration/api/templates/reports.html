@@ -44,7 +44,12 @@
                 <form id="agentForm">
                     <div class="mb-3">
                         <label class="form-label">Agent Name:</label>
-                        <input type="text" name="agent_name" class="form-control" placeholder="Enter agent name" required>
+                        <select name="agent_name" class="form-select" required>
+                            <option value="">Select an agent...</option>
+                            {% for agent in agents %}
+                            <option value="{{ agent }}">{{ agent }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Date Range:</label>
@@ -138,13 +143,19 @@
 <script>
 async function generateReport(type) {
     const form = document.getElementById(type + 'Form');
-    const formData = new FormData(form);
-    const params = new URLSearchParams(formData).toString();
+    const minScore = form.querySelector('[name="min_score"]').value;
 
     showLoading();
 
     try {
-        const response = await fetch(`/api/v1/rag/reports/${type}?${params}`);
+        // Use Gemini for churn reports
+        const query = `Identify all customers at high risk of churning (churn risk score >= ${minScore}). For each high-risk customer, provide: customer name, company, churn risk score, reason for risk, and recommended action to retain them.`;
+
+        const response = await fetch('/api/v1/rag/query', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({query: query, force_system: 'gemini'})
+        });
         const data = await response.json();
 
         showReport('Churn Risk Report', data.response);
@@ -159,19 +170,29 @@ async function generateAgentReport() {
     const dateRange = form.querySelector('[name="date_range"]').value;
 
     if (!agentName) {
-        alert('Please enter an agent name');
+        alert('Please select an agent');
         return;
     }
 
     showLoading();
 
     try {
-        let url = `/api/v1/rag/reports/agent/${encodeURIComponent(agentName)}`;
-        if (dateRange) {
-            url += `?date=${dateRange}`;
+        // Use Gemini for agent reports (more reliable)
+        let query = `Analyze agent ${agentName}'s performance. `;
+        if (dateRange === 'today') {
+            query += 'Focus on today\'s calls. ';
+        } else if (dateRange === 'this_week') {
+            query += 'Focus on this week\'s calls. ';
+        } else if (dateRange === 'this_month') {
+            query += 'Focus on this month\'s calls. ';
         }
+        query += 'Provide: total calls handled, average quality score, key strengths, areas for improvement, and specific coaching recommendations with examples.';
 
-        const response = await fetch(url);
+        const response = await fetch('/api/v1/rag/query', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({query: query, force_system: 'gemini'})
+        });
         const data = await response.json();
 
         showReport(`Agent Report: ${agentName}`, data.response);
@@ -196,7 +217,7 @@ async function generateQualityReport() {
         const response = await fetch('/api/v1/rag/query', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({query: queries[focus], force_system: 'vertex'})
+            body: JSON.stringify({query: queries[focus]})
         });
         const data = await response.json();
 
@@ -222,7 +243,7 @@ async function generateSentimentReport() {
         const response = await fetch('/api/v1/rag/query', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({query: queries[analysis], force_system: 'gemini'})
+            body: JSON.stringify({query: queries[analysis]})
         });
         const data = await response.json();
 

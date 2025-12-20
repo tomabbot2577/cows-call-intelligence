@@ -23,7 +23,7 @@ class GCSUploader:
         prefix: str = "transcripts/",
         credentials_path: Optional[str] = None
     ):
-        self.bucket_name = bucket_name or os.getenv("GCS_RAG_BUCKET", "mst-call-intelligence")
+        self.bucket_name = bucket_name or os.getenv("GCS_RAG_BUCKET", "call-recording-rag-data")
         self.prefix = prefix
 
         credentials_path = credentials_path or os.getenv(
@@ -167,7 +167,7 @@ class GCSUploader:
                 logger.info(f"Creating bucket: {self.bucket_name}")
                 self.bucket = self.client.create_bucket(
                     self.bucket_name,
-                    location="us-central1"
+                    location="us-west1"
                 )
             return True
         except Exception as e:
