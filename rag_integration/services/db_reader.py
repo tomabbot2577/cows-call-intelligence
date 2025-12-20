@@ -43,11 +43,21 @@ class DatabaseReader:
         until: Optional[datetime] = None,
         limit: Optional[int] = None,
         offset: int = 0,
-        require_all_layers: bool = True
+        require_all_layers: bool = True,
+        min_layers: int = 4
     ) -> Generator[Dict[str, Any], None, None]:
         """
         Fetch calls with transcripts and all metadata for RAG export.
-        Only returns calls with ALL 5 layers of analysis complete.
+
+        Args:
+            since: Start date filter
+            until: End date filter
+            limit: Maximum records to return
+            offset: Skip first N records
+            require_all_layers: If True, require min_layers to be complete
+            min_layers: Minimum layers required (4 or 5). Default 4.
+                - 4 = Layers 1-4 (names, insights, resolutions, recommendations)
+                - 5 = All layers including advanced metrics
 
         Layers:
         - Layer 1: Name extraction (employee_name, customer_name)
@@ -56,8 +66,10 @@ class DatabaseReader:
         - Layer 4: Recommendations (call_recommendations table)
         - Layer 5: Advanced metrics (call_advanced_metrics table)
         """
-        # Use INNER JOIN to only get calls with ALL 5 layers complete
+        # Use INNER JOIN for required layers, LEFT JOIN for optional
         join_type = "INNER JOIN" if require_all_layers else "LEFT JOIN"
+        # Layer 5 is optional if min_layers < 5
+        layer5_join = "INNER JOIN" if (require_all_layers and min_layers >= 5) else "LEFT JOIN"
 
         query = f"""
         SELECT
@@ -139,7 +151,7 @@ class DatabaseReader:
         {join_type} insights i ON t.recording_id = i.recording_id
         {join_type} call_resolutions cr ON t.recording_id = cr.recording_id
         {join_type} call_recommendations rec ON t.recording_id = rec.recording_id
-        {join_type} call_advanced_metrics cam ON t.recording_id = cam.recording_id
+        {layer5_join} call_advanced_metrics cam ON t.recording_id = cam.recording_id
         WHERE t.transcript_text IS NOT NULL
           AND LENGTH(t.transcript_text) > 100
           -- Layer 1: Require name extraction
@@ -275,6 +287,19 @@ class DatabaseReader:
                 """)
                 stats['with_advanced_metrics'] = cur.fetchone()['total']
 
+                # LAYERS 1-4 COMPLETE (without requiring Layer 5)
+                cur.execute("""
+                    SELECT COUNT(*) as total
+                    FROM transcripts t
+                    INNER JOIN insights i ON t.recording_id = i.recording_id
+                    INNER JOIN call_resolutions cr ON t.recording_id = cr.recording_id
+                    INNER JOIN call_recommendations rec ON t.recording_id = rec.recording_id
+                    WHERE t.transcript_text IS NOT NULL
+                      AND LENGTH(t.transcript_text) > 100
+                      AND (t.employee_name IS NOT NULL OR t.customer_name IS NOT NULL)
+                """)
+                stats['layers_1_to_4_complete'] = cur.fetchone()['total']
+
                 # ALL 5 LAYERS COMPLETE - Ready for RAG export
                 cur.execute("""
                     SELECT COUNT(*) as total
@@ -287,8 +312,9 @@ class DatabaseReader:
                       AND LENGTH(t.transcript_text) > 100
                       AND (t.employee_name IS NOT NULL OR t.customer_name IS NOT NULL)
                 """)
-                stats['fully_analyzed'] = cur.fetchone()['total']
-                stats['ready_for_export'] = stats['fully_analyzed']
+                stats['all_5_layers_complete'] = cur.fetchone()['total']
+                stats['fully_analyzed'] = stats['all_5_layers_complete']
+                stats['ready_for_export'] = stats['layers_1_to_4_complete']  # Default to 4 layers
 
                 # Date range
                 cur.execute("""

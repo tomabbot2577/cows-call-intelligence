@@ -53,11 +53,11 @@ DB_CONFIG = {
     'port': 5432
 }
 
-# Model configuration
-PRIMARY_MODEL = 'google/gemma-3-12b-it:free'
-SECONDARY_MODEL = 'meta-llama/llama-3.1-8b-instruct'
-OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY', 'REDACTED_OPENROUTER_KEY')
-OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
+# Model configuration - Using OpenAI (gpt-3.5-turbo is cheapest at $0.0005/1K input)
+PRIMARY_MODEL = 'gpt-3.5-turbo'
+SECONDARY_MODEL = 'gpt-4o-mini'
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY', '')
+OPENAI_URL = "https://api.openai.com/v1/chat/completions"
 
 
 def get_db_connection():
@@ -66,14 +66,14 @@ def get_db_connection():
 
 
 def call_llm(prompt: str, max_tokens: int = 500, model: str = None) -> dict:
-    """Call LLM with fallback to secondary model"""
+    """Call OpenAI LLM with fallback to secondary model"""
     model = model or PRIMARY_MODEL
 
     try:
         response = requests.post(
-            OPENROUTER_URL,
+            OPENAI_URL,
             headers={
-                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                "Authorization": f"Bearer {OPENAI_API_KEY}",
                 "Content-Type": "application/json"
             },
             json={

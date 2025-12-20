@@ -1,10 +1,11 @@
-"""Gemini File Search Service - Semantic queries using Gemini."""
+"""Gemini File Search Service - Semantic queries using Google GenAI."""
 
 import os
 from typing import Optional, Dict, Any, List
 import logging
 
-import google.generativeai as genai
+from google import genai
+from google.genai import types
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -13,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 
 class GeminiFileSearchService:
-    """Manages Gemini File Search for semantic queries over call transcripts."""
+    """Manages Gemini for semantic queries over call transcripts."""
 
     def __init__(
         self,
@@ -24,10 +25,9 @@ class GeminiFileSearchService:
         if not api_key:
             raise ValueError("GEMINI_API_KEY is required")
 
-        genai.configure(api_key=api_key)
+        self.client = genai.Client(api_key=api_key)
         self.store_name = store_name
-        self.store = None
-        self.model = None
+        self.model_id = "gemini-2.0-flash"
 
         self._system_instruction = """
 You are a call intelligence analyst for MST/PCRecruiter, a recruiting software company.
@@ -48,27 +48,12 @@ Focus areas:
 - Upsell/cross-sell opportunities
 """
 
-    def initialize_store(self) -> str:
-        """Initialize or get existing Gemini File Search store."""
-        try:
-            # Try to find existing store
-            stores = list(genai.list_files())
-            logger.info(f"Found {len(stores)} existing files in Gemini")
-
-            # For now, we'll use the file-based approach
-            # Gemini File Search stores are managed differently
-            return self.store_name
-
-        except Exception as e:
-            logger.warning(f"Error initializing store: {e}")
-            return self.store_name
-
     def upload_file(self, file_path: str, display_name: Optional[str] = None) -> Dict[str, Any]:
         """
-        Upload a JSONL file to Gemini for processing.
+        Upload a file to Gemini for processing.
 
         Args:
-            file_path: Path to the JSONL file
+            file_path: Path to the file
             display_name: Optional display name
 
         Returns:
@@ -77,9 +62,11 @@ Focus areas:
         try:
             display_name = display_name or os.path.basename(file_path)
 
-            uploaded_file = genai.upload_file(
-                path=file_path,
-                display_name=display_name
+            uploaded_file = self.client.files.upload(
+                file=file_path,
+                config=types.UploadFileConfig(
+                    display_name=display_name
+                )
             )
 
             logger.info(f"Uploaded file: {uploaded_file.name}")
@@ -98,7 +85,7 @@ Focus areas:
     def list_files(self) -> List[Dict[str, Any]]:
         """List all uploaded files."""
         try:
-            files = list(genai.list_files())
+            files = list(self.client.files.list())
             return [
                 {
                     "name": f.name,
@@ -115,7 +102,7 @@ Focus areas:
     def delete_file(self, file_name: str) -> bool:
         """Delete a file from Gemini."""
         try:
-            genai.delete_file(file_name)
+            self.client.files.delete(name=file_name)
             logger.info(f"Deleted file: {file_name}")
             return True
         except Exception as e:
@@ -134,50 +121,40 @@ Focus areas:
             Response dict with answer and citations
         """
         try:
-            # Get the model
-            model = genai.GenerativeModel(
-                model_name='gemini-2.0-flash',
-                system_instruction=self._system_instruction
-            )
+            # Build content parts
+            contents = []
 
-            # Build the prompt with context if files provided
+            # Add file references if provided
             if context_files:
-                # Get file references
-                file_refs = []
                 for file_name in context_files:
                     try:
-                        file_ref = genai.get_file(file_name)
-                        file_refs.append(file_ref)
+                        file_ref = self.client.files.get(name=file_name)
+                        contents.append(types.Part.from_uri(
+                            file_uri=file_ref.uri,
+                            mime_type=file_ref.mime_type or "application/json"
+                        ))
                     except Exception as e:
                         logger.warning(f"Could not get file {file_name}: {e}")
 
-                if file_refs:
-                    # Generate with file context
-                    response = model.generate_content([*file_refs, query])
-                else:
-                    response = model.generate_content(query)
-            else:
-                response = model.generate_content(query)
+            # Add the query
+            contents.append(query)
 
-            # Extract citations if available
-            citations = []
-            if hasattr(response, 'candidates') and response.candidates:
-                candidate = response.candidates[0]
-                if hasattr(candidate, 'grounding_metadata') and candidate.grounding_metadata:
-                    gm = candidate.grounding_metadata
-                    if hasattr(gm, 'grounding_chunks'):
-                        for chunk in gm.grounding_chunks:
-                            if hasattr(chunk, 'retrieved_context'):
-                                citations.append({
-                                    "source": getattr(chunk.retrieved_context, 'uri', 'unknown'),
-                                    "text": getattr(chunk.retrieved_context, 'text', '')[:200]
-                                })
+            # Generate response
+            response = self.client.models.generate_content(
+                model=self.model_id,
+                contents=contents,
+                config=types.GenerateContentConfig(
+                    system_instruction=self._system_instruction,
+                    temperature=0.7,
+                    max_output_tokens=2048,
+                )
+            )
 
             return {
                 "response": response.text,
-                "citations": citations,
+                "citations": [],
                 "system": "gemini",
-                "model": "gemini-2.0-flash"
+                "model": self.model_id
             }
 
         except Exception as e:
@@ -201,11 +178,6 @@ Focus areas:
             Response dict
         """
         try:
-            model = genai.GenerativeModel(
-                model_name='gemini-2.0-flash',  # Use flash for speed
-                system_instruction=self._system_instruction
-            )
-
             prompt = f"""
 Analyze the following call transcript and answer the question.
 
@@ -215,13 +187,21 @@ TRANSCRIPT:
 QUESTION: {query}
 """
 
-            response = model.generate_content(prompt)
+            response = self.client.models.generate_content(
+                model=self.model_id,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    system_instruction=self._system_instruction,
+                    temperature=0.7,
+                    max_output_tokens=2048,
+                )
+            )
 
             return {
                 "response": response.text,
                 "citations": [],
                 "system": "gemini",
-                "model": "gemini-2.0-flash"
+                "model": self.model_id
             }
 
         except Exception as e:
@@ -245,11 +225,6 @@ QUESTION: {query}
             Response dict with analysis
         """
         try:
-            model = genai.GenerativeModel(
-                model_name='gemini-2.0-flash',
-                system_instruction=self._system_instruction
-            )
-
             # Format call summaries
             calls_text = "\n\n".join([
                 f"--- Call {c.get('call_id', 'Unknown')} ---\n"
@@ -273,14 +248,22 @@ QUESTION: {query}
 Provide a comprehensive analysis with specific examples from the calls.
 """
 
-            response = model.generate_content(prompt)
+            response = self.client.models.generate_content(
+                model=self.model_id,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    system_instruction=self._system_instruction,
+                    temperature=0.7,
+                    max_output_tokens=4096,
+                )
+            )
 
             return {
                 "response": response.text,
                 "calls_analyzed": len(call_summaries),
                 "citations": [{"call_id": c.get('call_id')} for c in call_summaries],
                 "system": "gemini",
-                "model": "gemini-2.0-flash"
+                "model": self.model_id
             }
 
         except Exception as e:
@@ -300,6 +283,7 @@ Provide a comprehensive analysis with specific examples from the calls.
             return {
                 "status": "healthy",
                 "store_name": self.store_name,
+                "model": self.model_id,
                 "files_count": len(files),
                 "files": files[:5],  # First 5 files
             }
@@ -317,7 +301,7 @@ if __name__ == "__main__":
 
     try:
         service = GeminiFileSearchService()
-        print("Gemini File Search Service initialized")
+        print("Gemini Service initialized (using google.genai)")
 
         status = service.get_status()
         print(f"\nStatus: {status}")

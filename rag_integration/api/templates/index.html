@@ -115,13 +115,23 @@
 
                 <div class="mb-3">
                     <div class="d-flex justify-content-between mb-1">
-                        <strong>All 5 Layers Complete (Ready for RAG)</strong>
-                        <strong>{{ stats.get('ready_for_export', 0) }}/{{ total }}</strong>
+                        <strong>Layers 1-4 Complete (Ready for RAG)</strong>
+                        <strong>{{ stats.get('layers_1_to_4_complete', stats.get('ready_for_export', 0)) }}/{{ total }}</strong>
                     </div>
                     <div class="progress" style="height: 25px;">
-                        <div class="progress-bar bg-success" style="width: {{ (stats.get('ready_for_export', 0) / total * 100) | round }}%">
-                            {{ ((stats.get('ready_for_export', 0) / total * 100) | round) }}%
+                        <div class="progress-bar bg-success" style="width: {{ (stats.get('layers_1_to_4_complete', stats.get('ready_for_export', 0)) / total * 100) | round }}%">
+                            {{ ((stats.get('layers_1_to_4_complete', stats.get('ready_for_export', 0)) / total * 100) | round) }}%
                         </div>
+                    </div>
+                </div>
+
+                <div class="mb-0">
+                    <div class="d-flex justify-content-between mb-1">
+                        <span class="text-muted">All 5 Layers Complete</span>
+                        <span class="text-muted">{{ stats.get('all_5_layers_complete', 0) }}/{{ total }}</span>
+                    </div>
+                    <div class="progress" style="height: 10px;">
+                        <div class="progress-bar bg-secondary" style="width: {{ (stats.get('all_5_layers_complete', 0) / total * 100) | round }}%"></div>
                     </div>
                 </div>
             </div>
