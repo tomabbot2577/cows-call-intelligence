@@ -908,16 +908,45 @@ class DatabaseReader:
                 return result
 
 
-    def get_sentiment_report_data(self, sentiment_filter: str = 'negative') -> Dict[str, Any]:
+    def get_sentiment_report_data(self, sentiment_filter: str = 'negative', date_range: str = None, start_date: str = None, end_date: str = None) -> Dict[str, Any]:
         """
         Get actual sentiment data from the database for reporting.
 
         Args:
             sentiment_filter: 'negative', 'positive', 'all', or 'trends'
+            date_range: 'last_30', 'mtd', 'qtd', 'ytd', or None for all time
+            start_date: Custom start date (YYYY-MM-DD)
+            end_date: Custom end date (YYYY-MM-DD)
         """
         with self.get_connection() as conn:
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
                 result = {}
+
+                # Build date filter based on date_range or custom dates
+                date_filter = ""
+                date_filter_with_t = ""
+                if start_date and end_date:
+                    date_filter = f"AND i.created_at >= '{start_date}'::date AND i.created_at < '{end_date}'::date + INTERVAL '1 day'"
+                    date_filter_with_t = f"AND t.call_date >= '{start_date}'::date AND t.call_date < '{end_date}'::date + INTERVAL '1 day'"
+                    result['date_range'] = f"{start_date} to {end_date}"
+                elif date_range == 'last_30':
+                    date_filter = "AND i.created_at >= CURRENT_DATE - INTERVAL '30 days'"
+                    date_filter_with_t = "AND t.call_date >= CURRENT_DATE - INTERVAL '30 days'"
+                    result['date_range'] = 'last_30'
+                elif date_range == 'mtd':
+                    date_filter = "AND i.created_at >= DATE_TRUNC('month', CURRENT_DATE)"
+                    date_filter_with_t = "AND t.call_date >= DATE_TRUNC('month', CURRENT_DATE)"
+                    result['date_range'] = 'mtd'
+                elif date_range == 'qtd':
+                    date_filter = "AND i.created_at >= DATE_TRUNC('quarter', CURRENT_DATE)"
+                    date_filter_with_t = "AND t.call_date >= DATE_TRUNC('quarter', CURRENT_DATE)"
+                    result['date_range'] = 'qtd'
+                elif date_range == 'ytd':
+                    date_filter = "AND i.created_at >= DATE_TRUNC('year', CURRENT_DATE)"
+                    date_filter_with_t = "AND t.call_date >= DATE_TRUNC('year', CURRENT_DATE)"
+                    result['date_range'] = 'ytd'
+                else:
+                    result['date_range'] = 'all_time'
 
                 # Build sentiment filter
                 if sentiment_filter == 'negative':
@@ -928,19 +957,19 @@ class DatabaseReader:
                     sentiment_clause = "i.customer_sentiment IS NOT NULL"
 
                 # Overall sentiment distribution
-                cur.execute("""
+                cur.execute(f"""
                     SELECT
                         i.customer_sentiment,
                         COUNT(*) as count
                     FROM insights i
                     WHERE i.customer_sentiment IS NOT NULL
+                    {date_filter}
                     GROUP BY i.customer_sentiment
                     ORDER BY count DESC
                 """)
                 result['sentiment_distribution'] = {row['customer_sentiment']: row['count'] for row in cur.fetchall()}
 
                 # Calls matching the filter with full details
-                # Only include calls with valid dates and at least some identifying info
                 cur.execute(f"""
                     SELECT
                         t.recording_id,
@@ -965,6 +994,7 @@ class DatabaseReader:
                     LEFT JOIN call_resolutions cr ON t.recording_id = cr.recording_id
                     WHERE {sentiment_clause}
                       AND t.call_date IS NOT NULL
+                      {date_filter_with_t}
                     ORDER BY
                         CASE
                             WHEN LOWER(i.customer_sentiment) IN ('negative', 'frustrated', 'angry') THEN 1
@@ -1011,8 +1041,9 @@ class DatabaseReader:
                         ROUND(AVG(i.call_quality_score)::numeric, 1) as avg_quality
                     FROM transcripts t
                     JOIN insights i ON t.recording_id = i.recording_id
+                    WHERE 1=1 {date_filter_with_t}
                     GROUP BY COALESCE(NULLIF(t.employee_name, ''), 'Unknown Agent')
-                    HAVING COUNT(*) >= 5
+                    HAVING COUNT(*) >= 3
                     ORDER BY
                         SUM(CASE WHEN LOWER(i.customer_sentiment) IN ('negative', 'frustrated', 'angry') THEN 1 ELSE 0 END) DESC
                     LIMIT 15
@@ -1042,6 +1073,7 @@ class DatabaseReader:
                       AND t.customer_company != 'Unknown'
                       AND LOWER(t.customer_company) NOT LIKE '%%pc recruiter%%'
                       AND LOWER(t.customer_company) NOT LIKE '%%main sequence%%'
+                      {date_filter_with_t}
                     GROUP BY t.customer_company
                     HAVING SUM(CASE WHEN LOWER(i.customer_sentiment) IN ('negative', 'frustrated', 'angry') THEN 1 ELSE 0 END) > 0
                     ORDER BY
@@ -1059,11 +1091,12 @@ class DatabaseReader:
                 ]
 
                 # Common topics in negative calls
-                cur.execute("""
+                cur.execute(f"""
                     SELECT i.key_topics
                     FROM insights i
                     WHERE LOWER(i.customer_sentiment) IN ('negative', 'frustrated', 'angry')
                       AND i.key_topics IS NOT NULL
+                      {date_filter}
                     LIMIT 50
                 """)
 
@@ -1077,21 +1110,23 @@ class DatabaseReader:
                 result['negative_sentiment_topics'] = [{'topic': t, 'count': c} for t, c in topic_counts.most_common(15)]
 
                 # Common call types in negative calls
-                cur.execute("""
+                cur.execute(f"""
                     SELECT
                         i.call_type,
                         COUNT(*) as count
                     FROM insights i
                     WHERE LOWER(i.customer_sentiment) IN ('negative', 'frustrated', 'angry')
                       AND i.call_type IS NOT NULL
+                      {date_filter}
                     GROUP BY i.call_type
                     ORDER BY count DESC
                     LIMIT 10
                 """)
                 result['negative_call_types'] = {row['call_type']: row['count'] for row in cur.fetchall()}
 
-                # Trend data (by week)
-                cur.execute("""
+                # Trend data (by week) - adjust based on date range
+                trend_date_filter = date_filter_with_t if date_range else "AND t.call_date >= CURRENT_DATE - INTERVAL '90 days'"
+                cur.execute(f"""
                     SELECT
                         DATE_TRUNC('week', t.call_date) as week,
                         COUNT(*) as total_calls,
@@ -1100,7 +1135,7 @@ class DatabaseReader:
                         SUM(CASE WHEN LOWER(i.customer_sentiment) = 'neutral' THEN 1 ELSE 0 END) as neutral
                     FROM transcripts t
                     JOIN insights i ON t.recording_id = i.recording_id
-                    WHERE t.call_date >= CURRENT_DATE - INTERVAL '90 days'
+                    WHERE 1=1 {trend_date_filter}
                     GROUP BY DATE_TRUNC('week', t.call_date)
                     ORDER BY week DESC
                     LIMIT 12
@@ -1119,19 +1154,48 @@ class DatabaseReader:
                 return result
 
 
-    def get_quality_report_data(self, focus: str = 'low_quality') -> Dict[str, Any]:
+    def get_quality_report_data(self, focus: str = 'low_quality', date_range: str = None, start_date: str = None, end_date: str = None) -> Dict[str, Any]:
         """
         Get call quality data from the database for reporting.
 
         Args:
             focus: 'low_quality', 'trends', or 'by_type'
+            date_range: 'last_30', 'mtd', 'qtd', 'ytd', or None for all time
+            start_date: Custom start date (YYYY-MM-DD)
+            end_date: Custom end date (YYYY-MM-DD)
         """
         with self.get_connection() as conn:
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
                 result = {}
 
+                # Build date filter based on date_range or custom dates
+                date_filter = ""
+                date_filter_with_t = ""
+                if start_date and end_date:
+                    date_filter = f"AND i.created_at >= '{start_date}'::date AND i.created_at < '{end_date}'::date + INTERVAL '1 day'"
+                    date_filter_with_t = f"AND t.call_date >= '{start_date}'::date AND t.call_date < '{end_date}'::date + INTERVAL '1 day'"
+                    result['date_range'] = f"{start_date} to {end_date}"
+                elif date_range == 'last_30':
+                    date_filter = "AND i.created_at >= CURRENT_DATE - INTERVAL '30 days'"
+                    date_filter_with_t = "AND t.call_date >= CURRENT_DATE - INTERVAL '30 days'"
+                    result['date_range'] = 'last_30'
+                elif date_range == 'mtd':
+                    date_filter = "AND i.created_at >= DATE_TRUNC('month', CURRENT_DATE)"
+                    date_filter_with_t = "AND t.call_date >= DATE_TRUNC('month', CURRENT_DATE)"
+                    result['date_range'] = 'mtd'
+                elif date_range == 'qtd':
+                    date_filter = "AND i.created_at >= DATE_TRUNC('quarter', CURRENT_DATE)"
+                    date_filter_with_t = "AND t.call_date >= DATE_TRUNC('quarter', CURRENT_DATE)"
+                    result['date_range'] = 'qtd'
+                elif date_range == 'ytd':
+                    date_filter = "AND i.created_at >= DATE_TRUNC('year', CURRENT_DATE)"
+                    date_filter_with_t = "AND t.call_date >= DATE_TRUNC('year', CURRENT_DATE)"
+                    result['date_range'] = 'ytd'
+                else:
+                    result['date_range'] = 'all_time'
+
                 # Overall quality distribution
-                cur.execute("""
+                cur.execute(f"""
                     SELECT
                         CASE
                             WHEN call_quality_score >= 8 THEN 'Excellent (8-10)'
@@ -1139,9 +1203,11 @@ class DatabaseReader:
                             WHEN call_quality_score >= 4 THEN 'Fair (4-5)'
                             ELSE 'Poor (1-3)'
                         END as quality_tier,
-                        COUNT(*) as count
-                    FROM insights
+                        COUNT(*) as count,
+                        MIN(call_quality_score) as min_score
+                    FROM insights i
                     WHERE call_quality_score IS NOT NULL
+                    {date_filter}
                     GROUP BY
                         CASE
                             WHEN call_quality_score >= 8 THEN 'Excellent (8-10)'
@@ -1149,31 +1215,25 @@ class DatabaseReader:
                             WHEN call_quality_score >= 4 THEN 'Fair (4-5)'
                             ELSE 'Poor (1-3)'
                         END
-                    ORDER BY
-                        CASE
-                            WHEN call_quality_score >= 8 THEN 1
-                            WHEN call_quality_score >= 6 THEN 2
-                            WHEN call_quality_score >= 4 THEN 3
-                            ELSE 4
-                        END
+                    ORDER BY min_score DESC
                 """)
                 result['quality_distribution'] = {row['quality_tier']: row['count'] for row in cur.fetchall()}
 
                 # Average quality score
-                cur.execute("""
+                cur.execute(f"""
                     SELECT
                         ROUND(AVG(call_quality_score)::numeric, 2) as avg_quality,
                         COUNT(*) as total_calls
-                    FROM insights
+                    FROM insights i
                     WHERE call_quality_score IS NOT NULL
+                    {date_filter}
                 """)
                 row = cur.fetchone()
                 result['avg_quality'] = float(row['avg_quality']) if row and row['avg_quality'] else 0
                 result['total_calls_with_quality'] = row['total_calls'] if row else 0
 
                 # Low quality calls (score < 5) with full details
-                # Only include calls with valid dates and employee names
-                cur.execute("""
+                cur.execute(f"""
                     SELECT
                         t.recording_id,
                         t.call_date,
@@ -1198,6 +1258,7 @@ class DatabaseReader:
                     WHERE i.call_quality_score IS NOT NULL
                       AND i.call_quality_score < 5
                       AND t.call_date IS NOT NULL
+                      {date_filter_with_t}
                     ORDER BY i.call_quality_score ASC, t.call_date DESC
                     LIMIT 25
                 """)
@@ -1232,7 +1293,7 @@ class DatabaseReader:
                 result['total_low_quality'] = len(low_quality_calls)
 
                 # Quality by agent
-                cur.execute("""
+                cur.execute(f"""
                     SELECT
                         COALESCE(NULLIF(t.employee_name, ''), 'Unknown Agent') as employee_name,
                         COUNT(*) as total_calls,
@@ -1242,8 +1303,9 @@ class DatabaseReader:
                     FROM transcripts t
                     JOIN insights i ON t.recording_id = i.recording_id
                     WHERE i.call_quality_score IS NOT NULL
+                    {date_filter_with_t}
                     GROUP BY COALESCE(NULLIF(t.employee_name, ''), 'Unknown Agent')
-                    HAVING COUNT(*) >= 5
+                    HAVING COUNT(*) >= 3
                     ORDER BY AVG(i.call_quality_score) ASC
                     LIMIT 15
                 """)
@@ -1259,7 +1321,7 @@ class DatabaseReader:
                 ]
 
                 # Quality by call type
-                cur.execute("""
+                cur.execute(f"""
                     SELECT
                         i.call_type,
                         COUNT(*) as total_calls,
@@ -1268,6 +1330,7 @@ class DatabaseReader:
                     FROM insights i
                     WHERE i.call_type IS NOT NULL
                       AND i.call_quality_score IS NOT NULL
+                      {date_filter}
                     GROUP BY i.call_type
                     ORDER BY AVG(i.call_quality_score) ASC
                     LIMIT 10
@@ -1282,8 +1345,9 @@ class DatabaseReader:
                     for row in cur.fetchall()
                 ]
 
-                # Weekly quality trends
-                cur.execute("""
+                # Weekly quality trends - adjust based on date range
+                trend_date_filter = date_filter_with_t if date_range else "AND t.call_date >= CURRENT_DATE - INTERVAL '90 days'"
+                cur.execute(f"""
                     SELECT
                         DATE_TRUNC('week', t.call_date) as week,
                         COUNT(*) as total_calls,
@@ -1292,8 +1356,8 @@ class DatabaseReader:
                         SUM(CASE WHEN i.call_quality_score >= 8 THEN 1 ELSE 0 END) as high_quality
                     FROM transcripts t
                     JOIN insights i ON t.recording_id = i.recording_id
-                    WHERE t.call_date >= CURRENT_DATE - INTERVAL '90 days'
-                      AND i.call_quality_score IS NOT NULL
+                    WHERE i.call_quality_score IS NOT NULL
+                      {trend_date_filter}
                     GROUP BY DATE_TRUNC('week', t.call_date)
                     ORDER BY week DESC
                     LIMIT 12
@@ -1310,12 +1374,13 @@ class DatabaseReader:
                 ]
 
                 # Common issues in low quality calls
-                cur.execute("""
+                cur.execute(f"""
                     SELECT i.key_topics
                     FROM insights i
                     WHERE i.call_quality_score IS NOT NULL
                       AND i.call_quality_score < 5
                       AND i.key_topics IS NOT NULL
+                      {date_filter}
                     LIMIT 50
                 """)
 

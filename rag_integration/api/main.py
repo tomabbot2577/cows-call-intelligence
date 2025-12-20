@@ -699,8 +699,15 @@ async def api_list_customers(request: Request, limit: int = 50):
 
 
 @app.get("/api/v1/rag/reports/quality")
-async def api_quality_report(request: Request, focus: str = "low_quality"):
-    """Get call quality report with actual data."""
+async def api_quality_report(request: Request, focus: str = "low_quality", date_range: str = None, start_date: str = None, end_date: str = None):
+    """Get call quality report with actual data.
+
+    Args:
+        focus: 'low_quality', 'trends', or 'by_type'
+        date_range: 'last_30', 'mtd', 'qtd', 'ytd', or None for all time
+        start_date: Custom start date (YYYY-MM-DD)
+        end_date: Custom end date (YYYY-MM-DD)
+    """
     if not check_auth(request):
         raise HTTPException(status_code=401, detail="Not authenticated")
 
@@ -708,7 +715,7 @@ async def api_quality_report(request: Request, focus: str = "low_quality"):
         db = get_db()
 
         # Get actual quality data from database
-        quality_data = db.get_quality_report_data(focus)
+        quality_data = db.get_quality_report_data(focus, date_range, start_date, end_date)
 
         # Format the low quality calls for the prompt
         calls_str = ""
@@ -765,11 +772,25 @@ async def api_quality_report(request: Request, focus: str = "low_quality"):
         from datetime import date
         today = date.today().strftime("%Y-%m-%d")
 
+        # Date range context for prompt
+        if start_date and end_date:
+            date_range_label = f"{start_date} to {end_date}"
+        else:
+            date_range_label = {
+                'last_30': 'Last 30 Days',
+                'mtd': 'Month to Date',
+                'qtd': 'Quarter to Date',
+                'ytd': 'Year to Date',
+                None: 'All Time'
+            }.get(date_range, 'All Time')
+
         prompt = f"""Generate a Call Quality Analysis Report based on the following ACTUAL DATA.
 
 IMPORTANT: Today's date is {today}. All call dates in this data are from June 2025 onwards. Do NOT include any future dates.
+DATE RANGE: {date_range_label}
 
 ## OVERALL QUALITY METRICS:
+- Date Range: {date_range_label}
 - Average Quality Score: {quality_data.get('avg_quality', 0)}/10
 - Total Calls Analyzed: {quality_data.get('total_calls_with_quality', 0)}
 - Low Quality Calls (< 5): {quality_data.get('total_low_quality', 0)}
@@ -829,8 +850,15 @@ HANDLING UNKNOWN VALUES:
 
 
 @app.get("/api/v1/rag/reports/sentiment")
-async def api_sentiment_report(request: Request, analysis: str = "negative"):
-    """Get sentiment analysis report with actual data."""
+async def api_sentiment_report(request: Request, analysis: str = "negative", date_range: str = None, start_date: str = None, end_date: str = None):
+    """Get sentiment analysis report with actual data.
+
+    Args:
+        analysis: 'negative', 'positive', 'all', or 'trends'
+        date_range: 'last_30', 'mtd', 'qtd', 'ytd', or None for all time
+        start_date: Custom start date (YYYY-MM-DD)
+        end_date: Custom end date (YYYY-MM-DD)
+    """
     if not check_auth(request):
         raise HTTPException(status_code=401, detail="Not authenticated")
 
@@ -838,7 +866,7 @@ async def api_sentiment_report(request: Request, analysis: str = "negative"):
         db = get_db()
 
         # Get actual sentiment data from database
-        sentiment_data = db.get_sentiment_report_data(analysis)
+        sentiment_data = db.get_sentiment_report_data(analysis, date_range, start_date, end_date)
 
         if sentiment_data.get('total_matching', 0) == 0:
             return {
@@ -902,11 +930,24 @@ async def api_sentiment_report(request: Request, analysis: str = "negative"):
         from datetime import date
         today = date.today().strftime("%Y-%m-%d")
 
+        # Date range context for prompt
+        if start_date and end_date:
+            date_range_label = f"{start_date} to {end_date}"
+        else:
+            date_range_label = {
+                'last_30': 'Last 30 Days',
+                'mtd': 'Month to Date',
+                'qtd': 'Quarter to Date',
+                'ytd': 'Year to Date',
+                None: 'All Time'
+            }.get(date_range, 'All Time')
+
         prompt = f"""Generate a Sentiment Analysis Report based on the following ACTUAL DATA from our call center.
 
 IMPORTANT: Today's date is {today}. Do NOT include any dates in the future. All call dates in this data are from June 2025 onwards.
+DATE RANGE: {date_range_label}
 
-## OVERALL SENTIMENT DISTRIBUTION:
+## OVERALL SENTIMENT DISTRIBUTION ({date_range_label}):
 {dist_str}
 
 ## PC RECRUITER AGENTS - SENTIMENT BREAKDOWN:
@@ -918,7 +959,7 @@ IMPORTANT: Today's date is {today}. Do NOT include any dates in the future. All 
 ## COMMON TOPICS IN NEGATIVE CALLS:
 {topics_str or "No topics identified"}
 
-## WEEKLY SENTIMENT TRENDS (Last 8 weeks):
+## WEEKLY SENTIMENT TRENDS:
 {trends_str or "No trend data"}
 
 ## SAMPLE NEGATIVE SENTIMENT CALLS (ACTUAL DATA):

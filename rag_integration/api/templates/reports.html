@@ -85,6 +85,29 @@
                             <option value="by_type">Quality by Call Type</option>
                         </select>
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Date Range:</label>
+                        <select name="date_range" class="form-select" onchange="toggleCustomDateRange(this, 'quality')">
+                            <option value="">All Time</option>
+                            <option value="last_30">Last 30 Days</option>
+                            <option value="mtd" selected>Month to Date (MTD)</option>
+                            <option value="qtd">Quarter to Date (QTD)</option>
+                            <option value="ytd">Year to Date (YTD)</option>
+                            <option value="custom">Custom Range...</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 custom-date-range" id="qualityCustomDates" style="display: none;">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="form-label">Start Date:</label>
+                                <input type="date" name="start_date" class="form-control">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">End Date:</label>
+                                <input type="date" name="end_date" class="form-control">
+                            </div>
+                        </div>
+                    </div>
                     <button type="button" class="btn btn-warning" onclick="generateQualityReport()">
                         <i class="bi bi-file-earmark-text me-1"></i>Generate Report
                     </button>
@@ -109,6 +132,29 @@
                             <option value="trends">Sentiment Trends</option>
                             <option value="by_agent">Sentiment by Agent</option>
                         </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Date Range:</label>
+                        <select name="date_range" class="form-select" onchange="toggleCustomDateRange(this, 'sentiment')">
+                            <option value="">All Time</option>
+                            <option value="last_30">Last 30 Days</option>
+                            <option value="mtd" selected>Month to Date (MTD)</option>
+                            <option value="qtd">Quarter to Date (QTD)</option>
+                            <option value="ytd">Year to Date (YTD)</option>
+                            <option value="custom">Custom Range...</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 custom-date-range" id="sentimentCustomDates" style="display: none;">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="form-label">Start Date:</label>
+                                <input type="date" name="start_date" class="form-control">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">End Date:</label>
+                                <input type="date" name="end_date" class="form-control">
+                            </div>
+                        </div>
                     </div>
                     <button type="button" class="btn btn-info" onclick="generateSentimentReport()">
                         <i class="bi bi-file-earmark-text me-1"></i>Generate Report
@@ -181,6 +227,27 @@
 <script>
 // Global abort controller for cancelling requests
 let currentAbortController = null;
+
+// Toggle custom date range inputs
+function toggleCustomDateRange(selectElement, formType) {
+    const customDatesDiv = document.getElementById(formType + 'CustomDates');
+    if (selectElement.value === 'custom') {
+        customDatesDiv.style.display = 'block';
+        // Set default dates
+        const today = new Date();
+        const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+        const startInput = customDatesDiv.querySelector('[name="start_date"]');
+        const endInput = customDatesDiv.querySelector('[name="end_date"]');
+        if (!startInput.value) {
+            startInput.value = startOfMonth.toISOString().split('T')[0];
+        }
+        if (!endInput.value) {
+            endInput.value = today.toISOString().split('T')[0];
+        }
+    } else {
+        customDatesDiv.style.display = 'none';
+    }
+}
 
 async function generateReport(type) {
     const form = document.getElementById(type + 'Form');
@@ -258,12 +325,33 @@ async function generateAgentReport() {
 async function generateQualityReport() {
     const form = document.getElementById('qualityForm');
     const focus = form.querySelector('[name="focus"]').value;
+    const dateRange = form.querySelector('[name="date_range"]').value;
+    const startDate = form.querySelector('[name="start_date"]')?.value;
+    const endDate = form.querySelector('[name="end_date"]')?.value;
 
-    showLoading('Analyzing call quality data...');
+    let dateRangeLabel = {
+        'last_30': 'Last 30 Days',
+        'mtd': 'MTD',
+        'qtd': 'QTD',
+        'ytd': 'YTD',
+        '': 'All Time'
+    }[dateRange] || 'All Time';
+
+    if (dateRange === 'custom' && startDate && endDate) {
+        dateRangeLabel = `${startDate} to ${endDate}`;
+    }
+
+    showLoading(`Analyzing call quality data (${dateRangeLabel})...`);
 
     try {
         currentAbortController = new AbortController();
-        const response = await fetch(`/api/v1/rag/reports/quality?focus=${focus}`, {
+        let url = `/api/v1/rag/reports/quality?focus=${focus}`;
+        if (dateRange === 'custom' && startDate && endDate) {
+            url += `&start_date=${startDate}&end_date=${endDate}`;
+        } else if (dateRange && dateRange !== 'custom') {
+            url += `&date_range=${dateRange}`;
+        }
+        const response = await fetch(url, {
             signal: currentAbortController.signal
         });
 
@@ -274,9 +362,9 @@ async function generateQualityReport() {
         const data = await response.json();
 
         if (data.data && data.data.total_low_quality > 0) {
-            showReport(`Quality Analysis Report (${data.data.total_low_quality} low quality calls)`, data.response);
+            showReport(`Quality Analysis Report - ${dateRangeLabel} (${data.data.total_low_quality} low quality calls)`, data.response);
         } else {
-            showReport('Quality Analysis Report', data.response || 'No low quality calls found.');
+            showReport(`Quality Analysis Report - ${dateRangeLabel}`, data.response || 'No low quality calls found.');
         }
     } catch (error) {
         if (error.name === 'AbortError') {
@@ -290,12 +378,33 @@ async function generateQualityReport() {
 async function generateSentimentReport() {
     const form = document.getElementById('sentimentForm');
     const analysis = form.querySelector('[name="analysis"]').value;
+    const dateRange = form.querySelector('[name="date_range"]').value;
+    const startDate = form.querySelector('[name="start_date"]')?.value;
+    const endDate = form.querySelector('[name="end_date"]')?.value;
 
-    showLoading('Analyzing customer sentiment data...');
+    let dateRangeLabel = {
+        'last_30': 'Last 30 Days',
+        'mtd': 'MTD',
+        'qtd': 'QTD',
+        'ytd': 'YTD',
+        '': 'All Time'
+    }[dateRange] || 'All Time';
+
+    if (dateRange === 'custom' && startDate && endDate) {
+        dateRangeLabel = `${startDate} to ${endDate}`;
+    }
+
+    showLoading(`Analyzing customer sentiment data (${dateRangeLabel})...`);
 
     try {
         currentAbortController = new AbortController();
-        const response = await fetch(`/api/v1/rag/reports/sentiment?analysis=${analysis}`, {
+        let url = `/api/v1/rag/reports/sentiment?analysis=${analysis}`;
+        if (dateRange === 'custom' && startDate && endDate) {
+            url += `&start_date=${startDate}&end_date=${endDate}`;
+        } else if (dateRange && dateRange !== 'custom') {
+            url += `&date_range=${dateRange}`;
+        }
+        const response = await fetch(url, {
             signal: currentAbortController.signal
         });
 
@@ -306,7 +415,7 @@ async function generateSentimentReport() {
         const data = await response.json();
 
         if (data.data && data.data.total_matching > 0) {
-            showReport(`Sentiment Analysis Report (${data.data.total_matching} calls analyzed)`, data.response);
+            showReport(`Sentiment Analysis Report - ${dateRangeLabel} (${data.data.total_matching} calls analyzed)`, data.response);
         } else {
             showReport('Sentiment Analysis Report', data.response || 'No matching calls found.');
         }
