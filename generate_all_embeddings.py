@@ -12,8 +12,13 @@ from src.insights.embeddings_manager import EmbeddingsManager
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
-# Set API key from environment
-os.environ['OPENAI_API_KEY'] = 'OPENAI_API_KEY_REMOVED'
+# Load API key from environment (set in .env file)
+from dotenv import load_dotenv
+load_dotenv()
+
+if not os.getenv('OPENAI_API_KEY'):
+    print("ERROR: OPENAI_API_KEY not set in environment. Add it to .env file.")
+    sys.exit(1)
 
 def main():
     # Database configuration
