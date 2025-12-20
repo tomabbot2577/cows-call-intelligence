@@ -103,7 +103,19 @@
 
                 <div class="mb-3">
                     <div class="d-flex justify-content-between mb-1">
-                        <strong>All Layers Complete (Ready for RAG)</strong>
+                        <span>Layer 5: Advanced Metrics</span>
+                        <span>{{ stats.get('with_advanced_metrics', 0) }}/{{ total }}</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar bg-purple" style="width: {{ (stats.get('with_advanced_metrics', 0) / total * 100) | round }}%; background-color: #8e44ad;"></div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between mb-1">
+                        <strong>All 5 Layers Complete (Ready for RAG)</strong>
                         <strong>{{ stats.get('ready_for_export', 0) }}/{{ total }}</strong>
                     </div>
                     <div class="progress" style="height: 25px;">
