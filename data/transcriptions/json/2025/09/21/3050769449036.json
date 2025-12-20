@@ -1,0 +1,95 @@
+{
+  "recording_id": "3050769449036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:00:58.082397Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:00:58",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence. This is Robin. Hi, Robin. I have a quick question just about if there's an ability to track emails on PCR. I scheduled an email blast to get sent out, and I'm now just – it didn't go out in the time period that I expected it to. Just wanted to – now I don't know where I can see when it's going to go out. Don't want to double-mind it. Let's see. So what is your name? Adrian. financial Hernandez okay with connective services yep And you log into the Connective Services database? Yep. Okay. And then what is your PCR username? ADRIAN. Okay. All caps. all cats was it sent as a mail campaign or like a legacy bulk email uh mail campaign okay so if you go it's a very top right of pc recruiter and click the gear icon would be up like where your user image would be there um you'll go down to background tasks queued for thank you yep I see it thank you so much yeah so these are the ones that are like about to run or currently running that's what's under queued and then under completed will be once they go through and they process perfect I really appreciate it this is so much saves so much time for me yeah that's right and then like then eventually like once at least one person opens it then and after a data Well, then it shows up in your analytics to see, like, how many people opened, replied, and all of that kind of good stuff. Perfect, perfect, perfect. All right. This is exactly what I needed. Thank you so much. Oh, you're welcome. Have a good day. Thank you. You as well. Bye-bye. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1519.791737,
+    "salad_processing_time": 7.792948246002197,
+    "overall_processing_time": 1519.791737,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Hi, Robin.",
+    "job_id": "67f70826-8852-42cc-ba45-9ec5b115d807",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Hi, Robin.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3050769449036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

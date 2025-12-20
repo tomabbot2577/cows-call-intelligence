@@ -1,0 +1,117 @@
+{
+  "recording_id": "3006009554037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:20:10.600643Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:20:10",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hey, how's it going, Garrett? It's Omar. I'm with Stanford Rose KBIC IT, and I need assistance with someone having an issue not receiving invoice emails from PCR. I have taken the steps of verifying that their email alias is signed in, and I did the test, test connection, and it was successful, but they're still not receiving emails, like the invoice test. We did emails to essentially replicate the issue, and she was still having the same issue. Okay. So the email alias is only for outgoing mail. You'll want to set up the mail server to have it monitor inbox and other things for the incoming setup. Are you signed in as that user currently on PCR? Yes, I have her on PCR. Oh, perfect. So at the top right, you'll want to go to the gear icon with the little drop-down menu. It's by the profile picture. and then select email, the first option in that drop-down menu. Okay. That'll open up PCR mail in a new tab. And then at the top left of PCR mail, go to configure, which is another gear icon. Okay. And then go to mail servers. Mail servers, okay. So that is where you would, in the bottom frame, either add a new one or edit the current one if there is one there. And this needs to be connected the same way, like if they have Microsoft, click on Sign In with Microsoft, or if they have Google, click on Sign In with Google. Okay, so I did do test connection, and it says authenticate complete. Oh, good, and there's a green lettering in the test there? Yeah. Okay, so that's the mail server side. So then did you map the folders? Do you know if they're mapped for the sent and trash folder at all? Okay, so I'm looking at email folders. Yeah, email folders up at the top center. And if you look down below, nothing under the personal heading that's at the very top, but they'll have the name of their mail server listed there. Below that, look for sent mail, deleted items, and they should have... I see it says it says system sent items system red items system inbox yeah and it says for personal I want to action delete or edit would I have to are you on are you on the left where it has the folder list or did you click email folders at the top center I clicked email folders at the top center and then And at the bottom, there's like another window tab thing that opened up that email folders. And that says I want to in one column. Right. OK. Column. It was folder name. I see. Yeah. So there'll be one called personal as like a grouping, like a personal heading. Below that, you'll have your next grouping or your next heading. That's probably going to be matching the name of your mail server. so below that within the mail server grouping look for your sent folder is there a sent folder in there yes but I only see yeah there's a whole bunch of folders here but I do see oh hold on sent items sent folder but I'm seeing I'm seeing under the personal cluster, I'm seeing sent items there. Yeah, that one there, you just ignore that one. We only care about the one under the other cluster. So the sent mail folder should say sent folder in parentheses next to it if they've been mapped to each other. Not under personal again, but yeah, under the other one. And then there should be like a trash or deleted items folder under there as well. And that should have deleted folder in parentheses next to it. Okay. Might be trash. It might be called deleted items. Yeah, she has a whole bunch of different folders here set up. So many of them. I only see sent items, but that's like from a different cluster, right? It's just like on its own. It says action, sent items, sent folder. That's the second one. The first one is under that very first cluster. It says personal inbox, read items, sent items, deleted items, block list, drafts. Yeah, so we don't need to adjust anything with the personal. It's only things below that. but yeah okay I see the I see that deleted items I see that I see that have a deleted folder to the right of that in parentheses yes okay so those look like they're mapped in so in her mail server it says sent mail sent folder and then deleted items deleted folders so those are good and then So you're saying that the inbox is not receiving emails here in PCR mail? Yes. So she is doing – I'm so sorry to say this, but I have no idea. She is trying to set up invoice emails, and whenever she does that, I don't quite recall how she did it, but she would do an invoice email, and then it would populate on her Outlook like she said it normally does. Oh, okay. Let's see. Someone's saying email alias is SMTP, just like you said, and then he's asking is she using PCR portal in Outlook or is she using PCR IMAP to collect mail? It looks like she's doing the PCR IMAP to collect mail. Right. since she's not doing it on the actual Outlook app. Right, yes. We were just looking at the PCR IMAP settings under Mail Server, and that's what's tested positively. The folders are mapped. So the IMAP is the method she's using to make sure that emails are appearing in PCR. are. So she's missing emails from like a stent folder or an inbox. Let me see. Okay. So it's looking like global executive solutions group, GESG positions, edit company names. This is where she's at. And then she does edit company names, positions pipeline and then what she will do is I believe she would do a plus on the add new position and then yeah she would do position information she'll type that in and then she'll do save and then it wouldn't populate after she had saved oh so the there wouldn't be a new position created when she creates a new position? Yes. Okay, that's kind of separate from the email. So then at the top right of PCR, try using the quick search to find that position. It might just be that you have to search for it. It might not appear in your recently viewed positions. So my question is, why was she doing that? And why was she saying that it was populating on her Outlook if that has nothing to do with email because I don't really understand PCR as a whole, but I am trying to get it. Based on what she just described, she was just creating a position record in PCR. She wasn't sending any emails out or receiving any emails. It's kind of not related to email. So I'm not sure on the Outlook side how that relates to her, what she just mentioned. She was just creating a position record basically. Right. Right. And what she says is, I'm not receiving invoice request emails. That was all she told me. And she told me that whenever someone tries to send her an invoice request email, she doesn't get it. And then she tried making an invoice test. And I don't know if her trying to replicate the issue by going into the invoice test and creating a new position was actually the right way to replicate to see if she was actually getting, you know, emails and stuff. I don't really know. And I was kind of hoping you could help me, you know. Yeah. Yeah, definitely. So just trying to understand kind of what she's trying to accomplish. So when outside third parties send her an email, it's not appearing in her inbox. Is that the issue? Yes. Yes, so she tells me that whenever she makes a position, it like populates in her email, I guess. Is that accurate? I don't think there's a way for that to – let me see. She creates a position and it sends an email. Let me see if maybe there's some kind of automation available for that. One second. A new position is created. Yeah, it can send a form letter when a new position is created. I see. Okay. So if it's an automation that runs, that sends an email whenever a new position is created, the overall database will need to have the notification email connected and their database database might be disconnected it's kind of a email only for the database not tied to any username so that the database can send just general notification type emails so let's see if she has admin level access, we'll be able to check to see if the overall database email is connected and working. So that will be under system in the main menu. OK. Email set up on the left. And then just hold on. I don't see system on her thing. It would be in the main menu of PCR. You can close PCR mail if you still have that open as a browser tab. They'll be back on the main PCR browser tab. Okay, one moment here. Sure. I appreciate your patience, by the way. Yeah, no problem. So, yeah, if you're looking at PCR mail where you had, like, mail servers and email folders, you can close that entire browser tab, and we'll go back to the other browser tab that has just, you know, regular PCR pulled up. Okay. So system, all I see is my PCR company name, position, rollup, schedule. Oh, if you don't see system, click on the three lines to the right of the main menu. It might not be pinned, but there would be a system there. And then on the left, go to email setup. Okay. And then on the right, does it have outgoing mail settings as an option? What was that again? Outgoing mail settings. Yes. After click. Oh, okay. Click on that. And this is going to be that email address that applies to the whole database. It's not user specific. Hit test connection on the right to see if that's still connected. It is. Okay. So it's testing positive. So that should send out those emails. Let's see. Maybe their automation was adjusted. What is the database that you're in? I can take a look. It is... Hold on. How do I check that? At the top right of PCR is that little profile picture circle. If you hover over it, it'll tell you your username and your database. Okay, it's going to be LSIGEL and then forward slash Global ESG. Okay, Global ESG. Sorry, my computer's running slow today or something. There we go. Okay, I'm logged in. So I'm going to check on that automation to make sure it's still set up for the database. It should be some kind of automation that says a new position is created. Send a form letter. Let's see if that's still working. Okay, awesome. If search type is equal to retained, send new generate invoice. We are verifying that we are receiving mail into the PCR IMAP. This is what we're verifying, correct? Yeah, basically she mentioned something that's related to an automation. You've got to make sure the automation is actually still running and that might be why she's not receiving the email. Let's see. Let's double check a few things. This user, L. Siegel. I'm I'm going to go ahead and turn it off. Je t'aime. Ok, le type de recherche est priorité. Ok. Je vois qu'elle a fait une position d'envoi de test. Ok. Ok. ok et oui oui or et des besoins de green befford et des bateaux ou de l'an d'histoire Ok, je vois... Ok, un seconde. Ok, oui. Je vais prendre un screenshot. All right. I'm going to create a test position inside their database and test this out. Yeah, because we're looking at our inbox and it's still saying no messages from her inbox. Est-ce que vous êtes sur le mail PCR ou vous regardez dans Outlook? Le mail PCR. D'accord. Ça ne dit rien? À la gauche de votre liste de folders, si vous expandez où il dit Office 365, il y a un inbox là-bas qui a des messages de aujourd'hui. 7-7. So it shouldn't be empty. You might not be looking at the right inbox, but... Inbox 7? Yeah, that's the 7 messages unread for that inbox. If you click on that, you should see emails even from today. The top one's from Caitlin Reed. Okay, wait, okay. Okay. Donc, je pense que je vois l'envoi qu'elle a dit qu'elle n'en recevait pas. Elle n'était pas en train de chercher le bon fichier ? Ça pourrait être ça. Je vais faire un autre test. Si vous laissez ça ouvert, je vais créer une position maintenant. Et on devrait avoir quelque chose qui va toucher cet inbox dans les prochaines minutes. Ok. Ok. Ok, donc j'ai créé une position appelée test de soutien PCR. Assurez-vous que c'est là-bas. Il y en a. D'accord, donc selon notre automation, cela devrait envoyer un e-mail dans une minute ou deux ici. Et vous pouvez toujours refaire l'emblée aussi. le haut à droite il y a comme un arbre en rond ou un arbre qui chasse sa tête chose qui va un peu chercher de nouveaux ok je parle de nez oui exactement Greg qui était celui que vous avez fait ? il serait envoyé par non-réplique global est ce qui perd nos dash pour planète global est ce qui est ce que j'ai dit d'un moment et d'autres je regarde le refresh Excusez-moi. Je ne vois rien. Oui, je reste à la référence. Je n'ai pas reçu rien. Donc, je peux... Ce que je vais faire, c'est ouvrir un ticket et ils peuvent inspecter cette automation particulière. Tout le reste est réglé correctement. Son e-mail est connecté individuellement, mais aussi l'e-mail de database qui va envoyer ce type de notification est connecté. Nous avons testé cela. Donc, il peut y avoir quelque chose qui a brûlé avec cette automation particulière. Donc, j'ouvrirai un ticket. Vous voulez que je reçois le ticket sous votre nom ou vous voulez que je reçois le ticket avec vous et le client ensemble? Oui, je pense que sous mon nom, ça serait bien. Je vais avoir un petit téléphone call avec le client. Je ne sais pas vraiment parce qu'il semble que nous avons vérifié tout et il ne semble pas y avoir plus. ok mais je ne sais pas quoi ma chose est comme si je la réunisse et dis que tout est bien réglé tout est bien réglé dans votre côté pcr je suis juste ma chose est comme je ne saurais pas ce que faire si elle vient de la gauche et dit oh non je veux dire j'ai essayé de faire ça pour vérifier que j'avais getting emails but I'm still not receiving emails from people you know what I mean right so basically everything set up correctly but I haven't received an email in her inbox just checking your inbox right now that should have sent so just emails related to this automation might not be sending it it might be broken so it's not I don't think it's a setup issue where she's done anything wrong with her setup, it might actually be a bug in PCR where this automation is broken. So that's why I think the best move would be I open a ticket and talk to our tech team to investigate further. And then I'll just open it under your name, unless you want me to, like I said, I could CC the customer as well. Yeah, if you could, please. Actually, it's going to be lbrewer at g-e-s-g dot com. G-E-S-G.com And L Brewer is B-R-E-W-E-R? Yes, correct. Perfect. L Brewer, G-E-S-G.com. Alright, awesome. Yeah, I'll open up a ticket and get back to you as soon as I talk to the team. Okay, thank you so much for your assistance. Thanks. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 235.56279,
+    "salad_processing_time": 98.25689148902893,
+    "overall_processing_time": 235.56279,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, how's it going, Garrett? It's Omar.",
+    "job_id": "e8e34715-1884-4286-ad23-557d5260cb87",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, how's it going, Garrett? It's Omar.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3006009554037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

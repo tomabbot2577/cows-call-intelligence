@@ -1,0 +1,117 @@
+{
+  "recording_id": "3089145501036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:19:06.571084Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:19:06",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hello. Hi, this is Garrett with Main Sequence Technology. I just received an email that you're having trouble with PC Recruiter. Yeah, I had issues last week where the resumes were going from Monster to my inbox, but then when I tried to inhale into PC Recruiter, then it took all the resumes and put them into the bad folder. And we were able to get that fixed with whoever helped me last time. We were on the phone for over an hour. She finally ended up just completely like uninstalling PCR and reinstalling. And it did work after that where it's been inhaled my resumes into PCR. But now it's not taking any of my resumes from Monster and putting them in my folder in Outlook at all. Oh, okay. So, it seems like there's a couple softwares interacting in what you described, and it might not be the PCR part that's malfunctioning. It might just be the connection between Monster and Outlook, whatever rule or setting you have set up there. Does that sound correct like you said your monster resumes aren't going to the right folder inside of Outlook yeah I don't see them going into any folder anymore so what so what software or what process usually gets resumes for monster into Outlook I I go in Monster and I select my 20 resumes, then I do the forward and I do two is my Outlook email and then I click forward candidates. Okay and so after doing that that's where the problem is it doesn't go to the right Outlook folder? It doesn't go into Outlook at all. I tried looking up the email of some of the resumes and they aren't being taken from Monster into the Outlook email. Okay that kind of seems like beyond the scope of help from PCR support. We're kind of not involved in that part of the process. It seems like we just come along afterwards once they are in Outlook. There's a process we have where we're getting them into your database, but for that, you might wanna talk to Monster support or even Outlook support to see why those two programs aren't interacting. Okay. All right. But yeah, once it gets in there and if there is some issues getting the resume into the PCR database, definitely let us know and we can try to help you out there. Okay, sounds good, thank you. Thanks, have a good one. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 2056.470147,
+    "salad_processing_time": 15.04990291595459,
+    "overall_processing_time": 2056.470147,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hello.  Hi, this is Garrett with Main Sequence Technology.  I just received an email that you're having trouble with PC Recruiter.",
+    "job_id": "47eccf06-48a0-44c9-a797-073a591f9a26",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hello.  Hi, this is Garrett with Main Sequence Technology.  I just received an email that you're having trouble with PC Recruiter.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "resolved",
+    "first_call_resolution": true,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3089145501036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

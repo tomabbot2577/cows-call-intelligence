@@ -1,0 +1,119 @@
+{
+  "recording_id": "3061952233036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:11:05.950677Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:11:05",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling. This is Robin. Hi, this is Amy with RedK. I have a question. I'm sorry, you said your name was Amy with RedK? Oh, okay. Sorry about that. How are you? I'm good. How are you? Good. Happy Friday. Yes, I know, right? So I have a note. I'm like, you know when you make a note so long ago that you don't really remember what your note was about? All the time. Yeah. I'm like, I don't know. I don't know. I don't know. I don't know. I don't know. I don't know. I don't know. I don't know. I don't know. all the time okay so we're going to roll with my note I made to myself here okay um the evidence concerns something about when people are applying like a favor applied multiple times like we've been in this mechanic roles for example and they're applying to these roles that is adding them in to PCR more than one okay now are they applying to the same role no I think it was when they were applying for different roles like it's the same job but like different companies okay so it should be one record like if they were playing to the same role will kind of make it look like they're applying but we don't really tell them that we're kind of ignoring it so they way let's say if somebody was in the database so they're not like oh you're already in here and you're already at stage. So we do do that. Now it could be like if you have the record created and then they go to apply that it would maybe create another record only because we don't want to alert them that they already exist. And I think, I'm trying to remember this though. Please make that a separate little icon. It's just going to have duplicates that you have to merge at some point, but how? Well, let me see what the – do you have an example of a name? I don't, unfortunately. That would have been helpful. My note to myself says, call PCR and ask why when applied to more than one time creates multiple profiles. Like if they've already created their own record and then they linked, it should tell them. And it should just kind of use the same record even though they don't really notice it from my understanding. um let's see like on our back end i think it was creating duplicates so not for the candidate that's a related example um i know and our staff is all light today because some have chosen PTO and some have earned PTO extra because they're doing well. I'm like, I don't even have people to call today. I'm like, am I on? Yeah, because it could be. I mean, there's a lot of variables in it. Like, was the person already created? And then the database would maybe have a different email that it wouldn't even recognize it as the same person. Right. Well, that would be understandable. Otherwise, I believe it should. But if it's like, my name, Amy Nelson, super generic, right? and I'm in the database, and my contact info matches up. Yeah, it should be. I believe you're using the same record. It should put the application tied to my record, but they're saying that it's creating an additional profile. Let's see. Are there key points? Like, as long as A, B, and C match up, we're going to assume it's this person and merge it. Yeah, but I also believe, like, we don't have to be so hard to have an example. I'm not really sure. Should you pick up the existing record, even though they don't, like, may not get prompted to? That's one. I think I need to see an example. Okay. To be able to troubleshoot, to be honest. I think we're kind of such good at writing to help me find one. So, written by a close friend of hers. Let me see. Okay, let me see. here So I can do this. Dr. Taub. Thank you. All right, I asked them for an example. So is that better if I just call back when I have a specific name? Yeah, I'm going to see. I ran a script to see if I can help. They have the same name but maybe a different back-end ID. That might give me some. Would it be okay if I look into this? I don't want to keep you on the phone while I'm coming and hawing over here. That's okay. I'm replying to people. I'm typing and doing some things. Okay, yeah, I'll let you know what I find out. they have the same last name okay yeah let me see what i can find out for you sound good yep all righty i'll let you know what i find thank you i'll let you know if i get a name okay thanks bye",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1827.04353,
+    "salad_processing_time": 40.7186222076416,
+    "overall_processing_time": 1827.04353,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling.  This is Robin.  Hi, this is Amy with RedK.",
+    "job_id": "5d9b8186-ca75-46bc-b52d-5eb0a32d35a6",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling.  This is Robin.  Hi, this is Amy with RedK.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3061952233036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

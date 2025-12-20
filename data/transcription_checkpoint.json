@@ -1,0 +1,8 @@
+{
+    "timestamp": "2025-12-20T00:14:57+00:00",
+    "batch_started": "2025-12-20T00:13:05",
+    "workers": 4,
+    "log_file": "/var/www/call-recording-system/logs/parallel_batch_20251220_001305.log",
+    "script": "/var/www/call-recording-system/parallel_transcriber.py",
+    "restart_command": "source venv/bin/activate && nohup python parallel_transcriber.py --limit 2000 --workers 4 >> logs/parallel_batch_20251220_001305.log 2>&1 &"
+}

@@ -1,0 +1,100 @@
+{
+  "recording_id": "3009726797037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:22:52.134620Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:22:52",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hi, Tyler. I wanted to reach out. Just noticed that my system hasn't been documenting emails, sending an email and just it being tracked in the PCR system. And it's a little unique because I think it's just for, it might be for a few different individuals, but I know it's one on the client side. And I just wanted to reach out. It's been probably taking place for a week, so I just didn't want to get too far with it, all the emails I'm sending, and just see if I could look into that. Yeah, what's your username for PC Recruiter so I could pop in and take a look here? Yeah, company name is Lakeside Search Crew. Mm-hmm. And your username for when you log into PC Recruiter? Username, let me, forgive me. I jogged my memory here. Let me log back in. A username is just under Brooks, B-R-O-O-K-S. That's simple enough. So usually that happens when an IMAP connection goes faulty. If it's easier for you to get in here and steer and look at it yourself, by all means. No, no, the IMAP's working good. I'm in on my side, so. Oh, okay. Do you have like a particular client that you're not seeing the email activity on? Yeah, yeah. I've only noticed this for one. I haven't looked at everyone, but I've been, his name's Mike Kessler, and I can give you spelling on that, but just been dealing with him a lot lately and just noticed probably like a week ago that just wasn't tracking, put a few important emails, you know, kind of copied and pasted them in his profile, if you will, myself, but just wanted, you know, clearly something was off with it. So his spelling, let me see, it's going to be for his name under Michael, and then the last name is Kessler. It's K-O-E-S-T-L-E-R. Yep, I got them up here. So I'm looking at the IMAP here. Let me see. Do you know when the last time you sent him an email was? Yeah, there'd be a few from today. Okay. And the ones that you see, If you're actually seeing the notes, the two I have that say submittal, you know, 625, another submittal on 630, I just put those in myself. You know, so his, for whatever reason, his, it hasn't been importing those, tracking them for probably close to two weeks with him. I'm not sure why. I'm trying to take a look here. Excuse me. Because your IMAP server says it's connected and authenticating. I can even see some emails from today. But the only email I see in your inbox from him is from 528. Let me check the send folder here. Now, do you move emails around at all? I'll put them in specific folders, like the company he's with, Turamo Medical. Some I'll keep in my inbox if they're important. Others I'll just take the ones in the inbox, and most of the sent ones, too, if it's like a client, somebody I want to be able to look back on all of our communication, I'll just put it in a folder under Turamo Medical Corporation in this case. All right, let me take a look here. I'm just trying to find that folder in the IMAP. Thank you. four emails from him, three from yesterday. Is it in like any kind of subfolder? No, just a folder within my Outlook, if that's where. Oh, I found it. I think I see the issue. Let me just double check here. Okay. Okay. So the email address that you've been using to send him emails back and forth is not on the name record. I guess, what do you mean by that? Are you referring to my email, brooks.kishani, or are you referring to Mike's? Mike's email. Okay. So that's why it's not writing the activities to that record. So the email address you have is mike.kessler at termomedical.com. the one that you've been emailing back and forth is just mike kessler at trumo or termo.com there's no medical so the email address that you're emailing has to be on the name record for it to associate the activities with because so since his email address has changed and you didn't update the record that's why it's not writing the activities Oh, gosh, I didn't. That's funny. I got to look at some other. I guess he's the only one within that company that I've been emailing for some time. But I didn't realize that their email changed, that it's no longer Termo Medical, or at least his. Oh, interesting. Okay. So if I. Oh, go ahead. I'm sorry. Yeah, so if you replace it, the next time the IMAP does a sync, it should catch itself up. I would say give it like 24 hours just to be safe. And you think there's a chance, because I just took out the medical in the system, you think there's a chance within 24 hours it will update all the undocumented emails? There's a chance. Sometimes it does, sometimes it doesn't. what we can do is remove the IMAP and re-put it back in to re-sync it. Or, like you said, if you've already documented them manually somewhere else, that way you're... Because when you remove an IMAP and put it back in, that also takes another 24 hours. Okay. So, but it would just be like going forward, it'll catch everything. or we can do that removal and put it back in if it doesn't catch itself back up. Okay. Yeah, I think it's easy enough since it's not multiple contacts because that's what I was worried about. I can kind of catch up with Mike and just do a copy and paste routine and just kind of update it in that sense. Do you think that's probably the best route to take just to not mess with anything else? It's going to be a lot simpler that way. Yeah. It's that way you're not waiting for 24 hours for activities for everybody when we're putting that back in. Yeah. Yeah, no, I like that. And probably the only downside is that I just or I can insert it, you know, when I copy and paste and put the date. But it will just show the only downside is if I do the copy and paste routine, just won't show under the date slash time in the system. It won't show the specific date. It'll just show everything for 7-9, because if I did it today, if that makes sense. So when you add an activity into the database, you can adjust the date and time. Oh, can you? Yep. Oh, okay. I can mess around with that. I've never tried to do that, but okay. Oh, that's good to know. I see. You could even timestamp it to what you need it to be, or even if it's at least just the right day. Okay. Okay, perfect. Well, that is, yeah, forgive me. I just didn't even think to look at the email and make sure, you know, that's the same email that's set in the system there. Just didn't realize they changed it on me. The only reason I thought about it was because they just changed my email here at work. Oh, funny. And so I was like, oh, I bet you that's it. Yeah, that makes me feel better knowing that nothing wrong with the system, no major kink or issues, and just on their end, change the email. And of course, that's why it's not documenting any longer. Yeah, nine times out of ten, if it's just like a specific record that you notice, it's probably something with just that record. Okay. Okay, awesome. Well, I will go ahead and just kind of do that copy and paste routine, and I definitely appreciate the help, Tyler. Yeah, not a problem. If you need anything else, you just let us know. Okay. Will do. Have a good day. You too. All right. Thank you. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 266.376612,
+    "salad_processing_time": 33.99580001831055,
+    "overall_processing_time": 266.376612,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hi, Tyler.",
+    "job_id": "be76e292-a10c-4579-8a2f-95adcb278951",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hi, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3009726797037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "recording_id": "3049187546036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:59:27.023234Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:59:27",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hey, Tyler. How are you today? Good. How are you? Good. Thanks. Can you help me with my database? Just scrub it up and fix a couple of things. Yeah. What's going on? Nothing really. Nobody's using PCR. That's a concern as an owner. But I'll try to change all that if I can. So the company is Pinnacle Search. let's start with that because i've got three different sub we have actually a total of four databases we have our primary pinnacle search that's where everybody's probably listed how many let's i just need a couple of questions here how many users do we have that we pay monthly four at the time. I'm guessing it's five. Yes. Five. It is five? How many people have logged into PCR in the last month? Let me check. I'm trying to get a gauge on usage here, right? Okay. Taking a look at the different usernames here. Well, that's going to be my next question because I don't even see that in my portal. Yeah, so you can check this in the logging options in the database. Well, let me write that down because I'm in the database right now. How do I go to the login options? So I typically just go to system and then in the little search bar in the system, system, you can just start typing login. There's logging option and user logins. That takes you both to the same screen. Well, I typed in login. Is that one word or two? Yeah, logging. L-O-G-G. L-O-G-G. R-N-G. Logging. Yep. User logins. Look at that. and then you not showing me anything well and then once you click it down at the bottom you'll see where it says begin date end date that's where you can set your date range your log action which you can select from the list like the log on okay well i'm on i'm on begin date so i'm going to put oh so 101 we'll go to the beginning of the year. A 101, I guess, to current. And then how do you action that? Because it doesn't actually give you an action. Up in the top right of that bottom half of the screen, there's an options menu and then you'll see the search in there. Yeah, I see it. It's not pinned. That's why. Okay. Search. There we go. Okay. There we go. That's useful. Looks like Rene Greener. Me. All right. Tannen used it once. Yeah, it'll have it broken down by day as well over on the right. Yeah, it looks like... Yeah, it's not a lot of use, is it? Okay. Yeah, I'm seeing a few others from last month, like Connor logged in once. Scott a few times last month. yeah all right yeah they're not using the database all right so I first of all like let me just I need to get access to who were all the users are the first thing and so I'm in the users tab now mm-hmm I'm just gonna go back to the beginning because it only showed it shows two users under the under my system which obviously is not correct right well so each list is broken down database specific so depending on which database you log into that user list may be different all right so for the main pinnacle search one there's two users I believe right so I'm in the pinnacle search one right now and I see eight eight usernames in there. And I see two. All right. So you might want to hear, try logging out, just hit the refresh button. All right. Log out. Yeah. And then that top part before you put in a username and password, we'll show you which database you're logging into. Which database? Yeah, I know about that. Yeah. So I'm logging into the pinnacle search one. And it says there's, when I go up to the system gear icon in the top left, I have two users in there. The number two. Now, when I open that, I have one, two, three, four, five, six. I have eight. Yeah, so that two next to users, that means how many options are in that menu when you click on that spot. Okay, gotcha. All right. All right. So we've got Ankita. We've got Craig Riley. Are they both showing as active? Because we need to delete them. They don't use the system. Let me see. We have HireTool. No clue what that is. We have something named Swappy. Don't know what that is. Are you using SourceWale? Nope. We did at one point. Okay. So that's their API user. That's fine. So what you can always do is you can click on a username in that list. Yeah. and then it'll open there like security options down at the, on the bottom half, you can click that lock icon at security. Now scroll all the way down to the bottom to the security policy section. And you can always check the account is disabled option and then hit save if it's not an active account. All right. So that's, and then will that remove it from the system then? They'll still show in that list. just because it makes it easier to do certain things like search roll-up lists by user, but then they won't be able to access the system because it's a disabled account. Yeah, it's disabled. Like half of these users aren't around. Okay, so that's good. I have set up two sub things as well. What am I trying to say? Subdatabases, Storyteller. I'm eating another coffee here. So the and I need some help with those. OK, so the first one is actually wondering if you can reset the passwords for me temporarily so I can get in. So with password resets, the only way I can do that is I can send you a password reset form. That has to be it has to be physically signed and sent back. All right. All right. Give me a sec. I'll have to, because I'm sure if I dig, I can find. All right. Now, we did go in and did an import with the purpose of having sub databases was to be very specific and unique to the two different brands that we're developing. And to make sure that only clean data goes in there. So my assistant did an import into one of the databases and it didn't import correctly. okay um like so that right there means i'm not happy with it because the whole point was to get it done correctly like on a csv sheet so that we had the first name last name title proper company name and the proper confirmed email address for that individual so that we can build out a really clean database for those sub-brands but it didn't import correctly can you help me delete those names and re-import it correctly or what is my option on that so you can always delete the names and then re-import them if you want help re-importing them we can jump on a call and do it together but we can't just put data into the database for you we we would yeah well we would walk you through doing the import correctly yeah i i'll have it's not a big number but it is important that it goes in accurately in order for me to push out proper usage of this crm tool to everyone right you know half the crm tools out there are not current updated right and maintained and in order to be highly effective and get the use out of this and get the team properly utilizing it um i've got to start with some clean data so that's what i was hoping you know so can you check another can you check the CPA recruiter web database for me and see if there's anything imported in there yet I think that's clean I don't think there's a single thing in there right now and that might be a good one to begin with yeah that one's clean yeah and so that one's that one is clean okay and so if I were to walk through how to do that with you would you be able to you know help me get that thing set up properly yeah like in terms of because I think the other one that the new one called mindset if you're you have access to that you'll be able to see that it's not accurate actually I might be able to log into that myself I just found the I think I just found the... Oh, it doesn't save passwords, does it? Yeah, that's only in the browser. That it would save a password. Just let me go manually type that in. Yeah, looking at that import, I'm guessing that the spreadsheet wasn't set up properly. I would agree. That must have been what we did wrong. That's the biggest thing with those imports is making sure the spreadsheet is the correct format, all the headers are correct before doing the import. That's the biggest piece. Is the spreadsheet cleanup. The mapping part... Do you have the CPA recruiter login password? Okay, thanks, Ben. Okay. Sorry about that, Connor. No problem. All right. So, shoot, I don't know. I'm sure that they must have sent me the login details for the CPA recruiter at one point from you guys. What email address would that have come from? I'm not sure. I would have to check the tickets. All right. Yeah, I don't want to have to fill in another document and request a reset. Like, that just seems like crazy. I get the security around it, but I'm just trying to – there's nothing in that database. So if I were to set it up, the CSV, Tyler, would you have a recommendation or can you send me a doc on how to do that proper? I can work through it if I need to. I can do you one better. We have a whole webinar on the whole import process. Okay. I'll start with that. and I'm trying to do, do, do. So I found the one for the mindset. Let me see if I can, I have the password for that now. Yeah. I'm looking for two, two, two. I should be able to log in. Actually. It's a funny password that looks on it. Not that one. So that would have come from Matt Mueller. Oh, is that okay? I should have it in my email then. Looks like it was from two years ago. Really? Yep. Matt, M-A-T-T-M-U-E-L-L-E-R? Yep. New database. Okay, Matt. It came 0-1-24. Is that right? Yep. 1-24-24. Yeah. Where's the email in there? It doesn't actually say. That's just a form doesn't actually say the Password on it Because he would have sent you the email back once that database was created He did But there's no password And maybe solo Let me try a different lookup. Maybe I just missed it. I got an email from him. I don't see the... Oh, yeah, there it is. Found it. Found it. Got the password here as well. Great. Fantastic. We don't have to reset it. That's fine. That password's fine. If I did want to reset it on my end, I could do that though, right? Yep. Yeah, by going to the system, users, manage users. Okay. All right. Well, now that I have access to it, the rest is just routine stuff to go and start to do an import. But on the mindset one, that's the import that she put in there, that's not working. Like that data has to come out or something. Yeah, you can always just do a blank name search in that database. And that'll show you all the name records that are in there. And you can add them to and then you could add them to a roll-up list and then delete them from there if you need to. If you want to just start completely over. Give me a sec on that. Just give me one sec because I want to try to do that with you on the phone here. Because I don't seem to have a lot of luck with PCR when I'm trying to do stuff. And I'm convinced it's user error. now for some reason it didn't give me the login is my login for that our greener username I should say for mindset my mindset yeah should be admin if you have it oh that's why it didn't work yeah that's why it was an admin account sheet you're right there we go it's getting me in there right now okay And so if I go to the name record and just do a name lookup. Search. I've got 188 names in there. Is that what you're seeing? Let me get back there. I was just sending you that webinar video. Sure. I have nothing else in this. There's no rollups created or anything, I don't believe. Well, if they didn't import, there would be rollups created because you have to import to a rollup list. You are right. There's four. But it looks like they took all the names off of them. Yeah. Okay. Not sure why, but okay. That's what you're right. I'm seeing the 188 names as well. So I would just take those names, put them on one of these roll-ups that exist, and then do a delete on all that? Delete the roll-up and the names? No. So you would go to the roll-up list, click into the roll-up list, select all the results from the roll-up list. And then in the options menu of that roll-up, there will be a delete from database option. Okay, I think I can work through that very quickly then. Tyler, thanks for your help today. I'll go do that now. And if and I'll watch that webinar as well. Yep. If you have any questions, just let us know. Or if we go to do your first import, you want one of us on the call with you. Just give us a call. We'd be more than happy to help. Right. Perfect. I appreciate your time today. Thanks again. No problem. You have a great day. All right. Yeah, you as well. Take care.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1474.937272,
+    "salad_processing_time": 47.19334268569946,
+    "overall_processing_time": 1474.937272,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "job_id": "e9af6a60-241d-4a17-b3a6-6b5ee60267f2",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3049187546036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "recording_id": "3058523802037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:07:12.608073Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:07:12",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hey, Tyler. My name's Jason. I was just working with the – I'm kind of the IT for a customer that uses VCR Recruiter. And he's having an odd issue, and he was told it's not normal, and I'm just trying to verify. It's when he's going – I don't know if you're familiar in like going to roll-ups and doing the details and adding like a phone number and a new email. where you have to hit the populate all fields. Let me take a look here. Who's the customer? ETS Recruit. All right. And who is the user that's experiencing the issue? It is Justin. Let's see. Was it Justin Gibson? Gibson, yeah, yeah, that's it. I'm right. I just want to get in as the user here real quick. Oh, perfect. I thought you could do that. So I could walk through as you're explaining here. All right, so he's going into a roll-up. Yeah, and we did two different ones, and he said the roll-up doesn't seem to matter. But if you hit details, you know, pick, I guess, a person, whatever. and then go to the details. And he would go down to like phone and he'd click the show all fields to add another phone number. And as soon as he went down below to email and hit show all fields, it would pop up and say, hey, you're supposed to, warning, save your data before you lose it. And he's like, it's not supposed to do that, supposedly, is what he was told. Yeah, it's only supposed to do that if you're navigating like away from a screen. That's what we thought. and it wasn't doing that. Let me see here. Hold on just a moment. Hold on one second.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1705.199746,
+    "salad_processing_time": 23.15438222885132,
+    "overall_processing_time": 1705.199746,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "job_id": "107b7fae-d7d0-4076-8313-4c2630e06a02",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3058523802037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

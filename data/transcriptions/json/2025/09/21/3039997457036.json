@@ -1,0 +1,99 @@
+{
+  "recording_id": "3039997457036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:50:51.932912Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:50:51",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Mackenzie. How can I help you? Hi, Mackenzie. My name is Nisha Balwani. We currently use PC Recruiter, and I thought I was calling Chris, but maybe he has since left the company. And I just wanted to see who our account manager was. Okay, sure. Chris, what's the last name? There's multiple Chrises over time. Cyrus, C-Y-R-U-S. Chris Cyrus has left us, yes. he's still in good health he's just not with our company good yeah I got you let me find out for you one second I have kind of a lot of things happening I'm kind of juggling right now I'm going to open up a new tab and log in so I don't lose my progress no worries let me pull up your name real quick the caller ID is helping me spell RCI Technologies? Yes, that's correct. All right. Yeah, Cyrus and James Wise are both gone. You know what? I think I'm just going to send you to the senior who's... We went through a lot of changes over here and people left. We got some new people. So I'm going to send you to Jim Lombardo and he's going to tell you because he's the senior account manager. So he could either he'll either take you on himself or he'll assign you to someone. So let me give you his info. Do you want to do you want to email him? Do you want me to email him on your behalf and see you? Do you mind emailing him on my behalf? Just see me. I don't. It's not urgent. I just know that if I say I'll do it, I won't. I'll forget. Sure. Okay, so your goal is to just find out who the account manager is and then you want to have a chat about something? Yeah, I want to talk about just some features and licenses I might need in the future. Oh, awesome. All right, yeah. Yeah, Jim Lombardo will help you out with that. I will email him on your behalf. What's your email, Nisha? Wait, hold on. Don't even answer that. I'll make sure that this is still good. We have Nisha at rci-technologies.com. Is that still good? Yep, you got it. Yep. Perfect. All right, yeah, I'll email him and let him know you called and wanted to talk to your account representative who is not here and that he should take care of you. Okay, awesome. Thank you so much. You're welcome. Yeah, have a good rest of your evening. You too. Thank you.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1215.332335,
+    "salad_processing_time": 8.385953187942505,
+    "overall_processing_time": 1215.332335,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Mackenzie.  How can I help you? Hi, Mackenzie.",
+    "job_id": "fcd004b3-7599-46f1-92c4-3d83eddb08af",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Mackenzie.  How can I help you? Hi, Mackenzie.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": true,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "urgent"
+    ],
+    "webhook_url": "",
+    "automation_triggers": [
+      "high_priority"
+    ]
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3039997457036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

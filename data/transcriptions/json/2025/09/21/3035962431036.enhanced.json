@@ -1,0 +1,117 @@
+{
+  "recording_id": "3035962431036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:46:59.351825Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:46:59",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hi, Garrett. It's Cliff Rosnack from M-Works. How are you? Good. How are you doing? I'm doing okay. I have a question. I set up a new computer. So in setting up the new computer, I realized I had my RingCentral apps linked in to PCR. I'm downloading the RingCentral app now, but I don't remember how I linked it to PCR so that I could text out of PCR. Is that something you can help me with? Yeah, absolutely. Once you have the program downloaded, you also have to make sure that you have the latest version of Java and PCR launcher installed on your computer. Java. And I can email you direct links to download both of those programs. So I take the link, I click on it, it'll sort of check, and if I don't have the latest, it'll give me the update, right? Basically, the two links will be download links. You'll just click on those to download each file, and once those downloads complete, click on the file to open it to run the installer, which we'll just be hitting next a few times. All right. So I need to do the RingCentral download, which I'm doing as we speak. You're going to send me the Java and PC launcher. Once I get all that installed, then should I call you back? What should I do? Yeah, you could give us a ring back, but the only other step after that would be to open up PCR, go to My PCR in the main menu, and you'll see a ring central status about halfway down the screen. It'll either be in green or in red. You just want to click on it to disconnect, click on it again to reconnect. So I think that'll be the final step there. I can include those instructions as well in the email I'm about to send. All right. Okay, yeah, if you do that, but it sounds pretty simple. So I go to PCR, then I go to MyPCR, and I'm trying to walk through that now. Then in my PCR RingCentral status, I see it as green now. So I want to disconnect and then reconnect. Yeah, I would do that after you have the programs all installed. But then, yeah, that'll just, clicking on it will allow you to disconnect. Clicking on it again will allow you to reconnect. That's it? And then I'll be able to text? Yeah, exactly. All right, that's good. Okay, so yeah, I'll look for your email and I'll give you a try if there are any issues, but it seems like this is a little bit easier than I thought. Perfect. Yeah, just let us know if something comes up that gives you any trouble. Thanks, Garrett. Thanks. Have a good one. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1087.454347,
+    "salad_processing_time": 11.900746583938599,
+    "overall_processing_time": 1087.454347,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "job_id": "e8e89450-610f-4012-8eff-e838210d40ea",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3035962431036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

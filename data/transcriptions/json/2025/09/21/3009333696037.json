@@ -1,0 +1,95 @@
+{
+  "recording_id": "3009333696037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:22:32.367555Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:22:32",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling me in Seasons Technology. This is Tyler. How can I help you? Hi, Tyler. Hey, I was trying to return a call to Garrett. I asked him about changing the name on our database. And then I spoke with Jim Lombardo as well. And then I got something like it looks like a brand-new contract. I don't know what that's about. So let me take a look here. Let me see if Jim is available for you, because he's probably one that sent that over to you. No, Garrett actually sent it over. Oh, was it like a new, like a form? Just a lot of times when there's like database name changes or like a new database, we do have to get something in writing, giving permission for the change. Let me see if he is available real quick. Yeah, it says main technology consulting agreement. That's not what I – I kind of expect it like, you know, people allow me to change my phone type stuff. I don't know why. Yeah, so that consulting agreement is just giving us permission to make the change for you. That's just like our broad statement one. But let me see if Garrett's available here. Okay. One second. So it looks like Garrett is currently at lunch. He should be back in about a half an hour. If you'd like, I can transfer you to his voicemail, and then he can give you a call as soon as he gets back. Yeah, that's fine. I'll just send him an email. Okay. All right, thanks. All right, not a problem. Have a great day. You too. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 257.188155,
+    "salad_processing_time": 5.240350961685181,
+    "overall_processing_time": 257.188155,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling me in Seasons Technology.  This is Tyler.  How can I help you? Hi, Tyler.",
+    "job_id": "bbc35c35-8829-4f6d-9b06-93b399cd78a1",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling me in Seasons Technology.  This is Tyler.  How can I help you? Hi, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3009333696037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

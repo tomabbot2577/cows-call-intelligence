@@ -1,0 +1,397 @@
+{
+  "recording_id": "3099924859036",
+  "analysis_timestamp": "2025-12-19T23:02:08.170938",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Glenn Grayson",
+        "role": "customer",
+        "company": "J. Aaron Associates",
+        "confidence_score": 0.9,
+        "validation_reason": "Clearly identified as customer"
+      }
+    ],
+    "mentioned_contacts": [
+      {
+        "name": "J. Grayson",
+        "role": "user",
+        "context": "having issue with texting"
+      }
+    ],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "support_technical",
+    "CALL PURPOSE": [
+      "troubleshooting texting feature in RingCentral"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "partially_resolved"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Glenn Grayson",
+      "Company/organization name": "J. Aaron Associates",
+      "Phone numbers mentioned": [],
+      "Email addresses mentioned": [],
+      "Key decision makers referenced": [],
+      "Team members and their roles": []
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": "Unknown",
+      "Company size indicators": "Unknown",
+      "Technology stack mentions": "RingCentral",
+      "Current challenges/pain points": "Issues with texting functionality in RingCentral",
+      "Growth stage indicators": "Unknown"
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": "Called Main Sequence Technology previously",
+      "Existing service usage": "Using RingCentral",
+      "Account history mentions": "Recent transition to RingCentral",
+      "Relationship duration indicators": "Unknown",
+      "Trust level indicators": "Positive interaction, able to resolve issue"
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "Technical",
+      "issue_severity": "Medium",
+      "technical_complexity_level": "Low",
+      "time_sensitivity": "Low"
+    },
+    "resolution_tracking": {
+      "issue_status": "Resolved",
+      "resolution_steps_taken": [
+        "Verified user setup",
+        "Checked phone number configuration",
+        "Walked user through troubleshooting steps"
+      ],
+      "outstanding_action_items": [],
+      "next_steps_required": []
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "Low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "Yes",
+      "knowledge_base_gaps_identified": "Yes"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "Effective",
+      "communication_clarity": "Clear",
+      "technical_knowledge_demonstrated": "Adequate",
+      "empathy_and_rapport_building": "Good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "High",
+      "trust_level_signals": "High",
+      "communication_style": "Clear and responsive",
+      "rapport_quality": "Friendly and professional"
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Recently onboarded",
+      "product_adoption_level": "Intermediate",
+      "feature_utilization": "Basic features adopted, learning advanced features",
+      "expansion_opportunities": "Potential for further training and feature adoption"
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Effective problem resolution, product integration",
+      "risk_indicators": "Lack of familiarity with all features",
+      "loyalty_signals": "Positive interaction, willingness to continue using the service",
+      "advocacy_potential": "High if fully satisfied with ongoing support"
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone calls for immediate assistance",
+      "response_time_expectations": "Immediate to short wait",
+      "information_style_preferences": "Direct and instructional",
+      "decision-making_patterns": "Prefers guided decision-making with expert advice"
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "I recently just made a transition to RingCentral, and I called you guys up because that little phone icon next to the phone numbers wasn't working.",
+      "But the text bubbled. I can't use a text part of it. So is there something else I need to do for the texting aspect?",
+      "Oh, so it's not just a single click that I just got to when I go into there. I see.",
+      "I mean this is the first I've had a landline for god knows how many years and I just finally decided to to suck it up and go to uh VoIP phone and so all this stuff is new to me."
+    ],
+    "qa_pairs": [
+      {
+        "question": "Is there something else I need to do for the texting aspect?",
+        "answer": "You'll have to click on one of those phone numbers for the text pop up to appear."
+      },
+      {
+        "question": "Does it open up the, like, add activity window at all?",
+        "answer": "It does open up that activity window."
+      },
+      {
+        "question": "Anything else you've been having trouble with?",
+        "answer": "No, I think that's about it."
+      }
+    ],
+    "searchable_tags": [
+      "RingCentral",
+      "texting issue",
+      "VoIP transition",
+      "phone icon",
+      "admin user",
+      "J. Aaron Associates",
+      "settings",
+      "activity window",
+      "phone numbers",
+      "customer support",
+      "new user",
+      "landline",
+      "integration",
+      "technical issue",
+      "user experience"
+    ],
+    "semantic_themes": [
+      "Technical issues with RingCentral",
+      "Transition to VoIP",
+      "User experience and support"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 55,
+      "Customer talk percentage": 45,
+      "Balanced conversation indicator": true
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 0,
+      "Number of interruptions by customer": 0,
+      "Interruption impact on flow": "None"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 10,
+      "Awkward pauses detected": 2,
+      "Hold time indicators": false
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": true,
+      "Company name mentioned": true,
+      "Verification steps taken": true,
+      "Required disclosures made": false,
+      "Proper closing used": true
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 9,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": "High"
+    },
+    "agent_talk_pct_calculated": 60.6,
+    "customer_talk_pct_calculated": 39.4
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 60.6,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "RingCentral",
+      "texting issue",
+      "VoIP transition",
+      "phone icon",
+      "admin user",
+      "J. Aaron Associates",
+      "settings",
+      "activity window",
+      "phone numbers",
+      "customer support",
+      "new user",
+      "landline",
+      "integration",
+      "technical issue",
+      "user experience"
+    ],
+    "semantic_themes": [
+      "Technical issues with RingCentral",
+      "Transition to VoIP",
+      "User experience and support"
+    ],
+    "key_quotes": [
+      "I recently just made a transition to RingCentral, and I called you guys up because that little phone icon next to the phone numbers wasn't working.",
+      "But the text bubbled. I can't use a text part of it. So is there something else I need to do for the texting aspect?",
+      "Oh, so it's not just a single click that I just got to when I go into there. I see.",
+      "I mean this is the first I've had a landline for god knows how many years and I just finally decided to to suck it up and go to uh VoIP phone and so all this stuff is new to me."
+    ],
+    "qa_pairs": [
+      {
+        "question": "Is there something else I need to do for the texting aspect?",
+        "answer": "You'll have to click on one of those phone numbers for the text pop up to appear."
+      },
+      {
+        "question": "Does it open up the, like, add activity window at all?",
+        "answer": "It does open up that activity window."
+      },
+      {
+        "question": "Anything else you've been having trouble with?",
+        "answer": "No, I think that's about it."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Garrett Komyati",
+      "extension": "5427",
+      "phone": "6145427",
+      "email": "garrett.komyati@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5427"
+    },
+    "primary_customer": {
+      "name": "seeing that as well",
+      "company": "",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "seeing that as well",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "the first",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Glenn Grayson at",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "like",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "working through",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "on that line right now oh okay perfect that worked excellent that worked all right anything else you",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "sending oh",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to try it on my end",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "because",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Garrett",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Garrett Komyati",
+        "extension": "5427",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [
+        "issue",
+        "trouble"
+      ],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "call back"
+      ]
+    }
+  }
+}

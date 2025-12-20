@@ -1,0 +1,112 @@
+{
+  "recording_id": "3013825176036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:26:22.052420Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:26:22",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hey, Tyler. It's Ryan at KVASM. How are you? Good. How are you? Doing well. Doing well. Hey, this new AI feature stuff that you got, what does that entail to get an office up and running if they're interested in using it? So all of the AI features except the AI search are readily available already in every database. With the AI search, it wasn't turned on for everybody just because it does require the Lucene searching index. Okay. So if there is an office that wants the AI search as well, we just have to submit a ticket to get it turned on for them and just make sure that they have Lucene enabled. and if they don't, we just have to confirm that they want the upgrade to Lucene and kick that off, which it can take a little bit if it's a bigger database, just because we have to upgrade them and then re-index their database. Yeah. But we just have to submit a ticket and get confirmation from the contract signer that they requested it. And is all that included in the current plan, or is it an additional? So for the trial, everything's included. Okay. But if they decide to keep it post-trial, then it's an additional cost. Okay. Got it. Okay, cool. That's all I need to know. I appreciate it. Yep, not a problem. You have a great day. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 387.504157,
+    "salad_processing_time": 10.6130211353302,
+    "overall_processing_time": 387.504157,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "job_id": "87adf7fd-4de6-4f48-a5d8-0a4dda331416",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3013825176036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "recording_id": "3090932562037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:20:48.743051Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:20:48",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hi, this is Erin Antonopoulos calling from Electronic Search, and I had a question about emailing out of PCR. Yeah, of course. How can I help you? So one of my users, he tried to hit the little envelope button next to someone's email address to send an email to that person. and he got a little error that said PC Recruiter could not connect to your outgoing email server. Please check system, email setup, email alias list to verify your SMTP server settings and password. Yeah, who's the user? Steve. Is that his username is Steve? Yes. Okay, let me pop in and take a look at his alias. Okay, so yeah, it looks like he hasn't finished setting up his email alias inside of PC Recruiter yet. Do you know who hosts your email? Is it like Office 365 without Look? Is it Gmail? I think it might be Gmail, but I'm not 100% sure. Yeah, let me pop in. What's your username for PCR? are. So I can take a look here. And also when I click on that envelope button, it doesn't show my correct email address as the from email. It shows like an old one that I had used in the past. Okay, so yeah, yours isn't set up properly either. Okay. Is this something that our IT people might know the information? Yeah, they would know who hosts your email. But then once you're inside PC Recruiter to set up your email alias, you go to System, Email Setup, and then Email Alias List. Okay. And you'll see that you have the PC Recruiter email address down at the bottom there. You'll just click the pencil next to it. Okay. And what you'll do is you'll put your from and reply to address, whatever email address is the correct one in both of those spots. And then based on who hosts your email, so like if you use Gmail or Office 365 with Microsoft, you can then do either the sign in with Google or sign in with Microsoft option. And the rest of that will fill out on its own after you follow the prompts to log into your provider. Okay, got it. I'm going to screenshot this and send it to our help desk and see if they can give me the information to plug in there. Yep. So with Office 365 and Gmail, you'll need to use those buttons if they're one of the ones that hosts you. Okay. Because they require a more secure authentication. You won't be able to just type in your email and password into that SMTP user and password. You need to use one of those OAuth buttons. Okay. I will let them know that. And then each user will want to do this. So you'll do it for your username. Steve will have to log in and do it on his end. Okay. Got it. But he'll follow those same steps to get there. Yeah. Okay. Well, thank you for your help. I appreciate it. Yep. Not a problem. If you need anything else, let us know. Okay. I will. Have a great day. You too. Thanks. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 2107.12456,
+    "salad_processing_time": 24.06317710876465,
+    "overall_processing_time": 2107.12456,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hi, this is Erin Antonopoulos calling from Electronic Search, and I had a question about emailing out of PCR.",
+    "job_id": "c3841253-b434-4eb1-b86e-e12a30795863",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hi, this is Erin Antonopoulos calling from Electronic Search, and I had a question about emailing out of PCR.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3090932562037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

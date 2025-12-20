@@ -1,0 +1,138 @@
+{
+  "recording_id": "2994342794037",
+  "version": "2.0",
+  "timestamp": "2025-12-19T17:19:00.143699Z",
+  "call_metadata": {
+    "date": "2025-12-19",
+    "time": "17:18:39",
+    "duration_seconds": 1.224,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 5229
+  },
+  "transcription": {
+    "text": "Thank you.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 0.99,
+    "word_count": 2,
+    "duration_seconds": 1.224,
+    "processing_time_seconds": 12.338624000549316,
+    "salad_processing_time": 2.864678144454956,
+    "overall_processing_time": 0,
+    "segments": [
+      {
+        "id": 0,
+        "start": 0.1,
+        "end": 0.6,
+        "text": "Thank you.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_00"
+      }
+    ],
+    "word_segments": [
+      {
+        "start": 0.1,
+        "end": 0.35,
+        "timestamp": [
+          0.1,
+          0.35
+        ],
+        "word": "Thank",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 0.35,
+        "end": 0.6,
+        "timestamp": [
+          0.35,
+          0.6
+        ],
+        "word": "you.",
+        "speaker": "SPEAKER_00"
+      }
+    ],
+    "speakers": [
+      {
+        "id": "SPEAKER_00",
+        "label": "Speaker_00",
+        "speaking_time": 0.5,
+        "segment_count": 1,
+        "average_confidence": 0.95
+      }
+    ],
+    "srt_content": "1\n00:00:00,100 --> 00:00:00,600\nThank you.\n\n",
+    "summary": "Thank you. .",
+    "job_id": "36b25be5-559f-4c3b-9e71-4887106d4f01",
+    "timestamps": {
+      "started": "2025-12-19T17:18:27.328396+00:00",
+      "submitted": "2025-12-19T17:18:27.328517+00:00",
+      "completed": "2025-12-19T17:18:39.667013+00:00"
+    }
+  },
+  "ai_analysis": {
+    "summary": "Thank you. .",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 1,
+      "total_segments": 1,
+      "agent_speaking_percentage": 0.0,
+      "customer_speaking_percentage": 100.0,
+      "average_turn_duration": 0.5,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "1UCTQJPG4xFep_zw8tZ-bxG1GW9qNH13h",
+    "google_drive_url": "https://drive.google.com/file/d/1UCTQJPG4xFep_zw8tZ-bxG1GW9qNH13h/view",
+    "local_path": "/data/transcriptions/json/2025/12/19/2994342794037.json",
+    "backup_status": "completed",
+    "retention_days": 90
+  }
+}

@@ -1,0 +1,302 @@
+{
+  "recording_id": "3099599204036",
+  "analysis_timestamp": "2025-12-19T22:47:35.643501",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "John",
+        "role": "customer",
+        "company": "BC recruiter",
+        "confidence_score": 0.8,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "account_management",
+    "CALL PURPOSE": [
+      "Follow up on account cancellation",
+      "Discuss early termination fees",
+      "Offer data return"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "customer_identification": {
+      "primary_contact_name": "John",
+      "primary_contact_role": null,
+      "company_name": "BC recruiter",
+      "phone_numbers": [
+        "7653076478",
+        "4408560314"
+      ],
+      "email_addresses": null,
+      "key_decision_makers": null,
+      "team_members": {
+        "Jim": "with PC Recruiter"
+      }
+    },
+    "business_context": {
+      "industry": "Recruiting",
+      "company_size": null,
+      "technology_stack": null,
+      "challenges": "Looking to cancel BC recruiter account",
+      "growth_stage": null
+    },
+    "relationship_mapping": {
+      "previous_interactions": "Got your email the other day",
+      "existing_service_usage": "BC recruiter account",
+      "account_history": "One-year contract signed in May, past acceptance period",
+      "relationship_duration": "One-year contract",
+      "trust_level": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "billing",
+      "issue_severity": "medium",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "medium"
+    },
+    "resolution_tracking": {
+      "issue_status": "pending",
+      "resolution_steps_taken": "follow-up call, email notification",
+      "outstanding_action_items": "awaiting customer response",
+      "next_steps_required": "customer response, potential contract review"
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "none",
+      "knowledge_base_gaps_identified": "none"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "proactive",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "sufficient",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "RELATIONSHIP_HEALTH": {
+      "Overall_satisfaction_indicators": "Low, as indicated by the customer's desire to cancel the service",
+      "Trust_level_signals": "Potentially low, customer may feel trapped by contract terms",
+      "Communication_style": "Reactive, initiated by customer's intent to cancel",
+      "Rapport_quality": "Strained, as customer is considering termination of the service"
+    },
+    "CUSTOMER_JOURNEY_STAGE": {
+      "Onboarding_status": "Completed, as the customer is under a one-year contract",
+      "Product_adoption_level": "Unclear, but possibly low given the cancellation request",
+      "Feature_utilization": "Likely underutilized, contributing to dissatisfaction",
+      "Expansion_opportunities": "Low, given current dissatisfaction and cancellation request"
+    },
+    "RETENTION_FACTORS": {
+      "Satisfaction_drivers": "Not effectively met, leading to cancellation request",
+      "Risk_indicators": "High, customer is aware of and concerned about early termination fees",
+      "Loyalty_signals": "Weak, as the customer wants to cancel the service",
+      "Advocacy_potential": "Low, unlikely to recommend due to negative experience"
+    },
+    "COMMUNICATION_PREFERENCES": {
+      "Preferred_contact_methods": "Email, as customer initiated contact through email",
+      "Response_time_expectations": "Immediate, as indicated by the follow-up call",
+      "Information_style_preferences": "Direct, focusing on contract obligations and termination logistics",
+      "Decision-making_patterns": "Customer-driven, initiated by dissatisfaction and desire to terminate"
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "I got your email the other day that said you were looking to cancel your BC recruiter account.",
+      "I wanted to check in see why what happened if there was something gone wrong or something we were lacking or something like that.",
+      "You are under a one-year contract that was signed in May and you're past the acceptance period so there could be early termination fees applying to that."
+    ],
+    "qa_pairs": [
+      {
+        "question": "Why are you looking to cancel your BC recruiter account?",
+        "answer": "I wanted to check in see why what happened if there was something gone wrong or something we were lacking or something like that."
+      },
+      {
+        "question": "Do you need a data return?",
+        "answer": "I need to know if you need any of the data that's in there."
+      },
+      {
+        "question": "What are the implications of canceling the account?",
+        "answer": "You are under a one-year contract that was signed in May and you're past the acceptance period so there could be early termination fees applying to that."
+      }
+    ],
+    "searchable_tags": [
+      "BC recruiter account",
+      "cancellation",
+      "data return",
+      "one-year contract",
+      "early termination fees",
+      "customer support",
+      "follow-up",
+      "email communication",
+      "contract terms",
+      "customer feedback",
+      "account management",
+      "business agreement",
+      "customer retention",
+      "service issues"
+    ],
+    "semantic_themes": [
+      "Account cancellation and reasons",
+      "Contractual obligations and fees",
+      "Customer support and follow-up procedures"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "agentTalkPercentage": 95,
+      "customerTalkPercentage": 0,
+      "balancedConversationIndicator": "No"
+    },
+    "INTERRUPTION ANALYSIS": {
+      "interruptionsByAgent": 0,
+      "interruptionsByCustomer": 0,
+      "interruptionImpactOnFlow": "N/A"
+    },
+    "SILENCE/DEAD AIR": {
+      "totalSilenceDurationEstimate": 0,
+      "awkwardPausesDetected": 0,
+      "holdTimeIndicators": "N/A"
+    },
+    "COMPLIANCE INDICATORS": {
+      "properGreetingUsed": "No",
+      "companyNameMentioned": "Yes",
+      "verificationStepsTaken": "No",
+      "requiredDisclosuresMade": "Yes",
+      "properClosingUsed": "No"
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "clarityScore": 8,
+      "professionalismScore": 9,
+      "activeListeningIndicators": "No",
+      "acknowledgmentPhrasesUsed": "No",
+      "personalizationLevel": "Medium"
+    },
+    "agent_talk_pct_calculated": 22.2,
+    "customer_talk_pct_calculated": 77.8
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 22.2,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "BC recruiter account",
+      "cancellation",
+      "data return",
+      "one-year contract",
+      "early termination fees",
+      "customer support",
+      "follow-up",
+      "email communication",
+      "contract terms",
+      "customer feedback",
+      "account management",
+      "business agreement",
+      "customer retention",
+      "service issues"
+    ],
+    "semantic_themes": [
+      "Account cancellation and reasons",
+      "Contractual obligations and fees",
+      "Customer support and follow-up procedures"
+    ],
+    "key_quotes": [
+      "I got your email the other day that said you were looking to cancel your BC recruiter account.",
+      "I wanted to check in see why what happened if there was something gone wrong or something we were lacking or something like that.",
+      "You are under a one-year contract that was signed in May and you're past the acceptance period so there could be early termination fees applying to that."
+    ],
+    "qa_pairs": [
+      {
+        "question": "Why are you looking to cancel your BC recruiter account?",
+        "answer": "I wanted to check in see why what happened if there was something gone wrong or something we were lacking or something like that."
+      },
+      {
+        "question": "Do you need a data return?",
+        "answer": "I need to know if you need any of the data that's in there."
+      },
+      {
+        "question": "What are the implications of canceling the account?",
+        "answer": "You are under a one-year contract that was signed in May and you're past the acceptance period so there could be early termination fees applying to that."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Unknown",
+      "extension": "",
+      "phone": "",
+      "email": "",
+      "department": "",
+      "role": "",
+      "employee_id": ""
+    },
+    "primary_customer": {
+      "name": "Unknown",
+      "company": "",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": ""
+    },
+    "all_customers_identified": [],
+    "all_employees_mentioned": [],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "account"
+      ],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "follow up"
+      ]
+    }
+  }
+}

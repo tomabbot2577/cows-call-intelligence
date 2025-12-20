@@ -1,0 +1,112 @@
+{
+  "recording_id": "3017408580036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:30:31.090819Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:30:31",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " This is Robin. Can you hear me okay? Yes, I can. Yeah, hi. My name is Tim Drescher. My company is the Drescher Group. I cut my service off with you guys a while back and paid any outstanding bills I had, and I'm still receiving this $10 bill from you. Okay. Let me check this. There was a couple, somebody was going and trying to fix, like, make sure the people that are out of state had out of state selective protection. I think it might have turned some of those back on. I think they may not have done that right. So let me check yours for you. Bear with me one moment. Okay. So let's see. D-R-E-S-C-H. Yeah, you canceled in May. Yeah, you canceled in May. Okay. All right. So I apologize for that. No, no problem. I just wanted to make sure. Turn it back on. Okay. Okay. Let's see. So let's void that one. It's only $10, but I thought I had canceled, so. Yeah. Let me fix all this. Delete, delete. Okay. I've got it all fixed for you, and I'm so sorry about that. Oh, no problem. Well, thank you very much. You are welcome. Have a great week. You too. Thank you. All right. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 532.839361,
+    "salad_processing_time": 8.262391567230225,
+    "overall_processing_time": 532.839361,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " This is Robin.  Can you hear me okay? Yes, I can.  Yeah, hi.",
+    "job_id": "ccdc6d97-ce9b-4653-a6b7-165c6833e60a",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " This is Robin.  Can you hear me okay? Yes, I can.  Yeah, hi.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "resolved",
+    "first_call_resolution": true,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": true,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3017408580036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

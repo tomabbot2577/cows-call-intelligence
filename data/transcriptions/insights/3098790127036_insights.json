@@ -1,0 +1,402 @@
+{
+  "recording_id": "3098790127036",
+  "analysis_timestamp": "2025-12-19T22:08:09.925049",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Eric Jensen",
+        "role": "employee",
+        "company": "Bowman Recruiting",
+        "confidence_score": 0.9,
+        "validation_reason": "Identified as an employee of Bowman Recruiting"
+      },
+      {
+        "name": "Charles Bowman",
+        "role": "owner",
+        "company": "Bowman Recruiting",
+        "confidence_score": 0.9,
+        "validation_reason": "Identified as the owner of Bowman Recruiting"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "support_technical",
+    "CALL PURPOSE": [
+      "Assist with login issue",
+      "Provide username information"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Eric Jensen",
+      "Company/organization name": "Bowman Recruiting",
+      "Phone numbers mentioned": null,
+      "Email addresses mentioned": null,
+      "Key decision makers referenced": "Charles Bowman",
+      "Team members and their roles": null
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": "Recruiting",
+      "Company size indicators": null,
+      "Technology stack mentions": "PCR, Outlook",
+      "Current challenges/pain points": "Unable to log in due to missing username and password",
+      "Growth stage indicators": null
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": null,
+      "Existing service usage": "Multiple licenses",
+      "Account history mentions": null,
+      "Relationship duration indicators": null,
+      "Trust level indicators": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "technical",
+      "issue_severity": "low",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "low"
+    },
+    "resolution_tracking": {
+      "issue_status": "resolved",
+      "resolution_steps_taken": [
+        "identified username",
+        "explained password access limitations"
+      ],
+      "outstanding_action_items": [
+        "customer needs to obtain password from license owner"
+      ],
+      "next_steps_required": "customer follow-up"
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "none",
+      "knowledge_base_gaps_identified": "none"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "clear and concise",
+      "communication_clarity": "high",
+      "technical_knowledge_demonstrated": "sufficient",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Neutral, as no explicit dissatisfaction was expressed but the issue was not resolved",
+      "trust_level_signals": "Moderate, as the customer followed the process suggested by the company owner",
+      "communication_style": "Direct and clear, customer clearly stated the issue and what was needed",
+      "rapport_quality": "Functional, interaction was polite and to-the-point without additional engagement"
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Active, as the customer is in the process of accessing services",
+      "product_adoption_level": "Low, as the customer has not yet logged in successfully",
+      "feature_utilization": "Not applicable, as the customer has not accessed the product yet",
+      "expansion_opportunities": "Unclear, depends on successful resolution of current access issues"
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Effective support in resolving login issues could enhance satisfaction",
+      "risk_indicators": "High, as inability to access the service could lead to frustration and potential churn",
+      "loyalty_signals": "None observed, too early in the customer journey",
+      "advocacy_potential": "Low, unless the current issues are resolved promptly and effectively"
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone, as the customer chose to call for support",
+      "response_time_expectations": "Immediate, as the issue was addressed in real-time over the phone",
+      "information_style_preferences": "Direct and instructional, as the customer needed specific login information",
+      "decision-making_patterns": "Dependent, as the customer needed to consult with the company owner for further actions"
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "I'm trying to log on to it. He can't find his info. I'm trying to see what you can do to help me out and to log in.",
+      "I don't have the username and password is what I'm saying.",
+      "He works another job and I'm managing the business. So I don't know.",
+      "I don't have access to any user passwords, but I can give you your username if that helps.",
+      "if you do have anything pop up that says, like, license expired or whatever, just let us know. We can reset things and make that pop-up go away for sure."
+    ],
+    "qa_pairs": [
+      {
+        "question": "What's your name and what company are you with?",
+        "answer": "I'm with Bowman Recruiting, B-O-W-M-A-N Recruiting. Okay. And my name is Eric Jensen. His name is Charles Bowman."
+      },
+      {
+        "question": "Are you trying to log in on the browser to PCR, or are you trying to log in on Outlook?",
+        "answer": "Both."
+      },
+      {
+        "question": "Which one is giving you the issue saying that you don't have a license?",
+        "answer": "I don't have the username and password is what I'm saying."
+      },
+      {
+        "question": "What is it?",
+        "answer": "Log in Bowman Recruiting. I have a username called admin, and I have a username CBowman82."
+      },
+      {
+        "question": "Okay, so I've got to get it from him is what you're saying?",
+        "answer": "Yeah. But, yeah, if you do have anything pop up that says, like, license expired or whatever, just let us know. We can reset things and make that pop-up go away for sure."
+      }
+    ],
+    "searchable_tags": [
+      "login issue",
+      "username",
+      "password",
+      "license",
+      "Bowman Recruiting",
+      "Charles Bowman",
+      "Eric Jensen",
+      "admin",
+      "CBowman82",
+      "password reset",
+      "license expired",
+      "Outlook",
+      "browser",
+      "PCR",
+      "user management"
+    ],
+    "semantic_themes": [
+      "User authentication and login issues",
+      "Password and username recovery",
+      "License management and troubleshooting"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 55,
+      "Customer talk percentage": 45,
+      "Balanced conversation indicator": true
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 0,
+      "Number of interruptions by customer": 0,
+      "Interruption impact on flow": "None"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 5,
+      "Awkward pauses detected": 1,
+      "Hold time indicators": false
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": true,
+      "Company name mentioned": true,
+      "Verification steps taken": true,
+      "Required disclosures made": true,
+      "Proper closing used": true
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": "Medium"
+    },
+    "agent_talk_pct_calculated": 60.3,
+    "customer_talk_pct_calculated": 39.7
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 60.3,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "login issue",
+      "username",
+      "password",
+      "license",
+      "Bowman Recruiting",
+      "Charles Bowman",
+      "Eric Jensen",
+      "admin",
+      "CBowman82",
+      "password reset",
+      "license expired",
+      "Outlook",
+      "browser",
+      "PCR",
+      "user management"
+    ],
+    "semantic_themes": [
+      "User authentication and login issues",
+      "Password and username recovery",
+      "License management and troubleshooting"
+    ],
+    "key_quotes": [
+      "I'm trying to log on to it. He can't find his info. I'm trying to see what you can do to help me out and to log in.",
+      "I don't have the username and password is what I'm saying.",
+      "He works another job and I'm managing the business. So I don't know.",
+      "I don't have access to any user passwords, but I can give you your username if that helps.",
+      "if you do have anything pop up that says, like, license expired or whatever, just let us know. We can reset things and make that pop-up go away for sure."
+    ],
+    "qa_pairs": [
+      {
+        "question": "What's your name and what company are you with?",
+        "answer": "I'm with Bowman Recruiting, B-O-W-M-A-N Recruiting. Okay. And my name is Eric Jensen. His name is Charles Bowman."
+      },
+      {
+        "question": "Are you trying to log in on the browser to PCR, or are you trying to log in on Outlook?",
+        "answer": "Both."
+      },
+      {
+        "question": "Which one is giving you the issue saying that you don't have a license?",
+        "answer": "I don't have the username and password is what I'm saying."
+      },
+      {
+        "question": "What is it?",
+        "answer": "Log in Bowman Recruiting. I have a username called admin, and I have a username CBowman82."
+      },
+      {
+        "question": "Okay, so I've got to get it from him is what you're saying?",
+        "answer": "Yeah. But, yeah, if you do have anything pop up that says, like, license expired or whatever, just let us know. We can reset things and make that pop-up go away for sure."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Garrett Komyati",
+      "extension": "5427",
+      "phone": "6145427",
+      "email": "garrett.komyati@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5427"
+    },
+    "primary_customer": {
+      "name": "Eric Jensen",
+      "company": "s your name and what company",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "Eric Jensen",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "saying",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "ve got to get it",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "trying to see what you can do to help me out and to log in",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "managing the business",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "with Bowman Recruiting",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "trying to log on to it",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Garrett",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Garrett Komyati",
+        "extension": "5427",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [
+        "problem",
+        "issue"
+      ],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "call back"
+      ]
+    }
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "recording_id": "2995922399037",
+  "analysis_timestamp": "2025-12-19T18:05:14.533657",
+  "analysis_version": "2.0",
+  "contact_information": {
+    "phone_numbers": [
+      "440-856-0314"
+    ],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Beverly Kahn",
+        "role": "customer",
+        "company": "New Dimensions in Technology",
+        "confidence_score": 0.9,
+        "validation_reason": "Likely a real customer name"
+      },
+      {
+        "name": "Larry Kahn",
+        "role": "customer",
+        "company": "New Dimensions in Technology",
+        "confidence_score": 0.9,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "sales_follow_up",
+    "CALL PURPOSE": [
+      "Follow up on inquiry received through website",
+      "Offer demonstration of PC Recruiter"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "follow_up_required"
+  },
+  "customer_profile": {
+    "customer_identification": {
+      "primary_contact_name": "Beverly Kahn",
+      "primary_contact_role": null,
+      "company_name": "New Dimensions in Technology",
+      "phone_numbers": [
+        "440-856-0314"
+      ],
+      "email_addresses": null,
+      "key_decision_makers": null,
+      "team_members": {
+        "Larry Kahn": null
+      }
+    },
+    "business_context": {
+      "industry": null,
+      "company_size": null,
+      "technology_stack": null,
+      "challenges_pain_points": null,
+      "growth_stage": null
+    },
+    "relationship_mapping": {
+      "previous_interactions": "inquiry through website",
+      "existing_service_usage": null,
+      "account_history": null,
+      "relationship_duration": null,
+      "trust_level": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "sales follow-up",
+      "issue_severity": "low",
+      "technical_complexity_level": "none",
+      "time_sensitivity": "low"
+    },
+    "resolution_tracking": {
+      "issue_status": "resolved",
+      "resolution_steps_taken": "follow-up call and email",
+      "outstanding_action_items": "awaiting customer response",
+      "next_steps_required": "schedule demonstration if customer is interested"
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "none",
+      "knowledge_base_gaps_identified": "none"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "proactive follow-up",
+      "communication_clarity": "clear and concise",
+      "technical_knowledge_demonstrated": "none",
+      "empathy_and_rapport_building": "friendly and polite tone"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Unknown",
+      "trust_level_signals": "Low - initial contact, no established trust yet",
+      "communication_style": "Proactive, direct",
+      "rapport_quality": "Neutral - rapport not yet established"
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Pre-onboarding - initial inquiry received",
+      "product_adoption_level": "None - potential customer",
+      "feature_utilization": "None - no product use yet",
+      "expansion_opportunities": "High - initial engagement could lead to full product exploration"
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Unknown - no feedback received yet",
+      "risk_indicators": "High - customer at early stage, might not proceed with adoption",
+      "loyalty_signals": "None - too early to determine",
+      "advocacy_potential": "Unknown - depends on future interactions and satisfaction"
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone and email indicated",
+      "response_time_expectations": "Immediate - follow-up call made quickly after inquiry",
+      "information_style_preferences": "Direct and informative",
+      "decision-making_patterns": "Unknown - no data on how decisions are made yet"
+    }
+  },
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium"
+  },
+  "action_items": [],
+  "participants": {
+    "primary_employee": {
+      "name": "Jim Lombardo",
+      "extension": "5401",
+      "phone": "6145401",
+      "email": "jim.lombardo@mainsequence.net",
+      "department": "Sales",
+      "role": "Sales Representative",
+      "employee_id": "EMP_5401"
+    },
+    "primary_customer": {
+      "name": "Unknown",
+      "company": "",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": ""
+    },
+    "all_customers_identified": [],
+    "all_employees_mentioned": [
+      {
+        "name": "Jim Lombardo",
+        "extension": "5401",
+        "department": "Sales",
+        "role": "Sales Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "follow up"
+      ]
+    }
+  }
+}

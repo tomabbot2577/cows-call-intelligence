@@ -1,0 +1,106 @@
+{
+  "recording_id": "3084385641036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:16:51.312667Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:16:51",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " You've reached World Bridge Partners of Cleveland. For Brian Doherty, please hit extension 101. For Ben Hess, extension 102. Hello? Hi, it's Robin Mantoni. How are you? Robin, boy, I haven't seen you since a long-ago paysetter trip. I know. It's been forever. It's been forever. Those were fun back in the day. Oh, yes. Now we're old, huh? Now we're old. Nah, come on. Who are we kidding? I try to be young. What's that? I said I try to be young. Oh, so do I at every opportunity, but my body says, who are you kidding? Exactly. Yeah. So let's see. My PNC card, the new expiration date is 08-28. Okay. So let's see. I don't think it won't let me kind of just change a card. What I'm going to have to do is delete it and then redo it. Okay. Let me take care of this for you. Hold on one second. I'm going to – I've got to turn off auto-pay before I can delete it. All right. Okay. Update there. Stored payment method. Now I can delete this one. Okay, and then re-add it. Okay, what is the name on the card? Is it your first name and last name? It is. Okay, and the phone number? I'm sorry, the card number. The card number is 4436-0370-0909-4150. Okay. 4436-0370-0909-4150. Okay. Expiration month and year, you said? 08-28. 08-28. The security number? 737. Okay. And you said 3505 Royalton Road, Robby Heights, Ohio 44147. That's the address associated with the card? I'm sorry, you broke it. What address did you say? It came up as 3505 Royalton Road. Yeah. No, we moved out of there four years ago. We're going to have a home office now. Okay. What's the address associated with the card? It's 8580 Northwood. That's one word. Northwood Drive, still in Broadview Heights. Okay. 44147? Correct. Yep. Okay. Copy that line just to make sure. okay and then I'm going to go over here from that on you want that on for auto pay assume yep mm-hmm okay do date okay and make sure I get that billing address kind of updated everywhere for you okay Thank you. So that portal, it's completely separate from your PCR. You get different usernames, passwords, even in different databases and stuff like that. So that billing portal, if you ever want to use that to update your card or just view your invoices, which you'll have to do the first time, like from an invoice or from that portal link, is click sign up. And you just got to make sure you use your email address because that's what's associated with the billing. and then it'll prompt you to create a password for it, things like that. So your login credentials for the billing portal would not be your PPR. Okay. Yeah, some people that are billing contacts aren't even PPR recruiter users. Oh, okay. And just for security, we would not want to do that. Sure. Okay. So, okay, now I've got all – oh, actually, let me do it one more place on your next invoice. I'm going to just kind of leave the invoice as is at least going forward I'll change those so it has your your address on it okay okay okay I think I got it updated everywhere I need to okay so we'll try the auto pay now. Bear with me, sometimes it takes a moment to actually tell me if it went through. Nothing yet. I'm waiting. I'm sure it'll go through. Yeah, it'll probably go through, and then it'll actually send you like a confirmation by email. Do you want me to just let you know if something goes wrong? Okay. Yeah. If it goes through, you'll get a receipt by email. Okay. All right. Thanks, Robin. All righty. Have a good week. You too. Bye now. Thanks. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1990.669859,
+    "salad_processing_time": 17.559373140335083,
+    "overall_processing_time": 1990.669859,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " You've reached World Bridge Partners of Cleveland.  For Brian Doherty, please hit extension 101.  For Ben Hess, extension 102.",
+    "job_id": "9f818502-f8ec-4476-bb0d-e5695f7b3b84",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " You've reached World Bridge Partners of Cleveland.  For Brian Doherty, please hit extension 101.  For Ben Hess, extension 102.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Billing",
+        "confidence": 0.7
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "billing",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "billing"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3084385641036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

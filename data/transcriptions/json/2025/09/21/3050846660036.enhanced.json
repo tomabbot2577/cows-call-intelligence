@@ -1,0 +1,132 @@
+{
+  "recording_id": "3050846660036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:01:04.014449Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:01:04",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Tyler, hi. This is Lynn Hood calling. Hope you're doing well today. I have got a need, a little bit of a fix on my PC Recruiter account. I've had to do some updates. I had a Microsoft update earlier today, and also I had to have my Geek Squad people clean off, you know, potential viruses and things of that. nature so probably they wiped something that should not have been wiped or maybe there's an update that I need to apply to be able to have access to my PC recruiter account what information do you need from me so all you really need for PC recruiter is the PCR launcher and Java and just your URL to log into your database okay well let's start with step one as far as I know they did a Java update yesterday and the launcher I mean I don't know why they would have taken it off but they could have I mean I guess it's possible but I you're gonna I'm you're I'm gonna an idiot okay when it comes to technology so you're gonna need a like step one would be this step two would be this step through the you you know, that sort of thing with me. Well, that's what I'm saying. Do you have, like, where, all you need is your PCR URL to access PCRecruiter on the web. Oh, oh, oh, I'm so sorry. I do it through Outlook. Oh, okay. So what I'll do then is I will email you the step-by-step instructions. As opposed to you doing it with me for me? Online? I mean, just do it, you know, walk with me. I can schedule a time with you to do it, but I have another call here in about five minutes. Is there anybody else you can hand me off to? Not at the moment. Everybody else is on other calls. Well. I can give you a call back here in about a half hour, like 3.30, actually about 45 minutes. We can walk through it together. Okay. Okay. That'd be fine. Okay. I'm also going to send you this in the meantime here as well, too. Okay. And maybe I'll be able to figure that out. I've just had so many other technical issues going on in the past and another one right now that's cropped up. So it's like, can't get anything to work, it seems like. So, but yeah, if you'll send me that, do you have my email address in front of you? Yep. Lynn at Blakely Hood or do you have BlakelyHood at BellSouth.net? BlakelyHood at BellSouth.net. Okay. Well, I will look for that. And then if you don't mind to call me in a few minutes, that'd be awesome. Yep. Yeah. Let me just jump this down. In the meantime, I can let you know if it works. I'm not hopeful, but I will try. All right. Yep. And then is a good callback number for you, the 404-805-5630? Yes. Perfect. All righty. Well, I will give you a call here right after my meeting. Yeah, like you said, if you get it. Or if somebody else becomes available in the next few minutes, either way. I mean, I know you could do it, but I'm sure there are plenty of other people that are quite capable as well there. We have quite a few people out on vacation and sick today, so we're running pretty thin. I see. Okay. Okay. Okay. Well, just call me when you can, if you will. Okay. Yep. Not a problem. Okay. Thank you. All right. Thanks. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1523.097362,
+    "salad_processing_time": 27.712246894836426,
+    "overall_processing_time": 1523.097362,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Tyler, hi.",
+    "job_id": "5f4699f2-8a85-43b9-a7c7-c54a506b74b4",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Tyler, hi.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [
+      {
+        "type": "SOFTWARE",
+        "value": "PCRecruiter",
+        "mentions": 1
+      }
+    ],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "technical"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3050846660036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

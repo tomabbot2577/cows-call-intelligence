@@ -1,0 +1,102 @@
+{
+  "recording_id": "3017458654036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:30:42.210297Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:30:42",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Oh, hey, Tyler. How are you doing? This is Joe Brown from Genesis. How's it going, Joe? Oh, pretty good, pretty good. I just – I showed you guys a message today through the chat, but I'm not sure if I did it right, went through. I want to get my database data. I'm going to be ending with PC Recruiter, So I wanted to get those like that. Get the data return and all that. So what I can do, let me see. I can get you over to your account manager. They'll be the one that starts that process. Okay. Let me see, because Jim Wise is no longer with us. So your account manager now will be Jim Lombardo. Yeah, Jim finally. He retired. He did. Jim Wise, PC recruiter. Yep. Yeah. Good guy, good guy. Yeah. So your account manager now will be Jim Lombardo. That's with us. Okay, okay. Currently looks like he is on the other line. What I can do is transfer you to his voicemail and also send him an email and CC in you. Got it, that's perfect, yeah. For him to reach out and give you a call. Okay, sounds good. And then can you take a look and see, I've had two business days with you guys. I was just wondering how long I've been with you guys. I was telling someone I think it's been about 10 years. Yeah, it looks like your initial date that you signed was 10-19-2016. 2016, okay. Did you see the art company before? Or just all Genesis? I just see Genesis. Oh, okay, okay, yeah. So maybe a little bit longer because I think art, I'm not sure. But, yeah, I figured about 10 years. So a good run. Do I need to connect with your billing team to, you know, turn off the billing, or how would I do that? So Jim will walk you through that process. Oh, okay. Yeah, he'll be the one that puts in the stuff for the cancellation. Got it. And all that. Got it. Okay, sounds good. Well, so you're going to transfer to his voicemail now? Yep. Yep. Okay. I'm going to transfer you here in three, two, one. Thank you.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 539.846629,
+    "salad_processing_time": 18.044504165649414,
+    "overall_processing_time": 539.846629,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Oh, hey, Tyler.",
+    "job_id": "fab8faad-3b6e-407c-b6aa-320a49ce8ff3",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Oh, hey, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Billing",
+        "confidence": 0.7
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "billing",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": true,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "billing"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3017458654036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

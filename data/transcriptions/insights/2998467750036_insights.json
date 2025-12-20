@@ -1,0 +1,214 @@
+{
+  "recording_id": "2998467750036",
+  "analysis_timestamp": "2025-12-19T18:18:59.986942",
+  "analysis_version": "2.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Bob Leavitt",
+        "role": "customer",
+        "company": null,
+        "confidence_score": 0.9,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "support_technical",
+    "CALL PURPOSE": [
+      "Assistance with using roll-up list feature",
+      "Troubleshooting stage column visibility"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "resolved"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Bob Leavitt",
+      "Company/organization name": "Main Sequence",
+      "Phone numbers mentioned": [
+        ""
+      ],
+      "Email addresses mentioned": [
+        ""
+      ],
+      "Key decision makers referenced": [
+        "Brandon Becker"
+      ],
+      "Team members and their roles": []
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": "",
+      "Company size indicators": "",
+      "Technology stack mentions": [
+        "roll-up list",
+        "stage column",
+        "layout"
+      ],
+      "Current challenges/pain points": "Trying to open up a roll-up list and see the stages of the people, like who I made a second call to, who I didn't call yet",
+      "Growth stage indicators": ""
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": "I thought I just opened up the roll-up list",
+      "Existing service usage": "",
+      "Account history mentions": "",
+      "Relationship duration indicators": "",
+      "Trust level indicators": ""
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "technical",
+      "issue_severity": "low",
+      "technical_complexity_level": "medium",
+      "time_sensitivity": "low"
+    },
+    "resolution_tracking": {
+      "issue_status": "resolved",
+      "resolution_steps_taken": [
+        "identified the issue with the roll-up list",
+        "guided the customer to the configure menu",
+        "explained how to adjust the layout to display the stage column"
+      ],
+      "outstanding_action_items": [],
+      "next_steps_required": []
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "yes",
+      "knowledge_base_gaps_identified": "yes"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "effective",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "good",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "RELATIONSHIP_HEALTH": {
+      "Overall_satisfaction_indicators": "High",
+      "Trust_level_signals": "High",
+      "Communication_style": "Clear and responsive",
+      "Rapport_quality": "Strong"
+    },
+    "CUSTOMER_JOURNEY_STAGE": {
+      "Onboarding_status": "Completed",
+      "Product_adoption_level": "Intermediate",
+      "Feature_utilization": "Partial",
+      "Expansion_opportunities": "High"
+    },
+    "RETENTION_FACTORS": {
+      "Satisfaction_drivers": "Effective support and guidance",
+      "Risk_indicators": "Low",
+      "Loyalty_signals": "Repeated engagement",
+      "Advocacy_potential": "High"
+    },
+    "COMMUNICATION_PREFERENCES": {
+      "Preferred_contact_methods": "Phone",
+      "Response_time_expectations": "Immediate",
+      "Information_style_preferences": "Direct and instructional",
+      "Decision-making_patterns": "Consultative"
+    }
+  },
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium"
+  },
+  "action_items": [],
+  "participants": {
+    "primary_employee": {
+      "name": "Robin Montoni",
+      "extension": "5466",
+      "phone": "6145466",
+      "email": "robin.montoni@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5466"
+    },
+    "primary_customer": {
+      "name": "seeing is select the action column",
+      "company": "m seeing is select the action column, the name of the company",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "seeing is select the action column",
+        "company": "m seeing is select the action column, the name of the company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "got",
+        "company": "m seeing is select the action column, the name of the company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "trying to open up",
+        "company": "m seeing is select the action column, the name of the company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Robin",
+        "company": "m seeing is select the action column, the name of the company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Robin Montoni",
+        "extension": "5466",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": []
+    }
+  }
+}

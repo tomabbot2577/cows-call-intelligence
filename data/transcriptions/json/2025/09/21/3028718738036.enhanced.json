@@ -1,0 +1,112 @@
+{
+  "recording_id": "3028718738036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:42:12.633947Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:42:12",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling me in Sequence Technologies. This is Jason. How can I help you? Hi, Jason. This is Ken Burnett. How are you today? Good. How are you? Alive and well. Here's the thing. I set up sequences, and I guess it's kind of right now, it's a complaint the way your system works. However, when I talk to somebody, you have the option of saying connected and if I do if I hit connected they kind of disappear and I asked about that and someone sent me an email about setting up the sequence so that when I do hit connected they you know I would have to set up another roll-up where they would go to mm-hmm is that correct so when the sequence was set up connected with connected to something inside of the sequence that was routing them somewhere um it would depend on how the sequence was set up um like sequences aren't built by us they're built by users no i understand that yeah um so it would depend on how the sequence was laid out and it would just depend on what connected was pushing to um so if you wanted to have them set up to be added to a roll-up list, the condition for connected in that step would need to route them to a step that adds them to a roll-up list. I don't necessarily want to put them in another roll-up list. I'd like to keep them in the existing sequence, but still be able to find them. Let me take a look at the sequence to see where they went, because connected was going somewhere. I would just need to see where they were going. What's your username? My email address, kburnett at sanfordrose.com. Okay. And what's the sequence? You could look at one called MP Calls. It looks like when the connected condition is hit, they are going to another call immediately, and that happens three times. So step one is a call, step two is a call, step three is a call. After the third step, go ahead. So if I hit connected, they automatically go to the next call. I don't lose them. Yeah, if you connected with them, the way the sequence is set up, it has them going to another call step. But the third, yeah, the third one will have it end. So after three calls, they're done. Yeah, well, that's what I want to kind of do is just keep them in the system. Okay. I was under the impression earlier talking to somebody that they kind of disappeared or they went somewhere, but no one went. But so they're still in there. Yeah, they should still be in there, unless they're in that third call step, which then they would be done with the sequence. Right. And none of them are. Okay. And then I could just find them by first name, last name. Yeah. Is there any way I can find them? Yep. with that, yeah, if I can just call up connected and find the ones I connected to. Let me see. Hold on. Yeah, so if you use activity searching in the main toolbar. All right, so go to the main toolbar. Let's see. Analytics. Oh, hold on. Activities, okay. And in the search criteria, you're going to set a date range. And in the text search to the far right, you're going to type in the word connected, like the result code for sequencing. And then underneath this section, there's a pop out for filters in the filter section, the activity type of sequence. All right. So I'm in activity search. I guess parameters. And what do I hit? Name, position, interview, company. It's going to be name because we're searching for people. And then you're going to set it. Yeah, you're going to set a date range. So however far you want to push it back. Then to the far right, there's a text search box. I don't necessarily see that. I see, is it in the drop-down menu? So we have search params at the top, start date, end date, records per page. You see all that? No. Well, I see search parameters, so drop that down. Oh, okay. I do see start date, end date. Yeah, so you're going to set your start date, your end date. Oh, and then the text search. Yeah, there's text search. You would put in the word connected because that's the result of the – that's the condition from the sequence. Then beneath this, there's filters. Yeah. In the filters section, the activity type is sequence. Okay. It's a large drop-down menu. Select an activity type. So you could just type in that box. You don't have to hit the pop-out. It would just be the word sequence in the activity type field. Mm-hmm. I typed in sequence in another select an activity type list. Oh, okay. Let me try it here. Oh, okay. System generated activity. So you're going to close that window. you don't need to hit the pop-up button for the activity type window at all. You're just going to type in the field sequence. Okay, probably because none are there. Go back to the first. So if you have, do you have that box open that says select an activity type? Is that the window that you're seeing? Yeah, there is. yeah I have in the search parameters I have start date I'll just set up for 7 1 asking me if I want to add an emoji and end date. I'll just put today's date, 50 Rays. Date entered, last name, first name. So you can just skip over. Yeah, I'm just sending what I did. And then I have the start date, the end date, 50 records per page, ordered by, date entered, text search connected. Then I go to the filters. And I go over to activity type. And what do I want in activity type? In the field, you can just type the word sequence. You don't need to use the pop-out button. You can just type the word. All right. I entered that in. And then you're going to hit the search button in the top right corner. Top right corner. It's like a magnifying glass. Oh, yeah. there's everybody okay okay awesome anything else I can help you with now that was it that's just I didn't know how to find these people now it it tells me okay yeah excellent thank you very much yep absolutely have a good day bye you too",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 931.207165,
+    "salad_processing_time": 72.35143232345581,
+    "overall_processing_time": 931.207165,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling me in Sequence Technologies.  This is Jason.  How can I help you? Hi, Jason.",
+    "job_id": "7ef69279-ad64-407e-8c85-3138d76dc031",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling me in Sequence Technologies.  This is Jason.  How can I help you? Hi, Jason.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3028718738036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

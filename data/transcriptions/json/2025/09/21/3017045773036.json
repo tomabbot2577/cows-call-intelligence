@@ -1,0 +1,109 @@
+{
+  "recording_id": "3017045773036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:29:48.475738Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:29:48",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hi, Garrett. My name is Chad Steck. I was calling to follow up on the data return request I had put in a couple of weeks ago. I just wanted to see where we were at in that process and didn't know if that was something you could help me with. I think there's a ticket open on it. Sure. Hadn't heard anything in a bit. Okay. So ticket, ASP, data return, pipeline. Pipeline consulting. Got it. Okay. Payment, received the data return, payment received. Okay. Awesome. Yeah. Yeah. That took about 10 days to get me. I didn't even know I needed to pay for that. So as soon as I got the form, I signed it. And then it was a few days after that, and they sent me an invoice, and I paid it. So, you know. Got it. I've been doing everything I need to do when requested. I'm just just checking to see what we're looking at there from a migration standpoint. Yep. So the tech team has it's been put in their queue of data returns here. I'm just going to add an extra note to say to bump this up and say that you called in. But, yeah, I think we have everything we need from you. We're just waiting on the tech team to actually perform the backup or the data return. Okay. But yeah, I'll put in an extra note just to make sure they know that you are ready and waiting. Okay. That'd be great. Awesome. Awesome. Anything else I can help with today? No, that's it. Yeah, just really just looking to get that because I'm getting asked about it because it's going to take, you know, three to four weeks to map it on the other side and move it. So burning daylight here. So just, yeah, looking to get that moving if we could. So, yep. Makes sense. Okay. Awesome. I will let them know and you should hear back soon. Awesome. All right. Thank you so much. I really appreciate it. Thanks. Have a good one. You too. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 509.023297,
+    "salad_processing_time": 26.22108292579651,
+    "overall_processing_time": 509.023297,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "job_id": "f9291ca9-70a8-4b7d-9a82-9168ff9c72f3",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Billing",
+        "confidence": 0.7
+      }
+    ],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "billing",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": [
+      "follow_up_required"
+    ]
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3017045773036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

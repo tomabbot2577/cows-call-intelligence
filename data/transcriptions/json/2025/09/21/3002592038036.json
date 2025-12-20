@@ -1,0 +1,111 @@
+{
+  "recording_id": "3002592038036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:19:40.966436Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:19:40",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hi, Garrett. It's Ben Williams. Did I call tech support? This is the same number. It'll get you to customers. Yeah. Okay. All right. So I have two questions. Bill Kubicek, is that correct? Am I saying it correctly? Yeah, Bill. I think he's the principal. He called me on the 23rd. I was out of town. I'm trying to return his call. It's about a billing issue. I don't know if you have a way. I tried to call a number back, and it goes to a voiceover that I set up. I didn't know if there's a way to get to him first. And then the other thing is that we still have training hours to be done, and we want to make some changes and some other stuff. So who do I talk to about that? It was Robin, but I don't know if she moved to a different role or not. Let's see here. Let me ask you a question because I know you're a technical support guy. So we moved all of our staffing operations to another company's name. The company's name is Moja. What do we have to do to change the database? Is that a big ordeal or is that just something that can be done on the fly, just change naming and all that kind of stuff? Oh, so you want to rename, like, the dropdown when you sign in to PCR, what database is listed there? Yeah, I can put in a ticket and have our tech team do that. Oh, perfect. So we need to change that. Do you need the address or anything? The URL, I think that you can't really change that part of it, but just the database name when you first log in can be changed. The URL is kind of stuck that way, unfortunately. Oh, okay. So does it, I guess the question is, does it even, because we're going to start, you know, like, like text messaging people and stuff like that. And we want it to come from our Mojo.net domain. Oh, yes. If you're texting, it would be, yeah, the URL to log into PCR won't have any bearing on that. If you're texting, it'll just come from whatever phone number you're texting from. And if you're emailing, you would just set up your, your new emails inside of PCR. so yeah you could you would just be setting up your emails with your new email addresses for each username so when you say setting up emails um can you explain to me what you mean by that like like our users have probitis tech names right now they'll have emails they'll have to have like um different email addresses i'm not sure because right so right now right now i go to URL it's some ww2 PC recruiter and it looks like the points to our database ODBC database for the attack bubble glass that won't change correct right so that's staying the same once you get to the login screen you'll have a different name once I put in this ticket with our tech team when you choose your database and then put in your name oh sure let's say Mojo Incorporated there. Okay. So I just logged in. So where do I get, where do I get the web, the web address? For like, for like, so like when it, let's go to post to our website and stuff like that. So you think inside of PCR, we have a connection to your website called the job board where you can post positions. I would just create a ticket with our web developer to give you whatever you need to get the job board on your new website. So do you already have a new website created? It's in the process of being created, but I want to give it to them now so they can embed the code in, right? Right, the code, exactly. Okay, so I'll talk to Drew. We're going to have a new job board. What's your new website? How do you spell that? M-O-J-A dot net. A dot net. Okay. And so two tickets. So I'm going to have one with the tech team to change the name of your database and then with our web developer to get your job board ready to go for Moja.net. Okay. And then your emails, for each username, you have an email set up where you connect PCR to an email address so you can send and receive email out of PCR you'll have to redo those connections to your new email addresses if you do have new email address so I'm in I'm in the database right now okay okay I'm seeing stationary set up email alias email signature campaign job default all that stuff where do I go and do that is it on the user settings? So there's two things you'll change. The mail server is monitoring all the incoming mail and then the alias will be your outgoing mail. So to adjust both of those, go to the gear icon at the top right of PCR next to the circle that has your profile picture. It's a little gear icon that has a drop-down menu. Then select email in that drop-down menu, the top option. and then that'll open up pcr mail in a new tab at the top left go to configure another gear icon see it and then uh go to mail servers first you'll have in the bottom frame uh the mail servers you already have connected to add a new one we don't go to the oh you don't have any we It certainly don't happen. No. Okay. So, yeah, for your username, you aren't really monitoring the incoming email. It doesn't sound like the right email received activities. But you can connect that up. We definitely want to do that. Okay. How do we monitor that? We want to be able to send and receive emails out of PCR as well. So how do we do that? So, yeah, you're in the mail server section. This is for the receiving end. In the bottom frame, go to the action menu at the top right. It'll have three horizontal lines. And under that, you can see add. Go to add. And then who's your email provider? Is it a Gmail or Office 365? Office 365, yeah. Perfect. Click on sign in with Microsoft, the black button in that pop-up window. You already got it set up. Okay. Yeah, so did it populate the correct email? Every user have to do this? Yes, each user will have to connect their incoming mail and outgoing mail. And I could actually send you step-by-step instructions if that would be more helpful. So all users can kind of follow. That would be good because I wouldn't do that. Okay. Awesome. Okay. No set of instructions. So, yeah, I could just maybe send you those. or do you want to just continue with your username for now? Yeah, I want to make sure I understand it. That's no nice, though. That's pretty cool, so we don't have to do anything about it. So, believe some server know, when it says folder, what do you mean by folder? Is that in my Microsoft inbox, or what is it, the box that we're monitoring? So where is it saying that? So when you clicked on sign in with Microsoft, what appeared on the screen? Description, server name, disable SSL, TLS. my username, timeout, delete, folders, active, save sent emails to our sent items folder, yes. So that must be, okay. The save to sent folder, switch that to no because Microsoft will duplicate the sent items in PCR mail for some reason, so that one goes to no. As long as you have the correct email address that populated for you, go ahead and hit test connection at the bottom. I did that, it came out good. You got green. Okay, you could close that test and hit save. Now, what about the folders? It says all folders. I'm not sure here. Let me do in my database. I don't remember it having a folders option. Yeah, so right next to delete from server, there's a folders option that says inbox, read items, send items, delete items, block items, drafts. I'm guessing that's what it's monitoring. Oh. At the top right where it says server type, what do you have selected? Do you have IMAP SSL selected or POP3? Is there a server type drop down? No, I just logged into Microsoft. I'm guessing it will be – what is that? That's just an exchange. Oh. Yeah, we might have to schedule a time to walk through the setup together on like a screen share meeting because I'm not sure that really looking like you're getting the same options that I'm seeing here. So, yeah, let's do this. Well, first, I'll send you the email setup instructions and get those two tickets created, one for the job board, one for the changing of the name of the database. and then once I send you that email just respond that we want to maybe set up a time to go over it together if you're having trouble with the instructions okay and then it did the type it did give us was pop three just so you know when I once I saved it it gave me folders blank activity yes so the server type has to be IMAP SSL so the pop three is the wrong one that's my might be why it looks different. Do you have the option to switch POP3 to IMAP SSL? I don't. Once I log in to when I sign in with Microsoft, it just doesn't fill everything in for me. Right. Yeah. So it should fill in everything, but hopefully you would be able to choose in a dropdown IMAP SSL instead of POP3. But if you can't, it might be that you don't have IMAP as part of your account and at that point oh yeah no you do you wish I should welcome for probitis technology that is I map so when you click on pop 3 is there like a drop down to the right of that I have to go and edit it okay go ahead and it closed on this don't save it just close out of this pop-up window I did. Okay. And then go to the plus sign again at the top right to add in a mail server. And then before you click on sign in with Microsoft, see if you can get it to say IMAP SSL instead of POP3. I only have – I don't have it. I don't have anything to do that. I'm using my password, timeout, delete from server, blah, blah, blah, blah. Gotcha. All right, let me log in as your username. What's your username on PCR? B. Williams. B. Williams. All right, gotcha. Oh, wait, it drug all my emails in here. Let's see. Email, configure, mail server, action edit. Okay. Okay. Yeah, you don't have that. That's strange. Let me check your database settings here. I'll go in as the admin. Yeah, you definitely have IMAP as part of your account. So somebody might have forgot to turn that on or something. So I'll just turn it on for you right now. I know the code to do that. Let's see. Where are we? So this is going to pull all my emails coming to that address. Yeah, that'll bring it into PCR mail where it can scan and start writing activities when you send and receive emails. Let's see. Yeah, so that's been turned on for your database. So if you just want to click on or exit out of whatever pop-up window you're on. And if you go to, let's see, let me log back in. go to the bottom frame. There's a little action drop down to the left of the email, the email server you just created. You're going to want to delete that one so we can get you the correct one. So hit configure again? Yeah, go to configure, then to mail servers, and in the bottom frame it'll have the one you just created. Use the action drop down to the left of that to delete it edit or delete yeah and that might take a while to kind of fully delete then to add a new one in click the plus sign at the top right of the bottom frame okay now the emails such as erase all these emails right yeah we're just getting rid of of the connection, the pop connection. It was the incorrect type of connection. So you can delete that whole mail server. And then add the new one. I see it right now. IMAP SSL is probably the one it should be, right? Yeah, that's the right one. So now when you click on sign in with Microsoft, it'll fill in all the fields again correctly. And the only thing you need to change is at the bottom where it says save sent email to send items folder. Switch that to no. And I'm doing the IMAP with SSL, correct? Correct. Yeah. Now, why wasn't it there before? Will the other users have this problem? No, I've changed your database to have IMAP as an option. It must have been missed by our tech team when setting up your database, but it's part of the package you pay for, so that will be already set up. Okay. So, yes, sign in with Microsoft, change the save sent to no, and then test connection at the bottom. And we're hoping for green lettering somewhere in the test results. All good. Everything's good. Good. Okay. Close that and then hit save. Okay. I did that. Okay. And then we want to go up at the top there. There's going to be alias address list as well. Click on that. Under configure? Yeah, under configure. And alias address list. Then in the bottom frame, click the pencil icon to edit the alias that's down there. And click on sign in with Microsoft again. Okay. Put all my Mojo stuff in there. Yep, yep, yep. And then reply to is probably blank. You're going to want to copy the from address on the left and add in the reply to address on the right. Okay. And then below that where it says IMAP server, use that dropdown to select the mail server you just created so that outgoing and incoming are kind of connected to each other. Okay. And then delay between emails at the bottom left, set to 3,000. This will put 3,000 milliseconds or three seconds in between your outgoing bulk. mail just as a contributing to a better reputation keeping out of spam and then hit test connection at the bottom and hopefully you get green and then close that and save okay okay so those are the two connections you make incoming and outgoing you just basically clicked on the sign-in with Microsoft then at the top center go to email folders okay in the bottom frame go to the action menu the three horizontal lines and select set sent folder okay and that'll open a pop-up window in that pop-up window it'll say office 365 From that point on downwards, look for your sent folder. It's probably called sent items. Oh, I see what it's doing. Okay. And when you find sent items, it might be even alphabetical. I'm not sure. But when you find sent items. It's actually above under systems. So above inbox, read items, sent items, delete items, block items, drafts. So that's going to be under the personal heading? You need to find it under the Office 365 heading, not under the personal heading. You'll probably have to scroll down to the bottom to get to the sent items. Ah, there it is. Okay. And then to the left of that, use the action dropdown to set sent folder. Mark as set folder? Yeah, perfect. And then you can close that pop-up with the X at the top right. And we got to do that for one other folder. So stay in that bottom frame, go to the three horizontal lines and go to set trash folder. Just delete it. No. So did you click on set trash folder under the three horizontal lines? Yeah, so then in that pop-up, start at Office 365, downwards, look for deleted items. And we'll do, when you find the deleted items, to the left, go to action and set as trash folder. Okay. And then you could close that pop-up. So what we did is we mapped PCR to those folders. So PCR knows which one's your sent folder to scan it and which one's your trash folder. And then the final thing we'll do to get you set up is go to preferences up towards the top. OK. And then in the bottom frame, go to activities on the left. It's a double word bubble icon. OK. The first drop down should. Yeah, click on it. The first drop down should say yes. And the second one should say from subject body. Switch those. And then go to the three lines at the top right of that frame and hit save. Floppy disk icon. Okay. So you're all set up. It'll take up to 24 hours to fully sync up when you first set up a mail server like that. But you can send and receive emails from PCR Now and it'll record all the activities as you do it. Once again, I'll send instructions on how to do that so that other users can do it. Right now, I'm actually five minutes late to a meeting training another customer. But let me transfer you over to billing. You opened up kind of saying that you wanted to get a hold of the billing department. Is that still something you can help you with? Well, Bill, I forgot his last name. I'm returning his call. But ultimately, I need to know, do you do the training now? There's a couple trainers. Yeah, I'm one of the trainers, yep. Okay, so can we schedule some time to go through the rest of our training and set up? Can I send you an email when we want to set up? That depends if you have training hours available still on your account. We do. We only use like two or three. Okay, let's see. Hold on, I don't want to mess your meeting up. You want to call me back after your training and we can square it up? Yeah, yeah. I'll send you that email with the instructions for email setup, and I'll just mention in there about what training is still available and check your account for that. Okay. Okay. We can talk a little bit later today then, right? Yeah, most likely. I'll send you an email if we run out of time. We could just correspond via email. That sounds good. Yeah. I will talk to you soon after this meeting here. But, yeah, look out for an email from me in a little bit. Will do. Thanks, Gary. Thanks. Take care.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 234.257502,
+    "salad_processing_time": 105.05488467216492,
+    "overall_processing_time": 234.257502,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "job_id": "4c7e5622-6000-4584-92aa-af65ab4a312a",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Billing",
+        "confidence": 0.7
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "technical",
+      "billing"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3002592038036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

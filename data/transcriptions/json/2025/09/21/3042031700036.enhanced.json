@@ -1,0 +1,117 @@
+{
+  "recording_id": "3042031700036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:52:44.598621Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:52:44",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Yes, my name is George Smith. I'm with GBR Smith Group, and we're based in Walnut Creek, California. And I have a question regarding my setup, where you can help with this. But my printer is not connecting with my computer, not getting a signal for printing. and I wonder if you could give any advice on that. I know you can click on device printers, and it shows the printer that I have with HP Laser Printer. But any thoughts on that? That one's a little tough, because we're the support line just for PC Recruiter. Right, that's right, yeah. Okay. Yeah, you guys have been really good about helping with issues. Well, let me skip to another one then that might be more on the target for you guys, your area of expertise. When I set up a call, I use the PC Recruiter system to set up a call with a client or candidate. and there's a step in there to give an alert in advance, like I usually do an hour or two in advance of a call, but that's not working and that doesn't show up anywhere until it shows up after the call, but not before the call. Do you ever run into that issue? So with that one, you need to make sure that you have the launcher running, like the PCR launcher. that's what controls those alarms right um so pcr launcher okay yep so that's what'll trigger those alarms do you leave your computer on overnight a lot of times yes so what can happen is that launcher can get frozen if you're leaving your computer on for too many days in a row and that can affect those alarms showing up on time okay so i just recommend shutting your computer down at night so that way you get a fresh launcher session every day okay okay and then with your shutting it down yep then with your printer you said it's you're finding the device yeah i just go to on my laptop hdn hp uh that um you can go to printers and devices, and it pops up, yes, as being in the system. And what happens when you try to print to it? I get an error message that, I forget the exact language of that, but basically it just says that the printer is not connected to the computer. Okay. You may want to reach out to, do you know what type of printer it is? Yeah, both the computer and the printer are HP devices. So what can happen sometimes is even if it's detecting a printer, is there might be certain drivers that you need to install on your computer for it to connect properly. Right. and HP would be able to tell you exactly which drivers there those are for your specific laptop and for your specific printer okay and once those drivers are typically installed it'll connect properly yeah okay I'll just go through like an HP helpline then for that. Yeah, they have a pretty responsive chat on their website as well, if you wanted to go that route too. Okay. All right. Well, I appreciate your help. Thank you for taking my call. Not a problem. You have a great day. You too.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1275.300369,
+    "salad_processing_time": 19.701540231704712,
+    "overall_processing_time": 1275.300369,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Yes, my name is George Smith.",
+    "job_id": "568f8195-8014-4ced-ae0f-019a97e94d9c",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Yes, my name is George Smith.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3042031700036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

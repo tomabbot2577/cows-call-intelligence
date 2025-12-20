@@ -1,0 +1,481 @@
+{
+  "recording_id": "3100780640036",
+  "analysis_timestamp": "2025-12-19T23:49:57.269865",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Kate",
+        "role": "customer",
+        "company": null,
+        "confidence_score": 0.9,
+        "validation_reason": "Clearly identified as customer"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "training",
+    "CALL PURPOSE": [
+      "conducting training session",
+      "introducing trainer to user"
+    ],
+    "URGENCY LEVEL": "low",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Katherine Gahl",
+      "Company/organization name": "Mountaintop Search",
+      "Phone numbers mentioned": null,
+      "Email addresses mentioned": "k.gahl@mountaintopsearch.com",
+      "Key decision makers referenced": null,
+      "Team members and their roles": {
+        "Jason": "Trainer for PC Recruiter",
+        "Katherine's husband": "Will join as an additional user"
+      }
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": "Humanitarian aid",
+      "Company size indicators": "Anticipating adding additional users in the next 12 months",
+      "Technology stack mentions": {
+        "CRM/ATS used": "Kindful, Bloomerang, and an unnamed HIPAA-compliant system",
+        "Operating system": "Mac",
+        "Browser": "Chrome",
+        "Email provider": "Microsoft Exchange"
+      },
+      "Current challenges/pain points": null,
+      "Growth stage indicators": "Intending to have a website, but it is not complete yet"
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": null,
+      "Existing service usage": "Using PC Recruiter and Dimensional Search",
+      "Account history mentions": null,
+      "Relationship duration indicators": null,
+      "Trust level indicators": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "feature_request",
+      "issue_severity": "low",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "medium"
+    },
+    "resolution_tracking": {
+      "issue_status": "resolved",
+      "resolution_steps_taken": [
+        "Scheduled training sessions",
+        "Provided information on training process",
+        "Confirmed user's email and browser"
+      ],
+      "outstanding_action_items": [
+        "Send meeting requests to user",
+        "Verify user's email address"
+      ],
+      "next_steps_required": [
+        "Conduct training sessions",
+        "Follow up with user after training"
+      ]
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "none",
+      "knowledge_base_gaps_identified": "none"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "effective",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "adequate",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "High, as the customer is actively engaging and scheduling training sessions.",
+      "trust_level_signals": "Moderate to high, as the customer is willing to proceed with training and provide personal information.",
+      "communication_style": "Direct and clear, with a structured approach to training and scheduling.",
+      "rapport_quality": "Good, with friendly introductions and a clear understanding of roles and responsibilities."
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Active, with initial setup and training sessions being scheduled.",
+      "product_adoption_level": "Early, as the customer is new to the system but has prior experience with similar tools.",
+      "feature_utilization": "Not yet applicable, as the customer is in the early stages of training.",
+      "expansion_opportunities": "High, as the customer anticipates adding more users in the future."
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Effective training, clear communication, and responsive support.",
+      "risk_indicators": "Potential scheduling conflicts and the customer's availability due to other commitments.",
+      "loyalty_signals": "Customer's willingness to engage in multiple training sessions and provide direct feedback.",
+      "advocacy_potential": "Moderate, depending on the success of the onboarding and training process."
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Email for scheduling, phone for direct communication during training.",
+      "response_time_expectations": "Prompt, as evidenced by immediate scheduling and adjustments.",
+      "information_style_preferences": "Structured and detailed, focusing on practical setup and usage.",
+      "decision-making_patterns": "Customer makes quick decisions regarding scheduling and training pace."
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "Permanent placement",
+      "Humanitarian aid",
+      "I have worked with Kindful, and I currently work with Bloomerang",
+      "My husband will come with me",
+      "I have lots of experience working with CRM"
+    ],
+    "qa_pairs": [
+      {
+        "question": "what type of recruiting are you anticipating doing? Like permanent placement, contract placing?",
+        "answer": "Permanent placement"
+      },
+      {
+        "question": "what industry or niche are you going to be focusing in?",
+        "answer": "Humanitarian aid"
+      },
+      {
+        "question": "have you worked as a recruiter before?",
+        "answer": "No"
+      },
+      {
+        "question": "Have you worked with an ATS or a CRM before?",
+        "answer": "Yes. I have worked with Kindful, and I currently work with Bloomerang"
+      },
+      {
+        "question": "In the next 12 months, are you anticipating adding any additional users?",
+        "answer": "Yes. My husband will come with me"
+      },
+      {
+        "question": "how quick do you think you want to go? Like, how many trainings a week do you think you could handle?",
+        "answer": "I have lots of experience working with CRM"
+      }
+    ],
+    "searchable_tags": [
+      "Zoom meeting",
+      "PC Recruiter",
+      "training",
+      "permanent placement",
+      "humanitarian aid",
+      "ATS",
+      "CRM",
+      "Kindful",
+      "Bloomerang",
+      "HIPAA",
+      "user addition",
+      "training sessions",
+      "dimensional search",
+      "recruiter experience"
+    ],
+    "semantic_themes": [
+      "Recruitment training setup",
+      "User experience with CRM systems",
+      "Planning for additional users",
+      "Training session scheduling",
+      "Industry-specific recruitment focus"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 60,
+      "Customer talk percentage": 40,
+      "Balanced conversation indicator": "Moderately Balanced"
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 2,
+      "Number of interruptions by customer": 0,
+      "Interruption impact on flow": "Minimal"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 10,
+      "Awkward pauses detected": 1,
+      "Hold time indicators": "None"
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": true,
+      "Company name mentioned": true,
+      "Verification steps taken": true,
+      "Required disclosures made": true,
+      "Proper closing used": true
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": "Moderate"
+    },
+    "agent_talk_pct_calculated": 81.2,
+    "customer_talk_pct_calculated": 18.8
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 81.2,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "Zoom meeting",
+      "PC Recruiter",
+      "training",
+      "permanent placement",
+      "humanitarian aid",
+      "ATS",
+      "CRM",
+      "Kindful",
+      "Bloomerang",
+      "HIPAA",
+      "user addition",
+      "training sessions",
+      "dimensional search",
+      "recruiter experience"
+    ],
+    "semantic_themes": [
+      "Recruitment training setup",
+      "User experience with CRM systems",
+      "Planning for additional users",
+      "Training session scheduling",
+      "Industry-specific recruitment focus"
+    ],
+    "key_quotes": [
+      "Permanent placement",
+      "Humanitarian aid",
+      "I have worked with Kindful, and I currently work with Bloomerang",
+      "My husband will come with me",
+      "I have lots of experience working with CRM"
+    ],
+    "qa_pairs": [
+      {
+        "question": "what type of recruiting are you anticipating doing? Like permanent placement, contract placing?",
+        "answer": "Permanent placement"
+      },
+      {
+        "question": "what industry or niche are you going to be focusing in?",
+        "answer": "Humanitarian aid"
+      },
+      {
+        "question": "have you worked as a recruiter before?",
+        "answer": "No"
+      },
+      {
+        "question": "Have you worked with an ATS or a CRM before?",
+        "answer": "Yes. I have worked with Kindful, and I currently work with Bloomerang"
+      },
+      {
+        "question": "In the next 12 months, are you anticipating adding any additional users?",
+        "answer": "Yes. My husband will come with me"
+      },
+      {
+        "question": "how quick do you think you want to go? Like, how many trainings a week do you think you could handle?",
+        "answer": "I have lots of experience working with CRM"
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Jason Salamon",
+      "extension": "5432",
+      "phone": "6145432",
+      "email": "jason.salamon@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5432"
+    },
+    "primary_customer": {
+      "name": "Jason",
+      "company": "you",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "Jason",
+        "company": "you",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "pretty booked out the rest of the week",
+        "company": "you",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to turn everything over to him to run through the questions that he has for you",
+        "company": "you",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "in Eastern",
+        "company": "you",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "who is also on the call",
+        "company": "you",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "still here",
+        "company": "you",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "still working full time",
+        "company": "you",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "so sorry",
+        "company": "you",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to be handling all of that training stuff with PC Recruiter",
+        "company": "you",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "know who to talk to about anything you need",
+        "company": "you",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "all good",
+        "company": "you",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to send over some meeting requests to you for these",
+        "company": "you",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "get to do Wednesday",
+        "company": "you",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "glad we have you",
+        "company": "you",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "using Chrome right now",
+        "company": "you",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "still",
+        "company": "you",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Jason Salamon",
+        "extension": "5432",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "training"
+      ],
+      "mentioned_issues": [
+        "problem"
+      ],
+      "urgency_indicators": [],
+      "follow_up_mentions": []
+    }
+  }
+}

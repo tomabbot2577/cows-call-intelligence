@@ -1,0 +1,117 @@
+{
+  "recording_id": "3008181229036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:21:17.110443Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:21:17",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hello? Can you hear me? Am I muted? No. Are you muted? Hello? Hello? Hello? Can you hear me all right? Hey, RingCentral. if I like unplug my microphone or anything happens, I just can't find it when I plug it back in. Okay. Anyway. All right. Yeah. Sorry about that. And a proud music, right? But, but, yeah, okay. Okay. So we have one Oh one three Oh two, right? There it is. Yep. Yeah. Let's look at it. funny you guys in that meeting were telling me to be like tell them all this tell them all that tell them all this and there was like a message earlier to a different client that i actually typed all that stuff out and i was like man this just feels like i'm just like berating them for being dumb so i was like i just deleted half of it and just left it as like this is how you change it for other users in the future and that was like my passive-aggressive way of saying like There you go. Your responsibility. Yeah, I like that. That was a good way to put it. Yeah, I'm convinced now my role in customer support is just education so that I can learn these people so that they stop calling in. Yeah, you have so much patience. And so I'm like, dude, screw these people. Like, I'm like, all right, hold on. The ticket started off as being like, add a database. And I'm like, oh, easy, cool. They like want a database. I got it. I add it. And I'm like, hey, I added your database. Here's the credentials or whatever. Here's how you log in. Boom. Cool. And then they're like, cool. Can you copy the layouts? I was like, here's how you copy layouts. And they're like, what if I have custom fields? And I was like, that's a great question. And I was like, shit, dude. there's no easy way to copy custom fields from like old database to new database so i was like i was like fine so i like i made an insert into statement like and i copied all their old custom fields into their new day oh nice which is actually six different sql statements because you have to do company name position and then there's also there's like the there's like the field itself and then like the default values so i had to do all that and then i was like okay i copied them over for you like hooray i was like so now you could use those instructions i sent you to uh you know to copy that over and you'll be good and they're like cool thanks and then she's like i listened to your instructions and it didn't work and i'm like dude i know you did it i i tried it in my database it worked and i was like all right i'm gonna try this one time in their database and if it works i'm gonna be pissed so i tried it and i did it i did exactly what my instruction set and i copied it and it worked and i was like hey uh i copied it for you you must have missed something there you go like make sure to follow all the instructions exactly when doing it in the future and then i was like then after that it was like i had like four more sentences where i'm like it's not my responsibility to do this you know i'm like trying to like explain like why i'm not just doing it and then i'm like it just feels so like i'm just being like i'm like being mean almost so i just deleted that second half part and just like this is how you do it in the future and then she's like thanks for your help it's like screw you didn't want to do it like i know you know you didn't try that right dude i i've just been resorting to like here's the link to the learning center article i just push that so hard so people start getting the idea hey i don't have to pick up the phone and call you twice a day i can actually go to the learning center that's what i well that that was that was what i did with the second one that i brought up yeah i like that where i was like here's the learning center articles there's different ways you can do it like figure it out and then they're like can you do it oh it's like no i don't have one guy like there's thousands of you guys i can't just sit there and do your job yeah right back and call anyway all right all right frustrations over brian dunn okay yeah so let me wrap my head again around this i know what to do right it's okay right so i just had to clarify one thing about this so do you know that like all those bounces like were like false bounces that's why you're just like so gung-ho about removing them because i was like hold on like why are they there in the first place is it like did they have like a bad send where like everything was like falsely bounced? Yeah, I believe they were sending out too many emails at once and Microsoft penalized them. And, you know, like anything they sent out in that hour or wherever the time limit was, maybe even for that day, just started coming back as bounces because they hit their limit of sending with Microsoft. So once that time expired, where they were in their little time out corner with Microsoft, then they could probably send to these people again, but now they've been added to our opt-out list automatically. Okay. All right. Well, let's take a look. Do you want to work on it together and just go from start to finish? Sure. Resolve it. Can you start a screen share in RingCentral? Because I don't know how to do that. I use Google Meet. I'll show you how there's a or wait we're just on a call I'm like looking for the button we're not on a video call here let me start a meeting up here can you like transition it over I'm sure there's a way can you give a bottom surgery let's see okay so I'm in a meeting I'll just give you the link in discord just click there to join it and then we'll there we go enter your name oh no got it so you joined there um continue without audio if it asks oh i always click the first one yeah that's fine no that's fine should i just mute myself in there yeah that's well it looks like you're not even connected to audio yet for some reason so that's fine it won't do the echo from the phone um so what are you seeing on your screen is it all there you go yeah you're sharing excellent i can see that okay um all right so we're trying to look at Which one was it? Oh, right below that. See, Braun, is the user a little bit lower below those first two notes. Yeah, sorry databases for Cheryl Braun. Oh, Four Seasons Talent Partners. Ah, there it is. All right, I was in the Brian then okay Four Seas and Talon Partners Two, three Okay Look at all these tools you have We don't have any of these It's a gift and a curse Well, yeah I would say mostly a curse, but... It's not that bad. I'd rather be in the back end than answering the phones. Yeah. All right. Where are those tables you had? Let's just copy these. Oh, yeah. Also, we'll need to be sure we're in the piggyback database when we run scripts. Okay, so let's check what database is there. piggyback database for email opt-out. I can look at that real quick while you're in there. Four Seasons and the email opt-out is under emails. Yep okay we're in the right piggyback. The piggyback is the Four Seasons Talent Partners LSE so we're right. We're all good. Cool, thank you. Alright, so first thing I'd like to do is select star from the table just to get all the columns that could possibly be there just to see like everything. And you've singled out response type of A and method of bounce. So there's like other response types, there's other methods. Are there A's without bounds? No, there's not. I get 486 rows when searching for response type of A. Where does this work? The same 486 rows when searching for bounce. Those are the same. All right. Well, redundancy is fine, I guess. Oh, I know for sure. Okay. Those are the same rows. Okay. Same number. All right. Okay. So were these all on the same day, on the same send? I don't think they were. by the date entered. I guess ascending. June 26th is when he opened the ticket. So yeah, there were bounces prior, right? Almost all of those are prior. So June 22nd. This is after. or who he knows is 26th is when he opened the ticket so it could be oh the 26th oh okay so all these on the 25th is what he's talking about yeah I imagine so all these just this chunk is what I feel comfortable removing basically got it you know what I mean why would he want those are probably legitimate it. What we could do is remove that chunk, and if he complains or says, I wanted them all gone or whatever, then maybe we could reopen this, but we'll start there. That's the safer bet. Okay, so you agree that you want to just do anything from 625 and forward? Yeah, that makes sense because it sounded like one email campaign set all this off, so that would make the most sense. Okay. All right, so there's a between SQL and it's just sorry I always do tick tick and then hit back and paste and then and basically I just paste the date twice and we'll say we'll just change the time stamp of the day to like 0000 to the beginning of the day the very first second of the day is when this starts and then I guess you could just do any day that like includes the days you want which I guess could just be a 26 I could literally just do the same thing but have a 6 right here so I'll do that I'll just copy this so now this is going to just select and display the oh order by statements need to go at the end all right what's going on select from yep where yep and yep yep before between is that even there between is the between alright because there's an and in there I don't know I thought I knew this yeah that looks correct oh oh duh yeah Oh, okay. Uh-oh. There we go. No, good. That's cool. Okay, you got to specify the field. That was my issue. Okay, so, yeah. Cool, watching that troubleshooting. I like that. Um, so now we have 88 fields, so that's how many, so 88 is the number of fields we'll be at, like, attacking here. We can tell him we removed 88 emails. So are we just, are we just, are we just removing these right here? Yeah, take them off that, up that list. Um. Because it would literally just be changing this to delete. Okay. It doesn't remove the emails from the records at all. We're doing some kind of statement that takes it off the opt-out list only, right? Yes, it's targeting the opt-out list. The emails themselves are on the candidate table in the email field. Cool, cool. In here. Yeah, we're not doing that. We're attacking a whole different table. Perfect. Yeah. so if you want me to delete these then you can hit execute right now and it will be done okay let's see all right yeah all of the okay so yeah all of 88 rows all of which were added with the method of bounce on 625 goodbye 88 rows affected now you can just see or whatever none more in there in that data You want to paste any of that into the ticket? Sure. Perfect. Perfect. And then they have lots of information. Right. we removed 88 rows from the table that were bounced on this day with the query below boom all right there it is awesome all right yeah i'll let them know we did the 88 and um if he says something about wanting to you sweet yeah that's all it's on me i'll take it from there but yeah if he wants more then i'll let you know but um based on the way he opened this ticket it's sounding like we did the right date okay well hopefully i didn't back it up i should have backed it up uh no you know what this i was in this database it's so tiny like there's uh yeah it's such a tiny database got it yeah like there's no way i think that like it's fine like like not even 2000 records that's really not much. I think we're good. Alright, well, thanks for your time and your expertise there. Yeah. No problem. Sweet. Tyler hit me up and wanted to meet up with me for something, so I'm going to go see what he wanted. Cool. Alright, have a great rest of your day, and I will talk to you tomorrow, probably. Yep. Thanks, Gary. You too. Bye. Later.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 216.435657,
+    "salad_processing_time": 43.04708528518677,
+    "overall_processing_time": 216.435657,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hello? Can you hear me? Am I muted? No.  Are you muted? Hello? Hello? Hello? Can you hear me all right? Hey, RingCentral.  if I like unplug my microphone or anything happens, I just can't find it when I plug it back in.",
+    "job_id": "57f5ff44-b227-4f82-a0c3-86883c5c5428",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hello? Can you hear me? Am I muted? No.  Are you muted? Hello? Hello? Hello? Can you hear me all right? Hey, RingCentral.  if I like unplug my microphone or anything happens, I just can't find it when I plug it back in.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3008181229036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

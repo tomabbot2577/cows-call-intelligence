@@ -1,0 +1,100 @@
+{
+  "recording_id": "3082978993036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:15:53.185771Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:15:53",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. May I help you? Hey, Garrett. It's Mike McLean with META. How are you doing today? Good. How are you? I'm good. I'm good. Actually, you're the person that I was looking to speak with. So, Garrett, we have a user who's been testing the PCR AI out for us. We're still on PCR 9. We're looking at possibly moving to or adding that PCRM database. But we wanted to do some testing on our end and just make sure that it makes sense, because I know it's a little bit of an additional cost. So we just wanted to make sure it made sense and there was some efficiency on our end that would be some cost savings for our employees. The problem that we're dealing with is the user said it's not, from her standpoint and from just working in it from PCR 9, it's not super friendly, user friendly. She's not really sure on how to utilize it properly. Is there anything that you guys have, like a little video or tutorial or something that we can kind of run through that I could pass along better? The AI features in general. The new AI features, yeah. The search. Yeah, like the search and there was a job description. Like whatever features are capable, or I think we have all of them activated in our databases. So whatever AI features you have. Yeah, I'll send along. Exactly. Yeah, I'll send along your email. It's a link in our Learning Center here. And there is a video at the top that kind of gets an overview. But the article goes a little more in depth with the different things, you know, what parts of the record, the search AI search can look through things like that so hopefully that'll be helpful exactly yeah that's probably exactly what we're looking for now if if we go through that and we still need a little bit of uh tutorial are you guys if we give you a call are you pretty familiar with it to give us a quick little yeah if we have some specific questions yeah we can we can answer any specific questions you have um yeah no problem anyone on the support team should be able to help with that. Okay. Perfect. Perfect. Yeah. So I'll email you that right now. You got it? Okay. Yeah, I've got it. EmmaClean at meetagroup.com. Okay, cool. Yeah. Here we go. How's your day going, buddy? Pretty good. I think everything's going smoothly. I mean, my internet's a little laggy today, which is annoying, but that happens sometimes, you know. You guys work from home mostly? Yeah, mostly from home. Yeah. Which is great. I mean, that was a change we implemented this year. I love it. Yeah. No, I'm kind of back and forth. So, yeah, I enjoy it. Awesome. All right. So I'm just going to, oops, subject lines aren't even got it. Okay. Let me send that. And then, yeah, if you do have more questions, feel free to call in and we can, you know, discuss any issues you're having with those features. Thanks, Garrett. Appreciate your help, buddy. Have yourself a good Wednesday. Have a great rest of your day. I'll talk to you soon. All right, you too. Take care. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1965.357051,
+    "salad_processing_time": 18.481855154037476,
+    "overall_processing_time": 1965.357051,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  May I help you? Hey, Garrett.",
+    "job_id": "3c9572a7-1cd9-4420-807f-dc2e3fb0318d",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  May I help you? Hey, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3082978993036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

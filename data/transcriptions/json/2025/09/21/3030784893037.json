@@ -1,0 +1,106 @@
+{
+  "recording_id": "3030784893037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:43:06.617446Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:43:06",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence. This is Robin. Hi, Robin. My name is Russ Walter. We use PC Recruiter and we have five licenses, but one of our people are going to be leaving us, so I wanted to reduce it to four licenses. Okay. Let's see. Synergy Professionals. Okay. Let's see here. if we like to create a ticket just that way it's easier to refer back to if there's ever a question about it. Let's see where am I going here? I am going to and this would be effective August 1st please. Okay let's see remove users. Okay So you're currently at five and you're going to four, right? On August 1st, yeah. She's still with us this week. Yeah, we just do it for whenever there's the next billing. Let me see when your next invoice is. I guess that's going to be the 20th of next month. I think we just paid it. Yeah, so we'll just do it for the next one. Okay. and we don't do like prorating by days and all that stuff so at some point it works in your favor though too so as long as you just let us know before your next invoice goes out Synergy Consult no Synergy Professionals is the way we have it okay right Okay, that's down to four. So the one, I'm sure you probably have to identify which one. The user Pam Law is the one we're removing. Okay. Yeah, so your next one is the 20th. All right, so that is changed. You know, while I have you, I don't have your address on here for billing. What is your address? 1-0-2-9. Okay. North Peachtree, all one word, Parkway. Okay. Number 252. Okay. And that's in Peachtree, which again is one word, and then city, which is a separate word. So it's Peachtree City, Georgia, 30269. Okay. Many customer accounts, they never set it up with addresses, which is actually very important now because we have to fix all the taxes. Make sure. Okay, all right. You are all set and I have it all adjusted for you and I will create the ticket too just so you have the tracking and stuff as well. Okay. I just want to make sure that the remaining four of us are going to be able to log in. Oh yeah, we don't actually touch the databases to add or delete users, which is why you just have to let us know when you're building adjusts because sometimes it's like a test user or it's like an API connection. So adding, deleting a user doesn't have any automatic effect on your billing. We just do occasional audits. But you would want to go in and either disable or delete that username. Okay. How do I do that? So whether you disable or delete really depends on if you think the person has a chance of coming back? Like if it's just going to be an extended leave, sometimes it's better to just disable it. That way all you have to do is turn it back on. Or do you think the person's never coming back that you just delete it? Both of them keep like all activities and everything with their name. Who knows? So we can just disable it. Okay. So if you went to system. Okay. System. Where the heck is – I'm in some – It should be up on your main toolbar. Main toolbar. Main toolbar. System. Oh, okay. I'm in system users. It says two. Who knows? Manage users. Yeah, manage users. and then you'll click on the username she's not listed on here although she is okay okay click on the username okay and then because now you could if you wanted to delete the user which means you ever came back you'd have to re-add the user if you just want to disable it that it prevents login which might be a good temporary solution what you do is click security in a sidebar at the bottom left okay scroll all the way to the bottom of that page under security policy yeah you'll see an account is disabled checkbox right click that and then hit save and save should be at the top right of the user record to save. I've got pop left, but okay. You can use those arrows to move it to the left or to the right. I always have it to the right. Okay. Yep. I guess it's saved. Okay. Oh, shoot. I don't want to do that for today. No, no, no, no, no. Just uncheck it and save it. alright let's see where was I security and uncheck account is disabled right okay and that will let her okay so we're good okay thank you you are welcome have a great week have a great day you too bye",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 961.246594,
+    "salad_processing_time": 24.395392417907715,
+    "overall_processing_time": 961.246594,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Hi, Robin.",
+    "job_id": "1a64c61f-5ef4-4c00-8eae-3d53a443b71b",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Hi, Robin.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Billing",
+        "confidence": 0.7
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "billing",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "billing"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3030784893037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

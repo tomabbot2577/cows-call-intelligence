@@ -21,7 +21,7 @@
         <div class="col-md-3">
             <div class="card metric-card text-center p-3">
                 <div class="card-body">
-                    <h3 class="text-primary">{{ report.statistics.total_calls or 0 }}</h3>
+                    <h3 class="text-primary">{{ report['statistics']['total_calls'] if (report and 'statistics' in report and 'total_calls' in report['statistics']) else 0 }}</h3>
                     <p class="mb-0">Total Calls</p>
                     <small class="text-muted">{{ period|title }}</small>
                 </div>
@@ -30,7 +30,7 @@
         <div class="col-md-3">
             <div class="card metric-card text-center p-3">
                 <div class="card-body">
-                    <h3 class="text-success">{{ "%.1f"|format(report.statistics.avg_quality or 0) }}</h3>
+                    <h3 class="text-success">{{ "%.1f"|format(report['statistics']['avg_quality'] if (report and 'statistics' in report and 'avg_quality' in report['statistics']) else 0) }}</h3>
                     <p class="mb-0">Avg Quality</p>
                     <small class="text-muted">Out of 10</small>
                 </div>
@@ -39,7 +39,7 @@
         <div class="col-md-3">
             <div class="card metric-card text-center p-3">
                 <div class="card-body">
-                    <h3 class="text-warning">{{ report.statistics.total_escalations or 0 }}</h3>
+                    <h3 class="text-warning">{{ report['statistics']['total_escalations'] if (report and 'statistics' in report and 'total_escalations' in report['statistics']) else 0 }}</h3>
                     <p class="mb-0">Escalations</p>
                     <small class="text-muted">{{ period|title }}</small>
                 </div>
@@ -48,7 +48,7 @@
         <div class="col-md-3">
             <div class="card metric-card text-center p-3">
                 <div class="card-body">
-                    <h3 class="text-info">{{ report.statistics.total_follow_ups or 0 }}</h3>
+                    <h3 class="text-info">{{ report['statistics']['total_follow_ups'] if (report and 'statistics' in report and 'total_follow_ups' in report['statistics']) else 0 }}</h3>
                     <p class="mb-0">Follow-ups</p>
                     <small class="text-muted">Needed</small>
                 </div>

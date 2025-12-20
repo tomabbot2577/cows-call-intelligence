@@ -1,0 +1,112 @@
+{
+  "recording_id": "3079727681036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:14:06.717831Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:14:06",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Tyler, how are you? This is Mark Goodstein calling from TechPros. How's it going, Mark? Good. How have you been? Not too bad. How about yourself? I'm doing well today. I'm calling because I'm trying to copy a note that I had in the notes section, and I'm copying it to the clipboard, but it's not pasting. In Outlook. Let's see. If you do Control-C, does that work for you? Control-C. Okay, and now I'm going to go back to the email. and I'll do control V. Yep. Nope, it's not doing it. I'm just testing it on my end here. I'm wondering if there's some setting that's amiss here. I don't know. Now, if you open up, like, just, like, a Word doc or a notepad and click paste, does it paste in there? Hold on a sec. Okay, I'm doing a word doc. No. Are you doing the control V or are you doing a right click and paste? I did the control V. Let me do it again. So I'm going to do control C. Or just copy it to the clipboard and then do a right click and then paste. Copy note to clipboard. That's what I did. Yep. And then I'm going to do a right-click and paste. No, it's not letting me paste. Hold on. Why isn't it letting me paste? It's not letting me. God, hold on a second. Copy notes to clipboard. It says paste options. Yeah, let's hop on a quick screen share so I can take a look here real quick. Okay. Want me to do RingCentral? Yeah, that works. join. You'll generate that. Let me know. Meeting ID is going to be 298-869-240. Okay, I'm going to do share. Yep. All right, so let's go ahead. Yeah, go ahead and highlight that text. Mm-hmm. Copy to clipboard. Yep. And now I'm going to go into this is a Word doc. Yep. And those are the options. Go ahead and minimize this screen for me for a second. Let's go back to PC Recruiter. Hold on. Can you log out and back into PC Recruiter real quick for me? Yeah, hold on. No, that's not the... here it is. No, where's the logout? Let's see. You've got to click the little gear icon next to the profile picture. Oh, that's new. Thank you. That was a long time to log out. Yeah, being on a screen share doesn't help with things slowing down. Okay, so I'm logged out. All right, go ahead and hit log in again on one of those screens. Hold on. Oh, I could have done that. Okay. Okay. All right, so let's go back to one of those names. again. Copy note to clipboard. Yep. Oh, it worked. Yep. So I think your session had timed out. You weren't getting that notification. Yeah. It was copying to the clipboard. Yeah. So the logout back in, gave that launcher a new session. Perfect. I'm glad it was simple. Do you want to try an outlook real quick just to make sure before we get off the call here? Yeah, hold on a sec. There we go. Perfect. Thank you so much. I appreciate it. Yep, no problem. You have a great day, Mark. Yeah, you too. Bye-bye. uh",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1916.198711,
+    "salad_processing_time": 45.17304229736328,
+    "overall_processing_time": 1916.198711,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Tyler, how are you? This is Mark Goodstein calling from TechPros.  How's it going, Mark? Good.  How have you been? Not too bad.",
+    "job_id": "81d41ded-0f08-4920-a85d-892cdb442e61",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Tyler, how are you? This is Mark Goodstein calling from TechPros.  How's it going, Mark? Good.  How have you been? Not too bad.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3079727681036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

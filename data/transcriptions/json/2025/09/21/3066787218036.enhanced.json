@@ -1,0 +1,117 @@
+{
+  "recording_id": "3066787218036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:13:43.774054Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:13:43",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hey, Garrett. It's Jeanette at job.com. How are you? Good. How are you? Good. I almost said my old company. I'm like, no, that's not it. So I just have two quick questions for you. I don't know if there's an answer, but, you know, our new people are using PCRM, and they've started using Capture, and we noticed that a number of records have been added that have a blank first name, last name. There's nothing attached to the record. And the activity says added by API. Have you heard of this happening with anybody? Not with capture here. Let me take a look in your database. I'll log in right now. I think there's 30-something blank records. I tried to replicate it last night, and I'm like, I don't know how they're getting these in. So I thought I'd call you guys before then. because good idea yeah let me investigate here so you're on the job.com database yep okay awesome and I'll just do a search here link last name my first name and it's been added over multiple days so okay let me take a look here activities, add name. Okay, I'm going to make sure that that's what the activity looks like when capture is used. I'm just going to capture somebody in my database real quick. Let's see, random person here. And feel free to add anything into this database if you need to test in there too. Okay. All right. Let's see the activity that was created there. That is a ad name, ad profile. Okay. So I created a new person in my database and it recorded two activities automatically. Immediately it was add name, add profile, because when you use the capture tool, it creates something called a LinkedIn profile on the attachments of the record. So it doesn't look like these blank first name and last names have that add profile activity happening simultaneously. They might have been brought in using a different tool Let me see. Do you think there's anything that would cause that? So what are the different ways? You can bring people in with capture. You can bring people in with an import, but you would have an import activity. So that's not it. Ours is from resume, but, yep, these people don't have resumes. A couple I've clicked on. I thought it might be they downloaded the profile from LinkedIn and then uploaded it, but I couldn't replicate that either. The one blank one that you see that has an attachment that's Mike Rocky, that was me trying to duplicate it, but the rest of those blanks are them doing something. Okay. And is it the same username each time? No, they're different people, so I can't figure it out. Hmm. What else could be? Status is their candidate. Okay. It would be status unverified if they used the resume inhaler tool, so they didn't use that. Let me try looking at the change log maybe on some of these. No, no change log. I saw a few PDFs in global attachments, which is weird, that the time seemed to match some of the times when there was a blank name record added. Oh, okay. Interesting. I don't even know how that could happen. Global attachments. Okay. Interesting. And you haven't heard of any issues with Macs, right? Because I know a few of them are using Macs. No, I don't think so. Okay, let me try this. I'm going to take one of these documents here in your global documents. I'm going to put them in my database. I'm going to try it in PCRM. I know you can upload an attachment. Here, let me try that. Global attachments, so... Go to plus sign, upload file. Okay. Then if I go to my recent. It didn't create a blank record. Okay. But it did add the global. Let's see. Yeah, I'm having trouble trying to recreate. I'm not sure how they did that. Yeah, I racked my brain last night, and I was like, I give up. I'll just call you guys this morning. So I can email them and say, can you give me a step-by-step of how you're adding these records? Obviously, these records aren't usable, these 34 records. There's nothing attached and no name. Right. Yeah, see if they have some insight or remember what steps they took. I'll continue to investigate, too, and try to recreate it in the meantime. and then we can reconnect if either of us find something. I'll open a ticket, actually, and email you so that we can keep in contact over that. That would be great. Yeah, and then so I'll do that. I'll ask them. And also, if they're using a different browser other than Chrome, that couldn't have caused this, should it? No. So our capture tool can only be installed on Microsoft Edge browsers and Google Chrome browsers. so it should be it should be working on either one yeah yeah I don't think it would be a browser issue yeah so let me make sure I have your best email addresses at Jeanette Jamerson at job.com uh-huh yep yep okay awesome and then one more quick question where you want me to investigate a company called track 5 and that is doing job postings for allied health and nursing and I got a call with him tomorrow do you guys know if there's like we had asked previously about job robotics and there was already you know everything was set up for that so working on that too do you know anything about track 5 because What we do is copy the jobs out of PCR to Track 5 to their job boards. Okay, yeah. I could get you connected with our web developer. He's usually able to figure out a way to send positions through a job board scenario to ones that we don't always connect with, but maybe he can write a little code and get it connected over to Track 5. I'll actually make a separate ticket. Okay, yeah, that'd be great. Yeah, because I'm going to talk to them tomorrow. So I'm just going to say it's my first conversation with them. Like, and then I can go back and add to the ticket what I found out after talking to them. So basically, we want to add jobs from PCR into the track five job boards that they're using, but we don't want to add all the jobs. So we'd need something in there that says, you know, probably we have to physically hit something. And then those jobs would just go to travel nurses or allied health job boards. Okay. Yeah, I'll mention that. Track five job board select positions. And it's just trackfive.com if they need that. Okay. Is it spelled out five or just the number five? Spelled out five. So trackfive.com. All right. Yeah, I will open a separate ticket for that and have our web developer take a look and reach out to you and let you know the options there of connecting PCR to the track five dot com. Great, because I think I'm going to get the API info and like a web tomorrow. So we'll see. Awesome. OK, cool. Yeah. Let me do a little more research. I'll email you on both of those through our support tickets. okay thank you Garrett hope you have a great day and happy um holiday hope you have a long happy labor day you as well thanks so much thank you okay bye",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1904.106914,
+    "salad_processing_time": 25.141582250595093,
+    "overall_processing_time": 1904.106914,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "job_id": "202b6b80-fa34-416d-9cf4-005afda78c66",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3066787218036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

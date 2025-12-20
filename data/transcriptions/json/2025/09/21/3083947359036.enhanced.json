@@ -1,0 +1,123 @@
+{
+  "recording_id": "3083947359036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:16:19.544995Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:16:19",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling me in sequence. This is Robin. Hey, I just have a basic question about sending a bulk email and was hoping you might be able to help me. Okay. What is your name? Lori Hayes. H-A-Y-E-S? Yes. Okay. Oh, what company are you with? We have a couple. Yeah, the Colonial Group. There's more than one of me? Well, there's slight variations in spelling of the first name, but same last name. Gotcha. Okay, gotcha. I'm a Williamsburg Colonial Group. Okay, what can I help you with? Okay, so we're probably not using PCR correctly. I'll start by saying that, but the way we have our candidate field set up, we have several different sections for emails. So some of them are personal emails, work emails. And when we go to send a bulk email, it seems as though the only email field we can use is primary email address. And we were hoping to tap in and be able to send a bulk to some of the other email categories. So you can't do it at once. You would have to do separate ones. So let me see what's going on. Yeah, for some weird reason, when I pull it up to send a bulk, when I select the email field, it gives me primary, but then it says a bunch of weird stuff. It says like, yeah, so those work names. Yeah. So what happens with those? So there's really just one email field. It's kind of like a predefined field. Any other email field is considered custom, even if they gave it to you because it gets stored in another table. What database are you in? It is the MR Williamsburg 3 I think is what it says. MR Williamsburg 3. Okay, and what username? LH. LH, okay. I'm gonna see what's in your layout. Because sometimes like it's, if it's one of like our fields, how it displays is a little bit different when you go to pick it. So let me just see something here. Oh, are these you now? You might have an email alias. Let's see. Let me just see something. Email setup, email alias. Getting a little alert. That's one thing you want to have. A delay. Very important to have a delay in your emails. Oh, okay. Especially with Office 365 because like they're very strict on how many you can send and one of the things that happens is if you let's say you're emailing like 50 people what happens is it'll stop at 30 if you don't have any delay you got a space amount and the other thing is if like let's say you're sending it to a bunch of people on the same mail server like Gmail or Office 365 if the if the email starts being like oh here's a bunch of emails literally the same date and time and same message um they might flag you as spam so i made your delay between emails let me tell you about this first if you go to system on the main toolbar and then go down to email setup okay and then go to email alias list that's your settings for when you are logged in as yourself sending an email you had zero in the delay between emails i added the number 3 000 so what that'll do is if you're doing a bulk email it sends the first one then it waits three seconds that's what 3 000 is in milliseconds it waits three seconds and then passes over the next one so it spaces them out it'll slow it down but it certainly will help with delivery and possibly getting um so you don't get your account blocked. You still want to be kind of, you know, spending small batches with an Office 365. You don't want to, you know, long gone are the days of blasting your database. They just won't let you do that through their mail server. Okay, so next thing I'm going to do. I probably need to do that for all of our users then. Yeah, they'll have to log in and make sure the number, 3,000 is a good number. Okay. Okay, so tell me about, okay, so you've got email work. Let me, I'm going to go to the customize screen just to confirm if it's really are email underscore work. Okay. So I know what that means. It's a custom one that we did. Yeah, it's actually email underscore work is really kind of like one that we give you typically. Okay. If you are in a name rock, I'm sorry, if you are, let's say you're in like a roll up or something and you go to send an email, I'm going to tell you, let me bring it up and just confirm which one. In the email field, you're going to want, where there's primary email address, you're going to want work with name. So the ones that we give you, like email underscore work, email underscore home, those are what you're seeing there. So if you want to work when you go work name. anything else that you consider custom like um i don't know work email that's not like that one that says email that's going to be listed at the very bottom but it'll have um like the exact field name so you're going to want to choose the third one in that drop down if it's the work email so on like in a bulk letter if like if i'm in a roll up and I go to do, like right now I'm in a roll up, I go to do a bulk letter. Yes, you'll pick letter. In the email field, primary seems to be the one that works, but we want to do the work, we want to be able to use the work one. Yes, so primary email address is that predefined email underscore address field. But if you go down to the third choice where it says work name, that's that other field that you have in your layout called, it's actually called email underscore work. okay and that should work I swear we did that and we could not get it to work because I did a I did a test well you'd have to make sure that somebody has a value in that field um let me I put myself in as a test dummy and tried to get it to work for myself I could have done it wrong okay let me see I am going to put I'll put my other email in there I have two ones okay I use I use one that's just my first name it's easier there's not too many robins for them spelling out my first and last name okay I'm going to add armantoni at main sequence dot net to that field okay so if I do a search for me now select the record, go to letter. I'll just select that. Okay. And I will go to work name. And you got to make sure you have a category. So I'm choosing work name. And let me hit send. Okay. Okay. And I'm going to take this screenshot. Oops. Oh, I didn't get the first one. Oh, no. Oh, no, I did. I just did the wrong thing on my clipboard. Okay. Okay. Let's see. Well, it does look like it's working now. I just did it, and now it does seem to be working. Yeah, you want to really just make sure that, you know, well, one, that there's a value in that field. Yeah, I kept getting some sort of weird error message yesterday when I did it. Yeah, without knowing what the error. Now, there was, did you have to re-authenticate your email alias? Yes. Yesterday, it wouldn't, for whatever reason, I had to click on, what does it say? Like something about Microsoft. I had to click on that and then run it. Okay. That could be what your error was because I see there was a notification that hasn't been cleared. Like if you go up to the very top right, a piece of critter has got that two in gold you did have some email credential issues at least yesterday so that might have been your error that you received which basically means for some reason we couldn't connect your mail server to even send the email okay so what you can do is clear those now so they don't confuse you they were yesterday's date okay all right and that should do it yeah so you had to re-authenticate that could be why it wasn't sending. It is sending now as long as you're choosing the email work or I'm sorry or to say work home no work name I'm sorry work name work name that's that field that you're that you have in your layout so it does appear to be working. Okay and let me let me ask you this because I can't say this nicely our users get confused very easily is Is there a way to take out some of those other fields so they're not overwhelmed by stuff in there that doesn't work? I don't think there is. I think that drop-down is just automatically going to show those. Okay. Okay. And do all the fields work? Are they all, like, correlated to something? Yeah. if you go to a name record and go to it's not pinned for you so on that toolbar we've got like edit name resume interviews if you go to that three-lined icon and go to details if you scroll down there's a section called additional email. What am I looking for in the three line again? Additional email. um okay I'm sorry I'm not seeing it that's in the it's in the name record field um so if you go to go to a name record like uh pull up me oh okay I will I have me up so either Okay so in the menu more at the left where it says like edit name, resume, interviews, activities, just right after attachments click that three-lined icon and those are all of the options. I was clicking the one above sorry. Okay and then you said details? Details. So standard fields those are going to be like basically field some of those are like fields that you've created uh-huh but if you go down further there's a heading called additional email so these are all and then if you go over at the right where it says show all fields these are all these extra and again like some of these are pretty much like outdated yeah but where it says email work that's the field that you have in your layout I see yes yes okay okay got it got it got it okay so as long as you're putting it into the field that you have in your layout and choosing where it said work name it's going to the field that you have in your layout out. Got it. Got it. Got it. Got it. Now you can make other fields, but that's, you know, those are going to be labeled different. And then you would see those like individually listed in that dropdown. Yeah. We had a, uh, we had a big problem for, for a hot minute and every now and again it changes because, um, in the customization screen, one of them says email work and one of them says work email and some of our users were using one and some were using the other and it created an enormous problem yeah and um yeah if you do email underscore work okay perfect which in your layout that's the one that you want okay good good good good that's the that's the one we're using now so good okay um and then the i read something because i was trying to read this and figure it out myself and i read something about email campaigns what what exactly is that and and how do we use it or can we use it i don't think i've got your services let me see oh yeah okay you have like like the links contract why is that wait a minute okay oh someone's got that wrong hold on one second let me look at your billing good so you have really just afp which is kind of like you must have a much older much older contract yeah with you guys forever yeah much older contract I bet it's been darn nearly 20 years. Yeah. 2005. It is almost 20 years. Okay. Let me see. Do we get a plaque? Do we get an award? I should get one too because let's see. When did I start? I started. Let's see. She was born. I was pregnant with my daughter. I started about three months after you signed. Oh, wow. Yeah, isn't that crazy? Yeah. $24, $25. Okay, so right now, it looks like you pay annual. Why is there no – hold on one second. Oh, there must be another. Probably a 1905, okay. Different colonial. Okay, we have you under MR Williamsburg. I'm going to change this so it's easier for us to find. We used to be part of Management Recruiters International, so they set them all up at that point as MR or whatever. Okay. I'm going to change this so it looks more like, because it makes it harder to find. Okay. I'm going to change that. I'm just going to start calling this the Colonial Group. Perfect. On your invoices. Are you still at 356 McLeod Circle, Suite 3? Yep. Okay. I'll just update the company name only on your invoices. Okay. I'm going to keep Colonial Group M.R. Williamsburg though Okay, all right, um so why Don't they have it listed correctly hold on one second Your per user rate is 49.95 You should not have that though because you're paying an annual invoice Okay, so I'm going to take that line on Okay. So we do have different packages now. You would want to have what's referred to as our premium, which would increase your rate, though. And what that would include is the mail campaigns, the analytics, sequencing, things like that. if you're interested, what I could do is have your account manager, Jim Lombardo, reach out to you, give you a demo of those, and then see if that's something that you'd be interested in. It might be a good idea to do that and see, you know, what additional we can do, because I think that to be, so to be very honest with you, the person that owns the company really doesn't use PCR much himself. We've really, we do almost everything that we do in LinkedIn Recruiter. So he doesn't really see the value in PCR per se, just based on what we use in his knowledge of the system. So being able to do some sort of tutorial with him or show him some newer features that we might you know that might really benefit us now could be a good idea. Okay actually hold on a second this is every month hold on one second I am just fixing that but why transactionless? Okay all transactions oh I know why because I was looking at the other record before okay I was looking at the other company I fixed all that okay so Jim has been out for a couple days he had a couple vacation days he just came back today but what I'm going to do is I'm going to email Jim and I will have him reach out with like information, like to do like a demo and things like that. Okay. Yeah. If he wants to reach out to me, I can kind of help point him in the right direction in terms of what our company owner will be interested in and not want to hear. So to make Jim's time and presentation go a little smoother. Okay. Why don't we have that listed? Oh, there's no date in here. Oh, gosh. This is looking really old contract. Who would have been the president? I can't. Something right. It was formerly Al Polson, but now it's Lynn Norman. Okay. Yeah. Who would have been the president? I can't read this signature. Okay. All right. Let's see. All right. What is the best number to reach you? Is it the extension 13 at 757-229-6475? Yes. Okay. Okay. Okay. All right. I will email Jim. It's just he might take a day or I'm not sure how backed up he is in getting back to people. But I will have him reach out to you. All right. Sounds good. Perfect. All righty. Well, thank you so much. Yeah, you bet. And thanks for all your help. No problem. Have a good week. All right. You too. Thanks. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1978.792777,
+    "salad_processing_time": 100.36172008514404,
+    "overall_processing_time": 1978.792777,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling me in sequence.  This is Robin.  Hey, I just have a basic question about sending a bulk email and was hoping you might be able to help me.",
+    "job_id": "703b9216-a62d-40f5-90ff-b0ac6cd6eadc",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling me in sequence.  This is Robin.  Hey, I just have a basic question about sending a bulk email and was hoping you might be able to help me.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Billing",
+        "confidence": 0.7
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "resolved",
+    "first_call_resolution": true,
+    "escalation_required": true,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "billing"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3083947359036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

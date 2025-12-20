@@ -1,0 +1,95 @@
+{
+  "recording_id": "3040369565036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:51:03.931841Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:51:03",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling me. Sequin, this is Robin. Hey, Robin. It's Ben Williams. How are you doing? Hi, Ben. I'm good. How are you doing? Happy summer. Yeah. Yeah, absolutely. Almost over, right? Oh, shh. Don't say that. Hey, did you say we were going to go? I live in Cleveland. I'm wanting to extend this as long as possible. That's right. I forget. You guys get kind of – you don't get a lot of summer, huh? no and then once it's over it's like gray skies for months so it used to be that way in po not so much anymore so yeah actually they were somebody was just complaining i'm like stop complaining because in a couple months you're going to be you know all upset about uh you know the cold and the winter and the dreariness uh absolutely i don't like the short days. That's the only thing that bothers me anymore. Yes. I like having where it's like, you know, I'm not coming, like, ending work and it's already dark out. Yeah. I hate that. That's the only thing that bothers me. I don't move to the car in the car. I need a little sunshine in my life. Yeah. Exactly. Vitamin D is efficient during that period, for sure. Did you send me the video of our last conversation? Did I send a video of your last conversation? Yeah, we recorded it. Not a conversation, a last training. If I have it, when would that have been? Oh, good question. It was only a week or so ago, but let me look. Let me look. How do I search this thing? 21st? Okay, we'll get on with that. 21st. Okay, so let's see. The 21st, oh, I see that we had a meeting at around 10 a.m. Let me see if I have that. Let's see, where do those go? Meet recording. So it says, we automatically go here. Oh, maybe they go here. Oh, I'm trying to find, how do they store these? I don't know, where do they put them automatically? All right. Okay. Let's see. Found it. Share. Anyone with the link. Okay. Do I have to go back into that thing? Yeah, I believe I would have sent that to you. It does say anyone with a link. Normally it's just people I work with. I probably would have forwarded it in an email. I'm looking right now. I only have an email on the 21st. I bet they participate in following. Yeah, we definitely want to come later that day because the meetings are typically an hour. They take a while to generate. Yeah. So I don't end up usually sending them until like hours later. Yeah, I don't have any email from your Robin Martoni email. yeah I just sent it to you okay that's from the 21st so you should be all set now okay so I call I have another question so Gareth asked me questions about the split desk and you gave us those new reports so what we've done in the the way we pay our commission is you know there's always say this is a place or we play off of the adjusted gross profit. And one person gets 10% of it, the other person gets 7% of it. So I'm pretty sure we used a split desk or something similar to that before. Or is there a better way to do that? So all I want to do – Well, is it off timesheets? You can't really do splits off timesheets, I believe. because anything with analytics as far as yeah I don't think I think it only applies to the perm because really with the analytics it only takes like what you put in like an estimate it doesn't run off actual hours yes we see you probably do that manually outside of PCR no we definitely we definitely did it automatically maybe the uploading the hours was was manual if I remember but everything all the reports ran the same way I just don't I'm trying to think of work reports that we that were ran so let me just go back to the supports So the contract commission report, is that a standard report or is that a custom one that was made for us? Anything under, let me see, I'd have to see your database one second. Is it under QL or? No. Then it would probably be like a built-in report. I'm pretty sure, I know we never went on the custom SQL. And maybe there was a different process back then. But we would go to contract temp. I'm pretty sure I thought we ran a commission report. And none of those reports are pulling any data down. So that's probably close to the hours are there. Yeah for any of those reports those are usually based on hours. If somebody's having timesheets. Okay so how do I how do I do the hours again? How do I upload the hours you would either have to have people doing a setting timesheets or you have to go up to contract and then go to contract a main table go to hours they need to have to enter the hours for the person and then hit search okay so I got in profit let's see it got kind of like there's a timesheet export burden profit, which is a custom SQL, but that wouldn't have like your custom commission stuff in it. Yeah. So, okay. So I'm looking at this. I did, I ran the hours. Yeah. I don't contract commission. So how do I import the hours? You can't import the hours. You'd have to go to hours, pick your week and hit search. yep I'm there and then yeah I make sure you're in the right week but then when you click timesheet next to somebody's name you would have to create their timesheet if you're they're not submitting them for you you can't import hours you have to either create it or their or the contractors doing it right right okay so let me just go back to one hold on one second let me go back to contract hours 31 okay week 31 and then when I hit that stuff just it pulls up right so hey I think the search still and just it comes up with all contractors that are all that are all the contract okay and then I have to go okay what do I do at this point Robin so and this is probably stuff we should do in a training but if you if you are in the contract hours you see like Sean Allen you go to timesheet and then in the menu over at the right it looks like it's not pinned you would hit add on the bottom yeah and the bottom half over at the right you gotta click that three lined icon and then you go through all the all the information so so how does it have to go to the yeah you'd go over to the hours tab and that's where you put in their hours okay so how do we generate the timesheet automatically with a person on the side of it. So that you would have to do a whole training session to configure all that. That's something I just don't have to be on the phones for calls right now. That would have to be scheduled because it's pretty in-depth. I could send you a link to some instructions but it's better to schedule a session to walk through it. That's fine. So that's what's missing now. So whenever we should place somebody on assignment, it would automatically start generating your timesheet from that point forward. So that's the part that's missing, correct? Yeah. So it might be that the contractor, like you have to like send them the mobile app and things like that. So you might be missing that portion of it. No, no, no. I mean, we used to do it manually because we're not sure we're going to use the mobile app and everything else where we punched in after you showed me that. I don't think it has enough flexibility for us. so we wanted just to create like like i'm seeing sean allen right now but if we got to go in every week and create this time sheet that's that's too that's too hard yeah that would have to be done somebody has to create the time sheet to specify how many hours that they have okay i think i think i'm so the time sheet itself can't be created every hour once i once we place the person like all of his stuff is in there once he's played um we have to go in there and do it every week yeah because you'd have to put in how many hours they work that week. No, I know that, but the timesheet itself is not, it's not there. Right, but all you got to do is hit add, and then you put in the hours. Otherwise, because sometimes people don't start a timesheet, they might be on assignment, but they're not doing a timesheet, so you do have to click add to create it. And then once you hit add, you go over the hours at the left, and then you put in the number of hours each day. Okay. All right. I'll go through this process. I want to see. I'm pretty sure it's not what we did before. I'm just trying to figure out what we did before. Because I remember the ladies coming up, they had a list of stuff. They had a list of all the people that were on assignment. And then they would just enter the hour list. I don't think they went in and out of each one. I mean, we had like 120 people. That took them forever to do that. yeah then yeah you probably have to check with them because that's how it have to be done with no longer here that's what they're no longer here if I'm trying to I'm trying to but I remember setting enough so so you can't what you can't generate and the time she won't generate on a weekly basis whether on assignment that what you're saying correct yes it has to be created in the hours entered so it just depends like are you having the contractor you know go in and put in their hours or is somebody from your staff doing it but somebody has to do it for each person and putting the hours I get but creating the time she is what I let me play a little bit let me I think we're we're just not maybe I'm not communicating correctly I just want to make sure I get the right term the right terminology and everything else so we can you know we cannot do that and then after once the hours have been entered then you you'll see the profit and everything else correct correct yeah like something like a contractor one week work 20 hours and then 45 the next week so a timesheet has to be created for them for each week specifying their hours no I get that part but I I just was I thought we just had to input the hours not create the time sheet every single week for every single person no you'd have to go and create the time sheet each week and put in the hours for each day for each individual person yes Okay. That's going to be... Okay. That does it. So there's like seven steps to put in a time sheet, an hour, to put a time sheet in. Well, once you... I mean, if you have everybody's hours for that week, if you guys were entering them yourself, you'd go to contract and go to hours. Yep. Make sure you're pulling up the right week. and then you'd click timesheet to the left of their name, hit add, go over to the hours tab, put in the hours each day, hit save. But you would have to do it for each person. So each person is seven steps that add an hour for the timesheet. Yeah, unless you did it externally outside of Peace Recruiter, but this is how it's done within Peace Recruiter. And there's no way to import hours? No. Like get a list and import them into the personal? No. Okay, let me go through it and see. I think that's not going to work for us. That's going to be a bigger problem than us. I know it did it differently. I'm just trying to figure out. I know it did it differently. There's no way they'd have been screaming at me to have to go through. They'd have been screaming at me to have to go through. I mean, we had like 150 people all at one time, and there's no way they would have went through and did that. Like, they would have been screaming. Can you export this timesheet before? The better one to use is when you, like, if you're just like, how many contractors, how many hours, is once you have the timesheets in, if you go to reports, the one that most people like, if you go under custom SQL reports, you do have the timesheet export with burden profit. No, what I, my main concern is, is getting the hours in the system so we can automatically generate a commission report. It doesn't look like the contractor is punching their hours in. That's not going to work. It's not going to give us enough flexibility. So I get everything starts off with a timesheet. So once the timesheet has hours in, it's just I don't remember training them that they had to go in and do so many steps just to add in hours for one person. Yeah, there is no import of hours option. I don't think it was import, but I think, like, when I went in the timesheet for that week, I want to say below there was a list of all the contractors that were on assignment, and we just went down the list and said, okay, 30, 40, 50, you know, whatever many hours they had. now you'd have to go into the you'd have to hit the add option create the time she put in the hours per day and then it totals it okay all right let me look at it I don't I don't look at the maybe there was something we highlight the whole list and everything else okay yeah there's that you have to go into create and then go in. I'm sorry, say that again. You have to create it and then in the hours tab, you have to hit add and then the hours tab at the left, you'll see all the days that make that time period and you have to put in the number of hours per day. Okay, let me go through it and then I'll see what we come up with. I have more questions I'm sure afterwards. Okay, sounds good. Thank you. Have a good week. Goodbye. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1221.748219,
+    "salad_processing_time": 47.09502148628235,
+    "overall_processing_time": 1221.748219,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling me.  Sequin, this is Robin.  Hey, Robin.",
+    "job_id": "afabdcda-6343-43a9-8999-ac0f0fe30f7a",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling me.  Sequin, this is Robin.  Hey, Robin.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3040369565036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

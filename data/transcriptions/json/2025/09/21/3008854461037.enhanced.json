@@ -1,0 +1,117 @@
+{
+  "recording_id": "3008854461037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:21:47.642224Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:21:47",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hi, you've reached Sean Reeves. Sorry I've missed your call. Please leave your name and number in a detailed message and I'll call you back as soon as possible. Thanks. Talk to you soon. Hey there, Sean. This is Mackenzie from PC Recruiter. I sent you details of the custom concrete database that you had me create and you're trying to perform a copy to database function and getting an invalid username and password message. What that is basically saying is that PC Recruiter requires if you are copying user, or sorry, if you're copying records from database A to database B, the username that you're using to copy must exist in both databases and they must have the same password. And this is because we want to make sure that the user that is moving records from database to database exists in both databases. So they have permission to move records in both databases because, you know, some PCR account holders have multiple databases for different companies or different firms. And it's not necessarily the case that all of the users share or are in each database. So this is just the way that PCR does it so that we want to make sure the user exists in both databases. So if you want the copy to database function to work, just make sure that your username exists in both of the databases and that the username and passwords match as well. So that explains it. I'll just follow this up with an email as well. And if there will be nothing else, have a great rest of your day. All right. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 232.813949,
+    "salad_processing_time": 8.171600818634033,
+    "overall_processing_time": 232.813949,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hi, you've reached Sean Reeves.  Sorry I've missed your call.  Please leave your name and number in a detailed message and I'll call you back as soon as possible.",
+    "job_id": "5e000d34-1cf7-4974-96e9-63eeb2186326",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hi, you've reached Sean Reeves.  Sorry I've missed your call.  Please leave your name and number in a detailed message and I'll call you back as soon as possible.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": true,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3008854461037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

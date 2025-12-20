@@ -1,0 +1,95 @@
+{
+  "recording_id": "3033831194037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:45:23.398081Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:45:23",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Calling Main Sequence Technology. This is Tyler. How can I help you? Hey, Tyler. It's Cliff Rusnack from M-Works Search. How are you doing? Pretty good. How are you, Cliff? Good, good. I've got a couple questions this morning. Yeah, what's going on? The first one is I've got a job order in the system that was filled, so it's no longer open. How do I reopen that job order instead of having to create a new position? Yeah, like so that it posts again online? Yes. So what you need to do is that there's three fields on the position record that show it to display on the job board. the status of the position needs to be changed to available slash open yes okay the number of openings needs to be set to at least one okay and the show on web field needs to be set to show okay and then you can always there's the date posted field as well, so you can change that if you need to, to make it look like it was posted more recently. Okay. So I'm in there now. I see the number of postings, so I was able to change that. Where do I find the status field? Oh, it says filled. Okay. All right, I see that. So then I need to change that to open. Yep. All right, so that's number two. And the number three you said was show on web. Where's show on web? Where would that, where can I find that? Let me see. You have it underneath the notes section. In the edit position layout. Yeah, do not show. So do I, it says do not show. So let's see. So I just put it to show. I just changed it to show then. Yep. All right, because it says offline preview. All right, online. Okay, so I think that's it. So I don't have to change the date posted? You can if you want. I'm seeing if you even have that in your layout here. I don't see it. I don't think you have the date posted. Okay. All right. So it looks like I've got it. I didn't get a job either way. Change. So that's good. So that was sort of an easy one. The other thing I've noticed, and I don't know, I have a new computer. So the new computer is a Windows 11 computer. and I'm in the email page. And let's see. Like yesterday, I couldn't delete. Let's see. Yeah, it's not allowing me to delete. So we did run an update yesterday. Usually when you can't delete things like the PCR mail, you just need to clear your cache. All right. Let me see. Clear the cache. That's all I need to do. Should I like re- Yeah, reload the PCR mail page. All right. Let's try and delete here. All right, so then we'll delete. Let's see. I know I had a problem with the way it was viewing. All right, so everything is good there. Okay, all right, so that was an easy one, too. Okay, great. Thanks for your help, Tyler. Yeah, more than happy to. If you need anything else, just let us know. Have a good day. Thanks. Bye. You too. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1034.100522,
+    "salad_processing_time": 7.726513624191284,
+    "overall_processing_time": 1034.100522,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "job_id": "0b28ffe8-866c-4e7c-9b79-e282134d7e63",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": false
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3033831194037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

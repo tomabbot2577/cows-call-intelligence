@@ -1,0 +1,192 @@
+{
+  "recording_id": "3095710040036",
+  "analysis_timestamp": "2025-12-19T19:43:53.107177",
+  "analysis_version": "2.0",
+  "contact_information": {
+    "phone_numbers": [
+      "440-856-0314"
+    ],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Jody Harker",
+        "role": "customer",
+        "company": "PC Recruiter",
+        "confidence_score": 0.9,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "account_management",
+    "CALL PURPOSE": [
+      "Follow-up on training",
+      "Check on customer satisfaction"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "follow_up_required"
+  },
+  "customer_profile": {
+    "customer_identification": {
+      "primary_contact_name": "Jody Harker",
+      "primary_contact_role": null,
+      "company_name": "PC Recruiter",
+      "phone_numbers": [
+        "440-856-0314"
+      ],
+      "email_addresses": [],
+      "key_decision_makers": [],
+      "team_members": [
+        {
+          "name": "Jim Lombardo",
+          "role": null
+        }
+      ]
+    },
+    "business_context": {
+      "industry": "Recruiting",
+      "company_size": null,
+      "technology_stack": [
+        "PC Recruiter"
+      ],
+      "challenges_pain_points": [],
+      "growth_stage": null
+    },
+    "relationship_mapping": {
+      "previous_interactions": "It's been a little while since you had had any training with our team.",
+      "existing_service_usage": "PC Recruiter",
+      "account_history": null,
+      "relationship_duration": null,
+      "trust_level": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "follow-up/check-in",
+      "issue_severity": "low",
+      "technical_complexity_level": "none",
+      "time_sensitivity": "low"
+    },
+    "resolution_tracking": {
+      "issue_status": "resolved",
+      "resolution_steps_taken": "follow-up call",
+      "outstanding_action_items": [],
+      "next_steps_required": "none"
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "none",
+      "knowledge_base_gaps_identified": "none"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "proactive",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "none",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Unknown, requires direct feedback",
+      "trust_level_signals": "Moderate, as the customer has previously engaged in training",
+      "communication_style": "Proactive outreach by provider",
+      "rapport_quality": "Attempt to maintain, evidenced by follow-up call"
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Completed, but with paused training",
+      "product_adoption_level": "Potentially moderate, training was initiated but not completed",
+      "feature_utilization": "Unclear, potential underutilization suggested by paused training",
+      "expansion_opportunities": "Possible, depending on resolution of current issues or training completion"
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Responsive support and follow-up",
+      "risk_indicators": "Paused training could indicate dissatisfaction or lack of engagement",
+      "loyalty_signals": "Customer has not terminated relationship despite issues",
+      "advocacy_potential": "Dependent on resolution of current training and support issues"
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone, as used by the service provider",
+      "response_time_expectations": "Prompt, as indicated by proactive follow-up call",
+      "information_style_preferences": "Direct and brief, based on the content of the voicemail",
+      "decision-making_patterns": "Likely prefers decisions based on thorough support and successful issue resolution"
+    }
+  },
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium"
+  },
+  "action_items": [],
+  "participants": {
+    "primary_employee": {
+      "name": "Jim Lombardo",
+      "extension": "5401",
+      "phone": "6145401",
+      "email": "jim.lombardo@mainsequence.net",
+      "department": "Sales",
+      "role": "Sales Representative",
+      "employee_id": "EMP_5401"
+    },
+    "primary_customer": {
+      "name": "unable to take your call right now",
+      "company": "s been a little while sinc",
+      "phone": "440-856-0314",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "unable to take your call right now",
+        "company": "s been a little while sinc",
+        "phone": "440-856-0314",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Jim Lombardo",
+        "extension": "5401",
+        "department": "Sales",
+        "role": "Sales Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "training"
+      ],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "follow up"
+      ]
+    }
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "recording_id": "3012596583036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:25:53.794552Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:25:53",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Liz, Brian. Hey, Brian. This is Scott Samuels with Arise in Hospitality. I've been trying to get through to someone in support. Is there anybody there today? Yes. Did you hit option two to get to second floor? I did, yeah. Okay. And I waited and waited. Nobody answered. I tried it a couple times. They may be – they're likely working with other clients. Did you leave a voicemail? Did you send an email? What is the issue that you're experiencing right now? Well, I've got a custom name report that is pulling in a field that was deleted. Are you real technically sound? I can explain the whole thing to you real quick. I'm more from a sales perspective, but I've been with PCR for 20-plus years, so it's your call. All right. Yeah. So I have a custom name report. I put the activity dates, last activity dates, in the form letter, and it's pulling, and I deleted activities. I got to go back a second to explain it. So I'm creating a follow-up report to make sure that the last activity wasn't a long time ago. And so I couldn't pull the last activity text. It won't allow me to do that. so I had to put the activity text and copy it into Quick Notes and add Quick Notes to the report. I added Quick Notes to the report, and when I pulled the activity and put it into Quick Notes, it marked another activity, which screwed everything up. So I deleted the activity from the activity folder, and I went to print the report, and it didn't delete that activity. So I don't know what the hell is going on. I probably didn't explain it very well. You are beyond my capabilities. I apologize. So, yeah, just being straight up with you. Now, what I would do is leave a voicemail, send an email, which will to support at mainsequence.net, that will immediately be turned into a ticket, which means. Yeah, they already put a ticket in. I'm just trying to expedite this because I've got a lot of things going on and wanted to get this out before the weekend. Got it. So there's already a ticket. I'll try to follow up with them in a few minutes again. That would probably be your best bet. And leave a voicemail too, you know. Okay. Got it. Thank you. Bye. You bet.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 372.834067,
+    "salad_processing_time": 10.423833131790161,
+    "overall_processing_time": 372.834067,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Liz, Brian.  Hey, Brian.  This is Scott Samuels with Arise in Hospitality.",
+    "job_id": "a2f71850-5523-44f6-882f-e4a2d658c8f2",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Liz, Brian.  Hey, Brian.  This is Scott Samuels with Arise in Hospitality.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "technical"
+    ],
+    "webhook_url": "",
+    "automation_triggers": [
+      "follow_up_required"
+    ]
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3012596583036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

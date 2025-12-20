@@ -1,0 +1,421 @@
+{
+  "recording_id": "3099353614036",
+  "analysis_timestamp": "2025-12-19T22:37:02.147176",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [],
+    "mentioned_contacts": [
+      {
+        "name": "Robin",
+        "role": "agent",
+        "context": "has the customer's support ticket"
+      }
+    ],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "support_technical",
+    "CALL PURPOSE": [
+      "Assisting with data extraction from self-hosted servers",
+      "Providing options for data extraction"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "customer_identification": {
+      "primary_contact_name": "Josh",
+      "primary_contact_role": null,
+      "company_name": null,
+      "phone_numbers": null,
+      "email_addresses": null,
+      "key_decision_makers": [
+        "Robin"
+      ],
+      "team_members": [
+        {
+          "name": "Robin",
+          "role": "support"
+        },
+        {
+          "name": null,
+          "role": "tech team"
+        },
+        {
+          "name": null,
+          "role": "developers"
+        }
+      ]
+    },
+    "business_context": {
+      "industry_or_business_type": null,
+      "company_size_indicators": null,
+      "technology_stack_mentions": [
+        "self-hosted",
+        "hosted versions",
+        "specific programs",
+        "encrypted stored encryption"
+      ],
+      "current_challenges_pain_points": [
+        "extracting data from own servers",
+        "resumes are stored encrypted"
+      ],
+      "growth_stage_indicators": null
+    },
+    "relationship_mapping": {
+      "previous_interactions_referenced": [
+        "voice mail",
+        "ticket you mentioned",
+        "conversation going on between Robin and tech team/developers"
+      ],
+      "existing_service_usage": null,
+      "account_history_mentions": null,
+      "relationship_duration_indicators": null,
+      "trust_level_indicators": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "technical",
+      "issue_severity": "medium",
+      "technical_complexity_level": "high",
+      "time_sensitivity": "medium"
+    },
+    "resolution_tracking": {
+      "issue_status": "pending",
+      "resolution_steps_taken": [
+        "reviewed ticket",
+        "notified support agent (Robin)",
+        "notified development team",
+        "provided potential resolution options"
+      ],
+      "outstanding_action_items": [
+        "awaiting response from development team",
+        "awaiting response from Robin"
+      ],
+      "next_steps_required": [
+        "provide resolution options to customer",
+        "follow up with development team"
+      ]
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "medium",
+      "number_of_contacts_required": 2,
+      "self_service_opportunities_missed": [
+        "customer could have checked knowledge base for self-hosted support limitations"
+      ],
+      "knowledge_base_gaps_identified": [
+        "lack of documentation on extracting data from self-hosted servers"
+      ]
+    },
+    "agent_performance": {
+      "problem_solving_approach": "collaborative",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "good",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Customer expresses appreciation for callback and help, indicating positive satisfaction.",
+      "trust_level_signals": "Customer is willing to wait for solutions and asks for specific assistance, showing a level of trust.",
+      "communication_style": "Open, responsive, and specific requests for information indicate a clear and direct communication style.",
+      "rapport_quality": "Friendly and appreciative exchanges suggest a good rapport."
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Active, as customer is engaging in problem-solving discussions.",
+      "product_adoption_level": "Intermediate, customer is using self-hosted solutions and requires technical support.",
+      "feature_utilization": "Customer is attempting to utilize advanced features (data extraction) but facing challenges.",
+      "expansion_opportunities": "Potential for upselling additional support or enhanced features for self-hosted environments."
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Responsive support and personalized assistance.",
+      "risk_indicators": "Technical challenges with self-hosted setup and potential dissatisfaction if issues are not resolved promptly.",
+      "loyalty_signals": "Customer interaction suggests a willingness to continue engagement based on support outcomes.",
+      "advocacy_potential": "Dependent on successful resolution of current issues and overall satisfaction with support received."
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone and direct callbacks, as evidenced by the use of voicemail and appreciation for callbacks.",
+      "response_time_expectations": "Customer expects timely updates, ideally within the same day or the next.",
+      "information_style_preferences": "Prefers clear, direct information with specific instructions or options.",
+      "decision-making_patterns": "Seeks multiple solutions to make informed decisions, as seen in requesting both self-service and full-service options."
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "since it is self-hosted, we usually don't provide that kind of support of extracting the data from your own servers.",
+      "there's things they could pull something together for you, but I will definitely leave a note to Robin that you've been reaching out and seeing if we can get that escalated a little bit, give you a quicker answer on that.",
+      "the ideal resolution sir would be if you can give me both options option a we extract data for you this is what that cost would be here's when we can deliver option b you extract the data yourself here's where you find that file within the server.",
+      "the resumes are stored encrypted stored encryption so it might not be just like a folder that holds them."
+    ],
+    "qa_pairs": [
+      {
+        "question": "Can you tell me where I would look within the server to find the file to extract the data?",
+        "answer": "Let me make a note of that specifically. That's a great point here. So yeah, the ideal resolution sir would be if you can give me both options: option a we extract data for you, this is what that cost would be, here's when we can deliver; option b you extract the data yourself, here's where you find that file within the server."
+      },
+      {
+        "question": "Should I expect maybe to hear from Robin today before the end of the week? When do you anticipate that?",
+        "answer": "Yeah, she might actually have time today to get back to you. It looks like we are waiting on the developers in the back-and-forth conversation to give a couple answers on what they can come up with. But, yeah, I would expect something today or tomorrow, some kind of response either from Robin or maybe a developer will reach out to you."
+      }
+    ],
+    "searchable_tags": [
+      "self-hosted",
+      "data extraction",
+      "support ticket",
+      "server",
+      "encrypted files",
+      "escalation",
+      "tech team",
+      "developers",
+      "cost",
+      "delivery timeline",
+      "customer support",
+      "technical assistance",
+      "file location",
+      "encryption",
+      "response time"
+    ],
+    "semantic_themes": [
+      "Customer support limitations for self-hosted solutions",
+      "Escalation and expedited response for technical issues",
+      "Options for data extraction: self-service vs. provider-assisted"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 70,
+      "Customer talk percentage": 30,
+      "Balanced conversation indicator": "Unbalanced (Agent-dominated)"
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 2,
+      "Number of interruptions by customer": 0,
+      "Interruption impact on flow": "Minimal"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 10,
+      "Awkward pauses detected": 2,
+      "Hold time indicators": "None"
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": true,
+      "Company name mentioned": false,
+      "Verification steps taken": false,
+      "Required disclosures made": false,
+      "Proper closing used": true
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": "Medium"
+    },
+    "agent_talk_pct_calculated": 84.1,
+    "customer_talk_pct_calculated": 15.9
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 84.1,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "self-hosted",
+      "data extraction",
+      "support ticket",
+      "server",
+      "encrypted files",
+      "escalation",
+      "tech team",
+      "developers",
+      "cost",
+      "delivery timeline",
+      "customer support",
+      "technical assistance",
+      "file location",
+      "encryption",
+      "response time"
+    ],
+    "semantic_themes": [
+      "Customer support limitations for self-hosted solutions",
+      "Escalation and expedited response for technical issues",
+      "Options for data extraction: self-service vs. provider-assisted"
+    ],
+    "key_quotes": [
+      "since it is self-hosted, we usually don't provide that kind of support of extracting the data from your own servers.",
+      "there's things they could pull something together for you, but I will definitely leave a note to Robin that you've been reaching out and seeing if we can get that escalated a little bit, give you a quicker answer on that.",
+      "the ideal resolution sir would be if you can give me both options option a we extract data for you this is what that cost would be here's when we can deliver option b you extract the data yourself here's where you find that file within the server.",
+      "the resumes are stored encrypted stored encryption so it might not be just like a folder that holds them."
+    ],
+    "qa_pairs": [
+      {
+        "question": "Can you tell me where I would look within the server to find the file to extract the data?",
+        "answer": "Let me make a note of that specifically. That's a great point here. So yeah, the ideal resolution sir would be if you can give me both options: option a we extract data for you, this is what that cost would be, here's when we can deliver; option b you extract the data yourself, here's where you find that file within the server."
+      },
+      {
+        "question": "Should I expect maybe to hear from Robin today before the end of the week? When do you anticipate that?",
+        "answer": "Yeah, she might actually have time today to get back to you. It looks like we are waiting on the developers in the back-and-forth conversation to give a couple answers on what they can come up with. But, yeah, I would expect something today or tomorrow, some kind of response either from Robin or maybe a developer will reach out to you."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Robin Montoni",
+      "extension": "5466",
+      "phone": "6145466",
+      "email": "robin.montoni@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5466"
+    },
+    "primary_customer": {
+      "name": "we extract data for you this is what that cost would be",
+      "company": "that ticket you mentioned, and it kind of seems like that, you know, sinc",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "we extract data for you this is what that cost would be",
+        "company": "that ticket you mentioned, and it kind of seems like that, you know, sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "what that cost would be here",
+        "company": "that ticket you mentioned, and it kind of seems like that, you know, sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "that we use to extract things",
+        "company": "that ticket you mentioned, and it kind of seems like that, you know, sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "some kind of response either",
+        "company": "that ticket you mentioned, and it kind of seems like that, you know, sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "like that",
+        "company": "that ticket you mentioned, and it kind of seems like that, you know, sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "letting Robin know that you",
+        "company": "that ticket you mentioned, and it kind of seems like that, you know, sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "great point",
+        "company": "that ticket you mentioned, and it kind of seems like that, you know, sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "you extract the data yourself",
+        "company": "that ticket you mentioned, and it kind of seems like that, you know, sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "expect maybe to hear",
+        "company": "that ticket you mentioned, and it kind of seems like that, you know, sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "provide that kind of support of extracting the data",
+        "company": "that ticket you mentioned, and it kind of seems like that, you know, sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Robin Montoni",
+        "extension": "5466",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [
+        "problem"
+      ],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "reach out",
+        "get back to you"
+      ]
+    }
+  }
+}

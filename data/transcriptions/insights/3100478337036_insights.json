@@ -1,0 +1,497 @@
+{
+  "recording_id": "3100478337036",
+  "analysis_timestamp": "2025-12-19T23:29:55.662555",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "S Krewach",
+        "role": "customer",
+        "company": "United Employment Group",
+        "confidence_score": 0.9,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "support_technical",
+    "CALL PURPOSE": [
+      "Assistance with Outlook portal issue",
+      "Screen share troubleshooting"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Scott Krewatsch",
+      "Company/organization name": "United Employment Group",
+      "Phone numbers mentioned": null,
+      "Email addresses mentioned": "skrewatsch@unitedemploymentgroup.com",
+      "Key decision makers referenced": "Mike (boss)",
+      "Team members and their roles": null
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": "Employment/Staffing",
+      "Company size indicators": null,
+      "Technology stack mentions": "Outlook, PCR (PC Recruiter) portal",
+      "Current challenges/pain points": "Computer died, had to use a new computer, PCR portal not working",
+      "Growth stage indicators": null
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": null,
+      "Existing service usage": "Using PCR portal in Outlook",
+      "Account history mentions": "PCR portal was previously set up on the old computer",
+      "Relationship duration indicators": null,
+      "Trust level indicators": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "Technical",
+      "issue_severity": "Medium",
+      "technical_complexity_level": "Medium",
+      "time_sensitivity": "Medium"
+    },
+    "resolution_tracking": {
+      "issue_status": "Pending",
+      "resolution_steps_taken": [
+        "Troubleshooted Outlook settings",
+        "Attempted to download and install PCR portal",
+        "Escalated to customer's IT department for admin credentials"
+      ],
+      "outstanding_action_items": [
+        "Customer needs to obtain admin username and password from IT department",
+        "Customer needs to follow setup instructions for portal"
+      ],
+      "next_steps_required": [
+        "Customer to provide admin credentials to complete installation",
+        "Follow-up call to ensure successful installation and setup"
+      ]
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "Medium",
+      "number_of_contacts_required": "2",
+      "self_service_opportunities_missed": "None",
+      "knowledge_base_gaps_identified": "None"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "Good",
+      "communication_clarity": "Good",
+      "technical_knowledge_demonstrated": "Good",
+      "empathy_and_rapport_building": "Good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "RELATIONSHIP_HEALTH": {
+      "Overall_satisfaction_indicators": "High, as the customer continues to engage and seek solutions.",
+      "Trust_level_signals": "Moderate to high, customer relies on support for technical solutions.",
+      "Communication_style": "Clear, direct, and solution-focused.",
+      "Rapport_quality": "Good, with polite and cooperative interaction."
+    },
+    "CUSTOMER_JOURNEY_STAGE": {
+      "Onboarding_status": "Advanced, as the customer is already using the product but needs help with specific features.",
+      "Product_adoption_level": "High, as the customer has integrated the product into daily operations.",
+      "Feature_utilization": "Moderate, struggling with feature recovery and reinstallation.",
+      "Expansion_opportunities": "Potential for training or advanced support services."
+    },
+    "RETENTION_FACTORS": {
+      "Satisfaction_drivers": "Effective support and problem resolution.",
+      "Risk_indicators": "Technical difficulties and potential frustration with product changes.",
+      "Loyalty_signals": "Customer continues to use the service despite challenges.",
+      "Advocacy_potential": "Dependent on ongoing support satisfaction and problem resolution."
+    },
+    "COMMUNICATION_PREFERENCES": {
+      "Preferred_contact_methods": "Phone and email, with a preference for direct interaction and screen sharing.",
+      "Response_time_expectations": "Immediate, as reflected in real-time problem-solving during the call.",
+      "Information_style_preferences": "Practical, step-by-step guidance and direct answers.",
+      "Decision-making_patterns": "Customer prefers quick solutions and may require administrative assistance."
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "My problem is that my computer died yesterday, so I'm logged in, and I had to go in on another computer.",
+      "I have it clicked to not use the new Outlook.",
+      "So this one has had PCR. Previously? Yeah, because the guy that was using it before, he's no longer with us, but he was using it."
+    ],
+    "qa_pairs": [
+      {
+        "question": "What company are you with?",
+        "answer": "United Employment Group."
+      },
+      {
+        "question": "Have you downloaded the PCR portal on this computer before?",
+        "answer": "Well, you have to \u2013 it has been on this computer for the other \u2013 so I'm using another computer because like I said, mine died yesterday, so it's with IT right now."
+      }
+    ],
+    "searchable_tags": [
+      "Outlook",
+      "PCR portal",
+      "computer issues",
+      "technical support",
+      "screen sharing",
+      "email setup",
+      "IT assistance",
+      "software troubleshooting",
+      "user interface",
+      "settings",
+      "file management",
+      "employee transition",
+      "system migration",
+      "customer service"
+    ],
+    "semantic_themes": [
+      "Technical difficulties with software setup",
+      "Transitioning to a new computer system",
+      "Customer support for software issues"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 60,
+      "Customer talk percentage": 40,
+      "Balanced conversation indicator": "Somewhat Balanced"
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 2,
+      "Number of interruptions by customer": 0,
+      "Interruption impact on flow": "Minimal"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 10,
+      "Awkward pauses detected": 1,
+      "Hold time indicators": "None"
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": true,
+      "Company name mentioned": true,
+      "Verification steps taken": true,
+      "Required disclosures made": false,
+      "Proper closing used": false
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": "Moderate"
+    },
+    "agent_talk_pct_calculated": 20.1,
+    "customer_talk_pct_calculated": 79.9
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 20.1,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "Outlook",
+      "PCR portal",
+      "computer issues",
+      "technical support",
+      "screen sharing",
+      "email setup",
+      "IT assistance",
+      "software troubleshooting",
+      "user interface",
+      "settings",
+      "file management",
+      "employee transition",
+      "system migration",
+      "customer service"
+    ],
+    "semantic_themes": [
+      "Technical difficulties with software setup",
+      "Transitioning to a new computer system",
+      "Customer support for software issues"
+    ],
+    "key_quotes": [
+      "My problem is that my computer died yesterday, so I'm logged in, and I had to go in on another computer.",
+      "I have it clicked to not use the new Outlook.",
+      "So this one has had PCR. Previously? Yeah, because the guy that was using it before, he's no longer with us, but he was using it."
+    ],
+    "qa_pairs": [
+      {
+        "question": "What company are you with?",
+        "answer": "United Employment Group."
+      },
+      {
+        "question": "Have you downloaded the PCR portal on this computer before?",
+        "answer": "Well, you have to \u2013 it has been on this computer for the other \u2013 so I'm using another computer because like I said, mine died yesterday, so it's with IT right now."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Mike Keys",
+      "extension": "5409",
+      "phone": "6145409",
+      "email": "mike.keys@mainsequence.net",
+      "department": "General",
+      "role": "Staff",
+      "employee_id": "EMP_5409"
+    },
+    "primary_customer": {
+      "name": "not sure it",
+      "company": "s disappeared. Yeah, not a problem. What company",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "not sure it",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "down in this box okay so it looks like we",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to have to get that",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Tyler with PC Recruiter",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to run this file",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "ll wait for it to finish doing its down mode",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "know why they have some of this stuff on",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "second",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Mike",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Tyler",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "look",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Running",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "logged in",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to have to get that from him",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "using another computer because like",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Is it over",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to email Scott the setup instructions for portal",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "an admin so",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "try it again",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "assuming is it like any admin",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "in Outlook",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Should get it",
+        "company": "s disappeared. Yeah, not a problem. What company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Mike Keys",
+        "extension": "5409",
+        "department": "General",
+        "role": "Staff"
+      },
+      {
+        "name": "Tyler Trautman",
+        "extension": "5467",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [
+        "problem",
+        "issue",
+        "not working"
+      ],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "call back"
+      ]
+    }
+  }
+}

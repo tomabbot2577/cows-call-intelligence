@@ -1,0 +1,385 @@
+{
+  "recording_id": "3096499961036",
+  "analysis_timestamp": "2025-12-19T20:40:12.152970",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Alexia",
+        "role": "customer",
+        "company": "Trusted Human Capital",
+        "confidence_score": 0.9,
+        "validation_reason": "Clearly identified as customer"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "onboarding",
+    "CALL PURPOSE": [
+      "addressing dashboard discrepancies",
+      "syncing user settings"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "resolved"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Alexia Abreu",
+      "Company/organization name": "Trusted Human Capital",
+      "Phone numbers mentioned": null,
+      "Email addresses mentioned": null,
+      "Key decision makers referenced": null,
+      "Team members and their roles": {
+        "Team size": 4,
+        "New team member": {
+          "Name": null,
+          "Role": null
+        }
+      }
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": "Career building solutions",
+      "Company size indicators": "Small team of 4 people",
+      "Technology stack mentions": "PCR dashboard",
+      "Current challenges/pain points": "New team member sees things differently on the dashboard, unable to see old notes",
+      "Growth stage indicators": null
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": null,
+      "Existing service usage": "Using a career building solutions database",
+      "Account history mentions": null,
+      "Relationship duration indicators": null,
+      "Trust level indicators": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "technical",
+      "issue_severity": "medium",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "low"
+    },
+    "resolution_tracking": {
+      "issue_status": "resolved",
+      "resolution_steps_taken": [
+        "identified the issue with user settings not being copied",
+        "walked the customer through the process of copying user settings",
+        "provided guidance on which settings to copy and how to review securities"
+      ],
+      "outstanding_action_items": [],
+      "next_steps_required": []
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "none",
+      "knowledge_base_gaps_identified": "none"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "effective",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "good",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "High, as the customer expressed gratitude and satisfaction with the support received.",
+      "trust_level_signals": "High, as the customer confidently followed the instructions provided by the support representative.",
+      "communication_style": "Clear and direct, with both parties effectively communicating needs and solutions.",
+      "rapport_quality": "Good, with polite and friendly exchanges, enhancing the customer's comfort in seeking help."
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Active, as the customer is currently setting up new team members in the system.",
+      "product_adoption_level": "Intermediate, as the customer is familiar with basic functionalities but requires assistance for advanced settings.",
+      "feature_utilization": "Partial, as the customer was unaware of certain features such as copying user settings.",
+      "expansion_opportunities": "High, as the customer's team is small and growing, indicating potential for further adoption and customization."
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Responsive and effective customer support, ease of system customization.",
+      "risk_indicators": "Potential gaps in user knowledge about full system capabilities, which could hinder full product utilization.",
+      "loyalty_signals": "Customer expressed satisfaction and gratitude, indicating a positive disposition towards continued use.",
+      "advocacy_potential": "High, given the positive interaction and resolution of issues, the customer might recommend the service to others."
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone, as the customer chose to call for immediate assistance.",
+      "response_time_expectations": "Immediate, as the issue was addressed in real-time during the call.",
+      "information_style_preferences": "Detailed and instructional, as the customer needed step-by-step guidance on the process.",
+      "decision-making_patterns": "Consultative, as the customer discussed options and followed suggestions from the support representative."
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "They have no way of seeing old notes that were left on certain potential prospects that are in the system.",
+      "Private notes is something completely different, it's like a spot to only put a note that they would ever see.",
+      "When the username was added, maybe settings from another user were not copied.",
+      "If you want her to have your settings, what you're going to want to do is go to the source username drop down."
+    ],
+    "qa_pairs": [
+      {
+        "question": "Can you help me get the settings copied so that they're the exact same?",
+        "answer": "If you go to system users and then over at the right go to copy user settings."
+      },
+      {
+        "question": "What should I do if I don't want them deleting records?",
+        "answer": "You'll want to definitely review the securities."
+      },
+      {
+        "question": "Should I copy form letters?",
+        "answer": "The only reason you'd want to copy form letters is if you're really copying it over to another database from you as you, because you don't want to have two letters with the same name."
+      }
+    ],
+    "searchable_tags": [
+      "PCR dashboard",
+      "private notes",
+      "user settings",
+      "system users",
+      "copy settings",
+      "form letters",
+      "securities",
+      "small team",
+      "database",
+      "Trusted Human Capital",
+      "Career Building Solutions",
+      "user management",
+      "data security",
+      "onboarding",
+      "user preferences"
+    ],
+    "semantic_themes": [
+      "User settings and permissions management",
+      "Data visibility and access issues",
+      "Onboarding and system configuration for new users"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 55,
+      "Customer talk percentage": 45,
+      "Balanced conversation indicator": "Moderately Balanced"
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 2,
+      "Number of interruptions by customer": 0,
+      "Interruption impact on flow": "Minimal"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 10,
+      "Awkward pauses detected": 1,
+      "Hold time indicators": "None"
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": true,
+      "Company name mentioned": true,
+      "Verification steps taken": true,
+      "Required disclosures made": false,
+      "Proper closing used": false
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": "Moderate"
+    },
+    "agent_talk_pct_calculated": 52.5,
+    "customer_talk_pct_calculated": 47.5
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 52.5,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "PCR dashboard",
+      "private notes",
+      "user settings",
+      "system users",
+      "copy settings",
+      "form letters",
+      "securities",
+      "small team",
+      "database",
+      "Trusted Human Capital",
+      "Career Building Solutions",
+      "user management",
+      "data security",
+      "onboarding",
+      "user preferences"
+    ],
+    "semantic_themes": [
+      "User settings and permissions management",
+      "Data visibility and access issues",
+      "Onboarding and system configuration for new users"
+    ],
+    "key_quotes": [
+      "They have no way of seeing old notes that were left on certain potential prospects that are in the system.",
+      "Private notes is something completely different, it's like a spot to only put a note that they would ever see.",
+      "When the username was added, maybe settings from another user were not copied.",
+      "If you want her to have your settings, what you're going to want to do is go to the source username drop down."
+    ],
+    "qa_pairs": [
+      {
+        "question": "Can you help me get the settings copied so that they're the exact same?",
+        "answer": "If you go to system users and then over at the right go to copy user settings."
+      },
+      {
+        "question": "What should I do if I don't want them deleting records?",
+        "answer": "You'll want to definitely review the securities."
+      },
+      {
+        "question": "Should I copy form letters?",
+        "answer": "The only reason you'd want to copy form letters is if you're really copying it over to another database from you as you, because you don't want to have two letters with the same name."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Robin Montoni",
+      "extension": "5466",
+      "phone": "6145466",
+      "email": "robin.montoni@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5466"
+    },
+    "primary_customer": {
+      "name": "Robin",
+      "company": "s Alexia. And your company",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "Robin",
+        "company": "s Alexia. And your company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "re really copying it over to another database",
+        "company": "s Alexia. And your company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just the same format basically of how",
+        "company": "s Alexia. And your company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to go ahead and copy that",
+        "company": "s Alexia. And your company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "note that they would ever see so you want like the regular notes area it sounds like when the username was added that maybe settings",
+        "company": "s Alexia. And your company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "copy settings",
+        "company": "s Alexia. And your company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "sorry",
+        "company": "s Alexia. And your company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "ll be the source username in other words who to copy",
+        "company": "s Alexia. And your company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to just have him see everything that",
+        "company": "s Alexia. And your company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Robin Montoni",
+        "extension": "5466",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": []
+    }
+  }
+}

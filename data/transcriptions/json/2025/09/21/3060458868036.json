@@ -1,0 +1,104 @@
+{
+  "recording_id": "3060458868036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:09:33.163363Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:09:33",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling me. Thank you. How can I help you? Yes, I'm having an issue with my capture tool. I was wondering if you could help me. It's just glitching out. I don't know if it's a PCR capture all across the board or if it's just this particular computer that I'm using. I can share my screen and show you what's going on. Yeah, let's take a look here. What's a good email address for me to send this meeting link to? Do you want to just go on RingCentral? Yes. RingCentral.com, login, or what is it, meetings? So sometimes that'll work, sometimes it won't, but I can give you a meeting ID. It's usually meetings.com. Yeah, yeah. Then let me know when you're ready for the ID. Yep, I'm ready. 790-757-325. Okay, we're good. I'm going to share my screen with you. Can you see my screen? Yep. Okay. So, for example, this has been happening a lot in the last couple weeks. I clicked that. Hold on one second. It's creating duplicates, first of all, which is an issue. So it's going, and it's like, see how it's flashing like that? So I noticed you had another extension running on the page. Which one? SignalHire? Yes. That one's been known to cause issues with the capture tool. Okay. Well, we need that one, unfortunately. So, yeah, it's just been, like, really glitching out. Is there any way, there's no possible way to do anything about that other than disabling SignalHire? not really unfortunately because we can't control the coding of their extension and how it interacts with pages okay all right so i just gotta deal with it yeah that's one of those unfortunate ones where it's like we can't really do anything because it's not ours i gotcha okay all right appreciate trying thanks",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1780.287988,
+    "salad_processing_time": 15.348341464996338,
+    "overall_processing_time": 1780.287988,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling me.  Thank you.  How can I help you? Yes, I'm having an issue with my capture tool.",
+    "job_id": "31df8286-e4c7-4ae5-b985-677f095d2ad7",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling me.  Thank you.  How can I help you? Yes, I'm having an issue with my capture tool.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3060458868036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

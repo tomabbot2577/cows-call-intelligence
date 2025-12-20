@@ -1,0 +1,100 @@
+{
+  "recording_id": "3008745111037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:21:39.912487Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:21:39",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you. Hello, Main Sequence Technology. This is Garrett. How may I help you? Hey, Garrett. It's Allie Wyen calling from Susan Graham Consulting. How are you today? Good. How are you? Good. Good. Hey, I'm on a Teams call with my colleague, Taylor Undercoupler. So we're having – she was trying to log in this morning, okay, and then she got locked out of the account, And so it said that, you know, she should reset her password. She reset her password. Or actually, yeah, she called me because she had, you know, done that forget password link and it never routed any kind of email to her. So, you know, as the admin, I reset her password so she could get back in and she couldn't. So then we tried the forget password link. She emailed PCR support. They sent her the instructions. and even though she walked through the instructions, it's still saying she's locked out of the account and I can't help her get into it right now. Okay, so there is no forgot password link on the PCR login page. She might have been trying to log into our help center rather than the actual PCR. So we should check to make sure that she's at the right website, the actual PCR login web address. Okay. I have you on speaker, so can you hear him, Taylor? I can't hear him. Okay. All right, I'll just repeat what he's saying. Okay, go ahead. Sorry, Garrett. Yeah, no problem. So we should double-check that you're at the right web address. The forgot password, there is no kind of button for that on the PCR login screen. So you might be somewhere else, like our help center. You're probably, so Taylor, you're probably in, he said there's no forget password in the main PCR. You're probably clicking on the forget password in the help center link. So that's two different places. So where should she go? So she needs to go to the Susan Graham Consulting login, PCR login page. I can email you that web address if you don't have it. or I can send it to you. Okay. Yeah, she has it. Taylor, go to the PCR, Susan Grant Consulting, you know, login page where you would put your user ID and your password in. Okay, go there. Yep, she's there. Okay, and before she goes to log in, I'm going to log in and check to make sure that it wasn't locked from too many password attempts. If it was, I can unlock that. Let's see. That's what it was. Yeah, so he's going to check and see if you were locked because of too many password attempts. Is it T-U-N-D-E-R as the username, T-U-N-D-E-R? Correct, yep. Okay, yep, that one got locked. Let me just unlock that real quick here. Let's save. Good, okay, so you should be in good shape to log in on that login page now. Okay, cool. So moving forward, if that happens again, do we just call you or is there a way for me to unlock her? Sure, yeah, I can show you how to unlock that, absolutely. So if you are logged into PCR as like an admin user, you can go to system up at the top. And users on the left, manage users on the right. And then just select the username from the list. And then in the bottom frame, go to the security padlock icon on the left. Yep. And then there's a heading at the very bottom called security policy. If you expand that, there'll be a button that says unlock account. It might currently say account is not locked out, but that's where it would say unlock account, where you would check the box and hit save to unlock it again. Okay, I see where you're going. Okay, perfect. So I would have to go into that specific users and then go into security and then if it was locked, uncheck or check that box and then hit save. Exactly. Yep. Cool. I didn't know. Okay. I thought I was unlocking it by just changing the password. So that makes sense. Okay, yeah. But you can change the password here, too, like you know. But, yeah, if you get stuck or don't remember those steps at any point, just call in. We can help again with that. That's perfect. And then because we changed her password in PCR, does she have to go back into Outlook and change it where that, let me see, does she have to change it where it's like the PCR portal or the options? Yeah, most likely she'll have to reconnect the PCR portal. There's a password field there. Yeah, I would just double-check that. It would be under Options in the portal menu. It's like a green wrench. Yep, yep, I'm looking at it right now. So it's the username and then the password. I don't know what the heck password I have, but it looks like I've got 1,000. I just pulled mine up, and I've got like 1,000. Characters? Yeah. It might actually enter it in, like re-enter it encrypted after you hit save, and that's why it might be so many characters. I think it actually does that. I would never have picked a password that long ever. Okay. Okay. All right. Well, good stuff. Well, then she should be all set to go. Yeah. Awesome. Well, thank you so much. No problem. Reach out if you need anything else. I appreciate that. Take care, Garrett. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 229.412691,
+    "salad_processing_time": 37.122034549713135,
+    "overall_processing_time": 229.412691,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you.  Hello, Main Sequence Technology.  This is Garrett.",
+    "job_id": "1dcc76f2-8100-45d1-8a4c-6a55fb1568f8",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you.  Hello, Main Sequence Technology.  This is Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3008745111037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "recording_id": "3049578697036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:00:01.636171Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:00:01",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hi, Tyler. How are you? Good. How are you? I'm doing well. I have a question. We are currently uploading people to the AdName wizard, and we noticed that when duplicates happen, company name is not being updated. Is that intentional or how or? Yes. So the only way a person's company name will be updated using an import. Is it a what? Using like the ad wizard or like the import tool to update names. Like you're using the ad wizard, you said, correct? To add these people? Yeah, we're using the import list. Yes. So you'll see when you do the import list, there's the company name, company phone, company, I believe it's city and state. There's those four different company fields. Those all have to match a company record that's in the database. when you're doing the import list for the name to switch over to that company. Oh. The only other way you can move people from company to company is you can go into the record, and in that records, like the options menu on that record, there's a change company option where you can select another company that's already in the database. to all the company fields for you to actually update. Yes, and a current company record in the database has to have all that information. Oh, okay, okay. Thank you. Yep, not a problem. All right, have a good day. You too. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1491.583654,
+    "salad_processing_time": 12.083554029464722,
+    "overall_processing_time": 1491.583654,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hi, Tyler.",
+    "job_id": "b04a0153-ad02-4c2a-a8b4-244d92d7673b",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hi, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3049578697036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

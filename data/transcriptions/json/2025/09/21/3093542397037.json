@@ -1,0 +1,100 @@
+{
+  "recording_id": "3093542397037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:23:09.270082Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:23:09",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hi, Garrett. This is Conrad from On Point Search Group. How are you? Good. How are you? Good, good. So I got locked out of my PC recruiter again here, except a number of login attempts. Yeah. So I was wondering if you could unlock it for me. No problem. uh conrad's the username okay got it and unlocks the okay cool um do you know the password to any um other username like there's an admin username um the other ones yeah so yeah you have conrad is your main username but but there is one for admins. Yeah. If you are able to log in under admin, you can unlock any username that gets locked out from too many password attempts. I see. Yeah, I do have the admin password. Oh, good. Yeah. This is only going to fix something. Gotcha. Okay. Yeah. Yeah. But anyway, so I can log in under admin? Yeah, you can log in under admin. And then, yeah, if you go to your system, users, manage users, there is something called the security policy under the security section of a username that lets you unlock any accounts that have been locked from too many password attempts. Okay, so I'm in the list of users now. So should I pick that user? Yeah, like, for example, click on Conrad as a username. Yes, exactly. And then in the bottom frame, click on the padlock icon on the left, security. Okay, yeah. And at the very bottom, there's a heading called security policy that you can expand. And you'll see, well, now it'll say account is not locked out. But it would probably say account is locked. You just check that box and hit save to unlock it. Got it. Okay. Yeah, just in case that happens frequently. Awesome. Yeah. All right. Yeah, just reach out if you need anything else. And have a great rest of your day. All right. You too. Take care. Thank you. Thanks.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 2179.344043,
+    "salad_processing_time": 9.97648572921753,
+    "overall_processing_time": 2179.344043,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "job_id": "5bb004fb-f58a-4714-8679-2ed2c78ddeec",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3093542397037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

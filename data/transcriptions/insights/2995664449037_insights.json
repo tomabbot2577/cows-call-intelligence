@@ -1,0 +1,180 @@
+{
+  "recording_id": "2995664449037",
+  "analysis_timestamp": "2025-12-19T18:01:35.590636",
+  "analysis_version": "2.0",
+  "contact_information": {
+    "phone_numbers": [
+      "440-856-0314"
+    ],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Donna Lynn",
+        "role": "invoice_recipient",
+        "company": "Newport Williams",
+        "confidence_score": 0.8,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "account_management",
+    "CALL PURPOSE": [
+      "Provide update on invoice status",
+      "Discuss duplicate problem and offer assistance"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "customer_identification": {
+      "primary_contact_name": "Donna Lynn",
+      "primary_contact_role": null,
+      "company_name": "Newport Williams",
+      "phone_numbers": [
+        "440-856-0314"
+      ],
+      "email_addresses": [
+        "Donna Lynn@newport williams.com"
+      ],
+      "key_decision_makers": null,
+      "team_members": null
+    },
+    "business_context": {
+      "industry": null,
+      "company_size": null,
+      "technology_stack": null,
+      "challenges": "duplicate problem",
+      "growth_stage": null
+    },
+    "relationship_mapping": {
+      "previous_interactions": "invoice sent out",
+      "existing_service_usage": null,
+      "account_history": null,
+      "relationship_duration": null,
+      "trust_level": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "billing",
+      "issue_severity": "medium",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "low"
+    },
+    "resolution_tracking": {
+      "issue_status": "pending",
+      "resolution_steps_taken": "invoice sent, awaiting payment",
+      "outstanding_action_items": "awaiting customer response regarding duplicate problem",
+      "next_steps_required": "customer to contact agent, agent to escalate to trainer"
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "2",
+      "self_service_opportunities_missed": "none",
+      "knowledge_base_gaps_identified": "none"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "proactive",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "sufficient",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Moderate",
+      "trust_level_signals": "Moderate",
+      "communication_style": "Direct and responsive",
+      "rapport_quality": "Functional"
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Active",
+      "product_adoption_level": "Initial",
+      "feature_utilization": "Partial",
+      "expansion_opportunities": "High"
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Timely invoice processing and problem resolution",
+      "risk_indicators": "Issues with product features (duplicates)",
+      "loyalty_signals": "Engagement with customer support",
+      "advocacy_potential": "Moderate"
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone, Email",
+      "response_time_expectations": "Immediate to short",
+      "information_style_preferences": "Direct and informative",
+      "decision-making_patterns": "Reactive"
+    }
+  },
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium"
+  },
+  "action_items": [],
+  "participants": {
+    "primary_employee": {
+      "name": "Unknown",
+      "extension": "",
+      "phone": "",
+      "email": "",
+      "department": "",
+      "role": "",
+      "employee_id": ""
+    },
+    "primary_customer": {
+      "name": "calm she",
+      "company": "",
+      "phone": "440-856-0314",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "calm she",
+        "company": "",
+        "phone": "440-856-0314",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "invoice"
+      ],
+      "mentioned_issues": [
+        "problem"
+      ],
+      "urgency_indicators": [],
+      "follow_up_mentions": []
+    }
+  }
+}

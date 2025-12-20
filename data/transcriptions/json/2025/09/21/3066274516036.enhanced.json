@@ -1,0 +1,126 @@
+{
+  "recording_id": "3066274516036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:13:32.023098Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:13:32",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hello. Hello. Is this Jen Murphy? Yes, it is. Jenna, this is Jim Lombardo with PC Recruiter. I got your inquiry yesterday afternoon and thought I'd give you a quick call back, see how I can help. Yeah, we are currently with Top Echelon. We're not looking to necessarily get rid of that. However, we are part of the MPA network, and we understand that you guys integrate with them. And so we wanted to talk about pricing and see how it works to see if we wanted to add the system that would better function with MPA because top-design does not communicate with MPA. Okay. And is it the sharing piece of MPA? Yes. It would be, I guess, where things could – where this would act as our ATS for MPA. So we can get them into top echelon right now, but nothing communicates back and forth. And so we're looking to possibly add something because we are a part of the MPA network that would communicate back and forth between the job postings and the resumes that come in as well, you know, in and out of ATS and that kind of thing. Okay, excellent. Yeah, I'd be happy to get a call in the schedule, show you a demo if you'd like to just kind of see what we're all about. Sure. I'm technically not in the office today I'll be back in tomorrow but it's a little bit full but Thursday or next week will work too okay maybe Thursday like 1pm eastern would that work let me take a look at it there will be a couple different people online so let me open sorry I'm trying to get the calendar I didn't have my stuff open because I was um okay I'm not in today let me see about it doesn't look like anybody else is out then yeah 1pm on Thursday would be fun perfect I will email you over a link to Zoom and we can take a look around okay great thank you so much fantastic thank you bye bye",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1897.908365,
+    "salad_processing_time": 16.33798837661743,
+    "overall_processing_time": 1897.908365,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hello.  Hello.  Is this Jen Murphy? Yes, it is.",
+    "job_id": "b08f768e-a8f8-461a-9d90-8c8a9b3eb3ca",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hello.  Hello.  Is this Jen Murphy? Yes, it is.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "technical"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3066274516036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

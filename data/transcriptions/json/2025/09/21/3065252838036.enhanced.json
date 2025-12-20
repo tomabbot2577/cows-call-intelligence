@@ -1,0 +1,119 @@
+{
+  "recording_id": "3065252838036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:12:55.033521Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:12:55",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Please hold while I try to connect you. Revision People, this is Jesse. Hi, Jesse. This is Robin Mantoni with Main Sequence. Hey, Robin. How are you? I'm good. How are you? I'm good. I'm good. Thanks for calling back. How can I help? No problem. So what I'm going to do, I just want to make sure this ticket, because what we do is we do a new ticket with certain details, like certain headings and stuff for the data return. I will go ahead and create that ticket. But I have to send the form for signature to Patrick since he's the contract signer. That way we're just making sure, you know, people aren't requesting copies of other people's data. So can you have his email address? Let me make sure. Pretty sure. Provision people. Provision people. What I have for him is Patrick at Provision People. That sound about right? Okay. Now the invoice, do you, let me check your account. How do you typically pay? You normally invoice us and then we pay for it. Okay. Okay, so you have a card. Let me see if you have a card on file. Yep, it should be a Chase card. I can give the last four digits if you need it. That's the only thing I'm able to see. So let's see. So you are set up for auto pay. So if you want, once he signs the form, I can just do the auto pay on that one invoice if you want. Yeah. Yep. That would be great. All right. So I will get that form over, and as soon as he signs it, I can do the auto pay, and then we'll get that started for you. It shouldn't take too long. And then the other thing I was just about to tell you is, let's see, what was I about to tell you on that? Well, actually, my question would be, how do we get the copy? Is it going to be a cloud copy that we can download? Yeah, and you'll want to download it within 30 days because just because of space, we don't want to be holding on to it too much. Yeah, I understand. Yeah, so you would download it. Hopefully, I get to download it in 30 minutes. Yeah. Yeah. So what they do, like the form that they fill out, like they send you like a link, but then the credentials to get into it are sent by whatever he specifies. So I'll have all the details in that form. Oh, I know what I was going to tell you. So the form itself, it's just it's an electronic signature, but it comes from William Kubitschek, who is like one of the owners. so it doesn't come from like billing at main sequence so I just want to make sure you know you give him a heads up to look for that email yeah could you could you reply to my most recent email that with the name so that I don't forget and that he's copied in it as well so he should be able to see as well but if he's not you know if he can't do a reply all then I'll just forward it to him Okay, so I will close this ticket and make a new ticket for the data return. Yeah, because there's just certain details I have to enter. So it's got to be for the data copy. There will be a form sent to Patrick Long from William Kubitschek. He's like one of the owners. Mm-hmm. Okay. and then what happens is I copy myself on it so that way once I know it's yeah what it comes back to me then I know it's signed and everything I can already nobody knows of it one form is signed we will process the 175 fee using card set up for auto pay. Okay. All right. I will get that started for you now. Sound good? Beautiful. Thank you very much, Robin. All righty. Have a great day. You too. Thanks. Thanks. Bye. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1879.719198,
+    "salad_processing_time": 13.007774829864502,
+    "overall_processing_time": 1879.719198,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Please hold while I try to connect you.  Revision People, this is Jesse.  Hi, Jesse.",
+    "job_id": "e6008e0f-0d1b-42c3-9c9d-4981bb6d71ea",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Please hold while I try to connect you.  Revision People, this is Jesse.  Hi, Jesse.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Billing",
+        "confidence": 0.7
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "billing",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "billing"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3065252838036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

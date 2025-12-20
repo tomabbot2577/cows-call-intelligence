@@ -1,0 +1,109 @@
+{
+  "recording_id": "3029133261036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:42:31.817931Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:42:31",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hello, you've reached the phone of Tom Hodges. Please leave your name and number and I'll get back to you at my earliest. Have a great day. See you. Bye-bye. At the tone, please record your message. When you've finished recording, you may hang up or press 1 for more options. Hi Tom, this is Robin Montoni. Just giving you a call back back making sure you have questions about your user changes answered. If you still need assistance just let us know. I'm actually pulling up your information. I should have done this before I was leaving a message for you. Looks like you were change from two to three users and your next invoice scheduled for a lot August 11th if you're satisfied with the message press 1 to listen to your message press 2 to erase and rerecord press 3 to continue record message erased at the tone please rerecord your message at the end of your message press 1. Hi Tom this is Robin Montoni following up I know you had some questions about user changes just want to make sure that you're all settled now we did adjust your billing from 2 to 3 users so that'll be reflected on your next invoice scheduled for August 11th so if your user account ever changes you just let us know and then we adjust your billing so it's not based on how you add or delete in the database, you would actually have to let us know. So let me know and we will go from there and hope you have a wonderful weekend if I don't hear from you. Thanks.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 942.08431,
+    "salad_processing_time": 4.561575174331665,
+    "overall_processing_time": 942.08431,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hello, you've reached the phone of Tom Hodges.  Please leave your name and number and I'll get back to you at my earliest.  Have a great day.",
+    "job_id": "b864f9eb-598f-4d8c-970d-a02006eedca6",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hello, you've reached the phone of Tom Hodges.  Please leave your name and number and I'll get back to you at my earliest.  Have a great day.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Billing",
+        "confidence": 0.7
+      }
+    ],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "billing",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "billing"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3029133261036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

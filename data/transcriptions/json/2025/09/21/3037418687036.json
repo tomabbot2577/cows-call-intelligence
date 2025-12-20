@@ -1,0 +1,100 @@
+{
+  "recording_id": "3037418687036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:48:11.352749Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:48:11",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hi, this is Amy. Hi, this is Garrett with Main Sequence Technology. I received your voicemail. You're having trouble in PCR? Yes. Sorry, I'm like cheating in Apple. No problem. So my, okay, I'm doing something else. Let me switch my brain. Is it called analytics? Yes. My analytics do show nothing. And Deanna said she went into her master studies and that I should have access to everything. Okay. But when I, and we did this yesterday, and she's like, give us five minutes. Refresh it. Give us five minutes. I'm like, all right. So today I still have nothing. Oh, okay. So I'm going to need your help to figure this out. Yeah, no problem. So let me see here. I'll check the permission settings. Let me sign in as Deanna first. Mm-hmm. Okay. D-E-A-N-N-A. Okay, got it. all right so good is she your guys's like longest standing client ever i'm not sure um we do have people have been around since you know the early 2000s so um do you have a lot of customers everyone seems to know her no one questions like deanna's name right um okay so deanna is set to full admin and you are username amy you are full admin as well Okay. So yeah, full admin. Then if I log back in, let me try logging in as Amy. We'll see what I get here. Okay. So if I go to analytics. Awesome. Okay. So which metrics on the left are you looking under? So, for example, if I go under recruiting, which I'm supposed to, like, log our stats for our team weekly, and then I go under by employee, and when I see my screen, it just has zero on the side, zero on the bottom, no names. But when I see her screen, what it looks like, it shows everybody's names. It shows, like, how many calls they made and all that stuff. Okay. So I think you'll just have to adjust your filters. So across the top there at the top right, start with the calendar filter. That'll give you a date range. Do you have one punched in there that you want to see? It might be. So if I do like this month. Well, OK. OK. Let's do last month because it's August. Last month. So I'm on July and I do last month and it still says zero. OK. And then next to the calendar is a little filter icon. and then you can choose a user by typing one into the user filter or checking the box that says all all uh and then hit apply that's the key i see everybody now oh good okay yeah so i think it was just set to show my or like you know your own usernames settings until you you change that to other users. So that should be good. Okay. Let's see. Yeah. And I'm getting the same thing. Okay. Now I can see some people showing up here. Awesome. Yeah. Cool. Any other issues you were having? Not right now, but I'll let you guys know if we need your help. Sounds good. All right. Have a great rest of your day. Thank you. You too. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1125.646917,
+    "salad_processing_time": 29.74295687675476,
+    "overall_processing_time": 1125.646917,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hi, this is Amy.  Hi, this is Garrett with Main Sequence Technology.  I received your voicemail.",
+    "job_id": "de3802d8-3e8d-4fa8-a00a-1614d23042f9",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hi, this is Amy.  Hi, this is Garrett with Main Sequence Technology.  I received your voicemail.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3037418687036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

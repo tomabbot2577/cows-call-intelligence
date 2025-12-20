@@ -1,0 +1,222 @@
+{
+  "recording_id": "2993772703037",
+  "analysis_timestamp": "2025-09-21T18:44:27.652193",
+  "analysis_version": "2.0",
+  "contact_information": {
+    "phone_numbers": [
+      "440-856-0314"
+    ],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Jan Plussner",
+        "role": "customer",
+        "company": null,
+        "confidence_score": 0.9,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [
+      {
+        "name": "Bill Kubitschak",
+        "role": "decision_maker",
+        "context": "spoke with Jan Plussner"
+      }
+    ],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-09-21"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "sales_demo",
+    "CALL PURPOSE": [
+      "To introduce PCRM software to Jan Plussner",
+      "To schedule a demo of the software"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "customer_identification": {
+      "primary_contact_name": "Jan Plussner",
+      "primary_contact_role": null,
+      "company_name": null,
+      "phone_numbers": [
+        "440-856-0314"
+      ],
+      "email_addresses": [],
+      "key_decision_makers": [
+        "Bill Kubitschak"
+      ],
+      "team_members": [
+        {
+          "name": "Jim Lombardo",
+          "role": "with PC Recruiter"
+        }
+      ]
+    },
+    "business_context": {
+      "industry": null,
+      "company_size": null,
+      "technology_stack": [
+        "PCRM",
+        "PC Recruiter"
+      ],
+      "challenges_pain_points": null,
+      "growth_stage": null
+    },
+    "relationship_mapping": {
+      "previous_interactions": [
+        {
+          "date": null,
+          "details": "Bill Kubitschak, one of the owners of the company, spoke with Jan Plussner the other day"
+        }
+      ],
+      "existing_service_usage": [
+        "PC Recruiter"
+      ],
+      "account_history": null,
+      "relationship_duration": null,
+      "trust_level": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "sales/outreach",
+      "issue_severity": "low",
+      "technical_complexity_level": "none",
+      "time_sensitivity": "low"
+    },
+    "resolution_tracking": {
+      "issue_status": "pending",
+      "resolution_steps_taken": "none",
+      "outstanding_action_items": "customer follow-up",
+      "next_steps_required": "customer response to sales outreach"
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "none",
+      "knowledge_base_gaps_identified": "none"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "n/a",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "none",
+      "empathy_and_rapport_building": "friendly tone"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Unknown, no explicit satisfaction mentioned",
+      "trust_level_signals": "Moderate, as the owner of the company personally followed up",
+      "communication_style": "Informal and friendly",
+      "rapport_quality": "Seems positive, with a casual and personal approach"
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Pre-onboarding, as the call is an invitation to explore a new product",
+      "product_adoption_level": "Low, as the new product has not been adopted yet",
+      "feature_utilization": "Not applicable, new product introduction",
+      "expansion_opportunities": "High, as a new product (PCRM) is being introduced"
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Potential for increased functionality and improved interface",
+      "risk_indicators": "Uncertainty about customer's current status and intentions",
+      "loyalty_signals": "Moderate, based on ongoing communication and personal follow-ups",
+      "advocacy_potential": "Unclear, depends on customer's experience with the new product"
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone call, as used by the company representative",
+      "response_time_expectations": "Prompt, as indicated by the request for a quick callback",
+      "information_style_preferences": "Direct and product-focused",
+      "decision-making_patterns": "Exploratory, seeking customer's interest in a demo"
+    }
+  },
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium"
+  },
+  "action_items": [],
+  "participants": {
+    "primary_employee": {
+      "name": "Jim Lombardo",
+      "extension": "5401",
+      "phone": "6145401",
+      "email": "jim.lombardo@mainsequence.net",
+      "department": "Sales",
+      "role": "Sales Representative",
+      "employee_id": "EMP_5401"
+    },
+    "primary_customer": {
+      "name": "happy to show you around if you",
+      "company": "PC Recruiter. I wanted to give you a quick call just to touch base here. I actually had a chance to talk with Bill Kubitschak, one of the owners of the company",
+      "phone": "440-856-0314",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "happy to show you around if you",
+        "company": "PC Recruiter. I wanted to give you a quick call just to touch base here. I actually had a chance to talk with Bill Kubitschak, one of the owners of the company",
+        "phone": "440-856-0314",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "quick call just to touch base",
+        "company": "PC Recruiter. I wanted to give you a quick call just to touch base here. I actually had a chance to talk with Bill Kubitschak, one of the owners of the company",
+        "phone": "440-856-0314",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "one of the owners of the company",
+        "company": "PC Recruiter. I wanted to give you a quick call just to touch base here. I actually had a chance to talk with Bill Kubitschak, one of the owners of the company",
+        "phone": "440-856-0314",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Jim Lombardo",
+        "extension": "5401",
+        "department": "Sales",
+        "role": "Sales Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-09-21"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "get back to you"
+      ]
+    }
+  }
+}

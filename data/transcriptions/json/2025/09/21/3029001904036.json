@@ -1,0 +1,95 @@
+{
+  "recording_id": "3029001904036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:42:21.802634Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:42:21",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling David O'Connor. Please hold while I try to connect you. Hello, it is Dave. Hi, David. It's Robin Mantoni with Main Sequence. How are you? Good, Robin. How are you doing? Pretty good. What's going on? You're doing company-wide roll-ups. Yes. Yes. All right. Let's see here. Let me get into something I can get into. So we had created roll-ups based on recommendations from MRI, and we don't use a default roll-up. So when I change mine, does that change everybody in the organization? It depends. So for years and years, what you would have is almost just like how you have like company name and position layout, where if you made changes, you had to copy those settings over to other users. You had to force them through, right? Yeah, so you had to copy those. But now we also have a global roll-up stage set up. So if it was set up as one of those and then selected for a list, then that would automatically apply to all users. So let me see. Your ODBC is F underscore MR Greensburg. Okay, so what's an example? Hold on, let me go into view. What is your username? D. O'Connor. Okay. Let me just see. People didn't like having somebody went in and customized theirs, and that one spot looks different depending on who's viewing the list. That other feature. Okay. So if you go to roll-ups, so right now, you got a mix. If you click roll-ups on the main toolbar and you'll see your list, see how you have the global stage over at the very far right? Okay. So I'm going to roll up. Yeah. So when you click roll-ups on the main toolbar, will you see the list of roll-ups? Oh, there it is. Global stage. Okay. If that field is empty for a list, That means it's using whatever user is viewing it, whatever their per user configuration is. But if you scroll down, there's a couple that have what says default. So that means it's a global stage setup. So, correct. Now, we're just starting to play with those default ones. Okay. They're all newer dates, and you see most of them are test ones. Okay. So the default stage, if you go to system and then go down to database setup. So anything under database setup is really like for the database. All right. And we go to global rollups. Yeah. And that's your default. Yeah, that's your default. So whenever you're making a list, if you – so right now you have it where it's enabled. but for every new roll-up, somebody would have to switch it or it says global stages will default to no, but they would have to say yes. If you want to force any new name roll-up to use this setup, you would want to click that require option. Gotcha. Okay. All right. So, but right now under the other roll-ups that aren't the default, those are carrying to everyone else though, aren't they? Only if you copied them. So for example, if you're viewing a list, let's say you go into one of those that does not have a global stage like this MRK AEPAW list. Let's see. That's a roll ups. Okay. Okay. When you go into this list and you click your, like just click on a stage, don't actually pick one when it pops up. But this is your configuration. All right. for your username. And where that was created is if you're in your rollup, it looks like you have it pinned. It's a gear icon where you'd have like your link to position, form letter, remove from rollup, the gear one. So here if you go, it pops up your layout. And if you go to stage setup, this is your layout for your username. But I think that's carrying to everyone else as well. So it would only carry that over other people if you went to system and went to users and then copy you do copy user settings. So under the heading of rollup list there's rollup list layout which is the columns and then the option right below that rollup stage setup is your per user configuration. So you could select yourself as the source username copy your stage set up over to other people at least for those ones that don't have a stage yet now what you could do just so you know let's say you went into a list that doesn't have a global stage as long as you didn't have anything selected where everybody was clear you could actually go to your roll-up list and say action edit and apply a global stage to it but if you have at least one row that has a global stage selected it won't copy over because you could be making it look like something completely different. Alright so let's just go back so if we go to system and if we're gonna if I'm gonna force these to other individuals. I go to users. For the layout that you already have for your username and not using global. Well I plan on making some changes to it to the non global correct. Okay so if you go system users, copy user settings, it would be the source username, and then if you scroll down under where that says roll up stat heading, scroll down where it says target, where do I see that, oh roll up list, okay I got you. Okay, so roll up list layout is just the columns, what field you have selected when you view a rollup. And then the stage is right below it. So that way you could take your per user configuration and copy it over, but then maybe just going forward for any new list just use the global option instead. And that way you don't have to worry about this. All right so if I did force it over to them it wouldn't stick for new ones is what you're saying we really need to do the global right? Yeah I would say for any new list just to make sure everybody's using the same thing for any new list then turn on that global it's make it be required for new ones okay okay but it won't apply a global to any ones that are already already created gotcha okay all right hi let me continue play with that okay all right beautiful thanks Rob oh you're welcome have a great weekend",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 936.152836,
+    "salad_processing_time": 92.5348653793335,
+    "overall_processing_time": 936.152836,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling David O'Connor.  Please hold while I try to connect you.  Hello, it is Dave.",
+    "job_id": "95d6be8b-bb16-4a1f-9a35-6b3f491566c3",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling David O'Connor.  Please hold while I try to connect you.  Hello, it is Dave.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3029001904036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

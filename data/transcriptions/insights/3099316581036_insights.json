@@ -1,0 +1,568 @@
+{
+  "recording_id": "3099316581036",
+  "analysis_timestamp": "2025-12-19T22:35:00.137444",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Omar",
+        "role": "customer",
+        "company": "Sanford Rose IC",
+        "confidence_score": 0.9,
+        "validation_reason": "Clearly identified as customer"
+      },
+      {
+        "name": "Steve Monson",
+        "role": "customer",
+        "company": "Monson Group",
+        "confidence_score": 0.8,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "support_technical",
+    "CALL PURPOSE": [
+      "troubleshooting technical issue",
+      "investigating software problem"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Omar",
+      "Company/organization name": "Sanford Rose IC",
+      "Phone numbers mentioned": null,
+      "Email addresses mentioned": "G Komyati <G Komyati@main sequence.net>",
+      "Key decision makers referenced": "Steve Monson",
+      "Team members and their roles": "Logan"
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": null,
+      "Company size indicators": null,
+      "Technology stack mentions": "Java, Amazon Coreto, PCR Launcher, Adobe Reader",
+      "Current challenges/pain points": "Random pop-up when trying to open attachments, files being modified",
+      "Growth stage indicators": null
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": null,
+      "Existing service usage": null,
+      "Account history mentions": null,
+      "Relationship duration indicators": null,
+      "Trust level indicators": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "technical",
+      "issue_severity": "medium",
+      "technical_complexity_level": "medium",
+      "time_sensitivity": "low"
+    },
+    "resolution_tracking": {
+      "issue_status": "pending",
+      "resolution_steps_taken": [
+        "verified software versions",
+        "checked support ticket history",
+        "investigated default program settings",
+        "reviewed screenshots"
+      ],
+      "outstanding_action_items": [
+        "investigate user-specific settings",
+        "test with different file types"
+      ],
+      "next_steps_required": [
+        "follow up with customer to test solutions",
+        "investigate if issue is specific to certain users or computers"
+      ]
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "medium",
+      "number_of_contacts_required": 1,
+      "self_service_opportunities_missed": [
+        "checking default program settings",
+        "verifying software versions"
+      ],
+      "knowledge_base_gaps_identified": [
+        "troubleshooting steps for Java pop-up issue"
+      ]
+    },
+    "agent_performance": {
+      "problem_solving_approach": "good",
+      "communication_clarity": "good",
+      "technical_knowledge_demonstrated": "good",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "RELATIONSHIP_HEALTH": {
+      "Overall_satisfaction_indicators": "High, as the customer continues to engage and seeks solutions",
+      "Trust_level_signals": "Moderate, customer is relying on support for troubleshooting",
+      "Communication_style": "Open, detailed, and collaborative",
+      "Rapport_quality": "Good, polite and patient interaction"
+    },
+    "CUSTOMER_JOURNEY_STAGE": {
+      "Onboarding_status": "Advanced, as the customer is using specific features",
+      "Product_adoption_level": "High, as the customer is actively using the product and encountering advanced issues",
+      "Feature_utilization": "High, involves multiple features and integrations",
+      "Expansion_opportunities": "Potential for training or additional support services"
+    },
+    "RETENTION_FACTORS": {
+      "Satisfaction_drivers": "Effective support and problem resolution",
+      "Risk_indicators": "Technical issues that could affect user experience",
+      "Loyalty_signals": "Customer's willingness to troubleshoot and collaborate",
+      "Advocacy_potential": "Dependent on resolution of current issues"
+    },
+    "COMMUNICATION_PREFERENCES": {
+      "Preferred_contact_methods": "Phone and email",
+      "Response_time_expectations": "Immediate, as reflected in real-time conversation",
+      "Information_style_preferences": "Direct and technical",
+      "Decision-making_patterns": "Customer makes decisions based on technical advice and testing"
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "I am currently trying to help someone named Steve Monson with the Monson Group. And he seems to be getting just this like random pop-up on whenever he tries to go on anyone's profile and open up their attachments.",
+      "it says the file, what the file name has been modified. Would you like to upload the changes?",
+      "we've also verified that this happens with random people, not just files that have been uploaded by any of the coworkers or subordinates.",
+      "it might be something to do with the MAC setting for the default program to open a certain file type."
+    ],
+    "qa_pairs": [
+      {
+        "question": "Is this happening when going to a name record and opening attachments from the attachments tab?",
+        "answer": "Yes, when opening attachments from profiles."
+      },
+      {
+        "question": "Have you checked the default programs on the Mac?",
+        "answer": "Yes, it's defaulting to Adobe Reader."
+      },
+      {
+        "question": "Can you send a screenshot of the pop-up?",
+        "answer": "Yes, preparing to email it."
+      }
+    ],
+    "searchable_tags": [
+      "Java pop-up",
+      "file modification warning",
+      "Adobe Reader",
+      "Mac settings",
+      "attachment issues",
+      "default program conflict",
+      "technical support",
+      "SIGMIS Technology",
+      "file opening error",
+      "cross-platform issue",
+      "software conflict",
+      "user profile attachments",
+      "support ticket",
+      "screenshot documentation"
+    ],
+    "semantic_themes": [
+      "Technical troubleshooting for file attachment issues",
+      "Software compatibility problems on Mac systems",
+      "Customer support process for unexpected system behavior"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 55,
+      "Customer talk percentage": 45,
+      "Balanced conversation indicator": "Moderately Balanced"
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 2,
+      "Number of interruptions by customer": 0,
+      "Interruption impact on flow": "Minimal"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 15,
+      "Awkward pauses detected": 2,
+      "Hold time indicators": "Short hold times"
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": true,
+      "Company name mentioned": true,
+      "Verification steps taken": true,
+      "Required disclosures made": false,
+      "Proper closing used": false
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": "Moderate"
+    },
+    "agent_talk_pct_calculated": 21.4,
+    "customer_talk_pct_calculated": 78.6
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 21.4,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "Java pop-up",
+      "file modification warning",
+      "Adobe Reader",
+      "Mac settings",
+      "attachment issues",
+      "default program conflict",
+      "technical support",
+      "SIGMIS Technology",
+      "file opening error",
+      "cross-platform issue",
+      "software conflict",
+      "user profile attachments",
+      "support ticket",
+      "screenshot documentation"
+    ],
+    "semantic_themes": [
+      "Technical troubleshooting for file attachment issues",
+      "Software compatibility problems on Mac systems",
+      "Customer support process for unexpected system behavior"
+    ],
+    "key_quotes": [
+      "I am currently trying to help someone named Steve Monson with the Monson Group. And he seems to be getting just this like random pop-up on whenever he tries to go on anyone's profile and open up their attachments.",
+      "it says the file, what the file name has been modified. Would you like to upload the changes?",
+      "we've also verified that this happens with random people, not just files that have been uploaded by any of the coworkers or subordinates.",
+      "it might be something to do with the MAC setting for the default program to open a certain file type."
+    ],
+    "qa_pairs": [
+      {
+        "question": "Is this happening when going to a name record and opening attachments from the attachments tab?",
+        "answer": "Yes, when opening attachments from profiles."
+      },
+      {
+        "question": "Have you checked the default programs on the Mac?",
+        "answer": "Yes, it's defaulting to Adobe Reader."
+      },
+      {
+        "question": "Can you send a screenshot of the pop-up?",
+        "answer": "Yes, preparing to email it."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Garrett Komyati",
+      "extension": "5427",
+      "phone": "6145427",
+      "email": "garrett.komyati@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5427"
+    },
+    "primary_customer": {
+      "name": "not seeing something directly related to that",
+      "company": "",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "not seeing something directly related to that",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "like an Adobe Reader kind of",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Omar with Sanford Rose IC",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "different file type",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not seeing just",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "one moment",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to go to",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "set to see PDFs",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not getting the pop",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to go ahead and make",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Garrett",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "sorry for not specifying that earlier",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "saying",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "like",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "actually gonna have to look through some of my support tickets see if that was mentioned before so we",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Give me one moment",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "do appreciate your input on that because that may be our factor",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to actually see if that happens on my computer",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "to be getting just this like random pop",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "see",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "couple times",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "couple more calls",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "And that",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just going to",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "are set on the Mac to open things like PDFs or whichever file types you",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "happening on like you",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "think the common error",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "And",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "trying to attach multiples",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Garrett Komyati",
+        "extension": "5427",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      },
+      {
+        "name": "Steve Abbey",
+        "extension": "5457",
+        "department": "Management",
+        "role": "Manager"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [
+        "problem",
+        "issue",
+        "error"
+      ],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "reach out"
+      ]
+    }
+  }
+}

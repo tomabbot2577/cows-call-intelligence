@@ -1,0 +1,112 @@
+{
+  "recording_id": "3091506357037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:21:38.757636Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:21:38",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hey, Tyler. Is Garrett available by chance? Let me see. It looks like he is on another line right now. Is there anything I can help you with? Yeah, I rudely had to leave my call with him because I had a higher manager call in. but I was asking him about the activity search and we got through going to the activities and search parameters and got almost all the way through the instruction of how to do the search properly and I'm 99% there I was able to find bulk email but I'm not in my search I'm not able to pop a list I'm trying to look up make a list of everyone I sent a bulk email to through the database on a certain date on 9-8 and I just did the start date end date being 9-8 I'm doing records per page 50 and under activity type I was able to find bulk email. And then when I hit search, it's saying that there's no records. Yeah, let me pop in and take a look here. you said it on 9-8 yeah exactly and actually if I take out the activity type it looks like it populates the list of everyone I had activity with that day but it has mixed up regular emails and stuff like that too. Let me take a look. There might be a user setting. What's your username in the database? Good question. Let me see here. How would I go about finding that? So it's just like when you log in to PC Recruiter. Would it be DEZ? Yeah. Yep, that's it. Okay. So currently, the reason you're not finding those activities is because your username has a preference set to not write activities when you bulk mail. Oh, really? Yes. Well, one, let's change that. But two, I feel like people have looked. Let me here. Let me do a quick little search. because I feel like I've seen the bulk emails in the activities. But let me see real quick. Let me try one guy. Jeffrey Gray. Okay, let's try this guy. Activities. Oh, no, you're right. It's not even there. Huh. That's weird. Yeah. Can we change that to add that in there? Yes. Give me one second. All right. That's been updated for you. If anybody asks, I didn't do it for you, though, because we're not supposed to really change those preferences. Oh, how come? It's just from a security standpoint where we're not really supposed to change any user settings. Okay, that would be something I would need to do personally. So it would be a system admin that would have to do it. And for your database, only the admin username has that permission. Tom? yep okay you know how do I get Tom would be a okay with it how do I get Tom to add me as an admin so I can also make changes to the database as needed I'm gonna be yeah he would over shortly yep so he would go to system users manage users system users manage users yep then he would select your username okay and then he would click the security lock icon on the left-hand side of the screen okay and then under system administrator he would change your system administrator's security to full permission. Gotcha. And is that also, so under keywords on candidates, would I then be able to add keywords that aren't existing? Yes. Or skill codes? Yep. You would be able to access the database setup menu then and have access to those lists. You can set those codes. Would you mind emailing me if you have like one of your support pages of how to add skill codes under that? Yep. Let me grab that page right here. And also, so now that, I mean, moving forward, that's great that the bulk emails will go under activities. But in the meantime, for me to search those people on 9-8, then I probably just need to go to search activities in general to see those. Well, here's, yeah, so here's the thing. I did this search just for activities on that date and it has it says email received from email sent to and it shows that bulk email there but that's showing that's not that's not coming up in the personal activities of that well no here it is wait a minute I'm sorry so it does show Yeah, it would be just a regular email activity. Ah, got it. Okay. Because it IMAPs in those activities for you. What you can always do in that activity search is search on the specific day. And then you'll see there's that text search over on the right. What you can do is, in quotes, put the subject line of the email. and hit search because then it'll bring up every email that has that subject line in the activity text. Got it. Okay. All right. Cool. Yeah, good deal. Can do. Then what's a good email for you? Dirk at svsearch.com. D-I-R-K at S-V-S-E-A-R-C-H.com. Perfect. Let me just get this here. All right. I just sent you the link to our learning center that has those, shows you how to put those codes in. Sweet. Okay, cool. Thanks, man. Yeah, not a problem. And if you need anything else, just let us know. All right, will do, Tyler. Appreciate you. Yep. Have a great day. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 2133.630298,
+    "salad_processing_time": 33.15593194961548,
+    "overall_processing_time": 2133.630298,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "job_id": "7962b50e-2adb-4af6-9e70-45aab80f8193",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": true,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3091506357037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

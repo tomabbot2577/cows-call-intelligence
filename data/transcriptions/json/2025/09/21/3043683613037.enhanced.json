@@ -1,0 +1,123 @@
+{
+  "recording_id": "3043683613037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:54:34.028735Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:54:34",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hey, Garrett. We just spoke recently. You helped me with my PCR caption icon and just getting that up and running again. I apologize to call back so quickly. I just noticed when I'm starting to add profiles, for whatever reason, the three new profiles I added, once I actually go to their page that just pops up through PCR, It just doesn't have the link or the link doesn't have any color for LinkedIn just to click that on their profile page and access their LinkedIn profile. That makes sense. Yeah, that makes sense that it didn't grab the LinkedIn Web address and plug it. Yeah. The field on their record. OK, let me while you're still on the phone, I'm going to do a capture right now on my end to confirm that. interesting okay so i'll just grab somebody random here tried doing a couple guesses on my end of course i've shown you that i don't know too much at all you know with it but i just couldn't figure out how to how to get that to actually you know capture the link so that it would pull their profile page up again and it is awfully nice to have oh yep i can confirm the same thing is happening to me. Okay, yeah, that might be a bug that we should get that fixed right away because everybody does enjoy that for sure, having that button highlighted. Okay, yep. Let me create a ticket and escalate that up to our development team. Definitely thanks for bringing that to our attention. It usually happens with updates and stuff when we push a small update to the capture tool. Little things like this might happen. So we will get back to you soon. And yeah, definitely let us know if anything else looks out of ordinary or something else pops up with that that's strange. Okay. Well, quick question with that. From what you've seen, do you think once you guys get that squared away on your end, do the new profiles I've added, do you think it just automatically includes that or is it it's got to be squared away on your end and then moving forward, new additions will have that link, if that makes sense? Good question. Yeah, it would be after we fix it. Anything moving forward would have that link added. So I would make a note, maybe the people you're capturing in the meantime, just in case you want to go back and update them to get their link added. And it would be as easy as just clicking update, and then it would just naturally include the link once it's squared away, and you guys end, right? Yep, exactly. Okay. Okay. I will do that, and I appreciate the help, Garrett. Yep, no problem. Talk to you soon. Okay, thank you. Once we have the fix. Bye. Sounds good. Bye. Thank you.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1330.954343,
+    "salad_processing_time": 26.857795476913452,
+    "overall_processing_time": 1330.954343,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "job_id": "861880f0-ba3e-4e90-a5cc-652cc1cb8bcf",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "resolved",
+    "first_call_resolution": true,
+    "escalation_required": true,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "escalation"
+    ],
+    "webhook_url": "",
+    "automation_triggers": [
+      "escalation_needed"
+    ]
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3043683613037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "recording_id": "3082719245036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:15:35.740546Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:15:35",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hey, Garrett. I'm having trouble linking my email to my PCR recruiter so that, you know, when I send an email, it auto-records that in the activity. Okay. What is your name and what company are you with? My name is Erica Stern, E-R-I-C-A-S-T-E-R-N, and I'm with Ascend Attorney Search. Gotcha. Okay. Let's see here. So, yeah, from time to time, you might have to reconnect or reauthorize your connection from DCR to your email provider. If you haven't done it in a while, the connection sometimes will drop. Or if there's any password changes at your email provider, you'll have to reconnect. So I could walk you through those steps. Let me just double check that that is the problem now. I'm going to log in to your database. Great. What is your username? My username is estern. Okay. At ascendattorneysearch.com. Okay. Eastern worked just for the PCR login. That's good. And check the email settings. Okay, so that looks good on the outgoing mail. One second, let me test the incoming mail. Yeah, that looks good as well. So are you still using Microsoft 365 as your email provider? Yes. I use Outlook. Is that what you're talking about? Oh, yeah. Yeah, Outlook. That'll work. Let's see. I'm going to do a test here. I'm going to send myself an email. I'll just create a quick name record for myself in the database and send it from your username. Oh, I'm already in your database. Perfect. Let's test that. Now, we see our support test. It'll say incoming mail, or no, outgoing mail. Test. OK, that looks good. Okay, I got that in my inbox. Let's see if an activity wrote to my name record. Let's see, activities, 9 to 10. Okay, yeah, that looks good. Let me hit respond and see if the incoming emails are writing activities. So this is all if I'm doing it through like online on PCR. Is that right? It would be if you're sending from the Eastern at ascendattorneysearch.com from any platform, whether it's inside of PCR or if it's in Outlook, it should be able to just be scanning those inboxes and sent folders so it can write the activities. Okay. We'll double check. So none of those have ever recorded. Can I try sending you an email from my Outlook? Yeah. Yeah, let's try that. Let me know when you're ready for the email address. Ready for the email address. Okay. Okay, that is G. Komyati, so G-K-O-M as in Michael, Y-A-T as in Tom, I, G. Komyati, at mainsequence.net. Okay. You said you did create yourself a profile, so it should show up. Yeah, I am inside of PCR. I have a name record. Okay. Okay. I sent a test email. I did get your incoming email, so that's good. Okay. And then if I find you, Komiadi. Okay. Good. Okay. Activities. Ah, okay. So my activities are not showing that I sent you an email. And it's only showing the one that I sent, not the one that you sent. Okay. Something might still be off here. Let's try this. Let's go to the gear icon at the top right of PCR. There will be like a little drop-down menu when you click on the gear. and then select email, the first option. That will open a PCR mail in a new tab. Then go to configure at the top left. Configure. Perfect. Yep. And then below that, click on mail servers. Mail servers. And it looks like in the bottom frame there, you have a mail server. It says it's connected, but it is not listing any of the folders on the left where it says, like, folder list. So I think it would be best maybe if we just deleted that mail server and recreated it. So use the bottom frame. Okay, so action delete. Exactly. Action delete. And then to create a new mail server, perfect. Click the plus sign in the action menu at the top right of the bottom frame. And click on sign in with Microsoft, the black button there. Okay. And just connect to the right account. All right. Now should I test the connection? Yeah, hit test connection. And we're looking for some kind of green lettering in there. Okay. Okay. Authenticate complete. Okay, go ahead and close that test. And then there is something that says save sent email to sent items folder. Switch that to no. It's a drop down. Microsoft will duplicate your sent items in PCR for some reason. And then hit save. Okay, and IMAP SSL is right? Correct, yeah. And let me refresh on my end. Let's see. That worked. Okay, save successful. Okay, that's good. I still don't have a folder list. Right, yeah, it still hasn't populated there. That is very strange. Should I try to find it? It does say in our, like, Google? Oh, do you have a Gmail account instead, maybe? So it's both, yeah. They're connected. Oh, okay. Yeah, let's try the Gmail instead. So if you want to do those same steps, go ahead and delete that. Yeah, delete that. Okay. Mail server. Sign in with Google. All right. Yeah. Just sign into the correct account. Just a moment. Just a moment. I'm just going to check our step-by-step instructions to make sure I'm not forgetting anything. It does say once you make a mail server connection, it could take up to 24 hours to fully sync. So maybe that's why the folders aren't appearing. Yeah, I've just done the other one a couple times, the Outlook. I've gone through that process a couple times, including with someone else from your team a couple weeks ago. Oh, okay. Okay. All right. So I tested the connection. Now I saved it via Gmail. Okay, that's good. Let me refresh. You can switch that one drop down to no, the save sent email, and then hit save. Oh, I already did it. Should I read? Sorry. No, that's okay. You can use the action drop down to edit that mail server you just created. Oh, okay. All right. And then click it to no. Change that. Hit save. Okay, great. Did that. Okay. And then let me take a little look here. that looks good and okay yeah now you do have that folder list so the last part of the setup is going to email folders in the top frame email folders okay and then in the bottom frame there's the little set of icons there at the right where there's like a gear icon and a wrench click on the gear icon first and starting at Gmail downwards, look for your sent folder. It might be called sent or sent mail. Just use the action drop down to the left to mark as sent items. Great. And then hit the X at the top right of the pop-up window. And then, let's see, then in that same set of icons, click on the wrench this time. And similarly, we'll go to Gmail, Downwards, look for your trash folder. It might be called Deleted Items or Trash. Marcus. Okay, Marcus Trash. Marcus Trash. Perfect. Click the X to close that. And so I think this is going to work now. It could take up to 24 hours to fully sync, but luckily it will go retroactively backwards and start filling in some activities for you. But I think that's what I was missing. I just need it to connect to the Gmail. Okay, that's fine. So will it work? Like, my Gmail works, like, is synced with my Outlook. If I'm using my Outlook app, it should still go all the way through, right? Because, like, it works for me when I send something. Yeah, it seems like your email provider, like the host of your email, is Gmail. Exactly. but you're using Outlook as the program to access it. So I think, yeah, now that we're fully connected to Gmail, this will work correctly, whether you send from Outlook or whether you send from PCR. Okay, awesome. Thank you so much. Yeah, no problem. If you don't see those activities start writing by, like, this time tomorrow, definitely give us a call back, and we'll continue to troubleshoot together. Sounds good. Thank you so much. All right. Have a great rest of your day. You too. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1956.689426,
+    "salad_processing_time": 74.23771142959595,
+    "overall_processing_time": 1956.689426,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "job_id": "11f21405-dc62-4e54-8287-d0d42be1cc4f",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3082719245036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

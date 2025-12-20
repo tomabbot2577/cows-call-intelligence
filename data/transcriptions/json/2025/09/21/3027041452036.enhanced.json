@@ -1,0 +1,121 @@
+{
+  "recording_id": "3027041452036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:40:15.828995Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:40:15",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Robert, welcome. At the tone, please record your message. When you've finished recording, you may hang up or press 1 for more options. Good afternoon, Robert. It's Jim Lombardo with PC Recruiter. I got your voicemail yesterday and wanted to give you a quick call to follow back with you to talk about your accounts with PC Recruiter. You can cancel anytime you want. I would just need you to email me notification that you wish to cancel your account on an effective date. Then we can put a ticket and get that closed. And just so an email will do, pick a date. And then you can also request a data return. We will make that data available on a downloadable link. Let me know in that email requesting your cancellations if you wish to have it downloaded. And then I will have my team send over the needed form that we have to have you sign. And also, there's a $175 charge for that. so they'll send an invoice on that too. Then once we get that paid they'll make that available and I also notice your contract goes through October so there might be an early termination cost. Early termination is 80% of remaining payments due and that is I guess a few months left on your contract. Also wanted to see who you're going with or if you were going with anyone else if there's any issues that led to your decision or what please give me a call when you get a moment four four zero eight five six zero three one four four four zero eight five six zero three one four thank you",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 859.08782,
+    "salad_processing_time": 3.5487139225006104,
+    "overall_processing_time": 859.08782,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Robert, welcome.  At the tone, please record your message.  When you've finished recording, you may hang up or press 1 for more options.",
+    "job_id": "5ca0b66c-9f94-42a3-948e-e4bd22090c82",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Robert, welcome.  At the tone, please record your message.  When you've finished recording, you may hang up or press 1 for more options.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Billing",
+        "confidence": 0.7
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "billing",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3027041452036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

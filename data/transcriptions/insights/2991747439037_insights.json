@@ -1,0 +1,113 @@
+{
+  "recording_id": "2991747439037",
+  "analysis_timestamp": "2025-09-21T16:07:38.914465",
+  "analysis_version": "2.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-09-21"
+    }
+  },
+  "call_classification": {
+    "call_type": "support_billing",
+    "call_purpose": [
+      "Billing inquiry",
+      "Cancellation confirmation"
+    ],
+    "urgency_level": "medium",
+    "outcome_status": "pending"
+  },
+  "customer_profile": {},
+  "support_analysis": {},
+  "sales_analysis": {},
+  "relationship_analysis": {},
+  "key_metrics": {
+    "call_type": "support_billing",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium"
+  },
+  "action_items": [],
+  "participants": {
+    "primary_employee": {
+      "name": "Mike Keys",
+      "extension": "5409",
+      "phone": "6145409",
+      "email": "mike.keys@mainsequence.net",
+      "department": "General",
+      "role": "Staff",
+      "employee_id": "EMP_5409"
+    },
+    "primary_customer": {
+      "name": "on their radar and that somebody",
+      "company": "",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "on their radar and that somebody",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "see if someone",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Mike",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Mike Keys",
+        "extension": "5409",
+        "department": "General",
+        "role": "Staff"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-09-21"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "billing"
+      ],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": []
+    }
+  }
+}

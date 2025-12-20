@@ -1,0 +1,100 @@
+{
+  "recording_id": "3041163012036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:52:12.878167Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:52:12",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hey, Garrett. It's Connie Rose again with Connective Services. I've got a simple question to ask you about the PCR software. Sure. I had tried for two days. I even AI'd it before I called you to edit notes. I go into notes. I click on it like it says. I'm looking for an edit pencil. Don't see it. Am I not able to edit notes? Do I have to have admin permission or something like that? Because, you know, on these roll-ups, sometimes I'm going pretty fast, and I put the wrong node. I put the right node in the wrong file. Then I realize it, and then I want to change it. Oh, I see. Let me check to see what permissions you have for your username. One second here. Username Connie. Okay. Let's see. So on name records, we have add only for notes as your permission. You might want to have your admin switch that up to add. That's Kevin Saylor. Yeah. Okay, gotcha. Yeah. We've had some software issues because it took me sometimes weeks to get into some software because I didn't have admin. We had a problem with RingCentral connecting via. Okay. Because of the admin permissions. And God bless him, Kevin Saylor. He's a one-armed paper hanger. I mean, he's running wide open all day long. And trying to manage a team, run a company, you know, onboard new people. And I'm old in the industry, but I'm new to the company. And I'm new to your software. I've never used your software before. So I'm learning as I go. You know, anyhow, I'll reach back to Kevin and try to get permission. And thank you very much. Appreciate you. Happy to help. Reach out if you need anything else. I will. Bye now.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1259.096328,
+    "salad_processing_time": 15.087753057479858,
+    "overall_processing_time": 1259.096328,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "job_id": "0535e9ae-5f9b-411f-8c9f-271d70e5c460",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3041163012036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

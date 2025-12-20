@@ -1,0 +1,117 @@
+{
+  "recording_id": "3000896642036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:13:35.498317Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:13:35",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence. This is Robin. Hey, Robin. How are you doing? This is TJ. Hey, how are you? I think you're the trainer person, right? Yes. Well, I'm calling not for training, but hopefully you can help me out with this too. I've almost got my emails squared away to where it pulls it into PCR. Okay. I'm still having trouble getting it into the email field of the name record, And I'm not sure why, because it looks like the IMAP is pulling it into the PCR email itself. Right. So maybe I'm not clear what you're expecting to happen? I'm expecting the email to be in the name record under the emails name tag. Okay. Isn't that what's supposed to happen? Yeah. Let's see. Hold on one second here. Let me, so they're in your PCR mail. They're just not showing in the emails tab. Correct. Okay, let me go in as you. Let me see what's going on. What was your username again? TJW. Okay. Now, the ones that you will see there are only the ones that are, like you might see it as an activity, but the only emails that you should see in the emails tab are emails that you have back and forth with that person as long as they are still in your pcr mail so if you permanently delete it that means it's off your mail server okay so let's so what's an example okay what's an example of somebody are you in the pcr mail or where are you at i'm um i'm on a name i'm in the name area what's an example of somebody that you emailed that you're not seeing okay the last name is K-H-A-L-I-D. Raheel? Okay, so you mean you're recently viewed. Okay, so on his name record, the email that is on the name record is docraheel at yahoo.com. No, no, no. I'm talking about like on his name record in the middle of the screen where it says edit name, resume, pipeline activities. Over under emails, those emails are not showing up there. Okay, so the email address that's on his record is docrahil at yahoo.com. Is that the email that you've been emailing back and forth with? Well, that's the email I emailed him. There's only been one, but, yes, it went to him at docrahil at yahoo.com. And I see that in both my mail server as a blind copy and also in my PCR mail as a... Oh, if it's a blind copy, I don't think that happens then. That could be why. That's probably, yeah. So I guess the email coming into PCR is coming in from myself blind copying it to PCR. Well, anything that's a blind copy, like if someone's like a BCC, that doesn't write any activity, and I don't think it does anything with that. Let me just make sure. What email account was that set up as? In Craig at Liberty Health Incorporated. I think he just answered my question or my concern. Okay, Craig at Liberty Health. Let's see. Let me go into that folder, Craig's Inbox. So you sent an email to, what? What's that now? Let's see. What is Craig's last name? Raheel. R-A-H-E-E-L. I didn't have a display name. I just had like a... Make sure. Okay. So inbox, I see a bunch of stuff in inbox. What are these? These are all the same subject line. Yeah, I just sent them creating an API email template through N8N. So that is a third-party, you know, external kind of task management, and I'm hitting PCR's endpoint to, well, I'm not hitting PCR's endpoint, but I sent that as a blind copy into my email box. So in the hopes that it would register with PCR. And if that's not the way to do it, then I have to kind of go back to the drawing board a little bit. Yeah, if you were to pick your alias, the Craig alias, to send it, it should be going to the sent folder of that account without being a blind copy. Right. I think the problem is it being a blind copy. Okay. Okay. so in my in my mail server craig inbox i'm getting craig at liberty health and that's probably what's showing up in the pcr mail inbox is a copy of that right like if you if you had yeah i would have guessed that if you had a record with craig at liberty health that's probably the record it was going to. Got it. Okay. For example, let's see if we have something else. Yeah, I think it's just being those blind copies is probably the problem here. Okay. Okay. is there a way or do you know about PCR endpoints where I can trigger an email from inside PCR I'm not really sure what you're well I mean you could do like a bulk email you just want to make sure you're sending it from that account but just don't do it as a blind copy got it because anytime you include somebody as a blinded recipient they're supposed be some confidentiality to it. So those are just kind of copies of those being sent over. But, you know, we really just want to, what's going to that person? Otherwise they can't write an activity because there's... In my flow, in my management flow, I'm sending from email, Craig at LibertyHealthIncorporated.com, and I'm sending it to Dr. Raheel, whatever his email was. So that is supposed to show somewhere in my server, right? Well, if I open up your PCR mail and go to the Craig mail server, in your sent folder, I see Dr. Stacy and then an email to you and then a couple to TJ Watt is tossed. I don't see anyone to that specific email address. Right. So that's what I'm trying to figure out. How do I maybe fix this front folder issue? Because it's supposed to replicate what's in my server, right? Did you just, like, type names in BCC, or did you do a bulk email? Neither. I did an 8N trigger. A what? I'm sorry? Sorry. It's an AI platform called N8N. It manages different services, kind of like Zapier. Are you familiar with Zapier at all? Yeah. I mean, they hook up to like 3,000 apps, so it's kind of hard to know what they're going to do. No, no, no. This one allows you to program your individual apps to do something. That's all. Yeah. So for us to do it, it has to be from one of your mail servers. is like showing up in your send and then the two has to be whatever is the email address on that record. But it can't be a blind copy. I understand. Okay. I'll work on it on this side. Thank you. You are welcome. Have a good week. Oh, and happy 4th. You too. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 566.650996,
+    "salad_processing_time": 36.03361749649048,
+    "overall_processing_time": 566.650996,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Hey, Robin.",
+    "job_id": "10bee228-e381-41f5-9186-860e8af2a034",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Hey, Robin.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3000896642036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

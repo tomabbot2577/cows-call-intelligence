@@ -1,0 +1,104 @@
+{
+  "recording_id": "3092254856036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:22:07.899520Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:22:07",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for joining us. This is Garrett. How may I help you? Hey, Garrett. It's Rebecca with Expanded Talent Solutions. How are you? Good. How are you doing? I'm happy to be here. Good. I'm sorry. Siri just interrupted me. Anyway, I use Sourcewell for outreach, and I recently had it disconnected, the integration disconnected. So I was trying to do it this morning. I was having some issues. I was just hoping you could help me reconnect it with some information from your end. Is that okay? Yeah, that's cool. What does it prompt you for? So let's see here. It's looking for username and password. I was using the admin one. Should I be using my own personal one? I thought I was using admin for this. Oh, let's see. There is – I just opened your database. there is a username called SWAPI that looks like it was created just for SourceWale. That might be the right username. I don't know what the password is on that, but I can show you how to change the password if you need to. Let me see if it's on my Google passwords. It's on here, so let me see. Yep, okay, I got it. Okay. And then it says format, and it's database name, and I have to put it in brackets. I put Expanded Talent Solutions, Inc., and I did it with spaces and without spaces, and it didn't like it. So maybe I did this wrong. So what should I put for the database name in here? Okay. A lot of the times integrations need something called a database ID. Does it ask for that separately, or is that probably where it needs the database ID, where it says database name? Yeah, that's where it says it needs the database ID. And it's weird because it has in there, it says format colon database name in brackets dot end of login URL in brackets, e.g. pcrtest.ccrecruiter. Got it. Yeah, so that is your database ID. I'll show you how to get to that. So if you have PCR, do you have PCR open right now? Yep. Well, hang on now. Hang on. Let me get in there. I did. Okay. I'm in. All right. And then go to system in the main menu up at the top. Uh-huh. And then on the left, almost all the way at the bottom, there's an option called API. Yep. And then API settings on the right, that'll give you your database ID. Just copy and paste that. Okay. The entire thing is expandedtalentsolutionsinc. Expanded Talent Solutions Inc. All in lowercase. Does that sound right? Yeah, that sounds right. Okay. And then it says self-hosted URL optional. Do I need that self-hosted URL? No. I don't think so. If anything, it would just be your PCR web address that you see when you go to your PCR login page. Okay. But if it's optional, it might not need it. Okay. It looks like it reconnected. Yeah, it looks like it reconnected. So we're all good here. I just need to make sure that all the settings are right. So thank you, Garrett. I really appreciate your help this morning. No problem. Happy to help anytime. All right. Take care. See you. Have a good one. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 2148.134539,
+    "salad_processing_time": 16.807649612426758,
+    "overall_processing_time": 2148.134539,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for joining us.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "job_id": "6dfdb1f4-3431-4c39-b55a-1a437da7c20c",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for joining us.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3092254856036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

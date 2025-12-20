@@ -1,0 +1,350 @@
+{
+  "recording_id": "3099061649036",
+  "analysis_timestamp": "2025-12-19T22:27:42.401431",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Lauren Jasecki",
+        "role": "customer",
+        "company": "PC Recruiter",
+        "confidence_score": 0.9,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "sales_discovery",
+    "CALL PURPOSE": [
+      "Discuss inquiry to PC Recruiter Software",
+      "Schedule a demo"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "customer_identification": {
+      "primary_contact_name": "Lauren Jasecki",
+      "primary_contact_role": null,
+      "company_name": null,
+      "phone_numbers": [
+        null
+      ],
+      "email_addresses": [
+        null
+      ],
+      "key_decision_makers": null,
+      "team_members": null
+    },
+    "business_context": {
+      "industry_or_business_type": null,
+      "company_size_indicators": null,
+      "technology_stack_mentions": [
+        "PC Recruiter Software"
+      ],
+      "current_challenges_pain_points": null,
+      "growth_stage_indicators": null
+    },
+    "relationship_mapping": {
+      "previous_interactions_referenced": true,
+      "existing_service_usage": [
+        "PC Recruiter Software"
+      ],
+      "account_history_mentions": null,
+      "relationship_duration_indicators": null,
+      "trust_level_indicators": null
+    }
+  },
+  "support_analysis": {
+    "ISSUE_CLASSIFICATION": {
+      "primary_issue_category": "Sales/Inquiry",
+      "issue_severity": "Low",
+      "technical_complexity_level": "None",
+      "time_sensitivity": "Low"
+    },
+    "RESOLUTION_TRACKING": {
+      "issue_status": "Resolved",
+      "resolution_steps_taken": "Scheduled demo",
+      "outstanding_action_items": [],
+      "next_steps_required": "None"
+    },
+    "CUSTOMER_EFFORT": {
+      "call_complexity_for_customer": "Low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "None",
+      "knowledge_base_gaps_identified": "None"
+    },
+    "AGENT_PERFORMANCE": {
+      "problem_solving_approach": "Proactive",
+      "communication_clarity": "Clear",
+      "technical_knowledge_demonstrated": "None",
+      "empathy_and_rapport_building": "Good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Neutral, as there is limited interaction to fully assess satisfaction.",
+      "trust_level_signals": "Moderate, as the customer is willing to schedule a demo despite the brief interaction.",
+      "communication_style": "Direct and efficient, focused on scheduling a follow-up.",
+      "rapport_quality": "Basic, primarily transactional due to the short nature of the call."
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Pre-onboarding, as the customer is in the process of scheduling a demo.",
+      "product_adoption_level": "None, as the customer has not yet used the product.",
+      "feature_utilization": "None, as the customer has not yet been exposed to specific features.",
+      "expansion_opportunities": "Unknown, will depend on customer's experience and needs identified during the demo."
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Efficient communication and responsiveness to scheduling needs.",
+      "risk_indicators": "Limited interaction time, which may not allow for thorough initial engagement.",
+      "loyalty_signals": "None yet, as the relationship is too new.",
+      "advocacy_potential": "Undetermined, will depend on future interactions and customer satisfaction."
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone, as evidenced by the use of a direct call to schedule a meeting.",
+      "response_time_expectations": "Immediate, as the customer was about to enter another meeting and appreciated the quick scheduling.",
+      "information_style_preferences": "Concise and to the point, as the customer was in a hurry and appreciated brevity.",
+      "decision-making_patterns": "Decisive, as the customer quickly agreed to a demo time despite the short notice."
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "I was definitely interested in that",
+      "I'm literally just about to jump into a meeting in one minute but I have time at 5.30 UK okay today?",
+      "yes today perfect and how far away from that is now?",
+      "an hour and a half perfect I can do it thank you so much"
+    ],
+    "qa_pairs": [
+      {
+        "question": "Hello, is Lauren Jasecki available?",
+        "answer": "Yes, that is me."
+      },
+      {
+        "question": "How are you?",
+        "answer": "I'm good, thank you. How are you?"
+      },
+      {
+        "question": "I wanted to give you a quick call as I wasn't available on Monday, so I thought I would just kind of call to follow up, chat with you for just a minute about your inquiry to PC Recruiter Software, see kind of what you were looking for, if you had any initial questions, if you wanted to get a proper demo on the schedule or what.",
+        "answer": "I was definitely interested in that I'm literally just about to jump into a meeting in one minute but I have time at 5.30 UK okay today?"
+      },
+      {
+        "question": "yes today perfect and how far away from that is now?",
+        "answer": "an hour and a half perfect I can do it thank you so much"
+      }
+    ],
+    "searchable_tags": [
+      "PC Recruiter Software",
+      "demo scheduling",
+      "follow-up call",
+      "meeting conflict",
+      "time availability",
+      "UK time zone",
+      "customer interest",
+      "initial inquiry",
+      "quick call",
+      "business software",
+      "recruitment tools",
+      "time management",
+      "customer engagement"
+    ],
+    "semantic_themes": [
+      "Scheduling a software demo",
+      "Customer interest in recruitment software",
+      "Time management and meeting conflicts"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 60,
+      "Customer talk percentage": 40,
+      "Balanced conversation indicator": "Slightly Agent-Dominated"
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 0,
+      "Number of interruptions by customer": 0,
+      "Interruption impact on flow": "None"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 5,
+      "Awkward pauses detected": 1,
+      "Hold time indicators": "None"
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": true,
+      "Company name mentioned": true,
+      "Verification steps taken": true,
+      "Required disclosures made": false,
+      "Proper closing used": true
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": "Medium"
+    },
+    "agent_talk_pct_calculated": 93.7,
+    "customer_talk_pct_calculated": 6.3
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 93.7,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "PC Recruiter Software",
+      "demo scheduling",
+      "follow-up call",
+      "meeting conflict",
+      "time availability",
+      "UK time zone",
+      "customer interest",
+      "initial inquiry",
+      "quick call",
+      "business software",
+      "recruitment tools",
+      "time management",
+      "customer engagement"
+    ],
+    "semantic_themes": [
+      "Scheduling a software demo",
+      "Customer interest in recruitment software",
+      "Time management and meeting conflicts"
+    ],
+    "key_quotes": [
+      "I was definitely interested in that",
+      "I'm literally just about to jump into a meeting in one minute but I have time at 5.30 UK okay today?",
+      "yes today perfect and how far away from that is now?",
+      "an hour and a half perfect I can do it thank you so much"
+    ],
+    "qa_pairs": [
+      {
+        "question": "Hello, is Lauren Jasecki available?",
+        "answer": "Yes, that is me."
+      },
+      {
+        "question": "How are you?",
+        "answer": "I'm good, thank you. How are you?"
+      },
+      {
+        "question": "I wanted to give you a quick call as I wasn't available on Monday, so I thought I would just kind of call to follow up, chat with you for just a minute about your inquiry to PC Recruiter Software, see kind of what you were looking for, if you had any initial questions, if you wanted to get a proper demo on the schedule or what.",
+        "answer": "I was definitely interested in that I'm literally just about to jump into a meeting in one minute but I have time at 5.30 UK okay today?"
+      },
+      {
+        "question": "yes today perfect and how far away from that is now?",
+        "answer": "an hour and a half perfect I can do it thank you so much"
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Jim Lombardo",
+      "extension": "5401",
+      "phone": "6145401",
+      "email": "jim.lombardo@mainsequence.net",
+      "department": "Sales",
+      "role": "Sales Representative",
+      "employee_id": "EMP_5401"
+    },
+    "primary_customer": {
+      "name": "good",
+      "company": "",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "good",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "yes today perfect and how far away",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "literally just about to jump into",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Jim Lombardo calling with PC Recruiter",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Jim Lombardo",
+        "extension": "5401",
+        "department": "Sales",
+        "role": "Sales Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "follow up"
+      ]
+    }
+  }
+}

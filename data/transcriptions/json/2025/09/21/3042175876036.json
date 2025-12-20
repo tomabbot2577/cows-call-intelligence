@@ -1,0 +1,95 @@
+{
+  "recording_id": "3042175876036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:52:59.129617Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:52:59",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hey, Garrett. Dave O'Connor at Highlight Consulting. How are you doing today? Good. How are you? Good. I wanted to play around with the AI search capability for candidates within the system. And it says go up to the generic search bar and toggle on AI. I don't see that. Okay. So it might not have been turned on for your database yet. That just needs to be requested to be turned on by your contract signer, which is you. Okay, cool. Perfect. So let me check on that here. Okay, yeah. So the problem is some databases are on an older search engine called Keyword Version 2, and they have to be upgraded to Lucene, the newer search engine, in order to have AI search work. So that's why we didn't push it out to all the customers automatically. Your database is still on the older version of Keyword 2. So if you would like, I can just, during this free trial period, we're upgrading to Lucene for free. So I can put in a ticket for our tech team to upgrade your database to the new Lucene search engine and then turn on that AI search for you. Okay. What's the difference in the two? First, you'll see in your search results, if you're using the keyword search box, you'll usually see a column that gives you like a percent score on your results. This changes over to like a color coded system, like a dark green is a better result, a lighter green is a better, worse result. It lets you search through attachments where before the advanced search and the keyword search didn't look through all the contents of an attachment. And I think there's, let's see. Also, if you ever used proximity search before, which a lot of people do not use, where you could say, what's an example? Like mechanical engineer, you're searching for that. But you want the word mechanical to be up to three words away from the word engineer. That's called proximity searching. The way that that is done is definitely different in Lucene. It's different symbols and stuff, which I can actually email you with kind of a summary of some of those differences. is. But I think those are the main things, just changing from a percentage to color coding on the results, and then able to go through attachments now as well. But otherwise, it's free to do that. Yeah, yeah. For this time period, it's free to do that upgrade. So we would definitely recommend it. And then we can get AI search turned on for your database as well. And then after the interim period as your cost? For Lucene, no. You'll just have that moving forward, the new search engine. But for AI search, once the free trial is over, there will be a cost associated. But we can have you connect with your account rep, Jim Lombardo, and he can go for all the different costs based on where your contract is currently. Okay, beautiful. Yeah, if you put in a request, I'd appreciate it. Awesome. I will open a ticket and just look out for an email from us when that's completed. It might take maybe a day or two to get that upgraded, and then we'll notify you via email. Beautiful. Okay. All right. Thanks, Jared. All right. Have a good one. All right. You too. Thanks.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1283.150348,
+    "salad_processing_time": 10.490905523300171,
+    "overall_processing_time": 1283.150348,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "job_id": "7f7337a6-acc0-49f4-8eae-80adc624ec49",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3042175876036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

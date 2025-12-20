@@ -1,0 +1,415 @@
+{
+  "recording_id": "3099709241036",
+  "analysis_timestamp": "2025-12-19T22:48:48.615363",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "support_feature_request",
+    "CALL PURPOSE": [
+      "Assistance with setting up PCRAI match-enabled feature",
+      "Guidance on filling out form on PCR login page"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "customer_identification": {
+      "primary_contact_name": "Robin",
+      "primary_contact_role": "Legendary Robin",
+      "company_name": "Main Sequence",
+      "phone_numbers": [
+        "440-946-5214"
+      ],
+      "email_addresses": [],
+      "key_decision_makers": [
+        "Jim Lombardo"
+      ],
+      "team_members": [
+        {
+          "name": "Tyler",
+          "role": null
+        },
+        {
+          "name": "Garrett",
+          "role": null
+        },
+        {
+          "name": "Josh Francisco",
+          "role": null
+        },
+        {
+          "name": "Patsy",
+          "role": "Billing"
+        }
+      ]
+    },
+    "business_context": {
+      "industry": null,
+      "company_size": null,
+      "technology_stack": [
+        "PCR",
+        "PCRAI",
+        "Database"
+      ],
+      "challenges": [
+        "Slow recruiting",
+        "Slow sales during summer"
+      ],
+      "growth_stage": null
+    },
+    "relationship_mapping": {
+      "previous_interactions": true,
+      "existing_service_usage": [
+        "PCR",
+        "PCRAI"
+      ],
+      "account_history": true,
+      "relationship_duration": null,
+      "trust_level": "High"
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "feature_request",
+      "issue_severity": "medium",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "medium"
+    },
+    "resolution_tracking": {
+      "issue_status": "pending",
+      "resolution_steps_taken": [
+        "Created a ticket for the customer",
+        "Assigned the ticket to Garrett",
+        "Scheduled a follow-up email from Garrett"
+      ],
+      "outstanding_action_items": [
+        "Garrett to confirm database name with the customer",
+        "Server administrator to re-index the database"
+      ],
+      "next_steps_required": [
+        "Garrett to follow up with the customer via email",
+        "Server administrator to complete the re-indexing process"
+      ]
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "1",
+      "knowledge_base_gaps_identified": "1"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "effective",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "sufficient",
+      "empathy_and_rapport_building": "excellent"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Positive interaction, casual and friendly tone",
+      "trust_level_signals": "Customer trusts support for setup and troubleshooting",
+      "communication_style": "Informal, friendly, direct",
+      "rapport_quality": "High, based on casual conversation and personal connections"
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "In process, customer is setting up a new feature",
+      "product_adoption_level": "Engaged, actively using and expanding the product's features",
+      "feature_utilization": "Initiating new feature setup",
+      "expansion_opportunities": "Potential for more feature adoption and deeper integration"
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Effective support, personal rapport, quick assistance",
+      "risk_indicators": "None evident from the conversation",
+      "loyalty_signals": "Repeated interactions, familiarity with team members",
+      "advocacy_potential": "High, based on positive engagement and personal rapport"
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone calls for direct and immediate assistance",
+      "response_time_expectations": "Immediate, as reflected in real-time conversation",
+      "information_style_preferences": "Direct and informal, prefers quick and straightforward information",
+      "decision-making_patterns": "Decisive, seeks information and makes immediate decisions"
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "How do I get it? How do I set it up?",
+      "It needs to be re-indexed to support this.",
+      "It's recruiting slow right now. I'm not happy about that.",
+      "Summer came to a crawl and then it usually picks up in the fall."
+    ],
+    "qa_pairs": [
+      {
+        "question": "How do I get it? How do I set it up?",
+        "answer": "There's really not much for you to do. Like in that form on your PCR login page, if you see where it is, you fill that out. It makes a ticket."
+      },
+      {
+        "question": "What happens after I fill out the form?",
+        "answer": "We'll have you confirm which database name in case you have more than one. Then we queue it up to have our server administrator re-index the database."
+      },
+      {
+        "question": "Is it per user or per database?",
+        "answer": "It's not per user. It has to be enabled per database."
+      },
+      {
+        "question": "How is recruiting going?",
+        "answer": "It's recruiting slow right now. I'm not happy about that. We just keep going one day at a time."
+      }
+    ],
+    "searchable_tags": [
+      "PCR login",
+      "database re-indexing",
+      "server administrator",
+      "recruiting",
+      "summer slowdown",
+      "fall pickup",
+      "sales training",
+      "database name",
+      "ticket creation",
+      "customer support",
+      "business trends",
+      "recruitment challenges",
+      "sales handling",
+      "team enablement"
+    ],
+    "semantic_themes": [
+      "Customer support and technical setup",
+      "Recruitment and business trends",
+      "Database management and server administration"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 60,
+      "Customer talk percentage": 40,
+      "Balanced conversation indicator": "Somewhat Balanced"
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 2,
+      "Number of interruptions by customer": 1,
+      "Interruption impact on flow": "Minimal"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 10,
+      "Awkward pauses detected": 2,
+      "Hold time indicators": "None"
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": true,
+      "Company name mentioned": true,
+      "Verification steps taken": false,
+      "Required disclosures made": false,
+      "Proper closing used": true
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": "High"
+    },
+    "agent_talk_pct_calculated": 50.8,
+    "customer_talk_pct_calculated": 49.2
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 50.8,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "PCR login",
+      "database re-indexing",
+      "server administrator",
+      "recruiting",
+      "summer slowdown",
+      "fall pickup",
+      "sales training",
+      "database name",
+      "ticket creation",
+      "customer support",
+      "business trends",
+      "recruitment challenges",
+      "sales handling",
+      "team enablement"
+    ],
+    "semantic_themes": [
+      "Customer support and technical setup",
+      "Recruitment and business trends",
+      "Database management and server administration"
+    ],
+    "key_quotes": [
+      "How do I get it? How do I set it up?",
+      "It needs to be re-indexed to support this.",
+      "It's recruiting slow right now. I'm not happy about that.",
+      "Summer came to a crawl and then it usually picks up in the fall."
+    ],
+    "qa_pairs": [
+      {
+        "question": "How do I get it? How do I set it up?",
+        "answer": "There's really not much for you to do. Like in that form on your PCR login page, if you see where it is, you fill that out. It makes a ticket."
+      },
+      {
+        "question": "What happens after I fill out the form?",
+        "answer": "We'll have you confirm which database name in case you have more than one. Then we queue it up to have our server administrator re-index the database."
+      },
+      {
+        "question": "Is it per user or per database?",
+        "answer": "It's not per user. It has to be enabled per database."
+      },
+      {
+        "question": "How is recruiting going?",
+        "answer": "It's recruiting slow right now. I'm not happy about that. We just keep going one day at a time."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Garrett Komyati",
+      "extension": "5427",
+      "phone": "6145427",
+      "email": "garrett.komyati@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5427"
+    },
+    "primary_customer": {
+      "name": "Robin",
+      "company": "s kind of like that with us too. So like new sales, trainings, it dies down in the summer. And then around this time of the year, it definitely picks back up. Hey, I tried my sales guy. Hold on one sec sinc",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "Robin",
+        "company": "s kind of like that with us too. So like new sales, trainings, it dies down in the summer. And then around this time of the year, it definitely picks back up. Hey, I tried my sales guy. Hold on one sec sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not happy about that",
+        "company": "s kind of like that with us too. So like new sales, trainings, it dies down in the summer. And then around this time of the year, it definitely picks back up. Hey, I tried my sales guy. Hold on one sec sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "More downloads here",
+        "company": "s kind of like that with us too. So like new sales, trainings, it dies down in the summer. And then around this time of the year, it definitely picks back up. Hey, I tried my sales guy. Hold on one sec sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "It says",
+        "company": "s kind of like that with us too. So like new sales, trainings, it dies down in the summer. And then around this time of the year, it definitely picks back up. Hey, I tried my sales guy. Hold on one sec sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "sure he wishes",
+        "company": "s kind of like that with us too. So like new sales, trainings, it dies down in the summer. And then around this time of the year, it definitely picks back up. Hey, I tried my sales guy. Hold on one sec sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to turn it up",
+        "company": "s kind of like that with us too. So like new sales, trainings, it dies down in the summer. And then around this time of the year, it definitely picks back up. Hey, I tried my sales guy. Hold on one sec sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Garrett Komyati",
+        "extension": "5427",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      },
+      {
+        "name": "Jim Lombardo",
+        "extension": "5401",
+        "department": "Sales",
+        "role": "Sales Representative"
+      },
+      {
+        "name": "Robin Montoni",
+        "extension": "5466",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      },
+      {
+        "name": "Tyler Trautman",
+        "extension": "5467",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "billing",
+        "training",
+        "account"
+      ],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "get back to you"
+      ]
+    }
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "recording_id": "3066310096036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:13:35.046132Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:13:35",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hi, Garrett. This is Lori Smith calling from Chris Churzo and Associates. We've been trying to get our logos changed over, and we've been having some trouble between the signature lines on bulk emails and the stationeries, and things are kind of a mess. I was hoping you could walk us through that, and I was also hoping I could get my virtual assistant on the line with us so that she would learn as we go. Sure. Yeah, absolutely. And so we'll patch her in on the phone and then you're going to send me like an email with a screen share that we can do. Is that correct? Yeah, we could do that. That sounds good. Okay, cool. Give me just a minute while I patch her in. Okay. Okay. Okay, I think we've got everybody on the call now. Thanks so much. Awesome. So I just emailed you, Lori, a link to click on, and that'll let you join a screen share meeting with me and you can forward that email to anyone else so they have the link as well. Okay. Ashley, I'm forwarding you that email now. And this is Garrett that we're talking to. Hello. Hi. Hi. Okay. Join the meeting. Once you join the meeting and everybody's there, we could just use the audio in the meeting and then hang up the phone, or we can just use the phone and not connect to audio. It's totally up to you. We will need to just use the phone because I'm in a tire shop and I don't have my headset on my computer. Oh, that works. Okay. So, yeah, we will. So when you're in that meeting, just say continue without audio. if a pop-up appears so we could just use the phone as the audio. Okay so it's showing audio so I think I'm okay. Yeah okay all right so if you want you can share your screen down at the bottom with the blue share button whoever wants to share their screen and there might be an option for entire screen. That would work. Okay, cool. That's loading. Yep, I can see that. All right. If you want to jump into PCR and... Go ahead. Sorry. Yeah, go ahead. So you were saying it was an issue with the email signature when you're sending bulk emails or just any email? It's a combination of things. I don't know, Ashley, did you test Rashmi's personal email one or not? No. And I asked her to send me a test and she's working in today, but I thought that I, so basically Garrett, for your knowledge, we've, we've our branding has been updated. So I'm just trying to clear out any use of the old logo. So I updated, you know, what I thought was any template that we had, like the form letters and all of that. So that's, I see. as they stand now to a place where they're they're sending properly I'm pretty confused the last thing she did she didn't have the right stationery on there and so she ended up cutting and pasting and it would be really unprofessional so to make sure she's got a template for these name letters that that works you know okay we just go in and we click on it's just some good one and maybe one of the problems too that i wasn't um because i'm not as familiar with pcr as um the rest of the team is but i think one of the things too is like if we have all of these like letters that can be reused and then she is using those well then i don't get my new stationery yeah exactly and we don't want her to reinvent the wheel because like the the content of the message is correct. It's just the layout of like the old logo and the old signature are still on there. So we want to know the easiest way to get that updated. So what we want to do, I just pulled up like this name letter and a new one. I want a stationary pop-up here so that she doesn't have to think and it's got, you know, the right stuff on it. So it's pulling a blank right now. So she's been cutting and pasting and copying off of old letters. We want to change that. We want to make about the signatures and the stationery is updated with a new logo. Okay. So when you're in this screen here where you're adding a new letter, in your form letters there's something called an insert field that you could put in that says system. I think if you just start typing the word signature in backspace where it says system print date. Yeah, right there. System current user email signature. If that's somewhere in your form letter, it'll reference whatever you have set as your email signature. Unless you have stationary turned on, stationary will override that. So people use either stationary or email signatures like an either or a lot of the times. So I've seen a lot of customers just prefer to turn off all stationary, delete all that out, and just use a combination of this insert field on your form letter and then have your email signature updated so it can reference just your email signature, if that makes sense. Yeah, I'm not sure how that works with the username, because if I'm going into a form letter, like here, we just put it in, right, and there's no logo or anything, right? So it looks like my email signature has not been updated at all. Would that be correct? Right. So that's just the code that will, when you go to send it, will reference your email signature for the current signed in user. and that's yeah what those insert fields are they're basically just codes that reference other things so you could put in an insert field that says hello first name is the insert field and that way when you send it to 500 people on a list it'll take that code and reference the first name of each of those 500 recipients so that's kind of how the insert fields work we know how to do that the thing is that we want to have our logo in the system so it's easy for our operation manager to pull up and send. Any number of us can send form letters and we also send it. I'm just confused right now. We also send it from, you know, christerzo.net. We'll send it as Chris Terzo. We'll send it from laurie, you know, at christerzo.net. We also have a .com address, right? So when we're doing these form letters and going to send them, we will pick different email addresses we're sending from, but that shouldn't affect what the base letter looks like at all, correct? Correct. Okay, I see. So if you are logged in as Lori and you want to send something from Chris, I see where that would create a problem because it would use that insert field that says system current user email signature and tack on your current user that you're signed in as. So if you're signed in as Lori, you would have a Lori signature. Okay. So we'd want to use stationery. So let's go and check the stationery. How do we pull it up so that we're writing a letter on stationery when we're writing a form letter? So stationery is just templates. So you would build out your template for your stationery first. So if you go to system in the main menu up at the top and then go to email setup on the left. So you might have to drag that bottom frame down a little bit. Awesome. Yep. Go to email setup on the left. Sorry. You can see like if there's six. There we go. And then stationary setup is where you can make any adjustments. And then down below, go to the action drop down to the left of any of those to edit them. Now, did you do this? This is done. Okay. So, let's see. Yeah, I went into every... Exactly. So, I went into every user and updated those. So, there's the one at the bottom that's do not use. I just kept that for archival sake, but... So, this one is an old one. We talked about that. Oh, do not use CTA letterhead, Chris. And then this is just like Chris's CTA letterhead. So can anyone access this? Can my operations manager access this letterhead? So they would have to have that stationary set up in their, under signed in, under username. So you're seeing things that are specific to your username. And I believe I went in there, Lori, but let me, I'll just make a note of that for me to go and check Rushmys. Okay. Well, we can just do that now and make sure it's working. So we're in Rushmys now. How would we determine, can we mimic now the steps you would go through as this user? Oh, right. So yeah, if you're signed in as Rushmy, you would just go back to the same area system, I'm not going to sign in as Rashmi. Can we do it without being signed in as her? No, you'd have to sign in as Rashmi and look at the stationery. Okay, let me see. You have her sign-in information, Ashley? Yeah. All right, let me go out then, and then we'll sign in as her. I'm not sure it's okay. Okay, is your username is what? Oh, sorry, I just logged into it, so I can share my screen. Okay, that's fine. So, Gara, one more time, just so I can do this quickly. It's form letters, or where am I going to get there? Oh, you go to system at the top, email setup on the left, and stationary setup on the right. Okay, perfect. I haven't shared yet. Okay. Okay. So I'm in hers now. And this is what it looks like. Okay, yeah. So for her username, yeah, there's just one stationary there. you would have to create those other stationary options that you were seeing under the other username by going to the three horizontal lines at the top right of the bottom frame and then selecting add. And then you can create stationary that way and put in those four or three that you had on the other username. OK, so that's it, right, Lori? She just needs the exact one that Chris has in your login. Yeah, let's just do it now so make sure that we don't run into any problems. I want to go back into the other one and just copy and paste it so that it's consistent. That would be a little faster. Okay. Can you at the same time, Laurie, pull up the one in your account and then we can compare? So log back in with me? You can log in. You can open PCR in a separate tab and log in as one user and then in a different tab log in as another user if that helps with the copying and pasting between the existing stationary in the new stationary. Okay, how do I do that? Just open up your tab and go to... Exactly, yeah, just duplicate tab and then you can sign in as a different user and jump between the two tabs for copy and pasting. Here I was thinking it would log me out. Okay, great. I don't know what it's doing. Oh yeah, just go re-enter your PCR web address there. I think you copied a specific page related to the stationery. This is, that's our home page, so you'll want to go ahead and open up that page and then copy that full web address up at the top and then open that. Yeah. And it should bring you to the login page when you hit enter. Go ahead and leave page. Oh, wait. Yes. We'll get there. We'll get there. Okay. Oh, I think it keeps jumping you back to this tab for some reason. It might be a Safari thing. Are you able to open a new window instead of a new tab? Yeah. Oh my gosh, there we go. I was going to say, please don't make me remember the passwords today. All right, let's give this a go. So now who am I here? Yeah, if you hover over that profile picture, instead of clicking on it, it'll show you your username. Let's see, you're in Rush Me now. What do I want to do? There we go. You don't want to log out. I want to log in at the same time. Right. I'm trying to get into yours here and then hers on the screen. I'm thinking this user isn't with the screen. Oh, yeah, it seems to be. Yeah, logging on both. OK. Yeah, that might that might be a safari. Sorry. Sorry about that. OK. No worries. Well, we can we can take what you told us and she can work with that. Actually, you think you can fix it now, right? Yeah, absolutely. Yep. OK. I totally will. We'll deal now. need to um yeah perfect okay great yeah i'll just make sure that um the stationaries across the board are correct and then here you were mentioning using stationary or email signatures. So how do we default so that it uses stationary? So once you have stationary built, it'll override what you have in your email signature. So up at the top, in that top frame, it says stationary setup and email signature to the right of that. Email signature gets overwritten and isn't looked at once you have stationary built under stationary setup. Okay. So, how do we toggle? How do I toggle back and forth between my wanting to send a stationary letter as a form letter from ChrisTrizzo.net and sending with my signature line as a letter from me? Okay. So, you want the stationary... Does the stationary include your signature? Or it doesn't? No, it just has the logo. It doesn't. It just has the logo. So, it will override the email signature. So, you would have to, I think you would have to enter in your signature as you're sending it or you can build your signature into the stationary. Because then you can pull from your different stationary options when you're creating a form letter? When you're sending it rather than when you're creating it. Yep. Yeah. Okay. I don't understand. Can you show us how you do that? Sure. So, let's see. Do you know if you have the email campaigns or the bulk emailing as part of your package? Well, we could just... That's fine. Okay. So, if you go to roll up... Do you want me to... Yeah. Do you want me to process and you can watch, Garrett? Sure. Sure. Okay. Let's turn it. It's been a long time because I don't do this much. So I apologize. I have a time for any slowness. Okay. So wait a minute. This looks like it's okay. It is me. So I'm going to go and I want to create a form letter. So I'm going to go to form letters. I'm going to go to a name letter. I'm going to get a new one going. And I want to do it on the stationary. So what do I do from here? Because this doesn't have a stationary on it. Oh, let's see, if you go to the gear icon at the bottom left of the screen, let's see if there's an option. Send configured templates. No, that's for the job list template. Okay, you could close that. I'm not sure that it's on this screen. It's more of when you're sending it rather than when you're composing it that it references your stationary. So this is just building out kind of the idea of the letter, the content of the letter, and then the stationery is used during like the sending process. Does that make sense? When I was doing some testing to try to get this fixed, I would click that gear and I feel like in configure template, it gave me the option to choose. So can you go back to that one more time, Laurie, and go to the gear icon? Oh, go back to this gear icon here? Yeah. And then hit configure template. Yeah, so I created that, Garrett. Does that – can we create more of those? That's for the job list. But yeah, you could click on that and we'll see what comes up. Go ahead and select that. So this is for the sending the job link. Right, okay. This is when we send bulk. This is what we want. Every time we make a form letter, we want this in the form letter. Okay. Let me see where those options live for the templates. I know, and that's what I couldn't figure. I don't think I could figure out how to make multiple of those because what would solve the problem is I could if I could make it CTA letterhead template, Chris, CTA letterhead template, Lori, CTA letterhead template, rush me for that. Or resending it. Go ahead and click that gear icon again and reopen that screen. You were just looking at by clicking configure template and then open that template and then go to template in the bar at the top. it's next to insert fields. Click on that. Okay, so this is going to insert the job title. Yes, so this these are built for the job title sharing. I don't know beyond that what their use case is. Go ahead and hit close on that. I would have to do a little more research if there's a way to kind of bend the use case of this these templates here they're intended for sharing lists of jobs from your job board on your website so I might have to research if you could just use those templates in a different scenario so stationary is only used for I'm a little confused. I'm sorry. We use it for marketing. So, you know, like here's a letter we write, right? And test is, let's do test two. I mean, are you saying that there's no way for us to use that stationary when we're sending? Because what you said before was if we build this out like this, then when we send it, it can potentially go as stationary. Right. You have to choose that letterhead later. So maybe that's our problem. Yeah, let me double check that. So now if I hit a roll up. Okay. I'm just going to hit a roll up. And I'm going to try and send the form letter that test to and see what it looks like. So we'll send it there. And so click to send a form letter. And we want that test letter. How do I find it now? You could use the pages across the top, or you can look for the letter name with that little search bar that's the letter name. Okay. Yeah. Yeah, that's what I was looking for. I couldn't find it. Thank you. No problem. There's just two. We'll send that one. And email field. So this is currently Lori at ChrisFers.com. That's a whole other issue. If we send from me, it comes up still with Chris's name on it, and that's a problem, too. But we're sending from Chris for now. Test two. The two is not there yet, but let's do a preview. So that stationary does not come up. So that's not where you select it. It's when you're creating the form letter. Okay. If you go back to your last page, close this tab that you just opened. Okay, so it looks like you're using the legacy bulk email tool. Okay. Let's see. I might have to do a little research on this. I haven't really used the older bulk emailing tool. I didn't know there was a new bulk emailing tool. Yeah, there's one called Email Campaigns. It would be a paid upgrade, so it might be why you're still on the legacy one. Let's see. If you go to options on the left, there's a gear icon there. What if there's something? No, that's for resend checking. Try the gear icon at the bottom left as well. That's the one we already looked at. Okay. That's the one, yeah, where we're doing configuring templates. Okay. Maybe if I click on that. What if I save this? Is that when it works? It was just updating that template. Okay. So it looks like I'm playing around with stationary in my test database right now. And it looks like you would be selecting one of your stationary to be active. Let's see if that plays into it all. So I'm going to recreate the steps that you were just doing here. I'm going to send a bulk email from the legacy tool. in my test database here, go to Legacy. Yeah, I'm not seeing that option to choose right now either, okay. Yeah, I might have to do a little research get back to you on the full interaction between stationary and the legacy bulk emailing tool. And I could get back to you. Let me get back to the email. Oh, go ahead. Sorry. Oh, no, I interrupted you. I know. Yeah, I was just going to say, I could just do a little research and send you an email as soon as I figure out the relationship between stationary and bulk legacy email. Okay. I just want to make sure we do understand the use case thoroughly because the base problem we're trying to solve, it may be a better way to solve it. So the base problem is we have multiple people who go in to roll-up lists and send form letters. And we need, and they send the form letters either as themselves or from the christerzo.net address. So they need to be able to select a template for form letters that will show either their own email stationery or signature or Chris Terzo's email stationery or signature. So we need that functionality. And we've had it in the past, but somehow with this brand upgrade, we've gotten confused. Okay. Yeah, that's a good summary of that. That makes a lot of sense. Cool. Yeah, I will research that and get back to you. Is your best email address Lori at ChrisTorzo.com? Yes, that's great. Awesome. Okay, yeah, let me take a look. I was going to add that we're okay with doing it. However, it just needs to function properly. Gotcha. Okay, awesome. Yeah, I will get back to you. I'll confer with my team a little bit, and we will go from there. Okay, can we also add Ashley to that email chain? I can give you her address. Sure, perfect. okay ready when you are ashleyannllc at gmail.com got it okay I will definitely cc her on any communication about that awesome thank you perfect all right Garrett thank you so much for your help really appreciate it no problem we'll get back to you very soon thanks All right. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1899.285079,
+    "salad_processing_time": 105.274484872818,
+    "overall_processing_time": 1899.285079,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "job_id": "fe10a040-6f78-4308-b61c-e617651b44fd",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "resolved",
+    "first_call_resolution": true,
+    "escalation_required": true,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3066310096036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

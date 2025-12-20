@@ -1,0 +1,100 @@
+{
+  "recording_id": "3084417567036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:16:54.240583Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:16:54",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hey, Garrett. I'm a customer. I'm using a product. One of the features isn't quite working the way it used to, and one of the CFPKs can't help get it figured out. Sure. Let me pull up your database. Are you with the M2E group? Yes, I am. Awesome. So what feature is giving you trouble? It's the email link out of my Outlook. Isn't tagging back into the candidate or the contact file. So when I email out, the way it used to do is it would just store that email back on that contact file. Under the activities on the name record? Yep, exactly. So it's tracking those emails and keeps those on the contact file. That's not happening. What's weird, though, is the ones coming back are. So the received emails are tracking in there. And I know it's just a setting in there that somehow isn't clicked right or turned on or whatever. Sure, yeah. Let's take a look at that. And usually it might be that you've lost connection between PCR and your mail provider where maybe there was a password change or your email provider just wants to have you reauthorized since you haven't in a few months. So we'll just walk through those steps. Are you in the M2E group final or M2E group? Final. Okay. Yes, final. Got it. And what's your username? G Hill. Perfect. Okay. I'm going to test the connection between PCR and your provider, email provider, real quick here. Okay. Yeah. Outgoing meets reconnected and incoming. Okay. Okay. So if you want to click on the little gear icon at the top right of PCR, it'll have a drop-down menu where you can select email. This will open a PCR mail in a new tab. And then just go to configure. Hang on, the gear. Oh, hang on. I did the wrong one. So PCR top left, right? Oh, sorry. No, top right. I might have said left. My bad. top right by the profile picture circle there's a little gear icon in a circle oh wrong one okay no i'm on sorry a very tough right because there's another one just below it like i'm on basic search and there's a gear icon oh right so it's the orange one way up in the top okay email perfect yeah go down with you that'll open up pcr mail and then go to configure at the top left which is another gear icon here yep and then go to mail servers yep right below that and the bottom frame click the action drop down to the left of your imap there to edit it yep and uh it looks like you have gmail as your provider so click on sign in with google the blue button there and should allow you to connect to the right account Okay. And once you've connected it, probably filled in all those fields for you. Just hit the save button down at the bottom, and then I'll refresh on my end and test that connection. Yeah, hang on a second. It's asking for – I've got to go log in. And it didn't have it saved, so I've got to go find that password because I don't know what it is off the top of my head. No worries. We've got 10 million passwords now, so. Yeah. Who remembers them? Remember the day when you knew all your friends' phone numbers and now I can't remember a password for nothing to save my life, right? Yeah, I know how that is totally. There's just so many passwords and having to change them. Oh, yeah. Hey, you didn't update. Update. Man, what the heck? And so I've got to go find password. It's funny that it would have picked... It picks up the incoming email, though. Isn't that strange? Yeah, something strange going on. I did test the connection for incoming and outgoing on this screen, and both of them need reconnected. So once we get those both back up, I think it'll behave as intended. Okay. So re-logged into all that. Okay. Awesome. And then, yeah, just hit save at the bottom, and I'll refresh on my end. So I'm guessing, hang on, the password that it preloaded in the system, I'm thinking it duplicated it. Do you want me to put that regular password as a password? No, it's supposed to be very long because it's encrypted when you use that sign-in. Okay. The Google button, so that's the right one. Okay. Yeah, like the password that's in there looks like it's probably 22, 25 characters. So it just automatically encrypted something? Exactly. It won't work if you just type in your password. Okay. So all that said, click save. Right. Perfect. And I'm refreshing on my end. I'm going to go in and test that connection. Let's see. It is still giving invalid credentials failed there. That's strange. Go ahead and try that again. Hit the sign in with Google button. Not sure why that didn't go through. Okay. Okay. I did something wrong. You're sending back into PCR recruitment applicant tracking software. Yes, continue. Yeah, it'll be an option to hit continue and then just hit save once it repopulates. Allow access to PC recruitment software. Yes. Continue. Okay. And then go back to there, press save. Perfect. And try that again. Go to edit, test connection. There we go. That worked that time. And then there is a setting in the top frame called alias address list. Go ahead and click on that. Okay, so close this screen out, correct? The email server screen? Yeah. That's connected up. Alias address list. Yep. Perfect. Bottom frame, click the pencil icon to edit that email alias. Okay. And we'll do the same thing. click on sign in with Google and that'll connect the outgoing mail Okay. And I recommend at the bottom left where it says delay between emails, put that at 3,000. That'll put three seconds in between your outgoing bulk mail so you don't have it all go out at once immediately. Hang on a second. Delay between emails. Okay. Because I'd close that out. So put that at three. 3,000. Oh, 3,000. Okay. And then you can hit test connection down at the bottom. It'll show you green lettering somewhere in those test results if you made a positive connection. Or I can do that too. Yeah, that's okay. Yeah, there we go. Good. Yeah, you're all set then. It could take up to 24 hours to fully sync all of your emails, but it should be going retroactively backwards and adding in those activities from when it lost connection before. Awesome. But, yeah, if you notice anything else with that, just let us know. But you should be good now with any activities on the name records. Perfect. Sounds great. Thank you so much. Thanks. Have a great rest of your day. You bet. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1992.27587,
+    "salad_processing_time": 23.167123556137085,
+    "overall_processing_time": 1992.27587,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "job_id": "2dfd367d-ab9a-4e50-b8b7-52728e5a5f95",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3084417567036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

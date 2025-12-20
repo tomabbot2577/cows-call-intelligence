@@ -1,0 +1,100 @@
+{
+  "recording_id": "3035757169036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:46:52.732931Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:46:52",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " 25. Give us all the time in the world. Hello? Hello. Hi, is this PCR tech support? Yes. I answer now. This is Robin at Main Sequence, yes. Hey, Ms. Robin. We've come across an interesting conundrum we've never seen before, and I was hoping you could give us some thoughts. Can you get into my database and I can direct you to the name? Yeah, hold on one second. let's see and I'm sorry what is your name again Jason Johnson with Neely Pierce Jason Neely Pierce okay okay so the database is nearly Pierce what username is should I go in as a Hey, guys. I'm Jason. I guess it doesn't matter which one you go in as. Yeah, we need to have a username to know which one. Okay. You can use mine. What is it? What is the username? Just Jason? Okay. Yep. Okay. I'm in as Jason. Okay. Would you go to candidate name Anthony Pike, P-I-K-E? Okay, I see it in your recently viewed. Yep. Okay. And then check out his activities. And if you will scroll down, you will see today at 925 AM, it says recruit interested on fence. Do you see that? Okay. Okay, that's a recruitment presentation. That's me talking to this candidate at 925 a.m. Central Time. But then if you scroll back up, you see the inquiry at 930. That means that would have been apply online. You apply online. Okay. Yep, but here's the thing. I started that presentation. The presentation is time stamped from when I started. So at 925, he and I were on the phone for a half hour. So according to this story, we're on the phone at 925. And he's on your website. Yeah, he must have applied online. He applied for a job. And then I email him when we get off the phone 27 minutes later. But that's not actually what happened. What happened was I talked to him at 925 Central Time. He then applied to a job with our home office in Bend, Oregon at 930 Pacific Time, which is 1130 Central Time. So that application occurred two hours later. So his application is not based on his time zone. When you are in the database and writing an activity, it goes based on your time zone. Yep, which is central. So and that's based on whatever is configured for your username. So let me go in. Let me see what true it has for your time zone. So whenever you write activities, are they the right time? They are. Okay. so that would mean your username has the right time and what would happen is but then so there's well when you write an activity let's say you go to add activity it uses whatever is the time zone that's specified for your username which is part of your user account so for you it is set as as Central Standard Time. Yep. That's what it has for you. The Truth Team is set as Pacific. Well, we don't camp the application based on the candidate's time zone. It's based on the database time zone. Right. So let me see what's set for the database. The database is set to Pacific. Right. So that's why your timestamp can be different from the timestamp used when somebody applies. So what would happen is if someone logged in in Bend, Oregon, their home office, right, at 7 o'clock in the morning Pacific time, they would see my activity as 925. They would see I talk to someone in the future, a time that hasn't occurred yet. It writes whatever you are set to get. When you are writing an activity, now the database, so let's say like Candid Plying Online or something like generating from the system, that's all going to write Pacific. So you might be doing an action at 11 a.m., but the database is going to write something at 9 a.m. Exactly. So there could be a little offness there. Yeah. So if we had people, we don't. But if we had people on the East Coast, as an example. so yeah the base is still going to do everything at 11 time yeah and then when the user now here's what also happens it basically it doesn't translate the time stamps to whatever yeah okay correct it's just a time a date and a time but yeah it can be a little tricky when you have different users in different time zones and then you have different database time zone. So the person, let's say when Truett looks at this and he sees I talked to the candidate 9.25 a.m., he has to know Jason is located in central time. So that was 9.25 central. He should not assume it's 9.25 his time. Correct. Every person writes to whatever their time zone is. That's how it's stamped. Well, whatever they selected it as. Like sometimes I've had people where they don't go in and set the preferences for a user by accident. So the system would just write it as maybe Easter, but their person is really Pacific. And so whenever the user is even just going in and saying add activity, they're seeing the wrong timestamp because the system administrator didn't set it for them. So they have it set for your time zone, but you're just in a different time zone. Okay. Okay. And I think what we expected in our heads, if I see recruitment interested on Fence at 925, I assumed my colleagues in Bend saw that timestamp say 725. I didn't realize they also see 925. I didn't know that until today. Yeah, it's just one timestamp. Like it's basically sort of it just writes student activity tables is kind of what you're really seeing here. But in the background, it's just date time. and well it's just who's writing it controls how it gets stamped but yeah exactly stamped it doesn't change oh my goodness but if i have truett this is what's so weird if i talk to this person at 9 25 and i say hey i really like you should talk my partner truett and bend or again and then he talks to him five minutes later it's going to look like he talked to them before i talked to them which is going to make the story out of order yes it can how crazy is that okay just something to be aware of. Well, put us down for a feature request. That's something we'd love to see be different. Yeah, that likely would never change. Okay. Well, then we will all have to keep that in mind because that changes the story when we're working because it's not uncommon for my candidates to then talk to Truett, my boss, as the next step. Okay. Copy that. As long as you're on the same time zone, there's never an issue. It's just when you have people in different time zones. Yeah, right. But the stuff for, okay, well, here's one. So the inquiries, because those are written from Indeed applying in, they will always be written in Pacific time. Right, because that's what the database is set to do. Okay, perfect. So in the very least, if someone applies to my job here and their job there, we still know the order they applied in because those are timestamps the same. Is everybody like Pacific except you? uh-uh no there's several of us on central okay so only the ones that are central are going to look a little off my question is let me see when he applied to me if okay hold on let me go back and see when the first inquiry was that initiated me calling him i think it's going to be on page three yeah page three second activity it says he applied to me at 8 24 and i would venture a guess that was 824 Pacific. Anything that's written by candidate or because that'll be something that the candidate did online, that would all be Pacific. Or anything written by user is going to be stamped based on their email. You're right. Okay, interesting. I never noticed that. So the email came to me at 1024. So that he actually applied at 1024 Central Time, which was 824 Pacific. So that inquiry went in as 824 Pacific. So all the inquiries are written the same because they're all set to Pacific. OK, well, that's good to know. Yeah. Anything about Canada is going to be Pacific. Understood. OK, perfect. Thank you so much. We never knew this. So I appreciate you helping us out. You are welcome. Have a great week. Thank you, ma'am. Have a good one. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1083.585044,
+    "salad_processing_time": 33.6712760925293,
+    "overall_processing_time": 1083.585044,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " 25.  Give us all the time in the world.  Hello? Hello.",
+    "job_id": "598e2600-7008-4466-adb1-e4115e9637a1",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " 25.  Give us all the time in the world.  Hello? Hello.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3035757169036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

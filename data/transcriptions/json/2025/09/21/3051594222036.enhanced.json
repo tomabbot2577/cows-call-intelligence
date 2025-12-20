@@ -1,0 +1,112 @@
+{
+  "recording_id": "3051594222036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:01:24.180297Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:01:24",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hello. Hello. Oh. A quick question for you. Is there a way in the pipeline reports? I have someone that's complaining that the names aren't alphabetical. Like under, like in like the applicant tracking report. Let's see. Hmm. Is it only by position? Let's see. Is it the built-in one or custom one? Built-in one. Even the custom ones you can't either. I don't remember. Let's see. I know there's a sort, but I'm trying to remember if it's only... the position section, if I remember right. Yeah. So they're using the built-in one? Mm-hmm. Is it new pipeline or just regular applicant tracking? New pipeline. New pipeline. Event types, order by, there's an option for order by, order by contact name, company name, contact name, username. This is mostly related to the upper section. Don't have it. Do not have it on that one. Does the regular applicant tracking have it? Order by I just leave it positioned stuff yeah it's a pizza request it looks like Sorry, I'm looking here. And he doesn't have it. that run it only has wait remember did it did it it might because it's like this yeah to look or something Yeah, none of them have it. If they do an export to CSV, they could sort it once exported. But you can't do an export to CSV if I remember right on the new pipeline report. I think that one only has Excel and the PDF view mode. It's not like a line-by-line anyway. But they did a custom applicant tracking report. Even the – yeah. Yeah, he's saying Crelate, Loxo, and Olive AI all can achieve this, but we cannot switch because of the sense of history we have. so truly no solution to this database sorting problem oh wow passive aggressive aren't they yeah like you can export it to a csv and then sort it yeah do people call Bill Gates and whoever about every fucking little feature sorry sorry crabby I'm really sick of hearing what Loxo and Cruele can do yep I got this email from Julian Reeves I'm sure you've talked to him a ton with sequencing oh here's all the other things that you know these two companies can do Looking much? Yeah. Yeah. And of course, this is like a two-user office. All right. Yeah, I'll just tell him feature request. Once you want to pay for us to write something, but it may not be in the form that he wants. I mean, it would really just be the same. We would just do the stored form, so it's not really worth the extra money. But if he did a custom applicant tracking, he could sort it after exporting however he needs. Yeah, and then, I mean, even... But you would even want to use the export to Excel because you can't really export well on that. So you'd want to do CSV. Yeah. Even if we wrote something, would we be able to group it by position still and then sort by name per position? Yeah, it would have to be a CSV though. No, what I'm saying, we wouldn't even be able to write something that comes out in the format that he wants. It may not look like it would be like a CSV, but I can code it to say order by position ID or title or whatever. and then by last name, first name. But that's billable. So that's cheaper to just export and sort. Yeah, I'm going to tell them as far as I know that is correct. Oh, boy. my daughter's planning to have 10 kids over here this afternoon before they go to the party oh before they go to the mall i can't even call them kids anymore before they go to the guardians game and my house is a freaking disaster i'm like you need to like oh i'm going to get my nails done now i'm like oh jesus oh and let me take your car because my car is dirty and i don't want to pick up she's got like a new little love interest no so i'm like oh yeah take my car great i'm like oh excuse me you guys crush my car i hate when i ask to take my car absolutely hate it something's bad going to happen. She's got my old car and it's like freaking dents all over it now. I really don't want her taking my car ever. The thing needs to land with me. We don't handle any of the... It needs to last me a long time. We don't handle any of the opt-out stuff when sending text messages through PCR, correct? No, I think it kind of... I want to say it kind of comes back somehow to that message opt-in list table, but it's really handled through RingCentral. Like they have to text unsubscribe or subscribe or whatever it is. Even like our opt-out link or like the opt-out letter is just saying text stop or unsubscribe to this. And they have to send it back to their RingCentral number. but I feel like it might end up in the message opt-in opt-out table though well there's only an opt-in table for SMS okay doesn't it all go in one the same one table I haven't looked at it in a long time but I think it's really stored in RingCentral though for their account Not really clear on how that works. I'm going to just go through this. Who's the cluster complaining about the report though? I'm sure they're only two users though, right? Precision resources. Precision resources. Oh, no, they're one user. Oh, no, precise resource. yeah but they've been with us since 2005 I don't think it's really worth offering anything yeah there's like a 10 user office or something I'd maybe just to keep them happy but yeah And then it goes down a rabbit hole. You know what I mean? Oh, I want this, and I want this, and it becomes a huge, big project sometimes. So I found this for RingCentral. When a recipient replies stop to an opt-out of receiving your organization's text messages, RingCentral will send an auto-reply message, block further text communications, and add the contact to an opt-out list. So if a number is on your opt-out list in RingCentral, and you try to send them a text message through PCR, RingCentral will block the send. Yeah. Oh, shit, we got that meeting in a minute. What meeting? Oh, our support meeting is Thursday. This pained time throws me off all the time. Like it's eight in the afternoon one day. And okay. All right. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1533.349352,
+    "salad_processing_time": 53.02861714363098,
+    "overall_processing_time": 1533.349352,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hello.  Hello.  Oh.",
+    "job_id": "42161dbb-f6a4-491f-8d46-9fe1704f460d",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hello.  Hello.  Oh.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": false,
+      "proper_closing": false
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3051594222036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

@@ -1,0 +1,443 @@
+{
+  "recording_id": "3096267393036",
+  "analysis_timestamp": "2025-12-19T20:33:04.546832",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Matt Jacob",
+        "role": "customer",
+        "company": null,
+        "confidence_score": 0.8,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [
+      {
+        "name": "Matt Jacob",
+        "role": null,
+        "context": "called the participant"
+      },
+      {
+        "name": "employee",
+        "role": null,
+        "context": "no longer works at the company"
+      }
+    ],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "support_technical",
+    "CALL PURPOSE": [
+      "Assist with resolving an issue related to employee access and permissions",
+      "Provide guidance on best practices for user management"
+    ],
+    "URGENCY LEVEL": "high",
+    "OUTCOME STATUS": "resolved"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Matt Jacob",
+      "Company/organization name": null,
+      "Phone numbers mentioned": null,
+      "Email addresses mentioned": null,
+      "Key decision makers referenced": null,
+      "Team members and their roles": {
+        "Garrett": null,
+        "JT": null
+      }
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": null,
+      "Company size indicators": null,
+      "Technology stack mentions": [
+        "capture tool",
+        "database",
+        "API",
+        "integrations"
+      ],
+      "Current challenges/pain points": [
+        "Terminated employee still has access to records",
+        "Disabling users is not a common practice"
+      ],
+      "Growth stage indicators": null
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": null,
+      "Existing service usage": null,
+      "Account history mentions": null,
+      "Relationship duration indicators": null,
+      "Trust level indicators": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "technical",
+      "issue_severity": "medium",
+      "technical_complexity_level": "medium",
+      "time_sensitivity": "low"
+    },
+    "resolution_tracking": {
+      "issue_status": "resolved",
+      "resolution_steps_taken": [
+        "Disable the user",
+        "Remove permissions"
+      ],
+      "outstanding_action_items": [
+        "Submit bug ticket for potential security issue"
+      ],
+      "next_steps_required": [
+        "Matt to disable the user",
+        "Tyler to submit bug ticket"
+      ]
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "none",
+      "knowledge_base_gaps_identified": "none"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "effective",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "good",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "RELATIONSHIP_HEALTH": {
+      "Overall_satisfaction_indicators": "Moderate, as the conversation shows a willingness to resolve issues but also expresses frustration.",
+      "Trust_level_signals": "Moderate, as advice is sought and given, but there is uncertainty about the best practices and system limitations.",
+      "Communication_style": "Informal and direct, with open sharing of frustrations and challenges.",
+      "Rapport_quality": "Good, evidenced by casual conversation and personal updates."
+    },
+    "CUSTOMER_JOURNEY_STAGE": {
+      "Onboarding_status": "Advanced, as users are discussing system limitations and security practices.",
+      "Product_adoption_level": "High, as there is active use and troubleshooting of the product.",
+      "Feature_utilization": "Moderate to high, but with issues in understanding or implementing best security practices (e.g., user disablement).",
+      "Expansion_opportunities": "Possible, if issues like user management are resolved and trust is fully established."
+    },
+    "RETENTION_FACTORS": {
+      "Satisfaction_drivers": "Responsive support and peer advice.",
+      "Risk_indicators": "Frustration with system limitations and security practices.",
+      "Loyalty_signals": "Engagement in problem-solving and continued use despite issues.",
+      "Advocacy_potential": "Limited by current frustrations but could improve with resolution of key issues."
+    },
+    "COMMUNICATION_PREFERENCES": {
+      "Preferred_contact_methods": "Phone calls, as evidenced by the conversation.",
+      "Response_time_expectations": "Immediate to short-term, as issues discussed are treated with urgency.",
+      "Information_style_preferences": "Direct and informal, with a preference for straightforward solutions.",
+      "Decision-making_patterns": "Reactive, based on immediate needs and system limitations."
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "Because Matt Jacob called me this morning. I don't know if he's still calling me.",
+      "They probably have an open session. Oh no, it should lock them out. It's the capture tool.",
+      "Disable the user or remove all of the... Like, totally lock down their ability... Permissions. Permissions can change as well.",
+      "I told him to disable the user, and he said fine. But normally they just change the password.",
+      "From a security standpoint not good... they're not really supposed to have more active users in there than the amount that they're paying for."
+    ],
+    "qa_pairs": [
+      {
+        "question": "Is there a reason they're not disabling them?",
+        "answer": "Because that should happen anyway, but... I told him to disable the user, and he said fine. But normally they just change the password."
+      },
+      {
+        "question": "What immediate action can be taken?",
+        "answer": "Disable the user or remove all of the... Like, totally lock down their ability... Permissions. Permissions can change as well."
+      }
+    ],
+    "searchable_tags": [
+      "user management",
+      "security issue",
+      "password change",
+      "session management",
+      "permissions",
+      "active sessions",
+      "employee offboarding",
+      "compliance",
+      "best practices",
+      "bug ticket",
+      "API tokens",
+      "database records",
+      "capture tool",
+      "user disabling",
+      "security practices"
+    ],
+    "semantic_themes": [
+      "Security vulnerabilities in user management",
+      "Best practices for employee offboarding",
+      "Challenges with session and permission management",
+      "Compliance and licensing issues",
+      "Prioritizing bug fixes and security updates"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 60,
+      "Customer talk percentage": 40,
+      "Balanced conversation indicator": "Somewhat Balanced"
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 2,
+      "Number of interruptions by customer": 1,
+      "Interruption impact on flow": "Minimal"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 10,
+      "Awkward pauses detected": 2,
+      "Hold time indicators": "None"
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": true,
+      "Company name mentioned": false,
+      "Verification steps taken": false,
+      "Required disclosures made": false,
+      "Proper closing used": false
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": "Medium"
+    },
+    "agent_talk_pct_calculated": 70.2,
+    "customer_talk_pct_calculated": 29.8
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 70.2,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "user management",
+      "security issue",
+      "password change",
+      "session management",
+      "permissions",
+      "active sessions",
+      "employee offboarding",
+      "compliance",
+      "best practices",
+      "bug ticket",
+      "API tokens",
+      "database records",
+      "capture tool",
+      "user disabling",
+      "security practices"
+    ],
+    "semantic_themes": [
+      "Security vulnerabilities in user management",
+      "Best practices for employee offboarding",
+      "Challenges with session and permission management",
+      "Compliance and licensing issues",
+      "Prioritizing bug fixes and security updates"
+    ],
+    "key_quotes": [
+      "Because Matt Jacob called me this morning. I don't know if he's still calling me.",
+      "They probably have an open session. Oh no, it should lock them out. It's the capture tool.",
+      "Disable the user or remove all of the... Like, totally lock down their ability... Permissions. Permissions can change as well.",
+      "I told him to disable the user, and he said fine. But normally they just change the password.",
+      "From a security standpoint not good... they're not really supposed to have more active users in there than the amount that they're paying for."
+    ],
+    "qa_pairs": [
+      {
+        "question": "Is there a reason they're not disabling them?",
+        "answer": "Because that should happen anyway, but... I told him to disable the user, and he said fine. But normally they just change the password."
+      },
+      {
+        "question": "What immediate action can be taken?",
+        "answer": "Disable the user or remove all of the... Like, totally lock down their ability... Permissions. Permissions can change as well."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Garrett Komyati",
+      "extension": "5427",
+      "phone": "6145427",
+      "email": "garrett.komyati@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5427"
+    },
+    "primary_customer": {
+      "name": "trying to think of something else",
+      "company": "",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "trying to think of something else",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "sure you",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "showing three",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not that worried about it",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "can you be",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "sure that you want to save those to make sure stuff comes up",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "like",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to jump on him",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "one that pisses me off",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "like great practice for them to be doing",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "sure for",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "still",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Garrett Komyati",
+        "extension": "5427",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      },
+      {
+        "name": "Nick Bradach",
+        "extension": "5431",
+        "department": "Management",
+        "role": "Manager"
+      },
+      {
+        "name": "Tyler Trautman",
+        "extension": "5467",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "service"
+      ],
+      "mentioned_issues": [
+        "issue"
+      ],
+      "urgency_indicators": [],
+      "follow_up_mentions": []
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "recording_id": "3001774884036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:14:30.665237Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:14:30",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hi, Garrett. Good morning. It's Mark Morwick. How are you? Good. How are you? I'm doing well. I had questions on an automation plan. Okay. Pull up your database here. So are you doing an automation kind of in the system settings, or is this related to a roll-up automation? No, this is system settings. Okay. Awesome. So what can I help you with? So, I'm trying to get into these from a standpoint of when, so what we have set up is like seven days before the start date for one of our candidates, they get a letter that goes out. A letter goes out with, it's supposed to be internal, right? and so I received an email back from the candidate that's it looks like he got the email as well so what I'm trying to figure out is what's the letter that we're sending where is that kept and how can I access it and then who gets the email where's that actual list I'll take a look are you in the Academy general general okay yeah All right, so I'm going to system, database setup, automation. I can send you the email that we got if that will help. Yeah, you could do that. You said it was like seven days before. Let's check on some of these. What's your email, Garrett? G-K-O-M, as in Michael, Y-A-T-I. It's gkamyati at namesquence.net. there you are perfect okay all right um so we have a couple i'm noticing here already off the bat that are saying um let's see seven days before a permanent yes and one of those i may have just impact that I just may have done something with. Okay. Yeah, it looks like there's about three of those seven days ones. Some of these are kind of overlapping. Yeah. So when you, like, first off, if I open up to edit and it says, you know, send to 71535030 to whatever, and then I click, how do I get, how do I find that letter? Where's that letter kept? So if you click on the number, it'll give you the name of the form letter. So let me just do this first one that says seven days before permanent placement. I'm going to edit it. I'll click on 715 and it'll say form letter. Let's see, CM Internet Internal, your candidate start date is seven days. Okay, so that's the subject line. If that doesn't match the form letters title, it might not be easy to find. But those are going to be placement form letters. So if you go to, you could get to those by going to system and then form letters on the left. Place placement letters. Okay, yeah. Perfect. There it is. Okay, good. So that's the right one. And then let me check to see who this is going to. So it's going to just specific email addresses, M-MORIC, e-phone, okay. Let me check the next one. Seven days before permit placement. There's another one here. Just going to M-MORIC. Third one for seven days before placement. just going to end mark okay okay so if I if I I'm going to delete that one going to me and then so it is for place and delete just the one going to me right yeah okay and then if I come back to the edit this one it's not I mean So, are you sure that it's not going to the candidate? There's one here that's going to the candidate. It says five minutes after a permanent placement, send... Send a congratulatory. Yeah. So, that one's set to go to the name record. And then 21 days after a permanent placement is made, send Cerise and Morick your feedback to the name record. But yeah, the ones that are seven days before, you have about three of those. They're all just listing specific email addresses to send to, not like a generalized thing that says like candidates email or something. It has actual email addresses with the at Cerise and Morrick at the end. Okay, say that again. Who is that going to? So the three that, here, I'll refresh the page in case any changes. There we go. Yeah, we have two now, it looks like, that are seven days before placement start date. Those are going to specific email addresses like they're written out. They end in at Cerisee and Morrick rather than just a general like send to name record or something like that. They're going to actual specific email addresses so they wouldn't go to the candidate. the only ones going to the candidate that I see are the five minutes after a permanent placement congratulations 20 days after more feedback or yeah it's a feedback letter it looks like okay gotcha gotcha gotcha all right so the email that I sent you yeah let me pull that up yeah Okay, got it here. Oh, okay. Just a reminder. Okay. So this was from Hung. Yeah, that's the candidate. Sent to Cerisee. Let me check your form letters for something similar to that. I'm not sure here. We'll go back in. OK, so system, form letters. So where else would those form letters be? Because there's only two in there, candidate and placed. Right? Right, yes. And not placement letters. They could be any other category that this one's sending out. Just a reminder that might be a candidate. Let's see. Job information. Nope. Okay. Position letters possibly. Let me do check all. And we don't know what the – oh, subject line. CM internal candidate start date is seven days away. They don't look like they're a position. letter none of us can match that yeah it is matching the placement letter reminder that blank okay yeah that matches all right the position position the record is where the other ones are a new role you can created and the note has been added a pipeline needs attention okay so yeah but yeah it seems They somehow got the placement letter, and I'm not sure how they received that. It doesn't look like you have any. Let me look over all of these one more time. I've got to zoom out because all of these things kind of overlap, and I can zoom out in the browser to read them better. There we go. 21 days after, five minutes after. Oh, yeah, good idea, Garrett, because this is kind of a cluster. Yeah, it looks crazy. Okay, so there's that one, three minutes after. Those are specific names. Status is equal to H. Okay, not that. Okay. Okay. Activation pipeline has not been added in two days. Activation pipeline has not been added in seven days. Yeah, nothing here's really set up to send a placement letter. Yeah, let me check one other thing. I'll go back to your database and just see. Go to NGEN. Okay, so you have a couple of those. This guy is the one that has a Gmail address. Let's see. There we go. Check the activities. No. Huh. Yeah, so that's sent on. Alright so 6-24 they got the congratulations. 6-24 they also to WJUP. Yeah, 72, email sent from info at Cerise M. Morick. Email was sent to M. Morick. Sent to Ellen. Sent to M. Morick. Sent to Hung. Why was the scent hung? That's so strange. Okay. So now you see why I'm... Yeah. 72 at 801. Let me check one of this thing here. Possibly there's a... I can kind of look at a snapshot of your database from about 24 hours ago, but that updates at random times, so hopefully it's still showing from yesterday. And I'll just check some of those automations from yesterday to see if anything was adjusted or changed. So here's the thing. I just looked at the last. What was sent to Eileen? What was sent to me? Because I was looking at the last candidate we placed, and they did not. It looks like they did not get the email. Like Hung did. Okay. Like Hung did. Okay. Yeah. Something specific there. That's strange. Go to automations. And, oh, yeah, I got to zoom out again. Okay. When new positions enter, that's the same. Seven days. seven days to mwork, seven days to mwork, five minutes, congratulations, three minutes. Yeah nothing on yesterday's snapshot of your database that would, that has been changed, you know, that would make that happen for the automations. But it went to him, correct? Yeah, it went to him. Yeah, I could see it in his activities specifically for that. That email went out at the same time the emails went out. Let me go back to the regular version of the database. There we go. Hong activities. Yep, it went out on the second at 8.01, and that's the same, about the same time that it went out to Ellen and to you. So it seems like it happened all at the same time. Let me check his record. So he's got an email address there. Go to his details. Details. Show only populated fields. Additional email. Nothing there. I want to make sure he doesn't have, like, one of your company emails somewhere hidden in his record on one of the fields or something. No, you're good. And I'll go to change log. Yeah, I'm not sure there's – yeah, nothing would point to him getting this email. There's no automation. There's nothing on his record that has one of your email addresses, the actual recipient. intended for the automation. So how did that happen? I don't know. I'll have to create a ticket and have our tech team take a look for this specific instance. I'll just write down this is the one who's at Triumph Group Corporate. Okay, and then we're in that. Yeah, we're in 3C general. Yeah. Okay. 7-2-N-E-O-1. Okay. Yep, I'll have them take a look. Yeah, there's nothing that's jumping out to me. any reason why he would have received that. I'll get back to you via email as soon as I have them take a look. Maybe they have some suggestions or have to have something. Maybe they have to fix. I'm not sure. Okay. Well, I really appreciate it, Garrett. Thanks so much. Yeah, no problem. Have a good one. You too. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 599.047693,
+    "salad_processing_time": 43.620323181152344,
+    "overall_processing_time": 599.047693,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "job_id": "975fe8c5-9464-47c7-8082-27fa241a7b2b",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3001774884036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

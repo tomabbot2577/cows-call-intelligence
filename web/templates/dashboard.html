@@ -1,160 +1,307 @@
 {% extends "base.html" %}
 
-{% block title %}Dashboard - AI Insights{% endblock %}
+{% block title %}Dashboard - AI Insights (PostgreSQL){% endblock %}
 
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h1><i class="fas fa-tachometer-alt me-2"></i>Dashboard</h1>
+    <h1><i class="fas fa-tachometer-alt me-2"></i>Dashboard - PostgreSQL</h1>
     <div class="text-muted">
         <i class="fas fa-clock me-1"></i>Last updated: {{ datetime.now().strftime('%Y-%m-%d %H:%M') }}
     </div>
 </div>
 
-<!-- Key Metrics -->
+<!-- Overall Statistics -->
+{% if dashboard_stats and dashboard_stats.overall %}
 <div class="row mb-4">
     <div class="col-md-3">
         <div class="card metric-card text-center p-3">
             <div class="card-body">
-                <h3 class="text-primary">{{ analytics.statistics.total_calls or 0 }}</h3>
-                <p class="mb-0">Total Calls</p>
-                <small class="text-muted">Today</small>
+                <h3 class="text-primary">{{ dashboard_stats.overall.total_recordings|default(0) }}</h3>
+                <p class="mb-0">Total Recordings</p>
+                <small class="text-muted">In Database</small>
             </div>
         </div>
     </div>
     <div class="col-md-3">
         <div class="card metric-card text-center p-3">
             <div class="card-body">
-                <h3 class="text-success">{{ "%.1f"|format(analytics.statistics.avg_quality or 0) }}</h3>
-                <p class="mb-0">Avg Quality</p>
-                <small class="text-muted">Out of 10</small>
+                <h3 class="text-success">{{ dashboard_stats.overall.transcribed|default(0) }}</h3>
+                <p class="mb-0">Transcribed</p>
+                <small class="text-muted">By Salad Cloud</small>
             </div>
         </div>
     </div>
     <div class="col-md-3">
         <div class="card metric-card text-center p-3">
             <div class="card-body">
-                <h3 class="text-warning">{{ analytics.statistics.total_escalations or 0 }}</h3>
-                <p class="mb-0">Escalations</p>
-                <small class="text-muted">Today</small>
+                <h3 class="text-warning">{{ dashboard_stats.overall.with_insights|default(0) }}</h3>
+                <p class="mb-0">With AI Insights</p>
+                <small class="text-muted">Processed</small>
             </div>
         </div>
     </div>
     <div class="col-md-3">
         <div class="card metric-card text-center p-3">
             <div class="card-body">
-                <h3 class="text-info">{{ analytics.statistics.total_follow_ups or 0 }}</h3>
-                <p class="mb-0">Follow-ups</p>
-                <small class="text-muted">Needed</small>
+                <h3 class="text-info">{{ dashboard_stats.overall.uploaded|default(0) }}</h3>
+                <p class="mb-0">Google Drive</p>
+                <small class="text-muted">Uploaded</small>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Storage Statistics -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card metric-card text-center p-3">
+            <div class="card-body">
+                <h3 class="text-secondary">{{ (dashboard_stats.overall.total_bytes|default(0) / 1073741824)|round(2) }}</h3>
+                <p class="mb-0">Storage (GB)</p>
+                <small class="text-muted">Total Used</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card metric-card text-center p-3">
+            <div class="card-body">
+                <h3 class="text-danger">{{ dashboard_stats.overall.audio_deleted|default(0) }}</h3>
+                <p class="mb-0">Audio Deleted</p>
+                <small class="text-muted">After Processing</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card metric-card text-center p-3">
+            <div class="card-body">
+                <h3 class="text-info">{{ dashboard_stats.overall.avg_word_count|default(0)|round(0)|int }}</h3>
+                <p class="mb-0">Avg Words</p>
+                <small class="text-muted">Per Call</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card metric-card text-center p-3">
+            <div class="card-body">
+                <h3 class="text-success">{{ dashboard_stats.overall.downloaded|default(0) }}</h3>
+                <p class="mb-0">Downloaded</p>
+                <small class="text-muted">From RingCentral</small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Pipeline Status -->
+{% if pipeline_status and pipeline_status.stages %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h5><i class="fas fa-tasks me-2"></i>Pipeline Status</h5>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            {% for stage in pipeline_status.stages %}
+            <div class="col-md-3 mb-3">
+                <div class="border rounded p-3 text-center {% if stage.count > 0 %}bg-light{% endif %}">
+                    <h4 class="{% if stage.current_stage == 'downloaded' %}text-primary{% elif stage.current_stage == 'transcribed' %}text-success{% elif stage.current_stage == 'insights_generated' %}text-warning{% elif stage.current_stage == 'uploaded' %}text-info{% endif %}">
+                        {{ stage.count }}
+                    </h4>
+                    <small class="text-uppercase">{{ stage.current_stage|replace('_', ' ') }}</small>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if pipeline_status.queues %}
+        <hr>
+        <div class="row mt-3">
+            <div class="col-md-4">
+                <div class="d-flex justify-content-between">
+                    <span><i class="fas fa-microphone me-2"></i>Transcription Queue:</span>
+                    <strong>{{ pipeline_status.queues.transcription_queue|default(0) }}</strong>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex justify-content-between">
+                    <span><i class="fas fa-brain me-2"></i>Insights Queue:</span>
+                    <strong>{{ pipeline_status.queues.insights_queue|default(0) }}</strong>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex justify-content-between">
+                    <span><i class="fas fa-cloud-upload-alt me-2"></i>Upload Queue:</span>
+                    <strong>{{ pipeline_status.queues.upload_queue|default(0) }}</strong>
+                </div>
+            </div>
+        </div>
+        {% if pipeline_status.queues.error_count > 0 %}
+        <div class="alert alert-warning mt-3 mb-0">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            <strong>{{ pipeline_status.queues.error_count }}</strong> recordings have processing errors
+        </div>
+        {% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
 <!-- Charts Row -->
 <div class="row mb-4">
+    {% if analytics and analytics.sentiment_distribution %}
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
-                <h5><i class="fas fa-chart-pie me-2"></i>Sentiment Breakdown</h5>
+                <h5><i class="fas fa-chart-pie me-2"></i>Sentiment Distribution</h5>
             </div>
             <div class="card-body">
                 <canvas id="sentimentChart" width="400" height="200"></canvas>
             </div>
         </div>
     </div>
+    {% endif %}
+
+    {% if analytics and analytics.call_types %}
     <div class="col-md-6">
         <div class="card">
             <div class="card-header">
-                <h5><i class="fas fa-chart-bar me-2"></i>Top Issues</h5>
+                <h5><i class="fas fa-chart-bar me-2"></i>Top Call Types</h5>
             </div>
             <div class="card-body">
-                {% if analytics.top_issues %}
-                    {% for issue in analytics.top_issues[:5] %}
-                        <div class="d-flex justify-content-between align-items-center mb-2">
-                            <span>{{ issue.category or 'Unknown' }}</span>
-                            <span class="badge bg-secondary">{{ issue.count }}</span>
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    <p class="text-muted">No issues data available</p>
-                {% endif %}
+                {% for call_type in analytics.call_types[:5] %}
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span>{{ call_type.call_type|default('Unknown')|title }}</span>
+                        <span class="badge bg-secondary">{{ call_type.count }}</span>
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </div>
+    {% endif %}
 </div>
 
-<!-- Recent Insights and Patterns -->
+<!-- Recent Recordings -->
+{% if recent_recordings %}
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5><i class="fas fa-list me-2"></i>Recent Recordings</h5>
+        <a href="{{ url_for('insights_list') }}" class="btn btn-sm btn-outline-primary">
+            View All <i class="fas fa-arrow-right ms-1"></i>
+        </a>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Recording ID</th>
+                        <th>Customer</th>
+                        <th>Employee</th>
+                        <th>Date</th>
+                        <th>Words</th>
+                        <th>Stage</th>
+                        <th>Sentiment</th>
+                        <th>Quality</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rec in recent_recordings[:10] %}
+                    <tr>
+                        <td><small>{{ rec.recording_id[:15] }}...</small></td>
+                        <td>{{ rec.customer_name|default('-') }}</td>
+                        <td>{{ rec.employee_name|default('-') }}</td>
+                        <td>{{ rec.call_date[:10] if rec.call_date else '-' }}</td>
+                        <td>{{ rec.word_count|default('-') }}</td>
+                        <td>
+                            {% if rec.pipeline_stage == 'downloaded' %}
+                                <span class="badge bg-primary">Downloaded</span>
+                            {% elif rec.pipeline_stage == 'transcribed' %}
+                                <span class="badge bg-success">Transcribed</span>
+                            {% elif rec.pipeline_stage == 'insights_generated' %}
+                                <span class="badge bg-warning">Insights</span>
+                            {% elif rec.pipeline_stage == 'uploaded' %}
+                                <span class="badge bg-info">Uploaded</span>
+                            {% else %}
+                                <span class="badge bg-secondary">{{ rec.pipeline_stage|default('pending') }}</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if rec.customer_sentiment %}
+                                {% if rec.customer_sentiment == 'positive' %}
+                                    <span class="badge bg-success">{{ rec.customer_sentiment|title }}</span>
+                                {% elif rec.customer_sentiment == 'negative' %}
+                                    <span class="badge bg-danger">{{ rec.customer_sentiment|title }}</span>
+                                {% else %}
+                                    <span class="badge bg-secondary">{{ rec.customer_sentiment|title }}</span>
+                                {% endif %}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if rec.call_quality_score %}
+                                {{ rec.call_quality_score|round(1) }}/10
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a href="{{ url_for('view_transcript', recording_id=rec.recording_id) }}"
+                                   class="btn btn-sm btn-outline-primary" title="View Transcript">
+                                    <i class="fas fa-file-alt"></i>
+                                </a>
+                                {% if rec.insights_generated %}
+                                <a href="{{ url_for('insight_detail', recording_id=rec.recording_id) }}"
+                                   class="btn btn-sm btn-outline-secondary" title="View Insights">
+                                    <i class="fas fa-brain"></i>
+                                </a>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Quick Actions -->
 <div class="row">
     <div class="col-md-8">
+        {% if dashboard_stats and dashboard_stats.recent_activity %}
         <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h5><i class="fas fa-list me-2"></i>Recent Insights</h5>
-                <a href="{{ url_for('insights_list') }}" class="btn btn-sm btn-outline-primary">
-                    View All <i class="fas fa-arrow-right ms-1"></i>
-                </a>
+            <div class="card-header">
+                <h5><i class="fas fa-chart-line me-2"></i>Recent Activity</h5>
             </div>
             <div class="card-body">
-                {% if recent_insights %}
-                    {% for insight in recent_insights[:5] %}
-                        <div class="insight-card card mb-2">
-                            <div class="card-body p-3">
-                                <div class="d-flex justify-content-between align-items-start">
-                                    <div>
-                                        <h6 class="mb-1">Recording {{ insight.recording_id }}</h6>
-                                        <p class="mb-1 text-muted small">{{ insight.summary or 'No summary available' }}</p>
-                                        <div class="d-flex gap-2">
-                                            {% if insight.customer_sentiment %}
-                                                <span class="badge bg-light text-dark sentiment-{{ insight.customer_sentiment }}">
-                                                    {{ insight.customer_sentiment|title }}
-                                                </span>
-                                            {% endif %}
-                                            {% if insight.call_quality_score %}
-                                                <span class="badge bg-light text-dark quality-{{ 'high' if insight.call_quality_score >= 8 else 'medium' if insight.call_quality_score >= 6 else 'low' }}">
-                                                    Quality: {{ insight.call_quality_score }}/10
-                                                </span>
-                                            {% endif %}
-                                        </div>
-                                    </div>
-                                    <a href="{{ url_for('insight_detail', recording_id=insight.recording_id) }}"
-                                       class="btn btn-sm btn-outline-secondary">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    <p class="text-muted">No recent insights available</p>
-                {% endif %}
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Recordings Added</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for activity in dashboard_stats.recent_activity[:7] %}
+                            <tr>
+                                <td>{{ activity.date }}</td>
+                                <td>{{ activity.recordings_added }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
+        {% endif %}
     </div>
 
     <div class="col-md-4">
         <div class="card">
-            <div class="card-header">
-                <h5><i class="fas fa-search me-2"></i>Detected Patterns</h5>
-            </div>
-            <div class="card-body">
-                {% if patterns %}
-                    {% for pattern in patterns %}
-                        <div class="mb-3">
-                            <div class="fw-bold">{{ pattern.pattern_type|title }}</div>
-                            <div class="text-muted small">{{ pattern.description }}</div>
-                            <div class="text-primary small">
-                                <i class="fas fa-chart-line me-1"></i>
-                                Frequency: {{ pattern.frequency }}
-                            </div>
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    <p class="text-muted">No patterns detected yet</p>
-                {% endif %}
-            </div>
-        </div>
-
-        <!-- Quick Actions -->
-        <div class="card mt-3">
             <div class="card-header">
                 <h5><i class="fas fa-bolt me-2"></i>Quick Actions</h5>
             </div>
@@ -164,17 +311,58 @@
                        class="btn btn-outline-danger btn-sm">
                         <i class="fas fa-frown me-2"></i>Negative Sentiment Calls
                     </a>
-                    <a href="{{ url_for('insights_list') }}?escalation_required=true"
-                       class="btn btn-outline-warning btn-sm">
-                        <i class="fas fa-exclamation-triangle me-2"></i>Escalations Needed
+                    <a href="{{ url_for('insights_list') }}?min_quality_score=8"
+                       class="btn btn-outline-success btn-sm">
+                        <i class="fas fa-star me-2"></i>High Quality Calls
                     </a>
                     <a href="{{ url_for('analytics') }}"
                        class="btn btn-outline-info btn-sm">
                         <i class="fas fa-chart-bar me-2"></i>Full Analytics
                     </a>
+                    <a href="{{ url_for('customer_search') }}"
+                       class="btn btn-outline-primary btn-sm">
+                        <i class="fas fa-search me-2"></i>Customer Search
+                    </a>
+                    <a href="{{ url_for('semantic_search_ui') }}"
+                       class="btn btn-outline-secondary btn-sm">
+                        <i class="fas fa-robot me-2"></i>Semantic Search
+                    </a>
                 </div>
             </div>
         </div>
+
+        {% if dashboard_stats and dashboard_stats.quality_metrics %}
+        <div class="card mt-3">
+            <div class="card-header">
+                <h5><i class="fas fa-medal me-2"></i>Quality Metrics</h5>
+            </div>
+            <div class="card-body">
+                <div class="mb-2">
+                    <small class="text-muted">Avg Quality Score</small>
+                    <h4>{% if dashboard_stats.quality_metrics.avg_quality %}{{ dashboard_stats.quality_metrics.avg_quality|round(1) }}{% else %}0{% endif %}/10</h4>
+                </div>
+                <div class="mb-2">
+                    <small class="text-muted">Avg Satisfaction</small>
+                    <h4>{% if dashboard_stats.quality_metrics.avg_satisfaction %}{{ dashboard_stats.quality_metrics.avg_satisfaction|round(1) }}{% else %}0{% endif %}/10</h4>
+                </div>
+                <hr>
+                <div class="small">
+                    <div class="d-flex justify-content-between mb-1">
+                        <span class="text-success">Positive:</span>
+                        <strong>{{ dashboard_stats.quality_metrics.positive_calls|default(0) }}</strong>
+                    </div>
+                    <div class="d-flex justify-content-between mb-1">
+                        <span class="text-muted">Neutral:</span>
+                        <strong>{{ dashboard_stats.quality_metrics.neutral_calls|default(0) }}</strong>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <span class="text-danger">Negative:</span>
+                        <strong>{{ dashboard_stats.quality_metrics.negative_calls|default(0) }}</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
@@ -182,7 +370,12 @@
 {% block scripts %}
 <script>
 // Sentiment Chart
-const sentimentData = {{ analytics.sentiment_breakdown|tojson if analytics.sentiment_breakdown else '{}' }};
+{% if analytics and analytics.sentiment_distribution %}
+const sentimentData = {};
+{% for item in analytics.sentiment_distribution %}
+sentimentData['{{ item.customer_sentiment|title }}'] = {{ item.count }};
+{% endfor %}
+
 const ctx = document.getElementById('sentimentChart').getContext('2d');
 
 new Chart(ctx, {
@@ -209,6 +402,7 @@ new Chart(ctx, {
         }
     }
 });
+{% endif %}
 
 // Auto-refresh every 5 minutes
 setTimeout(function() {

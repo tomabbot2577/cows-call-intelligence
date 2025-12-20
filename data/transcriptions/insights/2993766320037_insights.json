@@ -1,0 +1,194 @@
+{
+  "recording_id": "2993766320037",
+  "analysis_timestamp": "2025-09-21T18:43:35.882198",
+  "analysis_version": "2.0",
+  "contact_information": {
+    "phone_numbers": [
+      "440-856-0314"
+    ],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "John",
+        "role": "customer",
+        "company": null,
+        "confidence_score": 0.8,
+        "validation_reason": "Likely a real customer name based on context"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-09-21"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "sales_discovery",
+    "CALL PURPOSE": [
+      "Reschedule consulting call",
+      "Follow up with email"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "follow_up_required"
+  },
+  "customer_profile": {
+    "customer_identification": {
+      "primary_contact_name": "John",
+      "primary_contact_role": null,
+      "company_name": null,
+      "phone_numbers": [
+        "440-856-0314"
+      ],
+      "email_addresses": null,
+      "key_decision_makers": null,
+      "team_members": [
+        {
+          "name": "Jim Lombardo",
+          "role": "with PC Recruiter"
+        },
+        {
+          "name": "Robin",
+          "role": null
+        }
+      ]
+    },
+    "business_context": {
+      "industry": null,
+      "company_size": null,
+      "technology_stack": null,
+      "challenges_pain_points": null,
+      "growth_stage": null
+    },
+    "relationship_mapping": {
+      "previous_interactions": [
+        {
+          "type": "scheduled consulting call",
+          "date": "today at 1 p.m. Eastern"
+        }
+      ],
+      "existing_service_usage": null,
+      "account_history": null,
+      "relationship_duration": null,
+      "trust_level": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "scheduling",
+      "issue_severity": "low",
+      "technical_complexity_level": "none",
+      "time_sensitivity": "medium"
+    },
+    "resolution_tracking": {
+      "issue_status": "pending",
+      "resolution_steps_taken": "left voicemail, will send follow-up email",
+      "outstanding_action_items": "reschedule consulting call",
+      "next_steps_required": "wait for customer response"
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "none",
+      "knowledge_base_gaps_identified": "none"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "proactive",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "none",
+      "empathy_and_rapport_building": "polite and courteous"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Unknown",
+      "trust_level_signals": "Low - missed scheduled call",
+      "communication_style": "Passive - voicemail left, no immediate follow-up",
+      "rapport_quality": "Weak - lack of engagement"
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Active - scheduled for consulting call",
+      "product_adoption_level": "Unknown",
+      "feature_utilization": "Unknown",
+      "expansion_opportunities": "Unknown"
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Unknown",
+      "risk_indicators": "High - missed appointment, potential disengagement",
+      "loyalty_signals": "Unknown",
+      "advocacy_potential": "Unknown"
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone, followed by email",
+      "response_time_expectations": "Immediate to short delay (voicemail left)",
+      "information_style_preferences": "Direct and brief",
+      "decision-making_patterns": "Unknown"
+    }
+  },
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium"
+  },
+  "action_items": [],
+  "participants": {
+    "primary_employee": {
+      "name": "Jim Lombardo",
+      "extension": "5401",
+      "phone": "6145401",
+      "email": "jim.lombardo@mainsequence.net",
+      "department": "Sales",
+      "role": "Sales Representative",
+      "employee_id": "EMP_5401"
+    },
+    "primary_customer": {
+      "name": "Unknown",
+      "company": "",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": ""
+    },
+    "all_customers_identified": [],
+    "all_employees_mentioned": [
+      {
+        "name": "Jim Lombardo",
+        "extension": "5401",
+        "department": "Sales",
+        "role": "Sales Representative"
+      },
+      {
+        "name": "Robin Montoni",
+        "extension": "5466",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-09-21"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "reach out"
+      ]
+    }
+  }
+}

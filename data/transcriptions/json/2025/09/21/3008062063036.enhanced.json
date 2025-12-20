@@ -1,0 +1,112 @@
+{
+  "recording_id": "3008062063036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:21:14.172933Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:21:14",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Tyler, Jamie Miller, how are you doing? Good, how are you? All right. Somehow or another, when I'm looking at my PCR email, it is not allowing me to delete emails. So a lot of times, since we did run an update today, you may just need to clear your browser cache. Oh, okay. I did that this morning. That's what I was like, okay, I thought I was doing what I was supposed to do, and I screwed up. Yeah, so do you have your PCR email tab open? Yes. All right. So in the top right-hand corner of Chrome, go ahead and click those three dots in the top right-hand corner. Okay. And then scroll down to where it says Delete Browsing Data. Got it. Then in that box that pops up, you'll want to set it to advanced and the time range will be all time. And then the only box that you want to have checked is the one that says cached images and files. Okay, perfect. And then you'll hit delete data. and then once it's done doing its thing it takes you back to that regular tab go ahead and uh exit out of the pcr mail and reload your regular pc recruiter page just for the effect to take hold and when you reload your pcr page it'll log you out and then you'll log back in and then go back into the pcr email it's still doing this thing and like I said I had done that this morning but I guess if there was an update today that happened after yeah it can cause things to freeze up a little bit in that cache yeah that did it you're able to delete the email yeah yeah and I knew there was a way but I guess I was thinking that I'd already done it but I didn't realize there was an update in between all that so excuse me yeah we pushed through a little bit of a patch this morning like I said if the PCR email just happened to be open when that happened. Sometimes it can get a little stuck there. Okay. Hey, man, I appreciate it. Yep, not a problem. If you need anything else, just let us know. I will. Thank you. Yep, have a good one. Bye-bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 216.265609,
+    "salad_processing_time": 22.321113109588623,
+    "overall_processing_time": 216.265609,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Tyler, Jamie Miller, how are you doing? Good, how are you? All right.",
+    "job_id": "59cf00e8-3f02-4a98-960c-20b9b8427573",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Tyler, Jamie Miller, how are you doing? Good, how are you? All right.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3008062063036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

@@ -4,8 +4,11 @@
 
 {% block content %}
 <div class="d-flex justify-content-between align-items-center mb-4">
-    <h1><i class="fas fa-eye me-2"></i>Insight Detail</h1>
+    <h1><i class="fas fa-eye me-2"></i>AI Insights - {{ recording_id }}</h1>
     <div>
+        <a href="{{ url_for('view_transcript', recording_id=recording_id) }}" class="btn btn-primary">
+            <i class="fas fa-file-alt me-1"></i>View Transcript
+        </a>
         <a href="{{ url_for('insights_list') }}" class="btn btn-outline-secondary">
             <i class="fas fa-arrow-left me-1"></i>Back to List
         </a>
@@ -13,167 +16,285 @@
 </div>
 
 <div class="row">
-    <div class="col-md-8">
-        <!-- Main Insight Card -->
-        <div class="card mb-4">
-            <div class="card-header">
-                <h5><i class="fas fa-phone me-2"></i>Recording {{ recording_id }}</h5>
-            </div>
-            <div class="card-body">
-                {% if insight.sentiment_analysis %}
-                    <h6><i class="fas fa-heart me-2"></i>Sentiment Analysis</h6>
-                    {% if insight.sentiment_analysis.get('SATISFACTION INDICATORS') %}
-                        <div class="row mb-3">
+    <div class="col-md-12">
+        <!-- 4 AI Layers Display -->
+        <div class="accordion" id="aiLayersAccordion">
+
+            <!-- Layer 1: Entity Extraction -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <i class="fas fa-users me-2"></i><strong>Layer 1: Entity Extraction</strong>
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
+                    <div class="accordion-body">
+                        <div class="row">
                             <div class="col-md-6">
-                                <strong>Satisfaction Level:</strong>
-                                {{ insight.sentiment_analysis['SATISFACTION INDICATORS'].get('Satisfaction level', 'N/A') }}/10
+                                <p><strong>Customer:</strong> {{ insight.customer_name or 'Unknown' }}</p>
+                                <p><strong>From Phone:</strong> {{ insight.from_number or insight.from_phone or 'Unknown' }}</p>
                             </div>
                             <div class="col-md-6">
-                                <strong>NPS Score:</strong>
-                                {{ insight.sentiment_analysis['SATISFACTION INDICATORS'].get('Likelihood to recommend (NPS)', 'N/A') }}/10
+                                <p><strong>Employee:</strong> {{ insight.employee_name or 'Unknown' }}</p>
+                                <p><strong>To Phone:</strong> {{ insight.to_number or insight.to_phone or 'Unknown' }}</p>
                             </div>
                         </div>
-                    {% endif %}
-
-                    {% if insight.sentiment_analysis.get('EMOTIONAL JOURNEY') %}
-                        <div class="mb-3">
-                            <strong>Emotional Journey:</strong>
-                            <ul class="list-unstyled ms-3">
-                                <li><strong>Starting:</strong> {{ insight.sentiment_analysis['EMOTIONAL JOURNEY'].get('Starting sentiment', 'N/A') }}</li>
-                                <li><strong>Final:</strong> {{ insight.sentiment_analysis['EMOTIONAL JOURNEY'].get('Final sentiment', 'N/A') }}</li>
-                            </ul>
-                        </div>
-                    {% endif %}
-
-                    {% if insight.sentiment_analysis.get('PAIN POINTS') %}
-                        <div class="mb-3">
-                            <strong>Pain Points:</strong>
-                            {% if insight.sentiment_analysis['PAIN POINTS'].get('Main frustrations') %}
-                                <ul class="ms-3">
-                                    {% for frustration in insight.sentiment_analysis['PAIN POINTS']['Main frustrations'] %}
-                                        <li>{{ frustration }}</li>
-                                    {% endfor %}
-                                </ul>
-                            {% endif %}
-                        </div>
-                    {% endif %}
-
-                    {% if insight.sentiment_analysis.get('POSITIVE MOMENTS') %}
-                        <div class="mb-3">
-                            <strong>Positive Moments:</strong>
-                            {% if insight.sentiment_analysis['POSITIVE MOMENTS'].get('What delighted them') %}
-                                <ul class="ms-3">
-                                    {% for moment in insight.sentiment_analysis['POSITIVE MOMENTS']['What delighted them'] %}
-                                        <li>{{ moment }}</li>
-                                    {% endfor %}
-                                </ul>
-                            {% endif %}
-                        </div>
-                    {% endif %}
-                {% endif %}
-
-                {% if insight.support_analysis %}
-                    <hr>
-                    <h6><i class="fas fa-headset me-2"></i>Support Analysis</h6>
-                    <div class="row">
-                        {% for key, value in insight.support_analysis.items() %}
-                            <div class="col-md-6 mb-2">
-                                <strong>{{ key|replace('_', ' ')|title }}:</strong>
-                                {% if value is string %}
-                                    {{ value }}
-                                {% elif value is number %}
-                                    {{ value }}
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <p><strong>Call Date:</strong> {{ insight.call_date or 'Unknown' }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Duration:</strong>
+                                {% if insight.duration_seconds %}
+                                    {{ (insight.duration_seconds / 60) | round(1) }} minutes
                                 {% else %}
-                                    {{ value|string }}
+                                    Unknown
+                                {% endif %}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layer 2: Enhanced Sentiment & Quality Analysis -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-heart me-2"></i><strong>Layer 2: Enhanced Sentiment & Quality Analysis</strong>
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo">
+                    <div class="accordion-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <p><strong>Customer Sentiment:</strong>
+                                    <span class="badge {% if insight.customer_sentiment == 'positive' %}bg-success{% elif insight.customer_sentiment == 'negative' %}bg-danger{% else %}bg-secondary{% endif %}">
+                                        {{ insight.customer_sentiment or 'Not analyzed' }}
+                                    </span>
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><strong>Quality Score:</strong>
+                                    <span class="badge bg-info">{{ insight.quality_score or insight.call_quality_score or 0 }}/10</span>
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><strong>Overall Rating:</strong>
+                                    <span class="badge bg-warning">{{ insight.overall_call_rating or 0 }}/10</span>
+                                </p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><strong>Call Type:</strong> {{ insight.call_type or 'Unknown' }}</p>
+                            </div>
+                        </div>
+
+                        {% if insight.sentiment_reasoning %}
+                        <div class="mt-3">
+                            <p><strong>Sentiment Reasoning:</strong></p>
+                            <div class="alert alert-info">
+                                <i class="fas fa-brain me-2"></i>{{ insight.sentiment_reasoning }}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if insight.quality_reasoning %}
+                        <div class="mt-3">
+                            <p><strong>Quality Reasoning:</strong></p>
+                            <div class="alert alert-success">
+                                <i class="fas fa-star me-2"></i>{{ insight.quality_reasoning }}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <div class="mt-3">
+                            <p><strong>Summary:</strong></p>
+                            <div class="alert alert-light">{{ insight.summary or 'No summary available' }}</div>
+                        </div>
+
+                        {% if insight.key_topics %}
+                        <div class="mt-3">
+                            <p><strong>Key Topics:</strong></p>
+                            <div>
+                                {% for topic in insight.key_topics %}
+                                    <span class="badge bg-primary me-2">{{ topic }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        {% if insight.coaching_notes %}
+                        <div class="mt-3">
+                            <p><strong>Coaching Notes:</strong></p>
+                            <div class="alert alert-warning">
+                                <i class="fas fa-clipboard-check me-2"></i>{{ insight.coaching_notes }}
+                            </div>
+                        </div>
+                        {% endif %}
+
+                        <div class="mt-3">
+                            <p><strong>Follow-up Required:</strong>
+                                <span class="badge {% if insight.follow_up_required %}bg-warning{% else %}bg-success{% endif %}">
+                                    {{ 'Yes' if insight.follow_up_required else 'No' }}
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layer 3: Call Resolution & Loop Closure -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <i class="fas fa-check-circle me-2"></i><strong>Layer 3: Call Resolution & Loop Closure</strong>
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+                    <div class="accordion-body">
+                        {% if insight.resolution_status or insight.solution_summarized is not none %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>Resolution Status</h6>
+                                    <p><strong>Status:</strong> {{ insight.resolution_status or 'Not analyzed' }}</p>
+                                    <p><strong>Problem Statement:</strong> {{ insight.problem_statement or 'Not identified' }}</p>
+                                    {% if insight.resolution_details %}
+                                    <p><strong>Resolution Details:</strong> {{ insight.resolution_details }}</p>
+                                    {% endif %}
+                                    {% if insight.follow_up_type %}
+                                    <p><strong>Follow-up Type:</strong> {{ insight.follow_up_type }}</p>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Loop Closure Quality</h6>
+                                    <p><strong>Closure Score:</strong>
+                                        <span class="badge bg-info">{{ insight.closure_score or 0 }}/10</span>
+                                    </p>
+                                    <p><strong>Solution Summarized:</strong>
+                                        <span class="badge {% if insight.solution_summarized %}bg-success{% else %}bg-warning{% endif %}">
+                                            {{ 'Yes' if insight.solution_summarized else 'No' }}
+                                        </span>
+                                    </p>
+                                    <p><strong>Understanding Confirmed:</strong>
+                                        <span class="badge {% if insight.understanding_confirmed %}bg-success{% else %}bg-warning{% endif %}">
+                                            {{ 'Yes' if insight.understanding_confirmed else 'No' }}
+                                        </span>
+                                    </p>
+                                    <p><strong>Next Steps Provided:</strong>
+                                        <span class="badge {% if insight.next_steps_provided %}bg-success{% else %}bg-warning{% endif %}">
+                                            {{ 'Yes' if insight.next_steps_provided else 'No' }}
+                                        </span>
+                                    </p>
+                                    <p><strong>Timeline Given:</strong>
+                                        <span class="badge {% if insight.timeline_given %}bg-success{% else %}bg-warning{% endif %}">
+                                            {{ 'Yes' if insight.timeline_given else 'No' }}
+                                        </span>
+                                    </p>
+                                </div>
+                            </div>
+                            {% if insight.missed_best_practices %}
+                            <div class="mt-3">
+                                <p><strong>Best Practices Missed:</strong></p>
+                                <ul>
+                                    {% for practice in insight.missed_best_practices %}
+                                    <li>{{ practice }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            {% endif %}
+                        {% else %}
+                            <p class="text-muted">Resolution analysis not yet available for this call.</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Layer 4: Process Recommendations -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <i class="fas fa-lightbulb me-2"></i><strong>Layer 4: Process Recommendations</strong>
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
+                    <div class="accordion-body">
+                        {% if insight.process_improvements or insight.efficiency_score is not none %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    {% if insight.process_improvements %}
+                                    <h6>Process Improvements</h6>
+                                    <ul>
+                                        {% for improvement in insight.process_improvements %}
+                                        <li>{{ improvement }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% endif %}
+
+                                    {% if insight.employee_strengths %}
+                                    <h6>Employee Strengths</h6>
+                                    <ul class="list-unstyled">
+                                        {% for strength in insight.employee_strengths %}
+                                        <li><i class="fas fa-star text-success me-1"></i>{{ strength }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% endif %}
+                                </div>
+                                <div class="col-md-6">
+                                    {% if insight.employee_improvements %}
+                                    <h6>Areas for Improvement</h6>
+                                    <ul>
+                                        {% for improvement in insight.employee_improvements %}
+                                        <li>{{ improvement }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% endif %}
+
+                                    {% if insight.follow_up_actions %}
+                                    <h6>Follow-up Actions</h6>
+                                    <ul>
+                                        {% for action in insight.follow_up_actions %}
+                                        <li>{{ action }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                    {% endif %}
+                                </div>
+                            </div>
+
+                            {% if insight.escalation_needed %}
+                            <div class="alert alert-warning mt-3">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                <strong>Escalation Required:</strong>
+                                Risk Level: <span class="badge bg-danger">{{ insight.risk_level or 'High' }}</span>
+                                {% if insight.escalation_reason %}
+                                <br>Reason: {{ insight.escalation_reason }}
                                 {% endif %}
                             </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            </div>
-        </div>
-    </div>
+                            {% endif %}
 
-    <div class="col-md-4">
-        <!-- Metadata Card -->
-        <div class="card mb-4">
-            <div class="card-header">
-                <h6><i class="fas fa-info-circle me-2"></i>Metadata</h6>
-            </div>
-            <div class="card-body">
-                <div class="mb-2">
-                    <strong>Recording ID:</strong><br>
-                    <code>{{ recording_id }}</code>
-                </div>
-                <div class="mb-2">
-                    <strong>Generated:</strong><br>
-                    {{ insight.generated_at or 'Unknown' }}
-                </div>
-                {% if insight.sentiment_analysis and insight.sentiment_analysis.get('SATISFACTION INDICATORS') %}
-                    <div class="mb-2">
-                        <strong>Churn Risk:</strong><br>
-                        <span class="badge bg-{{ 'danger' if (insight.sentiment_analysis['SATISFACTION INDICATORS'].get('Churn risk level', 0)|int) > 7 else 'warning' if (insight.sentiment_analysis['SATISFACTION INDICATORS'].get('Churn risk level', 0)|int) > 4 else 'success' }}">
-                            {{ insight.sentiment_analysis['SATISFACTION INDICATORS'].get('Churn risk level', 'N/A') }}/10
-                        </span>
+                            <div class="mt-3">
+                                <p><strong>Efficiency Score:</strong>
+                                    <span class="badge bg-info">{{ insight.efficiency_score or 0 }}/10</span>
+                                </p>
+                            </div>
+                        {% else %}
+                            <p class="text-muted">Recommendations not yet available for this call.</p>
+                        {% endif %}
                     </div>
-                {% endif %}
+                </div>
             </div>
         </div>
 
-        <!-- Quick Actions Card -->
-        <div class="card">
+        <!-- Full Transcript Section -->
+        <div class="card mt-4">
             <div class="card-header">
-                <h6><i class="fas fa-bolt me-2"></i>Quick Actions</h6>
+                <h5><i class="fas fa-file-text me-2"></i>Full Transcript</h5>
             </div>
             <div class="card-body">
-                <div class="d-grid gap-2">
-                    <button class="btn btn-outline-primary btn-sm" onclick="copyToClipboard('{{ recording_id }}')">
-                        <i class="fas fa-copy me-1"></i>Copy Recording ID
-                    </button>
-                    <a href="#" class="btn btn-outline-info btn-sm">
-                        <i class="fas fa-download me-1"></i>Export JSON
-                    </a>
-                    <a href="{{ url_for('insights_list') }}" class="btn btn-outline-secondary btn-sm">
-                        <i class="fas fa-list me-1"></i>View All Insights
-                    </a>
+                <div style="max-height: 400px; overflow-y: auto;">
+                    <pre style="white-space: pre-wrap; word-wrap: break-word;">{{ insight.transcript_text or 'Transcript not available' }}</pre>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<!-- Raw JSON (Collapsible) -->
-<div class="card mt-4">
-    <div class="card-header">
-        <button class="btn btn-link text-decoration-none p-0" type="button" data-bs-toggle="collapse" data-bs-target="#rawJson">
-            <i class="fas fa-code me-2"></i>Raw JSON Data
-        </button>
-    </div>
-    <div class="collapse" id="rawJson">
-        <div class="card-body">
-            <pre class="bg-light p-3 rounded"><code>{{ insight|tojson(indent=2) }}</code></pre>
-        </div>
-    </div>
-</div>
-{% endblock %}
-
-{% block scripts %}
-<script>
-function copyToClipboard(text) {
-    navigator.clipboard.writeText(text).then(function() {
-        // Show success message
-        const btn = event.target.closest('button');
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-check me-1"></i>Copied!';
-        btn.classList.remove('btn-outline-primary');
-        btn.classList.add('btn-success');
-
-        setTimeout(() => {
-            btn.innerHTML = originalText;
-            btn.classList.remove('btn-success');
-            btn.classList.add('btn-outline-primary');
-        }, 2000);
-    });
-}
-</script>
 {% endblock %}

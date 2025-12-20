@@ -1,0 +1,121 @@
+{
+  "recording_id": "3037617490036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:48:28.454109Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:48:28",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hey, how's it going? Yo. A four. Did you see the message I left you in that Zoom info capture ticket? Which number was that? Oh, for Ginny Ganley? Oh, yeah. Yeah, we just got that one signed in. So Jacob is signed in currently. Oh, is he? Perfect. Yeah. Yeah, we got that coordinated and got the code over to him. Oh, awesome. I know Nick could ask me about it. So is he doing the bug testing for that one then? It seems like it. Yeah, he just was jumping right to it and asked me to get him the 2FA code. So we got that over. It's probably easier that way. Yeah, I imagine. Like I know they want us to. Yeah, so just as like a rule of thumb for the capture ones. If it's like anyone that any of the sites that's like a paid subscription, like Zoom info or like any of the fancy LinkedIn's, I always ask for credentials like as you're putting up the ticket. Oh, OK. That sounds good. In case we don't have them, just be like, hey, I'm asking now because it usually gets resolved quicker. Because then I don't have to look at the ticket, or Jake doesn't have to look at the ticket, and then ask you for credentials, and then you go back and ask. Right. Okay. Yeah, so I'll just kind of build that into the process. Yep. Anytime it's anything other than regular LinkedIn or Zing, just ask them. Oh, Zing doesn't need one. Okay. No. No, that's a free account you can make. Okay. But, like, mark in there if they say no. Oh, okay. Because then we'll be like, not much we can do if we can't test it. Right. Okay. Gotcha. That's a good plan. Then if they come back and say, why isn't this fixed yet? We'll be like, well, we don't have credentials to be able to test this. and then they're usually like fine go ahead all right yeah that's good but good as long as jake's in there i just wanted to follow up because nick had asked me if we had him yep all good on that one all righty well home stretch to the weekend man oh it's coming yeah it's what do i got left here hour and a half awesome All right. oh yeah alright you're gonna have a full weekend got it for my little guy for his birthday that's awesome especially me and him play Pokemon together a lot with the new one coming out that'll be sweet yeah his birthday is on Tuesday we have his birthday party on Sunday but since it came in early I'm gonna we're gonna give it to him today just so he can so he can play it over the weekend and like Monday and Tuesday his summer camp ended already and he still has like a week before school starts so he'll be home with me like okay this way he can actually like play it Monday and Tuesday yeah that makes sense that's good he'll be so excited he's gonna freak out man uh do you remember like he'll be eight oh wow that's a perfect date for this like do you remember getting like your first game boy or your like first like oh yeah console as a kid oh we couldn't my sister and i were so excited when uh playstation 2 and we got it we didn't think we were getting it and it was a christmas present we were like going nuts well he doesn't think that he's getting this either because because we're he's just all he hears is that they're just sold out everywhere and like i i completely forgot i had signed up for like the pre-sale like six months before the switch 2 came out oh so smart and like when i got back from ireland i just got an email out of the blue it's like oh hey it's your turn to buy it I'm like, no way. And it came within like three days. Oh, wow. That's sweet. Perfect timing. Right in time for birthday. Yeah. Well, I'm glad I almost paid for the expedited shipping. It was like, oh, it'll get there in two business days. I was like, shit, it got here in three with the free shipping. Oh, nice. I'm glad I didn't pay the $15. Right. It would probably be overcharged for that. But no, that's good. Awesome. but yeah, I'm excited. This is going to be a happy dad moment. Yep. Absolutely. All right, man. Well, if I don't talk to you before the end of the day, have a good weekend. You as well. Happy birthday to the little one. Thank you. All right. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1133.51896,
+    "salad_processing_time": 36.682058572769165,
+    "overall_processing_time": 1133.51896,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hey, how's it going? Yo.  A four.  Did you see the message I left you in that Zoom info capture ticket? Which number was that? Oh, for Ginny Ganley? Oh, yeah.",
+    "job_id": "85cc9588-23c5-4008-958d-ae443bbb5b5b",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hey, how's it going? Yo.  A four.  Did you see the message I left you in that Zoom info capture ticket? Which number was that? Oh, for Ginny Ganley? Oh, yeah.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "resolved",
+    "first_call_resolution": true,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": [
+      "follow_up_required"
+    ]
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3037617490036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

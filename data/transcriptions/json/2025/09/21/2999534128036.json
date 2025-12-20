@@ -1,0 +1,100 @@
+{
+  "recording_id": "2999534128036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:12:50.280741Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:12:50",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Mackenzie. How can I help you? Hi, Mackenzie. Yeah, my name is Nick. I just wanted to see, I'm trying to run a report on how my team is doing with BULKS. Is there a way to do that from PCR? When you're saying, like, BULKS, you said B-U-L-K-S, BULKS? Yeah, like sending email. Okay, yeah. I guess there's a couple ways you can go about that, probably. It depends on how you want to see the data, but you could just run an activity search. Are you familiar with the activity search function? No. Where's the first place? I'm on the admin side right now for the team. Where's the best place to go for activity search? Sure. Give me a second. I'm going to pull up your account so I can see what you see, if you don't mind. so when I walk you through it, I'm actually not blind. You said your name was Nick. Can you let me know the company that you're calling with? Yes, Kraft or Kraft Services. Kraft Services. And would that be under reports? Like I said, there's multiple ways. There's probably a report that will give you... what you want or there's like ways to customize reports. So in the, like after some setup, you might go into reports, but we'll, we'll find out a little bit more about it. Let's try activity searches because those are actually built into the system. And all I need to know first is how do you normally, like, how are your people sending these bulk emails any particular way? Are they sending campaigns from like roll-up lists or are they all sending one? They're all sending one way, right? They're all sending the same type of way, right? Yep, roll-up list campaigns. Okay, so they're just like selecting names on a roll-up and using the letter feature and that brings you to the campaign screen and they send campaigns. Okay. So I think that will write bulk email activities, which you could. Well, do they require – are all of their usernames set up with, like, PCR mail or portal to track activity writing? I would hope – yeah, I would hope so. I don't know. Well, let's see. I'm going to – we'll walk through it together. So are you logged in – you're logged in as admin in the craft services database. Is that correct? Yes. Yes, correct. All right. So at the very top in the main toolbar where all the there's like actions you can click or different tabs of PCR, go to activities. Should be like two little chat bubbles. And then you can search for there's tabs under that. So there's name, company, position or interview. So you can search for, you know, name, activities, company, position or interview activities. I think it would be names you're trying to track people or people you're trying to okay yeah you're trying to see people sending bulk emails to names so you want to be in the name search which is what it's doing already so then you can filter by date like I would say maybe just like how about the month of June set the start date to June 1st and the end date is already June 30th and then And if you go lower than that, there's filters, expand filters. Under filters, there's the activity type box. You can type in bulk email, one word. I believe that's the activity type that gets written. And then you can run that search. Bulk email, one word. Bulk email is the activity type that is written, yes. and you can, I guess that gives you like one view into how many bulk email activities there are, but I guess that doesn't really help you with the username. The username is listed in the date time field, which is really odd. I'm wondering if you can change that view. What's weird is it looks like AJ is the only one that's sending bulks. I can't see anybody else's. Well, there's multiple pages of results. There's definitely, there's 324 pages of results. They each have 25 each and yeah, Chris is also sending them if you go, if you click through. So here's, here's just one way. I'm just showing you one way to see like, I guess I'm just showing you one way to see like, I guess one way to see like that bulk emails are going out. There's 8,000 bulk email activities. So your people are definitely emailing them. Maybe reports could be something that you will. Let's see. There is the email campaign reports. Let's see. And campaign overview. Yeah, campaign overview report. Let's see what that looks like here. And I just want to see the last week from the 23rd to 30th. Okay. So you select a campaign in the, I don't know, I'll just pick the first one. 23 to 30. I'm going to go into the top and there's PDF mode, export, or print mode. A couple different export options you can use. I'm just going to click PDF mode. It's not right. What's going on here? So when it says select a campaign, it's kind of interesting. It makes you select one. Actually getting like an error. Come on now. All right. That might have to be something I report to QA and dev. I'm getting like a string error on the campaign overview report, but I think the campaign results list is sending. Or is it printing? User reports. I wonder what user reports is. User name record. What is this? Sequence results list. Username. Yeah, the reports section has just some pre-built reports, but the really cool part about reports is customizing them. I think it might be if you want to use the tool to customize when you can. I'm not sure if you can pull in like campaign data with the customized report. Let me see if I can. Your best bet might be a custom SQL report, which would require like SQL knowledge or like you could pay like a tech to kind of create a custom report for you. Those are options we've done in the past for people. If they want like a specific report to run a specific set of data, we can customize something, but that's like an extra charge. like a one-time charge to create the report. I don't know. Like, you want to know, like, how many people sent out... I'm trying to get analytics on, like, on, like, how the team is doing with outbound emails. Yeah, gotcha. There is an analytics feature as well. I don't know if... I have analytics. Yeah, I have analytics. Let me see. Is there a way to do, like, internal analytics? let me see if it's set up because you could filter by username in the analytics I actually might be able to see it I can only see my side for some reason but I wonder if there's a way to see different users under here yeah do you see where it says my under analytics it's like a blue it says my in the top middle-ish um yeah you can actually click that yeah and then the like a filter bar drops down there's a user section you can start typing a username and filter by them and you can apply the username filter on the right side where it says apply you can filter like only the admin can do this correct uh well there's a list of um that's i don't know because i'd have to look at your security so right now yes only admin cook you're logged in as admin right yes go to administration there's an administration tab in analytics on the left and then go to user security under that and you'll see that of the list of usernames that got migrated over to the analytics database only admin is a full admin right now yes currently only add okay we can change that from here I'm currently login as Nick what's crazy is when I try to log in as admin they I do have the admin password but I'm not sure if it's the correct password anymore and when I try to log in it's not letting me log in it says login has failed due to invalid credentials please try again so is there a way to reset my admin is there a way to reset the admin password from from Nick who also has admin access yes there Great. Okay, yeah. So, if I can't, okay. So, if you're asking me to do it, I can't do it unless you, like, fill out a form. So, I'll walk you through how to do it. If you can do it, then you can do it, right? So. I see it right here. I'm going to do it really quick. I think I see it. Right, yeah. Log in as Nick. Go to Users, Manage Users. Click on Admin. Under Security Information, you can overwrite the password and hit Save. Great. Let me try this real quick and I'll see if this works. Yeah. Overwrite both password fields and save. It should be fine. and then yeah once you log in as admin you can see that tab of analytics and you can make your Nick username and admin and analytics the reason why that's like that is because multiple databases can be linked to the same analytics database. So it's like up to the whatever admin, the database admin to like choose which analytics users get to be admins. So yeah, you can make next. And if people use legacy bulk, then it will not show up here. Under the campaigns feature, under the campaigns sections of the analytics feature, you need to actually send a campaign for those stats to track. So yeah, legacy bulk won't show up there. Is there a way to remove legacy bulk option for our team? That's a good question. I don't think I've ever been asked that. I don't think so. No, cause that's like the, that was like what it was first and like not everybody can send campaigns. And so we always have it as a way, like a fallback. Gotcha, sir. Well, hey, this works. This works for today. This got me to the point of being able to finish this. Yeah, thank you so much, sir. Okay, awesome. All right. And yeah, you're welcome. Have a good rest of your day, Nick. Yeah, have a happy holiday as well. You too, sir. Thank you so much. Bye-bye. All right. Yep. Take care. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 539.761113,
+    "salad_processing_time": 97.36305284500122,
+    "overall_processing_time": 539.761113,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Mackenzie.  How can I help you? Hi, Mackenzie.",
+    "job_id": "58cd9a22-d127-4466-9c1c-2503e66d78ae",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Mackenzie.  How can I help you? Hi, Mackenzie.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/2999534128036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

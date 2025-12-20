@@ -25,18 +25,22 @@ DB_CONFIG = {
     'port': 5432
 }
 
-# CHEAPEST MODEL OPTIONS FOR NAME EXTRACTION (in order of preference)
+# MODEL CONFIGURATION - Updated 2025-12-20
+# Primary: FREE model with best quality
+# Secondary: Low-cost backup
+PRIMARY_MODEL = 'google/gemma-3-12b-it:free'
+SECONDARY_MODEL = 'meta-llama/llama-3.1-8b-instruct'
+
 MODELS = {
-    'gemini-flash': 'google/gemini-flash-1.5',  # Often FREE or very cheap
-    'gemini-flash-8b': 'google/gemini-flash-1.5-8b',  # Even cheaper version
-    'mistral-7b': 'mistralai/mistral-7b-instruct',  # Very cheap, good for extraction
-    'llama-3.2-3b': 'meta-llama/llama-3.2-3b-instruct',  # Tiny model, super cheap
-    'deepseek-chat': 'deepseek/deepseek-chat',  # Cheap alternative
+    'primary': PRIMARY_MODEL,      # FREE - Best quality, reliable JSON
+    'secondary': SECONDARY_MODEL,  # $0.02/1M - Good backup
+    'gemma-12b': 'google/gemma-3-12b-it:free',
+    'llama-8b': 'meta-llama/llama-3.1-8b-instruct',
 }
 
 def call_model(model_key: str, prompt: str) -> dict:
     """Call the specified model through OpenRouter"""
-    model = MODELS.get(model_key, MODELS['gemini-flash'])
+    model = MODELS.get(model_key, PRIMARY_MODEL)
 
     try:
         print(f"    📡 Calling {model_key} ({model})...")
@@ -76,7 +80,7 @@ def call_model(model_key: str, prompt: str) -> dict:
         print(f"    ❌ API Error: {e}")
         return {"success": False, "error": str(e)}
 
-def extract_names_from_transcript(transcript_text: str, model_key: str = 'gemini-flash') -> dict:
+def extract_names_from_transcript(transcript_text: str, model_key: str = 'primary') -> dict:
     """Extract customer and employee names using the specified model"""
 
     # Take first 2500 chars for context (shorter = cheaper)
@@ -148,10 +152,10 @@ Return ONLY this JSON:
                 "error": "JSON parse failed"
             }
     else:
-        # If primary model fails, try fallback
-        if model_key != 'mistral-7b' and 'credits' in response.get('details', '').lower():
-            print(f"    🔄 Trying fallback model due to credits issue...")
-            return extract_names_from_transcript(transcript_text, 'mistral-7b')
+        # If primary model fails, try secondary fallback
+        if model_key == 'primary':
+            print(f"    🔄 Trying secondary model...")
+            return extract_names_from_transcript(transcript_text, 'secondary')
 
         return {
             "customer_name": "Unknown",

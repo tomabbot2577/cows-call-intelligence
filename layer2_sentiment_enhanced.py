@@ -26,17 +26,22 @@ DB_CONFIG = {
     'port': 5432
 }
 
-# CHEAPEST MODELS FOR SENTIMENT ANALYSIS (tested and effective)
+# MODEL CONFIGURATION - Updated 2025-12-20
+# Primary: FREE model with best quality
+# Secondary: Low-cost backup
+PRIMARY_MODEL = 'google/gemma-3-12b-it:free'
+SECONDARY_MODEL = 'meta-llama/llama-3.1-8b-instruct'
+
 MODELS = {
-    'gemini-flash': 'google/gemini-flash-1.5',  # Best for sentiment (often free)
-    'gemini-flash-8b': 'google/gemini-flash-1.5-8b',  # Even cheaper backup
-    'mistral-7b': 'mistralai/mistral-7b-instruct',  # Good quality, cheap
-    'llama-3.2-3b': 'meta-llama/llama-3.2-3b-instruct',  # Smallest, cheapest
+    'primary': PRIMARY_MODEL,      # FREE - Best quality, reliable JSON
+    'secondary': SECONDARY_MODEL,  # $0.02/1M - Good backup
+    'gemma-12b': 'google/gemma-3-12b-it:free',
+    'llama-8b': 'meta-llama/llama-3.1-8b-instruct',
 }
 
 def call_model(model_key: str, prompt: str, max_tokens: int = 500) -> dict:
     """Call the specified model through OpenRouter"""
-    model = MODELS.get(model_key, MODELS['gemini-flash'])
+    model = MODELS.get(model_key, PRIMARY_MODEL)
 
     try:
         print(f"    📡 Calling {model_key} for enhanced sentiment analysis...")
@@ -76,7 +81,7 @@ def call_model(model_key: str, prompt: str, max_tokens: int = 500) -> dict:
         print(f"    ❌ API Error: {e}")
         return {"success": False, "error": str(e)}
 
-def analyze_sentiment(transcript_text: str, customer_name: str = None, employee_name: str = None, model_key: str = 'gemini-flash') -> dict:
+def analyze_sentiment(transcript_text: str, customer_name: str = None, employee_name: str = None, model_key: str = 'primary') -> dict:
     """Analyze sentiment and quality with reasoning explanations"""
 
     # Take first 4000 chars for analysis (longer = better context but more cost)

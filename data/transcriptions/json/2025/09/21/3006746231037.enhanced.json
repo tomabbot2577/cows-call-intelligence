@@ -1,0 +1,112 @@
+{
+  "recording_id": "3006746231037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:18:34.378092Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:18:34",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hello, this is Brian. Hi. I just got a call from, I think, Jim about the PCR recruiter. He was returning a call. I was interested in the new system you have set up, and this is the number that showed up. So I just called it back because he couldn't hear me. Okay, gotcha. Jim Lombardo. Do you have a Jim working for you? Yeah. I'm sorry? You do have a Jim working for you. Oh, yeah, yeah, yeah. Yes, yes. Hang on one second here and I will get you his information. 440-856-0314. All right. Hold on. Let me just take that down. Does he have an extension that I can call this number back to or is it just that his direct number? No, that's his direct dial. Okay. 856. Could you repeat the last four numbers, please? Hang on. Let me find it here again. Yeah. 440-856. 0314. Okay. 0314. It's Jim. All right. Thank you, sir. Thank you.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 102.162887,
+    "salad_processing_time": 12.446357727050781,
+    "overall_processing_time": 102.162887,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hello, this is Brian.  Hi.  I just got a call from, I think, Jim about the PCR recruiter.",
+    "job_id": "f9e0475a-0f5c-44ec-acce-1ca837b6a2f9",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hello, this is Brian.  Hi.  I just got a call from, I think, Jim about the PCR recruiter.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3006746231037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

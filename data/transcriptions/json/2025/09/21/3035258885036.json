@@ -1,0 +1,100 @@
+{
+  "recording_id": "3035258885036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:46:26.958946Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:46:26",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hi. My name is Danielle. I work for Chris Raines at Commercial Finance Consultants. We're having a little bit of an issue with email, so I just wanted to check and see if this is a common problem that people have been having or if it's something new. I don't even know if it's coming from PCR. but it seems like I've been able to email out of PCR this morning no problem and I'm working on my boss's account not mine but this morning he got like 50 failed to send notices just like sent back to him and I'm not sure if that's a common thing that has been happening recently half the time when I call in with an issue it's something that people have been dealing with and Oh, yeah, no reports of that. I can take a look inside the database and kind of see if I can see any clues there. What's the which database are you in? There's a few under the. I believe it's RAINS. Oh, there it is. OK. RAINS. And then what is the username you were sending from? It's the C-RAINS. And the emails that I did to test emails that I sent to myself worked beautifully. but it's just he's got like 50 plus fail to send notices and I don't think he sent out that many emails okay so was it was it was there like a bulk email that he sent or were these individuals we do a bulk email through MailChimp but we did that I mean last time we did that was on Tuesday so I did wonder if that was the cause but like I checked and some of the email addresses that are bouncing back are ones that we don't have in there. I'm not even finding them in our system. Oh, okay. That's really weird. Interesting. Okay, let me see here. Do a quick activity search to see if there's any type of bulk emailing done. Okay, nothing for July from the Sea Rains. Let me just look at the outgoing email activities. Okay. Let's try this. Okay, I just tested the connection for the mail, for incoming and outgoing mail for the username and everything's set up correctly. They're set up. Yeah, I'm not sure. Nothing really on our end. If you're using Office 365 or any other kind of mail provider, they do have limits and quotas, but it doesn't sound like you were sending giant lists of like 500 people at a time. But yeah, I am not sure. I don't think it would be something on the PCR end. It might be something with the Microsoft account itself, possibly. Like you were hitting spam filters so they stop sending. Or it can be, like you said, you have that MailChimp account. There might be something there that could give you a clue if you look around in there. But, yeah, nothing on the PCRN seems like it's set up incorrectly or anything's wrong on that username specifically. Okay. Well, I appreciate you checking for me. Yeah, no problem. Let us know if we can help in any other way. And then, yeah, have a great rest of your day. Thanks so much. Thanks. You too. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1068.452621,
+    "salad_processing_time": 17.119203329086304,
+    "overall_processing_time": 1068.452621,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi.",
+    "job_id": "2db93a7c-8b8b-45c2-bfb0-bbc299f988d7",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3035258885036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

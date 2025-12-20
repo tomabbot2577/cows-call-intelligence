@@ -1,0 +1,123 @@
+{
+  "recording_id": "3087882415036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:18:40.662432Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:18:40",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence. This is Robin. Oh, hi, Robin. I just have a tech support question. Did I come to the right area? Yes. Oh, hi. So this is Tara from Construction Recruiters in Boston. I am using SourceWale on top of PCRecruiter now. And I want to make sure that the opt-outs that I have are not being sent out in any emails that we use SourceWale for. And the easiest way would be for me to, I guess, whenever I'm about to send out a campaign or add someone to a campaign is to Blacksheet. What's the best way to manage that? Maybe there's a different way. Do you know? I'm not sure how SourceWale would recognize things that we have opted out. Because I think that might go right from PC Recruiter. That probably only applies right to PC Recruiter. So I've been trying to like I'm thinking So when PC Recruiter Sorry when Sourcewell Hold on one second If I want to launch a campaign I think I have to launch it Through a roll up Let me just say here Yes, so when you go to SourceWell, it goes, you know, steps and then settings, PC recruiter as a candidate and roll-ups. You pick the... Yeah, I'm not sure if SourceWell can recognize our opt-out list, though. That'd probably be something you'd have to ask them about if they do any coding to recognize that. I'm not sure how they handle that. So if they don't, what would be the best way? Would it be for me to... So I know how to get to the opt-out in the user settings, and I have a custom field in our name records for opt-outs. I was trying to just update that, but when I was doing that, it was doing an update, and it was updating everything, the opt-out and the opt-in, and I don't want to... Yeah, I mean, our opt-out list is really strictly for within PC Recruiter. I don't know if there's going to be a clean way specifically for SourceField to do it, other than doing like an activity search. But somebody could be opted. So what happens is like when somebody opts out of a certain category, they're actually getting opted into other categories. Wait, can you say that again? So when somebody opts out, say like if some of you were just sending a bulk email to somebody and you pick a category, what it's actually doing, if they opt out of that category, it's actually just adding them to the list but opted into the other remaining categories. So I don't know. Yeah, I don't know how you're going to actually be able to get that cleanly for SourceWheel. Well, even if I just remove them for now, because even if I just pick the roll-ups through PCRecruiter to send the campaigns to, what's the best way for me to manage the opt-outs? okay so yeah this is kind of confusing because I'm just well actually let me take a step back if I want to go to the settings and I see opt out I see that there's a number of different things right so there's opt out user bounce opt in whatever I'm just trying to like update the name records where the person has either had an email bounce or they have actually opted out themselves. I can see that. I can do an export and I can see I've got three or four, you know, 600 people, whatever it is, right? If I, is the best way to then go back and do like an append query to the database to update that particular field so that where I have the opt-out. What you might be able to do is if you do like an activity search for the activity type called opt-out, that'll show you the names that have the opt-out activity. Okay, hold on one second. So if I go to, what's the easiest way to do that? Go to activities. If you go to activities, and go to, make sure, it'll default to the name, activity search. You'd put in your date range. And then the activity type would be called opt out. Okay, let me just do that quickly. So exactly how does opt dash out, right? I think it's just opt out as one word, as the activity type. It's O-P-T-O-U-T. So I just put in the last five years. It's order by, it doesn't matter. text search OPC OUT. Do I need to do any filters? The date and then the activity type of opt out. And then make sure it doesn't have a username. Just in case that's your fault. Double check the username field because that would not be written by you. opt out okay I was putting it in the text search okay yeah be the activity type filter okay all right so if I put all those people in a roll-up yeah if you put them into a roll-up what you could do is when you're building your search you know you got like predefined fields custom fields, things like that. You could switch that drop down from predefined fields when you're in the advanced search to name roll up and say not on list and then pick that list. Yeah, that's probably what I'll do. So what is, just generally speaking, what is the best way to, is there a way to do this so it's like, oh, I guess if you send everything out through PC Recruit, it doesn't matter. Yeah, I don't really know how SourceField can recognize our opt-out list. It's just something that's maintained within Peace Recruiter only. But anybody else who uses, like, the database to send out just general marketing stuff, like whether they use Constant Contact or whatever, is there a way to have this set up so it's like an evergreen? So every time, you know, like at the end of the week or the end of every day that if somebody's opted out, it gets added to the list? um no i don't think i mean you could do it like an automation that if an opt-out activity is written to add to a list that would probably be done through an automation plan which would be under system database setup automations you just got to be kind of careful because if they opt in or you remove the opt-out you'd also want them taken off that list so you might almost you might almost need like two different activity automations right okay all right well for now this is a work about a workaround so all right uh oh actually is there um i'll say the database is really old and redundant like there's so many records in there that are just really shit do you guys have any like best practices for like database cleanup um sometimes i could do is just find people where you don't have any contact information like in the advanced search like say like you know if their email address is empty and their phone like each one of their phone fields are empty um and then maybe also by last activity date and then once you put those names into a roll-up then you can go through them and then select them then use what's called delete from database okay would you think it makes sense to delete them from the database or to like archive them well archiving them would be like you'd have to have the same username and password in another database and then in that case you would just move them over to a different database yeah and there's probably no no value in that anyway because it's going to be separate anyway. Right. Yeah, you can't just, like, hide it in a database. It has to be moved out of the database or deleted. Okay. Unless you just make it part of your filters, you know, where last activity is after, you know, a very old date. Yeah. So last activity, no emails, no phone numbers. They're probably the best ones then. usually if you don't have enough contact information to ever reach them or if they just have like a super old activity those are usually the people that you know customers seem to want to you know get rid of yeah okay that's a good way that's a good place to start all right that's great thanks so much for your help i appreciate it you are welcome have a good week you too bye thanks",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 2043.804278,
+    "salad_processing_time": 65.95046305656433,
+    "overall_processing_time": 2043.804278,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Oh, hi, Robin.",
+    "job_id": "e73b5c84-ccca-454e-ba6f-cb9016f2b9b4",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Oh, hi, Robin.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [
+      {
+        "type": "SOFTWARE",
+        "value": "PCRecruiter",
+        "mentions": 2
+      }
+    ],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3087882415036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

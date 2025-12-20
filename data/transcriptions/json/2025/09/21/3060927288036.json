@@ -1,0 +1,102 @@
+{
+  "recording_id": "3060927288036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:10:10.670105Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:10:10",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hi, Garrett. My name is Jason. I have a question about custom SQL reports. Okay. Are you involved with that? Sure. What company are you with? Beyond the Surface Talent Partners. Gotcha. Beyond the Surface. Okay. Maybe it's just an acronym in our system. Let's see. Could be BTS Talent Partners. Okay. Or it could just be Beyond the Surface. Hmm. What's your last name? Maybe I'll just search by your name. A-L-S as in Sam. I-N as in Nancy. Okay, there we go. Huh, I don't know why it wasn't coming up. It is beyond the surface talent partners fully spelled out. That was strange. Sorry about that. All right, so what is your question regarding the custom SQL? I am trying to create a custom report that limits the results to just a roll-up list. And there is a field to select a roll-up list on the reports screen where you go to generate it, along with a date range field and roll-up types field. Looking in some of the custom reports, I don't know if they're stock custom reports or if they're just ones that were part of my setup. but I was able to see what that what the field identification was for the date range and how to use that field but in none of them can I find what the field ID is for the select roll-up list box okay sometimes the sequel reports are designed where either the date range works or the roll-up works kind of like a one or the other situation just depends how that custom sequel report was designed. Is there one specifically you were trying under custom SQL reports? Are you able to see my setup? Because it's a new report for me. Okay. So I am... I've got to go back out to the menu. So I am looking... I want to do the all phone report. Okay. Let's see. And it in there. There we go. Okay, yeah, I opened that up. So you would just want to click the, there's a little pop-out icon to the right of the select roll-up list field. And when you click on that it'll list all of your pop or all of your roll-ups you would just click on the number in the name column next to the appropriate roll-up does that pop up for you yeah so I I clicked a little pop-out box and I I select a roll-up list, and so the roll-up list goes into the field. And then when I print, when I do PDF mode to view what it is, it does not limit the results to that roll-up list. Okay. Yeah, it might be that this one was designed with more of the date range in mind. And was this something, do you know if this was one you created or somebody on our team created for you? Yes, is the answer to that question. Okay. It started with one that Jason Salomon created. Okay. But I have since gone in and made some edits to it. Gotcha. Okay, so what we can do is maybe I'll just see if Jason is available to take a look since he built that and see if he can or if he notices anything that would not allow it to use that roll-up list filter. And if he can't figure that out, I'm actually going to message to him that he can probably put it into ChatGPT as well. Can I show you something? Sure. Can I show you something? So, the reason that I'm asking for that field, if you go into any of the custom SQL reports that say by date, if you look through the master SQL statement, There is always a where clause that says between single quote, two brackets, BEG date, double brackets, single quote, and end date. From my experience with programming SQL databases, that is a field ID or a variable name that gets its information from somewhere else. And my guess is that that is the beginning date and end date of the date range of that form when you go to run the SQL report. Yeah, that filter. Okay. Yeah. So that's why I'm looking for that field ID for this roll-up list field, because once I know that, I can put a where statement into that SQL code in that report so that it only kicks back the reports that are on the selected roll-up list. but I don't know what that field ID is. And I haven't been able to find it in all of the learning center documentation that I looked at. Right. Yeah. I don't think it would be listed there. I don't know what that would be either. I'm not very good with the SQL language there. So yeah, let me check with Jason, see if he's available. Maybe he'll be able to help you with that one second. I can just give him a ring here. Okay, that went to voicemail. He must already be on a call. Let me just transfer you over to Jason's voicemail, and I'll leave him a message as well to give you a call back, and maybe he'll be able to help fix up that SQL assignment. I don't need to leave a voicemail. I already sent him an email. I was just being opportunistic with a little bit of free time that I had this afternoon to try and call in. So, yeah, you could just send him a message that I called and have him go back and check, look at my email. And if you can have him give me a call back, I think it will be easier over phone than trying to figure it out by email. Gotcha. Yeah, that makes sense. Okay, cool. Yeah, I'll leave him a note. And if any other questions come up in the meantime, just let us know. I appreciate your help Garrett thank you thanks have a good one",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1799.397033,
+    "salad_processing_time": 94.74947190284729,
+    "overall_processing_time": 1799.397033,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "job_id": "64077020-9ce1-4dbf-948d-923fa3cef092",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3060927288036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

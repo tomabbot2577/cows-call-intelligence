@@ -1,0 +1,102 @@
+{
+  "recording_id": "3013943734036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:26:37.678207Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:26:37",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Good morning, this is Jim. Jim, good morning. Craig Pickett, how are you? I'm well, Craig. How are you? I am good. What's happening in Ohio today? Oh, nothing. Just a little bit rainy and a little bit gloomy for the first time in a bunch of days, oddly, which is all right. Well. I don't know if you were even on the call this morning, but I'll tell you, may I give you a call back in like 20 minutes or so? Because I have a 10 o'clock that I'm supposed to be calling. Oh, was it on? Yeah, I wasn't on any call. I am free until 1130. Perfect. Yeah, just give me a shout when you're free. This should take 20 minutes or so. I'll give you a call right after that. Perfect. Sounds good. Very well, sir. All right. Bye-bye. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 395.825439,
+    "salad_processing_time": 7.567235708236694,
+    "overall_processing_time": 395.825439,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Good morning, this is Jim.  Jim, good morning.  Craig Pickett, how are you? I'm well, Craig.",
+    "job_id": "259690ad-d02f-4318-aa4e-0035f1057f0a",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Good morning, this is Jim.  Jim, good morning.  Craig Pickett, how are you? I'm well, Craig.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": false
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3013943734036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "recording_id": "3065663788036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:13:17.905946Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:13:17",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence. This is Robin. Hey, Robin. This is Stephen Wagner. How are you doing? I'm good. How are you doing? Hey, I'm good. I work for Neely Pierce. It's okay. He emailed me back the other day about a list I'm trying to import. And then Truett, I don't know if you know him, but he mentioned you by name, said that I should try to get a hold of you. So what was going on with it? You had a couple other questions, I remember. Yeah, so I have, I've never done this, but I have a Excel spreadsheet I'm trying to import and it's like 40,000 records. Oh, okay. I just want to make sure I get it right. I, that's a lot of records. We're going to test it, like we'll do like 50 or something to make sure it all maps right first and then do the rest of it. So one thing that you're going to want to be very careful of is, like, the predefined versus custom field. You can map anything to a predefined field. Like, the column can be called, like, current title, whatever it is, and you're actually picking that you're going to be mapping it to the name title. But whenever it comes to a custom field, you want to make sure it's the exact name of any custom field. So usually what you want to do is kind of look at your layout. Like, do you have the security to view layouts? Yeah, I have all the admin privileges. Yeah. So when you go into the layout, you'll see the field and it'll start with custom. So, for example, if it says custom, then it has to be the exact thing. Yeah. Yeah. So you don't put the word custom or whatever's after it. So if it's like you want to go to the LinkedIn field, you have to make sure it's social with a capital S underscore LinkedIn so that it goes into the existing custom field. Yeah, right. Like we have like actual title as a custom field. So I got all that. So my couple of questions I had were. So we have a custom field for specialty and on the name screen, it's like a drop down menu and you can choose like if they're, you know, orthopedic specialist or pediatric specialist or whatever. So when I'm on the list, so it's custom field specialties. So the, it'll say just specialty, but it'll obviously just be like hand therapy as their specialty. Will that map correctly and just click that box in PCR? So as long as the value is exactly the same as any pre-selections you have, then it's fine. Otherwise, what it'll do is you'll see it listed, but it won't match up to your table. Okay. It'll be on that record and you'll see it, but it won't, like we're not going to change data, if that makes sense. Yeah. So as long as like it says acute and then on the specialty field on the Excel spreadsheet, it says acute and it's spelled correctly and all that, it should map correctly. Yeah. Yeah. Otherwise, you'll just see it like as a selection, but it won't be. Like, let's say you just threw something in there like unknown. If that was not in your table, you'll see unknown on the record. But if you were ever like going into the record and pick it, you wouldn't be adding it to the list. So you pick going forward. Does that make sense? Yes. I see what you're saying. So it would have like another box on that record, but it wouldn't be like an option for everybody else. Correct. Yeah, if you went to another record, you wouldn't see it. Okay, that's good. And then my other question that's probably just was answered. So we have a, I'm pretty sure it's a custom, yeah, custom segmentation field for managers. And it's set up to where whenever we have that selected, that when we go to the company screen, if they are a manager, it pops up as a custom thing that we had you guys do. you know, designed for us to where it shows up on the actual company page if they're a manager at that company. And so but if I do segment, so it's custom segmentation. And as long as I have it spelled correctly, it should map that as well. Right. I believe so. Yeah. Because that's not a drop. It's a drop down option, but it's not a box to click. But I think it I don't let me take a look at the database. And I'm so sorry. What is your last name? Wagner, W-A-G-N-I-R. Oh, here it is. Okay. Oh, I was doing V-E-N. That's why. Sorry. Oh, okay. That's why I wasn't finding you. I'm like, I'm trying to find him here. Let me see something here. Okay. So this is a nearly pierced database. Yeah, I don't know what they did custom for you, so let me see. So if you go to a name record in the bottom left, it'll say. Hold on one. second. Okay, let me pull up a name. Okay, so you've got a field called segmentation. Okay. Yeah, so if you click that, it'll say hiring authority or manager. And when you Oh, that's status. Oh, sorry. Okay. It was the status and segmentation. Yeah. Now, also very important when you do statuses, you might see it. You'll see a full description, but we don't use that. Like H is hiring authority. C is candidate. M is manager. And the only one that's different is X is not available. Otherwise, that's the first letter. you'll want to make sure that your file uses the single letter for status and not okay okay okay actually I don't need to put in segmentation actually for when I import the list but it's status and status is not a custom field right correct that's predefined it can't be altered but it's actually a letter in the back end I'll say here's how you can if you go up to name and go to advanced Advanced. Yeah, go to name. Instead of going to basic search, go over to advanced. Oh, yeah. I'm familiar with the letters because we do searches based on those all the time. Okay. Yeah. You just got to make sure you're using that single letter in your file. For some reason, I thought in my mind, the segmentation was what the hiring authority was, but that's status. Okay. So I just put status and then I just have to make sure it's the letter on the Excel spreadsheet. And then last question. So we got all this from ZoomInfo. And I know that you guys work with ZoomInfo. I'm pulling data in, but there was some kind of limitation. So I thought, I'm just going to do the CSV file. So they have this education history. it's like a free form cell in excel in the excel spreadsheet and it says like san jose state university graduation year is there any way to pull data out of that field and put it into certain like we have graduation year for instance as a now you could probably run it maybe through like chat GPT, obviously not 40,000. It won't let you do that. You might be able to use like chat GPT to separate it. That would probably be the best option. But yeah, we just kind of, we don't change any data. It's just, you're just mapping it is really the way to think of it. Is there any field that we could put that in that is like a free form field where we can at least have the data in the name record? You could do where it just goes to a custom field, but it'd just be like one block, just how it is in your file. Is there any way to map it to notes? Would that replace your notes? Yeah, without it replacing. I would probably just do it as a separate custom field, to be honest. Either that or run it through ChatGPT to split it up. Like you could ask ChatGPT to separate, you know, you have this file, but you need a school and a grad year separated into school and grad year. And that's actually, ChatGPT is not too bad for doing some of that kind of stuff. Oh, I use ChatGPT like all the time. Yeah. Yeah. I'm like, ooh, this is great. Yeah. Yeah, for sure. It definitely makes life easier. Okay, cool. All right. Well, I think that's all my questions. Anything else I should be thinking of? I would just not do $40,000 at one time. Also, the other thing, too, you've got to think about whatever you're going to map. Is it a duplicate checking option? So, for example, the one that I am very cautious about is, like, last name, email address. Make sure everybody you're bringing in actually has an email address. Because John Smith with no email would be recognized as the same as Stephen Smith with no email. so if there's an email is blank then what do you recommend so if you're going to use last name email address as your duplicate checking option you want to be very careful that you're you don't you're not bringing in people that don't have an email address because somebody with the same last name and both not having an email address would be considered the same record because the duplicate check his last name email address okay what if we use like last name cell phone number actually cell phone number currently is not an option surprisingly so you have work phone there's home phone there's company name um yeah because there's definitely a lot that don't have emails yeah or maybe do those separately like maybe do like if it does have an email do make those one file and then figure out for the rest of them, what would be the safest duplicate checking option? How many do you recommend doing at one time? Like if we have 40,000, like just do 10,000. I mean, do like a test run, right? With like 50 names or something. It doesn't really, it's not really the, well, first of all, the file has to be under five megabytes. So how, what, yeah, if you were to save it to your desktop, if usually if you right click on it and go to like the properties you can see the file size but the more columns you have the more rows you have the slower it is the bigger the file too so it's not a specific number we've we've imported bigger lists than this in the past but um i think we had a lot less info in the lists yeah yeah it really depends how many columns as well as how many rows yeah and I've even like deleted a bunch of the info they have so much info with zoom info that I'm like it was like employee size of the hospital and revenue I'm like I don't need I always tell people if you don't need it just take that column off the file that you're going to bring in because then you don't get confused when you're mapping it also makes the file size smaller so anything that you really don't need I would you know make a separate copy of what you're going to actually bring in. Okay. And you said, what's the limit on the file size? Five megabytes. Yeah, this is 11.4. So I'll have to do, I guess, in at least three waves or whatever. Okay. All right. Okay. I appreciate your help. Start with a small group. I would, and then just kind of see how it goes. Yeah, absolutely. Okay. All right. I appreciate it. All right. Have a good week. You too. Bye. Thanks. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1891.453135,
+    "salad_processing_time": 48.46542406082153,
+    "overall_processing_time": 1891.453135,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Hey, Robin.",
+    "job_id": "0f6e7729-cbab-454b-bd98-246c64b975e6",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Hey, Robin.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": true,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3065663788036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

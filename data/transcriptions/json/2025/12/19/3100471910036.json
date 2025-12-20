@@ -1,0 +1,847 @@
+{
+  "recording_id": "3100471910036",
+  "version": "2.0",
+  "timestamp": "2025-12-19T23:27:50.229323Z",
+  "call_metadata": {
+    "date": "2025-12-19",
+    "time": "23:27:27",
+    "duration_seconds": 96.336,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 385677
+  },
+  "transcription": {
+    "text": "Welcome to Zoom. Enter your meeting ID. Enter your participant ID followed by pound. Otherwise, check. You are in the meeting now. There is one other participant in the meeting. Good morning, Lauren. Do you hear me? Hello? Good morning, Lauren. Do you hear me now? Hello? Hello? Do you hear me at all? Thank you. Thank you.",
+    "confidence": 0.9499999999999997,
+    "language": "en-US",
+    "language_probability": 0.99,
+    "word_count": 58,
+    "duration_seconds": 96.336,
+    "processing_time_seconds": 21.267559051513672,
+    "salad_processing_time": 16.809524536132812,
+    "overall_processing_time": 0,
+    "segments": [
+      {
+        "id": 0,
+        "start": 0.1,
+        "end": 0.85,
+        "text": "Welcome to Zoom.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "id": 1,
+        "start": 0.95,
+        "end": 1.95,
+        "text": "Enter your meeting ID.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "id": 2,
+        "start": 13.702,
+        "end": 16.557,
+        "text": "Enter your participant ID followed by pound.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "id": 3,
+        "start": 17.527,
+        "end": 18.26,
+        "text": "Otherwise, check.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "id": 4,
+        "start": 20.66,
+        "end": 23.14,
+        "text": "You are in the meeting now.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "id": 5,
+        "start": 24.086,
+        "end": 26.379,
+        "text": "There is one other participant in the meeting.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "id": 6,
+        "start": 26.72,
+        "end": 27.105,
+        "text": "Good morning, Lauren.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "id": 7,
+        "start": 28.463,
+        "end": 28.798,
+        "text": "Do you hear me?",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 8,
+        "start": 30.228,
+        "end": 30.388,
+        "text": "Hello?",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 9,
+        "start": 31.818,
+        "end": 32.298,
+        "text": "Good morning, Lauren.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 10,
+        "start": 33.728,
+        "end": 34.527,
+        "text": "Do you hear me now?",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 11,
+        "start": 59.76,
+        "end": 59.78,
+        "text": "Hello?",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 12,
+        "start": 61.21,
+        "end": 61.37,
+        "text": "Hello?",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 13,
+        "start": 59.78,
+        "end": 59.84,
+        "text": "Do you hear me at all?",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 14,
+        "start": 61.27,
+        "end": 61.59,
+        "text": "Thank you.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 15,
+        "start": 63.02,
+        "end": 63.34,
+        "text": "Thank you.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      }
+    ],
+    "word_segments": [
+      {
+        "start": 0.1,
+        "end": 0.35,
+        "timestamp": [
+          0.1,
+          0.35
+        ],
+        "word": "Welcome",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 0.35,
+        "end": 0.6,
+        "timestamp": [
+          0.35,
+          0.6
+        ],
+        "word": "to",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 0.6,
+        "end": 0.85,
+        "timestamp": [
+          0.6,
+          0.85
+        ],
+        "word": "Zoom.",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 0.95,
+        "end": 1.2,
+        "timestamp": [
+          0.95,
+          1.2
+        ],
+        "word": "Enter",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 1.2,
+        "end": 1.45,
+        "timestamp": [
+          1.2,
+          1.45
+        ],
+        "word": "your",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 1.45,
+        "end": 1.7,
+        "timestamp": [
+          1.45,
+          1.7
+        ],
+        "word": "meeting",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 1.7,
+        "end": 1.95,
+        "timestamp": [
+          1.7,
+          1.95
+        ],
+        "word": "ID.",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 13.702,
+        "end": 13.803,
+        "timestamp": [
+          13.702,
+          13.803
+        ],
+        "word": "Enter",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 13.843,
+        "end": 13.964,
+        "timestamp": [
+          13.843,
+          13.964
+        ],
+        "word": "your",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 13.984,
+        "end": 14.225,
+        "timestamp": [
+          13.984,
+          14.225
+        ],
+        "word": "participant",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 14.245,
+        "end": 14.285,
+        "timestamp": [
+          14.245,
+          14.285
+        ],
+        "word": "ID",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 14.306,
+        "end": 14.486,
+        "timestamp": [
+          14.306,
+          14.486
+        ],
+        "word": "followed",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 16.155,
+        "end": 16.396,
+        "timestamp": [
+          16.155,
+          16.396
+        ],
+        "word": "by",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 16.416,
+        "end": 16.557,
+        "timestamp": [
+          16.416,
+          16.557
+        ],
+        "word": "pound.",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 17.527,
+        "end": 18.117,
+        "timestamp": [
+          17.527,
+          18.117
+        ],
+        "word": "Otherwise,",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 18.138,
+        "end": 18.26,
+        "timestamp": [
+          18.138,
+          18.26
+        ],
+        "word": "check.",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 20.66,
+        "end": 20.72,
+        "timestamp": [
+          20.66,
+          20.72
+        ],
+        "word": "You",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 22.515,
+        "end": 22.575,
+        "timestamp": [
+          22.515,
+          22.575
+        ],
+        "word": "are",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 22.596,
+        "end": 22.636,
+        "timestamp": [
+          22.596,
+          22.636
+        ],
+        "word": "in",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 22.656,
+        "end": 22.817,
+        "timestamp": [
+          22.656,
+          22.817
+        ],
+        "word": "the",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 22.838,
+        "end": 23.059,
+        "timestamp": [
+          22.838,
+          23.059
+        ],
+        "word": "meeting",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 23.08,
+        "end": 23.14,
+        "timestamp": [
+          23.08,
+          23.14
+        ],
+        "word": "now.",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 24.086,
+        "end": 24.247,
+        "timestamp": [
+          24.086,
+          24.247
+        ],
+        "word": "There",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 24.267,
+        "end": 24.307,
+        "timestamp": [
+          24.267,
+          24.307
+        ],
+        "word": "is",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 24.327,
+        "end": 24.408,
+        "timestamp": [
+          24.327,
+          24.408
+        ],
+        "word": "one",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 24.428,
+        "end": 24.528,
+        "timestamp": [
+          24.428,
+          24.528
+        ],
+        "word": "other",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 24.548,
+        "end": 26.017,
+        "timestamp": [
+          24.548,
+          26.017
+        ],
+        "word": "participant",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 26.037,
+        "end": 26.098,
+        "timestamp": [
+          26.037,
+          26.098
+        ],
+        "word": "in",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 26.118,
+        "end": 26.178,
+        "timestamp": [
+          26.118,
+          26.178
+        ],
+        "word": "the",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 26.198,
+        "end": 26.379,
+        "timestamp": [
+          26.198,
+          26.379
+        ],
+        "word": "meeting.",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 26.72,
+        "end": 26.801,
+        "timestamp": [
+          26.72,
+          26.801
+        ],
+        "word": "Good",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 26.821,
+        "end": 26.963,
+        "timestamp": [
+          26.821,
+          26.963
+        ],
+        "word": "morning,",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 26.983,
+        "end": 27.105,
+        "timestamp": [
+          26.983,
+          27.105
+        ],
+        "word": "Lauren.",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 28.463,
+        "end": 28.505,
+        "timestamp": [
+          28.463,
+          28.505
+        ],
+        "word": "Do",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 28.526,
+        "end": 28.589,
+        "timestamp": [
+          28.526,
+          28.589
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 28.63,
+        "end": 28.735,
+        "timestamp": [
+          28.63,
+          28.735
+        ],
+        "word": "hear",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 28.756,
+        "end": 28.798,
+        "timestamp": [
+          28.756,
+          28.798
+        ],
+        "word": "me?",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 30.228,
+        "end": 30.388,
+        "timestamp": [
+          30.228,
+          30.388
+        ],
+        "word": "Hello?",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 31.818,
+        "end": 31.978,
+        "timestamp": [
+          31.818,
+          31.978
+        ],
+        "word": "Good",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 31.978,
+        "end": 32.138,
+        "timestamp": [
+          31.978,
+          32.138
+        ],
+        "word": "morning,",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 32.138,
+        "end": 32.298,
+        "timestamp": [
+          32.138,
+          32.298
+        ],
+        "word": "Lauren.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 33.728,
+        "end": 33.888,
+        "timestamp": [
+          33.728,
+          33.888
+        ],
+        "word": "Do",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 33.888,
+        "end": 34.048,
+        "timestamp": [
+          33.888,
+          34.048
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 34.048,
+        "end": 34.208,
+        "timestamp": [
+          34.048,
+          34.208
+        ],
+        "word": "hear",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 34.208,
+        "end": 34.367,
+        "timestamp": [
+          34.208,
+          34.367
+        ],
+        "word": "me",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 34.367,
+        "end": 34.527,
+        "timestamp": [
+          34.367,
+          34.527
+        ],
+        "word": "now?",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 59.69,
+        "end": 59.85,
+        "timestamp": [
+          59.69,
+          59.85
+        ],
+        "word": "Hello?",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 61.21,
+        "end": 61.37,
+        "timestamp": [
+          61.21,
+          61.37
+        ],
+        "word": "Hello?",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 59.78,
+        "end": 59.79,
+        "timestamp": [
+          59.78,
+          59.79
+        ],
+        "word": "Do",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 59.79,
+        "end": 59.8,
+        "timestamp": [
+          59.79,
+          59.8
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 59.8,
+        "end": 59.81,
+        "timestamp": [
+          59.8,
+          59.81
+        ],
+        "word": "hear",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 59.81,
+        "end": 59.82,
+        "timestamp": [
+          59.81,
+          59.82
+        ],
+        "word": "me",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 59.82,
+        "end": 59.83,
+        "timestamp": [
+          59.82,
+          59.83
+        ],
+        "word": "at",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 59.83,
+        "end": 59.84,
+        "timestamp": [
+          59.83,
+          59.84
+        ],
+        "word": "all?",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 61.27,
+        "end": 61.43,
+        "timestamp": [
+          61.27,
+          61.43
+        ],
+        "word": "Thank",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 61.43,
+        "end": 61.59,
+        "timestamp": [
+          61.43,
+          61.59
+        ],
+        "word": "you.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 63.02,
+        "end": 63.18,
+        "timestamp": [
+          63.02,
+          63.18
+        ],
+        "word": "Thank",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 63.18,
+        "end": 63.34,
+        "timestamp": [
+          63.18,
+          63.34
+        ],
+        "word": "you.",
+        "speaker": "SPEAKER_01"
+      }
+    ],
+    "speakers": [
+      {
+        "id": "SPEAKER_00",
+        "label": "Speaker_00",
+        "speaking_time": 5.34,
+        "segment_count": 4,
+        "average_confidence": 0.95
+      },
+      {
+        "id": "SPEAKER_02",
+        "label": "Speaker_02",
+        "speaking_time": 5.16,
+        "segment_count": 3,
+        "average_confidence": 0.95
+      },
+      {
+        "id": "SPEAKER_01",
+        "label": "Speaker_01",
+        "speaking_time": 2.65,
+        "segment_count": 9,
+        "average_confidence": 0.95
+      }
+    ],
+    "srt_content": "1\n00:00:00,100 --> 00:00:00,850\nWelcome to Zoom.\n\n2\n00:00:00,950 --> 00:00:01,950\nEnter your meeting ID.\n\n3\n00:00:13,702 --> 00:00:16,557\nEnter your participant ID followed by pound.\n\n4\n00:00:17,527 --> 00:00:18,260\nOtherwise, check.\n\n5\n00:00:20,660 --> 00:00:23,140\nYou are in the meeting now.\n\n6\n00:00:24,086 --> 00:00:26,379\nThere is one other participant in the meeting.\n\n7\n00:00:26,720 --> 00:00:27,105\nGood morning, Lauren.\n\n8\n00:00:28,463 --> 00:00:28,798\nDo you hear me?\n\n9\n00:00:30,228 --> 00:00:30,388\nHello?\n\n10\n00:00:31,818 --> 00:00:32,298\nGood morning, Lauren.\n\n11\n00:00:33,728 --> 00:00:34,527\nDo you hear me now?\n\n12\n00:00:59,760 --> 00:00:59,780\nHello?\n\n13\n00:01:01,210 --> 00:01:01,370\nHello?\n\n14\n00:00:59,780 --> 00:00:59,840\nDo you hear me at all?\n\n15\n00:01:01,270 --> 00:01:01,590\nThank you.\n\n16\n00:01:03,020 --> 00:01:03,340\nThank you.\n\n",
+    "summary": "Lauren hears audio after repeated attempts to connect.",
+    "job_id": "5e2d4e2e-bcab-4df0-8a2d-77232f263e47",
+    "timestamps": {
+      "started": "2025-12-19T23:27:05.956581+00:00",
+      "submitted": "2025-12-19T23:27:05.956667+00:00",
+      "completed": "2025-12-19T23:27:27.224133+00:00"
+    }
+  },
+  "ai_analysis": {
+    "summary": "Lauren hears audio after repeated attempts to connect.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 3,
+      "total_segments": 16,
+      "agent_speaking_percentage": 0.0,
+      "customer_speaking_percentage": 100.0,
+      "average_turn_duration": 4.38,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "1UYfV6uo-fAQPrNM0hiPm_MeV-srszCIv",
+    "google_drive_url": "https://drive.google.com/file/d/1UYfV6uo-fAQPrNM0hiPm_MeV-srszCIv/view",
+    "local_path": "/data/transcriptions/json/2025/12/19/3100471910036.json",
+    "backup_status": "completed",
+    "retention_days": 90
+  }
+}

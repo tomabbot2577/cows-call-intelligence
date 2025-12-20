@@ -1,0 +1,95 @@
+{
+  "recording_id": "3041456347036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:52:32.932889Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:52:32",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " I think they would. Hi, and thank you for calling the all-new Ken Ganley Chrysler Dodge Jeep Ram, mentor formerly Painesville. Please listen carefully to the options below. Please press 1 for sales, 2 for service, 3 for service. Ken Ganley Chrysler Service, how can I help you? Yeah, I just wanted to call and check on my total and see if I could come pick up my minivan tomorrow. Oh, gotcha. Let's see here. What is your first and last name? And I'll try to get you connected with the service advisor working with you. Sure. It's under Patsy Lombardo. Gotcha, Lombardo. Or it might be Jim Lombardo, now that I think about it. No, you're good. Give me just a moment here and I'll get you connected with the service advisor. Awesome, thank you. Thank you. Thank you. I just went ahead and grabbed the paperwork myself. It looks like, yes, everything is done, ready to go. And total came out to $1,690 even. Okay. Is there any way you guys have a AAA discount, anything like that? We do not, unfortunately. Only military we have. Okay. No coupons or anything? Not at the moment. I don't know what would be, like, applied to your service. There's some out on our website, but I'm not sure if it would, like, apply to anything that you are having done. And do you guys take a check? We do, yes. Yes, you can bring a check up here. Good. I will pay with a check, and we're going to stop over tomorrow to get it. And, yeah, I think if I need a ride, can I call and have you guys come pick me up? Yeah, yeah. As long as you're within 30 minutes of the dealership, yeah, we have shuttle drivers that will come pick you up and bring you up here. Yeah, I just want to exit up the interstate. I'm not far at all. Perfect. All right. Excellent. I will see you tomorrow. Perfect. We'll see you then. Enjoy your evening. You too. Thank you. Thank you. Bye-bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1269.384175,
+    "salad_processing_time": 7.791146993637085,
+    "overall_processing_time": 1269.384175,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " I think they would.  Hi, and thank you for calling the all-new Ken Ganley Chrysler Dodge Jeep Ram, mentor formerly Painesville.  Please listen carefully to the options below.",
+    "job_id": "c6b98ab4-cae1-468b-be3e-65fa99ba4fc8",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " I think they would.  Hi, and thank you for calling the all-new Ken Ganley Chrysler Dodge Jeep Ram, mentor formerly Painesville.  Please listen carefully to the options below.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3041456347036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

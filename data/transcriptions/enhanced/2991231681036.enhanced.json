@@ -1,0 +1,113 @@
+{
+  "recording_id": "2991231681036",
+  "version": "3.0",
+  "timestamp": "2025-09-21T23:47:31.890697Z",
+  "processing_complete": true,
+  "call_metadata": {
+    "date": "2025-09-21",
+    "duration_seconds": 164.232,
+    "word_count": 420,
+    "customer": {
+      "name": "",
+      "phone": null,
+      "company": null
+    },
+    "employee": {
+      "name": "",
+      "extension": null,
+      "department": null
+    }
+  },
+  "transcript_text": "Hello, this is Brian. Hey, Brian. This is Rob Peskin calling. How are you? Good, Rob. What's going on? I had a quick question for you. I'm a customer of yours already. I just merged two candidate profiles together that shouldn't have been merged. Do you know how to reverse that? It cannot be reversed. it can't be reversed okay i figured that might be the uh the problem okay were they not the same people they are not the same people just the same name so i was trying to figure out if there was a reversal but yeah but there is not one now let me give you a couple pieces of of uh let me give you some hints here okay real quick as you called yeah um go to the tune go to the name that you selected as the master and when you go to that name record in the lower screen you have those two menus one is is icons and one is words the the menu that starts with edit name and his words you may or may not have it pinned but there's an option there underneath that menu for change log. Let me know if you see that. Okay, click on the change log. So that's going to tell you everything that got updated in that individual's record. It won't, so you will be able to see old information and the current information. You could manually recreate a record, not the activities and so forth but the contact information yeah i have it's not that big of a deal i have okay the right guy the right guy was the um the one that was merged is the one that's the most active the other one was old so i just was curious if there was a reversal and i'll recreate the other one that's no big deal got it all right cool so if i do if i do a capture let me just try and do this real quick okay this should be good all right all right yeah all right that's good to know be more careful yeah if you go find the guy that got yeah if you go find the guy that got deleted so to speak in the merge on linkedin it re-import his you know capture recapture his profile and then add whatever in protein should be good to go All right, man. I'll let you go. I appreciate it. You bet. No problem.",
+  "ai_insights": {
+    "sentiment_analysis": {
+      "customer_sentiment": "positive",
+      "call_quality_score": 8.5,
+      "call_type": "technical_support",
+      "key_topics": [
+        "merged candidate profiles",
+        "reversing profile merge",
+        "accessing change log"
+      ],
+      "summary": "The customer called to inquire about reversing a mistaken candidate profile merge, and the agent provided helpful instructions on how to view the change log and recreate the deleted profile.",
+      "follow_up_needed": false,
+      "escalation_required": false
+    },
+    "process_recommendations": {
+      "process_improvements": [
+        "Implement a confirmation step before merging candidate profiles to prevent accidental merges",
+        "Develop a robust profile restoration process to easily recover deleted profiles"
+      ],
+      "employee_coaching": {
+        "strengths": [
+          "Provided clear and helpful instructions on how to view the change log and recreate the deleted profile",
+          "Maintained a positive and patient tone throughout the call"
+        ],
+        "improvements": [
+          "Suggest proactively offering to assist the customer with the profile recreation process to ensure a smooth resolution"
+        ],
+        "suggested_phrases": [
+          "I'd be happy to walk you through the steps to recreate the deleted profile. Please let me know if you need any assistance with that."
+        ]
+      },
+      "follow_up_actions": [
+        "Reach out to the customer to ensure the profile was successfully recreated",
+        "Review the incident and identify any process or system improvements to prevent similar issues in the future"
+      ],
+      "knowledge_base_updates": [
+        "Create a step-by-step guide on how to view the change log and recover deleted candidate profiles"
+      ],
+      "escalation": {
+        "required": false,
+        "risk_level": "low",
+        "reason": "The issue was resolved satisfactorily, and no further escalation is needed"
+      },
+      "performance_metrics": {
+        "efficiency_score": 8.5,
+        "training_priority": "medium"
+      }
+    },
+    "call_resolution": {
+      "problem_statement": "The customer merged two candidate profiles that should not have been merged, and wanted to know if there was a way to reverse the merge.",
+      "resolution_status": "partially_resolved",
+      "resolution_details": "The employee explained that the merge cannot be reversed, but provided steps for the customer to manually recreate the deleted profile by capturing it from LinkedIn.",
+      "follow_up": {
+        "type": "none",
+        "details": "No further follow-up is needed, as the customer indicated they understood the steps to recreate the deleted profile.",
+        "timeline": "N/A"
+      },
+      "loop_closure": {
+        "solution_summarized": true,
+        "understanding_confirmed": true,
+        "asked_if_anything_else": true,
+        "next_steps_provided": true,
+        "timeline_given": false,
+        "contact_info_provided": false,
+        "closure_score": 8.0
+      },
+      "quality_assessment": {
+        "missed_best_practices": [
+          "Providing a timeline for the customer's next steps",
+          "Offering contact information in case the customer needs further assistance"
+        ],
+        "improvement_suggestions": [
+          "Provide a timeline for the customer's next steps, such as how long it may take to recreate the deleted profile",
+          "Offer the customer's contact information in case they need further assistance"
+        ],
+        "customer_satisfaction_likely": "high",
+        "call_back_risk": "low",
+        "escalation_probability": "low"
+      }
+    }
+  },
+  "pipeline_metadata": {
+    "ai_model_versions": {
+      "sentiment": "deepseek/deepseek-r1",
+      "recommendations": "deepseek/deepseek-r1",
+      "name_extraction": "anthropic/claude-3-opus",
+      "embeddings": "openai/text-embedding-ada-002"
+    },
+    "processing_date": "2025-09-21T23:47:31.890714Z",
+    "version": "3.0"
+  }
+}

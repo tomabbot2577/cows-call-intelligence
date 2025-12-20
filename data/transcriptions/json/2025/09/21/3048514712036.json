@@ -1,0 +1,95 @@
+{
+  "recording_id": "3048514712036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:58:37.933720Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:58:37",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " I made sequence this is Robin hi Robin hello hello yeah hi Robin I actually have a question is it possible that we can create an opt-out link like different opt-out link let's say we have a newsletter will create a specific opt-out for that and we have a different opt-out for a different campaign is it So when you the text of the opt-out is customized but it would be used no matter where you use the opt-out link but when you send a bulk email you would be picking like newsletter is the type of letter so by default when they go to opt-out it they'd be opting out of just newsletters now there is a link once they click it that they can opt out of the other categories as well. So you mean because we already have an opt-out link when we create a newsletter and if we add that opt-out to that newsletter if they will just be unsubscribe to that specific newsletter but if we add it under a different campaign that's going to be a different opt-out for them so that's just for a specific campaign is that right yeah so basically what it means is and I'm sorry what is your name I'm sorry this is Karen's by the way and what's your last name? Camu. C-A-M-U. Okay okay so when you're creating your form letter mm-hmm you know you go like insert fields and you pick like name dot first name near the bottom of that list I usually just once I click insert fields type the word opt and then you'll see the choices and you'll see email opt-out link so that's what you'll put into your your letter you just kind of put that little place holder mm-hmm and then as far as what the content of it like you know this click here to unsubscribe or however you want to word it you can customize that but it's anytime that link is used so if you go to system and then go to form letters and then click name letters and let me get there myself hold on one second so sorry there's like default settings I believe hold on one second system form letters name letters okay so above it at the top right of your list of letters there is a gear icon and then so whatever that link this is where you can define what does the link actually say okay but that would be anytime you're using that opt-out link yeah so actually my main concern about it is that when they opt out does it mean they are opt out or we will be spam every time they would receive an email from TRG? No so what happens is when they opt out let me see if you actually have anything in there yet so you know like when you go to send a bulk email there's that category option where you pick like newsletter. So like if you're okay so you have analytics email campaign so when you're sending a form letter oh where is it here let me just do myself as an example. There is right underneath letter when you're sending a bulk email says email category and that's where yeah so when you're doing your mail campaign there's a campaign category but then there's an email category the one that says email category is related to that opt-out list so what it means is like let's say you picked new opportunities or holiday greetings under email category if they are already opted out of that category it skips them and then if they click that opt-out link in your email it would only be by default opting them out of whatever category you picked. I see so it doesn't mean that when we send a separate email to them we will be spam. That's actually what we're thinking okay. Yeah won't have anything to do with spam. Spam is going to be more like related to content like the mail recipients emails like reading like certain words like you know you have a lot of pictures you know the word opportunities a lot or like exclamation marks and things like that like you like a series of exclamation marks a lot of those get picked up as spam but if somebody like let's say you send a letter and you select the email category and I'll just pick like announcements if you if they click the opt-out link it'll say like you're opting out of the announcements list and And they can hit okay, and then it opts them out of that category. So going forward, they can't get anything that you're sending as announcements. Got it, got it. I think that makes sense to me now. Yeah, so what really happens, let me see if you have anything in there. If you go to system, and this you'd have to be an administrator to see it. If you go to email setup, hold on, let me just re-log in. We're down. We're back. Down. Okay. Sorry, this is going to be system? Yes. System and then go down to email setup. And then email setup. Okay. And then over at the right, you'll see email opt-out list as long as you're an administrator. Okay. Yeah, I found it. Okay. So let's look at the fourth row. This is an example of somebody that has opted out of one category, but the other categories are opted in. Oh, okay. Fourth row, delete and edit. Is that the one? Like for A, C, oh, one, two, three, four. Yeah. So see how there's all those categories? Oh, okay. So what it means is, yes, it's almost like the opposite of what you think. They opted out of something else, but they're still opted in for these. So when you're sending an email, if the email is not on this list at all, it's okay to email them. If it's on the list and it says opt in, it means they're allowed to get these, but then there's one of those other categories. I'd have to actually kind of compare the list. Something is not in here. So if you were to pick the one that's not in here, it would skip that person. Sorry, with this list, Robin, is this like the summary where we can see all who opted out? Yes. So some you'll see like where it says bounce. Those are added to the opt-out list because it's a bad email. But how do we know if it's like for an email campaign? let's say for or let's say for a sequence can we also see it here? No because it's just this is just a general list regardless of now what you probably do is look in your mail campaign stats and see who unsubscribed. So if you go under analytics and go to the email campaigns and then click details that's where you'll see somebody that opted out. Okay so let me just try to check analytics and an email campaign. I have to search for a specific email campaign, right? Correct. Okay let me just go to it. You'll go to analytics, email campaigns, then click details. And you might need to watch like, you know, if it wasn't sent by you, like what users are selected. So I already have here the unsubscribed, like the total. But how do you like see the specific email? If you go down at the bottom right, you'll see like a block of like how many recipients, how many opens. The last one called unsubscribes, when you click on that, that'll show you the emails. Because this is also the same when I think this phase is same as sequence. Is it going to be the same where I can see the unsubscribes, the replies and all? Yeah, so when you're doing an automatic email, which is basically it goes out as a campaign. So even though you send it from a sequence, it's going to be tracked over here. Okay. Like a one-off email, like a manual email in a sequence would not, but the automatic emails over here would be doing that. My question is when I was asking to stay around with sequence, we cannot see who unsubscribed. Only if you look at the mail campaign. You'd have to come over here under the email campaigns and go to details to see who. But for a sequence, we cannot see that. Correct. Not from the sequence directly. Yeah, I'm in the analytics and I'm checking sequence results. And then if I'm going to check the name of the sequence here, it gives me all the numbers, right, on the lower left. Yeah, it doesn't tell you who over there. That's currently not a feature. Oh, okay. So is there a way for us to know who unsubscribed? Like this one. I'm checking for the BB sequence, the MKT sequence. We have 30 unsubscribed who opted out. Can we check who that 30? Only if you go to mail campaigns. Mail? Only if you go to the mail campaigns and go to details. Sorry, email campaigns. Right, that's the only place that you'd be able to see the actual emails related to just that send. But it won't be able to see it here, right? It's the sequence. Yeah, you can't see it under sequences. You'd only be able to see stuff like that under mail campaign. Hold on, let me... I'm trying to check it. Give me one second. Yeah, so if it's in the sequence, you really can check that. Only email campaigns has a feature where we can check all those who unsubscribe, reply, but for a sequence, there's no way for us to check it. Yeah, you'll see the number, but it doesn't give you the detail that you're looking for. Yeah, but is there like a way for us to see the details if we go to the sequence? No. There's really no way. Oh, okay. Only in the mail campaigns do you get the details. Hopefully there should be in the future. We can see that who opted out. Okay, I think that makes sense to me now. Robin explaining this, at least I have more knowledge about the opt-out because we're thinking to create separate opt-outs for each of our campaigns. Yeah, you'd have to go over to the mail campaign. So at least that'll... Okay, Robin, thank you so much for your time clarifying this. You are welcome. Have a great week. you too bye bye alright thanks bye",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1450.670689,
+    "salad_processing_time": 60.90916180610657,
+    "overall_processing_time": 1450.670689,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " I made sequence this is Robin hi Robin hello hello yeah hi Robin I actually have a question is it possible that we can create an opt-out link like different opt-out link let's say we have a newsletter will create a specific opt-out for that and we have a different opt-out for a different campaign is it So when you the text of the opt-out is customized but it would be used no matter where you use the opt-out link but when you send a bulk email you would be picking like newsletter is the type of letter so by default when they go to opt-out it they'd be opting out of just newsletters now there is a link once they click it that they can opt out of the other categories as well.  So you mean because we already have an opt-out link when we create a newsletter and if we add that opt-out to that newsletter if they will just be unsubscribe to that specific newsletter but if we add it under a different campaign that's going to be a different opt-out for them so that's just for a specific campaign is that right yeah so basically what it means is and I'm sorry what is your name I'm sorry this is Karen's by the way and what's your last name? Camu.  C-A-M-U.",
+    "job_id": "6ad069e6-f88b-4122-9c16-a30ffd87b0ce",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " I made sequence this is Robin hi Robin hello hello yeah hi Robin I actually have a question is it possible that we can create an opt-out link like different opt-out link let's say we have a newsletter will create a specific opt-out for that and we have a different opt-out for a different campaign is it So when you the text of the opt-out is customized but it would be used no matter where you use the opt-out link but when you send a bulk email you would be picking like newsletter is the type of letter so by default when they go to opt-out it they'd be opting out of just newsletters now there is a link once they click it that they can opt out of the other categories as well.  So you mean because we already have an opt-out link when we create a newsletter and if we add that opt-out to that newsletter if they will just be unsubscribe to that specific newsletter but if we add it under a different campaign that's going to be a different opt-out for them so that's just for a specific campaign is that right yeah so basically what it means is and I'm sorry what is your name I'm sorry this is Karen's by the way and what's your last name? Camu.  C-A-M-U.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3048514712036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

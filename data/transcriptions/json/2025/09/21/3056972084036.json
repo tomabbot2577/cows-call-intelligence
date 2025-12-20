@@ -1,0 +1,104 @@
+{
+  "recording_id": "3056972084036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:06:03.832522Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:06:03",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hey, Tyler. This is CJ with Summit Employment. Hey, how's it going, CJ? Hey, good, man. I've got a new employee that I need to – we've got it connected to Outlook. I just need to – Callie, she called me in for Outlook portal. Yeah, so you need help setting her up with the RingCentral part for the admin setting? Do you mind getting her set up with that real quick? So I can walk an admin-level user for it, but I can't go in and actually change user settings. Okay, I'm going to log in on her computer real quick. Just open up another one. Just go to RingCentral. Does it have to be through RingCentral or PC Recruiter Admin? Through PC Recruiter Admin. Okay, I'm just going to transfer to my line. I do not. I'm going to transfer you to my office real quick. Yep, not a problem. You there? Yep, still here. Okay, let me log into the account real quick. Yep. So under system users. Yep, system users, manage users. And then Callie Walker. Yep, and then in that information tab, you'll see where it says contact phone. Yep. You'll click that little gear icon next to contact phone. You'll go down to RingCentral. Okay. And then in that phone number spot, you're going to type in her direct dial number in the plus one format. So it will be plus one and then area code and then her phone number. Let me see what that direct phone number is real quick. Yes, it is. Okay. Okay. Yep, and you'll put that in the phone number and direct dial number slash SMS number box. Okay. So there's no, like, spaces or anything? Nope. Cool. And we're going to put that same one where? Where it says direct dial slash SMS number. Do we put the extension too? You don't need to. Okay. And then where it says user phone configuration, you'll go into that dropdown and select RingCentral app. Okay. Save. Yep. We got to test it or something, right? So what Callie will need to do is click where it says My PCR at the top of her login. On her PCR? Yes. Okay, give me just a second. I'm going over there. Yep. Let me go to PCR. And then on that MyPCR screen, right above like the today stats, it'll say RingCentral status connection issue re-authentication needed. So just click on that to log into RingCentral. Okay. Okay, and authorize? Yep. Okay, so it's connected. Perfect. So now if she goes to click to dial out of PC Recruiter, it'll just kick it over to the app. So the first time you go to do it, it should ask if you want to open RingCentral. You'll just hit always allow, and then it'll kick it over to call through the app. So we must have missed that always allowed step, right? Did we? Yeah, I'm not sure. Got to go. Yeah, it could have been that. Okay. No. Okay, Laura, cancel. Cancel. Okay. Okay, so I just want to clarify. So it says RingCentral says connected. What do we have to have so it always connects? So that's only like when you go to hit the click to dial. There will be like a browser pop-up asking to open RingCentral. It might already have that permission set. Yeah, we do. Okay, so as long as it's kicking over to the app and you see it dialing the phone call out of the app, you're good to go. Okay, perfect. I think we're good alrighty if you run into any issues just let us know thank you appreciate it have a great day you too",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1669.59959,
+    "salad_processing_time": 25.161057233810425,
+    "overall_processing_time": 1669.59959,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "job_id": "f4876ce2-d6e8-4088-b5be-f7f053ebc630",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3056972084036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

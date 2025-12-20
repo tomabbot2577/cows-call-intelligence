@@ -1,0 +1,95 @@
+{
+  "recording_id": "3089658315036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:19:41.672041Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:19:41",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence. This is Robin. Yeah, hi Robin. This is Greg McDowell with Financial Recruiters in St. Louis. How are you today? I'm good. How are you doing? I'm doing good. I could use your help in solving a mystery. Have you ever seen a candidate record just vanish and disappear from PCR? Usually it means it was merged or deleted. yeah but the only person that has the power to delete would be my president and ceo kevin say there's nobody else on my team should be able to delete it um this guy was he's been on the market for over a year and i just got referred to him again this morning i know he's in our system and i've searched it every way i can possibly search it and he's not coming up anywhere i even just went to the the last company he was in and went to the company record thinking maybe somebody When you look at the URL of your database, like when you look at the link, right after it says ODBC, what does it say there? You're talking about at the top? Yeah, where you see like HTTPS, www.peacerecruiter.net? Yep, .asp, question mark, UID, equal sign, ABDC, Connective Services. and connective services right it goes connective services the and symbol style sheet equal light blue and okay okay um my president ceo is actually traveling back from florida today and i told him about this and he goes what and i go i asked i asked him go did you delete patrick pacheco from our system. He goes, why would I do that? I'm like, I don't know, but he's not there anymore. And I'm sorry, what was your name again? It's Greg McDowell. Okay. Are you an administrator of the database or just he is, right? Just Kevin is, yeah. I don't think he made anybody else. Connected Services Database? Yes. I thought maybe somebody... And how do you spell the candidate's name? Sure. It's Patrick, P-A-T-R-I-C-K. Okay. Last name is Pacheco, P-A-C-H-E-C-O. I'm looking at his profile on LinkedIn right now. I'm like, what in the world is going on here? So I'm thinking, do I import him again? Or is he in there somewhere? I just can't find him. There's an Eileen, Orly, Juan, Pacheco, Louise, Bill, Pacheco, Josie, Tony Pacheco. Okay, those are just the names with the last name Pacheco. And he's in Houston. Formerly with Cadence Bank as about a year plus removed. cycling bin let's see Pacheco does not appear to be deleted I was wondering if maybe somebody accidentally just butchered his name or something in the name record and maybe put a space in there or something it wasn't coming up but I went under the company record to see if I could find there's a Patrick Pacheco that was deleted there is one P-A-C-O okay he got deleted the name record deleted on April 10th by a username called Legacy. Wow. Okay. And then there was an activity for him that was deleted before that. Do you want me to restore this record? If you could, please. Okay. Restore. I think he must have accidentally did that because I don't think he meant to do that. Or maybe it was our offshore person. Who knows? Now, the username said legacy. Yeah, so Kevin can be under legacy or admin, I think, is either one. I'll ask him. Well, the legacy username is the user that actually deleted it. Okay. It tells you who actually deleted it. So if you do a search now, he's with Cadence Bank. Yep, that's him. He's back. Jeez. Well, that was magical, and I do appreciate your help. But, yeah, that shouldn't have happened. And he is a viable candidate for us. All right. I got him. What did I say? April 10th? Yep. I wrote it down. I wrote it down. 410 deleted by legacy username. I'll get with Kevin and let him know, and we'll figure it out from there. All righty. Well, thank you. Thank you for your help, Robin. Oh, no problem. Bye. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 2073.647188,
+    "salad_processing_time": 24.875033140182495,
+    "overall_processing_time": 2073.647188,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Yeah, hi Robin.",
+    "job_id": "f8652bca-a3bf-40e3-ae0e-5688c6bebcba",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Yeah, hi Robin.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3089658315036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

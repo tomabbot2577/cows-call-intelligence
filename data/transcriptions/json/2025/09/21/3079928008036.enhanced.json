@@ -1,0 +1,112 @@
+{
+  "recording_id": "3079928008036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:14:18.583193Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:14:18",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Good afternoon. Kathy speaking. Hi, Kathy. This is Robin Mantoni with MainSequence. How are you? Good. How are you? I am pretty good. So we would need a check sent to the P.O. box on the invoice. Okay. Okay. So what we're going to do is we're going to go ahead and turn the database back on. Okay. But if you can get that out to the P.O. box. Okay. And then we'll get it for you within the next week. we'll just make sure that gets out to us yeah sure um like i said i can i can send it um by the usps if you needed me to yeah just do it to the well i think if you did like an overnight or whatever then you can't do it to the po box we basically closed our office because we have many people working from home like their rent wasn't that justified it was pretty large yeah so um yeah so we um just have the text going to the po box we just got it picked up okay all right so should i not send it overnight to the po box or is it okay that i do i can you do it overnight to a po i'm not even sure you can you can do it uh united states post office overnight you can't do a fedex to it though okay yeah um yeah if you want i mean if it gives you an extra cost i would say probably don't do that okay okay um but i did send you the check copy Yeah. Yeah. Okay. Okay. All right. I will make sure that I get this right out for you, Dawn. Okay. Thank you so much. And I'm just trying to get in touch with our server administrator to get it turned back on so it should be on shortly. Okay. No problem. Thank you so much. I appreciate it. Thank you. All right, honey. Have a great day. You too. Bye. Okay. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1921.421157,
+    "salad_processing_time": 6.17445969581604,
+    "overall_processing_time": 1921.421157,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Good afternoon.  Kathy speaking.  Hi, Kathy.",
+    "job_id": "f5482a97-19c1-49fe-8011-683b6e0979bf",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Good afternoon.  Kathy speaking.  Hi, Kathy.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3079928008036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

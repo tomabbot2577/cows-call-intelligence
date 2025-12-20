@@ -1,0 +1,112 @@
+{
+  "recording_id": "3022603178037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:35:55.793766Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:35:55",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Name Sequence Technology. This is Garrett. How may I help you? Garrett, Ben Williams. How are you doing? Good. How are you doing? Good. So, well, I got you two quick questions. So did you get an answer back on that, would I need to sign the MUVID database? That's the first one. Let's see. I'll look up the ticket and see where it's at currently. And then on the other one, I need to see what fields are being pulled by this one report that's in the database. I think they're all involved in. Okay. So I'm pulling up our ticket. we have open where we're changing the name of your database. Let's see. Okay, last thing here is reaching out to send a message to my supervisor asking If there's a different document you can sign rather than the standard consulting document, I think that's where it lies. Is that still the case? You want to sign a different document? That document is like how many pages long the one you sent me? Oh, I'm not sure. Yeah, it's just our standard. If we make any changes to a database, we just need that document signed before we can make changes. It's just the standard one we send out. It was probably from William Kubicek. I suppose last name. K-U-B-I-C-E-K. For the PandaDocs? Yeah, exactly. This is the one that I sent out. for the panda docs yeah exactly uh this is the one that i found in 2024. okay um the email address also might be docs email.pandadoc.net it could be either one okay um other question you have like a um just like a sql editor and you're adding the drop and drop the drop and add certain fields. I don't want to have to get it right in some custom queries. I can but I've got to get the database from you and all that kind of stuff. But I think it was like a little SQL editor. But I have, there's two reports in here that I think were developed for us. Can you go into my database and just take a look? Because those reports aren't pulling any data right now. Okay, yeah, let me take a look here. So if you go under Contractor, Contract and Temp, what's it called? Under Reports, under Contracts slash Temp Reports. Okay, voting now, Contract Temp Reports, okay. Okay, and there's a contract, there's a split report and a commission report. Are those standard in your database or those custom ones for our database? Those are standard. You'll have to have split desk turned on for your database. Let me see if that is currently turned on. What is split desk? So that's where you would give percentages to different team members for making placements. Yeah, it looks like you do have that turned on for your database. Okay. Okay, so definitely need that. Splits reports. Okay. Is there a certain period that you've made placements? I could run this. I'll try running the splits report. Yeah, I just ran it for the week of the 28th. Okay. It didn't give me any results. All those reports when I pull them says no records filed. So it looks like it's pulling from somewhere. I just added some hours and other stuff in, like, yeah. like if I pull the time profit report that one now shows me a result so I think that it just needs to there now is a split is a split shown in the database yeah that's right guys what do I have to split what do I have to split I think you go to system in the main menu up at the top and then just type in split desk in the little search bar on the left and on the right you'll have results with split desk just go to the one that called called split desk and this will show you looks like you're using ownership fields on the candidate company position records so these are the percentages that people will be getting for movement and Now this is standard, right? This is standard, right? I can't change the first. I don't think so. You can change these. It usually would total up to 100%. So it looks like these have been edited to only total up to 17% currently. Yep. I'm looking at it right now. Yep. Okay. okay oh and I did this flip desk I didn't see the same as an option okay so what is permission only mode it says flick that configure permission only mode enable that would be where you're not using percentages you're just entering in a commission as you make a placement like a number rather than using percentages of a that it calculates for you so then yeah you asked about the SAM one it looks like if you go to the setting or the system search you did for split desk there's another result called split desk types we have Sam listed there it looks like it was added we let's see I don't remember how to turn that one so great so the question is okay you said it needs to be so right now if I go to split that okay i think the way that it used to set up is that means whoever owns the candidate gets 17 it's seven percent whoever owns the position gets ten percent that would that would be very much of how we um uh how we set it up with our uh okay with our recruiters and sales so So you said it should all add up to 100, correct? Right. So if you don't have yourself as a team member, maybe as the owner, getting the other, I don't know, I'm not good at math here, the remaining 82% or 83% or whatever it would be, then that's fine. But that's where it would be adding up to 100 if you had yourself listed in there as getting the rest. Okay, so... Go ahead. Go ahead, sorry. So that should show up on to the... on one of the files somewhere, right? Yeah, so... That should show up on a report like the commission report, correct? The commission report would be if you're enabling commission mode and you're not working with split-deaf percentages, You're working with commissions instead. So I don't think you would be looking in the commission report. You would probably look in the other report where it is split related. Let's see. See, I'm just kind of reading through. There's a split desk article that walks through and all the different ways to use that tool. There is a lot of setup involved. Maybe if I sent this article over, it would help kind of give you an overview of how to really set that up and start utilizing the split desk. There's a few different options. Let me kind of go through something quick and explain to you what the intent is. If you go to reports and you go to SQL custom reports, and it says timesheet export and burning report. We just look at that and let's look for a period of this, the 6th to the 12th. Okay, so then we... All right, so when you look in this report actually let me let me go to the time sheet that's like better So that would give you the so no two contractors Hours We could a 28 search it Okay, so if you look at Sean Allen at the top there if you go under him and hit edit Okay, so under his other where it says margins, okay, so that week Sean Allen's adjusted gross profit, we call it spread, but AGP is perfectly fine, is $532.26. So the SAM would get 10% of that, and the recruiter would get 7% of that. But, I mean, that could – that's typical. So I guess we should probably enable commission mode so we can we can make that flexible that without what you're telling me commission mode Is was more flexible? It's just a different way of calculating you wouldn't be using split percentages to calculate things You would just enter in a single number. Here's the Commission for this user Here's the Commission for this user and that's all that's that you say a single number you put in the percentage It'll you put in your dollar amount dollar amount So you could use splits, which is using the percentages, or you can use commission mode where you just type in, here's the commission as a dollar amount. Okay. So where do I see that? Where do I see this breakdown here? Like under margins, where do I see that? We used to have a report where it listed all of the stuff on there. I'm not exactly sure here. I think I got lost when you were kind of showing me. So I went to the contract and I did hours. And then I went, you said week 28 hit search. Yeah. And so now I have Sean Allen. And are you clicking on the timesheet here and going to edit? Yes. Okay, awesome. And then you said, okay, so margins down below. All right, I've got that pulled up. So what's the question about the margins here that you were asking? Well, all of this stuff used to pull onto our report, and that's how we had our commission. Okay. And I thought what we pulled was reports, go to contractor slash temp reports, and it was commission. But now when I run that or I run the split report, I don't get anything. And I think it's not getting anything. Now if I think about it, you know, databases, because we probably would have had to set up a tool from the SAM and the other one. I don't know. Let me fix that. I can do that right now. You said system. Where was the split thing to go again that was under where? Go to system in the main menu at the top and search for split desk on the left. Yep. Yes. When I go there, I don't have an option to put SAM in recruiter. And I think that report is – those reports are looking for SAMs in recruiters in that area here. Okay. Okay, so let me go back to the Learning Center article about the alternate way of setting up split desk. Let's see. So creating split types. That's where I think we're not getting any data because it's not – those reports are looking for – because it was – at the time, I think it was custom you guys had to do it. You must have made a standard over time. Okay. So you see where we have the split desk types. And you have recruiter and SAM at the bottom. Yeah, right here we've got NA for – on our database we can't even – we can't even edit the candidate owner, company owner interview. We can't even edit those. Those are standard. The ones that you've added down below are Recruiter and SAM, so those can be edited because they didn't come with PCR. Okay. So, split desk created. Split desk can be applied to placement. Okay. So, let's put this configuration, use ownership fields on candidates. When you do this, you'll see the field become editable. Okay. Yeah, I just played around with it. It's not coming in, so. Gotcha. Gotcha. I might need some time to kind of research this. I'll just kind of read the split desk article and see how you have your setup versus the different options of setting up split desk. I think that's kind of what's configuring into this report networking. I think there's two separate or two or three ways you can take with the setup where you're using ownership or not or using commission or not. I'll just research this a little bit more and then get back to you as soon as I know a little bit more about that. That sounds good. Let me just take this back to the split test and get rid of the... So, company alert is zero. Commission alert is 10. All right. Yeah, let me know what you find out. Sounds good. Thank you. Thanks. Have a good one. Oh, thanks.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 713.94099,
+    "salad_processing_time": 37.1022891998291,
+    "overall_processing_time": 713.94099,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Name Sequence Technology.  This is Garrett.  How may I help you? Garrett, Ben Williams.",
+    "job_id": "bfd5f4fc-841a-4506-8602-6df3963213a3",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Name Sequence Technology.  This is Garrett.  How may I help you? Garrett, Ben Williams.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3022603178037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "recording_id": "3039131672036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:49:18.883374Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:49:18",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling me in Sequence Technology. This is Tyler. How can I help you? Hey, Tyler. It's Sharon with Winona Search Group. How are you today? Good, good. I'm looking for a little help. I thought I could figure out what I'm doing here, but maybe I'm doing something wrong. Yeah, what's going on? So when I do, for example, I pull up just under names and I do a search that I want everybody, and this is in our title database, and I want everybody in the state of Indiana. So I go to state, I type in IN, I pull up the results are, wow, that was different results than I expected, but whatever. So I'm looking at the results page of whatever my basic search is, and the columns, how wide they are, are an issue for some people because they can't see all of the columns because some are so wide, and there's some that we're not using much anymore. So I went into the little gear icon up there to customize, and I went to the results page tab, and I selected, say, category. I selected category, and then it shows width, and it was at 100, so I changed it to 50. So I thought, well, that'll cut it in half. We'll see how that looks. Where are you seeing category? Category is one of our custom. It's a custom field. Oh, I see what, yeah. Yep, so I'm looking at my results, and category is one of our custom fields we have created. Yeah, let me pull in this. And all the fields could use a little tweaking, but specifically category and sub-region are way larger than they need to be. So even if you went on like sub-region, which is another custom one of ours, like I had changed it, I think I changed that one down to 25, it was at 100, and it still didn't seem to change the width of it for me for some reason. I tried moving things around, so I moved worked phone and cell phone up above category and region because it's more important to see them on the screen so if that's the only thing I can do then that's still an improvement and so I move them and so now they are showing up and it bumps the other ones further back but but I'm just I know that I should be able to change the width of these columns I mean it's so normally you on pages like this you really can't other results screens you can okay let me try and change something here on my end. And the other fields are all smaller and appropriate size. The ones that are the standard ones like city, state, work phone, cell phone, region, those those are all. So those ones are pre like hard-coded into the database. Custom fields is where you run into trouble okay so they can't be adjusted them even though it shows in the settings thing it shows that I can change the number but that doesn't seem to matter if I put the number at 150 or 25, the field stays the same. And I'm like, I just thought that's odd that they offer me that option. It's something that we're working on. So let me see here again. Yeah. Yeah, because I know with these new layouts, like the themes, there are going to be changes being made. So before these themes, like this newest theme came out, being able to select the width wasn't even an option. But we are making it so those should be able to be customized here soon. It's just not available right now. Like that part of the feature came before the actual feature just for layout aesthetic purposes with the updates. Okay. So even though it lets me change it to 50 and I save it and I refresh and it looks the same and I go in and it says it's at 50, but it's still as big as it was, it's not really changing anything when I save that? Not yet. Not yet. That part is coming. Okay. Yeah, as of right now, there's not really a way to change those search results, the layout widths. Okay. Okay. Okay, so then one other question on that same thing. So like now I've got say 300 results on a thing and so I'm scrolling down through the results. Is there a way to do like a freeze pane with the title headings on each of the columns? because I've got like the work phone and the cell phone side by side on there. And if I move them around like I just did now, if people are scrolled down and they're on, you know, the results further down the page, they see the two phone numbers, they're like, is that the cell phone or is that the work phone? And then they got to scroll up to the top of the page to find that. Is there something I can adjust? No, that is not a feature that's available. Okay. That would need to be put in as a feature request. Okay. All right. Well, I would think that would be something other people would like because, I don't know, like when I'm working on Excel sheets, you know, I always freeze the column headings. No matter where you're scrolling, you still have your headings. Yeah. I could definitely see it being useful. All right. All right. Well, I guess I'll just tell them that this is just the way it is, and they'll have to live with it. Yeah, at least for right now, like I said, that is a feature that we are working on, being able to adjust those columns. But unfortunately, for the time being, it's just kind of stuck that way. Okay. All right. Well, thanks for the input, and you have a good day then, Tyler. You as well. All right. Thanks. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1163.247819,
+    "salad_processing_time": 44.74389314651489,
+    "overall_processing_time": 1163.247819,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling me in Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "job_id": "c0f486bb-3970-4074-b621-f60431e4b72e",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling me in Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3039131672036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

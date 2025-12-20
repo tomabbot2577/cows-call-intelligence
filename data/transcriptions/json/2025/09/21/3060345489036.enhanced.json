@@ -1,0 +1,124 @@
+{
+  "recording_id": "3060345489036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:09:09.755357Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:09:09",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hi, how are you doing today? Good, how are you? I'm okay. I have some issues going on with your guys' app. So I have the app on my phone, and it says that I'm not currently able to log in on my phone, but I'm only able to log in on my computer. Okay. Are you like a PCR user or a contractor trying to clock in hours? I work for the company that assigned me to this app. Okay. I see. So what is the company that assigned you to the app? Preferred Talent Solutions. Okay. Preferred Talent. since you are in our like system we consider you like a contractor where they they've hired you in and it's best to reach out to preferred talent solutions they might have to resend you an app invite email but so I called a little earlier I didn't mean to interrupt you but I called a little earlier around eight ish and I was told to do the same thing so I called back now I'm able to log in on my computer, but I just kind of want to know what's the issue of me not being able to log in on my cellular device. Okay, cool. Yeah. Most of the time, that would be that when they send you the app invite email, we see people where they'll click download on the app, and then you're actually supposed to go back to your email and hit activate link or the activate button before opening the app for the first time because when you click on the activate button it actually loads in all of your particular information about your job so if you did happen to open the app before going back to your email and clicking activate it probably is not synced up so if that's the case I would just try uninstalling the app reinstalling it and then make sure you click on the activate button that they sent you in the email before opening it. Okay, so opening it through my email on my phone, not the computer? Right, exactly. Okay. Good morning. Yeah. So, and I could, if you want to stay on the phone while you try that out, I can walk you through it. I will actually call back again tomorrow because I'm able to just log in on my computer because I just got a new phone, and I'm not able to log in through my email. Oh, I see. On the phone. Okay. To get that activate link. I see. Okay. All right. Yeah. So maybe, yeah, call back if you have trouble. But, yeah, I think it would require preferred talent to send you that invite again so you can open that email on your phone so that you can follow the steps up. So I would have them to send, I would have them resend the email if they were to do it on my phone. Yeah, exactly. Okay. All right, yeah, and just remember to install that. Oh, yeah, awesome. Sounds good. Reach out if you need anything else.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1768.200334,
+    "salad_processing_time": 14.592469453811646,
+    "overall_processing_time": 1768.200334,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, how are you doing today? Good, how are you? I'm okay.",
+    "job_id": "c15f607e-2836-4f8b-84db-fe13a60f1cc1",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, how are you doing today? Good, how are you? I'm okay.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3060345489036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

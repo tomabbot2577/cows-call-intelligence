@@ -1,0 +1,112 @@
+{
+  "recording_id": "3031742128037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:44:05.107898Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:44:05",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hi, this is Melinda Hooser. How are you? I'm good. How are you doing? Good. I'm with Owens Medical Placement. I cannot get emails to go out this afternoon. I've been able to get them in, but I can't get them out. It's doing that message, uh-oh, you know, that it does. Okay. Is it one? I'm going to ask this first. is it one particular person that it's happening to? Yes. Yes. Okay. Before I dig you on a rabbit hole, is there anything odd about that person's email address? Like maybe missing like the at symbol or like .com? I've seen that also happen. Let me make sure. like if it was robin at main sequence com without the dots i've definitely seen that being a problem before no oh yeah i've seen that no this is jason dot everything's last name at gmail.com okay i can try really quick while i have you on just to email somebody real fast and see let me make sure um like what database are you in what database um yeah but i see you have it tech and omp recruiters oh it's omp recruiters i'm sorry okay that's okay and what username do you go in at I think I put in, hold on. I think it's MPH. MPH, okay. Who is the person you were emailing? His name, he's got a really long name here. It's Jason and then it's D-I-C. Oh, I see him. Okay. I got it. Okay. Just ping. Oh, gosh. I'm having to be a little kid having to spell that. Question for you. When you go in, do you see where it's always defaulting a person's name? I'm sorry. Say that one more time. When you go to name and do a search. Does it bother you that it's always defaulting somebody's name in there? Yes. Okay. I asked our administrator to fix it, but she hadn't fixed it yet. Oh, they don't have to. You can do it. So here's what happened. You can pick what fields and even what values you would want to have stored. And if you hit save as default before you hit search, it remembers it. So all you'd have to do is go to name. Okay. and where it says first name Chris make sure you clear out Chris completely okay don't leave an extra space in there and what says last name osull clear out that completely okay then hit the save as default box are you serious that's all I have to do click search yeah that's all you have to do oh Ben thank you yeah so what it is like especially like if you wanted like oh when i'm looking for jobs i always wanted to be available you could just say status and then a and then we don't have to put it in every time so if you did it also yeah so next time you go back it's gone okay so let me look at perfect it's gone emailing okay jason oh okay yeah there is a problem with his email address okay so it looks like in the second column first field there's no dot between gmail and com and that's why it's your mail that's why it's doing that i don't know why it because i've populated it in the okay well let me that's because i had populated it when i went into Let me go into position record. Jason. Okay. All right. I will fix that. Thank you so much. Because you are able to email other people, right? It was just him? It was just him. Yeah. Okay. Yeah. So that is why. Thank you so much. I really appreciate it. You're welcome. Have a good week. You too. Bye-bye. Thanks. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 994.071366,
+    "salad_processing_time": 20.433104753494263,
+    "overall_processing_time": 994.071366,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hi, this is Melinda Hooser.  How are you? I'm good.  How are you doing? Good.",
+    "job_id": "b187767e-c95b-40f4-b29b-7f82a35d20fa",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hi, this is Melinda Hooser.  How are you? I'm good.  How are you doing? Good.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "resolved",
+    "first_call_resolution": true,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": true,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3031742128037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

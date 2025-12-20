@@ -1,80 +1,21 @@
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-venv/
-env/
-ENV/
-.venv
-
-# Environment and secrets
 .env
-*.env
-config/google_service_account.json
-config/*.json
-!config/example.json
-
-# Data and logs
-data/audio/
-data/transcripts/
-data/audio_queue/*.mp3
-data/audio_queue/*.wav
-data/processed/*.mp3
-data/failed/*.mp3
-data/transcriptions/json/*/*/*/*
-data/transcriptions/markdown/*/*/*/*
-data/n8n_integration/queue/*.json
-data/n8n_integration/processing/*.json
-data/n8n_integration/completed/*.json
-data/n8n_integration/failed/*.json
+*.pem
+*.key
+*credentials*.json
+__pycache__/
+*.pyc
+venv/
+*.mp3
+*.wav
+*.jsonl
+exports/
+audio/
+recordings/
 logs/
 *.log
 
-# Database
-*.db
-*.sqlite
-*.sqlite3
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-.DS_Store
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
-
-# Temporary files
-*.tmp
-*.bak
+# Secrets - NEVER COMMIT
+config/google_service_account.json*
+config/vertex_ai_service_account.json*
+*service_account*.json*
 *.backup
-*~
-tmp/
-temp/
-*.out
-downloaded_ids.txt
-batch_processing_summary.json
-queue_summary.json
-ringcentral_recordings.json
-test_batch_results.json
-test_output/
-
-# Deployment
-deployment.tar.gz
-*.tar.gz
-*.zip
-
-# Documentation build
-docs/_build/
-docs/.doctrees/
-
-# Local development
-local_settings.py
-scratch/
-notes.md

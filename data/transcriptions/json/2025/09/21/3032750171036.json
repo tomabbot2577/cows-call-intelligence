@@ -1,0 +1,95 @@
+{
+  "recording_id": "3032750171036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:45:02.011894Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:45:02",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence. This is Robin. Hey, Robin. I'm trying to send out a bulk email for some help. Okay. Is it not sending and you normally know what you're doing and all that kind of good stuff? I've never sent one through PCR before. Okay. I set it all up and I hit send. It was scheduled to go out yesterday. and if I go into my analytics I think it says it was sent but then if I go like person by person none of them actually sent so I submitted a ticket at one point they said to change the delay between my emails but I just figured I would I would reach out to someone and um and who is this who am I yes my name is Ryan oh okay oh I was the one that replied um yeah there's a delay between emails but I'm also like when I'm trying to go to background processes um i'm not seeing now when you sent it did you get any kind of error no i didn't get any error no no nothing like that um i changed the the delay time but yeah i just read i'd call because i don't know like do i need to go cancel the one i did previously before i redo it now or i'm not sure because i also like i try to go to background processes to see what you had and i'm also getting like an error when I go there. So, but I'm also getting at my database too. So I need to check with our team to see what's going on. I don't have an instant answer for you at this moment, but I'm trying to get ahold of them right now. I want to see if there's something like hung up with the table maybe, but I'm waiting for them to reply back to me right now. okay but that's fine it's not like an easy three hour at the second um do you want to just connect later once they've had time to yeah yeah i'll have to get some feedback okay if probably you want you can just call this number instead of talking over email if that's easier for you okay all right i will know what i find out awesome appreciate it bye",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1024.319661,
+    "salad_processing_time": 16.213411331176758,
+    "overall_processing_time": 1024.319661,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Hey, Robin.",
+    "job_id": "766ea9f2-6019-4446-a2ad-812d4f37360b",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Hey, Robin.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3032750171036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

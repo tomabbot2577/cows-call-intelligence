@@ -1,0 +1,121 @@
+{
+  "recording_id": "3092336385036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:22:13.830085Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:22:13",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hey, how's it going? Yo, I was just on with Rich Loeb for like 30 minutes. Oh, okay. Still nothing. Oh, gosh. And as LinkedIn recruiter light, he mentioned working. Is that still the case? Yep. Okay. And it isn't working in Edge either, which is even weirder. Like we tried to clear site settings. settings. We've tried changing his theme. Wow. Did you mess with the Google Chrome profile at all? No. He was already on his personal one. Oh, he was. Okay. His work profile, his work email is through Google. Okay. Got it. that is really strange that it works on LinkedIn Recruiter Lite but not public LinkedIn yeah just trying to think like I was comparing settings to like mine and couldn't find anything like we turned memory saver off okay yeah the is LinkedIn recruiter like a okay workaround for him maybe or is he really intent on getting LinkedIn working he's pretty intent on getting LinkedIn working okay I just don't know what else to try yeah we have tried a lot like we cleared out his cache again because the first time he did it he wasn't set to all time okay but I have him restarting his computer now like actually like full shut down wait two or three minutes then he's going to load it back up I told him to message you in the ticket if it didn't come back but like I I don't know. Yeah. It's the longest list of troubleshooting steps I've seen on a capture date. Well, these ones are always the worst because we can't reproduce it. Exactly. Like, we can't even reproduce it using his LinkedIn credentials. Mm-hmm. so it's Microsoft Edge doesn't have you sign in like you know how Google Chrome has you use a Google Chrome profile and so that leads me to believe that it's the not the Google Chrome profile thinking about a little bit further because I was going to say what if we had him give us his Google Chrome profile to sign into on our Chrome but it doesn't make sense because Microsoft Edge doesn't utilize that and it's not working yeah I have no idea two separate computers of his I'm like, I stood up, I started pacing. It's really, my brain's run out of options here. is there anyone else on the team that we could you know give them to have another set of eyes i don't think uh i don't really think so yeah nobody on the um development team can do anything like We said because of the login doesn't matter on our computers. No. When dev's not going to get on a support call. No. Ain't nobody got time for that. he just emailed me still not working from Richard what was it about yesterday morning that he said it was working for him um can it be could it be an internet connection um issue where the page has trouble loading fully and times out it could but he's he's using a wired connection. It doesn't mean it couldn't be slow still. Laptop. I wonder if he could get on a different connection, take his laptop somewhere and I don't know that's grasping at straws maybe and when you were on the screen share with him today did you notice if his computer looked like it was out of date or like an older anything like that he did say it was a couple years old okay It does have the latest looking Windows stuff, so at least the operating system is up to date. Yeah, I don't know. I really just don't know. Same here. I guess we'll... Do we throw it back out to the group? Whoever has time, throw out a troubleshooting suggestion on this ticket? Yeah, I would maybe tag Nick first. Okay. You gotta give us a lifeline here. Right. What's our next option? Yeah. Okay. I'll tag Nick and see what he suggests next. Alright. Thanks for the update. Yep, thanks, Hank. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 2151.245149,
+    "salad_processing_time": 44.36030697822571,
+    "overall_processing_time": 2151.245149,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hey, how's it going? Yo, I was just on with Rich Loeb for like 30 minutes.  Oh, okay.  Still nothing.",
+    "job_id": "1c957e48-30bf-48a0-b874-b03ca2145d0e",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hey, how's it going? Yo, I was just on with Rich Loeb for like 30 minutes.  Oh, okay.  Still nothing.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": false
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3092336385036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

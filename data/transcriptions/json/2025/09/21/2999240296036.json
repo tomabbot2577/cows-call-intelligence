@@ -1,0 +1,100 @@
+{
+  "recording_id": "2999240296036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:12:18.875451Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:12:18",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling the IT department. This is Tina. Hi, Tina. It's Jim Lombardo with PC Recruiter. How are you? I'm good, thanks. How are you? I am pretty well. I wanted to give a call here. I have an email from some of my team was talking about you who just added some users, and I think that you needed some sort of a proposal to go annually or something like that? Yes. Yes, that's correct. Okay. And a proposal, I was thinking we don't really have a proposal. We just use the agreement. So would it work to send you a new agreement starting in July, starting maybe July 1st, so that that would then match your payment period to go annual? Yeah. So what we usually do for annuals, we write a purchase rec. So we would want a, we just need a quote for like the next, for an annual subscription for the four users. and then our secretary will create a purchase record, and they'll pay for that whole thing up front. Okay. So would the quote even work if I just sent you over an email with, here's what it would be for four users annually? Or do you need something more formal? I think it needs to be a little bit more formal, like, you know, with your, like, letterhead and all of that. Okay. Okay. Let me see what I can do. So had you all given any more thought about upgrading to the premium package at all? It has the email campaigns and the analytics, sequencing, stuff like that? I think we talked about it. I mean, I'm in IT and I don't really use it. That would be an HR question. I mean, if you wanted to, I could ask HR if they wanted to set up a little meeting before we go any further and see if there's other functionality that they were interested in. Yeah, yeah, if you could. Or see if someone might reach out to me. We could set up a call and then maybe, depending on what you decided to do, send over a new agreement for the year, annual, whatever that would be. What is the – approximately what's the price difference between the two plans? $20 more per user per month for the premium package. So it takes you from $95 to $115. Okay. Just because I have a meeting in a couple minutes, would you be able to send me an email with a little bit of information about that in it, and I'll forward it to the appropriate people in HR, and I'll connect you guys so that they can schedule a meeting. Absolutely. I can do that for sure. Great. Thank you. All right. Thank you. I'll send that over in a little bit. Okay. Okay. Bye-bye. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 520.543788,
+    "salad_processing_time": 17.274981260299683,
+    "overall_processing_time": 520.543788,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling the IT department.  This is Tina.  Hi, Tina.",
+    "job_id": "fa58357a-082e-44e8-8b0f-412bcbdca9cf",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling the IT department.  This is Tina.  Hi, Tina.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Billing",
+        "confidence": 0.7
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "billing",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/2999240296036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

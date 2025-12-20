@@ -1,0 +1,344 @@
+{
+  "recording_id": "3098888770036",
+  "analysis_timestamp": "2025-12-19T22:15:18.369438",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Evelyn Alonso",
+        "role": "calling from Safra National Bank",
+        "company": "Safra National Bank",
+        "confidence_score": 0.9,
+        "validation_reason": "Clearly identified as a customer calling from Safra National Bank"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "account_management",
+    "CALL PURPOSE": [
+      "Resolve billing issue",
+      "Seek approval for changes"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Jim Lombardo",
+      "Company/organization name": "Safra National Bank",
+      "Phone numbers mentioned": null,
+      "Email addresses mentioned": null,
+      "Key decision makers referenced": null,
+      "Team members and their roles": null
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": "Banking",
+      "Company size indicators": null,
+      "Technology stack mentions": null,
+      "Current challenges/pain points": "Difficulty in following internal processes, legal team not approving requested changes",
+      "Growth stage indicators": null
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": "Evelyn has been in back-and-forth communication with Jim regarding an agreement",
+      "Existing service usage": null,
+      "Account history mentions": null,
+      "Relationship duration indicators": null,
+      "Trust level indicators": "Evelyn and Jim are working together to find a solution"
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "technical",
+      "issue_severity": "medium",
+      "technical_complexity_level": "medium",
+      "time_sensitivity": "medium"
+    },
+    "resolution_tracking": {
+      "issue_status": "pending",
+      "resolution_steps_taken": [
+        "Discussion with customer to understand issue",
+        "Agreement to review and revise documents"
+      ],
+      "outstanding_action_items": [
+        "Jim to review and revise documents",
+        "Evelyn to review and send to her department for approval"
+      ],
+      "next_steps_required": [
+        "Jim to send revised documents to Evelyn",
+        "Evelyn to review and send to her department for approval"
+      ]
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "medium",
+      "number_of_contacts_required": "2",
+      "self_service_opportunities_missed": "none",
+      "knowledge_base_gaps_identified": "none"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "collaborative",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "good",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Positive engagement and willingness to resolve issues",
+      "trust_level_signals": "High, as both parties are openly discussing challenges and solutions",
+      "communication_style": "Collaborative and proactive",
+      "rapport_quality": "Strong, with mutual respect and understanding"
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Advanced, dealing with final document adjustments",
+      "product_adoption_level": "High interest in the system, indicating readiness to finalize adoption",
+      "feature_utilization": "Not explicitly mentioned, focus remains on contractual agreement",
+      "expansion_opportunities": "Potential for future enhancements and deeper integration once initial agreement is settled"
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Effective communication and mutual effort to accommodate each other's processes",
+      "risk_indicators": "Legal and procedural delays could hinder final agreement",
+      "loyalty_signals": "Both parties are showing commitment to resolving issues",
+      "advocacy_potential": "High, if the current negotiation concludes successfully"
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone calls followed by emails for document review",
+      "response_time_expectations": "Prompt, as indicated by immediate discussions and follow-ups",
+      "information_style_preferences": "Direct and focused on problem-solving",
+      "decision-making_patterns": "Collaborative decision-making with a focus on compliance and simplicity"
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "I've been back and forth with legal. I ask them to please help me out, to do this, to do that.",
+      "My group just changed their procedure just because the cost got astronomical to have a legal team review everything.",
+      "Let's try to make this happen. I'll have to make sure so we can put that.",
+      "If you can help me putting that and maybe we can review together, that would be great."
+    ],
+    "qa_pairs": [
+      {
+        "question": "Is this Jim Lombardo?",
+        "answer": "This is."
+      },
+      {
+        "question": "How are you today?",
+        "answer": "I am well, Evelyn. How are you?"
+      },
+      {
+        "question": "So I sent you an email yesterday. Let's see if we can work this out.",
+        "answer": "Certainly. Certainly."
+      }
+    ],
+    "searchable_tags": [
+      "legal process",
+      "cost management",
+      "compliance",
+      "document review",
+      "banking",
+      "procedure change",
+      "email communication",
+      "internal process",
+      "agreement",
+      "cost reduction",
+      "team collaboration",
+      "document draft",
+      "review process",
+      "cost efficiency",
+      "legal team"
+    ],
+    "semantic_themes": [
+      "Legal and Compliance Process",
+      "Cost Management and Efficiency",
+      "Collaborative Document Review"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 60,
+      "Customer talk percentage": 40,
+      "Balanced conversation indicator": "Somewhat Balanced"
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 2,
+      "Number of interruptions by customer": 0,
+      "Interruption impact on flow": "Minimal"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 10,
+      "Awkward pauses detected": 1,
+      "Hold time indicators": "None"
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": true,
+      "Company name mentioned": true,
+      "Verification steps taken": true,
+      "Required disclosures made": false,
+      "Proper closing used": true
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": "Medium"
+    },
+    "agent_talk_pct_calculated": 38.4,
+    "customer_talk_pct_calculated": 61.6
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 38.4,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "legal process",
+      "cost management",
+      "compliance",
+      "document review",
+      "banking",
+      "procedure change",
+      "email communication",
+      "internal process",
+      "agreement",
+      "cost reduction",
+      "team collaboration",
+      "document draft",
+      "review process",
+      "cost efficiency",
+      "legal team"
+    ],
+    "semantic_themes": [
+      "Legal and Compliance Process",
+      "Cost Management and Efficiency",
+      "Collaborative Document Review"
+    ],
+    "key_quotes": [
+      "I've been back and forth with legal. I ask them to please help me out, to do this, to do that.",
+      "My group just changed their procedure just because the cost got astronomical to have a legal team review everything.",
+      "Let's try to make this happen. I'll have to make sure so we can put that.",
+      "If you can help me putting that and maybe we can review together, that would be great."
+    ],
+    "qa_pairs": [
+      {
+        "question": "Is this Jim Lombardo?",
+        "answer": "This is."
+      },
+      {
+        "question": "How are you today?",
+        "answer": "I am well, Evelyn. How are you?"
+      },
+      {
+        "question": "So I sent you an email yesterday. Let's see if we can work this out.",
+        "answer": "Certainly. Certainly."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Jim Lombardo",
+      "extension": "5401",
+      "phone": "6145401",
+      "email": "jim.lombardo@mainsequence.net",
+      "department": "Sales",
+      "role": "Sales Representative",
+      "employee_id": "EMP_5401"
+    },
+    "primary_customer": {
+      "name": "Evelyn Alonso calling you from Safra National Bank",
+      "company": "the bank, but I understand how this works as well, right",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "Evelyn Alonso calling you from Safra National Bank",
+        "company": "the bank, but I understand how this works as well, right",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "This is Evelyn Alonso calling you",
+        "company": "the bank, but I understand how this works as well, right",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "than",
+        "company": "the bank, but I understand how this works as well, right",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "interested in the system",
+        "company": "the bank, but I understand how this works as well, right",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Jim Lombardo",
+        "extension": "5401",
+        "department": "Sales",
+        "role": "Sales Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": []
+    }
+  }
+}

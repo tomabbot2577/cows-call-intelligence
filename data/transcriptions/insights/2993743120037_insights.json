@@ -1,0 +1,374 @@
+{
+  "recording_id": "2993743120037",
+  "analysis_timestamp": "2025-09-21T18:42:53.659344",
+  "analysis_version": "2.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "John",
+        "role": "customer",
+        "company": null,
+        "confidence_score": 0.9,
+        "validation_reason": "Clearly identified as customer"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-09-21"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "account_management",
+    "CALL PURPOSE": [
+      "Discussing payment details with colleague",
+      "Reviewing sales receipts and invoices"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Robin Montoni",
+      "Company/organization name": null,
+      "Phone numbers mentioned": null,
+      "Email addresses mentioned": null,
+      "Key decision makers referenced": "John",
+      "Team members and their roles": {
+        "Michael": "Doing insurance Zooms"
+      }
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": null,
+      "Company size indicators": null,
+      "Technology stack mentions": "Zoom",
+      "Current challenges/pain points": "Slow internet connection",
+      "Growth stage indicators": null
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": "Shared Google Doc",
+      "Existing service usage": "Auto-pay enabled",
+      "Account history mentions": "Sales receipts, invoice 619",
+      "Relationship duration indicators": null,
+      "Trust level indicators": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "technical",
+      "issue_severity": "low",
+      "technical_complexity_level": "medium",
+      "time_sensitivity": "low"
+    },
+    "resolution_tracking": {
+      "issue_status": "pending",
+      "resolution_steps_taken": "attempted to contact John, left no voicemail",
+      "outstanding_action_items": "reschedule meeting with John",
+      "next_steps_required": "send follow-up email to John and Robin"
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "medium",
+      "number_of_contacts_required": "2",
+      "self_service_opportunities_missed": "none",
+      "knowledge_base_gaps_identified": "none"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "collaborative",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "medium",
+      "empathy_and_rapport_building": "high"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "RELATIONSHIP_HEALTH": {
+      "Overall_satisfaction_indicators": "Positive interactions, casual and friendly exchanges",
+      "Trust_level_signals": "Open sharing of information, willingness to wait and reschedule",
+      "Communication_style": "Informal, supportive, empathetic",
+      "Rapport_quality": "High, evidenced by personal sharing and mutual understanding"
+    },
+    "CUSTOMER_JOURNEY_STAGE": {
+      "Onboarding_status": "Not explicitly mentioned, seems ongoing",
+      "Product_adoption_level": "Intermediate, as they are using shared documents and discussing features like auto-pay",
+      "Feature_utilization": "Using shared documents, spreadsheets, and possibly other collaborative tools",
+      "Expansion_opportunities": "Potential for further integration or adoption of additional features or services"
+    },
+    "RETENTION_FACTORS": {
+      "Satisfaction_drivers": "Ease of communication, shared tools, responsiveness",
+      "Risk_indicators": "Possible issues with internet connectivity affecting productivity",
+      "Loyalty_signals": "Willingness to adjust schedules, mutual support in task completion",
+      "Advocacy_potential": "High, based on positive remarks and personal endorsements during conversation"
+    },
+    "COMMUNICATION_PREFERENCES": {
+      "Preferred_contact_methods": "Phone calls, emails, and real-time document collaboration",
+      "Response_time_expectations": "Immediate to short-term, as shown by real-time collaboration and quick follow-ups",
+      "Information_style_preferences": "Direct and informal, with a preference for real-time updates",
+      "Decision-making_patterns": "Collaborative, with decisions made during discussions or shortly thereafter"
+    }
+  },
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium"
+  },
+  "action_items": [],
+  "participants": {
+    "primary_employee": {
+      "name": "Robin Montoni",
+      "extension": "5466",
+      "phone": "6145466",
+      "email": "robin.montoni@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5466"
+    },
+    "primary_customer": {
+      "name": "glad because he just told me he needed it to get paid for it from last month",
+      "company": "",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "glad because he just told me he needed it to get paid for it from last month",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "gonna have to call John see what he",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not really sure",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "already two weeks late on Monday",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to try it this way",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "can not have to dial back in how do you put someone on hold oh",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "putting when they pay their install invoice",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "gonna drop out and then call him and drop right back in okay actually",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "bad down",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "like it",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "know he was only back",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "in the basement right now because Michael needed",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just going in and undoing it on this one spreadsheet",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "and he didn",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not really noticing it today",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "best person",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to bet you won",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Jim",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "in the Google Doc right now",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going through it",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just waiting on John",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "looking for",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "gonna go crazy just for fun or are they doing something business related he",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "like",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "glad because he just told me he needed it to get paid for it",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Robin Montoni",
+        "extension": "5466",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-09-21"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "invoice"
+      ],
+      "mentioned_issues": [
+        "problem"
+      ],
+      "urgency_indicators": [],
+      "follow_up_mentions": []
+    }
+  }
+}

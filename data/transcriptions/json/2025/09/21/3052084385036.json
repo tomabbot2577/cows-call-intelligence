@@ -1,0 +1,100 @@
+{
+  "recording_id": "3052084385036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:02:10.255110Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:02:10",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Tyler, your favorite guy in Seattle, Hans Schmidt. How are you? Good. How are you? Good. We haven't spoken for, well, nine months. I need help. I've got the old system, and it's not logging on in the last 24 hours. So what do you need from me? An email address? For the old system, you mean like PC Recruiter 8? Yes, correct. Let me just get a phone number from you real quick and see if anything has changed on our end. Okay. Number 206-325-6940. All right. Is it doing anything specific or is it just like not popping up? It's popping up, but then hang on a second here. I'll tell you what it does. Normally I just go to PCR, load on. It pops up and then admin and then the password and database. But when I put my password in, it's not opening up beyond that. It's just staying blank. And you haven't updated your password at all recently, correct? No, correct. Now, if you backspace the password and try just typing in the password, does it do anything? It doesn't do anything. I tried that. Okay. It stays blank. It stays blank. Oh, like it won't even let you type into the box. No, it lets me type into the box. and then I hit send and then a blank page shows up. Gotcha. Gotcha. Gotcha. All right. Yeah. Let me ask some of the people on the team here. Okay. Cause I don't know if anything changed, but then I'll get right back to you. Okay. And be aware I'm leaving in an hour. So if it doesn't happen today, then we've got to pick it up tomorrow. Okay. All right. Sounds good. All right. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1555.723853,
+    "salad_processing_time": 43.030449867248535,
+    "overall_processing_time": 1555.723853,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Tyler, your favorite guy in Seattle, Hans Schmidt.",
+    "job_id": "76bb05de-c4f7-4d39-8d80-59921a155cd9",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Tyler, your favorite guy in Seattle, Hans Schmidt.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3052084385036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

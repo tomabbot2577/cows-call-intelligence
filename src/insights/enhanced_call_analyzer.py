@@ -220,6 +220,111 @@ class EnhancedCallAnalyzer:
         Return relationship intelligence JSON.
         """
 
+        # NEW: Enhanced metrics for Vertex AI RAG
+        self.rag_metadata_prompt = """
+        Extract RAG-optimized metadata for semantic search and retrieval:
+
+        KEY QUOTES (2-5 most important verbatim quotes):
+        - Customer pain points expressed
+        - Decisive statements
+        - Objections or concerns
+        - Commitments made
+
+        QUESTION-ANSWER PAIRS (extract Q&A from conversation):
+        - Questions asked by customer
+        - Answers provided by agent
+        - Unanswered questions
+
+        SEARCHABLE TAGS (10-15 relevant tags):
+        - Product features mentioned
+        - Issue categories
+        - Emotions expressed
+        - Business terms
+        - Action types
+
+        SEMANTIC THEMES (3-5 main themes):
+        - Primary discussion topics
+        - Underlying concerns
+        - Business context
+
+        IMPORTANT: Return ONLY valid JSON format.
+        Return JSON with: key_quotes, qa_pairs, searchable_tags, semantic_themes
+        """
+
+        self.conversation_quality_prompt = """
+        Analyze conversation quality metrics:
+
+        TALK-TO-LISTEN RATIO:
+        - Agent talk percentage (0-100)
+        - Customer talk percentage (0-100)
+        - Balanced conversation indicator
+
+        INTERRUPTION ANALYSIS:
+        - Number of interruptions by agent
+        - Number of interruptions by customer
+        - Interruption impact on flow
+
+        SILENCE/DEAD AIR:
+        - Total silence duration estimate (seconds)
+        - Awkward pauses detected
+        - Hold time indicators
+
+        COMPLIANCE INDICATORS:
+        - Proper greeting used
+        - Company name mentioned
+        - Verification steps taken
+        - Required disclosures made
+        - Proper closing used
+
+        COMMUNICATION EFFECTIVENESS:
+        - Clarity score (1-10)
+        - Professionalism score (1-10)
+        - Active listening indicators
+        - Acknowledgment phrases used
+        - Personalization level
+
+        IMPORTANT: Return ONLY valid JSON format.
+        """
+
+        self.sales_signals_prompt = """
+        Detect buying signals and sales intelligence:
+
+        BUYING SIGNALS (rate each 0-10):
+        - Price inquiry signals
+        - Timeline urgency
+        - Feature interest depth
+        - Comparison shopping indicators
+        - Decision authority signals
+        - Budget availability hints
+
+        LEAD QUALIFICATION (BANT):
+        - Budget: discussed/confirmed/unknown
+        - Authority: decision_maker/influencer/user/unknown
+        - Need: critical/important/nice_to_have/unclear
+        - Timeline: immediate/short_term/long_term/undefined
+
+        COMPETITOR INTELLIGENCE:
+        - Competitors mentioned (list names)
+        - Competitive concerns raised
+        - Feature comparisons made
+        - Switching indicators
+
+        OBJECTIONS DETECTED:
+        - Price objections
+        - Timing objections
+        - Feature gaps
+        - Trust concerns
+        - Process concerns
+
+        SALES STAGE:
+        - awareness/interest/consideration/intent/evaluation/purchase
+
+        WIN PROBABILITY (0-100):
+        - Based on signals detected
+
+        IMPORTANT: Return ONLY valid JSON format.
+        """
+
     def extract_contact_information(self, transcript: str, metadata: Dict) -> Dict[str, Any]:
         """Extract comprehensive contact information using Claude Haiku (optimized for extraction)"""
 
@@ -487,6 +592,92 @@ class EnhancedCallAnalyzer:
             logger.error(f"Relationship analysis failed: {e}")
             return {}
 
+    def extract_rag_metadata(self, transcript: str) -> Dict[str, Any]:
+        """Extract RAG-optimized metadata for Vertex AI semantic search"""
+        try:
+            client = self._get_client_for_task('summarization')
+            model = self.task_config.get_model_for_task('summarization')
+            logger.info(f"Using {model} for RAG metadata extraction")
+
+            response = client.chat.completions.create(
+                model=model,
+                messages=[
+                    {"role": "system", "content": "You are an expert at extracting searchable metadata from conversations."},
+                    {"role": "user", "content": f"{self.rag_metadata_prompt}\n\nTranscript:\n{transcript[:3000]}"}
+                ],
+                temperature=0.1
+            )
+            return self._safe_json_parse(response.choices[0].message.content, {
+                "key_quotes": [],
+                "qa_pairs": [],
+                "searchable_tags": [],
+                "semantic_themes": []
+            })
+        except Exception as e:
+            logger.error(f"RAG metadata extraction failed: {e}")
+            return {"key_quotes": [], "qa_pairs": [], "searchable_tags": [], "semantic_themes": []}
+
+    def analyze_conversation_quality(self, transcript: str, segments: List = None) -> Dict[str, Any]:
+        """Analyze conversation quality metrics including talk ratio, interruptions, compliance"""
+        try:
+            client = self._get_client_for_task('support_analysis')
+            model = self.task_config.get_model_for_task('support_analysis')
+            logger.info(f"Using {model} for conversation quality analysis")
+
+            # Calculate segment-based metrics if available
+            segment_metrics = {}
+            if segments:
+                agent_time = sum(s.get('end', 0) - s.get('start', 0) for s in segments if 'SPEAKER_00' in str(s.get('speaker', '')))
+                customer_time = sum(s.get('end', 0) - s.get('start', 0) for s in segments if 'SPEAKER_01' in str(s.get('speaker', '')))
+                total_time = agent_time + customer_time
+                if total_time > 0:
+                    segment_metrics = {
+                        "agent_talk_pct_calculated": round(agent_time / total_time * 100, 1),
+                        "customer_talk_pct_calculated": round(customer_time / total_time * 100, 1)
+                    }
+
+            response = client.chat.completions.create(
+                model=model,
+                messages=[
+                    {"role": "system", "content": "You are an expert call quality analyst."},
+                    {"role": "user", "content": f"{self.conversation_quality_prompt}\n\nTranscript:\n{transcript[:3000]}"}
+                ],
+                temperature=0.1
+            )
+            result = self._safe_json_parse(response.choices[0].message.content, {})
+            result.update(segment_metrics)
+            return result
+        except Exception as e:
+            logger.error(f"Conversation quality analysis failed: {e}")
+            return {}
+
+    def detect_sales_signals(self, transcript: str) -> Dict[str, Any]:
+        """Detect buying signals, lead qualification, and sales intelligence"""
+        try:
+            client = self._get_client_for_task('sales_analysis')
+            model = self.task_config.get_model_for_task('sales_analysis')
+            logger.info(f"Using {model} for sales signals detection")
+
+            response = client.chat.completions.create(
+                model=model,
+                messages=[
+                    {"role": "system", "content": "You are an expert sales analyst who identifies buying signals and qualifies leads."},
+                    {"role": "user", "content": f"{self.sales_signals_prompt}\n\nTranscript:\n{transcript[:3000]}"}
+                ],
+                temperature=0.2
+            )
+            return self._safe_json_parse(response.choices[0].message.content, {
+                "buying_signals": {},
+                "lead_qualification": {},
+                "competitor_intelligence": {},
+                "objections": [],
+                "sales_stage": "unknown",
+                "win_probability": 0
+            })
+        except Exception as e:
+            logger.error(f"Sales signals detection failed: {e}")
+            return {}
+
     def classify_call_type(self, transcript: str) -> Dict[str, Any]:
         """Classify the call type and purpose using GPT-3.5 (optimized for classification)"""
         classification_prompt = f"""
@@ -557,13 +748,14 @@ class EnhancedCallAnalyzer:
     def generate_comprehensive_insights(self, transcript_data: Dict[str, Any]) -> Dict[str, Any]:
         """Generate comprehensive insights combining all analysis types"""
         transcript = transcript_data.get("transcription", {}).get("text", "")
+        segments = transcript_data.get("transcription", {}).get("segments", [])
         metadata = transcript_data
 
         if not transcript:
             logger.error("No transcript text found")
             return {}
 
-        logger.info("🧠 Generating comprehensive call insights...")
+        logger.info("🧠 Generating comprehensive call insights (v3.0 - Enhanced for RAG)...")
 
         # Extract contact information
         contact_info = self.extract_contact_information(transcript, metadata)
@@ -577,11 +769,17 @@ class EnhancedCallAnalyzer:
         sales_analysis = self.analyze_sales_call(transcript)
         relationship_analysis = self.analyze_relationship_dynamics(transcript)
 
+        # NEW: Enhanced metrics for Vertex AI RAG
+        logger.info("📊 Extracting enhanced RAG metadata...")
+        rag_metadata = self.extract_rag_metadata(transcript)
+        conversation_quality = self.analyze_conversation_quality(transcript, segments)
+        sales_signals = self.detect_sales_signals(transcript)
+
         # Combine all insights
         comprehensive_insights = {
             "recording_id": transcript_data.get("recording_id"),
             "analysis_timestamp": datetime.now().isoformat(),
-            "analysis_version": "2.0",
+            "analysis_version": "3.0",  # Updated version
 
             # Contact and identification
             "contact_information": contact_info,
@@ -595,24 +793,46 @@ class EnhancedCallAnalyzer:
             "sales_analysis": sales_analysis,
             "relationship_analysis": relationship_analysis,
 
+            # NEW: Enhanced metrics for Vertex AI RAG
+            "rag_metadata": rag_metadata,
+            "conversation_quality": conversation_quality,
+            "sales_signals": sales_signals,
+
             # Summary metrics (extracted from analyses)
             "key_metrics": self._extract_key_metrics(
                 call_classification, customer_profile, support_analysis,
-                sales_analysis, relationship_analysis
+                sales_analysis, relationship_analysis, sales_signals, conversation_quality
             ),
 
             # Action items and next steps
             "action_items": self._extract_action_items(
                 support_analysis, sales_analysis, relationship_analysis
-            )
+            ),
+
+            # NEW: Vertex AI RAG optimized fields
+            "vertex_ai_metadata": {
+                "searchable_tags": rag_metadata.get("searchable_tags", []),
+                "semantic_themes": rag_metadata.get("semantic_themes", []),
+                "key_quotes": rag_metadata.get("key_quotes", []),
+                "qa_pairs": rag_metadata.get("qa_pairs", []),
+                "lead_score": sales_signals.get("win_probability", 0),
+                "sales_stage": sales_signals.get("sales_stage", "unknown"),
+                "compliance_score": conversation_quality.get("compliance_indicators", {}),
+                "quality_score": conversation_quality.get("professionalism_score", 0),
+                "competitors_mentioned": sales_signals.get("competitor_intelligence", {}).get("competitors_mentioned", [])
+            }
         }
 
-        logger.info("✅ Comprehensive insights generated successfully")
+        logger.info("✅ Comprehensive insights generated successfully (v3.0)")
         return comprehensive_insights
 
     def _extract_key_metrics(self, classification: Dict, customer: Dict,
-                           support: Dict, sales: Dict, relationship: Dict) -> Dict[str, Any]:
+                           support: Dict, sales: Dict, relationship: Dict,
+                           sales_signals: Dict = None, conversation_quality: Dict = None) -> Dict[str, Any]:
         """Extract key metrics for dashboard and reporting"""
+        sales_signals = sales_signals or {}
+        conversation_quality = conversation_quality or {}
+
         return {
             "call_type": classification.get("call_type", "other"),
             "urgency_level": classification.get("urgency_level", "medium"),
@@ -623,7 +843,16 @@ class EnhancedCallAnalyzer:
             "relationship_health_score": self._extract_relationship_score(relationship),
             "escalation_risk": self._extract_escalation_risk(support, relationship),
             "churn_risk_score": self._extract_churn_risk(customer, relationship),
-            "upsell_opportunity": self._extract_upsell_potential(sales, customer)
+            "upsell_opportunity": self._extract_upsell_potential(sales, customer),
+            # NEW: Enhanced metrics
+            "lead_qualification_score": sales_signals.get("win_probability", 0),
+            "sales_stage": sales_signals.get("sales_stage", "unknown"),
+            "talk_to_listen_ratio": conversation_quality.get("agent_talk_pct_calculated", 50),
+            "compliance_score": 10 if conversation_quality.get("compliance_indicators", {}).get("proper_greeting") else 5,
+            "professionalism_score": conversation_quality.get("professionalism_score", 7),
+            "clarity_score": conversation_quality.get("clarity_score", 7),
+            "competitors_detected": len(sales_signals.get("competitor_intelligence", {}).get("competitors_mentioned", [])) > 0,
+            "buying_signals_strength": sum(sales_signals.get("buying_signals", {}).values()) if isinstance(sales_signals.get("buying_signals"), dict) else 0
         }
 
     def _extract_action_items(self, support: Dict, sales: Dict, relationship: Dict) -> List[Dict]:

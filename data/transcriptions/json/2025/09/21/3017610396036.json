@@ -1,0 +1,95 @@
+{
+  "recording_id": "3017610396036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:31:04.459431Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:31:04",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hey, Tyler. How are you doing, brother? It's Ron. Okay. I have a question real quick, and I don't even think you have to look at the database. It's just a sequencing silliness. All right. Auto SMS. If I put it to auto, what's it autoing? Like if I'm hooked up with RingCentral, does it do it to RingCentral, or how does it play? Yes. Yeah, the automatic SMS and sequencing is only available if you're using the RingCentral integration. Sick. All right, good to say that. All right, so the only other thing I could think of is... I'm so sorry, brother. You answered that question too quick. You took me off my whole floor. I blame you, sir. Oh, one thing to note, though, with that automatic SMS, make sure you set up the rate limiter for it. While we don't have... restrictions on SMS sending, RingCentral does. Okay. So if you're sending out to a large list, I would say limit it to about like 10 or 15 per hour when you're trying to send those SMS just so you don't raise any flags with the RingCentral account. So we've had people trying to send hundreds at a time and it locks up their account. Is it a manual SMS? I did a manual SMS and it gave me a fucking 1100 tasks on these people to fucking complete them to go to the next part of the cycle how come I can't pick those tasks in mass and fucking clear them every individual task is like it is it's individual you have to go into each one separately that's just how it's designed I know manual SMS then is complete shit and probably shouldn't be used because it's like you know complete shit unless you're doing a sequence of 10 people and even then you might be annoyed but that's probably a shit step especially if I can't select any of them and complete them in math well the reason we have the manual SMS option is because you still have the option to just click the ring central button in the task and send it automatically it's slick but it stops my whole fucking sequence and then I can't grab them all in math and just say yeah I completed or I sent it Yeah, anything that's a manual task has to be done individually. That's just how it's designed. That's a move. Yeah, yeah, yeah. That's a design flaw there. Because especially when you consider what even the idea of it is. Like let's say a manual text. But I manually texted all those people at once most likely. So that 1,100 task, it seems bad, right? It seems bad. I mean, there's different use cases where the manual task is... It'd be fine if I could grab all those tasks at once and mark that I complete them. Especially when you consider an SMS where it's like going to each person and saying I completed or I sent it is a little wild. Yeah, we've had a few requests for that, like as a feature request. I don't know if it's going anywhere as of right now, because right now that's just how it's designed and working as intended. yeah dude working as intended very limited I do understand what that means my friend thank you for explaining the limitations of the system to me yep not a problem have a good day Tyler you too",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 552.826719,
+    "salad_processing_time": 10.626105308532715,
+    "overall_processing_time": 552.826719,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "job_id": "debfb31f-f5f9-4e78-a1d8-600b272c1506",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3017610396036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

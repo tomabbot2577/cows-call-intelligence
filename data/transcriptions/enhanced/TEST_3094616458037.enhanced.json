@@ -1,0 +1,102 @@
+{
+  "recording_id": "TEST_3094616458037",
+  "version": "3.0",
+  "timestamp": "2025-09-21T23:47:31.993415Z",
+  "processing_complete": true,
+  "call_metadata": {
+    "date": "2025-09-21",
+    "duration_seconds": 240.0,
+    "word_count": 72,
+    "customer": {
+      "name": "Main Sequence Support",
+      "phone": null,
+      "company": null
+    },
+    "employee": {
+      "name": "Chuck Draper",
+      "extension": null,
+      "department": null
+    }
+  },
+  "transcript_text": "Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hey, Garrett. Chuck Draper. I've got an account with you guys. And just wondering, are you guys having any server issues? I think for the last five hours, I've had some real slow change in screen from PC Recruiter. Yeah, we did have a couple customers report that. Let me gather some information about your database here.",
+  "ai_insights": {
+    "sentiment_analysis": {
+      "customer_sentiment": "neutral",
+      "call_quality_score": 8.0,
+      "call_type": "technical_support",
+      "key_topics": [
+        "server issues",
+        "slow performance",
+        "database information"
+      ],
+      "summary": "The customer called to inquire about potential server issues causing slow performance on their PC Recruiter software, and the agent gathered information about the customer's database to investigate the problem.",
+      "follow_up_needed": null,
+      "escalation_required": null
+    },
+    "process_recommendations": {
+      "process_improvements": [],
+      "employee_coaching": {
+        "strengths": [],
+        "improvements": [],
+        "suggested_phrases": []
+      },
+      "follow_up_actions": [],
+      "knowledge_base_updates": [],
+      "escalation": {
+        "required": false,
+        "risk_level": "low",
+        "reason": ""
+      },
+      "performance_metrics": {
+        "efficiency_score": 5.0,
+        "training_priority": "low"
+      }
+    },
+    "call_resolution": {
+      "problem_statement": "The customer, Chuck Draper, is experiencing slow performance with the PC Recruiter application, which he believes is due to server issues on the provider's (Main Sequence Technology) end.",
+      "resolution_status": "partially_resolved",
+      "resolution_details": "The employee, Garrett, acknowledged that there have been some reports of issues from other customers and said he would gather more information about the customer's database.",
+      "follow_up": {
+        "type": "employee_callback",
+        "details": "Garrett needs to follow up with the customer after investigating the issue further.",
+        "timeline": "As soon as possible"
+      },
+      "loop_closure": {
+        "solution_summarized": false,
+        "understanding_confirmed": false,
+        "asked_if_anything_else": false,
+        "next_steps_provided": true,
+        "timeline_given": false,
+        "contact_info_provided": false,
+        "closure_score": 3.0
+      },
+      "quality_assessment": {
+        "missed_best_practices": [
+          "Summarize the solution",
+          "Confirm customer understanding",
+          "Ask if there's anything else",
+          "Provide clear timeline expectations",
+          "Offer contact information"
+        ],
+        "improvement_suggestions": [
+          "Gather more details about the customer's specific issue and environment",
+          "Provide a clear explanation of the next steps and timeline",
+          "Confirm the customer's understanding and satisfaction before ending the call"
+        ],
+        "customer_satisfaction_likely": "medium",
+        "call_back_risk": "medium",
+        "escalation_probability": "medium"
+      }
+    }
+  },
+  "pipeline_metadata": {
+    "ai_model_versions": {
+      "sentiment": "deepseek/deepseek-r1",
+      "recommendations": "deepseek/deepseek-r1",
+      "name_extraction": "anthropic/claude-3-opus",
+      "embeddings": "openai/text-embedding-ada-002"
+    },
+    "processing_date": "2025-09-21T23:47:31.993436Z",
+    "version": "3.0"
+  }
+}

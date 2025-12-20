@@ -1,0 +1,104 @@
+{
+  "recording_id": "3091470836037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:21:27.513909Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:21:27",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hi, this is Ian Wheaton. Sorry I can't take your call at the moment. Please leave your name and number after the tone. I'll get back to you as soon as I can. Thank you. Hello, Ian. It's Jim Lombardo with PC Recruiter. I wanted to give you a quick call following up on your inquiry. I sent you an email, I think yesterday. I replied to a previous email from you about some questions and everything. Thought I'd follow up, see if I could interest you in a demonstration of PC Recruiter, show you how I might be able to help. Give me a call and let me know if that's something of interest to you. I'm happy to get it set up. My direct line is 440-856-0314. That's 440-856-0314. Thanks, sir. We'll talk to you soon. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 2127.676754,
+    "salad_processing_time": 6.98151707649231,
+    "overall_processing_time": 2127.676754,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hi, this is Ian Wheaton.  Sorry I can't take your call at the moment.  Please leave your name and number after the tone.",
+    "job_id": "9b4f8580-0f04-4efe-974f-2e9f092db2fb",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hi, this is Ian Wheaton.  Sorry I can't take your call at the moment.  Please leave your name and number after the tone.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": [
+      "follow_up_required"
+    ]
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3091470836037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

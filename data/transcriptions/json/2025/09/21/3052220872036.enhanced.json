@@ -1,0 +1,119 @@
+{
+  "recording_id": "3052220872036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:02:25.815386Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:02:25",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hello, this is Robin. Hey, Robin. Jim Ortman. How are you? I'm good. How are you doing? Good. I got a message from Robert saying that the card was rejected, and it was rejected because the account was compromised, and so I had to get a new card. And, of course, when they sent me the new card, they left on the old expiration date and so on and so on. So here's the new card. Okay. Okay. Bear with me one second. Let me do a couple things here. Okay. I've got to turn this off first. Okay. Jim Orman Water Jobs. Yep. I got you. Okay. Hold on one. Let's see, historic payment methods. Okay, I'm going to take this one off. It doesn't let me edit. I could just kind of remove and then. Okay, so what is the name on the card? James Ortman, O-R-T-M-A-N. Okay, and then the card number? 4-2-3-9 5-7-9-9 0-5-2-8 3-1-1-6-2 I think I've got an extra number there. 3-1-6-2 Okay, 3162. Okay, and then the expiration date? 728. And then the security number? 647. And then what is the address associated with that card? Does it end in zip code 95356? No. On Violet Street? No. Okay. Here's the new address. Okay. New address is 8 3 5 0. Fair Oaks, F A I R Oaks Boulevard. Okay. Carmichael, Carmichael, one word, Carmichael, California. Okay. 95, 95608. Now, is that just for the card, or should I also update your billing address, too? Same, same, same. Okay, and Fair Oaks was one word, right? F-A-I-R-O. Carmichael was one word, right? Carmichael, car, and then Michael, all one word, California. And same with Fair Oaks as well, right? Yeah, it's in Sacramento, California, south of Sacramento. Okay. Let me just save this. I will pick up other areas for you too. OK. All right. I'm going to add the card. and you want that on auto pay assume set that up there okay on the due date okay so now that we have the new card should I go ahead and try to process the $20 open invoice yep okay all right and then we have your billing email is jim at water jobs.com so it should be emailing your receipt here any moment sure no problem and you hold on one second i was just in process yeah that's the old one okay how's your wife doing you said not too good actually oh I'm so sorry she she had kidney stones removed in the process developed sepsis oh my gosh I was in the hospital for about three weeks and 10 days of that was in ICU and we thought we were going to lose her. But anyhow, so she got over that. And then, of course, last week she hurt her back. She had a saucer process. And so we put her into the hospital again. And yesterday she had a surgery to glue the broken pieces together, hopefully. and we'll see what hopefully it worked. Well, let's pray it did. I'll be saying some prayers for her. I'm so sorry that you're going through that, or that she is too. Getting old is not fun, is it? No, it is not fun. In everything you do, you can do whatever you want. and yeah yeah and buy where you go and do what you want and and anyhow you know such as no one told me that growing old was going to be a chore yeah so at any rate all right well again thank you very much if you have any questions or whatever whatever I appreciate it no problem and then I'll get the address updated on the invoice going forward. Okay, no problem. Thank you very much. Alrighty, thank you. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1564.346858,
+    "salad_processing_time": 15.137438535690308,
+    "overall_processing_time": 1564.346858,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hello, this is Robin.  Hey, Robin.  Jim Ortman.",
+    "job_id": "5e413a4a-4d42-492b-bbc9-731232efeca0",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hello, this is Robin.  Hey, Robin.  Jim Ortman.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Billing",
+        "confidence": 0.7
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "billing",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "billing"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3052220872036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

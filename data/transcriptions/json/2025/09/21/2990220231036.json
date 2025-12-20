@@ -1,0 +1,1208 @@
+{
+  "recording_id": "2990220231036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T13:59:16.117402Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "13:59:15",
+    "duration_seconds": 58.608,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 234765
+  },
+  "transcription": {
+    "text": "Please hold while I try to connect you. Hello, you've reached Dave Hauser. I'm not available to come to the phone right now, but if you leave a detailed message, I will call you back as soon as possible. thanks and have a great day hi David this is Robin Montoni with main sequence we received a voicemail from you on Friday and I was just giving you a call back you might have already spoke with Garrett I assume if not or if you still need assistance please give us a call four four zero nine four six five two extension 5466. Thanks.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 0.99,
+    "word_count": 104,
+    "duration_seconds": 58.608,
+    "processing_time_seconds": 42.431679010391235,
+    "salad_processing_time": 39.791502475738525,
+    "overall_processing_time": 0,
+    "segments": [
+      {
+        "id": 0,
+        "start": 0.1,
+        "end": 2.1,
+        "text": "Please hold while I try to connect you.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "id": 1,
+        "start": 22.222,
+        "end": 23.778,
+        "text": "Hello, you've reached Dave Hauser.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 2,
+        "start": 24.221,
+        "end": 28.478,
+        "text": "I'm not available to come to the phone right now, but if you leave a detailed message, I will call you back as soon as possible.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 3,
+        "start": 38.76,
+        "end": 53.958,
+        "text": "thanks and have a great day hi David this is Robin Montoni with main sequence we received a voicemail from you on Friday and I was just giving you a call back you might have already spoke with Garrett I assume if not or if you still need assistance please give us a call four four zero nine four six five two extension 5466.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "id": 4,
+        "start": 58.233,
+        "end": 58.47,
+        "text": "Thanks.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_00"
+      }
+    ],
+    "word_segments": [
+      {
+        "start": 0.1,
+        "end": 0.35,
+        "timestamp": [
+          0.1,
+          0.35
+        ],
+        "word": "Please",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 0.35,
+        "end": 0.6,
+        "timestamp": [
+          0.35,
+          0.6
+        ],
+        "word": "hold",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 0.6,
+        "end": 0.85,
+        "timestamp": [
+          0.6,
+          0.85
+        ],
+        "word": "while",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 0.85,
+        "end": 1.1,
+        "timestamp": [
+          0.85,
+          1.1
+        ],
+        "word": "I",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 1.1,
+        "end": 1.35,
+        "timestamp": [
+          1.1,
+          1.35
+        ],
+        "word": "try",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 1.35,
+        "end": 1.6,
+        "timestamp": [
+          1.35,
+          1.6
+        ],
+        "word": "to",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 1.6,
+        "end": 1.85,
+        "timestamp": [
+          1.6,
+          1.85
+        ],
+        "word": "connect",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 1.85,
+        "end": 2.1,
+        "timestamp": [
+          1.85,
+          2.1
+        ],
+        "word": "you.",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 22.222,
+        "end": 22.667,
+        "timestamp": [
+          22.222,
+          22.667
+        ],
+        "word": "Hello,",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 22.687,
+        "end": 22.869,
+        "timestamp": [
+          22.687,
+          22.869
+        ],
+        "word": "you've",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 23.03,
+        "end": 23.475,
+        "timestamp": [
+          23.03,
+          23.475
+        ],
+        "word": "reached",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 23.515,
+        "end": 23.616,
+        "timestamp": [
+          23.515,
+          23.616
+        ],
+        "word": "Dave",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 23.636,
+        "end": 23.778,
+        "timestamp": [
+          23.636,
+          23.778
+        ],
+        "word": "Hauser.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 24.221,
+        "end": 24.301,
+        "timestamp": [
+          24.221,
+          24.301
+        ],
+        "word": "I'm",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 24.341,
+        "end": 24.401,
+        "timestamp": [
+          24.341,
+          24.401
+        ],
+        "word": "not",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 24.421,
+        "end": 24.763,
+        "timestamp": [
+          24.421,
+          24.763
+        ],
+        "word": "available",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 24.783,
+        "end": 24.883,
+        "timestamp": [
+          24.783,
+          24.883
+        ],
+        "word": "to",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 24.903,
+        "end": 25.004,
+        "timestamp": [
+          24.903,
+          25.004
+        ],
+        "word": "come",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 25.024,
+        "end": 25.104,
+        "timestamp": [
+          25.024,
+          25.104
+        ],
+        "word": "to",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 25.184,
+        "end": 25.305,
+        "timestamp": [
+          25.184,
+          25.305
+        ],
+        "word": "the",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 25.325,
+        "end": 25.445,
+        "timestamp": [
+          25.325,
+          25.445
+        ],
+        "word": "phone",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 25.486,
+        "end": 25.606,
+        "timestamp": [
+          25.486,
+          25.606
+        ],
+        "word": "right",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 25.626,
+        "end": 25.767,
+        "timestamp": [
+          25.626,
+          25.767
+        ],
+        "word": "now,",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 25.827,
+        "end": 25.927,
+        "timestamp": [
+          25.827,
+          25.927
+        ],
+        "word": "but",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 25.947,
+        "end": 25.988,
+        "timestamp": [
+          25.947,
+          25.988
+        ],
+        "word": "if",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 26.008,
+        "end": 26.108,
+        "timestamp": [
+          26.008,
+          26.108
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 26.128,
+        "end": 26.289,
+        "timestamp": [
+          26.128,
+          26.289
+        ],
+        "word": "leave",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 26.389,
+        "end": 26.409,
+        "timestamp": [
+          26.389,
+          26.409
+        ],
+        "word": "a",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 26.429,
+        "end": 26.71,
+        "timestamp": [
+          26.429,
+          26.71
+        ],
+        "word": "detailed",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 26.831,
+        "end": 27.253,
+        "timestamp": [
+          26.831,
+          27.253
+        ],
+        "word": "message,",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 27.313,
+        "end": 27.393,
+        "timestamp": [
+          27.313,
+          27.393
+        ],
+        "word": "I",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 27.413,
+        "end": 27.534,
+        "timestamp": [
+          27.413,
+          27.534
+        ],
+        "word": "will",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 27.554,
+        "end": 27.674,
+        "timestamp": [
+          27.554,
+          27.674
+        ],
+        "word": "call",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 27.694,
+        "end": 27.795,
+        "timestamp": [
+          27.694,
+          27.795
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 27.815,
+        "end": 27.955,
+        "timestamp": [
+          27.815,
+          27.955
+        ],
+        "word": "back",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 27.976,
+        "end": 28.016,
+        "timestamp": [
+          27.976,
+          28.016
+        ],
+        "word": "as",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 28.036,
+        "end": 28.156,
+        "timestamp": [
+          28.036,
+          28.156
+        ],
+        "word": "soon",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 28.176,
+        "end": 28.216,
+        "timestamp": [
+          28.176,
+          28.216
+        ],
+        "word": "as",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 28.237,
+        "end": 28.478,
+        "timestamp": [
+          28.237,
+          28.478
+        ],
+        "word": "possible.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 38.76,
+        "end": 38.998,
+        "timestamp": [
+          38.76,
+          38.998
+        ],
+        "word": "thanks",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 38.998,
+        "end": 39.235,
+        "timestamp": [
+          38.998,
+          39.235
+        ],
+        "word": "and",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 39.235,
+        "end": 39.473,
+        "timestamp": [
+          39.235,
+          39.473
+        ],
+        "word": "have",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 39.473,
+        "end": 39.71,
+        "timestamp": [
+          39.473,
+          39.71
+        ],
+        "word": "a",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 39.71,
+        "end": 39.948,
+        "timestamp": [
+          39.71,
+          39.948
+        ],
+        "word": "great",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 39.948,
+        "end": 40.185,
+        "timestamp": [
+          39.948,
+          40.185
+        ],
+        "word": "day",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 40.185,
+        "end": 40.423,
+        "timestamp": [
+          40.185,
+          40.423
+        ],
+        "word": "hi",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 40.423,
+        "end": 40.66,
+        "timestamp": [
+          40.423,
+          40.66
+        ],
+        "word": "David",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 40.66,
+        "end": 40.898,
+        "timestamp": [
+          40.66,
+          40.898
+        ],
+        "word": "this",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 40.898,
+        "end": 41.135,
+        "timestamp": [
+          40.898,
+          41.135
+        ],
+        "word": "is",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 41.135,
+        "end": 41.373,
+        "timestamp": [
+          41.135,
+          41.373
+        ],
+        "word": "Robin",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 41.373,
+        "end": 41.61,
+        "timestamp": [
+          41.373,
+          41.61
+        ],
+        "word": "Montoni",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 41.61,
+        "end": 41.848,
+        "timestamp": [
+          41.61,
+          41.848
+        ],
+        "word": "with",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 41.848,
+        "end": 42.085,
+        "timestamp": [
+          41.848,
+          42.085
+        ],
+        "word": "main",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 42.085,
+        "end": 42.322,
+        "timestamp": [
+          42.085,
+          42.322
+        ],
+        "word": "sequence",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 42.322,
+        "end": 42.56,
+        "timestamp": [
+          42.322,
+          42.56
+        ],
+        "word": "we",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 42.56,
+        "end": 42.797,
+        "timestamp": [
+          42.56,
+          42.797
+        ],
+        "word": "received",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 42.797,
+        "end": 43.035,
+        "timestamp": [
+          42.797,
+          43.035
+        ],
+        "word": "a",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 43.035,
+        "end": 43.272,
+        "timestamp": [
+          43.035,
+          43.272
+        ],
+        "word": "voicemail",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 43.272,
+        "end": 43.51,
+        "timestamp": [
+          43.272,
+          43.51
+        ],
+        "word": "from",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 43.51,
+        "end": 43.747,
+        "timestamp": [
+          43.51,
+          43.747
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 43.747,
+        "end": 43.985,
+        "timestamp": [
+          43.747,
+          43.985
+        ],
+        "word": "on",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 43.985,
+        "end": 44.222,
+        "timestamp": [
+          43.985,
+          44.222
+        ],
+        "word": "Friday",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 44.222,
+        "end": 44.46,
+        "timestamp": [
+          44.222,
+          44.46
+        ],
+        "word": "and",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 44.46,
+        "end": 44.697,
+        "timestamp": [
+          44.46,
+          44.697
+        ],
+        "word": "I",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 44.697,
+        "end": 44.935,
+        "timestamp": [
+          44.697,
+          44.935
+        ],
+        "word": "was",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 44.935,
+        "end": 45.172,
+        "timestamp": [
+          44.935,
+          45.172
+        ],
+        "word": "just",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 45.172,
+        "end": 45.41,
+        "timestamp": [
+          45.172,
+          45.41
+        ],
+        "word": "giving",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 45.41,
+        "end": 45.647,
+        "timestamp": [
+          45.41,
+          45.647
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 45.647,
+        "end": 45.884,
+        "timestamp": [
+          45.647,
+          45.884
+        ],
+        "word": "a",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 45.884,
+        "end": 46.122,
+        "timestamp": [
+          45.884,
+          46.122
+        ],
+        "word": "call",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 46.122,
+        "end": 46.359,
+        "timestamp": [
+          46.122,
+          46.359
+        ],
+        "word": "back",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 46.359,
+        "end": 46.597,
+        "timestamp": [
+          46.359,
+          46.597
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 46.597,
+        "end": 46.834,
+        "timestamp": [
+          46.597,
+          46.834
+        ],
+        "word": "might",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 46.834,
+        "end": 47.072,
+        "timestamp": [
+          46.834,
+          47.072
+        ],
+        "word": "have",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 47.072,
+        "end": 47.309,
+        "timestamp": [
+          47.072,
+          47.309
+        ],
+        "word": "already",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 47.309,
+        "end": 47.547,
+        "timestamp": [
+          47.309,
+          47.547
+        ],
+        "word": "spoke",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 47.547,
+        "end": 47.784,
+        "timestamp": [
+          47.547,
+          47.784
+        ],
+        "word": "with",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 47.784,
+        "end": 48.022,
+        "timestamp": [
+          47.784,
+          48.022
+        ],
+        "word": "Garrett",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 48.022,
+        "end": 48.259,
+        "timestamp": [
+          48.022,
+          48.259
+        ],
+        "word": "I",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 48.259,
+        "end": 48.497,
+        "timestamp": [
+          48.259,
+          48.497
+        ],
+        "word": "assume",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 48.497,
+        "end": 48.734,
+        "timestamp": [
+          48.497,
+          48.734
+        ],
+        "word": "if",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 48.734,
+        "end": 48.972,
+        "timestamp": [
+          48.734,
+          48.972
+        ],
+        "word": "not",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 48.972,
+        "end": 49.209,
+        "timestamp": [
+          48.972,
+          49.209
+        ],
+        "word": "or",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 49.209,
+        "end": 49.446,
+        "timestamp": [
+          49.209,
+          49.446
+        ],
+        "word": "if",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 49.446,
+        "end": 49.684,
+        "timestamp": [
+          49.446,
+          49.684
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 49.684,
+        "end": 49.921,
+        "timestamp": [
+          49.684,
+          49.921
+        ],
+        "word": "still",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 49.921,
+        "end": 50.159,
+        "timestamp": [
+          49.921,
+          50.159
+        ],
+        "word": "need",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 50.159,
+        "end": 50.396,
+        "timestamp": [
+          50.159,
+          50.396
+        ],
+        "word": "assistance",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 50.396,
+        "end": 50.634,
+        "timestamp": [
+          50.396,
+          50.634
+        ],
+        "word": "please",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 50.634,
+        "end": 50.871,
+        "timestamp": [
+          50.634,
+          50.871
+        ],
+        "word": "give",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 50.871,
+        "end": 51.109,
+        "timestamp": [
+          50.871,
+          51.109
+        ],
+        "word": "us",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 51.109,
+        "end": 51.346,
+        "timestamp": [
+          51.109,
+          51.346
+        ],
+        "word": "a",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 51.346,
+        "end": 51.584,
+        "timestamp": [
+          51.346,
+          51.584
+        ],
+        "word": "call",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 51.584,
+        "end": 51.821,
+        "timestamp": [
+          51.584,
+          51.821
+        ],
+        "word": "four",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 51.821,
+        "end": 52.059,
+        "timestamp": [
+          51.821,
+          52.059
+        ],
+        "word": "four",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 52.059,
+        "end": 52.296,
+        "timestamp": [
+          52.059,
+          52.296
+        ],
+        "word": "zero",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 52.296,
+        "end": 52.533,
+        "timestamp": [
+          52.296,
+          52.533
+        ],
+        "word": "nine",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 52.533,
+        "end": 52.771,
+        "timestamp": [
+          52.533,
+          52.771
+        ],
+        "word": "four",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 52.771,
+        "end": 53.008,
+        "timestamp": [
+          52.771,
+          53.008
+        ],
+        "word": "six",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 53.008,
+        "end": 53.246,
+        "timestamp": [
+          53.008,
+          53.246
+        ],
+        "word": "five",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 53.246,
+        "end": 53.483,
+        "timestamp": [
+          53.246,
+          53.483
+        ],
+        "word": "two",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 53.483,
+        "end": 53.721,
+        "timestamp": [
+          53.483,
+          53.721
+        ],
+        "word": "extension",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 53.721,
+        "end": 53.958,
+        "timestamp": [
+          53.721,
+          53.958
+        ],
+        "word": "5466.",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 58.233,
+        "end": 58.47,
+        "timestamp": [
+          58.233,
+          58.47
+        ],
+        "word": "Thanks.",
+        "speaker": "SPEAKER_00"
+      }
+    ],
+    "speakers": [
+      {
+        "id": "SPEAKER_00",
+        "label": "Speaker_00",
+        "speaking_time": 17.44,
+        "segment_count": 3,
+        "average_confidence": 0.95
+      },
+      {
+        "id": "SPEAKER_01",
+        "label": "Speaker_01",
+        "speaking_time": 5.81,
+        "segment_count": 2,
+        "average_confidence": 0.95
+      }
+    ],
+    "srt_content": "1\n00:00:00,100 --> 00:00:02,100\nPlease hold while I try to connect you.\n\n2\n00:00:22,222 --> 00:00:23,778\nHello, you've reached Dave Hauser.\n\n3\n00:00:24,221 --> 00:00:25,767\nI'm not available to come to the phone right now,\n\n4\n00:00:25,827 --> 00:00:27,253\nbut if you leave a detailed message,\n\n5\n00:00:27,313 --> 00:00:28,478\nI will call you back as soon as possible.\n\n6\n00:00:38,760 --> 00:00:42,560\nthanks and have a great day hi David this is Robin Montoni with main sequence we\n\n7\n00:00:42,560 --> 00:00:46,597\nreceived a voicemail from you on Friday and I was just giving you a call back you\n\n8\n00:00:46,597 --> 00:00:50,159\nmight have already spoke with Garrett I assume if not or if you still need\n\n9\n00:00:50,159 --> 00:00:53,721\nassistance please give us a call four four zero nine four six five two extension\n\n10\n00:00:53,721 --> 00:00:53,958\n5466.\n\n11\n00:00:58,233 --> 00:00:58,470\nThanks.\n\n",
+    "summary": "Dave Hauser is unavailable, will return calls.",
+    "job_id": "47570018-0fa9-4420-846b-0f034fdfe1ce",
+    "timestamps": {
+      "started": "2025-09-21T13:58:32.606027+00:00",
+      "submitted": "2025-09-21T13:58:32.606130+00:00",
+      "completed": "2025-09-21T13:59:15.037699+00:00"
+    }
+  },
+  "ai_analysis": {
+    "summary": "Dave Hauser is unavailable, will return calls.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 3,
+      "total_segments": 5,
+      "agent_speaking_percentage": 0.0,
+      "customer_speaking_percentage": 100.0,
+      "average_turn_duration": 7.75,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "130qVJohUL8TR4YYXcWvAFJ6muKDw5Z7M",
+    "google_drive_url": "https://drive.google.com/file/d/130qVJohUL8TR4YYXcWvAFJ6muKDw5Z7M/view",
+    "local_path": "/data/transcriptions/json/2025/09/21/2990220231036.json",
+    "backup_status": "completed",
+    "retention_days": 90
+  }
+}

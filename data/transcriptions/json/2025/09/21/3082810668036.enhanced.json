@@ -1,0 +1,117 @@
+{
+  "recording_id": "3082810668036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:15:44.423100Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:15:44",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hi, my name is Sandy Welch. I'm calling with Beardmore Auto Family in Bellevue, Nebraska. And I need to know how I can get our general sales manager access to PC Recruiter. He downloaded it on his computer, but he needs like a username and a password. Yeah, so what you can do... Let me just pull you up here real quick. Yeah, so he has, like, the URL where he can log in on the web and all that? Yeah. Okay. He just doesn't have a username or a password thing set up yet. Yep, so which database is he going to be? He's going to be in Beardmore Automotive. Perfect. So what you'll need to do is first you'll log into that database. Okay. Are you an admin-level user in that database? I believe so, yes. Oh, actually, which username are you logging with? What's that? So I'm looking at the – do you log in with the Sandy Welch username? So you're actually not an admin-level user in that database. Oh, okay. Do you have an admin level user on there? It looks like Ted. Yeah, he's no longer with the company. I thought I had changed that. Let me see if he's... You might have set it to a non-active user. Oh. Let's check. Yep. Or no, it's still there. Okay. Yeah, so you would have to have an admin level user go in? Do you know who that would be? So it's just right now just the admin username for that database then. Okay. You said Ted's no longer with the company? That's correct. Can you put me in there as admin? So I can't change any settings without written like a sign off from the contract signer for the account. So who would that be? Oh, gosh. Yeah. So what I would have to do first is... He moved across the country. Yeah, I can put you in contact with your account representative, Jim Lombardo. Okay. And he can get contracts switched over to whoever needs to be the signer for the account. Okay, I think I might be able to get a hold of Ted. We are still in contact by text. What would he need to send and who would he need to send it to? Can he still do that? Yes. Okay. Yeah, the email that he would send to is just jim at main sequence dot net. jim at main sequence dot net. Yep. Just be like, hey, I'm no longer with this company. We need to switch over the contract to whoever. Okay. And then that way Jim can get all the contract stuff switched over. Okay. Do you have a phone number for Jim? I can give you, he has an extension here. Oh, okay. It's the same number, but then the extension. Okay. Let me find it here. His extension is 5401. 5401. Okay. I will see if I can get a hold of Ted and see if he can get something over to that. It's jim at main sequence dot net. Yep. And then in the meantime, like you said, if you still talk to Ted and he can give you his PC recruiter password, like his thing is still active in there, I'll send you over the instructions on how to create a username. Okay. And then once I'm an admin, I can create a username. Yep. So, yeah. Is that right? Yeah. Even if you log in as Ted, you can create a username. Oh, okay. switch yourself over to an admin. Okay. Okay. I will do that then. Yep. I'll send you over those instructions now. Perfect. And then you'll have my email in case you run into any hiccups trying to create the user or switch yourself to an admin. I'm sure I will. Just shoot me an email and we can jump on it. Okay. Walk through it together. Okay. Perfect. Thank you so much. Yep. Not a problem. You have a great day. You too. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1961.005634,
+    "salad_processing_time": 22.052382469177246,
+    "overall_processing_time": 1961.005634,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hi, my name is Sandy Welch.  I'm calling with Beardmore Auto Family in Bellevue, Nebraska.  And I need to know how I can get our general sales manager access to PC Recruiter.",
+    "job_id": "12161eff-31f3-4285-a3eb-07ff8e2df2b7",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hi, my name is Sandy Welch.  I'm calling with Beardmore Auto Family in Bellevue, Nebraska.  And I need to know how I can get our general sales manager access to PC Recruiter.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": true,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3082810668036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

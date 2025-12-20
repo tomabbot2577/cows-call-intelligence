@@ -1,0 +1,95 @@
+{
+  "recording_id": "3036298503036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:47:23.975209Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:47:23",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technologies. This is Garrett. How may I help you? Hi, this is Rose, and I'm calling on behalf of Lost Nation Golf Course. I'm working on something new for the course that I thought you might be interested in. Would you be the person I've talked to about this? Oh, no. So I'm just customer support for the software here. Were you trying to contact Main Sequence Technologies? she well yeah because what we're trying to do we want to showcase your company out in front of the golfers this year that's why i wanted to know if you were the one who makes the sole decision sure yeah let me uh transfer you over to our uh my supervisor here uh his name is nick and um oh you know what he might have just stepped out for the day 4 30 but uh i'll i'll send you that way it might get to his voicemail. His name is Nick and he's my supervisor. He might be able to answer your questions. Okay, what I was going to ask was, does he have an email? Oh, sure. You can email let's see what's his best email address. It's N as in Nick and then B as in Brad, R-A-D-A-C as in cat, H. So Nick Braddock. And that's at mainsequence.net. Mainsequence.net? Yes. Alrighty, perfect. Thank you so much. You have a good rest of your day. Alrighty, have a great. You too. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1101.237405,
+    "salad_processing_time": 15.64700984954834,
+    "overall_processing_time": 1101.237405,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technologies.  This is Garrett.  How may I help you? Hi, this is Rose, and I'm calling on behalf of Lost Nation Golf Course.",
+    "job_id": "36542553-9855-444b-9d74-2528b615de3b",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technologies.  This is Garrett.  How may I help you? Hi, this is Rose, and I'm calling on behalf of Lost Nation Golf Course.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3036298503036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

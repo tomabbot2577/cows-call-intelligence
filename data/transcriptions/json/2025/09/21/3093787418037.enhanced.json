@@ -1,0 +1,112 @@
+{
+  "recording_id": "3093787418037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:23:23.963118Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:23:23",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hey, Garrett. It's Stacey Sanclay, like you're going to remember me. Anyway, hi. I am calling because I have a quick question about access and visibility. So I have an admin or IT admin who has access to PC Recruiter, but I don't want them to be able to see notes or information in candidate records because it has sensitive information such as salary. So is there a way to not be able to give them access to people files? So, yeah, let me check our settings here for security. There's, so is it notes specifically that they shouldn't be able to see or do you just not want them to be accessing name records at all? Yeah, I don't want them accessing name records. Okay. Let's try this. So I'm going to, I have a test database here. I just want to double check that if I switch names to just no permission all around that I wouldn't be able to access any. So let me test that really quick here. All right, then let me sign in this user I edited. And there we go. So the settings I just did in my test, it removed names from the main menu. of PCR. So they wouldn't be able to even see those. Okay. So yeah, if you go to system in the main menu up at the top and then go to users on the left and manage users on the right, then you would go to whatever username you want to edit. Yep. And then in the bottom frame, go to security on the left of the padlock icon. Yep. And then there is a heading called names that you can expand, and it could set each one of those dropdowns to no permission. Oh, that is set to no permission. Okay, yeah. So company records, they can read, but positions, names, reports, activity search, so all of those are completely no permissions. When I get down to other, they have allow option for private email, activity search security, and timesheets have all full permission. Okay. So yeah, the timesheets that's going to be related to the, it's called contract in the main menu where you can look at people who have, are clocking in and out based on their temporary contract position they've been signed into. So feel free to turn that off if you don't want them accessing that. What was the other one you mentioned under other? or is it activity search security? Oh, so, yeah, you might want to turn that one off, too. That is accessed by going to activities in the main menu where you can perform an activity search, and that might give them results related to people. So I would maybe turn that off. All right, and then allow options for private email. Yeah, that one wouldn't affect anything related to seeing people, yeah. All right. So then, no permission, no permission. So it says system administrator has full permission. Under companies, they can read the records of the companies, which is fine because I don't care about that. And then everything else everywhere is no permission except for that timesheets one and that private email one. Okay. So let's say... When you say they have system administrator full permission, that would allow them to get into this system menu and they could edit their own permissions. So I can change that to no permission? Yeah, if you set that to no permission, they wouldn't be able to do much in the system menu. They wouldn't get to this part where you saw that list of users in the top frame. that would bar them from getting there. So, yeah, it's up to you how you want to set that one. Okay. All right, so I changed that to nothing. So for activities, he's not doing anything in here. I mean, honestly, I don't even really know why he has access. He only has access because he's the IT guy. So, you know, it's not like he's doing anything in here. We don't really need to worry about any of that. She's not doing any of that. She doesn't even know how to use this. All right. So I guess that's it. That's all I needed to know. I just wanted to make sure that they couldn't get in here and do anything. All right. So now I can add this slide back in. Okay. Yeah. And I'll send you just a link, if it's helpful, from our Learning Center that goes over each permission. If you want to look at it again or, you know, go over it with a fine-tooth comb, there is definitely explanations for each one of these drop downs in case that's helpful what let me see what's I'm gonna add somebody copy settings from you so that's what I want all right hold on one second no and then copy from username Joe. Okay, good. So he is H2G123. This is the other admin guy. Because we're talking about workflows and I wanted him to dig in here and help me kind of understand interview process and stuff like that. So you were asking about my email address? Yeah, exactly. So it's going to be Stacy, S-T-A-C-E-Y dot Sam Clementi I know. S-A-N-C-L-I M-E-N-T-I Got it. at H-H-S Bill, sorry. Yeah. H-H-S tech group dot com. Perfect. Okay. H-H-S tech group dot com. All right. Cool. Yeah. I'll just send you that over in case you have any questions about specific securities, what they do, maybe turning the person's system administrator to no permission was maybe something they lost, something that they need to be able to do, and then you could see what those other options are. Hopefully, that'll help. Okay. Yeah, just let us know if any other questions come up. Great. I appreciate it. Thanks so much. Thanks. Have a good one. Bye. You got it. You too. Thanks. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 2187.314747,
+    "salad_processing_time": 38.738503217697144,
+    "overall_processing_time": 2187.314747,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "job_id": "b0b543bb-ce18-404f-ab88-35eaf546d105",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3093787418037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}
