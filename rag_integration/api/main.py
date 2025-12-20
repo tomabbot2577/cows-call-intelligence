@@ -194,12 +194,22 @@ async def query_page(request: Request):
 
     return templates.TemplateResponse("query.html", {
         "request": request,
-        "result": None
+        "result": None,
+        "selected_date_range": None,
+        "start_date": None,
+        "end_date": None
     })
 
 
 @app.post("/query", response_class=HTMLResponse)
-async def query_submit(request: Request, query: str = Form(...), system: str = Form("auto")):
+async def query_submit(
+    request: Request,
+    query: str = Form(...),
+    system: str = Form("auto"),
+    date_range: str = Form(None),
+    start_date: str = Form(None),
+    end_date: str = Form(None)
+):
     """Process query from web form."""
     if not check_auth(request):
         return RedirectResponse(url="/login", status_code=303)
@@ -207,13 +217,37 @@ async def query_submit(request: Request, query: str = Form(...), system: str = F
     try:
         service = get_query_service()
         force_system = None if system == "auto" else system
-        result = service.query(query, force_system=force_system)
+
+        # Add date range context to query if specified
+        query_with_context = query
+        if date_range and date_range != 'custom':
+            date_labels = {
+                'last_30': 'last 30 days',
+                'mtd': 'month to date',
+                'qtd': 'quarter to date',
+                'ytd': 'year to date'
+            }
+            if date_range in date_labels:
+                query_with_context = f"{query} (limit to {date_labels[date_range]})"
+        elif date_range == 'custom' and start_date and end_date:
+            query_with_context = f"{query} (limit to date range {start_date} to {end_date})"
+
+        result = service.query(query_with_context, force_system=force_system)
+
+        # Add date range info to result
+        if date_range:
+            result['date_range'] = date_range
+            if date_range == 'custom':
+                result['date_range'] = f"{start_date} to {end_date}"
 
         return templates.TemplateResponse("query.html", {
             "request": request,
             "result": result,
             "query": query,
-            "selected_system": system
+            "selected_system": system,
+            "selected_date_range": date_range,
+            "start_date": start_date,
+            "end_date": end_date
         })
     except Exception as e:
         logger.error(f"Query error: {e}")
@@ -222,7 +256,10 @@ async def query_submit(request: Request, query: str = Form(...), system: str = F
             "result": None,
             "error": str(e),
             "query": query,
-            "selected_system": system
+            "selected_system": system,
+            "selected_date_range": date_range,
+            "start_date": start_date,
+            "end_date": end_date
         })
 
 

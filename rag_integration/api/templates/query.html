@@ -10,7 +10,7 @@
 <!-- Query Form -->
 <div class="card mb-4">
     <div class="card-body">
-        <form method="post" action="/query">
+        <form method="post" action="/query" id="queryForm" onsubmit="showQueryLoading()">
             <div class="mb-3">
                 <label for="query" class="form-label">Ask a question about your calls:</label>
                 <textarea class="form-control query-input" id="query" name="query" rows="3"
@@ -40,13 +40,45 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-md-8 d-flex align-items-end">
-                    <button type="submit" class="btn btn-primary btn-lg">
+                <div class="col-md-4">
+                    <label class="form-label">Date Range:</label>
+                    <select name="date_range" class="form-select" onchange="toggleQueryCustomDates(this)">
+                        <option value="" {{ 'selected' if not selected_date_range else '' }}>All Time</option>
+                        <option value="last_30" {{ 'selected' if selected_date_range == 'last_30' else '' }}>Last 30 Days</option>
+                        <option value="mtd" {{ 'selected' if selected_date_range == 'mtd' else '' }}>Month to Date</option>
+                        <option value="qtd" {{ 'selected' if selected_date_range == 'qtd' else '' }}>Quarter to Date</option>
+                        <option value="ytd" {{ 'selected' if selected_date_range == 'ytd' else '' }}>Year to Date</option>
+                        <option value="custom" {{ 'selected' if selected_date_range == 'custom' else '' }}>Custom Range...</option>
+                    </select>
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary btn-lg" id="queryBtn">
                         <i class="bi bi-send me-2"></i>Query
                     </button>
                 </div>
             </div>
+            <div class="row mb-3" id="customDateRange" style="display: {{ 'block' if selected_date_range == 'custom' else 'none' }};">
+                <div class="col-md-4">
+                    <label class="form-label">Start Date:</label>
+                    <input type="date" name="start_date" class="form-control" value="{{ start_date if start_date else '' }}">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">End Date:</label>
+                    <input type="date" name="end_date" class="form-control" value="{{ end_date if end_date else '' }}">
+                </div>
+            </div>
         </form>
+    </div>
+</div>
+
+<!-- Loading Indicator -->
+<div id="queryLoading" class="card mb-4" style="display: none;">
+    <div class="card-body text-center py-5">
+        <div class="spinner-border text-primary mb-3" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <h5 id="loadingMessage">Querying call intelligence...</h5>
+        <p class="text-muted mb-0" id="loadingSubtext">Analyzing call data and generating response...</p>
     </div>
 </div>
 
@@ -55,14 +87,21 @@
     <div class="col-md-6">
         <div class="card border-purple" style="border-color: #8e44ad !important;">
             <div class="card-header text-white" style="background-color: #8e44ad;">
-                <i class="bi bi-stars me-2"></i>Gemini (Semantic)
+                <i class="bi bi-stars me-2"></i>Gemini (Semantic Search)
             </div>
             <div class="card-body">
-                <p class="mb-2">Best for open-ended questions:</p>
+                <p class="mb-2"><strong>Best for open-ended, exploratory questions:</strong></p>
                 <ul class="small mb-0">
-                    <li>What are customers complaining about?</li>
-                    <li>Summarize competitor mentions</li>
-                    <li>Find patterns in negative calls</li>
+                    <li><a href="#" onclick="setQuery('What are the main reasons customers are unhappy?', 'mtd')">What are the main reasons customers are unhappy? <span class="badge bg-secondary">MTD</span></a></li>
+                    <li><a href="#" onclick="setQuery('What patterns do you see in calls that escalated?', 'last_30')">What patterns do you see in calls that escalated? <span class="badge bg-secondary">30d</span></a></li>
+                    <li><a href="#" onclick="setQuery('Summarize the most common product issues mentioned', 'qtd')">Summarize the most common product issues mentioned <span class="badge bg-secondary">QTD</span></a></li>
+                    <li><a href="#" onclick="setQuery('What do customers say about competitors?', '')">What do customers say about competitors? <span class="badge bg-secondary">All</span></a></li>
+                    <li><a href="#" onclick="setQuery('Identify training opportunities for the support team', 'mtd')">Identify training opportunities for the support team <span class="badge bg-secondary">MTD</span></a></li>
+                    <li><a href="#" onclick="setQuery('What makes customers happy in calls with high satisfaction?', 'qtd')">What makes customers happy in calls with high satisfaction? <span class="badge bg-secondary">QTD</span></a></li>
+                    <li><a href="#" onclick="setQuery('Find examples of excellent customer service', 'last_30')">Find examples of excellent customer service <span class="badge bg-secondary">30d</span></a></li>
+                    <li><a href="#" onclick="setQuery('What are the recurring themes in billing disputes?', 'ytd')">What are the recurring themes in billing disputes? <span class="badge bg-secondary">YTD</span></a></li>
+                    <li><a href="#" onclick="setQuery('How do agents handle frustrated customers?', 'mtd')">How do agents handle frustrated customers? <span class="badge bg-secondary">MTD</span></a></li>
+                    <li><a href="#" onclick="setQuery('What upsell opportunities are being missed?', 'qtd')">What upsell opportunities are being missed? <span class="badge bg-secondary">QTD</span></a></li>
                 </ul>
             </div>
         </div>
@@ -70,14 +109,21 @@
     <div class="col-md-6">
         <div class="card border-success">
             <div class="card-header bg-success text-white">
-                <i class="bi bi-funnel me-2"></i>Vertex (Structured)
+                <i class="bi bi-funnel me-2"></i>Vertex (Structured Query)
             </div>
             <div class="card-body">
-                <p class="mb-2">Best for filtered queries:</p>
+                <p class="mb-2"><strong>Best for filtered, metric-based queries:</strong></p>
                 <ul class="small mb-0">
-                    <li>Calls with churn risk > 7</li>
-                    <li>Agent John's calls this week</li>
-                    <li>Escalated support calls</li>
+                    <li><a href="#" onclick="setQuery('Show all calls with churn risk score above 7', 'mtd')">Show all calls with churn risk score above 7 <span class="badge bg-secondary">MTD</span></a></li>
+                    <li><a href="#" onclick="setQuery('List calls where quality score is below 5', 'last_30')">List calls where quality score is below 5 <span class="badge bg-secondary">30d</span></a></li>
+                    <li><a href="#" onclick="setQuery('Find all escalated calls', 'mtd')">Find all escalated calls <span class="badge bg-secondary">MTD</span></a></li>
+                    <li><a href="#" onclick="setQuery('Show calls with negative sentiment that need follow-up', 'last_30')">Show calls with negative sentiment that need follow-up <span class="badge bg-secondary">30d</span></a></li>
+                    <li><a href="#" onclick="setQuery('List all calls for customer company Acme Corp', '')">List all calls for customer company Acme Corp <span class="badge bg-secondary">All</span></a></li>
+                    <li><a href="#" onclick="setQuery('Agent performance metrics for Robin', 'mtd')">Agent performance metrics for Robin <span class="badge bg-secondary">MTD</span></a></li>
+                    <li><a href="#" onclick="setQuery('Calls where issue was not resolved', 'qtd')">Calls where issue was not resolved <span class="badge bg-secondary">QTD</span></a></li>
+                    <li><a href="#" onclick="setQuery('Show billing-related calls', 'last_30')">Show billing-related calls <span class="badge bg-secondary">30d</span></a></li>
+                    <li><a href="#" onclick="setQuery('Find calls with customer effort score above 8', 'ytd')">Find calls with customer effort score above 8 <span class="badge bg-secondary">YTD</span></a></li>
+                    <li><a href="#" onclick="setQuery('List calls with callback commitments', 'mtd')">List calls with callback commitments <span class="badge bg-secondary">MTD</span></a></li>
                 </ul>
             </div>
         </div>
@@ -98,6 +144,11 @@
             <i class="bi bi-chat-quote me-2"></i>Response
         </span>
         <span>
+            {% if result.date_range %}
+            <span class="badge bg-info me-2">
+                <i class="bi bi-calendar3 me-1"></i>{{ result.date_range }}
+            </span>
+            {% endif %}
             <span class="badge {{ 'badge-gemini' if result.system == 'gemini' else 'badge-vertex' }} me-2">
                 {{ result.system | upper }}
             </span>
@@ -130,42 +181,91 @@
 </div>
 {% endif %}
 
-<!-- Example Queries -->
-<div class="card mt-4">
-    <div class="card-header">
-        <i class="bi bi-lightbulb me-2"></i>Example Queries
-    </div>
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-6">
-                <h6>Semantic Queries (Gemini)</h6>
-                <ul class="small">
-                    <li><a href="#" onclick="setQuery('What are the most common customer complaints?')">What are the most common customer complaints?</a></li>
-                    <li><a href="#" onclick="setQuery('Summarize all competitor mentions in calls')">Summarize all competitor mentions in calls</a></li>
-                    <li><a href="#" onclick="setQuery('What training do agents need based on recent calls?')">What training do agents need based on recent calls?</a></li>
-                    <li><a href="#" onclick="setQuery('Find patterns in calls that resulted in escalation')">Find patterns in calls that resulted in escalation</a></li>
-                </ul>
-            </div>
-            <div class="col-md-6">
-                <h6>Structured Queries (Vertex)</h6>
-                <ul class="small">
-                    <li><a href="#" onclick="setQuery('Show all calls with churn risk score > 7')">Show all calls with churn risk score > 7</a></li>
-                    <li><a href="#" onclick="setQuery('Agent performance summary for this week')">Agent performance summary for this week</a></li>
-                    <li><a href="#" onclick="setQuery('All escalated calls from last month')">All escalated calls from last month</a></li>
-                    <li><a href="#" onclick="setQuery('Calls with quality score < 5 that need follow-up')">Calls with quality score < 5 that need follow-up</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+<!-- Tips -->
+<div class="alert alert-info mt-4">
+    <i class="bi bi-info-circle me-2"></i>
+    <strong>Tip:</strong> Use the <strong>Date Range</strong> dropdown above to limit your query to specific time periods.
+    Click any example question to auto-fill, then adjust the date range as needed.
 </div>
 {% endblock %}
 
 {% block extra_js %}
 <script>
-function setQuery(text) {
+function setQuery(text, dateRange) {
     document.getElementById('query').value = text;
     document.getElementById('query').focus();
+    if (dateRange) {
+        document.querySelector('[name="date_range"]').value = dateRange;
+        toggleQueryCustomDates(document.querySelector('[name="date_range"]'));
+    }
     return false;
+}
+
+function toggleQueryCustomDates(select) {
+    const customDates = document.getElementById('customDateRange');
+    if (select.value === 'custom') {
+        customDates.style.display = 'block';
+        // Set default dates
+        const today = new Date();
+        const startInput = customDates.querySelector('[name="start_date"]');
+        const endInput = customDates.querySelector('[name="end_date"]');
+        if (!startInput.value) {
+            const thirtyDaysAgo = new Date(today);
+            thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+            startInput.value = thirtyDaysAgo.toISOString().split('T')[0];
+        }
+        if (!endInput.value) {
+            endInput.value = today.toISOString().split('T')[0];
+        }
+    } else {
+        customDates.style.display = 'none';
+    }
+}
+
+function showQueryLoading() {
+    const loadingDiv = document.getElementById('queryLoading');
+    const queryBtn = document.getElementById('queryBtn');
+    const system = document.querySelector('input[name="system"]:checked').value;
+    const dateRange = document.querySelector('[name="date_range"]').value;
+
+    // Show loading indicator
+    loadingDiv.style.display = 'block';
+
+    // Update loading message based on selected system
+    const messages = {
+        'auto': 'Auto-routing query to best system...',
+        'gemini': 'Querying Gemini semantic search...',
+        'vertex': 'Querying Vertex structured search...'
+    };
+    const subtexts = {
+        'auto': 'Analyzing query type and selecting optimal RAG system',
+        'gemini': 'Performing semantic analysis across call transcripts',
+        'vertex': 'Searching structured call data with filters'
+    };
+
+    let loadingMsg = messages[system] || messages['auto'];
+    let subtext = subtexts[system] || subtexts['auto'];
+
+    if (dateRange && dateRange !== '') {
+        const rangeLabels = {
+            'last_30': 'last 30 days',
+            'mtd': 'this month',
+            'qtd': 'this quarter',
+            'ytd': 'this year',
+            'custom': 'selected date range'
+        };
+        subtext += ` (${rangeLabels[dateRange] || 'all time'})`;
+    }
+
+    document.getElementById('loadingMessage').textContent = loadingMsg;
+    document.getElementById('loadingSubtext').textContent = subtext;
+
+    // Disable button to prevent double-submit
+    queryBtn.disabled = true;
+    queryBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span>Querying...';
+
+    // Scroll to loading indicator
+    loadingDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 </script>
 {% endblock %}
