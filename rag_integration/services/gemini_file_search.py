@@ -136,7 +136,7 @@ Focus areas:
         try:
             # Get the model
             model = genai.GenerativeModel(
-                model_name='gemini-1.5-pro',
+                model_name='gemini-2.0-flash',
                 system_instruction=self._system_instruction
             )
 
@@ -177,7 +177,7 @@ Focus areas:
                 "response": response.text,
                 "citations": citations,
                 "system": "gemini",
-                "model": "gemini-1.5-pro"
+                "model": "gemini-2.0-flash"
             }
 
         except Exception as e:
@@ -202,7 +202,7 @@ Focus areas:
         """
         try:
             model = genai.GenerativeModel(
-                model_name='gemini-1.5-flash',  # Use flash for speed
+                model_name='gemini-2.0-flash',  # Use flash for speed
                 system_instruction=self._system_instruction
             )
 
@@ -221,7 +221,7 @@ QUESTION: {query}
                 "response": response.text,
                 "citations": [],
                 "system": "gemini",
-                "model": "gemini-1.5-flash"
+                "model": "gemini-2.0-flash"
             }
 
         except Exception as e:
@@ -246,7 +246,7 @@ QUESTION: {query}
         """
         try:
             model = genai.GenerativeModel(
-                model_name='gemini-1.5-pro',
+                model_name='gemini-2.0-flash',
                 system_instruction=self._system_instruction
             )
 
@@ -280,7 +280,7 @@ Provide a comprehensive analysis with specific examples from the calls.
                 "calls_analyzed": len(call_summaries),
                 "citations": [{"call_id": c.get('call_id')} for c in call_summaries],
                 "system": "gemini",
-                "model": "gemini-1.5-pro"
+                "model": "gemini-2.0-flash"
             }
 
         except Exception as e:
