@@ -354,6 +354,78 @@ curl http://localhost:8081/health
 tail -f logs/rag_api.log
 ```
 
+## Automated RAG Sync (Cron Job)
+
+The RAG sync job runs every 60 minutes to automatically export analyzed calls to Vertex AI RAG.
+
+### Features
+- **Duplicate Prevention**: Tracks exports in `rag_exports` database table
+- **All 5 Layers Required**: Only exports calls with complete analysis
+- **Batch Processing**: Configurable batch size and max batches
+- **Automatic Retry**: Failed exports are retried (up to 3 times)
+- **Full Audit Trail**: Results saved to `exports/sync_results/`
+
+### Setup Cron Job
+```bash
+cd /var/www/call-recording-system
+
+# Install the cron job (runs every hour at :30)
+./rag_integration/jobs/setup_rag_cron.sh install
+
+# Check status
+./rag_integration/jobs/setup_rag_cron.sh status
+
+# Remove cron job
+./rag_integration/jobs/setup_rag_cron.sh remove
+```
+
+### Manual Sync Operations
+```bash
+source venv/bin/activate
+
+# Check status
+python -m rag_integration.jobs.rag_sync_job --status
+
+# Dry run (show what would be exported)
+python -m rag_integration.jobs.rag_sync_job --dry-run
+
+# Run sync with default settings (100 calls per batch, 10 batches max)
+python -m rag_integration.jobs.rag_sync_job
+
+# Custom batch size
+python -m rag_integration.jobs.rag_sync_job --batch-size 50 --max-batches 5
+
+# Retry failed exports
+python -m rag_integration.jobs.rag_sync_job --force-reexport
+
+# Skip Gemini import (only Vertex)
+python -m rag_integration.jobs.rag_sync_job --skip-gemini
+
+# Output as JSON
+python -m rag_integration.jobs.rag_sync_job --status --json
+```
+
+### Tracking Table Schema
+The `rag_exports` table tracks all exports:
+```sql
+SELECT recording_id, export_status, vertex_imported, gemini_imported, exported_at
+FROM rag_exports
+WHERE export_status = 'exported'
+ORDER BY exported_at DESC
+LIMIT 10;
+```
+
+### View Ready for Export
+```sql
+-- Calls with all 5 layers complete, not yet exported
+SELECT COUNT(*) FROM calls_ready_for_rag_export;
+```
+
+### Logs
+- Cron log: `/var/www/call-recording-system/logs/rag_sync_cron.log`
+- Sync log: `/var/www/call-recording-system/logs/rag_sync.log`
+- Results: `/var/www/call-recording-system/rag_integration/exports/sync_results/`
+
 ## Directory Structure
 
 ```
@@ -504,6 +576,7 @@ python process_advanced_metrics.py
 
 | Date | Version | Changes |
 |------|---------|---------|
+| Dec 20, 2025 | 2.2 | Added automated RAG sync cron job with duplicate tracking in rag_exports table |
 | Dec 20, 2025 | 2.1 | Updated Vertex AI to us-west1, added null query validation, agent dropdown in reports |
 | Dec 2025 | 2.0 | Upgraded to google.genai SDK, gemini-2.0-flash, new GCS bucket (call-recording-rag-data) |
 | Dec 2025 | 1.0 | Initial implementation with Gemini File Search and Vertex AI RAG |
