@@ -1,0 +1,121 @@
+{
+  "recording_id": "3079874964036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:14:15.484151Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:14:15",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hi, Garrett. This is Conrad calling from On Point Search Group. How are you? Good. How are you? Good, good. So I had a quick question. I'm trying to connect with... I'm trying to get my info... I'm connecting with a third-party app, Outplay. I don't know. Are you familiar with that one? No, I haven't heard of Outplay yet. Okay, yeah, it's just an email sequencing thing. But it was working before and just all of a sudden stopped working, so I have to reenter some information, the application identifier and the application key. I just wanted to confirm what those was. I called the other day and they gave me some information, but I just wanted to... Oh, sure. Yeah. Is the application ID, is that just APP ID? Right. Yeah. All one word, lowercase, APP ID. And that basically just serves as it's almost like dummy text because the app ID, we've gotten rid of that protocol. We don't have like the three scale website you used to sign up for and then get an app ID. And what's the other one like a key? Those are in use anymore. Yeah, so you could just do APPID and then APIKEY, all one word lowercase as well for that one. So APIKEY. Yeah. And then database ID, I looked that up. So that's what's in PC Recruiter. Let's check that. I just pulled up your database. So, yeah, your API, I'm sorry, your database ID is the on point space search space group period on point search group with no spaces. OK. Yeah. For some reason, this isn't like working. Maybe it's on their end. OK. Did anything change to like. I don't know, make it more difficult to. I'm not sure. Sure. The change where it switched to like app ID and, you know, not using actual long strings of numbers happened about four or five months ago. So it wasn't a recent change, but let's see. Do they ask for like a username and password to connect at all? Yeah. Yeah. OK. Has your password changed at all? since you first gave them the username and password has that password changed at all? No. Okay. No, it's been the same like you know for I've never really changed it I probably should but it's been the same forever. Got it. Okay. Yeah. Maybe I got to go with them and just see if they're having an issue on their end. Okay. Yeah. And if they do have specific questions about your PCR configuration or anything and you need help, just let us know if there's anything we can answer to help with that support there. But yeah, they might have some insight onto maybe why the connection broke between PCR and their app. Okay. All right. All right. We'll give it a shot. Thank you. No problem. Reach out if you need anything else. Thank you. Take care now. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1920.172872,
+    "salad_processing_time": 45.237574338912964,
+    "overall_processing_time": 1920.172872,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "job_id": "1b98ace5-b94b-4ef8-85c2-85fc7111780a",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3079874964036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

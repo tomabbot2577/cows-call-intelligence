@@ -1,0 +1,107 @@
+{
+  "recording_id": "3045561461036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:56:33.854500Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:56:33",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Tyler, it's Alyssa at HC Pursuit again, and I'm chewing an apple, so I apologize for the crunching. No problem. How's it going? Well, my computer keeps, or my PC recruiter keeps saying, you've logged out or the session has expired. Please log on again. All right. Let me pop in and take a look. There's usually a few things that'll cause that. Are you using the same Internet that you normally do? Yep. Are you using a VPN by chance? Nope. All right. Let me take a look here. We did switch over to Frontier, so we have, you know, screaming fast Internet, but that shouldn't make a difference. So it will if they're not dedicated IP addresses. I don't know. So let me pop in. I can take a look at that on my end here. Sure. Pop away. Because what will happen is for security purposes, anytime that IP address changes, it gets read as a new session and logs you out. well that sucks but there are a few ways that we can get around it meanwhile I'm screaming along at about a 650 download and a 500 upload and which username are you using? recruiter and admin's having the same problem for what it's worth. All right, so the IP address isn't changing, so that's good. What I'm going to do is whitelist that IP address in the system. Okay. So that should keep you from getting logged out. Yeah, if you could do the same for Maureen, that would be awesome. She's having that issue as well? Yeah, and she's under admin. Yeah, it's the same IP address. Okay, yeah, we're all on the same internet. All right, so I went ahead and whitelisted that. Do you want to just log in and click around a little bit? Yeah, let me close that out. We'll pop back on. Just as an aside, Robin is taking care of the whole, whatever that thing was called. Oh, the... Yeah, changing our... re-indexing our thing so we can get the Lucene... Perfect. Yeah. Try to drag us into the kicking and screaming. And then did Garrett message you guys back about the push for the capture tool? Not that I'm aware of, but I'm assuming it got fixed because Maureen told me that things were looking normal again. Yes. Yep. So we, we pushed that update yesterday. Yay. Yeah. So crazy. That, you know, it was, it was like doing that backwards. Yeah. I have no idea how that happened either. Yeah. That's so funny. All right. That's how coding works every now and again. You, you mess up one little line. it just breaks everything unintended consequences yeah let me see if I can go and try to capture somebody that's already in our database review South Carolina look at that the cities where it belongs in the states where it belongs you guys are just amazing all right yeah that looks That looks good. All right. I'll get back to work and hopefully not have any more inadvertent logouts. Should I tell Maureen to log out and log back in just for? Yeah, just to be safe. It never hurts. Just to create a fresh session. Okay. All right. If you run into any issues, just give us a call back. Will do. You know me. I'm never shy about calling. hey that keeps the paychecks coming in so i'll take it all right anything i can do to help all right thank you so much you too bye",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1389.394117,
+    "salad_processing_time": 12.398045063018799,
+    "overall_processing_time": 1389.394117,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Tyler, it's Alyssa at HC Pursuit again, and I'm chewing an apple, so I apologize for the crunching.",
+    "job_id": "a8db98ef-0eec-4b1b-946f-9453747b3257",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Tyler, it's Alyssa at HC Pursuit again, and I'm chewing an apple, so I apologize for the crunching.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "resolved",
+    "first_call_resolution": true,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3045561461036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

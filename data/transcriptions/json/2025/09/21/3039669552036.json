@@ -1,0 +1,109 @@
+{
+  "recording_id": "3039669552036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:50:07.108429Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:50:07",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " hi this is Robert hey Robert it's Jim with PC recruiter how are you I'm doing well yourself I am all right I wanted to give a call and got your voicemail thought I'd give you a quick call back I understand she's I think you said you're looking to cancel your PC recruiter account yeah we're gonna do that I think and you asked why I think we're experimenting some with co-pilot and think we can capture the information we need with that. And we've scaled back some over the last couple of years. And so we're just looking to make some changes. And this is one that we've decided to give a go. And so I wanted to reach out to you and get some information. I think you sent most of the relevant information via your email. but wanted to kind of get a feel for options regarding data that's in there as well as timeline. And I think you put a thing in there about the contract going through the 8th of October. Yep. I guess would be 80% would have to be paid if we left before the contract. Yeah, that's only a couple more. Is that right? Yep. You only got a couple more months left anyway. But, yeah, if you canceled like next week, there would be an 80% of remaining payments due via that. Which would just be September and October at this point, I guess. Yeah. Right. From a data standpoint, I know you mentioned there's $175 fee. What type of format would that come in? That would be in a Microsoft SQL database format, and it would be something that you can download and then put it anywhere you like. So they would make it available in a downloadable database, SQL database, and then you could take it, and if you're using Copilot, it's Microsoft anyway, so that should work with that. Right. And how much flexibility? I know we've been using you guys for a number of years. One of the thoughts was it's going to be a ton of data. Could we limit the amount of data we get and say, you know, maybe we want the last three years of it or the last five years of it, not the whole thing? Is that something I can work with your IT group to determine? They don't do that because they don't really divvy it up at all, so they can't give you only a partial return. But what you could do is you could take and before you close the account, you could export only a specific roll-up list of data to a CSV, and that would at least get all the field data. You wouldn't get attachments or resumes or anything like that, but that would give you the ability to at least take a smaller section out on your own in an Excel spreadsheet. That's an option. That's no cost. You can just export that anytime you want. Right. That's a good idea. Maybe we'll play around with that some. I bet before we pull the plug. Yeah, and then if you decide you want the data returned, just let me know, and then you can get it. And then whatever you import it into, you should be able to kind of divvy it up and figure out what you want, what you don't want, and everything from there. Right. What about the letter or the email that you would need, just something pretty simple saying, effective this date, we'd like to end our contract? Yeah, just send me an email that says I want to cancel my PC recruiter account effective X date. Then I'll put the ticket in, and I'll go ahead and get the accounting team working on that to get the data return if you need it. And then they can close it as of that date and turn off all the billing, et cetera. Okay. Well, we'll spend the next couple days playing around with seeing about if we can export some of the data or import some of the data over to our side. just so we can get a feel for it and see how laborious that is. And then once we figure out whether that's something we're going to do in mass or whether we want to just have the file sent, then I'll reach back out to you and figure it out from there. Perfect. Yeah, just let me know, and we can get it done whenever you're ready. I'll just wait for your email. All right. Thanks so much for getting back to me. My pleasure. Thank you, sir. Take care. Bye. You too. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1190.355145,
+    "salad_processing_time": 23.54168963432312,
+    "overall_processing_time": 1190.355145,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " hi this is Robert hey Robert it's Jim with PC recruiter how are you I'm doing well yourself I am all right I wanted to give a call and got your voicemail thought I'd give you a quick call back I understand she's I think you said you're looking to cancel your PC recruiter account yeah we're gonna do that I think and you asked why I think we're experimenting some with co-pilot and think we can capture the information we need with that.  And we've scaled back some over the last couple of years.  And so we're just looking to make some changes.",
+    "job_id": "d220891d-4aea-4b10-b610-83c8acc4a288",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " hi this is Robert hey Robert it's Jim with PC recruiter how are you I'm doing well yourself I am all right I wanted to give a call and got your voicemail thought I'd give you a quick call back I understand she's I think you said you're looking to cancel your PC recruiter account yeah we're gonna do that I think and you asked why I think we're experimenting some with co-pilot and think we can capture the information we need with that.  And we've scaled back some over the last couple of years.  And so we're just looking to make some changes.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Billing",
+        "confidence": 0.7
+      }
+    ],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "billing",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": true,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "billing"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3039669552036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

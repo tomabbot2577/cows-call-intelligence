@@ -1,0 +1,441 @@
+{
+  "recording_id": "3098045780036",
+  "analysis_timestamp": "2025-12-19T21:54:18.328941",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Garrett",
+        "role": "agent",
+        "company": "Main Sequence Technology",
+        "confidence_score": 0.9,
+        "validation_reason": "Likely a Main Sequence employee"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "call_type": "support_technical",
+    "call_purpose": [
+      "troubleshooting technical issue",
+      "screen share assistance"
+    ],
+    "urgency_level": "medium",
+    "outcome_status": "pending"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Garrett",
+      "Company/organization name": "Main Sequence Technology",
+      "Phone numbers mentioned": null,
+      "Email addresses mentioned": null,
+      "Key decision makers referenced": null,
+      "Team members and their roles": null
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": null,
+      "Company size indicators": null,
+      "Technology stack mentions": [
+        "Outlook Classic",
+        "Outlook New",
+        "Java",
+        "Launcher",
+        "RingCentral",
+        "PCR"
+      ],
+      "Current challenges/pain points": [
+        "Unable to find PCR on Outlook ribbon"
+      ],
+      "Growth stage indicators": null
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": null,
+      "Existing service usage": [
+        "PCR (PC Recruiter)"
+      ],
+      "Account history mentions": null,
+      "Relationship duration indicators": null,
+      "Trust level indicators": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "Technical",
+      "issue_severity": "Medium",
+      "technical_complexity_level": "Medium",
+      "time_sensitivity": "Low"
+    },
+    "resolution_tracking": {
+      "issue_status": "Resolved",
+      "resolution_steps_taken": [
+        "Screen sharing to troubleshoot the issue",
+        "Checked Java and Launcher versions",
+        "Enabled the PCR add-on in Outlook"
+      ],
+      "outstanding_action_items": [],
+      "next_steps_required": []
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "Medium",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "None",
+      "knowledge_base_gaps_identified": "None"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "Effective",
+      "communication_clarity": "Clear",
+      "technical_knowledge_demonstrated": "Good",
+      "empathy_and_rapport_building": "Good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "RELATIONSHIP_HEALTH": {
+      "Overall_satisfaction_indicators": "High, as the customer's issue was resolved effectively",
+      "Trust_level_signals": "High, customer trusted the guidance and followed the instructions provided",
+      "Communication_style": "Clear, directive, and supportive",
+      "Rapport_quality": "Good, interaction was polite and focused on problem-solving"
+    },
+    "CUSTOMER_JOURNEY_STAGE": {
+      "Onboarding_status": "Completed, as the customer is already using the product",
+      "Product_adoption_level": "High, customer is using advanced features like add-ins",
+      "Feature_utilization": "Moderate, needed assistance to enable and use specific features",
+      "Expansion_opportunities": "Possible, through renewal and continuous support"
+    },
+    "RETENTION_FACTORS": {
+      "Satisfaction_drivers": "Effective problem resolution and proactive license renewal",
+      "Risk_indicators": "Dependency on classic versions could be a risk if not managed",
+      "Loyalty_signals": "Customer's willingness to follow instructions and satisfaction with the resolution",
+      "Advocacy_potential": "High, given the positive resolution experience"
+    },
+    "COMMUNICATION_PREFERENCES": {
+      "Preferred_contact_methods": "Phone and screen sharing",
+      "Response_time_expectations": "Immediate, as support was provided in real-time",
+      "Information_style_preferences": "Direct and instructional",
+      "Decision-making_patterns": "Customer follows expert advice and allows actions on their behalf"
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "My PCR, typically when I have the Outlook, it has up on top of the ribbon, you know, PC recruiter. I no longer can find that.",
+      "You've got to use Classic to be able to do this, right? Exactly. Yeah, we're only compatible with Classic.",
+      "let's see. Do you have \u2013 let me check to see maybe if you have the latest Java and Launcher.",
+      "This will probably be easiest if we could just jump on a quick screen share.",
+      "slow and disabled comm add-ins let's click on there where it says manage comm add-ins that might be what the issue is"
+    ],
+    "qa_pairs": [
+      {
+        "question": "Can I get it back?",
+        "answer": "Sure. Are you using Outlook Classic or are you using Outlook New?"
+      },
+      {
+        "question": "I think I'm using Classic, right? You've got to use Classic to be able to do this, right?",
+        "answer": "Exactly. Yeah, we're only compatible with Classic."
+      },
+      {
+        "question": "What is it, meetings?",
+        "answer": "Yeah, meetings.ringcentral.com."
+      },
+      {
+        "question": "Is that what it's showing on the screen?",
+        "answer": "is it it's rings with an s uh no so it's uh well it's meetings with an s so meeting meetings period ring central.com yep Here it is."
+      }
+    ],
+    "searchable_tags": [
+      "PCR",
+      "Outlook Classic",
+      "Outlook New",
+      "Java",
+      "Launcher",
+      "screen share",
+      "RingCentral",
+      "meeting ID",
+      "comm add-ins",
+      "slow add-ins",
+      "disabled add-ins",
+      "PC recruiter",
+      "ribbon",
+      "technical support",
+      "troubleshooting"
+    ],
+    "semantic_themes": [
+      "Technical support for PCR in Outlook",
+      "Compatibility issues with Outlook Classic vs. New",
+      "Troubleshooting disabled add-ins in Outlook"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 70,
+      "Customer talk percentage": 30,
+      "Balanced conversation indicator": "Unbalanced"
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 2,
+      "Number of interruptions by customer": 0,
+      "Interruption impact on flow": "Minimal"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 15,
+      "Awkward pauses detected": 2,
+      "Hold time indicators": "None"
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": true,
+      "Company name mentioned": true,
+      "Verification steps taken": false,
+      "Required disclosures made": false,
+      "Proper closing used": false
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": "Medium"
+    },
+    "agent_talk_pct_calculated": 13.3,
+    "customer_talk_pct_calculated": 86.7
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "support_technical",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 13.3,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "PCR",
+      "Outlook Classic",
+      "Outlook New",
+      "Java",
+      "Launcher",
+      "screen share",
+      "RingCentral",
+      "meeting ID",
+      "comm add-ins",
+      "slow add-ins",
+      "disabled add-ins",
+      "PC recruiter",
+      "ribbon",
+      "technical support",
+      "troubleshooting"
+    ],
+    "semantic_themes": [
+      "Technical support for PCR in Outlook",
+      "Compatibility issues with Outlook Classic vs. New",
+      "Troubleshooting disabled add-ins in Outlook"
+    ],
+    "key_quotes": [
+      "My PCR, typically when I have the Outlook, it has up on top of the ribbon, you know, PC recruiter. I no longer can find that.",
+      "You've got to use Classic to be able to do this, right? Exactly. Yeah, we're only compatible with Classic.",
+      "let's see. Do you have \u2013 let me check to see maybe if you have the latest Java and Launcher.",
+      "This will probably be easiest if we could just jump on a quick screen share.",
+      "slow and disabled comm add-ins let's click on there where it says manage comm add-ins that might be what the issue is"
+    ],
+    "qa_pairs": [
+      {
+        "question": "Can I get it back?",
+        "answer": "Sure. Are you using Outlook Classic or are you using Outlook New?"
+      },
+      {
+        "question": "I think I'm using Classic, right? You've got to use Classic to be able to do this, right?",
+        "answer": "Exactly. Yeah, we're only compatible with Classic."
+      },
+      {
+        "question": "What is it, meetings?",
+        "answer": "Yeah, meetings.ringcentral.com."
+      },
+      {
+        "question": "Is that what it's showing on the screen?",
+        "answer": "is it it's rings with an s uh no so it's uh well it's meetings with an s so meeting meetings period ring central.com yep Here it is."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Garrett Komyati",
+      "extension": "5427",
+      "phone": "6145427",
+      "email": "garrett.komyati@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5427"
+    },
+    "primary_customer": {
+      "name": "what came up",
+      "company": "audio, you can say continue without audio sinc",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "what came up",
+        "company": "audio, you can say continue without audio sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "using Classic",
+        "company": "audio, you can say continue without audio sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Something that came up",
+        "company": "audio, you can say continue without audio sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "saying",
+        "company": "audio, you can say continue without audio sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Certain system things it might hide",
+        "company": "audio, you can say continue without audio sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "glad",
+        "company": "audio, you can say continue without audio sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "com yep",
+        "company": "audio, you can say continue without audio sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "wondering if PCR is on that list",
+        "company": "audio, you can say continue without audio sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "something that came up",
+        "company": "audio, you can say continue without audio sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "up",
+        "company": "audio, you can say continue without audio sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "hold on",
+        "company": "audio, you can say continue without audio sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Garrett",
+        "company": "audio, you can say continue without audio sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "see",
+        "company": "audio, you can say continue without audio sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Garrett Komyati",
+        "extension": "5427",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "billing",
+        "account"
+      ],
+      "mentioned_issues": [
+        "problem",
+        "issue",
+        "trouble"
+      ],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "reach out"
+      ]
+    }
+  }
+}

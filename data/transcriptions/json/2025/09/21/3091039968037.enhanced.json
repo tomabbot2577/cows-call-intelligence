@@ -1,0 +1,121 @@
+{
+  "recording_id": "3091039968037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:20:57.591337Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:20:57",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Street Technologies. Tyler, how can I help you? Yeah, I'm having a problem on my laptop. When I try to log into Outlook, I'm getting a message about the PCR login. It needs a password, and I'm not sure exactly what password it's looking for. I put in my PCR password, and it's not taking it. Yeah, so what would be your PC recruiter password that it's asking for? Or is it asking for a serial number? No, it says, you know, the box that comes up says PCR recruiter login, and then a password with a blank there. a line you can click or not, remember my password, and then log in. It's a PCR logo at the bottom of that. Let's hop on a screen share here so I can take a look. What's a good email address for you? jon at olsonsearch.com It can be one second to get this up and running. All right, I'll just put that link on over to you. You should get it here in just a second. Okay. Then if it's asking to connect to audio and video, you can just say continue without. Okay. And then at the bottom of the meeting window, you're going to see a blue box with an arrow in it that says share. Right. Click on that, and then you'll want to share your entire screen. Yep. So you'll just click on which screen you want to share. Perfect. Mm-hmm. Yep. All right. So let's pull up your Outlook here. Okay. Okay. And so, I mean, I had to kind of ignore, you know, or close out of the box that comes in, you know, about not logging into PCR in order to access Outlook. Yeah, let me – I'm going to ask for remote control here. Go ahead. Okay. Okay. Thank you. Oh, you're on a very old version of the portal. I wonder if that's what's causing the issue. Okay. So let's do this here. Do you mind if I exit out of Outlook real quick? Yeah, no, go ahead. Thank you. Oh man, that is running slow. No, it looks like your Wi-Fi connection might not be the best right now either. Okay. Yeah, I mean, that may be an issue, but this has been going on even when I have good Wi-Fi. Oh, yeah, I've just talked about the download taking a while. Right. I'm guessing it's because it's your... So the version that you're on, it was 0.513. We're up 0.530. Oh, okay. So there could be something in that older version causing an issue. Sure. I don't know why it's so slow. Well, there it goes. Thank you. Yes. Then go ahead and click next. It won't let me click through these. Then click the I accept. Next. Then install. finishing and then go ahead and open up Outlook. Yeah because it wasn't giving us like an invalid password error it was just saying it was unable to establish a secure connection. Right okay. Yeah so now that you're at that newest version that did the trick. Okay. Great. Thank you very much. I appreciate it. Yep. Not a problem. You have yourself a great day. You too. Thanks, Tyler. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 2111.874171,
+    "salad_processing_time": 36.42384171485901,
+    "overall_processing_time": 2111.874171,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Street Technologies.  Tyler, how can I help you? Yeah, I'm having a problem on my laptop.  When I try to log into Outlook, I'm getting a message about the PCR login.",
+    "job_id": "41c98295-dd10-49d5-80ab-a856978b40ff",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Street Technologies.  Tyler, how can I help you? Yeah, I'm having a problem on my laptop.  When I try to log into Outlook, I'm getting a message about the PCR login.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3091039968037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

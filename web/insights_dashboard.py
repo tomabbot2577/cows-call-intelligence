@@ -7,16 +7,19 @@ Secure web interface for viewing call insights with password protection
 from flask import Flask, render_template, request, jsonify, session, redirect, url_for, flash
 from flask_session import Session
 from werkzeug.security import check_password_hash, generate_password_hash
+from functools import wraps
 import os
 import sys
 import json
 from pathlib import Path
 from datetime import datetime, timedelta
 import logging
+import psycopg2
+from psycopg2.extras import RealDictCursor
 
 sys.path.insert(0, '/var/www/call-recording-system')
 
-from src.insights.insights_manager import get_insights_manager
+from src.insights.insights_manager_postgresql import get_postgresql_insights_manager
 from src.insights.customer_employee_identifier import get_customer_employee_identifier
 
 app = Flask(__name__)
@@ -38,8 +41,20 @@ PASSWORD_HASH = generate_password_hash('!pcr123')
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Initialize insights manager
-insights_manager = get_insights_manager()
+# Initialize PostgreSQL insights manager
+insights_manager = get_postgresql_insights_manager()
+
+
+def get_db_connection():
+    """Get PostgreSQL database connection"""
+    db_config = {
+        'dbname': 'call_insights',
+        'user': 'call_insights_user',
+        'password': 'REDACTED_DB_PASSWORD',
+        'host': 'localhost',
+        'port': 5432
+    }
+    return psycopg2.connect(**db_config)
 
 
 def require_auth(f):
@@ -82,28 +97,33 @@ def logout():
 def dashboard():
     """Main dashboard page"""
     try:
-        # Get recent insights
-        recent_insights = insights_manager.query_insights(limit=10)
+        # Get dashboard statistics
+        dashboard_stats = insights_manager.get_dashboard_stats()
 
-        # Get analytics summary
-        analytics = insights_manager.generate_analytics_report('daily')
+        # Get recent recordings
+        recent_recordings = insights_manager.get_recent_recordings(limit=10)
 
-        # Get patterns
-        patterns = insights_manager._get_patterns()[:5]
+        # Get pipeline status
+        pipeline_status = insights_manager.get_pipeline_status()
+
+        # Get analytics
+        analytics = insights_manager.get_analytics(days=30)
 
         return render_template('dashboard.html',
-                             recent_insights=recent_insights,
+                             dashboard_stats=dashboard_stats,
+                             recent_recordings=recent_recordings,
+                             pipeline_status=pipeline_status,
                              analytics=analytics,
-                             patterns=patterns,
                              datetime=datetime)
 
     except Exception as e:
         logger.error(f"Error loading dashboard: {e}")
         flash(f'Error loading dashboard: {e}', 'error')
         return render_template('dashboard.html',
-                             recent_insights=[],
+                             dashboard_stats={},
+                             recent_recordings=[],
+                             pipeline_status={},
                              analytics={},
-                             patterns=[],
                              datetime=datetime)
 
 
@@ -143,17 +163,99 @@ def insights_list():
 @app.route('/insight/<recording_id>')
 @require_auth
 def insight_detail(recording_id):
-    """Detailed view of specific insight"""
+    """Detailed view of specific insight with all 4 AI layers from PostgreSQL"""
     try:
-        # Load raw insight
-        raw_path = Path(f'/var/www/call-recording-system/data/transcriptions/insights/{recording_id}_insights.json')
+        conn = get_db_connection()
+        cursor = conn.cursor(cursor_factory=RealDictCursor)
 
-        if not raw_path.exists():
-            flash(f'Insight not found for recording {recording_id}', 'error')
+        # Fetch all 4 layers from database
+        cursor.execute("""
+            SELECT
+                t.recording_id,
+                t.customer_name,
+                t.employee_name,
+                t.from_number,
+                t.to_number,
+                t.call_date,
+                t.duration_seconds,
+                t.transcript_text,
+                i.customer_sentiment,
+                i.call_quality_score,
+                i.call_type,
+                i.key_topics,
+                i.summary,
+                i.follow_up_needed as follow_up_required,
+                cr.*,
+                rec.process_improvements,
+                rec.employee_strengths,
+                rec.employee_improvements,
+                rec.suggested_phrases,
+                rec.follow_up_actions,
+                rec.knowledge_base_updates,
+                rec.escalation_required as escalation_needed,
+                rec.escalation_reason,
+                rec.risk_level,
+                rec.efficiency_score,
+                rec.training_priority
+            FROM transcripts t
+            LEFT JOIN insights i ON t.recording_id = i.recording_id
+            LEFT JOIN call_resolutions cr ON t.recording_id = cr.recording_id
+            LEFT JOIN call_recommendations rec ON t.recording_id = rec.recording_id
+            WHERE t.recording_id = %s
+        """, (recording_id,))
+
+        result = cursor.fetchone()
+        cursor.close()
+        conn.close()
+
+        if not result:
+            flash(f'Recording {recording_id} not found', 'error')
             return redirect(url_for('insights_list'))
 
-        with open(raw_path, 'r') as f:
-            insight = json.load(f)
+        # Structure the data for display with all 4 layers
+        insight = dict(result) if result else {}
+
+        # Ensure all fields have default values
+        insight.update({
+            'recording_id': result['recording_id'],
+            # Layer 1: Entity Extraction
+            'customer_name': result.get('customer_name') or 'Unknown',
+            'employee_name': result.get('employee_name') or 'Unknown',
+            'from_phone': result.get('from_number') or 'Unknown',
+            'to_phone': result.get('to_number') or 'Unknown',
+            'call_date': result.get('call_date'),
+            'duration_seconds': result.get('duration_seconds', 0),
+            'transcript_text': result.get('transcript_text', ''),
+            # Layer 2: Sentiment & Quality Analysis
+            'customer_sentiment': result.get('customer_sentiment') or 'Not analyzed',
+            'call_quality_score': result.get('call_quality_score', 0),
+            'call_type': result.get('call_type') or 'Unknown',
+            'key_topics': result.get('key_topics', []),
+            'summary': result.get('summary') or 'No summary available',
+            'follow_up_required': result.get('follow_up_required') or result.get('follow_up_needed', False),
+            # Layer 3: Call Resolution fields (direct from database)
+            'resolution_status': result.get('resolution_status'),
+            'problem_statement': result.get('problem_statement'),
+            'resolution_details': result.get('resolution_details'),
+            'solution_summarized': result.get('solution_summarized'),
+            'understanding_confirmed': result.get('understanding_confirmed'),
+            'asked_if_anything_else': result.get('asked_if_anything_else'),
+            'next_steps_provided': result.get('next_steps_provided'),
+            'timeline_given': result.get('timeline_given'),
+            'contact_info_provided': result.get('contact_info_provided'),
+            'closure_score': result.get('closure_score'),
+            'missed_best_practices': result.get('missed_best_practices', []),
+            'follow_up_type': result.get('follow_up_type'),
+            # Layer 4: Recommendations fields (direct from database)
+            'process_improvements': result.get('process_improvements', []),
+            'employee_strengths': result.get('employee_strengths', []),
+            'employee_improvements': result.get('employee_improvements', []),
+            'follow_up_actions': result.get('follow_up_actions', []),
+            'escalation_needed': result.get('escalation_needed'),
+            'escalation_reason': result.get('escalation_reason'),
+            'risk_level': result.get('risk_level'),
+            'efficiency_score': result.get('efficiency_score')
+        })
 
         return render_template('insight_detail.html',
                              insight=insight,
@@ -169,20 +271,20 @@ def insight_detail(recording_id):
 @require_auth
 def analytics():
     """Analytics and reporting page"""
-    period = request.args.get('period', 'weekly')
+    days = int(request.args.get('days', '30'))
 
     try:
-        report = insights_manager.generate_analytics_report(period)
+        report = insights_manager.get_analytics(days=days)
         return render_template('analytics.html',
                              report=report,
-                             period=period)
+                             days=days)
 
     except Exception as e:
         logger.error(f"Error generating analytics: {e}")
         flash(f'Error generating analytics: {e}', 'error')
         return render_template('analytics.html',
                              report={},
-                             period=period)
+                             days=days)
 
 
 @app.route('/api/insights')
@@ -213,8 +315,8 @@ def api_insights():
 def api_analytics():
     """JSON API endpoint for analytics"""
     try:
-        period = request.args.get('period', 'daily')
-        report = insights_manager.generate_analytics_report(period)
+        days = int(request.args.get('days', '30'))
+        report = insights_manager.get_analytics(days=days)
 
         return jsonify({
             'status': 'success',
@@ -312,6 +414,189 @@ def customer_search():
                           unique_customers=unique_customers,
                           escalations_count=escalations_count,
                           avg_satisfaction=avg_satisfaction)
+
+
+@app.route('/transcript/<recording_id>')
+@require_auth
+def view_transcript(recording_id):
+    """View original transcript for a recording with all insights"""
+    try:
+        # Get transcript and all insights from database
+        db_config = {
+            'dbname': 'call_insights',
+            'user': 'call_insights_user',
+            'password': 'REDACTED_DB_PASSWORD',
+            'host': 'localhost',
+            'port': 5432
+        }
+        conn = psycopg2.connect(**db_config, cursor_factory=RealDictCursor)
+        cursor = conn.cursor()
+
+        # Get complete transcript with all insights joined
+        cursor.execute("""
+            SELECT
+                t.*,
+                i.call_quality_score,
+                i.customer_sentiment,
+                i.call_type,
+                i.key_topics,
+                i.summary,
+                i.follow_up_needed,
+                i.escalation_required,
+                r.process_improvements,
+                r.employee_strengths,
+                r.employee_improvements,
+                r.suggested_phrases,
+                r.follow_up_actions,
+                r.knowledge_base_updates,
+                r.escalation_required as rec_escalation_required,
+                r.risk_level,
+                r.escalation_reason,
+                r.efficiency_score,
+                r.training_priority,
+                cr.problem_statement,
+                cr.resolution_status,
+                cr.resolution_details,
+                cr.follow_up_type,
+                cr.follow_up_details,
+                cr.follow_up_timeline,
+                cr.solution_summarized,
+                cr.understanding_confirmed,
+                cr.asked_if_anything_else,
+                cr.next_steps_provided,
+                cr.timeline_given,
+                cr.contact_info_provided,
+                cr.closure_score,
+                cr.missed_best_practices,
+                cr.improvement_suggestions,
+                cr.customer_satisfaction_likely,
+                cr.call_back_risk,
+                cr.escalation_probability
+            FROM transcripts t
+            LEFT JOIN insights i ON t.recording_id = i.recording_id
+            LEFT JOIN call_recommendations r ON t.recording_id = r.recording_id
+            LEFT JOIN call_resolutions cr ON t.recording_id = cr.recording_id
+            WHERE t.recording_id = %s
+        """, (recording_id,))
+
+        transcript = cursor.fetchone()
+        cursor.close()
+        conn.close()
+
+        if not transcript:
+            flash(f'Transcript not found for recording {recording_id}', 'error')
+            return redirect(url_for('insights_list'))
+
+        # Format the transcript for display
+        transcript_lines = []
+        if transcript.get('transcript_text'):
+            # Split into paragraphs for readability
+            text = transcript['transcript_text']
+            paragraphs = text.split('\n\n') if '\n\n' in text else [text]
+
+            for para in paragraphs:
+                if para.strip():
+                    transcript_lines.append(para.strip())
+
+        return render_template('transcript_view.html',
+                             recording_id=recording_id,
+                             transcript=transcript,
+                             transcript_lines=transcript_lines)
+
+    except Exception as e:
+        logger.error(f"Error loading transcript {recording_id}: {e}")
+        flash(f'Error loading transcript: {e}', 'error')
+        return redirect(url_for('insights_list'))
+
+
+@app.route('/api/semantic-search', methods=['POST'])
+@require_auth
+def semantic_search_api():
+    """API endpoint for semantic vector search using Vertex AI RAG"""
+    try:
+        data = request.get_json()
+        query = data.get('query', '')
+        filters = data.get('filters', {})
+        limit = data.get('limit', 10)
+
+        if not query:
+            return jsonify({'error': 'Query is required'}), 400
+
+        # Import Vertex AI search client
+        from src.vertex_ai.search_client import VertexSearchClient
+        search_client = VertexSearchClient()
+
+        # Perform semantic search via Vertex AI RAG
+        results = search_client.semantic_search(
+            query=query,
+            filters=filters,
+            limit=limit
+        )
+
+        return jsonify({
+            'query': query,
+            'results': results,
+            'count': len(results)
+        })
+
+    except Exception as e:
+        logger.error(f"Semantic search error: {e}")
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/semantic-search')
+@require_auth
+def semantic_search_ui():
+    """UI page for semantic search"""
+    return render_template('semantic_search.html')
+
+
+@app.route('/api/transcript/<recording_id>')
+@require_auth
+def get_transcript(recording_id):
+    """Get full transcript for a recording"""
+    try:
+        # Use the insights_manager's db_config
+        db_config = {
+            'dbname': 'call_insights',
+            'user': 'call_insights_user',
+            'password': 'REDACTED_DB_PASSWORD',
+            'host': 'localhost',
+            'port': 5432
+        }
+        conn = psycopg2.connect(**db_config, cursor_factory=RealDictCursor)
+        cursor = conn.cursor()
+
+        cursor.execute("""
+            SELECT
+                t.recording_id,
+                t.transcript_text,
+                t.customer_name,
+                t.employee_name,
+                t.call_date,
+                t.duration_seconds,
+                i.summary,
+                i.customer_sentiment,
+                i.key_topics,
+                i.issue_category,
+                i.call_type
+            FROM transcripts t
+            LEFT JOIN insights i ON t.recording_id = i.recording_id
+            WHERE t.recording_id = %s
+        """, (recording_id,))
+
+        result = cursor.fetchone()
+        cursor.close()
+        conn.close()
+
+        if result:
+            return jsonify(dict(result))
+        else:
+            return jsonify({'error': 'Transcript not found'}), 404
+
+    except Exception as e:
+        logger.error(f"Error fetching transcript: {e}")
+        return jsonify({'error': str(e)}), 500
 
 
 @app.route('/customer-analytics/<customer_id>')

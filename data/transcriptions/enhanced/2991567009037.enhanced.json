@@ -1,0 +1,92 @@
+{
+  "recording_id": "2991567009037",
+  "version": "3.0",
+  "timestamp": "2025-09-21T23:47:31.868058Z",
+  "processing_complete": true,
+  "call_metadata": {
+    "date": "2025-09-21",
+    "duration_seconds": 637.776,
+    "word_count": 1640,
+    "customer": {
+      "name": "",
+      "phone": null,
+      "company": null
+    },
+    "employee": {
+      "name": "",
+      "extension": null,
+      "department": null
+    }
+  },
+  "transcript_text": "Thank you for calling me, Sequence Technology. This is Garrett. How may I help you? Hi, Garrett. This is Heather Hansen. You returned my call with Synergy Professionals. You left me a message just a little while ago. Sorry. I'm in California, so my hours are very different. Oh, okay. Gotcha. Yeah. So, I don't know if I left what my message was. Can you guys see, like when you log in or when you guys do the support, can you see what I'm looking at on my end? Yeah, I'm logging into your database right now. Okay, cool. Taking a look. Okay, yeah, I'm in. I think I fixed the problem, but I fixed it not knowing what I was doing. So next to the client, next to the people's name when we look them up or add them or something, it has like the company name and we have Synergy candidates in there. Do you see that? Yeah, let me look up. So just look up any name. it should be any it should be any name because it changed every single one of them um i think there were a few that weren't no like they were something different and next to their name it has a little um a little box i'm not really sure what that icon is supposed to be but it almost looks like a calculator or a i'm not sure what that little icon is okay let's see yes i'm seeing a company called Synergy Candidate next to most of the names here. Okay. Definitely. So yesterday one of our employees noticed that it said Archer Western next to every single person in our database. And so we don't know how that happened, if there was some weird glitch. And Archer Western is one of the construction companies, And so it was on every single person's name in our entire database. And so, yeah, one of the ladies changed. She did something to change it, and she put, like, Synergy Professionals to try to fix it. And so then I added somebody to see if they would be assigned Synergy Professionals, and they were. But all the other people were still. So I went in, and I clicked on that little icon. What is that little icon? It looks like a calculator or like a... Is it a building? Is that the one you're talking about? Maybe it's a building. Yeah, maybe it's a building. But it's red. Is it red when you're looking at it? Yeah. Okay. That's for a company icon. I don't remember those ever being red. I don't remember those ever being red. So I clicked on one of those last night when I was working, and I went to the company at the bottom, and I changed it to Synergy Canada, which is what we wanted to say. and I changed one person and it changed all of them, which I think is okay. I'm going to call Russ, the owner, today to ask him. But do you know why that may have happened? Like did someone in our company accidentally change it? It was an accident, if anything, because we don't know why that changed everyone to Archer Western. So there's, let's see, there's something called the change log that you can look at for any company record, and it'll show you what all fields were before and after a change. So I pulled up the change log for the company currently called Synergy Candidate, and on 6-18, username rwalter changed the name of the company to Archer Western, along with zip code state and city. And then P-WAUGH, that user on the 23rd, changed it from an available company to a client organization. So that red building symbol means it has a designation of a client rather than the other designation is just called the word available. So it was switched to a client organization. Okay. And then... She was trying to fix the problem. Was that yesterday? No. Was that yesterday? 23rd. Yeah, yesterday. Yesterday is 24th. So yeah, that was yesterday. Yeah, yesterday when somebody realized that everyone said Archer Western, which it sounds like Russ is the one who did it. He's the owner, so it was an accident. He must have tried to do it. He was probably doing something else, and I don't know if that changed everybody. And so someone noticed it, and then Pam went in. That's P. Watt. She went in to try to fix it, and so that would be her change, but that wouldn't have fixed it. And then do you see what I changed? I'm A-chance. Yeah, perfect. Yeah, and then on the 23rd, the last thing, you went from Archer Western back to Synergy Candidate. So that was the correct move to move that back. So all the names. Yeah. So that's good. So back to having a client organization or available, it sounds like there's a third designation called default company instead of client or available. and it sounds like you want Synergy Candidate to be your default company. Your database should only have one of these. And let me double check what it is currently. Yeah, Synergy, I mean, I'll double check, but I'm pretty sure Synergy Candidate is supposed to be the default. So when we add people, they just, you know, because those are the people that we're submitting to, you know, those are our people. That makes sense. Yeah, so Synergy Candidate is currently client company. You can just switch that over to default right on the record. There's a field that says client company right on it. That way, that'll be your default company. All the names will go there how they're supposed to, and it's correctly named again, so all the names will be at the correct spot. And then that building won't be red anymore because it will no longer be a client company. It will be the default company. Oh, how do I do that? So, yeah, if you pull up this Synergy candidate record, the company record there, it'll say client company in one of those fields. You'll just switch that to default company. Okay. I don't have my computer open. Sorry, I'm driving. Oh, okay, gotcha. Okay, yeah, I'll do it when I'm done. I can email you those. I'll email you those. Yeah, could you email me so I don't forget how to do it? Yeah, I'll be, I take my kids to practice for cross country really early, so. Okay. Yeah, no problem. I'm a blast in the company, so. Yeah, because I'll fix that, and then I'll let Russ know. I don't know. So it shows, where do I see the list of people who have made, like, where you were reading? Because you saw that Russ and Kate are. yeah the change log um so on your tabs you know you go to company record you have things like the names tab to see all the names the pipeline to see all the positions there's another tab you can pin in that in that list of tabs called change log if you don't see it click the three lines to see your unpinned options but it's called the change log i emailed you um a little bit earlier Since you're driving, you probably haven't seen it, but I gave you a link to an article about the change log from our learning center so you can learn how to use it and where it lives. But I'll email you again. I definitely want to show you how to change the company over to the default company. and then I'll give you some more steps too because I see that there's another company called Synergy Professionals that is currently your default company rather than... I'm going to call Russ in a minute and find out if he does want it to say Synergy Professionals or Synergy Candidate because me and the other recruiter, we were going back. I'm new, so I'm still learning everything, but she was saying, oh, I wanted to say Synergy Candidate, so Russ may not. I need to ask Russ exactly, so I might need to change it again. But I think I know how to change it. I just, I know I wanted to do that. Russ was already off work. I'm in California, so my hours are super different. Okay. So I'll double-check what he wants. I did want to see the different, yeah, how I can see where the changes were made. I tried doing the, like, learning center, but I didn't quite know what I was supposed to be looking for. Oh, sure, yeah. There's a lot in there. Yeah, I wasn't sure. Okay, cool. I'm going to call in to make sure, and then we'll make that the default. You said the default right now. What do we have as the default? So, yeah, the default right now is that company called Synergy Professionals, and then you have a separate company called Synergy Candidate. So I would probably just merge the two. I could give instructions for this if you want. I would probably just merge the two companies and then make sure that whatever company you end up with there is named correctly, whether candidate or professionals, and also the default company designation rather than client company. So I could put instructions for all that. Thank you so much. Thank you. No problem. I'll be hopping on in a little while and then I'll fix it. Awesome. And I can send this to hhansen at synergyprof.com? Yep, that's me. Okay, awesome. I'll send that right away. Okay, thank you, Garrett. Thanks, have a good one. Bye. All right, bye.",
+  "ai_insights": {
+    "sentiment_analysis": {
+      "customer_sentiment": "positive",
+      "call_quality_score": 8.5,
+      "call_type": "technical_support",
+      "key_topics": [
+        "company name change",
+        "database issue",
+        "troubleshooting"
+      ],
+      "summary": "The customer, Heather Hansen from Synergy Professionals, called to follow up on an issue where the company names in their database were changed to 'Archer Western' and then 'Synergy Candidate', and the agent, Garrett Komyati, was able to identify the cause of the issue and provide a resolution.",
+      "follow_up_needed": false,
+      "escalation_required": false
+    },
+    "process_recommendations": {
+      "process_improvements": [],
+      "employee_coaching": {
+        "strengths": [],
+        "improvements": [],
+        "suggested_phrases": []
+      },
+      "follow_up_actions": [],
+      "knowledge_base_updates": [],
+      "escalation": {
+        "required": false,
+        "risk_level": "low",
+        "reason": ""
+      },
+      "performance_metrics": {
+        "efficiency_score": 5.0,
+        "training_priority": "low"
+      }
+    },
+    "call_resolution": {
+      "problem_statement": "Unable to determine",
+      "resolution_status": "unresolved",
+      "resolution_details": "",
+      "follow_up": {
+        "type": "none",
+        "details": "",
+        "timeline": ""
+      },
+      "loop_closure": {
+        "solution_summarized": false,
+        "understanding_confirmed": false,
+        "asked_if_anything_else": false,
+        "next_steps_provided": false,
+        "timeline_given": false,
+        "contact_info_provided": false,
+        "closure_score": 5.0
+      },
+      "quality_assessment": {
+        "missed_best_practices": [],
+        "improvement_suggestions": [],
+        "customer_satisfaction_likely": "medium",
+        "call_back_risk": "medium",
+        "escalation_probability": "low"
+      }
+    }
+  },
+  "pipeline_metadata": {
+    "ai_model_versions": {
+      "sentiment": "deepseek/deepseek-r1",
+      "recommendations": "deepseek/deepseek-r1",
+      "name_extraction": "anthropic/claude-3-opus",
+      "embeddings": "openai/text-embedding-ada-002"
+    },
+    "processing_date": "2025-09-21T23:47:31.868076Z",
+    "version": "3.0"
+  }
+}

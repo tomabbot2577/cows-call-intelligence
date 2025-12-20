@@ -1,0 +1,117 @@
+{
+  "recording_id": "3082945744036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:15:50.233726Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:15:50",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence. This is Robin. Oh, hey, Robin. It's Luke from Spectrum. Hi, how are you? Hey, good. How are you? Pretty good. Come on in. Yeah, so this is more of a general question, and I'm sorry. I feel like I ask you these things constantly. Job security. So I'm curious. I'm trying to do a few things with automations for somebody. Okay. And I've just never been able to find a way to do this. So I'm wondering if this is like, if there's an obvious way to do this that I'm missing. Basically, what I want to do is I just want whenever a specific person writes an activity, I want to add them to a roll up. there is not a way to do that there's a way when you write a an activity that it goes to a roll-up but not if it's only written by a specific person right i've been trying like the last 20 minutes to think of a workaround because i know yeah i know obviously we can automate activity written add to roll up and i know we can do activity searches for people um okay and and so now we could maybe do like a custom script to prompt them to put them into the rollup if they're not in it, but they basically be like a search under my PCR, which could trigger a pop-up whenever it's greater than one, but then they would just see those results and then have to put them into the rollup. Yeah. And that's, I mean, that would be a workaround. That would be a workaround. So what I have now is just, you know, my PCR search where it's searching for those people that an activity was written by that user, and then you can just go to it, select them all, and add them yourself. Now, do you have in your script, though, that they're not in the list yet? No, but I guess... That might help. That might help, though, at least. What database is this for? Our Spectrum careers. Okay. And what's the username with the query? It would be under my username. Okay. What is that? Yeah. Elsie. Okay. Now we, to be honest, I mean that, that would, that might help a little bit, but I have it already set to like, these are people that, you know, have been contacted in the last week. So it's not like the list is getting massive. And if you, if you move, or if you copy candidates from a list like that into a rollup, it should ignore the duplicates anyways. So, um, Yeah. Cause what I could do is change the script that basically looking for the same thing, you know, if it's written by this user within this timeframe, but they're not on the list. So if it ever goes above zero, you can at least get a prompt thrown. Yeah. I mean, what do you mean by a prompt thrown? Like a notification or? Yeah. Well, it'll be like a little prompt that pops up. Here, let me change one for you. Hold on. You get like a lot of scripts, I think. You're my PR page. It takes a while. I have so many scripts in there. Just like I've been using it as like a library of scripts. So some things like if you really don't need to have it when it goes like when you log in, you might want to just kind of rebuild it under the advanced search as a saved. So that way, whenever you're loading your my because what's happening when you click my PCR, it's trying to load every one of those. Right. Running all of those at the same time. Right. Yeah. And that's what's slowing it down. OK, what is the name of the query you have right now? I just threw it at the bottom. It's like CZ. It's the very last one. Okay. Okay. Okay. So that's looking in the past seven days. Okay. I'm going to copy this out. I'll just give you an example. And then if it helps, great. We keep it. If not, then we move on. But unfortunately, what I don't have is only if the activity is written by that person. Okay. Candidate. Okay. So we're looking for that. Do you think. And candidate ID not in. Select candidate. What is the name of the roll-up that you're going to want the person in? I was just kind of using a generic test one. this is more just like a you could put them in really any test if you just search test you can put them in any of those that have like one person on them or something I can always change that out yeah so we do like an example even if we do an example with me at least you can see what this prompt is what I mean by it What rule of should I use as a test for her? Should I do the test import GT? Yeah, that's fine. Okay. So that's 095. Okay. Okay. And I want where they're not in. Okay. So I'm going to add, go back to my PCR. Oops. I'm going to add another query just below. Just so you can see what I mean. Okay, so this is going to look for an activity of either spoke with or email. So. Okay. Did you get a prompt just now? You know, I'm actually away from my desk. Hold on one second. Or click my PCR. When something matches, it should prompt it, but since I'm also in... Mm-hmm. I'm assuming, yeah, I just have to wait for my PCR to load. While I wait on this. So do you think, I mean, do you think that, like, the dev team or something might have any interest at all in Like, probably not. No. Any kind of custom? No. Only because, yeah, we have so much development going on in PCRN, the new version. Yeah. I mean, whenever an activity is written, but it was just put them into the same roll-up, we don't have anything with per-user custom automations like that. Right. Just out of curiosity, when is that scheduled, PCRN? It's really already out upon request. But of course, all our development energies are going into that. We can get you a demo of it if you want. I mean, yeah, I would love that. I don't know if it's like any more. I don't really know anything about it, but I've just heard people talking about it a lot. I'll have Jim Lombardo reach out to you. I think he's out of the office again today. He was out earlier this week. I think he comes back tomorrow. so I can have him reach out to you tomorrow. Okay. I have an email chain with him, so if it is Jim I would need to talk to, I'll just email him on that. Oh, okay. All right. Did you get anything that popped up saying alert? Yes, I did. Okay. What that means when you hit okay, it'll just let you know that she put somebody on there. Now, the query that I added, it's the last one, CZ add to roll up. Yep. once you put when you put all those names it would return a search you could add them into the rollup that's going to drop the count back down to zero oh I'm sorry wait could you say that last part one more time so this CZ add to rollup what this means is here's all the people she talked to in the past seven days but they're not in that list yet okay once they get added into the list that goes back down to zero oh okay yeah that's nice um and then monitor like and then only when it's above zero will you even be prompted and we can even change that number yeah like if you want to wait for like five or ten people that's an option too but and when i when i do click that prompt does it um does it do that to all of them or just like one at a time do i have to click it again and again so when you so once you get the alert you say okay like so now that count is actually more than zero right now it's 69 if you were then to take all of those 69 records add them to that specific roll up that count goes down to zero and then the next time right now the way it said if it's ever above one or above zero if it's one or more you'll get that prompt again oh I see okay yeah that makes sense so we're clicking okay and the prompt doesn't do anything it's just to give me a heads up I got it yeah but at least it'll let you know like hey here's some names that she hasn't put in the list yet yeah that makes sense so that way you might instead of seeing like here's all the people she emailed last week here's all the people that aren't in that list that she's emailed or spoke with last week got it okay well yeah thanks um I appreciate It might help some. And then if you think that the if you go into the customized area of the MyPCR and go to search links, what I did with this one is we scroll all the way down to that last one. Yeah. I have the link description, but you'll notice I took your script, but then I added to it. You've got to scroll down within the advanced search 25 and their ID is not on that particular list. yeah taking it a step further and then the notification trigger over at the right whenever the count is greater than zero by having text in that last field where my pcr pop-up message that is what that's what you're going to see whenever the number is more than um yeah that's what that product or that alert window okay yeah that makes sense i did i never really knew what that was for so that makes sense that might yeah it might help you like when you're like oh that's something i need to monitor that could be super helpful yeah okay it happens too often you want to wait till it's like five people see where it says greater than underneath it right now i have zero like you can wait till you at least have five or ten names that makes sense yeah okay all right um well yeah i was just curious if there was a way like a workaround some sort of way but that that sounds good unfortunately no um unless let me think something i wouldn't do email though yeah i'm saying if you had sequencing you could do like if you're calling from a sequence but that's not the same um so that wouldn't do it yeah unfortunately that's the best option i can offer at this point no worries it's so funny it's like um i was even looking at like, Hey, you know, if we, if we, um, you know, if there's an activity to like, this person does something, we could change a value in their name record and then we could say value is this and then do something. But yeah, that's, that makes sense. Um, yeah. The only, the only other thing I could think of, you had like a specific, specific activity that only she would write, which. Yeah, that's a good idea actually. Is there, okay. Then that wouldn't catch the email one. Is, yeah. Is there a way to write a specific activity whenever another activity is written? Is there any way to link those or maybe change it for a user? The problem with that would again be it's global. When you go to system, database, setup, and go to automations, these are global actions. They're not per user. So that's where the issue is. So if anybody spoke with whatever action you define, doesn't matter who wrote, spoke with, it's going to do that, whatever the action is defined. Yeah. Okay. That makes sense. And that's, yeah, that's where the limit is. It's not like, there's not an option if it's only if it's written by this user, do this. Got it. Okay. That's where the limitation is. Yeah, that makes sense. Okay. All right. Well, thanks, Robin. I appreciate your time. I'm always trying to learn more about this. No problem. And then, again, if that alert gets too annoying, you could always just pop up message by clearing out the pop-up message that would stop it. Yeah. Yeah, that makes sense. All righty. Okay. Anything else? No, I think that's it. Thank you so much, though. Oh, you're welcome. Have a great week. You too. Okay, bye-bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1963.70384,
+    "salad_processing_time": 86.44113421440125,
+    "overall_processing_time": 1963.70384,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Oh, hey, Robin.",
+    "job_id": "c646d151-03f8-4ba9-954c-65acf9918d5a",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Oh, hey, Robin.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3082945744036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

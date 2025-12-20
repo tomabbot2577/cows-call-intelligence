@@ -1,0 +1,117 @@
+{
+  "recording_id": "2998877347036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:12:06.129613Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:12:06",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence. This is Robin. Yeah, I was hoping you could help me. I'm signing up to use SourceWale, and there are some settings and some customizations I think I may need to make in PCR. I'm not sure where to make those. Are they asking for an app ID and API password? I did that part already. I'm beyond that. I'm at like setting up like contact stages and contact fields. And there are, I'm not exactly sure where to add some of these like contact stages. Yeah, I'm not sure what they use. Are they referring to activity types or? So I think that's what, I think they're custom activity types maybe. Okay. Yeah, I'm not sure on what they do for setup, but they're trying to use an activity type. Then those would be created in PCR under system. If you go to database setup, and then there would be a section called activity types. This database setup. There's activity. I see activity but not activity type. Oh, there's activity types. Okay. Okay. And then, like, the ones that we already have, like, I don't see those listed anywhere. So there are some things that are generated automatically. So, like, add name, edit name. But then you could do, like, custom ones, like left message, things like that. So that would be, like, if you're in your add activity screen. Okay. Can I just have somebody, like, connect to my computer and show what they're asking me to do and what we have? Yeah, I mean, we could do that. You might need to go back to Sourcewheel. I'm not really sure, but maybe we could figure it out from what they're looking for on their screen. Do you have a RingCentral? Do you prefer a Google Meet? GoogleMeet. I have RingCentral, too. Okay, so if you open up RingCentral. Open up your RingCentral app and you go to video. Give me one second. RingCentral. Open. Sign in. You guys are the only ones we use this for. Thank you. Okay. open ring central okay it's opening sign is Okay, I'm in RingCentral. Okay, so when you go to video up at the top left, you'll select join and it's going to ask you for a meeting ID. Let me know when you're ready for that number. Video, join, text. Okay. Meeting ID is going to be 050 394 810. 050. Okay. All right. Perfect. Okay. So since we're on the phone you don't need to join with computer audio you might want to mute that if it starts giving you kind of like a little echoing um but what i'm going to have you do is click share at the bottom of your screen and then it's going to pop up a window asking what to show so you want to make sure you're under entire screen and if you have more than one monitor make sure you select which one you want to share with me. Yep. And then click share with a net pop-up. Okay. So what are they asking you for? Just activity types? So, yeah. So whenever you... Contacts can move through. You can map them to stages in PC Recruiter. Source stage, click stage, reply stage. Well, let's go in that drop-down. I don't know what they're referring to for stages. Called, can't find, contact email. Okay, so these appear to be activity types, or they roll up stages. Let's see. Throw down a little bit more. Yeah, they're not the – so these are the ones that we have in our roll-ups. Okay, so maybe that's what they're looking for. I don't think they are because... So let me... Roll ups. so that list I think mirrors this list okay but they're not looking for the roll up stages are there that's a contact field okay so This context stages, I think they are looking for roll-up stages. So in case you're using their source wheel integration on a particular list, it can change stage icons for you. So I believe that's what this is looking for. And then the other things at the left might be something else. So if you wanted it, it sounds like it doesn't have to do anything, but it's optional. this section because they say this section is optional you don't need to map everything to a stage so that appears to be optional so yeah like she was saying that um like the source stage is not one that we'd want to use but like message like if we send somebody a message through source whale we would want that to i assume you have to use a roll-up list to kind of initiate someone in SourceWheel. So that's what I believe. It'll show up in the activities. So that appears to be something different, though, because that looks like it's looking for roll-up stages. Because it also said stage 0 or stage 10, which would not be an activity type. So that appears to be roll-up stages. So let's go back to your SourceWheel integration. so this appears to be looking for roll-up stages let's look at right above that under activity notes so this is probably your activity types which you don't have any so if you did initial email and you wanted it to write a specific activity type seems to me you'd have to go under where I just had you under system, database setup, activity types, and create something that would complement these if you wanted to write an activity in PC Recruiter. Yeah. So where do we do that? So that would be if you go back to PC Recruiter and go to system, database setup and then go over to activity types so you don't have anything in here anything custom so it looks like that's why there's no options in the drop down so if you wanted to set up something similar to match what they're doing you would go over here and click add and you give it a short code 10 characters or less would the code be you can make them be whatever you can make it be whatever you want again this is probably optional as well basically what they're saying is if you were doing this action in source whale should it write an activity in PCR yes and then if you gave your code source whale so you gave it a code if you wrote under description maybe something like source whale initial email and then hit save. So what would... So would the code, like if I wanted it to be initial email, like if I want this to show up... So the code has to be 10 characters or less. So your description, you can make it longer. But once you save that code in PCR and hit save, down at the bottom right. Okay, now that you have something in there, I don't know if we're going to have to refresh. Okay, we might need to like maybe click contact stages and then come back to it might take a moment to recognize that now let's see if you have a choice there if notes are map they'll be creating a specific action category so it might take a moment I would assume that that would be create notes okay so just we should create notes and everything and then map these activities to proceed and they're kind of using notes as a description that's really an activity it may take a moment to get those that show up over there or something but that seems to be what that would be looking for. Thank you. If notes are not mapped, let's maybe go to your first setting, like contact settings. Yeah, you may want to ask source wheel on the setup, but that would be from what I see that what it was trying to pull from. So this seems to be related to activities where the stages are roll-up related. Are there any other stages within PCR? Or is it? Again, those appear to be roll-up stages, and then there's activity notes. But SourceVille wrote this integration, so you probably want to clarify what they're pulling from. but it appears to me that's what they would be doing, once activity notes and then once roll-up stages. So when you're doing an action like click stage, open stage, this appears to be looking for a roll-up stage where the activity notes are going to look for activity type because these are your same descriptions in your roll-up. Because like these stage nines, those are basically ones you did not customize yet. Right. So the stages, the roll-up stages that we have, like these ones, are, those aren't, where are those customized? So this, it depends on how your setup is. Let's take a look at your list. Can you go to roll-ups from the main toolbar? then these you want to be careful about changing anything because if you're using that code if you kind of just relabel it it can cause problems here so so this looks just to be like a user configuration so let's go back into the rollup so if you were to go to configure icon within the list it looks like a gear icon you're using right now it's called a per user configuration so these are the stages so for each spot you might have something where it It has a unique description and then controlling whether it automatically writes or pops up an activity. So for your list right now, this is where this is configured. So these are going to be the descriptions that they're pulling. They're pulling from, let's see, mine are different from other people's. So, okay. So they're also pulling from this list too. Yeah, that appears what that's pulling from. Because you have those same exact wording for like the descriptions. So that appears to be pulling from that. Where I'm going to guess the other section is pulling from activities. Okay. That if you do a certain action in Sourcewheel, it'll write in a certain activity. and then it's just I don't know why these note maybe if notes are not mapped you will create yes you might want to check with some maybe there's got to be another setting before you can even see those descriptions I don't know why they're not showing yet because they seem to be activities and also says deactivate at the top That would be deactivate the connection between source wheel and PCR. Yeah, and there might be something under general settings. I would look at either source wheel documentation or reach out to source wheel. And because this is their product, I mean, I tell you that's what it appears to be looking for, but I don't know their setup. The implementation girl that I was talking to, she's like, I'm not a PCR person. She knows Bullhorn better. So she was trying to – like they kind of screwed up on the implementation instead of just having me be the – okay, here, hang on. Let me – here's what she just said. Just chatted with our customer experience team, and they requested you put in a support call with PCR to go over how to add custom fields for activity mapping and ensuring your stage mapping is accurate. Okay. Yeah, so I think we're not going to do custom fields. We had custom activity types and then your stage mapping. So you didn't have any custom activity types. So I think we got those. So now it's probably just going back to source wheel and seeing why they're not showing up. Because you might need to enable some other setting first or even because it's got the one portion. I wonder if these just take longer to get through. will be created but will not have a specific activity type. It should be create notes. What's in that create notes upon? I think they're calling notes activities, which is kind of different language than we use, but let's see what's in there. Adding a contact email about connection request. External email. I'm not sure on those. What's that data refresh option? I wonder if that has something. That's locked. Yeah, this is for them to update people's contact info automatically. Okay, what's under general settings? Let me do this. Let me go back down here. Integrations. Contacts pages. Dividing nodes. There you go. They're a little slow because you added a second one and that one doesn't show yet. So they must be connecting like polling like every so often. So you might as well make your activities, probably go to lunch and come back and try to do it. It just seems like they're a little slow to poll them. So there's at least the first one you did. Yeah. Okay. So we figured that one out. Now the contact stages. so those are your roll-up stages so that's optional if you don't want it to do that so if you're like using a roll-up with source wheel it can also change those visual markers that you see in your roll-ups or does it whenever i like send so whenever i send a message like what it'll what shows in activity yeah it's it's just like they give you the flexibility to write an activity and or do a roll-up stage so it kind of just depends what you want to do see how you like use those stage icons as you're just like calling or doing stuff from your roll-up, well, if you had something going on with a source wheel, they give you the option to change that symbol, too. Okay. So if I want to add those, if I want to add those, would I add them in not interested stage yeah i don't get it like this that's coming from your role yeah that's coming from your roll-up stages so if you went into your roll-up stage you got like some spots that you haven't customized yet okay so you'd have to do the customization first like if you go to roll-up stage see how you got some like stage three four yeah and then you got some that are populated that's what it appears to be pulling from. 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11. So can I add additional You only have these spots and then the problem would be like let's say you have stage 5 it says maybe something I can't tell what it says. If you were to change that label anybody that has that symbol currently or i'm sorry selected that spot there's really like a code representing this that you're just overriding a label with a custom icon so you got to be kind of careful changing anything that you're already using in any roll-up list because then anybody that had that spot selected just got like it's going to display differently yeah well that won't because these are these are user-specific, right? Because, like, I know that, like, I changed this stage 11 to can't find, and my other, like, the other guys, like, theirs don't say stage 11 can't find. But if that other person goes into your roll-up, that spot is going to look however they have it labeled to them. Gotcha. Okay. So, for the time being, I'll see if this is really necessary, because it looks like there's 1, 2, 3, 4, 5, 6, 7, 8. And I'm not even sure what exactly these mean here. So. Okay. All right. And those were – It seems like it just – yeah, system, database setup, and then activity types. So it seems like you're going to have to, you know, build your list that you might want and then just wait a while before you even try to go to select it since they're not pulling as quickly as we were expecting them to. Okay. Okay. So I just need to go through and add all of those. Yeah. Anything that's up for, I mean, you don't have to, it's like an option with them. It's just if you want it to. Yeah. Okay. All righty. All right. Thank you so much for your help. All righty. Sound good. Thank you. All right. Have a great day. You too. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 514.212036,
+    "salad_processing_time": 160.35801124572754,
+    "overall_processing_time": 514.212036,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Yeah, I was hoping you could help me.",
+    "job_id": "ef509ebd-d9e0-4bd9-ada3-71783281e35c",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Yeah, I was hoping you could help me.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/2998877347036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

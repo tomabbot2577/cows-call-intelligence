@@ -1,0 +1,132 @@
+{
+  "recording_id": "3036261799036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:47:17.200748Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:47:17",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hey, Tyler. My name is Scott Wellington. I'm a PC recruiter user for many years. I'm trying to get a hold of somebody in tech support. Usually I pass a four for that, but that option has now been taken away, so I'm not sure how to get a hold of technical support anymore. No, I'm part of the technical support team. Oh, you are? Yep. Oh, okay. So a question for you. So I got a new laptop, a new computer, and I want to download, you know, PC Recruiter onto it, obviously. So is there anything special I need to know? I'm on the PCRecruiter.net site slash downloads page. Yeah, so you'll want to do Java and the launcher. Is that in the bottom there? PC launcher, PCR launcher? Yep, so you'll want to download a Java first. what I can do oh Java Amazon Carretto it says the Java runtime environment yep so let me it's under PCR 9 on the bottom yep so that website can be a little confusing so what I'm going to do I'm just going to email you the two links that you need all right fine makes it a little bit easier you have that contact info there yep the scott at wellingtonsearch.com Is that a good one? That's the one. Yep, it's good. And the PCR launcher, is that like just a zip or EXE file, I guess, huh? Yep, so that's the one that controls things like the resume parser and the alarms and things like that. Yeah. Okay. All right, I just sent those links on over to you. All right. Cool. And do you have your database URL? Um, yeah, I know what it is. Yeah. Yeah. The www.pcreate.net, the whole big long thing. Yeah. Yeah. Okay. Perfect. So you enter that in and then go from there, I guess. Yeah. Yep. Yeah. That'll be how you get to log into your database. Yes. Okay. Good. Well, if you have any questions, I'll give you a call. All right. Sounds good. Like I said, yeah, the main two that you need, just so everything functions properly inside the web version is Java on the Launcher. And when you have those two on there, when you right-click a resume, you can inhale it or you can capture it, whatever, that kind of thing? Are you talking about within Outlook? Yeah. So that's a different thing. That's the Outlook portal. Yeah. So what I can do for that... Or Gmail. I see the PCR for Gmail, PCR for Outlook. I see resume inhaler. I see, yeah. The Outlook portal is the one that's, like, embedded in the classic version of Outlook, like the installed version. Okay. So I'll send you over the instructions for that as well. All right. Cool. And that includes the inhaler? I just downloaded the inhaler as well. The inhaler is the one where it's like if you had a folder on your desktop that was just full of resumes. Oh. That's more for like bulk resume inhaling. The portal is the one that's like where you can right-click and hit the inhale resume. All right. And if I want to use Gmail, I can just download the one for Gmail, I guess, right? The same thing, just ones for Outlook, ones for Gmail, is that it? Yep. Yeah. Okay. All right. I will check it out. Portal instructions now. Yeah. Yep. And then, yeah, if you run into any issues or need any help, just give us a call back. The number that you called is our regular general support line now. So even if you don't get me, you'll get one of our other support representatives. We're in the office here until 6 p.m. Eastern. You'll be able to hold somebody. What's your name? Tyler. Tyler. That's right, Tyler. All right, Tyler. Thanks, man. Yep, no problem. Have a good day, Scott. All right. See you. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1096.967713,
+    "salad_processing_time": 56.91620993614197,
+    "overall_processing_time": 1096.967713,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "job_id": "8ea0b1d1-d974-48e5-89e4-327c915f1764",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [
+      {
+        "type": "SOFTWARE",
+        "value": "PCRecruiter",
+        "mentions": 1
+      }
+    ],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "technical"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3036261799036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

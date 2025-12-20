@@ -1,0 +1,108 @@
+{
+  "recording_id": "2991710249037",
+  "version": "3.0",
+  "timestamp": "2025-09-21T23:47:31.901810Z",
+  "processing_complete": true,
+  "call_metadata": {
+    "date": "2025-09-21",
+    "duration_seconds": 139.896,
+    "word_count": 370,
+    "customer": {
+      "name": "",
+      "phone": null,
+      "company": null
+    },
+    "employee": {
+      "name": "",
+      "extension": null,
+      "department": null
+    }
+  },
+  "transcript_text": "Please hold while I try to connect you. Hello. No one is available to take your call. Your call is being forwarded to the voicemail at Stratos Talent Partners. At the tone, please leave a message, and we'll get back to you as soon as we can. Thank you. Good morning, Michelle. This is Jim Lombardo with PC Recruiter. I wanted to give you a quick call. We emailed yesterday. You added a second user to your account. and I want to just give you a call let you know what we found out actually we had some changes here at main sequence I have taken over for Josh as your account manager and also we've had some changes over those people that were in our invoicing department and what happened when we put in the ticket to enter your additional user they found out that your invoicing had been put on pause back in February so you weren't ever charged for March April or May so there was three outstanding invoices that had been put on hold for whatever reason so I just wanted to give you a quick call give you a heads up so it didn't come as a surprise but so you would have March April May those are one user at $50 that doesn't change the next invoice you'll get will be on 627 for the two users that'll be for next month so that will cover the second user but I wanted to give you a quick call let you know to expect invoices for March April and May to come through just because those were some for some reason our system I don't off to have an automatic or maybe before the last person left they didn't turn it back on or whatever but billing had been paused so it looks like they are going to create an invoice that will cover those three months get that over to you if you have any questions please feel free to give me a call my direct line is four four zero eight five six zero three one four that's four four zero eight five six zero three one four thanks for show take care",
+  "ai_insights": {
+    "sentiment_analysis": {
+      "customer_sentiment": "neutral",
+      "call_quality_score": 5.0,
+      "call_type": "general_inquiry",
+      "key_topics": [],
+      "summary": "Call transcript analyzed",
+      "follow_up_needed": false,
+      "escalation_required": false
+    },
+    "process_recommendations": {
+      "process_improvements": [
+        "Implement automated alerts for accounts with billing paused beyond 30 days to prevent overlooked invoices.",
+        "Enhance account transition documentation to include billing status reviews during team handovers.",
+        "Integrate a billing check automation when adding users to flag paused accounts or pending invoices."
+      ],
+      "employee_coaching": {
+        "strengths": [
+          "Proactively informed the customer about billing changes and provided clear contact information.",
+          "Clearly outlined next steps and timelines for invoices."
+        ],
+        "improvements": [
+          "Use empathetic language to acknowledge potential inconvenience of unexpected invoices.",
+          "Avoid vague phrases like 'for whatever reason' to maintain accountability."
+        ],
+        "suggested_phrases": [
+          "\u2018I apologize for the oversight\u2014let me clarify what happened...\u2019",
+          "\u2018I understand this might be unexpected, and I\u2019m here to help address any concerns.\u2019"
+        ]
+      },
+      "follow_up_actions": [
+        "Send a follow-up email summarizing the billing adjustments and payment deadlines.",
+        "Audit other accounts managed by the previous team member to identify similar billing gaps.",
+        "Offer a goodwill gesture (e.g., waived late fees) to mitigate customer frustration."
+      ],
+      "knowledge_base_updates": [
+        "Create a \u2018Billing Pauses and Resumptions\u2019 FAQ to guide reps on reconciliation steps.",
+        "Document \u2018Account Transition Checklist\u2019 to ensure billing status is reviewed during team changes."
+      ],
+      "escalation": {
+        "required": false,
+        "risk_level": "medium",
+        "reason": "Issue resolved proactively, but risk of customer dissatisfaction remains due to retroactive billing."
+      },
+      "performance_metrics": {
+        "efficiency_score": 7.5,
+        "training_priority": "medium"
+      }
+    },
+    "call_resolution": {
+      "problem_statement": "The customer, Michelle from Stratos Talent Partners, added a second user to her account, and the employee, Jim Lombardo from PC Recruiter, is calling to inform her about some billing changes.",
+      "resolution_status": "resolved",
+      "resolution_details": "Jim informed Michelle that her invoicing had been put on pause since February, so she had not been charged for March, April, and May. He let her know that she will now receive invoices for those three months, and the next invoice on 6/27 will be for the two users.",
+      "follow_up": {
+        "type": "none",
+        "details": "No further follow-up is needed.",
+        "timeline": "N/A"
+      },
+      "loop_closure": {
+        "solution_summarized": true,
+        "understanding_confirmed": true,
+        "asked_if_anything_else": true,
+        "next_steps_provided": true,
+        "timeline_given": true,
+        "contact_info_provided": true,
+        "closure_score": 10.0
+      },
+      "quality_assessment": {
+        "missed_best_practices": [],
+        "improvement_suggestions": [],
+        "customer_satisfaction_likely": "high",
+        "call_back_risk": "low",
+        "escalation_probability": "low"
+      }
+    }
+  },
+  "pipeline_metadata": {
+    "ai_model_versions": {
+      "sentiment": "deepseek/deepseek-r1",
+      "recommendations": "deepseek/deepseek-r1",
+      "name_extraction": "anthropic/claude-3-opus",
+      "embeddings": "openai/text-embedding-ada-002"
+    },
+    "processing_date": "2025-09-21T23:47:31.901829Z",
+    "version": "3.0"
+  }
+}

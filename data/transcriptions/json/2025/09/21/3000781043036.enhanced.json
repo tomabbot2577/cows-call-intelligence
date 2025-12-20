@@ -1,0 +1,117 @@
+{
+  "recording_id": "3000781043036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:13:32.609469Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:13:32",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling me in Secret Technology. This is McKenzie. How can I help you? Hey, McKenzie. This is Kevin Ireland over at ShredWind. How are you doing? I'm doing well. How are you? Doing good. I'm working remotely today. Our Wi-Fi and power is out of the office, and I need to download the PCR Outlook extension for my Surface. and I got it downloaded and I ran it and now it's asking for a serial number. Sure, sure. Okay. Hey, let me pull up the number here. One sec. Can you repeat the company that you said you were with? Tradewind Services, LLC out of Washington. Thank you. Give me a second. This is Kevin. Kevin Ireland, Tradewind Services LLC. Found you. Okay. The one and only. Indeed. All right. Tradewind Services. Serial number. Let me look up the serial number and make sure that it's like. Yeah. I know I have the tool to edit them. Material number. Edit license. It's going to expire in July. I'll extend that to the next June. Oh, sorry, July. Thank you. Sorry, next July. Yeah. It looks like there's six seats. Only four of them are in use. One of them hasn't been used since April of 2024, but you still have two empty ones, so this should be totally fine. All right, I have the number for you. Are you ready? I'm ready. It is 768-957-0273. Sorry, scratch that three. No three. 630 162 my bad I was like one character ahead there I'll go over it quicker alright so it's 768 957 027 630 162 nice so now it says hold on now it doesn't I don't have my window when I try to display my PCR portal window on my email. It's probably a loading though, huh? I'm not sure. It says test connection, add connection, remove connection. Right. Okay. Yeah, you got to add your connection. You want to hit add connection. Okay. You haven't done this part yet, right? You haven't added a connection yet? you just installed it, right? That's it. I just installed it. Yeah. Okay. Yeah. You're going to have to connect it to your PCR database then. So yeah, you want to hit add connection and then you're going to want to enter in your like URL, which I could give you and your username and password, which I cannot give you, but hopefully you know it. So, and where it says name, just hit my username. Oh no, I got it. What's my server? server server says server paste url here the url okay great okay yeah so um i have my url i was gonna say yeah i was like do you know it or do you want me to read it off because it's just the url that you log into pcr with so it'll be like oh yeah It's going to be like HTTPS colon. Hold on. It won't let me do anything. Oh my gosh. PCR. There you are. Oh. I'm in Outlook Classic, so it's still all catching up. Oh, yeah, it's probably syncing your email. You're going to have to read it off to me, buddy. One sec. Okay. We'll get through it. We'll get through it together, bro. All right, I'm ready. All right, all right. So, fresh URL, all right? So, it's going to start with the typical HTTPS, and then you add a colon and two forward slashes. Hold on. Hold on. Fuck all this. yeah i'll just pull it up on a different device yeah https colon slash slash www2 pcr grutter holy crap thank god we did not try to do that together yeah pcr.asp question mark uid equals odbc.tradewindservices copy put it in my teams it's funny i didn't memorize like i know that Sign to myself. Paste. Enter. And then your username and password for PCR. There's going to be a checkbox along the way that says save password. And I would try and find that. So I can just put it right where it says server IP slash URL, correct? If you're logging into portal, if it says paste URL here. Yeah, hello? Can you hear me? Hello? Oh, yeah, for some reason you left my AirPods. So I just put it in server IP and select URL, and then what's my database ID? What are you seeing? These questions, these are like tech terms for the, like, hold on. I'm thinking you might not be. I'm sorry. I'm sorry. Let me pull up my Outlook so I can follow along with what you're doing. You're just adding a connection to Outlook, right? Yeah. Okay. I'm in the credential section. Does it actually call it a database ID in there? That's so weird. It says UID. Or then it says, so I just copy and pasted my, hold on. because when I look up when I when I'm trying to log into portal it says database username and password that's how the fields are labeled so when you say like database ID wait are you wait are you logging in from your PCR you're logging in are you trying to do from your Outlook I'm in Outlook yeah I have the portal Outlook portal oh I got it right here carry higher I'm 24 oh oh you're on this screen oh okay hold on hold on hold on you don't want to enter alright I'm in now buddy I'm in now buddy okay so did you figure did you hit the add connection button above yeah okay because the because i i see where it says database id uid that's like yeah i guess you might be able to use that i guess i never really have used that before but um if you hit the add connection button above that it'll like prompt you normal login so i need a closed outlook now um it is pretty advisable to like always like after you install and log in to like yeah kind of reset everything make sure it like logs in and comes up properly and yeah you might want to just try and close and reopen to make sure it opens and i'll be here to yeah if anything goes wrong i'm telling you i will tell you right now too we got to find a way to get pcr into the new outlook because you happen to use the old outlook is such a pain in the ass. And it's not, I prefer the old Outlook, but it's when you have the old Outlook just on certain devices to use for PCR, right? Mm-hmm. Then we have to go back and forth. And if you're, like, for example, my iPad is so new that it doesn't even have Outlook Classic. Yeah. And so I have to go back and forth from new Outlook to Outlook Classic just to use PCR. and now my Outlook plastic is not even popping up. That's great. Let me restart my device. You got time, don't you? Sure. It could be that it had trouble closing. It said logging off when I closed out of the Outlook app. Right. It could still be stuck in the background. Does the Surface have a typical Windows UI, there's programs running in the background. You can see those running by clicking a little tray at the bottom of your screen. If you click on that tray, inside there you might see a gray Microsoft Outlook icon kind of stuck there. I just restarted it. Sometimes it gets stuck. You need to force close it and then reopen it. That happens often when it's like loading a bunch of stuff, like historical stuff, like you said it was doing, and you try and close it midway. It actually is common. Microsoft Outlook gets stuck open a lot of times, and it will prevent you from opening it again. But you could go in the task manager and like kill the task and then reopen it, should open it. Yeah, you'd have to know how to do that, but that sounds cool. The task manager is... No, Windows tab. Like control alt delete. If you hit control alt delete. Yeah. Or yeah. As manager is an option there. And then in like the processes, you'll see like Microsoft Outlook stuck there and you could like right click it and hit end task. And that completely kills it on the backend. So that it will. So now I just opened it up again and it's pulling up the same thing where it It says PCR portal for Microsoft Outlook. Save and close. Remove connection. And my PCR portal still doesn't work inside my Outlook. Right, okay. So, okay, I kind of thought you might have done something, like, out of the norm. So, all right, so bring up Outlook. Does it ask you for the portal serial number anymore? We got past that, right? That part's good, right? It didn't ask you for the serial number. Yeah, we're good now. Now it's just asking for, it says add connection or test connection. Yeah, click on the add connection button. That will open up another window. Paste URL, right? Yeah, paste the URL, hit go. Hit the little go button on the right. oh dude oh my god this is such a pain in my ass i know i'm sorry it's all good i gotta recopy the url oh my god that's still on the clipboard uh you might have copied something else no i restarted my device oh okay true okay so now i just logged in it says would you like to synchronize the calendar between yes yeah calendar sync and then it'll ask you about your activities as well most people say yes to those okay now here i want to remember my password and hit save and close yes that should be that should be exactly what you needed to do yes and then it should make sure my make sure my password it is typed in because it's not typed in here. It should have pulled it from the previous screen when you logged in. You shouldn't need to do anything. I'm in, buddy. Let's go. Is it good? Okay, great. Now it's starting to show up in my email again. I'm just going to let it sit here and do its thing. Appreciate you, buddy. Okay, awesome. Kevin, have a good rest your day. If there's nothing else, I'll let you go. Have a good one. Now I do have, yep. It's not looking good in my, not loading fully in my reading pane, my PCR recruiter portal. It's not loading fully. Not loading fully in what, like you don't see PCR at all. It's a, it's a half of the window. Like it looks like I only got a quarter of the picture. interesting and I click on a roll up it loads like it's working in the background it's just the picture is not working um so like there's a big square and it only fills up half the square basically of like the reading pane like it's just not loading the whole thing for whatever reason that's kind of I wonder if that's... Is the Microsoft Surface like a tablet? Yeah. I wonder if that has something to do with it. I'm going to ask, does anyone know? Or has seen? Outlook portal being used. Now I just reopened my Outlook and PCR portal's not even in there. Oh my God, dude. Okay, so the tab, the PCR recruiter tab's completely hidden. Is that true? Yeah, I don't even have the option to switch over and look for the tcr portal window gotcha okay um try this for me go to file in the top left um now it's doing it of course oh okay because um there is there is a known thing that happens sometimes where um if if microsoft microsoft outlook has like a i don't know some code in the system that'll detect add-ons which that is what pcr is and if the pcr add-on like slows down outlook enough upon open it will like hide it um and they're they do that automatically because they're trying to like make your system perform better but then they'll like unintentionally hide some add-on that you like intentionally added so the add-on will still be there but it'll be hidden you have to like unhide it and if that ever happens you can go to file um yeah manage yeah you go to like add-ins and like you'll have to like unhide it basically you'll have to find the pcr add-in and it'll say it's like been hidden it'll be in like the disabled add-ons area or whatever you can like undisable it um if that ever happens to you that that does happen sometimes on like slower machines if if outlook has trouble opening like fast enough, it'll mark PCR as an add-on that's slowing it down. It'll hide it for some reason. That's just stuff that Microsoft does. We can't do anything about that, but you can unhide the add-on. All right. Well, thanks for all the help, man. I appreciate it. Yeah, no problem. Good luck with that. Kevin, have a good rest of your day. We'll see you. Thank you. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 565.01058,
+    "salad_processing_time": 116.93956279754639,
+    "overall_processing_time": 565.01058,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling me in Secret Technology.  This is McKenzie.  How can I help you? Hey, McKenzie.",
+    "job_id": "c6e1edcd-339c-4903-8490-ee8f0707dd28",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling me in Secret Technology.  This is McKenzie.  How can I help you? Hey, McKenzie.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": true,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3000781043036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

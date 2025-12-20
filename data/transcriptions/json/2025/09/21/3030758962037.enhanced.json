@@ -1,0 +1,121 @@
+{
+  "recording_id": "3030758962037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:43:03.835839Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:43:03",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Good morning, John Yenny. Hi, John. This is Jason calling from Main Sequence. I just got your voicemail, and I wanted to follow up with you. Well, you guys are quick, man. Yeah. Hey, I've been with you guys for some time, and it was a long time ago that I downloaded imported data from an Excel spreadsheet, and I have one in a Google Doc, and I can't seem to get it into like a TXT or a different format. Okay. Do you have Microsoft Excel on your computer by chance? I believe I do, but it might be an older version. I don't remember opening stuff up like this lately, and I haven't been able, like I said, to get it over there. So I don't know. Yeah. Let me open up Sheets really quick. It's been a minute since I've done it, too. So you currently have it in Google Sheets, correct? Correct, correct. Are you taking it out of Google Sheets so that you can put it into PCR? Is that where we're heading with this? Correct, correct. I had one of my clients send me like 100 people in here. and so I'm trying to get it transferred in there and just dump it all at once. Yeah. To pull it out of Google Sheets, probably best you go to File in the top left and Download, and you want to pull it out as a CSV. Pull it out of what? So when you go to Download, there's going to be an option for comma-separated values. It's a CSV. Okay. download and that would be under sorry now I got it's usually finally better than this yeah I got your go ahead yep file download and then comma separated values okay I don't have a download so let's just try open file let's see what this does. And I do have Excel. Would it be easier to just open up a workbook, copy and paste that into and save it real quick or no? Yeah, that probably would be easiest. You would just want to make sure that you paste it without formatting. Okay, so hang on. This will take two seconds. It needs to, like, not have any. Let's go select all. So when I get this saved, how do I download it into PCR? So kind of start walking me through that, and I'll try to get all this dialed in here at one time. Yeah, so the easiest way to go through the info I've found is we have a video that walks through it. I can email that to you. It's a lot more explanatory and easier to follow than I'm going to be able to do over the phone, and you'll have it as a resource that you can use in the future. Okay. Okay. Give me your name one more time. John Yenny. John at 11GBA.com. Yes, sir. Okay. I'll get this stuff together. I'll get it sent over to you. There's going to be a Learning Center article and a video that goes over how all of the importing stuff works. It's going to be able to walk you through it nice and good. If you have any other questions with it, definitely feel free to call us. I'll get that sent over to you right now. I appreciate it. Thanks for getting back so quick. Yep, absolutely. Bye. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 959.755932,
+    "salad_processing_time": 32.96001052856445,
+    "overall_processing_time": 959.755932,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Good morning, John Yenny.  Hi, John.  This is Jason calling from Main Sequence.",
+    "job_id": "3c5eba65-9553-49c7-b571-95d97e3e2d12",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Good morning, John Yenny.  Hi, John.  This is Jason calling from Main Sequence.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": true,
+      "solution_offered": false,
+      "proper_closing": false
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": [
+      "follow_up_required"
+    ]
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3030758962037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

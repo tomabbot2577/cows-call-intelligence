@@ -1,0 +1,802 @@
+{
+  "recording_id": "3097785426036",
+  "analysis_timestamp": "2025-12-19T21:22:11.494009",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [
+      "599-728-1725",
+      "5997281725"
+    ],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Gretchen O'Brien",
+        "role": "customer",
+        "company": null,
+        "confidence_score": 0.9,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "support_technical",
+    "CALL PURPOSE": [
+      "Assistance with creating a report in PC Recruiter",
+      "Troubleshooting report export issue"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Gretchen O'Brien",
+      "Company/organization name": "King and Bishop",
+      "Phone numbers mentioned": null,
+      "Email addresses mentioned": "Gretchen@kingandbishop.com",
+      "Key decision makers referenced": null,
+      "Team members and their roles": {
+        "Tyler": null
+      }
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": "Recruiting/Staffing",
+      "Company size indicators": "Over 7,000 positions",
+      "Technology stack mentions": "PC Recruiter",
+      "Current challenges/pain points": "Creating a report that captures all activities and candidates in a pipeline",
+      "Growth stage indicators": null
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": "Going back and forth with Tyler",
+      "Existing service usage": "Using PC Recruiter",
+      "Account history mentions": null,
+      "Relationship duration indicators": null,
+      "Trust level indicators": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "Technical",
+      "issue_severity": "Medium",
+      "technical_complexity_level": "High",
+      "time_sensitivity": "Medium"
+    },
+    "resolution_tracking": {
+      "issue_status": "Resolved",
+      "resolution_steps_taken": [
+        "Troubleshooted report settings",
+        "Assisted in creating a custom applicant tracking report",
+        "Provided instructions on how to use the report",
+        "Helped resolve issues with position ID and date range"
+      ],
+      "outstanding_action_items": [],
+      "next_steps_required": []
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "High",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "None",
+      "knowledge_base_gaps_identified": "None"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "Effective",
+      "communication_clarity": "Clear",
+      "technical_knowledge_demonstrated": "High",
+      "empathy_and_rapport_building": "High"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Moderate",
+      "trust_level_signals": "High",
+      "communication_style": "Detailed and instructional",
+      "rapport_quality": "Good"
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Completed",
+      "product_adoption_level": "Intermediate",
+      "feature_utilization": "Moderate",
+      "expansion_opportunities": "High"
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Responsive support, detailed guidance",
+      "risk_indicators": "Complexity of report customization",
+      "loyalty_signals": "Repeated engagement, reliance on support",
+      "advocacy_potential": "Moderate"
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone, Email",
+      "response_time_expectations": "Immediate to short wait",
+      "information_style_preferences": "Detailed, step-by-step",
+      "decision-making_patterns": "Prefers guided decision-making"
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "I am trying to create a report that captures all of the activities and candidates in a pipeline.",
+      "And then when I went to export into an Excel, it didn't have any information.",
+      "I copied and pasted the job in there. Yeah, because that one just wanted the actual ID number.",
+      "If you use filter by job title, you could have more than one job with that title. So that may not be ideal."
+    ],
+    "qa_pairs": [
+      {
+        "question": "What's going on?",
+        "answer": "I am trying to create a report that captures all of the activities and candidates in a pipeline. And so I went in and I followed the instructions for the new pipeline report. And I thought I put in everything I needed to. And then when I went to export into an Excel, it didn't have any information."
+      },
+      {
+        "question": "What filters are you using?",
+        "answer": "I put all of the steps in the moment let me just pull it up okay if you don't need all the steps you don't have to even select them so under when you go into the report where it says search params under that heading what is the date range that you're using?"
+      },
+      {
+        "question": "What is the date range that you're using?",
+        "answer": "August 18th to today."
+      },
+      {
+        "question": "What is the status are you nearing it by a particular position?",
+        "answer": "Yeah, so underneath filters you can narrow by a particular job if you want and you probably want to use position ID rather than title if you're looking for a particular job. And then if the jobs already closed or filled you'll need to clear out the filter by job status. But you don't have to narrow by any steps if you want all of them."
+      }
+    ],
+    "searchable_tags": [
+      "PC Recruiter",
+      "pipeline report",
+      "Excel export",
+      "filters",
+      "date range",
+      "job status",
+      "position ID",
+      "job title",
+      "candidate activities",
+      "report template",
+      "search parameters",
+      "data export",
+      "recruitment software",
+      "user error",
+      "technical support"
+    ],
+    "semantic_themes": [
+      "Troubleshooting report generation in PC Recruiter",
+      "Understanding and applying correct filters for data export",
+      "User challenges with software functionality and support guidance"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 60,
+      "Customer talk percentage": 40,
+      "Balanced conversation indicator": "Somewhat Balanced"
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 2,
+      "Number of interruptions by customer": 0,
+      "Interruption impact on flow": "Minimal"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 10,
+      "Awkward pauses detected": 1,
+      "Hold time indicators": "None"
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": true,
+      "Company name mentioned": true,
+      "Verification steps taken": true,
+      "Required disclosures made": false,
+      "Proper closing used": false
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": "Moderate"
+    },
+    "agent_talk_pct_calculated": 98.8,
+    "customer_talk_pct_calculated": 1.2
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 98.8,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "PC Recruiter",
+      "pipeline report",
+      "Excel export",
+      "filters",
+      "date range",
+      "job status",
+      "position ID",
+      "job title",
+      "candidate activities",
+      "report template",
+      "search parameters",
+      "data export",
+      "recruitment software",
+      "user error",
+      "technical support"
+    ],
+    "semantic_themes": [
+      "Troubleshooting report generation in PC Recruiter",
+      "Understanding and applying correct filters for data export",
+      "User challenges with software functionality and support guidance"
+    ],
+    "key_quotes": [
+      "I am trying to create a report that captures all of the activities and candidates in a pipeline.",
+      "And then when I went to export into an Excel, it didn't have any information.",
+      "I copied and pasted the job in there. Yeah, because that one just wanted the actual ID number.",
+      "If you use filter by job title, you could have more than one job with that title. So that may not be ideal."
+    ],
+    "qa_pairs": [
+      {
+        "question": "What's going on?",
+        "answer": "I am trying to create a report that captures all of the activities and candidates in a pipeline. And so I went in and I followed the instructions for the new pipeline report. And I thought I put in everything I needed to. And then when I went to export into an Excel, it didn't have any information."
+      },
+      {
+        "question": "What filters are you using?",
+        "answer": "I put all of the steps in the moment let me just pull it up okay if you don't need all the steps you don't have to even select them so under when you go into the report where it says search params under that heading what is the date range that you're using?"
+      },
+      {
+        "question": "What is the date range that you're using?",
+        "answer": "August 18th to today."
+      },
+      {
+        "question": "What is the status are you nearing it by a particular position?",
+        "answer": "Yeah, so underneath filters you can narrow by a particular job if you want and you probably want to use position ID rather than title if you're looking for a particular job. And then if the jobs already closed or filled you'll need to clear out the filter by job status. But you don't have to narrow by any steps if you want all of them."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Brian Caine",
+      "extension": "7776",
+      "phone": "6147776",
+      "email": "brian.caine@mainsequence.net",
+      "department": "Sales",
+      "role": "Sales Representative",
+      "employee_id": "EMP_7776"
+    },
+    "primary_customer": {
+      "name": "trying to understand the difference between the body the interview and the position so the position is only the company and position fields and then the interview body is really your candidate and the pipeline step so remember on the other report that we just ran how to think of position rows or position body is just that upper section about the job and the company that the job is with then when you",
+      "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+      "phone": "5997281725",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "trying to understand the difference between the body the interview and the position so the position is only the company and position fields and then the interview body is really your candidate and the pipeline step so remember on the other report that we just ran how to think of position rows or position body is just that upper section about the job and the company that the job is with then when you",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "for the body of the company",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "sending it over to you so that you have it if you wanted to and it looks like your database may already have some in here",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just trying",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "so",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "looking at that",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to send you has",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "got information about the company and position at the top and then information",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "about to send you anyway",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "looking at it",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "leaving the filter by step type",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Oh",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Gretchen",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "good",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Robin",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not doing this right",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to build this for you real quickly",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just wondering if it went into my joke",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "ll see like looks like your database has four of them",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to send it to you because you",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to go back and add more fields",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "built",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "done building it because what happens is when you pick",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "exported then you can even use export to csv so the format",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "getting results okay so in your date range you don",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "where you can put things like company",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "great",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "sending it over to you so that you have it if you wanted to and it looks like your database may already have some in",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "trying to do",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "kind of going through alphabetically to find the job",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to save this can you if you still have that pop",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not sure if you can help me over the phone",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just trying to",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to send it to you",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not seeing that yeah",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "sorry",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "your status field on",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to say client report and then username",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to have you do is under where it says report options",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just looking at the ticket",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just going in as you to grab that ID",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "start",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "got to be something else",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "thinking of",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "client report",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not going to edit this report unless",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "probably one of the most complex reports to do because wonderful that",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just going to see if",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "when we were actually pulling stuff",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "can do it again right",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "under that heading what is the date range that you",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "my box yeah so filter by position ID sometimes when you copy paste it might assume",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "trying to find the job because it",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to scroll down",
+        "company": "you had a step called submitted. If I wanted historically anybody that was moved to a step name submitted, you would use filter by interview type status. But if I only want the people currently at the step called submitted, then I would use the current interview type. Sinc",
+        "phone": "5997281725",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Brian Caine",
+        "extension": "7776",
+        "department": "Sales",
+        "role": "Sales Representative"
+      },
+      {
+        "name": "Brian Coverstone",
+        "extension": "7123",
+        "department": "Development",
+        "role": "Developer"
+      },
+      {
+        "name": "Gretchen Kubicek",
+        "extension": "5405",
+        "department": "Fax",
+        "role": "Fax Operations"
+      },
+      {
+        "name": "Nick Bradach",
+        "extension": "5431",
+        "department": "Management",
+        "role": "Manager"
+      },
+      {
+        "name": "Robin Montoni",
+        "extension": "5466",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      },
+      {
+        "name": "Tyler Trautman",
+        "extension": "5467",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [
+        "problem",
+        "issue"
+      ],
+      "urgency_indicators": [],
+      "follow_up_mentions": []
+    }
+  }
+}

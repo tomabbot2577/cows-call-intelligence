@@ -1,0 +1,97 @@
+{
+  "recording_id": "2990319445036",
+  "version": "3.0",
+  "timestamp": "2025-09-21T23:47:31.936636Z",
+  "processing_complete": true,
+  "call_metadata": {
+    "date": "2025-09-21",
+    "duration_seconds": 1242.144,
+    "word_count": 1273,
+    "customer": {
+      "name": "",
+      "phone": null,
+      "company": null
+    },
+    "employee": {
+      "name": "",
+      "extension": null,
+      "department": null
+    }
+  },
+  "transcript_text": "Thank you for calling Main Sequence. This is Robin. Hey, Robin. This is Danny over at Kimono Associates. Hi. How are you? Not bad. How are you doing today? Oh, pretty good. Pretty good. Yeah. Realizing I already opened way too many screens for the morning. Gosh, I swear. Me and screens. I'm all over the place. How are you? What can I help you with? I am having an issue trying to open up a roll-up for a user LKA okay um can we do a screen share see what's going on I mean is it like you're logged in as you or just doing it from that one computer um either one I mean I'm logged in as me right now trying to open it up but I was just on his screen and okay couldn't do it either okay you know what actually let me try this real quick Wait a minute. Danny Moore, right? Yep. Okay. I got Daniel Manning. Okay. So let me just see if I could tell from my side what's going on. That'll rule out if it's an issue with your computer or what. Okay. Let's see what's going on here. And the database name is Kimmel, right? Not archive, I assume? Okay. The user is going to be LKA. LKA. You want the rollup name or the rollup ID? I'm going to, is it 229? That's it. Okay, we just looked in there recent. And there's 142 companies, right? Correct. Oh, they finally opened up. Yeah, it took a moment. I'm trying to see. Let's see. I went to another one oh there's two roll ups with the same name that's kind of weird is there really did he do that yes he did I think that has something to do with it I wouldn't think so because it would have a unique ID yeah why is it taken for hold on one second because I found another one and I'm like, oh, wait a minute. What is going on here? It's still not opening for me. Yeah, page two is taking forever too. I mean, it opened up and I got the first page and I just hit page two. But even on, oh, there we go. Even on regular roll-ups is really, really slow. Yeah, let's see. Okay, so so far I'm getting named roll-ups to open, but they do seem to be taking a little bit longer. Why are these company ones not opening? I'm going to go do a little peek in my own database. Okay. Mine opened right up. I love my database. I know. It's going to be much... Okay, it eventually opened up. And I don't see like there's a bunch of custom fields. It's not like that's going to be slowing you down. Okay, so that one opened up. Very odd. It's got a goofy record in there. It's kind of throwing it off or something. Or something might be on there. It's weird. Yeah, really odd. It opens up really quick if I click on the company name and within the roll-up. We don't have a lot of people that do the company roll-ups like that. Yeah, and it opened up just fine in my database. I wonder if there's just like something with a company that's in that list that is causing a problem. So let me see. And that's my roll up name. Okay. Okay. And that's all. Okay, there are 18 rows. I don't know what else I made you look for. Every once in a while, somebody merges companies or does something. Yeah. And then maybe it didn't like fully complete the process. I'm just trying to see if there's maybe like a, I just got to think of the query. What am I looking for? Selected for companies and company ID and companies. Thank you. Yeah, I thought it was Java at first. So I uninstalled Java and reinstalled the new update. Started it on. Okay. Well, they are all... I did all the basics for it. Yeah, they are all coming. They are all at least valid company IDs. I was trying to see if there was like a company ID that really no longer exists. Mm-hmm. But it's not in the company table, maybe like an orphaned record, but I didn't see anything that way. Let me see if there's anybody else that has. I've created one like this before. I wonder if it hasn't ended. 158, yeah. I'm going to do it as a different user and see what happens. Okay. In case it's securities. That's not specific. I just did it for a user, CHN. That's 158 companies. I clicked on companies, and it's not loading. 019 is another roll-up I tried. Let me see if anyone has any suggestions for me. Thank you. Wow. Thank you. Okay, let me see. Seminar live. Okay, not one roll-up list. Oh, it's still that one. Okay, 843,854 opened. It just took a bit. Okay. Okay. That one was quick. The one called 843-854, that one did open a little bit slower than I would expect. But these ones that have 140 are taking a while. I'm trying to see what's going on. Okay, so let's try something else in Scripps here. No global stage. Records. It has saved positions, companies, and only. Roll ups, full permission. See if there's anything odd in his securities that would be preventing him. I don't think so, but always worth a shot, right? Yeah. Thank you. Can I rename this just so it's different, just in case? Yeah. Okay. Okay, 229 Companies. That sounds good. Okay. username LKA owner LKA I'm just going to receive all these fields on it just in case no global stage right correct okay Thank you. Yeah, it seems like anything more than like 30 or 50 companies. It's taken a while. I mean, you have a big database, but not like I've seen bigger. So that's not it. OK, I'm kind of stumped thinking, thinking. What else could this be? Not having the name of another list, which wouldn't really matter because they have that roll-up ID code anyway. Yeah. I'm going to open another one. That's why you have the code. That's why they have the code. That's what's actually unique about it. Yeah. okay thanks Oh, hold on. That's a different list. That was that other list. It's not right. 0277, this list. OK, we have a default company. Thank you. I opened up an Atlanta one with 153 companies, and it took two minutes, but the other one I clicked on at 1153 and it still hasn't opened yet. Okay. There's something. Yeah, because, okay, so when somebody replied that they were on with a call, they didn't really, like, mention it because it was just something that they noticed that was kind of slow, but that was even with a small record. Yeah. All right. So I think what we need to do is we need to escalate this. Okay. Okay. Okay. ticket up to be reviewed. Not sure what's going on. What I'll have to do is make a larger roll-up. I just thought they weren't opening at all. My roll-up only had like seven. So that, I'm going to get a ticket up for this urgently. Okay. And we'll get that fixed for you, of course. Okay. All right. I appreciate it, Robin. Sorry about that. I don't. It's okay. Weird one. Yep. Hey, they happen. It's a Monday. All right. All right. I'll get a ticket. Thanks. Bye. Bye.",
+  "ai_insights": {
+    "sentiment_analysis": {
+      "customer_sentiment": "positive",
+      "call_quality_score": 8.5,
+      "call_type": "technical_support",
+      "key_topics": [
+        "roll-up issue",
+        "database performance",
+        "troubleshooting"
+      ],
+      "summary": "The customer, Danny from Kimono Associates, was having an issue opening a roll-up for a user LKA, and the agent, Robin from Main Sequence, worked with him to investigate and troubleshoot the problem.",
+      "follow_up_needed": null,
+      "escalation_required": null
+    },
+    "process_recommendations": {
+      "process_improvements": [],
+      "employee_coaching": {
+        "strengths": [],
+        "improvements": [],
+        "suggested_phrases": []
+      },
+      "follow_up_actions": [],
+      "knowledge_base_updates": [],
+      "escalation": {
+        "required": false,
+        "risk_level": "low",
+        "reason": ""
+      },
+      "performance_metrics": {
+        "efficiency_score": 5.0,
+        "training_priority": "low"
+      }
+    },
+    "call_resolution": {
+      "problem_statement": "The customer, Danny Moore from Kimono Associates, is having an issue trying to open a roll-up for a user LKA in their database.",
+      "resolution_status": "partially_resolved",
+      "resolution_details": "The employee, Robin, was able to access the roll-up and see the data, but the roll-up was taking a long time to load. They tried various troubleshooting steps, such as checking the database, company IDs, and trying to access the roll-up as a different user, but were unable to fully resolve the issue.",
+      "follow_up": {
+        "type": "employee_callback",
+        "details": "The employee needs to follow up with the customer to see if the issue has been resolved or if further investigation is required.",
+        "timeline": "Within the next business day"
+      },
+      "loop_closure": {
+        "solution_summarized": true,
+        "understanding_confirmed": true,
+        "asked_if_anything_else": true,
+        "next_steps_provided": true,
+        "timeline_given": true,
+        "contact_info_provided": false,
+        "closure_score": 7.0
+      },
+      "quality_assessment": {
+        "missed_best_practices": [
+          "Providing the customer with a direct contact number or email for follow-up"
+        ],
+        "improvement_suggestions": [
+          "The employee could have provided the customer with a direct contact method for follow-up, such as a phone number or email address.",
+          "The employee could have suggested additional troubleshooting steps or escalation options if the issue could not be fully resolved during the call."
+        ],
+        "customer_satisfaction_likely": "medium",
+        "call_back_risk": "medium",
+        "escalation_probability": "medium"
+      }
+    }
+  },
+  "pipeline_metadata": {
+    "ai_model_versions": {
+      "sentiment": "deepseek/deepseek-r1",
+      "recommendations": "deepseek/deepseek-r1",
+      "name_extraction": "anthropic/claude-3-opus",
+      "embeddings": "openai/text-embedding-ada-002"
+    },
+    "processing_date": "2025-09-21T23:47:31.936658Z",
+    "version": "3.0"
+  }
+}

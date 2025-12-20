@@ -1,0 +1,112 @@
+{
+  "recording_id": "3083869256036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:16:13.689736Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:16:13",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hi, this is Erin Antonopoulos calling from Electronic Search. How's it going? Good. How are you? Good. I was hoping that you could maybe help me figure out how to pull some data from the database. I'm being asked to formulate a list and I'm not quite sure how to do it with like an activity search or what kind of search to do. Can I tell you what we're looking for? Is that something you could help me with? Sure. Yeah, that sounds good. We're working with a company that can possibly find candidates that were hired behind our back basically and we need to give them a list with, so I would need to find all the candidates we've submitted over a certain period of time and it would need to have the candidate's name and then it would need to have the company name or domain and or the hiring manager or the company website and I know I won't be able to get the candidate LinkedIn URL because we don't have that data listed in our database. But that's basically it. The main thing is that either the company domain or the hiring manager's email address that would have the domain in it. That's what I'm having trouble figuring out how to pull. Oh, okay. So let's see here. You're using, let's see, it looks like you're using the legacy pipeline. I just want to double check because there's going to be a different process if you're using the new pipeline versus the legacy pipeline. Yeah, it looks like it's the legacy pipeline. Okay. So the activity search, you would just look for everybody that's been submitted, you said. Cool. So I'm going to go to activities in the main menu of PCR. That's the way you perform an activity search. Yes, that's what I was starting with there. And I'm going to, they want me to look over the past 10 years. So I'm just going to do September 2015 now. And then do I go to, hold on a second, where is it? Activity type? Yeah. So when you submit somebody, let's see. There would be a pipeline. Actually, this is probably better. At the top left of the activity search, it lists company name, position, interview as like four types of activity search. Go to the interview one and then put in that date range again. And we will use the filter down below that says interview type slash status. And you can click the little pop out. Yeah, if you click the little pop-out icon to the right of interview type slash status, you'll be able to choose the submittal step in your pipeline with the checkbox. Okay, I selected that. And then you might need to clear out the username filter if you don't want it narrowing down. Okay, good. And then go ahead and click the search icon in the action menu, the little magnifying glass to perform that search. Okay, so I see name, company name. name. What I'm having trouble with is figuring out how to either include the company URL or the hiring manager's email address that has the URL in it. Do you know if there's a way to add this data? or can I keep it in a list? Yeah, you'll need to select all your results and add them to a roll-up list as probably the next step. Do you know how to do that? I can walk you through that. Yeah, yeah, I know how to do that. Okay, yeah, just create a new roll-up and add those to that roll-up list. Okay, it's adding them now. Awesome. It's taking a little bit because there's 3,700. Yeah, no worries. And then I'll just follow along on my end, too. What did you name the new roll-up? Subs 2015 to 2025. Okay. It's not coming up for me. It might be that it's still loading, so it won't show it to me right away here. Okay. It just finished adding the names. Okay. So now let's see. Okay. That's weird. I can't find it. Maybe I need to log in as your username to see that one. What is your PCR username? Erin, E-R-I-N. Okay. Perfect. Go to rollups. And you said subs. How do you spell the, maybe I'm mishearing, how do you spell the name of the roll-up? It's S as in Sam, UBS. Okay. All right. So I'm seeing a roll-up called SUBS 12-11, SUBS 3-1-12, SUBS 2011. Roll-ups. No, it's there. 2015 to 2025. Okay. That's strange. Either way, okay, that's fine. So if you then open that roll-up, or I'm sorry, go to company in the main menu up at the top of PCR, and we're going to do an advanced company search. So company, and then go to advanced next to where it says basic search. And then in the first dropdown, where it currently says predefined fields. Switch that to name rollup. Okay. And then it'll say on list, which is good. And then use the little pop out icon to the right to select the name rollup that you just made. Okay. And that will enter in as its own criteria as part of your advanced search. And then, yeah, just hit the magnifying glass again at the top right to perform that search. And that will give you a list of all the companies that are associated with any of those names. Can I narrow it down to those that are, oh wait, no, nevermind. I'm confused. Oh, you know what? Now that I'm thinking about it, those companies are going to be, okay, let's see. Those companies are going to be where each candidate is at currently, but it sounds like in this process you're you're going to have people that are submitted but never you know get to the client company and you want to list your clients okay um that's a little tricky i am not sure um so the roll-up that you currently have has all the names that have been submitted. Yeah, I might have to actually play around with it a little bit and get back to you to find a process to find this exact information because the names are, yeah, all associated with different companies currently probably than the ones that they were submitted to. So it might be a little bit trickier to find that. But, yeah, I'll do some research, investigate, and then get back to you. What's your best email address? It's eantanovelis at electronicsearch.com. Do you have that? Oh, yeah, I have it here. Okay. No, yeah, I just found it. Perfect. Okay, cool. Yeah, I'll open up a ticket and get back to you in a little bit after I track down the best way to find that information. Okay, great. Well, thank you so much for your help. I really appreciate it. No problem. Talk to you soon. Thanks. Okay. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1975.475373,
+    "salad_processing_time": 70.63578391075134,
+    "overall_processing_time": 1975.475373,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, this is Erin Antonopoulos calling from Electronic Search.",
+    "job_id": "fc4ebdaf-66bf-4994-989f-2842e7f3a3a9",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, this is Erin Antonopoulos calling from Electronic Search.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": true,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3083869256036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

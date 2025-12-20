@@ -30,6 +30,12 @@ DB_CONFIG = {
 OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY', 'REDACTED_OPENROUTER_KEY')
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1/chat/completions"
 
+# MODEL CONFIGURATION - Updated 2025-12-20
+# Primary: FREE model with best quality
+# Secondary: Low-cost backup
+PRIMARY_MODEL = 'google/gemma-3-12b-it:free'
+SECONDARY_MODEL = 'meta-llama/llama-3.1-8b-instruct'
+
 
 def generate_recommendations(transcript: str, sentiment: str, call_type: str,
                             customer_name: str = None, employee_name: str = None,
@@ -111,7 +117,7 @@ Transcript:
                 "Content-Type": "application/json"
             },
             json={
-                "model": "deepseek/deepseek-r1",  # Best reasoning model for recommendations
+                "model": PRIMARY_MODEL,  # FREE - Best quality, reliable JSON
                 "messages": [
                     {"role": "user", "content": prompt}
                 ],

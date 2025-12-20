@@ -1,0 +1,100 @@
+{
+  "recording_id": "3032316551036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:44:35.516722Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:44:35",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Tyler, it's Ryan at KBAS. How are you today? Good. How are you, Ryan? Oh, you know, it's Tuesday and early, so I guess I'm okay at the moment, but we'll know in a little bit. Yep, I feel you. Hey, I've got an office, a RISE search. she is using the HireEasy capture tool on LinkedIn to export to PCR she's running into a big problem of duplicates in her roll ups and I'm trying to figure out if I can change the I guess dedupe procedure and I don't know if that's something that's on PCR's side that I can change or if I need to go to HireEasy and be like okay, I need you to change X. So with that integration, when you're exporting from HireEasy into PC Recruiter, all that duplicate checking is set up on the HireEasy side. Okay. And that includes their extension, as far as you know. I know you're not HireEasy. Yeah, I have no idea how their extension works. Okay. Okay, fair enough. Okay. Okay. So is there any automatic de-duping that can be done on the PCR side? Because the issue that we're running into is we've got same name, same company, but the email address is different. And that's where the issue comes in. Is there a setting or something I can change to fix on your side? Because higher easy support is awful if I can keep from it. Not that I know of. Like I said, because... Let me see. I know there's like that dedupe report that you can run, but that's kind of after the fact. Yeah. Let me see. I'm just taking a look at higher easy stuff here real quick. And then I had another question regarding the higher easy thing when you're done. Oh, man, they don't make it easy to find anything on their site. No, no, they do not. Everything is hard for some reason. Yeah, I'm not seeing anything that can be changed on our end. Okay. I'm just not sure how they – what HireEasy uses to determine a duplicate. Sure. Okay, fair enough. Then let me ask you this. Does the connection inside of the name records where you do the enrich with hire easy, does that still work? I know it was originally based on 3scale, but I don't know if that's still a thing or not. Yes, that still works. Okay. So she's getting an invalid API key, which I assume is something I have to get from... So that you have to get from hire easy. Yeah. Okay. Yeah, so let me pull it up from our learning center here. Maybe if it's your learning center, I can look it up. Yeah, so the API key is something that is provided by HireEasy. Okay. For them to put into that, like when they're logging in. Yeah, okay. All right, cool. Well, I will see if I can get a hold of them and see if they become any kind of helpful today. But I appreciate the information. Thank you very much. Yep, no problem. If you need anything else, just let us know. Yep, will do. Have a good one. You too. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1009.388655,
+    "salad_processing_time": 16.53896474838257,
+    "overall_processing_time": 1009.388655,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Tyler, it's Ryan at KBAS.",
+    "job_id": "2a64569c-2643-4a7f-9d04-81e75f3ad4ae",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Tyler, it's Ryan at KBAS.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3032316551036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

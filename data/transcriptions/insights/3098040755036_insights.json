@@ -1,0 +1,924 @@
+{
+  "recording_id": "3098040755036",
+  "analysis_timestamp": "2025-12-19T21:52:24.355375",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Nick",
+        "role": "customer",
+        "company": null,
+        "confidence_score": 0.8,
+        "validation_reason": "Likely a real customer name based on context"
+      }
+    ],
+    "mentioned_contacts": [
+      {
+        "name": "Candice",
+        "role": "candidate",
+        "context": "working on"
+      }
+    ],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "support_feature_request",
+    "CALL PURPOSE": [
+      "Assistance with AI candidate match feature",
+      "Requesting help with using new feature in PCR 9"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "resolved"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Stacey",
+      "Company/organization name": "Genova Diagnostics",
+      "Phone numbers mentioned": null,
+      "Email addresses mentioned": null,
+      "Key decision makers referenced": null,
+      "Team members and their roles": null
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": "Diagnostics",
+      "Company size indicators": null,
+      "Technology stack mentions": null,
+      "Current challenges/pain points": "Difficulty finding qualified candidates for the Director of Laboratory Operations role",
+      "Growth stage indicators": null
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": null,
+      "Existing service usage": null,
+      "Account history mentions": null,
+      "Relationship duration indicators": null,
+      "Trust level indicators": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "Technical",
+      "issue_severity": "High",
+      "technical_complexity_level": "Medium",
+      "time_sensitivity": "Medium"
+    },
+    "resolution_tracking": {
+      "issue_status": "Pending",
+      "resolution_steps_taken": [
+        "Re-indexing of database",
+        "Troubleshooting of AI candidate match feature",
+        "Investigation of custom field usage"
+      ],
+      "outstanding_action_items": [
+        "Completion of re-indexing process",
+        "Further investigation of AI candidate match feature",
+        "Potential involvement of technical team"
+      ],
+      "next_steps_required": [
+        "Follow-up on re-indexing process",
+        "Rerun AI candidate match feature",
+        "Collaboration with technical team if necessary"
+      ]
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "Medium",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "None",
+      "knowledge_base_gaps_identified": "None"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "Thorough",
+      "communication_clarity": "Clear",
+      "technical_knowledge_demonstrated": "Strong",
+      "empathy_and_rapport_building": "Good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "RELATIONSHIP_HEALTH": {
+      "Overall_satisfaction_indicators": "Moderate",
+      "Trust_level_signals": "High",
+      "Communication_style": "Direct and collaborative",
+      "Rapport_quality": "Good"
+    },
+    "CUSTOMER_JOURNEY_STAGE": {
+      "Onboarding_status": "Completed",
+      "Product_adoption_level": "Intermediate",
+      "Feature_utilization": "Partial",
+      "Expansion_opportunities": "High"
+    },
+    "RETENTION_FACTORS": {
+      "Satisfaction_drivers": "Feature effectiveness, customer support",
+      "Risk_indicators": "Feature limitations, geographic restrictions",
+      "Loyalty_signals": "Repeated interactions, positive feedback",
+      "Advocacy_potential": "Moderate"
+    },
+    "COMMUNICATION_PREFERENCES": {
+      "Preferred_contact_methods": "Phone, email",
+      "Response_time_expectations": "Immediate to few hours",
+      "Information_style_preferences": "Detailed, technical",
+      "Decision-making_patterns": "Data-driven, consultative"
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "So AI candidate match. Back to this. So looking at one right now for one of Candice that is working on. And when it pulls it up, it's, again, not even in the same state.",
+      "It pulled up, you know, out of the ones that pulled up, two are, one's 98%, one's 88%. The rest are all 10. Okay. And none of them are in the state that I need.",
+      "It kind of looks like it may not have indexed your database correctly when we run that. Because I was like, I don't know if I got more lab managers in there, like, not pulling them."
+    ],
+    "qa_pairs": [
+      {
+        "question": "What is the name of the position that you're running this on?",
+        "answer": "Director of Laboratory Operations for Genova Diagnostics."
+      },
+      {
+        "question": "Did you see the AI candidate match icon in PCR 9?",
+        "answer": "Yes, we did actually add that into PCR 9. So, you should be able to use it in there as well. It is an icon on the position records."
+      }
+    ],
+    "searchable_tags": [
+      "AI candidate match",
+      "PCR 9",
+      "position records",
+      "database indexing",
+      "candidate matching",
+      "state mismatch",
+      "lab manager",
+      "Genova Diagnostics",
+      "Los Angeles",
+      "Texas",
+      "98% match",
+      "88% match",
+      "10% match",
+      "action menu",
+      "position ID"
+    ],
+    "semantic_themes": [
+      "AI candidate match functionality issues",
+      "Database indexing problems",
+      "User experience with PCR 9 features"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 60,
+      "Customer talk percentage": 40,
+      "Balanced conversation indicator": "Somewhat Balanced"
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 2,
+      "Number of interruptions by customer": 1,
+      "Interruption impact on flow": "Minimal"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 10,
+      "Awkward pauses detected": 2,
+      "Hold time indicators": "None"
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": true,
+      "Company name mentioned": true,
+      "Verification steps taken": true,
+      "Required disclosures made": false,
+      "Proper closing used": false
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": 6
+    },
+    "agent_talk_pct_calculated": 7.6,
+    "customer_talk_pct_calculated": 92.4
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 7.6,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "AI candidate match",
+      "PCR 9",
+      "position records",
+      "database indexing",
+      "candidate matching",
+      "state mismatch",
+      "lab manager",
+      "Genova Diagnostics",
+      "Los Angeles",
+      "Texas",
+      "98% match",
+      "88% match",
+      "10% match",
+      "action menu",
+      "position ID"
+    ],
+    "semantic_themes": [
+      "AI candidate match functionality issues",
+      "Database indexing problems",
+      "User experience with PCR 9 features"
+    ],
+    "key_quotes": [
+      "So AI candidate match. Back to this. So looking at one right now for one of Candice that is working on. And when it pulls it up, it's, again, not even in the same state.",
+      "It pulled up, you know, out of the ones that pulled up, two are, one's 98%, one's 88%. The rest are all 10. Okay. And none of them are in the state that I need.",
+      "It kind of looks like it may not have indexed your database correctly when we run that. Because I was like, I don't know if I got more lab managers in there, like, not pulling them."
+    ],
+    "qa_pairs": [
+      {
+        "question": "What is the name of the position that you're running this on?",
+        "answer": "Director of Laboratory Operations for Genova Diagnostics."
+      },
+      {
+        "question": "Did you see the AI candidate match icon in PCR 9?",
+        "answer": "Yes, we did actually add that into PCR 9. So, you should be able to use it in there as well. It is an icon on the position records."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Nick Bradach",
+      "extension": "5431",
+      "phone": "6145431",
+      "email": "nick.bradach@mainsequence.net",
+      "department": "Management",
+      "role": "Manager",
+      "employee_id": "EMP_5431"
+    },
+    "primary_customer": {
+      "name": "going to push for them to add that in",
+      "company": "s anything different there sinc",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "going to push for them to add that in",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "You probably just have to pin it",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just going to run it on the one that you",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "did notice in",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "of what this is looking for",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "It is pulling",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "looking at Okay",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "that are going out And that will be",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not seeing anything right now that would suggest that",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "when we originally didn",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "working on",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to run this one more time",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "weird",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "do this first and then we can go",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "assuming Adobe is different",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "hoping that that fixes this issue where it",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "doing pretty good",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just going to run the regular re",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "already using Adobe",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "And kind of go",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "looking for",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "to be doing",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "get back",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to bring it up",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "There is also Midwest in",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "that we right now are at",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not counting well today but it",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "the exact same job description now",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not losing my mind",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "what it sent",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "trying to find it again",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not mistaken",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "where this did the same thing",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "let me make sure that this is in",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "gonna kick that off now yeah the other thing is is that when we were doing the deals and remember how um",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "all like",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "wondering if that be why it decided not to to include it",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to run this in",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "hoping that that will fix the location portion of things",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to do",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "wondering",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "excited for both of them",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "trying to use PCRM",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "in here",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "something weird going on",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "You do have something in",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "like",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "pulling",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to try and see",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "still learning about it",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "talking about Adobe DocuSign versus",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "see two matches",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "wondering if that",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just expecting to see",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "wondering if the AI picked that up",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "super excited for that because",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to kick off",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "glad you called me because you were on my list actually to email anyway",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "hoping it just fixes it because all of those other bugs are fixed or whatever",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "do see in",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to put you with some specifics that can make sure that if the bug persists or if there",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "something",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just going to tuition",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to be run it again and see if that fixes it because it shouldn",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "definitely",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "we",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "that there will be",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "something wrong in there that is stopping it",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "appreciate your being",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to use that field okay",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to go ahead and run this again real fast after",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not going to sign up for",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not going to sign up for like DocuSign when",
+        "company": "s anything different there sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Nick Bradach",
+        "extension": "5431",
+        "department": "Management",
+        "role": "Manager"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "upgrade",
+        "features",
+        "service",
+        "account"
+      ],
+      "mentioned_issues": [
+        "problem",
+        "issue",
+        "error",
+        "trouble",
+        "not working"
+      ],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "reach out"
+      ]
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "recording_id": "3008951216037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:21:58.873571Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:21:58",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling me. This is Mackenzie. How can I help you? Mackenzie, this is Sean from Corago Consulting. Can you hear me now? Yeah. I don't know what was happening. I called earlier and I heard you talking, but you couldn't hear me. But it must be on your end because I called a couple of people and they're like, yeah, I can hear you. Yeah. So I managed to change my password in the database. I've got the roll-ups moved over to the custom concrete database. You know what didn't go with it was my formatting and all my custom fields. There's an awful lot of data that they probably are entitled to that didn't cross over, or it didn't cross over in the – is there any way to duplicate the layout in, like, click click done like duplicate the layout in my database with all the predefined and custom fields yeah absolutely uh how do i do that let me and did the data go with it that's the thing i'm like did the data go with it that i had in those fields that's a good question um the move to database function, I believe, copies the records on the candidates table and the custom field table. So I think if you are talking about custom field information, that should have moved over. It should be there. It's just kind of like hidden from view, basically, for your new user. So I believe. Okay. How do I find it? Let me make sure that they're like, let me make sure I'm going to look at it in my own database here. Okay. I'm going to walk you through it after I make sure. Like, I know, because there's a lot of options here. You'll see. So are you an admin in the database? Yep. You like all the admin stuff? Okay. So you'd want to log into the database that you are. I guess it doesn't matter. I guess just log into either database, like the one you're copying to. I'm in it. Just make sure you're an admin. Okay, great. And then in system, the system menu, search for copy user settings. Oh, copy user settings. Okay, and then from there, you want to make sure you have the layouts. And hopefully there are roll-up list layout. Yeah, roll-up list layout is an option. So in the very top of the left-hand box, source username, you want to choose the username that has the desired layout. So it'll say... Oh, so it's admin. And it should be... Oh, yeah, you're... Okay, yeah, you're in the database that you... Okay, so you want to be in the database that you're copying from, right? Oh, from. Yeah, because I guess you could only choose a target database. You can't choose a source database. Okay, so I'm in my database. Yeah, so you want to be logged into the database that has the username with the desired layout, then go to copy user settings, then select that user in that field. Hang on, hang on, slow down, slow down. Source username, the admin system administrator, target database. This is, okay, custom concrete. And then. That should reflect the username list under it. It does. And then you select the user or all of the users if you want to get. I'm just going to do admin. I'm going to do admin. Don't save yet because we have to go back and check the right boxes, right? because there's all these different options of like what you could potentially copy over. I can see. You're asking about the roll-up list. So there's a section called a roll-up list. I see it, yeah. And just check all those options. Well, I don't know if you want them to have copy automation plans, but at least the list layout and the stage setup probably makes sense. Yeah. So basically copy over whatever I want them to have. Yeah. And yeah, maybe your name layout, your company position layout, if you have a good one and they don't. Some stuff like that, that could maybe show the custom field. Yeah, they don't have crap. Let me look at your custom field list because I might need to move those over for you because there's really not a great way. Unfortunately, there's not the best way, so as a tech, I can just more easily do it. so do you want me to get out of this and let you do it or no you could copy over the role of this layout did you hit save on that like no i haven't done that yet i'm just i'm still looking at them like okay what do i want them to have like do i want them to have all the uh what i may do is just copy copy over like the form letters and delete the ones from their database i don't want them to have that way i don't have to go one by one by one. That would probably be more efficient, to be honest. Yeah, let's see here. Yeah, because I... Yeah, they're going to crash and burn doing this anyway. The whole situation is they had me working there for six months and were going to hire me full time. The president's son graduated from college with his degree in human resources and they let me do all of the heavy lifting and hard work and then got rid of me and hired him. So a total nepo baby. So good luck with this. They're like, what, you're a recruiter? Boy, you make phone calls. How hard can that be? I'm like, have fun. Have fun, guys. That's a lot. That's all right. I'm not going to make it easy. Are you copying from the Reeves Group database? I'm copying from the SMR construction. construction. Oh, okay. Okay. Cool. Yep. Let me take a look at that. Okay. Yeah. You do have a lot of custom fields. I might have to move these over for you. because, all right, so it's the case that not every, you know, PCR database is like the same, like you're copying. Oh, yeah. So we don't have like a good way, but we should, I think. I might push for one because I've had to do this a couple times by now. Yeah, because I've got all these like drop downs and multi-select checkbox type things. That's what works. I want to give them exactly what I was using, and then if they choose not to use it, that's on them. And they may choose not to. I mean, it's like everybody does this business differently and they will probably want to standardize it and make it completely ineffective for everyone. Right. Okay. All right, well, this is going to be something I'm going to do probably off the call, but I'm going to help you move over your custom fields because unfortunately we don't have a tool to do so. I've just run a couple SQL statements in your database admin, so I can do that. I'll copy over your custom fields so that when you do copy over the layouts, all the fields will show up because right now they won't because the field isn't there. It'll take me 20 minutes to put together these queries. I've got to doctor up the SQL queries and then run them and then that'll be in there but I won't wait for the next 20 to 30 minutes so yeah what I want them to have basically is my name record layout my company record layout my position records layout and then all of those all of the predefined and custom fields that I have will then show up in the data that I that have got loaded in there so they can pick all the same choices and that's the spirit of what I want to do right okay absolutely all right sorry to make work for you no it's all right it's fine all good all right holler at me when you're done all right yep i'll let you know thanks mckenzie appreciate it no problem have a good day bye",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 238.83011,
+    "salad_processing_time": 44.82936954498291,
+    "overall_processing_time": 238.83011,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling me.  This is Mackenzie.  How can I help you? Mackenzie, this is Sean from Corago Consulting.",
+    "job_id": "080537ef-2975-4a05-9315-4930316faac1",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling me.  This is Mackenzie.  How can I help you? Mackenzie, this is Sean from Corago Consulting.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3008951216037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

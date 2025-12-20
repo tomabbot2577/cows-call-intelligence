@@ -1,0 +1,106 @@
+{
+  "recording_id": "3079687999036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:14:03.879360Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:14:03",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Well, hi, Tyler. I think you are our current rep that we need. I'm calling with Top Talent Recruiter. Let me see here. Is this Tyler Thompson? Yes. Okay, so August the 20th, you became, we found out, our new rep. So I'm just on the support team. Okay. I had helped with a resume technical issue, but your account rep is Jim Lombardo. Okay, we've never known that. How do you spell that name? What is his email? His email is just jim at main sequence dot net. Okay. Let me pull up how to spell up his last name here. It's L-O-M-E-A-R-D-O. L-O-M-E-A-N no V-O no L-O-M-B-A-R-V-O B as in boy? yes got it alright now do I need to talk to him or do I need to talk to you regarding this question what's the question about Well, I finally realized after many years how to email a resume to my coworker. And when I try to do that, it gives me an error message that says, recruiter cannot connect to your outgoing email server. Please check system, email setup, blah, blah. And when I click on that, it tells me that edit alias, you know, shows descriptions, has PCR recruiter email address, has the correct email from me, has the SMTP server port, which means nothing to me, blank, has the SMTP username, blank. So who hosts your email? Oh, boy. Who does the hosting? Yeah, is it like Office 365? It's a local. Oh, yes. Okay. So when you're in that edit alias screen, you need to hit that sign in with Microsoft option. Oh. To connect to your mail host's outgoing mail servers. All right. All right, and just put in my email there? Yeah, you'll follow all the prompts that it gives you there. Yeah, I don't know my password. Doesn't help me. Did I figure that one out? Yeah, so once you do that, once you figure out your password, you'll just do that sign in with Microsoft option and that will connect to your mail host servers to be able to send emails out a PC recruiter okay I'll I'll try that. Yeah, because otherwise it's going to try and use our mail servers, which are all pretty much blacklisted, and you're not going to be able to send emails out of the system. Well, is this a new feature that's been added? Because I've never seen it come across it before. This has been around for quite a while. Okay. All righty. Well, I will try to find that password and go from there. All righty. Well, if you run into any other issues, just let us know. Okay. Thank you, Tyler. Appreciate it. Have a great day. You too. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1914.664881,
+    "salad_processing_time": 26.577378511428833,
+    "overall_processing_time": 1914.664881,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Well, hi, Tyler.",
+    "job_id": "4eba3b6d-71e2-44f3-9a09-0e03ddc956e7",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Well, hi, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "technical"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3079687999036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

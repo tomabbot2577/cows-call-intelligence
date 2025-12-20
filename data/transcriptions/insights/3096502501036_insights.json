@@ -1,0 +1,343 @@
+{
+  "recording_id": "3096502501036",
+  "analysis_timestamp": "2025-12-19T20:41:24.404881",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [
+      "440-856-0314",
+      "4408560314"
+    ],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Amy Wynn Emery",
+        "role": "customer",
+        "company": null,
+        "confidence_score": 0.9,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "sales_discovery",
+    "CALL PURPOSE": [
+      "Discuss setting up PCRM for the customer",
+      "Discuss pricing and user options"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "customer_identification": {
+      "primary_contact_name": "Amy Wynn Emery",
+      "primary_contact_role": null,
+      "company_name": "PCRecruiter",
+      "phone_numbers": [
+        "4408560314"
+      ],
+      "email_addresses": [],
+      "key_decision_makers": null,
+      "team_members": {
+        "Jim Lombardo": "with PCRecruiter"
+      }
+    },
+    "business_context": {
+      "industry": null,
+      "company_size": "about a dozen people",
+      "technology_stack": [
+        "PCRM"
+      ],
+      "challenges_pain_points": null,
+      "growth_stage": null
+    },
+    "relationship_mapping": {
+      "previous_interactions": "I have owed you a call. I was out for much of the week of the 8th and have just not even been remotely caught up since.",
+      "existing_service_usage": "getting you set up on PCRM",
+      "account_history": null,
+      "relationship_duration": null,
+      "trust_level": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "technical",
+      "issue_severity": "medium",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "low"
+    },
+    "resolution_tracking": {
+      "issue_status": "pending",
+      "resolution_steps_taken": "initial contact made",
+      "outstanding_action_items": [
+        "schedule follow-up call",
+        "discuss paperwork and upgrade details"
+      ],
+      "next_steps_required": "schedule follow-up call to discuss details"
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "none",
+      "knowledge_base_gaps_identified": "none"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "proactive",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "adequate",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Moderate, as there is no explicit dissatisfaction but delay in communication could affect satisfaction",
+      "trust_level_signals": "Moderate, as the apology for delayed response shows responsibility, potentially maintaining trust",
+      "communication_style": "Direct and informative, with a personal touch",
+      "rapport_quality": "Good, as the tone is friendly and the caller is making efforts to reconnect and resolve outstanding issues"
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "In progress, as the call discusses setting up and training for a new system (PCRM)",
+      "product_adoption_level": "Initial, as the discussion involves onboarding to a new product",
+      "feature_utilization": "Low, as the product is not yet fully implemented",
+      "expansion_opportunities": "Identified, as there is a mention of potential upgrades and increased user adoption"
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Responsiveness to customer needs, personalized communication",
+      "risk_indicators": "Potential dissatisfaction due to previous delays in communication",
+      "loyalty_signals": "Moderate, as the customer is considering expanding the user base",
+      "advocacy_potential": "Unclear, depends on successful implementation and satisfaction with the new system"
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone, as emphasized by multiple mentions of the phone number",
+      "response_time_expectations": "Flexible, but promptness is likely valued given the apology for delayed response",
+      "information_style_preferences": "Detailed and direct, as evidenced by the thorough explanation of the next steps",
+      "decision-making_patterns": "Collaborative, as the caller is seeking to discuss and confirm decisions regarding the setup and expansion"
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "I have owed you a call. I have to apologize for my delay. I was out for much of the week of the 8th and have just not even been remotely caught up since.",
+      "What it would be, I would get a new data link created and then you could decide who you wanted to give that to and really everybody could use it but since you only have what about a dozen people that you want to use it those are the only people who usually let know that it's a thing.",
+      "I think it's like ten bucks a user normally for everybody but we would do it for only the ones you were starting out and kind of just let me know if you needed to increase that.",
+      "Usually what we'll do is we will get paperwork out once that's signed and returned. We have the new link generated, same username, same passwords, everything like that."
+    ],
+    "qa_pairs": [
+      {
+        "question": "How many users are expected to use the system initially?",
+        "answer": "About a dozen people."
+      },
+      {
+        "question": "What is the cost per user?",
+        "answer": "Normally ten bucks a user, but it would be only for the ones starting out."
+      },
+      {
+        "question": "What is the process after paperwork is signed?",
+        "answer": "A new link is generated with the same username and passwords, and a ticket is put in to schedule training."
+      }
+    ],
+    "searchable_tags": [
+      "PCRecruiter",
+      "data link",
+      "user setup",
+      "training",
+      "paperwork",
+      "cost per user",
+      "system upgrade",
+      "user management",
+      "scheduling",
+      "delay",
+      "apology",
+      "customer service",
+      "onboarding",
+      "technical support"
+    ],
+    "semantic_themes": [
+      "Customer onboarding and setup process",
+      "Pricing and user management",
+      "Training and technical support"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 100,
+      "Customer talk percentage": 0,
+      "Balanced conversation indicator": "No"
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 0,
+      "Number of interruptions by customer": 0,
+      "Interruption impact on flow": "None"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 0,
+      "Awkward pauses detected": 0,
+      "Hold time indicators": "None"
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": "No",
+      "Company name mentioned": "Yes",
+      "Verification steps taken": "No",
+      "Required disclosures made": "No",
+      "Proper closing used": "No"
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": "No",
+      "Acknowledgment phrases used": "No",
+      "Personalization level": "Low"
+    },
+    "agent_talk_pct_calculated": 92.8,
+    "customer_talk_pct_calculated": 7.2
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 92.8,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "PCRecruiter",
+      "data link",
+      "user setup",
+      "training",
+      "paperwork",
+      "cost per user",
+      "system upgrade",
+      "user management",
+      "scheduling",
+      "delay",
+      "apology",
+      "customer service",
+      "onboarding",
+      "technical support"
+    ],
+    "semantic_themes": [
+      "Customer onboarding and setup process",
+      "Pricing and user management",
+      "Training and technical support"
+    ],
+    "key_quotes": [
+      "I have owed you a call. I have to apologize for my delay. I was out for much of the week of the 8th and have just not even been remotely caught up since.",
+      "What it would be, I would get a new data link created and then you could decide who you wanted to give that to and really everybody could use it but since you only have what about a dozen people that you want to use it those are the only people who usually let know that it's a thing.",
+      "I think it's like ten bucks a user normally for everybody but we would do it for only the ones you were starting out and kind of just let me know if you needed to increase that.",
+      "Usually what we'll do is we will get paperwork out once that's signed and returned. We have the new link generated, same username, same passwords, everything like that."
+    ],
+    "qa_pairs": [
+      {
+        "question": "How many users are expected to use the system initially?",
+        "answer": "About a dozen people."
+      },
+      {
+        "question": "What is the cost per user?",
+        "answer": "Normally ten bucks a user, but it would be only for the ones starting out."
+      },
+      {
+        "question": "What is the process after paperwork is signed?",
+        "answer": "A new link is generated with the same username and passwords, and a ticket is put in to schedule training."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Jim Lombardo",
+      "extension": "5401",
+      "phone": "6145401",
+      "email": "jim.lombardo@mainsequence.net",
+      "department": "Sales",
+      "role": "Sales Representative",
+      "employee_id": "EMP_5401"
+    },
+    "primary_customer": {
+      "name": "trying to dig out of that hole",
+      "company": "th and have just not even been remotely caught up sinc",
+      "phone": "4408560314",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "trying to dig out of that hole",
+        "company": "th and have just not even been remotely caught up sinc",
+        "phone": "4408560314",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "in all week",
+        "company": "th and have just not even been remotely caught up sinc",
+        "phone": "4408560314",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "quick call",
+        "company": "th and have just not even been remotely caught up sinc",
+        "phone": "4408560314",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Jim Lombardo",
+        "extension": "5401",
+        "department": "Sales",
+        "role": "Sales Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "upgrade",
+        "training"
+      ],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "call back"
+      ]
+    }
+  }
+}

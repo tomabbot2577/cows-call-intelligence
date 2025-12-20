@@ -1,0 +1,194 @@
+{
+  "recording_id": "2995997793037",
+  "analysis_timestamp": "2025-12-19T18:07:15.137160",
+  "analysis_version": "2.0",
+  "contact_information": {
+    "phone_numbers": [
+      "440-946-5214"
+    ],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Benjamin Escobar",
+        "role": "customer",
+        "company": "Main Sequence",
+        "confidence_score": 0.9,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "support_billing",
+    "CALL PURPOSE": [
+      "Assist with setting up auto pay on customer billing portal",
+      "Provide instructions on adding a new card and removing the original"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "customer_identification": {
+      "primary_contact_name": "Benjamin Escobar",
+      "primary_contact_role": null,
+      "company_name": "Main Sequence",
+      "phone_numbers": [
+        "440-946-5214"
+      ],
+      "email_addresses": null,
+      "key_decision_makers": null,
+      "team_members": {
+        "Robin Mantoni": null
+      }
+    },
+    "business_context": {
+      "industry": null,
+      "company_size": null,
+      "technology_stack": null,
+      "challenges_pain_points": null,
+      "growth_stage": null
+    },
+    "relationship_mapping": {
+      "previous_interactions": null,
+      "existing_service_usage": "customer billing portal",
+      "account_history": null,
+      "relationship_duration": null,
+      "trust_level": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "billing",
+      "issue_severity": "medium",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "low"
+    },
+    "resolution_tracking": {
+      "issue_status": "resolved",
+      "resolution_steps_taken": "provided instructions on how to update billing information",
+      "outstanding_action_items": [],
+      "next_steps_required": "customer to update billing information"
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "yes",
+      "knowledge_base_gaps_identified": "no"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "clear and concise instructions provided",
+      "communication_clarity": "high",
+      "technical_knowledge_demonstrated": "sufficient",
+      "empathy_and_rapport_building": "low"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "RELATIONSHIP_HEALTH": {
+      "Overall_satisfaction_indicators": "Unknown",
+      "Trust_level_signals": "Moderate",
+      "Communication_style": "Direct and instructional",
+      "Rapport_quality": "Functional"
+    },
+    "CUSTOMER_JOURNEY_STAGE": {
+      "Onboarding_status": "In progress",
+      "Product_adoption_level": "Initial",
+      "Feature_utilization": "Low",
+      "Expansion_opportunities": "Potential after successful onboarding"
+    },
+    "RETENTION_FACTORS": {
+      "Satisfaction_drivers": "Ease of use of billing portal",
+      "Risk_indicators": "Dependency on manual processes for setup",
+      "Loyalty_signals": "Low, as customer setup is not yet complete",
+      "Advocacy_potential": "Undetermined"
+    },
+    "COMMUNICATION_PREFERENCES": {
+      "Preferred_contact_methods": "Phone and email",
+      "Response_time_expectations": "Prompt, as indicated by direct phone number provision",
+      "Information_style_preferences": "Practical and step-by-step guidance",
+      "Decision-making_patterns": "Customer prefers self-service with support available"
+    }
+  },
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium"
+  },
+  "action_items": [],
+  "participants": {
+    "primary_employee": {
+      "name": "Robin Montoni",
+      "extension": "5466",
+      "phone": "6145466",
+      "email": "robin.montoni@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5466"
+    },
+    "primary_customer": {
+      "name": "Robin Mantoni with Main Sequence",
+      "company": "",
+      "phone": "440-946-5214",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "Robin Mantoni with Main Sequence",
+        "company": "",
+        "phone": "440-946-5214",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "at extension",
+        "company": "",
+        "phone": "440-946-5214",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Robin Montoni",
+        "extension": "5466",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "billing",
+        "account"
+      ],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": []
+    }
+  }
+}

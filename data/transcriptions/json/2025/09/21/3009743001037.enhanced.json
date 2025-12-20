@@ -1,0 +1,119 @@
+{
+  "recording_id": "3009743001037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:22:55.804775Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:22:55",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Please hold while I try to connect you. Mark Grisner speaking. Hi, Mark. It's Robin Montoni with Spain Sequence. How are you? Hello, Robin. How are you? I am good. What's up? I was giving you a call back. You had something about creating a macro. What were you looking to do? Wow. How about a position? Oh, wait. How did I miss this? Wait a minute. This is eight days ago. How did I miss this? What the heck? Oh, Jesus. That's all right. I actually was able to figure it out from artificial intelligence. But here's my question. Okay. Is there a way to extract, if I made a list of positions in PCR, to extract out the company name, the position title, and maybe a key responsibility? or is that overstretching? And the key responsibility, what do you mean? Well, like their primary responsibility. Is that like one field? Well, that's the problem. That floats around. You're never absolute. But at least with the first two items, I'm wondering if that could be a possibility. So what you could do, I mean, you could make a position roll-off, and then just have like company name, job title, any fields like in your roll-up layout, or you could do a custom position report with just the fields that you need. Say that, slow down. Okay. On the second one, what was that? So you could do a search in your database for jobs and put the jobs in a roll-up? well i i don't want to mess up my up my roll-up standard roll-up list okay so you do have a standard roll-up layout for your positions yeah so what you could do instead then to keep your roll-up as you want it yeah if you go to reports up on the main toolbar yep i'm there okay um actually I'm going to go to my database and I'll guide you through here. Oh, let's see. You're going to go, hold on one second. I'm still logging in. Apparently I'm a little slow on the uptake today. Okay. So your report's on the main toolbar. And then it may not be pinned, but in that action menu, there's a gear icon. It'll be labeled as manage custom reports. Let me know if you find that. Manage custom reports, yep. Okay. Then you're going to see tabs for the different types of reports that you can create. Click on the tab for custom position reports. Alright, custom position reports. Okay, then what you could do is at the very bottom right click add and are all of your sections collapsed or they expanded? They're really only probably going to go into a little bit. Okay, so where it says custom position report header, expand that one. All right. And in that middle field that says title, replace the entire thing, including the brackets, with whatever name you want to call this report. Okay. So you've got to remove the brackets because it's not going to actually merge data. so let me know when you have that report named and then you're going to expand the body row section and you can do up to 18 fields and it just goes with this screen you're going to work left to right then go down into the next row so in that first cell you'll click right in it and then you're going to see the field that you could pull so you could do like company name okay so position title position ID yeah and when you get a long list I don't know if you know if there's a search option at the top sometimes that makes it faster than scrolling the big list when you know exactly what you're looking for mm-hmm Now if you want job description, I would probably pull that at the very end. Actually, have I done this with job description? No. Okay. So I've got my header, I've got my body rows. Okay. Now, what will happen is as you pick a field, you don't really have to do this. I'm just going to explain the purpose. Body rows is where you pick the field. If you expand your header rows, you'll notice it used whatever is the field name as the header row, which basically means your column heading when you export it. So if you maybe instead of company name, you want to say client, you can kind of override that column heading. That's why I just usually tell people just keep that collapsed unless you know you need to change something. Okay, so then hit save down at the bottom right. All right. Then once you save it, that's going to be a report that's listed. So you're going to close out of that manage custom reports menu. All right, done. All right. And then what you're going to do is click reports on the main toolbar because we've got to kind of refresh the listing. All right. Okay. And then you're going to see in the upper left position reports. Yeah. So then you'll see the ones that are built in. But at the end, you should see custom position dash whatever the name of the report is that you just created. Okay. Now, when you get into that, you can either, you'll want to watch probably the filter by position status. You might want to clear that out. if you know yeah you can either select a roll-up list or you can do it by the date that the job was posted like meaning added to the database yeah you'll have to do either one but you might want to clear out that filter by job status if there are jobs in that roll-up that are closed or filled and you still want to report on them okay so now let's say i'm not totally happy so i go back to position excuse me go back to reports and the back of that horse and the gear icon the manage custom reports option okay that's where you do the setup to create it and then once you create it it's in your database under position reports. Okay, so I can click on the title now open it up and that's where I can add, change, or delete. Okay. Right. Now one thing about it if you let's say you go and you clear out a field you'll also need to go to the header and clear out the header. Okay. If you just reselect a different field it'll update that header section but if If you delete, it keeps that header name until you actually clear it up. Wonderful. It's up there. Okay. This will be very, very helpful. Thank you, Robin. Yeah. How's your team doing? What team? My family team. Oh, you know, they're kind of not so great. Looks like the Tigers are going to kind of win our division. I guess they kind of have their time. The Brewers fell into dumb luck, like with the 63rd pick, has ended up with a superstar pitcher. Oh, that's always going to happen. Yeah. He struck out 12 Dodgers last night. Oh, wow. Yeah. That's good. Well, you guys are the same market, like, same as us. You get in over it, don't want to spend money. It's really hard to compete with, like, Dodgers and Yankees. Exactly. Exactly. Like, Guardians are really good. Well, Guardians, Indians, whatever we want to call them. They're really good about, like, getting young talent. And then you just, after a while, you can't keep them because another city pays them. It's kind of ridiculous. They need to, like, get them off. Yeah, that's exactly what happened to the Brewers. And, you know, the guy went on to the Mets. Another guy went on to the Dodgers. it's just terrible it's horrible it's bad for the sport they need a cap well they need a cap they need to follow the NFL and the NBA yep and then you got the Guardians owner he's just cheap anyway they like if they want to stay like just pay him no not doing it so of course they're going to go somewhere else so well thanks for all your help, my dear. You are welcome. As usual. Greatly appreciate it. Thank you. No problem. Have a great week. Bye. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 268.817608,
+    "salad_processing_time": 48.866137742996216,
+    "overall_processing_time": 268.817608,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Please hold while I try to connect you.  Mark Grisner speaking.  Hi, Mark.",
+    "job_id": "8f6a3dda-454b-461a-a35b-6745e0eaa049",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Please hold while I try to connect you.  Mark Grisner speaking.  Hi, Mark.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3009743001037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

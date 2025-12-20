@@ -1,0 +1,100 @@
+{
+  "recording_id": "3039803818036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:50:33.233573Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:50:33",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hello? Hi, is this Chris? It is. Hi, Chris. This is Robin Montoni with Main Sequence. Caitlin created a ticket, asked if I reach out to you regarding your email setup. Yeah, for whatever reason, my emails that I send and receive from people that are in PCR don't show up in PCR. Yeah, it looks like you needed to re-authenticate. I don't know if you had changed your password at some times. I couldn't even tell you what my password I couldn't even tell you what the password is I have literally I'm being super honest all I do is click on an icon on my desktop and it opens up you might be signed in so it might help you I don't really know can we do a screen share well we could if I was at the office can you help me just get my password reset so I can Well, your email password would be whatever your password is for your email account. We would not have anything to do with that. But if you're already signed into your account, it might just be that you have to go into PCR and then sign in. Because there's like a sign-in with Microsoft. And sometimes if you're already signed into your Office 365, it doesn't prompt you for the password. You just need to use the sign-in option. All right. Is this a cell phone or an office phone? this is an office phone can i call this number back when i get back to the office this afternoon oh absolutely yeah my extension is 5 4 6 6 54 66 yes all right cool all right i'll call you back soon i get to the office thank you ma'am thanks bye all right bye bye",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1205.136817,
+    "salad_processing_time": 9.844507455825806,
+    "overall_processing_time": 1205.136817,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hello? Hi, is this Chris? It is.  Hi, Chris.  This is Robin Montoni with Main Sequence.",
+    "job_id": "5db926d4-5842-4958-ae02-02f82067c0d9",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hello? Hi, is this Chris? It is.  Hi, Chris.  This is Robin Montoni with Main Sequence.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3039803818036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

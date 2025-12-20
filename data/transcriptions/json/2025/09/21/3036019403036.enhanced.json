@@ -1,0 +1,117 @@
+{
+  "recording_id": "3036019403036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:47:05.172616Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:47:05",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence. This is Robin. Hi, Robin. It's Cliff Rusnak from MWorks Search. How are you doing? I'm good. How are you doing? I'm doing okay. Doing okay. Thanks. I spoke to Garrett earlier because I've got new computers, so I'm setting everything up, and the last thing I was working on is the RingCentral. So I installed the RingCentral app. I updated Java. I updated the RingCentral launcher, and I'm trying to do a sample text out of PCR, and it's not working. Okay. So I don't know if I did something wrong. Do you have a new RingCentral account? No. So the RingCentral account is not new. It's the same one. Okay. And you have gone through their TRC or TCR process, like you can directly text out of RingCentral? Well, I don't know. See, because when this was set up years and years ago, I don't remember how I did it. All I know is it was set up and it worked. I would first try, in the meantime I'm going to look at stuff, go over to your RingCentral app. Yeah. And make sure you can send a text out of there. Oh, out of the app, not on the website. All right, let's see. Yeah. Text. Because now with business accounts or whatever, I guess you have to register. to be like a texter and yeah it's not a ccr issue oh you did all that yeah i did all that like a year or two ago um okay so let's see people go oh i didn't know i had to do that and like yeah you can't text that yeah because they were pretty like adamant about it so let's see send new text and i'm trying to i'm sending a text out of ring central but not connected to not connected to uh pcr this is a test all right let's see yeah i got it okay let me see what might be in here so and you have the ring central app that you have installed on your computer right yeah so i just sent that out of the ring Central app, which is the new one with the square logo versus the round logo, which was the old one I had in there. Well, how do you make your phone calls? Well, almost all of them I make using a hard phone. I use the soft phone when I do interviews that I transcribe using the transcription function in Ring Central. Because here's what I see. You have it set to IP phone, which means you're making calls through like that phone that they give you, I guess. The hard phone, like a desktop phone. Yes. So because of that, we cannot, so there's also what's called the RingCentral app, which would be like that all-in-one tool that you would install on your desktop. Because you're using the IP phone, you actually have to just download what's called their RingCentral phone, which was the original app. Do you know if you have that. Well, see, that's what I had. I think that's what I had on my old computer because I was on the line about a month ago at RingCentral and they were like, you don't have the right app. So I put this new app on the phone so I could do this call transcription. So now when I do an interview, I use the soft phone in this new app. I make the call and I transcribe it. But then that other app was the one every time I would text that would engage. So I'd click on the text in PCR and that would open up the old app. Yeah. So if you would, like if you go to system and then go to user. In Peace Recruiter, go to system. All right, hold on. System. Yeah, I'm in there. And you go to users and then you go to manage users. Yeah. Click on your username. Okay. And then click the gear icon next to your contact phone field and then go into the RingCentral tab. So I clicked on my name. I go on the bottom. So it, where's the gear, where's the gear located? To the right of the contact phone field once you open up your user card. All right. So I opened up contact phone and then there's a gear next to the contact phone. Yeah. So when you click that, it opens your telephone center screen. Got it. So in the ring central section at the left, what's happening is when you're making a call, right now it's passing that number over to your IP phone. Okay. Which means we don't know that you even have the newer app. So if you were passing everything, the call and the text, over to the new app, you'd be selecting RingCentral app instead of IP phone. Since you're using that IP phone, we can't pass it over to the new app. You have to have that RingCentral phone, the original option. Let me see. Hold on one second. Let me see if I can find that download link. Yeah, because I'm in the RingCentral desktop apps. I think that's the one. It only gives me one option, and that's the new app. Yes, I might have to see if we can still get you RingCentral phone, which was like their original. RingCentral app for end users. RingCentral. Did they? RingCentral meetings. Did they take it off the site? They must have taken it off the site. It only looks like there's one RingCentral app in there. RingCentral app for end users. They used to have the old one on their site, and it looks like they took it off. looking at the app gallery rc phone vmware i don't know what that means i don't remember it seeing it listed like that central i would think they still have to have it somewhere that sort of stinks um you know it's like I don't want to stop using my IP phone. I'm going to get another one because mine is pretty old. But it's just easier using a computer to make a phone call. Yeah, like if you switch to RingCentral app and you use their app, it just passes the phone over to the app, but then you'd be using like your headset to actually make the call. Mm-hmm. And it doesn't look for phone configuration. I can select multiple phone configurations. Now, PCR is just passing it over to one. So if I were to switch it to RingCentral app, it would work, the texting. For your calls, both your calls and your texting, when you do it from PCR, it's going to pass that number to the new app, to that new all-in-one app. It would not pass it to your actual phone that they give you. It would just pass it to the S-TOPI app. So what happens if I make a phone call out of the RingCentral IP phone going forward, if I make that switch? We wouldn't be passing a number over, but any call, I believe, as long as it's in your RingCentral log, you would still get the activities about every 20 minutes because those pull from the logs every 20 minutes through an API connection. Our stuff is really just a click to dial. or click to text. Okay. All right. So it would pass it over to that newer app. It would still work, though. I could still use my desktop IP phone. It would just update in a batch setting the calls I'm making with PCR, and I'd be able to do that. Well, I don't think that's the correct way. If you switch where it says user phone configuration to what's called Ring Central app. When you are in PC Recruiter and you click to dial a number, it's going to pass it to that Ring Central all-in-one app. It will not pass it to your IP phone. But that's fine because when I do the transcriptions, I'm using the soft phone and I'm using a headset attached to my computer, not attached to the IP phone. yeah and we don't get their transcriptions just so you know yeah that's fine i save it in ring central and i download it and then i put it in chap gpt so as long as that would happen i can text i can still do my interviews and transcribe and i could still pick up my hard phone my phone desk phone and make a call whenever i want when you want it's just if you're dialing from peace recruiter it would pass it to the new app and i don't i don't dial from pc recruiter unless i'm using the soft phone that i'll be using to transcribe a conversation okay so as long as you have what's called the ring central app and you change that setting it would pass it to that app i would also just to make sure after you went and made those change maybe just go your MyPCR page and just re-authenticate just because you made a change. It's always best to do that. And I could change it back, too. If it doesn't work, I could just change this back to IP phone. Correct. And we got in here by going to my, no, we went to system. System, users. All right. Because then I could change it back without calling. System, users. All right. And then contact information. Right? Right. Yes. so i'm not going to do something i can't change back right if i do this it's not going to like blow up my system and then i'll have more problems no you're not going to blow up anything all right which is good right yeah it's just we need to know what app is directing that number to um pretty much everyone's just using like the desk it's that installed app not like their chrome browser we can't integrate with that it's that all-in-one like if you were to open up it It just says Ring Central, and it's the app, and it's got like, what does mine say? Video, what does it say? Like down the left-hand side, it'll say phone, video, messages, text. It's just we're passing the call to that app. Contacts, webinar, fax, so it's all in there. All right. So this may not be that bad. I could still use my desktop phone, and I can still text and do my interview transcription when I want to use that. Yeah. The only time, as long as I can dial out. All right, so I'm going to try it. If not, I'll just switch it back, and then I guess I'll call them and ask them if they have the old app. Yeah, otherwise that's the only way you could leave it set to the IP phone and still be able to text from PCR. otherwise you'd have to do that outside of PCR yeah but when I when I switch it to the app I'll be able to text from PCR mm-hmm yeah versus having to go to my phone and text yeah correct it'll just like pass that number all right it opens like a little it opens up like a little window you compose your text and then when you hit send it passes to send it to the app to actually do the sending all right I think it should be okay I'll give it a few tries shortly. All right. Thanks, Robin. Appreciate all your help. No problem. Thank you. Have a good afternoon. Bye. All right. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1090.631729,
+    "salad_processing_time": 46.88457274436951,
+    "overall_processing_time": 1090.631729,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Hi, Robin.",
+    "job_id": "ac003b98-6896-4478-9d28-3a018fdaaba3",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Hi, Robin.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3036019403036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "recording_id": "2994792538037",
+  "job_id": "0d97f847-f32f-47e1-a4c1-55dd9a3a85f0",
+  "status": "completed",
+  "transcription": {
+    "text": " Thank you for calling Nain Sequence Technology. This is Garrett. How may I help you? Hi, Garrett. This is Erica Eichelbohm with Morgan Consulting Resources, and I have a question about fixing the settings in PCR to send email notifications when we receive an application through our website. Oh, okay. Let me pull up your database here. Morgan Consulting. Okay. And do you have \u2013 do you know if you have an automation already set up for that and it stopped working or you need to set up that automation? We have it set up and it stopped working on May 29th for everyone. Okay. Let's check a few things. Thank you. Okay, that's probably where the issue is. So the database has an email address that it sends these emails from. It's not tied to any username. but it's the settings live in the system settings up at the top so let's see do you have admin access do you know to the database I don't know I don't think okay we can check if you if you go to system in the main menu of PCR look for email setup on the left? Okay, system email setup, okay. And then on the right, do you have an option that says outgoing mail settings? No. Okay, so that's something that somebody with admin access would need to change, but the outgoing email address lost the connection from PCR to the email provider or Office 365. So let me see what you have here. The email that was plugged in is Nicole at MorganConsulting.com. So that just needs to be reconnected. Okay. And I can, do you want me to email you those steps to get back to the? Yeah, that would be great. Okay, perfect. Can you copy Nicole at MorganConsulting.com on that email so she can reactivate? Yeah, absolutely. Okay. All right. I will send that out now. Any other questions that you have? Any other issues? Nope. Oh, actually, when she reactivates her email, will it send all the former, like everything since May 29th, or will it just resume going forward? It'll just resume going forward. It won't do anything retroactive. Okay, gotcha. Okay, well, that sounds like it's going to be fixed then. yep absolutely just reconnecting there so yeah if you do have trouble though after I send that email just hit reply and we can walk you through it awesome thank you so much thanks have a good one you too bye-bye",
+    "duration_in_seconds": 226.728,
+    "duration": 0.06,
+    "processing_time": 24.46299648284912
+  },
+  "metadata": {
+    "processed_at": "2025-09-21T21:44:36.343101",
+    "processing_time": 392.299051,
+    "engine": "full",
+    "features": {
+      "diarization": true,
+      "summarization": true,
+      "timestamps": true
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "recording_id": "2995654635037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:11:17.996066Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:11:17",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hi, Garrett. This is Giselle with the Newport Group. I'm just calling in to see if you could quickly check something for me. So in terms of like email correspondence on PCR and Outlook. So I have one of our recruiters, Tim Mangan. And he had the PCR for Outlook, but he recently had to change his PC or his desktop. And do we really need the PCR for Outlook for the emails to populate on PCR activities? No, so you can. An alternate method would be to put in an email alias and a mail server inside of the PCR mail settings. That old monitor. Yeah, exactly. Gotcha. I think we did that, but is there a way you could just double check we did everything correctly? I'm not sure if I did it. Yeah, let me take a look. Which database are you in? The Newport Group, one word. There it is. Found it. And what's the username? Tmangan. Oh, I might have spelled that wrong. How do you spell the last name? M-A-N-G-A-N. There it is. Okay. Let me check on those email settings here. Top right, configure. Okay, it looks like the email alias outgoing is good. And incoming is good. Sweet. Preferences. Oh, there is an extra couple steps. Are you logged in as that user right now? Oh, yeah. I'm with Tim right here. I'm at his desk. So he's currently logged in to GCR. All right. So go to PCR mail. So just click the tiny gear icon at the top right and select email. And then once you're in there, go to configure at the top left, the gear icon. And let's see, the first thing to edit, go to mail servers. And then in the bottom frame, click the little action dropdown to the left of the mail server to edit. And there's one drop-down in there that says save sent email to sent items folder. I would switch that to no. Microsoft duplicates sent items in TTR for some reason. Yep, yep. We had that instance the other day with one of their recruiters. He thought that he sent the email twice, and then he had to email the client. So I don't know. But, okay, sweet. That's all good. That'll be good. Save. Go ahead. Save. And then, oh, he did send some emails before we did the mail servicing. Will that repopulate? Yeah, it'll go back retroactively for a few days and start putting all those activities in. Let me check another spot here. You also have to tell PCR what the trash folder is and what the scent folder is. So at the top of PCR mail there, it says email folders in the top center. Click on that. Oh, yep. And then in the bottom frame, click the three horizontal lines in the action menu, kind of top right of the bottom frame. Okay, yep. And one of those options is set sent folder. Uh-huh. And then. Yeah, so where it says Office 365 downwards, look for the sent folder there. Oh, do we go into the set sent folder? Yeah. Okay, Office 365 to the sent one, was it? Yes, sent items. And then go to the left of that where there's an action dropdown where you can say mark as sent items. Okay. Gotcha. We just click that. Once you do that, yeah, and just close with the X at the top right of that pop-up window. Gotcha. And we'll do that same thing again in the bottom frame. Click the three horizontal lines. This time hit set trash folder, the wrench. And then look under Office 365 for trash. It might actually be called deleted items if it's Microsoft. Yeah, I think it's deleted items. Okay. Action, mark as trash. Okay, done. And then close at the top right. Okay, that is good. And then last thing we'll check on, go to preferences up towards the top. Yep. And on the bottom frame on the left, it says activities, double word bubble. Yep. The first drop down should say, yes, you want outgoing activities written. And then the next one should be from subject body. Gotcha. Where you can get incoming emails. Okay, perfect. We just did that one. Hit the three horizontal lines at the top right to save that with the floppy disk. Gotcha. Done. And I think that's everything. Wait, let me check one more thing. Oh, yeah, last thing I just found. So alias address list at the top center. Then in the bottom frame, click the pencil icon. Okay, yep. the field on the right that says IMAP server, you can choose the mail server you created from the dropdown so that they're connected. We just did that one and then saved. Cool. I think, yep, we've done that one. That should be everything. I think you're in great shape. Thanks so much. I think that's about it. I appreciate your help. No problem. Reach out if you need anything else. Thank you. Have a great day. Bye-bye. You too.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 477.703254,
+    "salad_processing_time": 48.98635816574097,
+    "overall_processing_time": 477.703254,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "job_id": "563e4db1-27e7-4c64-a39c-f2cd28264aa1",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/2995654635037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

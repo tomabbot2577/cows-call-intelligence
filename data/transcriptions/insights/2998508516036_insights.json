@@ -1,0 +1,229 @@
+{
+  "recording_id": "2998508516036",
+  "analysis_timestamp": "2025-12-19T18:20:09.847302",
+  "analysis_version": "2.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Monica",
+        "role": null,
+        "company": null,
+        "confidence_score": 0.7,
+        "validation_reason": "Unclear role, but not identified as employee"
+      }
+    ],
+    "mentioned_contacts": [
+      {
+        "name": "Robin",
+        "role": "head of billing department",
+        "context": "can get back to the customer"
+      },
+      {
+        "name": "Monica",
+        "role": null,
+        "context": "was possibly talked to previously"
+      },
+      {
+        "name": "Action Management Services",
+        "role": "customer",
+        "context": null
+      }
+    ],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "support_billing",
+    "CALL PURPOSE": [
+      "Assist with billing question",
+      "Transfer to billing department"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "customer_identification": {
+      "primary_contact_name": "Garrett",
+      "primary_contact_role": "Customer Service Representative",
+      "company_name": "Action Management Services",
+      "phone_numbers": [],
+      "email_addresses": [],
+      "key_decision_makers": [
+        "Robin"
+      ],
+      "team_members": [
+        {
+          "name": "Robin",
+          "role": "Head of Billing Department"
+        }
+      ]
+    },
+    "business_context": {
+      "industry": null,
+      "company_size": null,
+      "technology_stack": null,
+      "challenges_pain_points": "Billing question",
+      "growth_stage": null
+    },
+    "relationship_mapping": {
+      "previous_interactions": "Talked to Robin last time",
+      "existing_service_usage": null,
+      "account_history": null,
+      "relationship_duration": null,
+      "trust_level": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "billing",
+      "issue_severity": "low",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "low"
+    },
+    "resolution_tracking": {
+      "issue_status": "pending",
+      "resolution_steps_taken": "transferred to billing department voicemail",
+      "outstanding_action_items": "awaiting callback from billing department",
+      "next_steps_required": "billing department to follow up with customer"
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "yes",
+      "knowledge_base_gaps_identified": "no"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "adequate",
+      "communication_clarity": "good",
+      "technical_knowledge_demonstrated": "limited",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "RELATIONSHIP_HEALTH": {
+      "Overall_satisfaction_indicators": "Neutral",
+      "Trust_level_signals": "Moderate",
+      "Communication_style": "Responsive",
+      "Rapport_quality": "Functional"
+    },
+    "CUSTOMER_JOURNEY_STAGE": {
+      "Onboarding_status": "Completed",
+      "Product_adoption_level": "Basic",
+      "Feature_utilization": "Low",
+      "Expansion_opportunities": "Undetermined"
+    },
+    "RETENTION_FACTORS": {
+      "Satisfaction_drivers": "Customer service responsiveness",
+      "Risk_indicators": "Lack of direct billing support",
+      "Loyalty_signals": "Neutral",
+      "Advocacy_potential": "Low"
+    },
+    "COMMUNICATION_PREFERENCES": {
+      "Preferred_contact_methods": "Phone",
+      "Response_time_expectations": "Immediate",
+      "Information_style_preferences": "Direct",
+      "Decision-making_patterns": "Seeks immediate resolution"
+    }
+  },
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium"
+  },
+  "action_items": [],
+  "participants": {
+    "primary_employee": {
+      "name": "Garrett Komyati",
+      "extension": "5427",
+      "phone": "6145427",
+      "email": "garrett.komyati@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5427"
+    },
+    "primary_customer": {
+      "name": "Let me see",
+      "company": "was the company",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "Let me see",
+        "company": "was the company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Garrett",
+        "company": "was the company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "no Monica",
+        "company": "was the company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Garrett Komyati",
+        "extension": "5427",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      },
+      {
+        "name": "Robin Montoni",
+        "extension": "5466",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "billing",
+        "service"
+      ],
+      "mentioned_issues": [
+        "problem"
+      ],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "get back to you"
+      ]
+    }
+  }
+}

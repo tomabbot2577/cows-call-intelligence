@@ -1,0 +1,100 @@
+{
+  "recording_id": "3001595456036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:14:18.772753Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:14:18",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Well, Garrett Camiati, this is Larry Moeller with Library Group. Hey, how's it going? It's going okay. I received a voice message back last night from Jim Lombardo, but it was about 6.30. I was long gone. So when I tried to log in this morning, just maybe 10 minutes ago, Garrett, here's the message that pops up. This is on PC Recruiter. A severe error occurred on the current command. The results, if any, should be discarded and it's repeated. That's what it says. It won't let me log in. Okay, yeah, let's take a look and get a screenshot of that. Maybe that can go a little bit further. So I'll open up a screen share meeting here. In a new tab in your browser, just go to meetings.ringcentral.com. Okay, join a meeting. Perfect. And I'll give you a meeting ID. Personal link name should be... Perfect. So that's 020... Oh, wait a minute. Where do I... Okay. 020. Yep. And then 178... Yep. 670. Join. How's your day going? All right. Not too bad. Just getting started. open RingCentral. We use RingCentral, by the way. Oh, good. Awesome. Enter your name, so you want my name? Sure. Allow cookies join. Perfect. Okay, I see you on the meeting there. If it asks about joining with audio, you can say continue without audio since we're already on the phone. Okay. And then just click the blue share button down at the bottom and select your entire screen up at the top. Share. Okay, that's loading. Great, I can see that. All right, pull up. I guess what you're seeing on PCR in your browser? Well, I have it on a Word document. This is what I see. Oh, okay. I'm going to create a current command. Okay. So how are you accessing it? Are you going to a specific web address? or let me show you what I do. Okay. And I can actually hit record on this. I don't want to get out of all this joke here. There should be a minimize button. You could close that, pop up about ring central there. The one with the person's face on it. There we go. So I go here. I put in this is my normal library thing this is what I do oh it let me in oh how did that happen I am not sure so that's usually the spot where you get the air yeah wouldn't it wouldn't let me go here so let me see if I can download emails Oh, wow. Yeah, it wasn't letting us do this. Okay. So now I'm okay. Well, what happened? I am not sure. Everything you've described does sound like it was an issue with the server temporarily. And so maybe you said your IT team rebooted it yesterday? Yes. Okay. But why would it show this? Do you think this is a server-related thing? Yeah, I believe so, because we don't have access to the software to do any updates or changes to it, so the software's just stayed the same. so it looks like the server that's launching the software hosting the database is having some kind of error okay well I guess it's fixed at least for the time being so if we run into this again you believe the issue would be with our server and I need to talk to our IT people and not bother you guys I believe so but definitely You can call into us anytime and we can, you know, try a couple things. Maybe a screen share or a screenshot of the error would help, too. When I talked to the tech team yesterday, they said, did you get a screenshot? I was like, I'll do it first thing in the morning. And then you called first thing in the morning, so that was perfect. All right, Garrett. Well, thank you. Hopefully we won't have to talk again for a while. All right, yeah, but feel free to call in. if anything else strange happens with that. Thank you so much. Take good care. You too. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 591.209923,
+    "salad_processing_time": 73.48649263381958,
+    "overall_processing_time": 591.209923,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Well, Garrett Camiati, this is Larry Moeller with Library Group.",
+    "job_id": "a3f7756f-4ca1-40db-9bbf-6ed67b1dae85",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Well, Garrett Camiati, this is Larry Moeller with Library Group.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "resolved",
+    "first_call_resolution": true,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3001595456036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

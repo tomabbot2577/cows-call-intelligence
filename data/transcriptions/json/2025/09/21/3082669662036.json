@@ -1,0 +1,111 @@
+{
+  "recording_id": "3082669662036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:15:32.772108Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:15:32",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Having some issues with my PCR browser, like, timing me out very quickly. Like, normally it's, like, I'm good for 24 hours, and now, like, if I'm away from my PCR page for, like, 10 minutes, I come back, I have to sign back in. Yeah, let me pull you up here. Give me one second. So, are you on a different internet connection than you normally are? No. No. Because usually what will happen with that is if your IP address keeps changing, it will time you out. So I'm just going to pull that up here real quick. I mean, I have – I work from home. I have two different connections that I can get connected through my house. Typically, I'm on one I have changed before, but it's pretty infrequent. This just kind of happened out of nowhere. I haven't changed it recently. And you're with Nature Wedge Search Group, correct? Yes. Yes. Perfect. Oh, and you guys are a self-hosted customer, correct? Yes. Okay. Yeah, so I'm not going to be able to check that. So are you using Chrome as your browser? No, I'm using Google. So, yeah, Google Chrome? Oh, I'm sorry. Yeah, yeah, yeah. I'm sorry. Google Chrome. Yeah, yeah, yeah. I'm sorry. Okay. I'm thinking Microsoft Edge. Yeah, I'm on Chrome. And then are you an admin-level user for that database? No. Okay. I don't believe so. I mean, Matt Tenley usually does everything. I don't know if he has given me access to that or not. Yeah, because I won't be able to check the IP addresses that you're using because you guys are self-hosted. What I can send you over for right now is it's a Chrome extension that disables automatic tab discarding. So Chrome has a feature where it will automatically put tabs to sleep that aren't active at the moment, and that will change that session for you, which can cause you to get logged out. is it when you're like flipping back and forth between PC recruiter and another page that it's timing you out? Yeah. Like if I'm on a different website and then I have to go back and enter something into PCR and it's been, you know, 10, 15, 20 minutes, all of a sudden I'll have to sign back in when normally once I signed in in the morning, I'm signed in for the entire day. Like this, nothing has changed. I'm using the same web browser that I always do. I have not changed my internet connection. And this just, over the last day, just all of a sudden starts happening. Yeah, so that can happen. It's just as computers get older and as browsers update, things like this can happen. So what I'll do is I'll send you over the link for that. It's an extension that disables that automatic tab discarding. and then once you have that extension added just play around with it for a little bit and then if the issue so you're sending me an email with this and then I just do I have to install something or what is it's just a Chrome extension that you're adding kind of like the PCR capture tool that's a Chrome extension. Okay. I feel like this happened to me before, like a while back, and there was just something like whoever I talked to over the phone, like they just did something and it fixed it, but I don't remember what it was. Yeah, so sometimes we're able to whitelist IP addresses if your IP address is bouncing around. I can try that to see if you have the permissions to view it. What's your username and password for PC Recruiter? Username is just Eric, E-R-I-C-K. All right. And the password? And it's E-R-H, dollar sign, one. And Eric is E-R-I-C-K. you oh perfect you do have permission for it so I can go in and waitlist those your IP address as well both of those should help you out here Yeah, your IP address isn't changing. We'll whitelist it just to be safe here. My guess is it's that automatic tab discarding within Gmail. I should still install that extension? Yep. Yep, so your IP address is already whitelisted. So that's probably what they did before. Like I said, it's just as computers get older, as browsers update, as you have more stuff on your computer and there's less memory on it, that's when that automatic tab discarding starts coming into play. So does that affect, like now that I've added this, is that going to affect like my web history? Nope. Okay. Okay. No, all it simply does is it just doesn't put the pages to sleep in the background. Does that, I'm not real familiar with how computers all work. Like, is that going to affect the speed of the computer if there's multiple things running in the background? Like, do I have to go in and stop things individually from running? Nope. Nope. You'll be fine. Because they're ultimately still running in the background. It's just with PC Recruiter, when it puts it to sleep, it's still there. And then it just pulls a new session as soon as you go back to it. So it just keeps your sessions active. Got it. Okay. Sounds good. We'll give it a shot, see if this fixes it. Yep. yeah just play around with it for a little bit i would say once you get that chrome extension added just do a full restart of chrome just like exit out of everything and start it back up just so wait your fresh sessions start with that extension enabled okay like i said just play around with it and if you keep running into issues, just give us a call back and we can take a look with your system admin and see if there's anything else happening on the back of your account. Fair enough. Alrighty. Well, you have a great rest of the day and hopefully we won't have to hear back from you about it. Sounds good. Thank you. Have a good one. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1955.028769,
+    "salad_processing_time": 48.936439752578735,
+    "overall_processing_time": 1955.028769,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Having some issues with my PCR browser, like, timing me out very quickly.",
+    "job_id": "def79bf4-c69d-4a10-bc52-611962cdeac7",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Having some issues with my PCR browser, like, timing me out very quickly.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "resolved",
+    "first_call_resolution": true,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3082669662036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

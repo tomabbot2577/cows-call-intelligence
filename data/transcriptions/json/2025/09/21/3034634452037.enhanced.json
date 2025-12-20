@@ -1,0 +1,127 @@
+{
+  "recording_id": "3034634452037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:46:09.508697Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:46:09",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? All right, Garrett. I can't get to your guys' website. What's going on? I can get to every other website but PC Recruiter. Okay. Are you trying to go to just our homepage, PCRecruiter.net, or your login page? I'm trying to use my login page. Yeah, I'm trying to get my PC Recruiter. Okay. Let me try it on my end here. CSNAs. I can go to every other page, but PC Recruiter. When I go to log in, it just won't take me. It times out. I've cleared my cache. I don't know what else to do here, man. It's working on my end. I just logged into your database. Let's see. So if you go to your login page, if you enter it in on just the web address bar and hit enter. We may enter in. So it's a long. www.pcrecruiter.net slash .asp Yeah, I've got all that in my URL, but it's not... Okay, so while that is pulled up, and I know it's not loading, but while that's entered into your web address and you've tried to at least get there, go to the three dots at the top right of your browser, then go to more More tools, okay. Then developer tools. Okay. And that'll open up some stuff. You just want to ignore that off to the side. And then up at the top by your web address, the WW2, right-click on the refresh button, and you should get the option for empty cache and hard reload. Where is it? We may right-click on it. Where is it? Refresh. It's to the left of your web address. It's like a circle in a loop icon. If you right-click on it, you'll get empty cache and hard reload, the third option there. I got it. Your connection, it says notifications pop up, reset permissions, cookies and site data, and site settings. Oh, it should be right to the left of that. There should be an arrow and a loop icon to right-click on. Yeah, there's a circle here right next to the URL. It's to the left of that. It's one more icon. I got the home button, X, and forward and backward. So there's no refresh button then? Okay. We might have to jump on a screen share then. It doesn't look like you're on a regular browser here. Go ahead and in a new tab in your browser, go to meetings.ringcentral.com. T-N-T-R-A-L.com. All right. And once you're there, let me know when you're ready for that meeting ID. You said meetings.ringcentral.com? Correct, yep. All right. Is that taking me there? What the hell is going on here? Are you getting the same message that it can't connect? With this circle going around, it's not saying nothing yet. It's going to time out, it looks like. okay yeah it does look like you're having some internet issues there damn internet shit here yeah maybe restarting your router would help possibly that's what happened you guys told me to restart now after restart i can't connect back that's that's why i did this a few minutes ago because it's running slow and sluggish i rebooted now it won't even connect i had trouble getting my phone connected gotcha i'll play with it all right man it's frustrating as hell All right. Thank you, bud. Gotcha. Yeah, just reach out if you need more help. All right. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1059.729776,
+    "salad_processing_time": 22.489331007003784,
+    "overall_processing_time": 1059.729776,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? All right, Garrett.",
+    "job_id": "e57c2b77-0fa6-460a-92fe-9ed79f4b4cf7",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? All right, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [
+      {
+        "type": "SOFTWARE",
+        "value": "PCRecruiter",
+        "mentions": 1
+      }
+    ],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3034634452037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "recording_id": "3024660258036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:38:00.902896Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:38:00",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hey, Garrett. This is Barry Jackson from MH Health Search. And I've been having a problem for a while here that I'm trying to get around, I guess, to calling for some help. So I'm not able to any longer add resumes. I have to do it manually. When I click that resume button, it's not bringing up the screen and populating the field. So I'm not sure what's going on. Hopefully you can help. Are you in Outlook or are you just in PCR? Just in PCR. So, yeah, just in PCR. And I've got a resume, whether it's Word or PDF, that I want to pull in. It's a new record. So I should clarify, it's a new record, not somebody I'm adding a resume to. existing profile, but something I'm trying to pull in. Okay. So it might be that you need a later version of Java in Launcher. So to do that, go to, let's start with just go to java.com and a new tab, J-A-V-A. All right. And you should see towards the bottom there a button, Download Java for Desktops. Click on that. It'll give you another page with the same Download Java for Desktops button. Click on that as well. All right. And that'll start a download at the top right of your computer there. whenever it completes just click on the file to open it. Okay. I'm just going to do the install now. Excellent. Now usually I get a reminder on these although I am my machine, my little tablet I'm using. We actually just had to reinstall Windows so. Okay. That could be it, although I was having this issue before that. But let's see if this does it. All right, so successfully installed Java, so that's done. That's good. And then there's one more piece to install. It's called the PCR Launcher, and you can find the download link on your PCR login screen. So if you actually are already logged in, go ahead and log out. Okay. Okay. And once you get to that login screen, at the bottom left, it says Launch or Install, and it'll have a logo for either Windows or Mac. Mm-hmm. Just click on whichever one you have there. All right. And same thing when that download completes, just open the file to run the installer. Yep, that's actually run and then installed now, so that's done. Okay, and then go ahead and log into PCR again, and look out for like a white box that pops up at the top. If it does, there should be a checkbox that says always allow. You want to check that and hit open. And if you get one more pop-up asking to allow an update, you can hit allow on that. And you also might see like a blue box with information about the new rounded look. You can skip or hit skip on that if that pops up. Yeah, it looks like it's done. I mean, it did a little install, so yeah. Good. All right. So, do you want to back out for take effect, or is it? No, I think you're good now. Yeah, so try to add that resume now, see if you're having the same issue. All right, so let's see. Let's go back and copy that. nope it looks like it's working yep i'll get just fine but that must have been it awesome anything else you've been having trouble with no that's that's it so i appreciate the help all right we'll reach out if you need anything else all right thanks so much have a good day thanks bye",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 781.958586,
+    "salad_processing_time": 42.56895971298218,
+    "overall_processing_time": 781.958586,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "job_id": "d230b763-c7ee-4657-abcf-711938a32194",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3024660258036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

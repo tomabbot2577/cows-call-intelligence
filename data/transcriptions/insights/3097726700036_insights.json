@@ -1,0 +1,362 @@
+{
+  "recording_id": "3097726700036",
+  "analysis_timestamp": "2025-12-19T21:18:38.549268",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Mike Saponero",
+        "role": "customer",
+        "company": "Provado Group",
+        "confidence_score": 0.9,
+        "validation_reason": "Clearly identified as customer"
+      }
+    ],
+    "mentioned_contacts": [
+      {
+        "name": "Daniel Eggleston",
+        "role": "contract_signer"
+      }
+    ],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "support_feature_request",
+    "CALL PURPOSE": [
+      "Inquiring about access to AI features in PC Recruiter",
+      "Understanding the process of enabling AI features"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Mike Saponero",
+      "Company/organization name": "Provado Group",
+      "Phone numbers mentioned": [],
+      "Email addresses mentioned": [],
+      "Key decision makers referenced": "Daniel Eggleston",
+      "Team members and their roles": []
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": "Recruiting",
+      "Company size indicators": null,
+      "Technology stack mentions": "PC Recruiter, ETS system, AI",
+      "Current challenges/pain points": "Need to re-index database to enable AI Candidate Match feature",
+      "Growth stage indicators": null
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": null,
+      "Existing service usage": "PC Recruiter",
+      "Account history mentions": null,
+      "Relationship duration indicators": null,
+      "Trust level indicators": null
+    }
+  },
+  "support_analysis": {
+    "ISSUE_CLASSIFICATION": {
+      "Primary issue category": "Feature Request",
+      "Issue severity": "Low",
+      "Technical complexity level": "Medium",
+      "Time sensitivity": "Low"
+    },
+    "RESOLUTION_TRACKING": {
+      "Issue status": "Pending",
+      "Resolution steps taken": "Provided instructions on how to access the new feature",
+      "Outstanding action items": "Customer needs to have contract signer fill out the form to enable the feature",
+      "Next steps required": "Customer to follow up with contract signer and complete the form"
+    },
+    "CUSTOMER EFFORT": {
+      "Call complexity for customer": "Low",
+      "Number of contacts required": "1",
+      "Self-service opportunities missed": "None",
+      "Knowledge base gaps identified": "None"
+    },
+    "AGENT PERFORMANCE": {
+      "Problem-solving approach": "Clear and concise instructions provided",
+      "Communication clarity": "High",
+      "Technical knowledge demonstrated": "Medium",
+      "Empathy and rapport building": "Good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Customer seems interested in new features, indicating a positive engagement.",
+      "trust_level_signals": "Customer relies on support for information, showing a level of trust.",
+      "communication_style": "Informal and direct, seeking specific information.",
+      "rapport_quality": "Friendly and polite interaction, good rapport established."
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Existing customer, familiar with basic system usage.",
+      "product_adoption_level": "Actively using the system but not yet using new AI features.",
+      "feature_utilization": "Inquiry about new AI features indicates interest in deeper feature utilization.",
+      "expansion_opportunities": "Introduction of AI features presents a significant expansion opportunity."
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Access to new features and responsive support.",
+      "risk_indicators": "Potential risk if new features do not meet expectations or if onboarding for new features is complex.",
+      "loyalty_signals": "Customer initiating contact about new features suggests a proactive interest in leveraging the platform.",
+      "advocacy_potential": "If satisfied with new features, customer may advocate for the system within their organization."
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone call for direct and immediate assistance.",
+      "response_time_expectations": "Immediate, as reflected in real-time conversation.",
+      "information_style_preferences": "Prefers straightforward, step-by-step information.",
+      "decision-making_patterns": "Seeks approval from authority (contract signer) before proceeding with new features."
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "Is that, like, do we have access to that?",
+      "Is it like cost extra or is that just like something that you just have to evaluate and see if it's something that we can have?",
+      "Dan has to do that, right?",
+      "Is this new, like as of today?"
+    ],
+    "qa_pairs": [
+      {
+        "question": "Is that, like, do we have access to that?",
+        "answer": "At the bottom of that page is a form that you'd have to fill out by the contract signer, which is Daniel Eggleston."
+      },
+      {
+        "question": "Is it like cost extra or is that just like something that you just have to evaluate and see if it's something that we can have?",
+        "answer": "We just have to re-index the database before we can enable it."
+      },
+      {
+        "question": "Where do I find that?",
+        "answer": "At the login page where you saw the announcement."
+      },
+      {
+        "question": "Dan has to do that, right?",
+        "answer": "Right. That'll need to come from him since he's the contract signer."
+      },
+      {
+        "question": "Is this new, like as of today?",
+        "answer": "Yep, this is a new feature."
+      }
+    ],
+    "searchable_tags": [
+      "AI Candidate Match",
+      "PC Recruiter",
+      "database re-indexing",
+      "contract signer",
+      "new feature",
+      "login page",
+      "form submission",
+      "Provado Group",
+      "ETS system",
+      "access request",
+      "feature evaluation",
+      "Daniel Eggleston",
+      "customer inquiry",
+      "software update",
+      "permission-based changes"
+    ],
+    "semantic_themes": [
+      "Access to new AI features in PC Recruiter",
+      "Process for enabling AI Candidate Match",
+      "Role of the contract signer in feature activation"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 55,
+      "Customer talk percentage": 45,
+      "Balanced conversation indicator": true
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 0,
+      "Number of interruptions by customer": 0,
+      "Interruption impact on flow": "None"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 5,
+      "Awkward pauses detected": 1,
+      "Hold time indicators": false
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": true,
+      "Company name mentioned": true,
+      "Verification steps taken": false,
+      "Required disclosures made": false,
+      "Proper closing used": true
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": "Medium"
+    },
+    "agent_talk_pct_calculated": 50.8,
+    "customer_talk_pct_calculated": 49.2
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 50.8,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "AI Candidate Match",
+      "PC Recruiter",
+      "database re-indexing",
+      "contract signer",
+      "new feature",
+      "login page",
+      "form submission",
+      "Provado Group",
+      "ETS system",
+      "access request",
+      "feature evaluation",
+      "Daniel Eggleston",
+      "customer inquiry",
+      "software update",
+      "permission-based changes"
+    ],
+    "semantic_themes": [
+      "Access to new AI features in PC Recruiter",
+      "Process for enabling AI Candidate Match",
+      "Role of the contract signer in feature activation"
+    ],
+    "key_quotes": [
+      "Is that, like, do we have access to that?",
+      "Is it like cost extra or is that just like something that you just have to evaluate and see if it's something that we can have?",
+      "Dan has to do that, right?",
+      "Is this new, like as of today?"
+    ],
+    "qa_pairs": [
+      {
+        "question": "Is that, like, do we have access to that?",
+        "answer": "At the bottom of that page is a form that you'd have to fill out by the contract signer, which is Daniel Eggleston."
+      },
+      {
+        "question": "Is it like cost extra or is that just like something that you just have to evaluate and see if it's something that we can have?",
+        "answer": "We just have to re-index the database before we can enable it."
+      },
+      {
+        "question": "Where do I find that?",
+        "answer": "At the login page where you saw the announcement."
+      },
+      {
+        "question": "Dan has to do that, right?",
+        "answer": "Right. That'll need to come from him since he's the contract signer."
+      },
+      {
+        "question": "Is this new, like as of today?",
+        "answer": "Yep, this is a new feature."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Mike Keys",
+      "extension": "5409",
+      "phone": "6145409",
+      "email": "mike.keys@mainsequence.net",
+      "department": "General",
+      "role": "Staff",
+      "employee_id": "EMP_5409"
+    },
+    "primary_customer": {
+      "name": "Robin",
+      "company": "him sinc",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "Robin",
+        "company": "him sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "ll need to come",
+        "company": "him sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Mike Saponero",
+        "company": "him sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to message him just to see if we can get this going because",
+        "company": "him sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Mike Keys",
+        "extension": "5409",
+        "department": "General",
+        "role": "Staff"
+      },
+      {
+        "name": "Robin Montoni",
+        "extension": "5466",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": []
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "recording_id": "3048650448036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:58:54.971317Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:58:54",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling my team sequence. This is Robin. Robin. This is Ernie Bavona. How are you? How are you? I'm pretty good. I really do know where I work. I just kind of stumbled over my words there for a moment. That's okay. No problem. I recognize your voice. I am totally confused. I must be doing something wrong. I go on to a candidate. I go to LinkedIn to, I see him on LinkedIn. He's from my database. I hit update, and then it creates a whole new record. But what I'm getting is this message that says that, what does it say? Let me just see the last one. And what I want, click to update. And what it does is it creates a brand new record. and I don't know why it's doing that. On the person or the company? Because it could be like when you see it, you've got to actually select it to confirm. So maybe that you're not selecting. Well, I mean, let me go to another one. And I keep the list. So I go to when they're collected or when they go into and they're saved, I have to go to the one that just got saved, and I delete it. And I just simply copy the information from LinkedIn. So it's all – it's all very – Yeah, it sounds like you may not be doing it right. So when you – so you do get the review screen, correct? Yeah. Okay. So when somebody's already in your database, it'll show you whether – okay. If somebody, either the person or the company, is potentially in your database, it shows you that as potential matches before you advance over to the review screen. So you actually have to, for the person, if it is the same person, because you could even have possibly more than one potential match, you do have to click on that card. and then for the company, if it is the same company that's already in your database, if you hover on that card, there's a checkbox. Well, this person is in the database. She worked for PepsiCo, and then she now works for another company, different state. so and then it has this big blue thing select duplicates to update merge but that's not a live link i'd have to see what you're doing yeah it sounds like you may not be making selections of because it doesn't assume it it's just letting you know these are potential you actually have to click on it on the person's card and that top right for potential duplicates to say this is the same person and you'll see like a number one at the bottom right of their card yeah I see that okay and then then but it doesn't show me the right company so the company section at the bottom it's based on what it's seeing from their profile currently if that is not the same company that's already matching in your database or like where is the person in your database now once you pick on it you're going to get different options as far as the company handling you could even either keep them where they are move them to the default if it found a match you can hover on it and hit the checkbox if you don't do anything with the company section down at the bottom and just hit the option at the bottom right to advance to the next screen then it'll create a brand new company. No, there's a company there. And sometimes it doesn't... But is it the right company? There's a lot of what-ifs on the company. Because you might already have them in the right company in your database. Like, you might be better about updating your database than the person is about updating their LinkedIn profile. Or you might have the company in there a little bit different. Well, I'm hovering... either I'm losing my mind or it's something is amiss. So we could do a screen share. Do you have RingCentral? All right, let me go. Let me, you know what? Let me get rid of this person because I've already done everything with her and I don't want to screw things up. So I'm going to leave LinkedIn and let me go find another one. And then I'll call you back. All right? Okay. All right. Thanks. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1458.981236,
+    "salad_processing_time": 42.17506790161133,
+    "overall_processing_time": 1458.981236,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling my team sequence.  This is Robin.  Robin.",
+    "job_id": "c16993a9-a9e2-4976-b999-ce6ea553a9ff",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling my team sequence.  This is Robin.  Robin.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3048650448036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

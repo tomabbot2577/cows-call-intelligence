@@ -1,0 +1,95 @@
+{
+  "recording_id": "3014308918036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:27:17.241544Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:27:17",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Yo, what up, Garrett? Hey, how's it going? Not too bad. So what exactly does he want in that report? He had first name, last name, username, company name, and then the two fields he was using as like a workaround, where it was last activity, which is only a date, of course, and then he wanted the contents of that last activity, like the activity text. Does he want the activity type in the activity text? Yeah, maybe activity type. He didn't have it in there, but I think that would be helpful, yeah. Let me start up a meeting here, and I'll show you what I was able to get. Okay, cool. Copy meeting link Got it Whoops, that was a mistake I just turned on the Fresh Test chat queue And I piled four or five chats Do you have a link to that? The It doesn't work out of my fresh desk anymore. Oh, really? Okay. You could go to pcrecruiter.freshchat.com, I think. Let me just send that over and see if clicking on that works at all. But anyway, these people are probably been waiting a while. A few minutes won't matter. Because it looks like you don't have an account with FreshChat yet. Maybe Nick has to reactivate me for that. Okay, yeah, maybe he doesn't want you on those just yet. Or he just didn't know he had to do both. Oh, true, yeah. All right. so I adjusted that custom report to have activity type activity text now as well now he will have to run it by date in its current form otherwise it'll just pull the last activity for every candidate in the database okay but it does order it by username so it groups all the usernames together got it He might be doing a certain roll-up list, if I'm remembering correctly. Is it able to do by roll-up list? Yes, I would just have to add that in. So we can either do by date or by roll-up. Yeah, he did by roll-up. I'm remembering that now, looking at the ticket. Okay, we can adjust it for that. Okay, cool. Let's do that here real quick. Which one? I have to look at the SQL code for some of these. No, that's by date. No. Oh, I don't remember how to do it by stun roll up. It has to be part of the SQL code for that, even though there's like the filters. Okay. Gotcha. I'll just show you what I have for now. I'll wait for that. Sure. So right now it's a date range. So it pulls the person's first and last name, last activity date, activity type, and the activity text. Okay. With the username too. Awesome. Yeah, that looks good. I think he might have had the company name as the only other field in his custom report. I can actually look at that. He gave me a name for it. Oh, yeah, if you have a copy. Let me take a look here. Horizon Hospitality. Reports. Name report. Custom name report. Reclin client report. That's what it's called. There we go. So let me go to custom import. Okay, his username, company name, first name, last name, last activity, and then his workaround for the activity text. So yeah, the only one missing is company name, I guess, for the one you built, which looks like it's going to definitely work for him. Yeah, let me see how I have to pull company name. Nope, that's where it was a while then. Thank you. Ah, did you do... This might get a little tricky. So how did he have it structured? Let's see. I guess it doesn't matter what order it was. We can just mess with that. Yeah. Username was there for sure. username, company name, first name, last name, last activity. That line there where you say where that you adjusted a second ago, at the end you left a apostrophe. I don't know if you meant to do that when you were highlighting and deleting. Okay. Thank you. I don't know. Very cool. So what order was it in? Username first, then company name. was it first and last that he had third so it was username company first and last username company yeah first and last Then last activity with the date and then the text. And you put type in there, which is great. Moment of truth. Fingers crossed. Yeah. Yeah. We're going to do first name, last name, company name. Okay. Just so first name and last name are together. That makes sense. Oh, so we've got to select a roll-up. Oh, great. I will do that one email test one. Now, when you add in these filters, for date and roll up, they have to use a roll up list when they run this report. Wow, looking good. Oh, no, the company name. Oh, okay. Hold on. That's an easy fix. Thank you. I pulled the wrong room because just grabbing the ID and so the actual name I just need to join on the IDs like I said that's an easy fix I always just reselect these to be safe. Username, first name, last name, company, last activity, type, text, save, done, reports, SQL reports this one select roll-up list boom shakalaka yeah looking good all right so the activity text is all there okay good yeah um and he knows i already explained to him i think that if your activity text is like more than 250 or wait no that's because he was using a custom field it would cut it off this won't cut it off, right? It's the full activity text. That's even better. He's going to love this. So what I would do if I were you? Well, A, we should... I'm going to put this in the ticket. This report. Did I fix it here already? I did. Or I'm going to put this in the ticket. Okay. See how Nick wants us to play this one? Right, maybe charge them for the custom report, possibly. Possibly. They are a bigger company. but I would get on a call with him put the report in their database as like PCR test or something like that or test activity and walk through it with him like share your screen like show him how to run and explain like you have to select a roll up and see if he likes it be like if we decide to do this part for free that's fine but then obviously if they keep asking for like changes and shit like that. It's charged. Okay, cool. I'll check with Nick before I schedule a time to look over it, just in case he wants this initial one even billable. Your billable's there. We'll look at that. Like I said, it maybe took me 45 minutes to make this. 45 minutes to make this. It wasn't that bad. Like I said, they called in again today. I need to run this report. Gotcha. So if this gets them what they want and it makes a larger client happy, we may. Let's go with it. Yeah, we're looking for some good press. Yep. Okay, cool. And then the other part of the ticket, it's more Nick and you deciding or whoever deciding if your last activity field is a bug not showing an edited activity or deleted activity, or if it's intended to just. Yeah. Like that. I don't think that last activity date can go backwards unless you manually edit it. Okay. I think, I think it can only go forward. Gotcha. So we'll have to see about that, But this at least can give them what they need for now while we decide that internally. Okay, cool. And I'll just add that note to Nick right now. Awesome, fellas. Thanks so much for taking the time. No problem. Let me know if you need anything. All right, see you. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 421.087907,
+    "salad_processing_time": 75.31840372085571,
+    "overall_processing_time": 421.087907,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Yo, what up, Garrett? Hey, how's it going? Not too bad.  So what exactly does he want in that report? He had first name, last name, username, company name, and then the two fields he was using as like a workaround, where it was last activity, which is only a date, of course, and then he wanted the contents of that last activity, like the activity text.  Does he want the activity type in the activity text? Yeah, maybe activity type.",
+    "job_id": "cae4f2ba-b37b-43b7-9698-856c278c97b0",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Yo, what up, Garrett? Hey, how's it going? Not too bad.  So what exactly does he want in that report? He had first name, last name, username, company name, and then the two fields he was using as like a workaround, where it was last activity, which is only a date, of course, and then he wanted the contents of that last activity, like the activity text.  Does he want the activity type in the activity text? Yeah, maybe activity type.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3014308918036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

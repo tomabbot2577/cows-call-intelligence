@@ -1,0 +1,219 @@
+{
+  "recording_id": "2998460324036",
+  "analysis_timestamp": "2025-12-19T18:17:46.674955",
+  "analysis_version": "2.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Tracy",
+        "role": "customer",
+        "company": "Symbio",
+        "confidence_score": 0.9,
+        "validation_reason": "Clearly identified as customer"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "support_technical",
+    "CALL PURPOSE": [
+      "Troubleshooting PCR accessibility issue",
+      "Assisting with software functionality"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "resolved"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Tracy",
+      "Company/organization name": "Symbio",
+      "Phone numbers mentioned": [],
+      "Email addresses mentioned": [],
+      "Key decision makers referenced": [],
+      "Team members and their roles": []
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": null,
+      "Company size indicators": null,
+      "Technology stack mentions": [
+        "PCR"
+      ],
+      "Current challenges/pain points": [
+        "PCR is not being accessible"
+      ],
+      "Growth stage indicators": null
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": null,
+      "Existing service usage": [
+        "PCR"
+      ],
+      "Account history mentions": null,
+      "Relationship duration indicators": null,
+      "Trust level indicators": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "technical",
+      "issue_severity": "medium",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "medium"
+    },
+    "resolution_tracking": {
+      "issue_status": "resolved",
+      "resolution_steps_taken": [
+        "verified account information",
+        "attempted to access PCR"
+      ],
+      "outstanding_action_items": [],
+      "next_steps_required": []
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "yes",
+      "knowledge_base_gaps_identified": "no"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "reactive",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "adequate",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "RELATIONSHIP_HEALTH": {
+      "Overall_satisfaction_indicators": "Neutral",
+      "Trust_level_signals": "Moderate",
+      "Communication_style": "Responsive",
+      "Rapport_quality": "Casual"
+    },
+    "CUSTOMER_JOURNEY_STAGE": {
+      "Onboarding_status": "Completed",
+      "Product_adoption_level": "Intermediate",
+      "Feature_utilization": "Partial",
+      "Expansion_opportunities": "Moderate"
+    },
+    "RETENTION_FACTORS": {
+      "Satisfaction_drivers": "Responsive support",
+      "Risk_indicators": "Technical issues with product access",
+      "Loyalty_signals": "Neutral",
+      "Advocacy_potential": "Low"
+    },
+    "COMMUNICATION_PREFERENCES": {
+      "Preferred_contact_methods": "Phone",
+      "Response_time_expectations": "Immediate",
+      "Information_style_preferences": "Direct",
+      "Decision-making_patterns": "Reactive"
+    }
+  },
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium"
+  },
+  "action_items": [],
+  "participants": {
+    "primary_employee": {
+      "name": "Robin Montoni",
+      "extension": "5466",
+      "phone": "6145466",
+      "email": "robin.montoni@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5466"
+    },
+    "primary_customer": {
+      "name": "And popping up",
+      "company": "",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "And popping up",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Robin",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "with Symbio",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going on",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Tracy",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Robin Montoni",
+        "extension": "5466",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [
+        "problem"
+      ],
+      "urgency_indicators": [],
+      "follow_up_mentions": []
+    }
+  }
+}

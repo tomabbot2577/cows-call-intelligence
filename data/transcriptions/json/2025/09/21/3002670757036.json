@@ -1,0 +1,100 @@
+{
+  "recording_id": "3002670757036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:16:11.056472Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:16:11",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling MainSquid Technology. This is McKenzie. How can I help you? Hey, McKenzie. How are you today? I'm doing all right. How are you? Good. I am noticing I was out of the office for this afternoon, and I was texting somebody, and I didn't see the text messages posting to the name record. So could you let me know if there's anything going on with the system or if there's anything we could check to see if we can get it to a sequence? uh sure uh so what's the database that you're logging into is this i the call already says kurt rudolph is this right yeah um okay hopefully up here You guys haven't gotten, in other words, there's no SMS issues that you're aware of on your end system-wise? I haven't heard of it yet today, no. This is the first I've heard of it today. There's three databases I see on the... Is the MRI Wakanda the main database? I see Innovative Resources, the name of it. Is that the name of it? Yes, correct. Okay. And the username that you're logging into? KU Rudolph. KU Rudolph. I'm leaving. Are you coming back? Can you give me five minutes? Sure. You're not yelling at me? Let me call you back if you don't mind. I'm sorry. Thank you. Sure.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 21.302194,
+    "salad_processing_time": 11.45786738395691,
+    "overall_processing_time": 21.302194,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling MainSquid Technology.  This is McKenzie.  How can I help you? Hey, McKenzie.",
+    "job_id": "36e79bce-5d91-406d-8248-ab1c9fb8aca1",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling MainSquid Technology.  This is McKenzie.  How can I help you? Hey, McKenzie.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3002670757036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

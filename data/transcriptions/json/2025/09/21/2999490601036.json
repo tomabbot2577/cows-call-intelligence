@@ -1,0 +1,95 @@
+{
+  "recording_id": "2999490601036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:12:44.525286Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:12:44",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is McKenzie. How can I help you? Hi, McKenzie. This is Austin with DRI. I'm actually calling to find out about one of the firm's offices or one office's license for their PCR Outlook extension or the add-in. um they're the the company's name is targeted recruiting group and yeah yeah i can help you with that i know exactly what you're talking about yeah i don't know why i thought that's the license that we put in here in january but i don't know maybe it expired well it says expired so obviously that's what happened yeah I'll figure it out. I can set it forward for you. Let me just pull your account up real quick. Or targeted recruiting group, I should say. Yeah. Pull ours up. They'll be like, no! Don't do anything! Okay. All right. So here's the number. I'm going to go over to the pool. Let's see. From what I can tell here, the portal outlook serial number for targeted recruiting group is fine until November. Is it – what's the – I can give you the – I wonder if the serial number that I have might be just wrong. What's the number? Well, it's 114-158-159-208-593. Okay, let me see what I have here. 114-158-159-208. That is the one I'm looking at. Is that 593 at the end too? It doesn't say it's expired until November. I can set it. You guys are fine. I can set it forward a year from today. I'll just do June 30th, 2026. I think it's I'm on her computer now too it looks like it's working though I mean in the bottom of the the action well actually yeah look here you know maybe it's because there's like an old seat the last check-in was September 3rd 2024 you trying to sign in someone new yeah that's probably that might be it that might be the reason so should I wish I did just probably try to remove the add-in and then then add it again i'm gonna i can okay so there's a somebody uh somebody's seed which is like them actually using the license um there's like a seed that hasn't logged in since september of 2024 so i could delete that seed and then see if that fixed it i'll say i'll do two things i'll set it forward a year from today so june 30th 2026 and I'll delete that seed. Does that sound reasonable? That sounds about right. Okay. And then, yeah. Alright, so I deleted the seed. I hit save and now I should be fine. I think you should be good. Try again. Okay. Okay. Let's do this here. It's because there's like a message that pops up, right? And it's like annoying, right? Yeah, it says it's, it says, um, expire, but let me do this. We'll do remove. I wonder if you close and reopened it. So it pulled, maybe it's got something kind of cached there. I don't know if you're closing reopened it or not just now, but I'm going to close. I'm going to, I'm going to close and reopen Outlook totally. Once I'm going to remove the, generally what I'm gonna do, is remove the add-in and then yeah from my end it looks like you should be good there's a there's an empty seed and it doesn't expire for a year so and you listed off the exact number that i was looking at so cool beans yeah i think i think i think we're i think we're okay because it is it actually is now it's now it's yep it's not even saying it's expired okay okay cool sweet awesome awesome dude austin thank you have a good rest of your day man you too mckenzie thank you yeah no problem anytime take care bye-bye",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 536.516603,
+    "salad_processing_time": 24.20881986618042,
+    "overall_processing_time": 536.516603,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is McKenzie.  How can I help you? Hi, McKenzie.",
+    "job_id": "87d269c6-1514-4e54-b3b7-f1ee0bc20a01",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is McKenzie.  How can I help you? Hi, McKenzie.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "resolved",
+    "first_call_resolution": true,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/2999490601036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

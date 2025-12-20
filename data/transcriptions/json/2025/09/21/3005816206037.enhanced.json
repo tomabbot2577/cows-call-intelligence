@@ -1,0 +1,112 @@
+{
+  "recording_id": "3005816206037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:20:03.699257Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:20:03",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hey, Garrett. It's from Iris Recruiting. How are you? Good. How are you? Good, good, good. I have a question regarding an activity search in a particular database by a roll-up list. And what I'm able to do right now is I'm able to look at an activity type, looking for an SMS based on a date range and a specific roll-up list. But then inside of that activity, I see the type is an SMS, but I'm also noticing there's a result that is either inbound or outbound. And so in the activities report search, is there a way to search for inbound? It's under the column of result. Yeah, but there's not any reason. Yeah, there's not a result filter in PCR for activity searching, but there might be a workaround. Let me try to see if I can use that text search box on the right. One second. OK, so you say search may be inbound for that. Yeah, I could test it here. Or if you if you want to run a quick test, just write the word inbound. Yeah, it came up with no results for me when I do that. Okay. Interesting. Let me see. So I get my search, my date range, my rollup gives me 200 results, 206 results when I'm doing it. And then when I try to put anything in that text field, I guess I could try something else. Like if it's sent from, I guess that might be the other thing I'm thinking about is sent from. That's also a marker in there. Okay. Possibly, yeah. Let me see here. Yep, that worked. That worked right away. Sent from. Yep. Perfect. And sent to the opposite would work, it looks like, as well. Yeah. If you wanted to see the outbound. Awesome. Hey, thanks, Garrett. That's a good idea. Appreciate it. No problem. Reach out if you need anything else. All right. See you. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 235.411615,
+    "salad_processing_time": 10.522850751876831,
+    "overall_processing_time": 235.411615,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "job_id": "dbf68699-ddd8-4465-a20b-0c4f9fd1158e",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3005816206037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

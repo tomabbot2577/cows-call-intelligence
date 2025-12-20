@@ -1,0 +1,318 @@
+{
+  "recording_id": "3097466219036",
+  "analysis_timestamp": "2025-12-19T21:09:29.771724",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "James",
+        "role": "customer",
+        "company": null,
+        "confidence_score": 0.9,
+        "validation_reason": "Clearly identified as customer"
+      }
+    ],
+    "mentioned_contacts": [
+      {
+        "name": "Barella",
+        "role": null,
+        "context": null
+      }
+    ],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "account_management",
+    "CALL PURPOSE": [
+      "Follow up on invoice payment for PC recruiter",
+      "Check for updated time frames or further questions"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "customer_identification": {
+      "primary_contact_name": "Jim Lombardo",
+      "primary_contact_role": "with PC recruiter",
+      "company_name": "PC recruiter",
+      "phone_numbers": [
+        "440-856-0314"
+      ],
+      "email_addresses": [],
+      "key_decision_makers": [
+        "James"
+      ],
+      "team_members": []
+    },
+    "business_context": {
+      "industry": "Recruiting",
+      "company_size": null,
+      "technology_stack": null,
+      "challenges_pain_points": [
+        "to follow up with you",
+        "make sure you have the invoice for PC recruiter",
+        "if you had any updated time frames or further questions",
+        "if you need anything more"
+      ],
+      "growth_stage": null
+    },
+    "relationship_mapping": {
+      "previous_interactions": [
+        "I hadn't seen that it was paid or anything yet"
+      ],
+      "existing_service_usage": [
+        "invoice for PC recruiter"
+      ],
+      "account_history": null,
+      "relationship_duration": null,
+      "trust_level": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "billing",
+      "issue_severity": "medium",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "medium"
+    },
+    "resolution_tracking": {
+      "issue_status": "pending",
+      "resolution_steps_taken": "follow-up call",
+      "outstanding_action_items": "awaiting customer response",
+      "next_steps_required": "customer to confirm invoice receipt and payment status"
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "invoice status check",
+      "knowledge_base_gaps_identified": "payment status update process"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "proactive",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "none required",
+      "empathy_and_rapport_building": "polite and courteous"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "RELATIONSHIP_HEALTH": {
+      "Overall_satisfaction_indicators": "Unknown",
+      "Trust_level_signals": "Moderate, as there is follow-up on unpaid invoice indicating trust in future payment",
+      "Communication_style": "Direct and proactive",
+      "Rapport_quality": "Functional, focused on transactional aspects"
+    },
+    "CUSTOMER_JOURNEY_STAGE": {
+      "Onboarding_status": "Completed, as there is mention of an invoice",
+      "Product_adoption_level": "Active, implied by the issuance of an invoice",
+      "Feature_utilization": "Unknown",
+      "Expansion_opportunities": "Unknown"
+    },
+    "RETENTION_FACTORS": {
+      "Satisfaction_drivers": "Unknown",
+      "Risk_indicators": "High, due to unpaid invoice",
+      "Loyalty_signals": "Unknown",
+      "Advocacy_potential": "Unknown"
+    },
+    "COMMUNICATION_PREFERENCES": {
+      "Preferred_contact_methods": "Phone call",
+      "Response_time_expectations": "Prompt, as indicated by request for a quick call back",
+      "Information_style_preferences": "Direct and concise",
+      "Decision-making_patterns": "Responsive action required (payment of invoice)"
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "I wanted to give you a quick call just to follow up with you make sure you have the invoice for PC recruiter",
+      "I hadn't seen that it was paid or anything yet so I wanted to give a quick call see if you had any updated time frames or further questions",
+      "give me a quick call let me know if there's anything I can do to help or or if any delays or anything happened"
+    ],
+    "qa_pairs": {
+      "questions_asked_by_customer": [],
+      "answers_provided_by_agent": [],
+      "unanswered_questions": [
+        "Do you have the invoice for PC recruiter?",
+        "Are there any updated time frames for payment?",
+        "Do you have any further questions or need anything more in mind?",
+        "Have there been any delays or issues?"
+      ]
+    },
+    "searchable_tags": [
+      "invoice",
+      "payment",
+      "follow-up",
+      "PC recruiter",
+      "time frames",
+      "delays",
+      "customer support",
+      "billing",
+      "phone call",
+      "communication",
+      "outreach",
+      "account management",
+      "client relations"
+    ],
+    "semantic_themes": [
+      "Invoice and payment follow-up",
+      "Client communication and support",
+      "Account management and billing inquiries"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 100,
+      "Customer talk percentage": 0,
+      "Balanced conversation indicator": "Unbalanced"
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 0,
+      "Number of interruptions by customer": 0,
+      "Interruption impact on flow": "None"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate": 0,
+      "Awkward pauses detected": 0,
+      "Hold time indicators": "None"
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": false,
+      "Company name mentioned": true,
+      "Verification steps taken": false,
+      "Required disclosures made": false,
+      "Proper closing used": false
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score": 8,
+      "Professionalism score": 9,
+      "Active listening indicators": false,
+      "Acknowledgment phrases used": false,
+      "Personalization level": "Low"
+    },
+    "agent_talk_pct_calculated": 0.0,
+    "customer_talk_pct_calculated": 100.0
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 0.0,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "invoice",
+      "payment",
+      "follow-up",
+      "PC recruiter",
+      "time frames",
+      "delays",
+      "customer support",
+      "billing",
+      "phone call",
+      "communication",
+      "outreach",
+      "account management",
+      "client relations"
+    ],
+    "semantic_themes": [
+      "Invoice and payment follow-up",
+      "Client communication and support",
+      "Account management and billing inquiries"
+    ],
+    "key_quotes": [
+      "I wanted to give you a quick call just to follow up with you make sure you have the invoice for PC recruiter",
+      "I hadn't seen that it was paid or anything yet so I wanted to give a quick call see if you had any updated time frames or further questions",
+      "give me a quick call let me know if there's anything I can do to help or or if any delays or anything happened"
+    ],
+    "qa_pairs": {
+      "questions_asked_by_customer": [],
+      "answers_provided_by_agent": [],
+      "unanswered_questions": [
+        "Do you have the invoice for PC recruiter?",
+        "Are there any updated time frames for payment?",
+        "Do you have any further questions or need anything more in mind?",
+        "Have there been any delays or issues?"
+      ]
+    },
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "James Blair",
+      "extension": "5429",
+      "phone": "6145429",
+      "email": "james.blair@mainsequence.net",
+      "department": "General",
+      "role": "Staff",
+      "employee_id": "EMP_5429"
+    },
+    "primary_customer": {
+      "name": "Unknown",
+      "company": "",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": ""
+    },
+    "all_customers_identified": [],
+    "all_employees_mentioned": [
+      {
+        "name": "James Blair",
+        "extension": "5429",
+        "department": "General",
+        "role": "Staff"
+      },
+      {
+        "name": "Jim Lombardo",
+        "extension": "5401",
+        "department": "Sales",
+        "role": "Sales Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "invoice"
+      ],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "follow up"
+      ]
+    }
+  }
+}

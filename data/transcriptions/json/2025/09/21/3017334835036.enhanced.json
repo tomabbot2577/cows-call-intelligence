@@ -1,0 +1,121 @@
+{
+  "recording_id": "3017334835036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:30:25.200578Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:30:25",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hi. I'm a PC recruiter user, and I cannot get PCR capture to work on my Chrome extension. And I've been looking for, like, how to. I've removed the extension, replugged it in. You know, nothing is working. Okay, cool. Yeah, I'll troubleshoot with you there. Are you using it on Indeed by chance, or are you trying to use it on LinkedIn? LinkedIn. Okay, good. Indeed had an issue that we were looking at earlier this week, but okay, so that's good. So once you have it installed, are you seeing the PCR capture logo at the top right of your browser? No, I feel like I normally. Do. But I don't know if I have so many extensions. I see the extensions thing and it's showing full access for PCR captures. It's not pinned. So yeah, now I pinned it and it's in the top corner. Perfect. Okay. When you click on that, is it prompting you for a PCR URL, a web address, or is it listing some websites? It's listing, it says enter your PCR site URL and then it's already listed in and I click login and it does nothing. Okay, so it might be that that has, it's actually going to be your placeholder text in there. It'll probably just say something generic like my company name at the end. You'll actually have to jump over to PCR, copy and paste your web address there, and then get it back into that tool. My password is because it's saved and it's not plugging in here. Also, make sure you're selecting a database from that dropdown. Yeah. Okay, good. Yeah, that part, my issue now is because my password is saved in my browser, I don't know what it is and I'm trying to figure out how to plug it in. Oh gotcha. If you have Chrome, if it's saved you could probably click the three dots at the top right of Chrome and then go to passwords and autofill and then there's like a Google password manager that might have... Yeah, thank you. Thank you. Okay. Okay. Any more? Okay, so I logged in, and now do I just click LinkedIn? Yeah, you can have all those toggled on. They're usually toggled on by default, and that's totally fine. Just make sure the one at the bottom right called Basic Mode is toggled off and to the left. Otherwise, you should be good to go there, and you can just click the X at the top right of that menu. And then, yeah, while we're still on the phone, go ahead and try to jump over to LinkedIn, see if you can get that to capture someone. If you already have a LinkedIn profile pulled up, you have to refresh. Oh, good. Okay. I refreshed it and it says click to add now. So, it should be working. Do you know why that might have happened, that it just stopped working? I'm not sure. If you were kind of deleting it and reinstalling it, that's why it would log you out. So I think it was just the logging in piece. Otherwise, we do have people call in where they can't get the click to add on there. And they just hit refresh on the LinkedIn page. And that fixes it a lot of the time. Yeah, that's probably about 70% of the time what happens. And so I always kind of already go through that. And I'm always like, I don't know why this is randomly not working. But OK, I guess because it gets resolved. So thank you for your help. Yeah, no problem. Reach out if you need anything else. OK, thanks. Have a good one. You too. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 529.506972,
+    "salad_processing_time": 22.358885765075684,
+    "overall_processing_time": 529.506972,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi.",
+    "job_id": "0df82338-4f4f-46e7-96a2-f77a2972740b",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "resolved",
+    "first_call_resolution": true,
+    "escalation_required": true,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3017334835036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

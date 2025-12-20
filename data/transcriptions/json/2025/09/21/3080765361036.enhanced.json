@@ -1,0 +1,117 @@
+{
+  "recording_id": "3080765361036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:14:36.133714Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:14:36",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hey, man. Hey, how's it going? It's going. How about you? Pretty good. I like how you set your RingCentral phone to play the Beatles. Oh, I totally forgot about that. I never call myself, so I think I did that when we first switched phone systems and completely forgot that was in there. Yeah, very cool. Yeah, it's like the hold music for my line, I guess. Yeah. Let me look back at this. Oh, they're right, like they're out in Hudson. They're locals. Yep. Cool. So they pair advisors with job seekers to help them get employed. Single pipeline for the entire database. Okay, so they only have one job, basically. So they're not like doing, right, like job board, really. They're just doing registration and everybody goes into the same pipeline? Exactly. And the pipeline is just keeping track of that process of, you know, they need to fill out this form, meet with their advisor, do this with the advisor, do that with the advisor. Interesting. Okay. So in that case, probably then, so we don't really need to do a job board so much as we just need a registrations form. Yeah. Because they're not applying to anything, really. They're just going into the database. You probably could just do an automation that just puts them in the pipeline. In the inbox. Okay. Yeah. Yeah, that's what I'm wondering, because if there's only one job, because you can do an automation that adds people to a pipeline, right? I think you can. Let me double check that. That might be simpler, would be just to do registration, because they're not creating a login or anything like that. They're just putting themselves in the database. I'm looking at the automations, too. Let's see here. When action. I had to roll up. Maybe not. Yeah, I thought the pipeline something was tricky with it where they weren't able to do automations. All right. So basically it'll have to be a job board, but there will only be one job. So that's basically what I'll end up doing is just kind of set it up so that that's how it rolls through. Got it. So then she wants a separate form for registration for Monday night meetings. If they choose online during registration, they should get a link to a Zoom meeting. If they choose in person during registration, they should get a link to actually see that. So this is separate from doing the – so they've got – they're applying to this one pipeline. That's one thing. But then she wants a separate thing for them to be able to register for a meeting? Yeah, it sounds like it. And I was thinking I can have her do two separate profiles maybe. Well, because these wouldn't be – because the thing with a profile is the only way you can fill out a profile online would be while applying to the job. Oh, okay. You can't just put a profile on the web. Profiles have to be attached to a person. Now, you could do a custom form and have them fill that out. And I guess that still works. The only thing there is that now you're having people register twice because they're going to have to. They may fill out the one form and go into the database, and they may fill out the other form and also go into the database, because both of them are designed for adding a new person to the system. I don't know how the duplicate handling works in that regard, but as long as they're using the same name and email, I think it should function. Yeah. I mean, I imagine some people might be like, oh, here's my personal email for the Monday night meeting. and they get interested in working with them and then it's like, oh, well, here's my professional email for the – Is the Monday night meeting thing something that would only be useful to people who have applied? Can people register for the meetings without being in the database? Yeah, I think without being in the database is fine. I think that's like the – Because what I'm wondering is do you do the Monday night meeting thing as a profile that they get – And then when they so when they register, they get an email thanking them for registering. And that includes a link to the profile about the Monday night meetings that it's not on the Web site. It only gets to them if they have applied. That you could do, you know, OK. Yeah, I got to check with Kim again. I'm confused on what the Monday night meetings are. I think it might be like, let's invite a bunch of people to this meeting and hopefully we get a few out of that meeting to fill out our big form. of questions. Kind of like the outreach meeting in a way. But I might have that backwards. I could maybe check with her. Yeah. Because I mean, because effectively what we can do is two, sort of two different things. I mean, one is you do, let's see here. Let me look at the intake form thing. Because I haven't looked in their database yet. And you said there's already a profile of some sort going in there? Yeah. There's one profile called, I think it's just called Kim training and she just kept working on that one let's see what we got here kim training for training your kim ah okay yeah so she's got this like long form thing um got it because what we normally would do would be if somebody's registering on the website you know they get the first step is that this is like just fill out your contact info upload your resume whatever it is that creates the record then step two is the profile okay um and so what we what i would do would be to set up the job board so that they're only applying to one job they are putting in their basics like name and email on step one just so that there's a record and then all the other stuff is step two unless each of these things is an actual field in the record, there's no way to put all of this on the first step. So it would have to be. Gotcha. Then the question is, how does, you know, because then that works. Then you've got everybody in the pipeline. All of this stuff is in their record. And then, you know, and then they've got a profile attached with the other stuff. The Monday night meeting thing, the question is what you know under what circumstances does that happen because you could do a form uh just yeah i guess we'd have to figure out what she wants people to do in that regard yeah it could be just maybe be like if you sign up for a monday night meeting great we have just the basics your name and your email address there's a record in the database now but then when they're like more ready to move forward, time to pair you with an advisor. That's when you get the big set of questions. Yeah. I guess that's kind of a question is what's her, you know, what's her intended workflow. Cause you could do that. You know, you can either do the job board where people are actually going into the pipeline or you could do the passive candidate registration where people are just going into the candidate pool, but they're not linked to that position. And those two forms can be different. you know might be yeah that seems like it could be the way to go I'll just that way yeah cuz that that might be the way to go is that is that then you go okay I'm just throwing myself into the database then you know that's and then the the pipeline thing is for them to use internally but it's not on the website people are just registering for the job board you know you can also do custom form where the custom form is just a one-way throw yourself in and you don't you know you're not linked to a job you're not anything you don't have a password there's no session there's nothing okay um and then you know that that's because usually people use that for just like upload your resume and and and i'm not actually doing any job stuff which it sounds like it's kind of what they're doing the question is at what point do people go into that pipeline are they pipelined immediately into the inbox and then they're moved along or do they just go into the talent pool, and they're added to the pipeline when they've been given an advisor. Right. Yeah. I got to give a couple more details, but that makes sense. Yeah. It seems like that might be the better way to go is that the job doesn't ever touch the web at all, that that's just for their internal tracking purposes and that when people register online, they're simply registering. And then we do registration is step one, profile form is step to and then they've got all their info and they're in the database and then somebody internally decides what to do with them in regards to the pipeline. But that leaves the Monday night meeting thing as a question because you could do, again, you could do a custom form for that, but it's a question of is that what they want to do? How does that interact with what's already in the database, et cetera? I'm not sure. So there are definitely ways to do it, you know, and because it sounded like, let me look back at your notes on the ticket there. If they choose online during registration, they get a Zoom meeting. OK, got it. So she's trying to do an event registration form that's independent of give us all your info. Yeah. Yeah. My my initial thought is that PCR isn't a great place to do that. Right. Like they need, you know, MailChimp or something for. Yeah, or like sign up genius or, you know, something that's designed for that. You could do that with a custom form. You could have a simple form on the site and then, you know, set up some sort of form letter automation that emails them based on what answer they choose for a custom field. Okay. that's doable. It's just a question of, is that, you know, they're, they're, I guess the thing is, if somebody uses that form to sign up for the Monday night meeting, do they still do all of the other stuff? Do they still fill out the same stuff that they would if they were submitting themselves into the talent pool? Because they're going into the same database with the same things. they're just not going through the same process as the other people you know so then it's like how does that how do you separate those out how do people know okay this was a meeting registrant not somebody who wanted to be included in this other process you know so because they're all going to end up in the talent pool one way or the other right it's just you're giving them two different forms to get into the same database so i'm not sure how they you know how it could be that that first one, they're collecting less information because the person's not fully 100%, you know, in with the program. And then maybe they can just send them an email with a link to their website or whatever it is saying, now you're ready to do the bigger set. Yeah, you know, or they could have a, you know, when when people do come to the meeting, they get, you know, they have the QR code or whatever for the web page. Oh, right. Register that, you know, that I've seen people do that before with PCR where they go, okay, I've got this form on my site. I have a QR code that takes people to the form. And then when they come to this meeting, I just tell them, scan this and put your info in. It's not like she's got a crazy complicated registration form. There's not a ton there. So it's doable. Because the other way to do it now that I'm thinking about it would be you do an automation based on the profile form that pipelines them when they complete the profile. Okay. Maybe that. Let me see. Can you do it that way? I'm trying to remember under what circumstances you can attach somebody to a job. Automation, on completion, long, obliquely, blue, please. It would be a success auto plan? Yeah. That's what I'm thinking. It would be a web automation plan. It would be a success plan. Can you pipeline somebody? I know you can move somebody in a pipeline. Change position status. Change pipeline status. Yeah. You can't add somebody automatically to a pipeline, can you? It doesn't seem like it. I don't know why. It seems like you should be able to. Maybe the roll-up automation? Yeah. That doesn't help, though. It seems like you should be able to do an automation that puts somebody into a pipeline. Is there no place to add these people to a job, pipeline automation? That's silly. Yeah, because I would think you could do that. but I guess can't do it from the profile. Yeah. Maybe the only way to let somebody auto link to a job is via the job board. So, yeah. So I guess that puts us back where we were. So she's got two separate things. One of which is put yourself into the system and, you know, fill out this form. And it's just a question of, you know, and I still think it probably makes sense. I guess then the second question is do those people all, all go into the pipeline or is that a decision for the internal person to put them in the pipeline? Okay. Yeah. I, I could check with her on that or, you know, would it be helpful if we scheduled a time for the three of us to get on the phone? Yeah. Okay. It'll be fine too. I mean, you know, I got no problem. Okay. Yeah. I'll reach out to her. Cause there are a bunch of ways to slice it. We just have to figure out how she wants, you know, how she would want it to work. So. Yeah. The good thing is it sounds like we have a lot of options. Yeah. You know, no matter which way she chooses. Yeah, we should be able to figure something out with her. Yeah, good. Okay, awesome. I'll try to get some times that she's available and get back to you. But yeah, I think she does want to collapse all the third-party programs that she used to use and just get it all into PCR. So hopefully it's just like a quick thing for that Monday night meeting sign up, but we'll see. Yeah, let me see what their – I'm just looking at their website to see what their options are there, too. Oh, they're on WordPress, yeah. So, I mean, they could even use a WordPress form that says something, too. But we can chat with her about it. Yeah. Cool. Cool, man. All right. I will get back to you sometime. That's available. All right, buddy. All right, thank you. Later. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1929.871865,
+    "salad_processing_time": 112.9533166885376,
+    "overall_processing_time": 1929.871865,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hey, man.  Hey, how's it going? It's going.  How about you? Pretty good.",
+    "job_id": "16550fba-e65f-4c8c-a4a0-e6fb71a12851",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hey, man.  Hey, how's it going? It's going.  How about you? Pretty good.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3080765361036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

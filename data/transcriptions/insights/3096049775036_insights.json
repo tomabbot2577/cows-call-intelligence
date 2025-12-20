@@ -1,0 +1,325 @@
+{
+  "recording_id": "3096049775036",
+  "analysis_timestamp": "2025-12-19T20:18:56.452308",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Ellen Lombardo",
+        "role": "patient",
+        "confidence_score": 0.9,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "account_management",
+    "CALL PURPOSE": [
+      "Reschedule appointment",
+      "Confirm availability for rescheduled appointment"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "resolved"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Caitlin",
+      "Company/organization name": "McGuire orthodontics",
+      "Phone numbers mentioned": [],
+      "Email addresses mentioned": [],
+      "Key decision makers referenced": "Ellen Lombardo",
+      "Team members and their roles": []
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": "Orthodontics",
+      "Company size indicators": [],
+      "Technology stack mentions": [],
+      "Current challenges/pain points": "Rescheduling an appointment due to customer not feeling well",
+      "Growth stage indicators": []
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": "Rescheduling an existing appointment",
+      "Existing service usage": "Orthodontic services",
+      "Account history mentions": [],
+      "Relationship duration indicators": [],
+      "Trust level indicators": []
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "scheduling",
+      "issue_severity": "low",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "medium"
+    },
+    "resolution_tracking": {
+      "issue_status": "resolved",
+      "resolution_steps_taken": "rescheduled appointment",
+      "outstanding_action_items": [],
+      "next_steps_required": []
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": [],
+      "knowledge_base_gaps_identified": []
+    },
+    "agent_performance": {
+      "problem_solving_approach": "effective",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "sufficient",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "High",
+      "trust_level_signals": "High",
+      "communication_style": "Responsive and accommodating",
+      "rapport_quality": "Friendly and professional"
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Completed",
+      "product_adoption_level": "Regular user",
+      "feature_utilization": "Basic scheduling and rescheduling",
+      "expansion_opportunities": "Potential for additional services or referrals"
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Flexibility in scheduling, responsive communication",
+      "risk_indicators": "Limited availability for preferred times",
+      "loyalty_signals": "Willingness to reschedule rather than cancel",
+      "advocacy_potential": "High, given positive interaction and problem resolution"
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone",
+      "response_time_expectations": "Immediate to same day",
+      "information_style_preferences": "Direct and clear",
+      "decision-making_patterns": "Flexible, prefers quick resolutions"
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "just say she's a feeling McGuire orthodontics this is Caitlin",
+      "I needed to reschedule the appointment for Ellen Lombardo today she's not feeling well today",
+      "Best times is going to be that same time. Like what was it going to be? 410?",
+      "What about October 10th or October 24th? She's off both of those days.",
+      "12 p.m. on October 24th, and she is all set."
+    ],
+    "qa_pairs": [
+      {
+        "question": "what times are normally best?",
+        "answer": "Best times is going to be that same time. Like what was it going to be? 410?"
+      },
+      {
+        "question": "Do you know of any days of school off?",
+        "answer": "What about October 10th or October 24th? She's off both of those days."
+      },
+      {
+        "question": "nothing on the 10th?",
+        "answer": "Nothing on the 10th."
+      }
+    ],
+    "searchable_tags": [
+      "reschedule appointment",
+      "Ellen Lombardo",
+      "McGuire orthodontics",
+      "school schedule",
+      "October 10th",
+      "October 24th",
+      "12 p.m.",
+      "patient availability",
+      "appointment time",
+      "school off days",
+      "health concern",
+      "Mentor location",
+      "afternoon appointment"
+    ],
+    "semantic_themes": [
+      "Appointment rescheduling due to health",
+      "Coordinating around school schedule",
+      "Availability and time management"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 55,
+      "Customer talk percentage": 45,
+      "Balanced conversation indicator": true
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 0,
+      "Number of interruptions by customer": 0,
+      "Interruption impact on flow": "None"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 10,
+      "Awkward pauses detected": 1,
+      "Hold time indicators": false
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": true,
+      "Company name mentioned": true,
+      "Verification steps taken": true,
+      "Required disclosures made": false,
+      "Proper closing used": true
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": "Medium"
+    },
+    "agent_talk_pct_calculated": 18.1,
+    "customer_talk_pct_calculated": 81.9
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 18.1,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "reschedule appointment",
+      "Ellen Lombardo",
+      "McGuire orthodontics",
+      "school schedule",
+      "October 10th",
+      "October 24th",
+      "12 p.m.",
+      "patient availability",
+      "appointment time",
+      "school off days",
+      "health concern",
+      "Mentor location",
+      "afternoon appointment"
+    ],
+    "semantic_themes": [
+      "Appointment rescheduling due to health",
+      "Coordinating around school schedule",
+      "Availability and time management"
+    ],
+    "key_quotes": [
+      "just say she's a feeling McGuire orthodontics this is Caitlin",
+      "I needed to reschedule the appointment for Ellen Lombardo today she's not feeling well today",
+      "Best times is going to be that same time. Like what was it going to be? 410?",
+      "What about October 10th or October 24th? She's off both of those days.",
+      "12 p.m. on October 24th, and she is all set."
+    ],
+    "qa_pairs": [
+      {
+        "question": "what times are normally best?",
+        "answer": "Best times is going to be that same time. Like what was it going to be? 410?"
+      },
+      {
+        "question": "Do you know of any days of school off?",
+        "answer": "What about October 10th or October 24th? She's off both of those days."
+      },
+      {
+        "question": "nothing on the 10th?",
+        "answer": "Nothing on the 10th."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Unknown",
+      "extension": "",
+      "phone": "",
+      "email": "",
+      "department": "",
+      "role": "",
+      "employee_id": ""
+    },
+    "primary_customer": {
+      "name": "up",
+      "company": "",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "up",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Caitlin hey Caitlin",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "could reschedule that for sometime later in the week or early next week or whenever really is available yeah let me see",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not seeing any afternoons",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": []
+    }
+  }
+}

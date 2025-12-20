@@ -36,16 +36,22 @@ DB_CONFIG = {
 OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY', 'REDACTED_OPENROUTER_KEY')
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1/chat/completions"
 
-# Cost-optimized models
+# MODEL CONFIGURATION - Updated 2025-12-20
+# Primary: FREE model with best quality
+# Secondary: Low-cost backup
+PRIMARY_MODEL = 'google/gemma-3-12b-it:free'
+SECONDARY_MODEL = 'meta-llama/llama-3.1-8b-instruct'
+
 MODELS = {
-    'gemini-flash': 'google/gemini-flash-1.5',  # Primary (often FREE)
-    'gemini-flash-8b': 'google/gemini-flash-1.5-8b',  # Backup ($0.00002/1K)
-    'mistral-7b': 'mistralai/mistral-7b-instruct',  # Fallback ($0.00006/1K)
+    'primary': PRIMARY_MODEL,      # FREE - Best quality, reliable JSON
+    'secondary': SECONDARY_MODEL,  # $0.02/1M - Good backup
+    'gemma-12b': 'google/gemma-3-12b-it:free',
+    'llama-8b': 'meta-llama/llama-3.1-8b-instruct',
 }
 
 def call_model(model_key: str, prompt: str, max_tokens: int = 700) -> dict:
     """Call the specified model through OpenRouter"""
-    model = MODELS.get(model_key, MODELS['gemini-flash'])
+    model = MODELS.get(model_key, PRIMARY_MODEL)
 
     try:
         response = requests.post(

@@ -1,0 +1,117 @@
+{
+  "recording_id": "3050874675036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:01:07.194448Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:01:07",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Tyler, hi. This is Stephen Jacobs. I'm with Healthcare Recruiters International. Yeah, how are you today? I'm doing well. How are things in that going? Doing good, doing good. Good. So I got, not only did I get a new computer, I'm moving from a PC to a Mac Pro, which is like trying to learn Chinese. But anyway, I need some help installing our PC recruiter software in the inhaler. Can you help me with that? So the inhaler is only available on PC. Oh, it's only available on PC. Yes, it is a Windows program. I see. Well, no worries. How about just the main software? So the software is web-based, so you just need your PC recruiter URL to log in, to get to your login page. Oh, that's all I do? Well, don't I have to download it somehow? No, so there's the Java and the Launcher, which control a few aspects. But I can send you those links to get those for you to download. So I can just email those over to you. Ready? Yeah, as far as like logging into the data, the Launcher just controls things like the alarms and parsing resumes. but the just basic software itself like logging in you don't need to download anything it's just going to that we had on my desktop I always had the icon I would just because I do a lot of stuff offline as well I'm pretty sure yeah I had it it was actually on my desktop so it could have just been like a stored url shortcut oh okay all right well I can probably figure it out on my own then I mean I've got the URL so I can probably just do it on my own yeah let me send you the Java launcher links though okay and do you need my email address or do you see it there do do do I have steve.jacobs at hcrnetwork.com that's correct perfect all right just sent those on over you can get them in just a second so yeah you'll just download the Java first and then the launcher the Java version for Mac is Amazon Coreto then once those are downloaded just log out and back into the database and you'll just allow it to open the launcher you'll see a pop-up and you'll just allow the launcher to update okay gotcha already well thanks very much yep not a problem you have a great day you too bye-bye",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1524.31809,
+    "salad_processing_time": 12.487778663635254,
+    "overall_processing_time": 1524.31809,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Tyler, hi.",
+    "job_id": "08d50ed7-b033-4fbd-8bd0-0e4bf0080e08",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Tyler, hi.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3050874675036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

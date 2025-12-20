@@ -602,13 +602,35 @@ class InsightsManager:
                        start_date: Optional[str] = None,
                        end_date: Optional[str] = None,
                        agent_id: Optional[str] = None,
+                       agent_name: Optional[str] = None,  # NEW: Search by agent name
                        customer_id: Optional[str] = None,
+                       customer_name: Optional[str] = None,  # NEW: Search by customer name
+                       customer_phone: Optional[str] = None,  # NEW: Search by phone
+                       search_term: Optional[str] = None,  # NEW: Open text search
                        min_quality_score: Optional[float] = None,
                        sentiment: Optional[str] = None,
                        category: Optional[str] = None,
+                       sort_by: Optional[str] = None,  # NEW: Sorting option
+                       sort_order: str = 'DESC',  # NEW: ASC or DESC
                        limit: int = 100) -> List[Dict]:
         """
-        Query insights with flexible filters
+        Query insights with flexible filters and enhanced search
+
+        Args:
+            start_date: Filter by start date
+            end_date: Filter by end date
+            agent_id: Filter by agent ID
+            agent_name: Filter by agent name (partial match)
+            customer_id: Filter by customer ID
+            customer_name: Filter by customer name (partial match)
+            customer_phone: Filter by phone number
+            search_term: Open text search in summary and key topics
+            min_quality_score: Filter by minimum quality score
+            sentiment: Filter by sentiment
+            category: Filter by category
+            sort_by: Sort by field (date, quality, sentiment, agent, customer)
+            sort_order: ASC or DESC
+            limit: Maximum number of results
 
         Returns:
             List of matching insights
@@ -632,9 +654,33 @@ class InsightsManager:
             query += " AND agent_id = ?"
             params.append(agent_id)
 
+        # NEW: Agent name search (partial match)
+        if agent_name:
+            query += " AND agent_name LIKE ?"
+            params.append(f"%{agent_name}%")
+
         if customer_id:
             query += " AND customer_id = ?"
             params.append(customer_id)
+
+        # NEW: Customer name search (partial match)
+        if customer_name:
+            query += " AND customer_name LIKE ?"
+            params.append(f"%{customer_name}%")
+
+        # NEW: Phone number search
+        if customer_phone:
+            # Remove non-digit characters for flexible matching
+            phone_digits = ''.join(filter(str.isdigit, customer_phone))
+            query += " AND REPLACE(REPLACE(REPLACE(customer_phone, '-', ''), '(', ''), ')', '') LIKE ?"
+            params.append(f"%{phone_digits}%")
+
+        # NEW: Open text search in summary and key topics
+        if search_term:
+            query += " AND (summary LIKE ? OR key_topics LIKE ? OR action_items LIKE ?)"
+            params.append(f"%{search_term}%")
+            params.append(f"%{search_term}%")
+            params.append(f"%{search_term}%")
 
         if min_quality_score:
             query += " AND call_quality_score >= ?"
@@ -648,7 +694,25 @@ class InsightsManager:
             query += " AND issue_category = ?"
             params.append(category)
 
-        query += " ORDER BY created_at DESC LIMIT ?"
+        # NEW: Flexible sorting
+        sort_column = "created_at"  # default
+        if sort_by:
+            sort_map = {
+                'date': 'call_date',
+                'quality': 'call_quality_score',
+                'satisfaction': 'customer_satisfaction_score',
+                'sentiment': 'customer_sentiment',
+                'agent': 'agent_name',
+                'customer': 'customer_name',
+                'duration': 'duration_seconds'
+            }
+            sort_column = sort_map.get(sort_by, 'created_at')
+
+        # Validate sort order
+        if sort_order.upper() not in ['ASC', 'DESC']:
+            sort_order = 'DESC'
+
+        query += f" ORDER BY {sort_column} {sort_order.upper()} LIMIT ?"
         params.append(limit)
 
         cursor.execute(query, params)
@@ -656,6 +720,250 @@ class InsightsManager:
 
         conn.close()
         return results
+
+    def analyze_date_range(self,
+                           entity_type: str,
+                           entity_value: str,
+                           start_date: str,
+                           end_date: str,
+                           analysis_type: str = 'comprehensive') -> Dict:
+        """
+        Analyze all calls for a specific customer or employee within a date range
+
+        Args:
+            entity_type: 'customer' or 'employee'
+            entity_value: Customer name/phone or Employee name/id
+            start_date: Start date (YYYY-MM-DD)
+            end_date: End date (YYYY-MM-DD)
+            analysis_type: Type of analysis ('comprehensive', 'sentiment', 'quality', 'patterns')
+
+        Returns:
+            Comprehensive analysis across all calls in the range
+        """
+        conn = sqlite3.connect(self.db_path)
+        conn.row_factory = sqlite3.Row
+        cursor = conn.cursor()
+
+        # Build query based on entity type
+        if entity_type == 'customer':
+            # Search by customer name or phone
+            if entity_value.replace('-', '').replace('(', '').replace(')', '').isdigit():
+                # Phone number search
+                phone_digits = ''.join(filter(str.isdigit, entity_value))
+                query = """
+                    SELECT * FROM insights
+                    WHERE REPLACE(REPLACE(REPLACE(customer_phone, '-', ''), '(', ''), ')', '') LIKE ?
+                    AND call_date BETWEEN ? AND ?
+                    ORDER BY call_date ASC
+                """
+                params = [f"%{phone_digits}%", start_date, end_date]
+            else:
+                # Customer name search
+                query = """
+                    SELECT * FROM insights
+                    WHERE customer_name LIKE ?
+                    AND call_date BETWEEN ? AND ?
+                    ORDER BY call_date ASC
+                """
+                params = [f"%{entity_value}%", start_date, end_date]
+
+        elif entity_type == 'employee':
+            # Search by employee name or ID
+            query = """
+                SELECT * FROM insights
+                WHERE (agent_name LIKE ? OR agent_id = ?)
+                AND call_date BETWEEN ? AND ?
+                ORDER BY call_date ASC
+            """
+            params = [f"%{entity_value}%", entity_value, start_date, end_date]
+
+        else:
+            conn.close()
+            return {"error": "Invalid entity type. Use 'customer' or 'employee'"}
+
+        cursor.execute(query, params)
+        insights = [dict(row) for row in cursor.fetchall()]
+
+        if not insights:
+            conn.close()
+            return {
+                "entity_type": entity_type,
+                "entity_value": entity_value,
+                "date_range": f"{start_date} to {end_date}",
+                "total_calls": 0,
+                "message": "No calls found for this entity in the specified date range"
+            }
+
+        # Perform comprehensive analysis
+        analysis = {
+            "entity_type": entity_type,
+            "entity_value": entity_value,
+            "date_range": f"{start_date} to {end_date}",
+            "total_calls": len(insights),
+            "timeline": [],
+            "metrics": {},
+            "patterns": {},
+            "recommendations": []
+        }
+
+        # Calculate aggregate metrics
+        total_duration = sum(i.get('duration_seconds', 0) for i in insights)
+        avg_quality = sum(i.get('call_quality_score', 0) for i in insights) / len(insights) if insights else 0
+        avg_satisfaction = sum(i.get('customer_satisfaction_score', 0) for i in insights) / len(insights) if insights else 0
+
+        # Sentiment analysis over time
+        sentiment_counts = {'positive': 0, 'neutral': 0, 'negative': 0}
+        for insight in insights:
+            sentiment = insight.get('customer_sentiment', 'neutral')
+            sentiment_counts[sentiment] = sentiment_counts.get(sentiment, 0) + 1
+
+        # Issue categories
+        issue_categories = {}
+        for insight in insights:
+            category = insight.get('issue_category', 'other')
+            issue_categories[category] = issue_categories.get(category, 0) + 1
+
+        # Build timeline
+        for insight in insights:
+            analysis['timeline'].append({
+                'date': insight.get('call_date'),
+                'recording_id': insight.get('recording_id'),
+                'summary': insight.get('summary'),
+                'sentiment': insight.get('customer_sentiment'),
+                'quality_score': insight.get('call_quality_score'),
+                'duration': insight.get('duration_seconds')
+            })
+
+        # Aggregate metrics
+        analysis['metrics'] = {
+            'average_quality_score': round(avg_quality, 2),
+            'average_satisfaction_score': round(avg_satisfaction, 2),
+            'total_duration_minutes': round(total_duration / 60, 2),
+            'average_call_duration_minutes': round(total_duration / 60 / len(insights), 2) if insights else 0,
+            'sentiment_distribution': sentiment_counts,
+            'sentiment_trend': self._calculate_sentiment_trend(insights),
+            'issue_categories': issue_categories,
+            'escalation_rate': sum(1 for i in insights if i.get('escalation_required')) / len(insights) * 100,
+            'resolution_rate': sum(1 for i in insights if i.get('first_call_resolution')) / len(insights) * 100
+        }
+
+        # Identify patterns
+        analysis['patterns'] = {
+            'most_common_issues': sorted(issue_categories.items(), key=lambda x: x[1], reverse=True)[:3],
+            'peak_call_days': self._identify_peak_days(insights),
+            'recurring_topics': self._extract_recurring_topics(insights),
+            'quality_trend': self._calculate_quality_trend(insights)
+        }
+
+        # Generate recommendations based on analysis
+        analysis['recommendations'] = self._generate_recommendations(analysis)
+
+        conn.close()
+        return analysis
+
+    def _calculate_sentiment_trend(self, insights: List[Dict]) -> str:
+        """Calculate sentiment trend over time"""
+        if len(insights) < 2:
+            return "insufficient_data"
+
+        # Compare first half to second half
+        mid = len(insights) // 2
+        first_half = insights[:mid]
+        second_half = insights[mid:]
+
+        sentiment_scores = {'positive': 1, 'neutral': 0, 'negative': -1}
+
+        first_avg = sum(sentiment_scores.get(i.get('customer_sentiment', 'neutral'), 0)
+                       for i in first_half) / len(first_half)
+        second_avg = sum(sentiment_scores.get(i.get('customer_sentiment', 'neutral'), 0)
+                        for i in second_half) / len(second_half)
+
+        if second_avg > first_avg + 0.2:
+            return "improving"
+        elif second_avg < first_avg - 0.2:
+            return "declining"
+        else:
+            return "stable"
+
+    def _calculate_quality_trend(self, insights: List[Dict]) -> str:
+        """Calculate quality score trend over time"""
+        if len(insights) < 2:
+            return "insufficient_data"
+
+        mid = len(insights) // 2
+        first_half = insights[:mid]
+        second_half = insights[mid:]
+
+        first_avg = sum(i.get('call_quality_score', 0) for i in first_half) / len(first_half)
+        second_avg = sum(i.get('call_quality_score', 0) for i in second_half) / len(second_half)
+
+        if second_avg > first_avg + 0.5:
+            return "improving"
+        elif second_avg < first_avg - 0.5:
+            return "declining"
+        else:
+            return "stable"
+
+    def _identify_peak_days(self, insights: List[Dict]) -> List[str]:
+        """Identify days with most calls"""
+        day_counts = {}
+        for insight in insights:
+            date = insight.get('call_date', '')
+            day_counts[date] = day_counts.get(date, 0) + 1
+
+        sorted_days = sorted(day_counts.items(), key=lambda x: x[1], reverse=True)
+        return [day for day, count in sorted_days[:3] if count > 1]
+
+    def _extract_recurring_topics(self, insights: List[Dict]) -> List[str]:
+        """Extract recurring topics from summaries and key topics"""
+        topic_counts = {}
+        for insight in insights:
+            topics = insight.get('key_topics', '').split(',') if insight.get('key_topics') else []
+            for topic in topics:
+                topic = topic.strip()
+                if topic:
+                    topic_counts[topic] = topic_counts.get(topic, 0) + 1
+
+        sorted_topics = sorted(topic_counts.items(), key=lambda x: x[1], reverse=True)
+        return [topic for topic, count in sorted_topics[:5] if count > 1]
+
+    def _generate_recommendations(self, analysis: Dict) -> List[str]:
+        """Generate actionable recommendations based on analysis"""
+        recommendations = []
+
+        # Sentiment-based recommendations
+        sentiment_dist = analysis['metrics']['sentiment_distribution']
+        if sentiment_dist.get('negative', 0) > sentiment_dist.get('positive', 0):
+            recommendations.append("High negative sentiment detected. Consider proactive outreach or service improvement.")
+
+        # Quality-based recommendations
+        if analysis['metrics']['average_quality_score'] < 6:
+            recommendations.append("Low average quality score. Review call handling procedures and provide additional training.")
+
+        # Escalation rate recommendations
+        if analysis['metrics']['escalation_rate'] > 20:
+            recommendations.append("High escalation rate. Empower front-line agents to resolve more issues independently.")
+
+        # Resolution rate recommendations
+        if analysis['metrics']['resolution_rate'] < 70:
+            recommendations.append("Low first-call resolution rate. Improve knowledge base and agent training.")
+
+        # Trend-based recommendations
+        if analysis['metrics']['sentiment_trend'] == "declining":
+            recommendations.append("Sentiment trend is declining. Investigate recent changes and address customer concerns.")
+
+        if analysis['patterns']['quality_trend'] == "declining":
+            recommendations.append("Call quality is declining. Schedule refresher training and review recent process changes.")
+
+        # Pattern-based recommendations
+        if analysis['patterns']['most_common_issues']:
+            top_issue = analysis['patterns']['most_common_issues'][0][0]
+            recommendations.append(f"Most common issue: {top_issue}. Create targeted solutions or FAQ for this issue.")
+
+        if not recommendations:
+            recommendations.append("Performance is stable. Continue current practices and monitor for changes.")
+
+        return recommendations
 
     def generate_analytics_report(self, period: str = 'daily') -> Dict:
         """

@@ -1,0 +1,121 @@
+{
+  "recording_id": "3050581808036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:00:46.292887Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:00:46",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Kathleen speaking. Hey, Kathleen. It's Jim with PC Recruiter. How are you? Hi, good. How are you? I'm pretty well. I wanted to give you a quick call. I just wanted to check on a couple things. First, I got a request for a data return from you. I thought I would follow up and kind of see why you needed that, make sure everything was okay, or see if there was anything going wrong or awry that I could help with. Yeah, I'm just going to migrate to a different solution that meets some of my needs and integrates with some of the tools that I need at this point. So I need it to migrate to their system. Okay, okay. And who are you going with, just out of curiosity? Clockwork Recruiting. Oh, okay. Awesome, awesome. And also, I was seeing if you wanted to look. We talked about a PCRM demo, which I don't think we ever connected. Is that anything you want to take a look at or not at all? No, I've already – yeah, I'm going to make the switch. Okay, okay. And do you know when you're planning on switching for that? It's going to take at least eight weeks, I guess, once they get the data. Okay. And then once you're ready, just pop me an email that you're ready to cancel. The ticket is already in for the data return. That's good. Just out of my own curiosity, what did it better integrate with that we don't? Just because I was wondering. With a lot of different tools. I forget all of them now. But it just works. Also, I'm able to do more customizations with Zapier, which really helps me. And PC Recruiter, you really can't do much with Zapier. Okay. Very well. I appreciate the feedback there. Let me just kind of let them know to proceed with the data conversion. I'll let them know why. And then remember, once you're ready to cancel, send me another email, because this is just the data return, not a cancellation, so that will need to be a separate email. Yeah. We can get that going. Yeah, don't cancel, please, right now. For sure. Yeah, whenever you're ready, we can do that. It looks like your contract might be up this December. Is that so? I can't remember off the top of my head. I'm looking at it. It looks like it was late December of 2021. So it was actually renewed 2024. So it's auto-renewed as of last year. So you have a couple more years left on that, just so you know. they might try and enforce an early termination fee. So I wanted to make sure of that. So just so you know. Sure, I understand. Perfect. I'll go ahead and get everything in queue here to go ahead, and we'll get that ready for you. All right. I appreciate it. All right. Thank you. Bye. Take care. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1513.895476,
+    "salad_processing_time": 21.36051297187805,
+    "overall_processing_time": 1513.895476,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Kathleen speaking.  Hey, Kathleen.  It's Jim with PC Recruiter.",
+    "job_id": "bfdb99b1-8173-489b-95e7-d9ba6a970dc3",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Kathleen speaking.  Hey, Kathleen.  It's Jim with PC Recruiter.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": [
+      "follow_up_required"
+    ]
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3050581808036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

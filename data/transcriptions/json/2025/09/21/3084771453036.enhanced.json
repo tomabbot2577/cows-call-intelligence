@@ -1,0 +1,117 @@
+{
+  "recording_id": "3084771453036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:17:09.160415Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:17:09",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Mini-Sequence Technology. This is Garrett. How may I help you? Garrett, this is JP Wright. How are you doing? Good. How are you? Good. I'm not sure if you remember me or not. We use PC Recruiter. I've talked to you numerous times about support issues. I have some questions about how our database is set up I'm trying to use SourceWale and apparently there's an issue with like how our database is set up and I'm trying to understand like how some of our fields were set up I'm not sure if you're someone that could help me with that or sure yeah I could try I'll go about kind of figuring some of this stuff out yeah i can so from what i'm gathering like we're having integration issues with source whale because it seems like we have a bunch of like custom fields and for whatever reason i guess their their build doesn't work well with um it's not working well with custom fields so okay they basically said that they have to rebuild what they are doing because of how ours works. I'm trying to figure out, whenever I look at the fields that we're using, it looks like there's a lot of them that are listed as custom fields. It seemed like they should just be fields that you guys would have. Okay. Okay. But they're not. They're all just set up as custom fields. So I'm trying to figure out if there's a way that we can kind of move some things around so that we don't have as many custom fields. Sure. Let me log in as your username here. Is it JPW? Yeah. Okay. Let me take a look at what fields you have listed on your name records. words. What fields in particular were you looking to maybe change or? So basically anything that's a custom field, if we can change it to a predefined field that you guys already have. I know that there's some of them that we won't be able to, like this class and code that we have in group one. I know that we won't be able to change those. and if we don't change those, like, it's perfectly fine. Like, that's not something that they need to integrate with. It seems like the biggest issue that they're having is our phone fields and email fields and location fields. So, like, the custom direct phone that we have, the custom work email, custom alt email, custom alt email 2, custom LinkedIn, workstation, custom work state. Gotcha. So there are some fields in PCR that are listed as custom, but they come preloaded with PCR. One example would be the custom field called the social underscore LinkedIn. I think it's just called custom because it was developed by our developers after our initial build of PCR. The predefined fields have been there since the beginning. If our developers have developed additional preloaded fields that come with PCR since then, they will come up as custom. So like social underscore LinkedIn is always going to be custom. The ones, let's see, of the ones you mentioned, let's see. Work phone is predefined. That's good. Direct phone, we don't have a field for that. So that will always be custom. Cell phone, home phone are predefined. We do have a field called email underscore work. Instead of the custom field you have called work email. But in both cases, they are a one of those custom fields. Even the one we created and comes preloaded, it's still a custom field. Email underscore work. Okay. the email address you've kind of just renamed it to personal which is fine it's just like a correct on the face of things but in reality it's still email address and that one's good alt email alt email 2 we don't really have a field for that custom do you have additional email you have additional email fields like a home email or Email underscore other, email underscore home. We do have those. They will still be considered custom. They're still considered custom, though. Okay. Yeah. So let me ask you this. The ones that are listed as, like I see some of them are custom, like capitalized custom, and some are lowercase custom. Does that determine anything? I'm not exactly sure. I'm not sure why it's doing that because the custom all email to is a custom field you created, but so is like work city. And those don't have a correlation with how things are capitalized. So I'm not exactly sure where those capitalizations are coming from, but I don't think we could use it as an indicator to see which ones came with PCR or not. Okay. Yeah. The location information, we do have address city state zip as predefined fields, but you already have those right below the custom ones. Yeah, I'm not sure. Yeah, most of these things are are don't really have something to be switched over to unless you wanted to switch, you know, work email over to email underscore work. but that still is considered a custom field. And it's going to still be listed as a custom field. Right. Like, okay. So they were, and that's one of the things that like they seem to think that it had something to do with, like the issue that we had had something to do with the fact that we have these custom fields. okay oh yeah i haven't heard that before um source whale i'm trying to remember so is source whale they built an integration that like imports data into fields in bulk yeah it's it's basically like your it's like your what do you guys call it sequencing oh it's sequencing okay um yeah like it's like they have like like you basically build like campaigns that you can like outreach campaigns and then it it's pretty freaking slick the way that it works like it has like its own like dialer built into it that like whenever you've like put people like say you have a search like you put people into the search and you can put them from pcr or from linkedin and if you find somebody on linkedin they have a tool that basically works like the PCR capture tool does, where they will add people into PCR directly. But the problem is the way their system is set up, they don't have individual phone fields. They just have one field for all the phone numbers. So there's not a way to one-to-one map everything. I see. I see that I'm kind of throwing a wrench in things. Yeah, so we're having an issue with whenever we put people into a campaign through SourceWale, it's somehow pulling like if we update somebody in PCR and then put them into SourceWale from PCR, it finds all of the old information that we had in PCR. It pulls an old version of the person's contact info from PCR and then thinks that since it was right, what they're looking at is not as correct as what we have in there. So it keeps undoing things that we're doing in PCR. It's kind of a nightmare. So, like, anybody that I add to a campaign, I basically have to go back through and check them repeatedly to make sure. Like, I have to go through the change log and make sure that things didn't get screwed up. Oh, okay. Yeah. Interesting. It's definitely a pain in the dick. Yeah. They apparently have identified what the problem is, but in order for them to fix it, they said it's going to take like three to six months because it takes – they basically have to rebuild their whole program. so I'm trying to figure out if there's a way that like we are using too many custom fields if there's a way that we can use more predefined fields so that we're not running into that issue I see yeah it looks like the way you have it set up is is you know at the you're using all the predefined fields that you can, and you just do have those extra custom fields that we don't have a match for that's already in the database. So yeah, it does seem like they do need... Yeah, but even if we use the one with the predefined ones that you have, it's still going to show up as custom. Yeah. It's not going to show up as a predefined field. Right. But that doesn't really help me fix what I'm trying to... I'm trying to come up with a work around so I can still keep using this thing and it not screw everything up. Right. Yeah. Yeah, I don't know. I don't have really any ideas down that path. But, yeah, it seems like they just had some integration build issues that they need to address. Yeah. Yeah, I'm not exactly sure. I can message my team and see if anybody's heard of like, you know, ran into some of these same issues. Cause we do have a lot of customers that use source whale. Maybe there is a workaround out there. I'll check and see, but yeah, ultimately it sounds like source whale needs to redo their integration to work better. Yeah. Yep. They're blaming it on the custom fields and they were there. because I sent them a screenshot of the field selection because they were asking what all fields were using, and I sent them a screenshot of it, and they're like, well, why do you have so many custom fields? And the reality is there's not a ton of them. We do have some custom fields, but there are also some that are custom native to PCR. Exactly, custom native. That's probably a good way to say it. Yeah, exactly. And yeah, prime example, everybody has social underscore LinkedIn. That one's custom native. So ours has two of those. It looks like ours has two of those for some reason. Oh, okay. If I go over to your system menu, let's see. Custom fields, name custom fields. It looks like somebody created a social underscore LinkedIn as well, maybe during an import or accidentally. And so there is one that's already in PCR, but somebody created a second one in your database. Which one are we using? Are we using the one that... If they're named the exact same way, there's only one, like, slot in the back end, and that data is being stored there, so it doesn't really... It wouldn't really matter. You just have two in your dropdown when you're selecting between what you want to put on your record layout, but they will both give you the same data. Can we delete one of those? Yeah, you could go into your system in the main menu of PCR, go to custom fields, name custom fields, and you could delete it from that list. custom fields name custom fields yeah you'll see custom fields name custom fields just pulls it up second one listed there's one on mine it's like the first one is last result the second one is social underscore linkedin yeah that second one two yeah you can delete that one yeah the number two there um that's the duplicate field you've made but all the data is still stored under our our custom native um social underscore linkedin So if I delete this one, it'll still show up. It won't delete the – is the other one in this list too, or – No, because that's one of those custom native ones. Gotcha. Okay. All right. So that one's out of there. And then this is going back to something that we had talked about with Matt Mueller when he was still there. You guys were in the process of working on switching. There was like a website slash email field that you guys were separating. Oh, yeah. Yeah, we currently have that. In ours, I think it's still combined. I'm not sure if that's under the company records. Yeah, it's most likely a company field here. If you still have the combined one on your company layout, we've seen it create some visual issues where some fields are hidden from the layout that you've added in. So we always just recommend removing email slash www from your layout and putting in website separately and email separately. Okay. What if we have information in the email slash www? I think it was automatically moved over to the corresponding field when we made that split. So if it detected an email address, it populated it into the email field on companies. And if it was a website, it populated into the website field for you. Okay. So on our name record, we have custom website and predefined company website. is So. Okay, a name record. Okay. Yeah, like does one of those transfer over to the name record? Yeah, I think the company website, yeah, the one called company website is built into PCR. It's giving you a preview of the company field. It's showing you what's on the company field. The one that's called Web Site with a space in between web and site is one that you created that has no link to any, you know, to the company. It's something you just fill in manually. OK, so Web Space Site, that's that one. Yeah, that one. OK, so predefined company website. yeah that one if you're on a name record you won't even be able to change the the value there because it's just giving you a preview it's linked over to company where does that uh okay and is that pulling the one that's on the name record that says company website is that pulling from the custom company website? Yeah, there should be a field in your company records just called website. It's called custom website. And that would be showing you that over. So whatever you type into there, that one transfers over to the one in PCR that you can't edit. The one that's custom. I believe the one on the company record should be the predefined website rather than custom website. Let me double check that. There should be one for... Yeah, there it is. The predefined website field on company records shows up on name records under that company website field. So yeah, they're both predefined, the ones that are linked to each other. okay so how do i separate what's the best way to separate this so that we don't have the email slash www address okay yeah um go to your company any company record go to the customize your icon and then click on the click to set field at the bottom of any of your groups and look for, just type in a website, you'll find predefined website. And then you could add another one, just type in email, you'll find predefined email address. And as long as you're on a company record that will have taken the data that was initially in your email slash www field and split it into whichever corresponding field you just added there. And then you could delete email slash www from your layout. Okay. I'm going to leave them both on there for now, just so I can kind of see how that has done that. Safe. Let's see. I need to go to a company record. Company. Okay. Why aren't those showing up? Customize form, customize form. I hit save. That's where there are some visual issues on the, when you go to see fields, some will be hidden and missing. If you still have email slash www address visible, until you delete that from the layout, it might be hiding certain fields that you add in some kind of. So there's that. So I can't unhide the, without deleting that. yeah i would delete that field if i remove that field it's not i guess really not removing the information that's in there it's just taking the field off the view right like is that predefined email slash ww is that still available because that's still it won't be available to add again um so yeah um are you are you basically just trying to verify that the information yeah i I want to try to – yeah, exactly. Because I don't think we put any email addresses in there. Like in ours, like that should just all be an email field. But I know that we have – I know that we have like for some people the – oh, shit, which one would it be? I guess for this one it doesn't really matter. The predefined website that's on here, that is the one that is filling the predefined company website? Which one pre-fills the predefined company website? it's the one on your company record called predefined website and that one the predefined website uh grabbed everything you had in your email slash www address as we created that field for you okay unless it was an email address that you were storing in there and then pcr would have known to put it into the predefined email address field. So yeah, the two new ones kind of just replace the old email www. Delete. Save. Reload frame. Website, email address, website. Okay. on the company, is there a way to, since they both now say website, is there a way to change the display to show which one is the one that gets? Yeah, go ahead and edit or go to customize again, and then click on the three horizontal lines to the right of whatever field you want to edit, And you can change the field label to that. It displays differently. The predefined company website, that's the one that transfers. That is linked to your names. Yeah. What is read only? Can I change that so that it can be edited? It says read only off on edit on ad. Do I need to do anything with that? No. Yeah, That would mean that your username wouldn't be allowed to change the value if it was read-only. And just an example of that, the name record that shows company website, that one's going to be read-only automatically. So that's the kind of situation where you wouldn't be able to change the value. Okay, so if I reload frame, website from. You guys need to do something with how your fields lay out in things. Like the label gets cut off on a lot of these, but there's like a four inch or six inch wide field. Oh, I see. Yeah, I know what you're saying. Like if you look at like the company record, like, like the labels cut off, but the field length is like half the page. Right. But that doesn't make a lot of sense. Yeah. and I assume there's no way to change that no I don't think there's nothing really to adjust on that part of it it's just kind of how it was coded there is the option to have multiple more than two rows or rows no columns more than two columns you could have like a three column and that'll shorten the field length but it doesn't help with the field yeah it doesn't really help with the yeah yeah that's like some of the things that like like we like PCR but there's some of that stuff that it's just like you know it's so customizable but like there's some of those things that it's like well why isn't that customizable right yeah that makes sense okay Good. What else? Yeah, any other issues or questions that you've run into? Oh, yeah, there is one other question that I have. It's on the name view. okay like whenever you're whenever you click on somebody's name and it has the social all the different social links under it yeah on the left person's name yeah is there a way to edit that so that it doesn't show all the ones like is there a way to edit how many of those show up oh um no it's just kind of like a hide the whole bar or show the whole bar um i think right now if you click on any of those it performs a search on that right uh website until you have an actual link and it'll just show the specific profile but yeah the only options really are to hide the whole social bar or keep it. Yeah, there's some of these. I don't even know what the hell they are. Like Zing. We don't use that. So it would be nice if you turned some of those off. Yeah, that makes sense. Yeah, I could put in a feature request to see if that can be maybe more customizable. I think what basically happened was before we did have all those same kind of links there, it was just, they were, they looked a little bit differently. They were just like kind of see-through and didn't have the actual logos and colors. I think that was the main change with that. It didn't have as many of them. like you would click on them and it would bring up the others, like the other options. But I don't care. Like for me, I don't care. But one of the guys that works for me, he uses a laptop. And like that takes up a lot of real estate in the screen. If you're looking at it on a laptop, like it makes, like it's like a big distraction. So, but it's also not the envelope. I see. He could, if he wanted to, just kind of hide that social bar and then put each one of those as fields. So like the LinkedIn field in the layout has the clickable button at the end of the field. Yeah, the only one that he would ever use is LinkedIn, but we already have the LinkedIn field on our fields. Right. Yes. So maybe he would want to hide that just in general on the left there. Yeah. Yeah. You could do that under the customize button where you're, you know, we're adjusting the fields there. There's at the top, it says like social networking show or hide. Yeah. Yep. I did find that. And it just gets rid of all of them instead of. Right. There's no way to like pick and choose. Okay. All right. Good deal. All right. I certainly appreciate your help. Yeah, happy to help anytime. If anything else comes up, let us know, and we'll help you out. Awesome. Sounds good. Thanks. Have a good one.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1999.078295,
+    "salad_processing_time": 474.27074337005615,
+    "overall_processing_time": 1999.078295,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Mini-Sequence Technology.  This is Garrett.  How may I help you? Garrett, this is JP Wright.",
+    "job_id": "9dcb6019-00ed-410d-b96e-6fb984d6653a",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Mini-Sequence Technology.  This is Garrett.  How may I help you? Garrett, this is JP Wright.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3084771453036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

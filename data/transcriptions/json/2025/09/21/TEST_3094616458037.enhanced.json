@@ -1,0 +1,164 @@
+{
+  "recording_id": "TEST_3094616458037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T12:54:55.062892Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "14:30:00",
+    "duration_seconds": 240,
+    "direction": "inbound",
+    "from": {
+      "number": "+18475551234",
+      "name": "Chuck Draper",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "+18005559999",
+      "name": "Main Sequence Support",
+      "company": ""
+    },
+    "file_size_bytes": 960000
+  },
+  "transcription": {
+    "text": "Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hey, Garrett. Chuck Draper. I've got an account with you guys. And just wondering, are you guys having any server issues? I think for the last five hours, I've had some real slow change in screen from PC Recruiter. Yeah, we did have a couple customers report that. Let me gather some information about your database here.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 0.99,
+    "word_count": 65,
+    "duration_seconds": 0,
+    "processing_time_seconds": 0,
+    "salad_processing_time": 0,
+    "overall_processing_time": 0,
+    "segments": [
+      {
+        "id": 0,
+        "speaker": "agent",
+        "start": 0.0,
+        "end": 5.2,
+        "text": "Thank you for calling Main Sequence Technology. This is Garrett. How may I help you?",
+        "confidence": 0.97
+      },
+      {
+        "id": 1,
+        "speaker": "customer",
+        "start": 5.5,
+        "end": 15.3,
+        "text": "Hey, Garrett. Chuck Draper. I've got an account with you guys. And just wondering, are you guys having any server issues?",
+        "confidence": 0.94
+      }
+    ],
+    "word_segments": [],
+    "speakers": [
+      {
+        "id": "agent",
+        "label": "Agent",
+        "speaking_time": 5.2,
+        "segment_count": 1,
+        "average_confidence": 0.97
+      },
+      {
+        "id": "customer",
+        "label": "Customer",
+        "speaking_time": 9.8,
+        "segment_count": 1,
+        "average_confidence": 0.94
+      }
+    ],
+    "srt_content": "",
+    "summary": "Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "job_id": "",
+    "timestamps": {}
+  },
+  "ai_analysis": {
+    "summary": "Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [
+      {
+        "timestamp": 0.0,
+        "segment_id": 0,
+        "type": "issue_reported",
+        "text": "Thank you for calling Main Sequence Technology. This is Garrett. How may I help you?",
+        "speaker": "agent"
+      },
+      {
+        "timestamp": 5.5,
+        "segment_id": 1,
+        "type": "issue_reported",
+        "text": "Hey, Garrett. Chuck Draper. I've got an account with you guys. And just wondering, are you guys having any server issues?",
+        "speaker": "customer"
+      }
+    ],
+    "conversation_flow": {
+      "speaker_changes": 2,
+      "total_segments": 2,
+      "agent_speaking_percentage": 34.67,
+      "customer_speaking_percentage": 65.33,
+      "average_turn_duration": 7.5,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "1eeU_XAAgN5Wkw_Z5T5zz9STZjT2Hx17Y",
+    "google_drive_url": "https://drive.google.com/file/d/1eeU_XAAgN5Wkw_Z5T5zz9STZjT2Hx17Y/view",
+    "local_path": "/data/transcriptions/json/2025/09/21/TEST_3094616458037.json",
+    "backup_status": "completed",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

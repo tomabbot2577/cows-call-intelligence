@@ -1,0 +1,112 @@
+{
+  "recording_id": "3037020781036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:47:53.646550Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:47:53",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hi, Garrett. My name is Amy Roch. I work with Edna Rice, Executive Recruiters. I have a roll-up, and I need to do – basically, I need to delete the whole roll-up, like all the people in there. Okay. So you would just go to Select at the top left of that roll-up where you can select all results? Okay. I don't want to delete all the people just from the roll-up. Like I want to delete them all completely from the database. Right. Yep. Absolutely. So just do the select all results so that the check boxes are selected on all of them. And then up in your action menu, you might have to click on the three horizontal lines to see all your action menus. There will be a delete from database. It's a trash can icon. Okay. Hold on. Yep. I see it. Okay. Click on that. Click on that. Yep. It says warnings records will be deleted from database. Then do I want to leave checked, placed, deleted items into Recycle Bin? Yeah, I would recommend putting them in Recycling Bin. Okay, and then just push Delete? Delete, yep. Okay, and it's a whole bunch of them, so it's going to take a little bit. Okay, gotcha. All right, yeah, because I actually watched Robin Montoni's video on searching, and she said you could do all the ones that have no contact information, like no phone, no email, all that stuff. And I was like, oh, this is really smart. I can get all the people that have nothing out of here. And so I did what she said, and I was like, oh, but now I don't know how to delete them all. Let me call and find out. Yeah, that's a good data cleanup measure for sure. Yeah, and that's what she said in the video, and I was like, oh, yeah, we've been wanting to do this. I just didn't know how to do it. So it was really simple when she, you know, she went through, okay, this is how you make the, and now I have that, um, query saved. So I could do it once a year or something. So, uh, great. Okay. That's easy. I'm just going to let it run and do all those deletes and then, um, I'll be done. Thank you so much. That's all I needed. Yeah. Reach out if you need anything else. Okay, great. Thanks so much, Garrett. Thanks. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1116.030427,
+    "salad_processing_time": 23.049931049346924,
+    "overall_processing_time": 1116.030427,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "job_id": "fcc82854-9e61-41c9-a90c-dcd9c66305b5",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3037020781036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

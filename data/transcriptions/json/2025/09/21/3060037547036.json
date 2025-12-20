@@ -1,0 +1,95 @@
+{
+  "recording_id": "3060037547036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:08:32.496714Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:08:32",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hey, Tyler Scott Shapiro. How are you doing? Busy morning. Busy morning. Okay. Easy question. So I'm in PCR, and you know across when I'm on, for instance, a roll-up list, and I have everything across the top, functional title, activity, name, title, company name, yada, yada, yada, and all the way to the right is email address. How do I tighten up what I'm seeing so that I have less and so that email address is more visible on the screen when I pull up a roll-up list? Yeah. So what you can do is if you're in any roll-up list, you can go into the options menu. I'm sorry, go where? Into the options menu in that roll-up, like where you would go to export it and things like that. So it's the action menu, yeah. And then you should see a customize or configure option in there. It'll be like a little gear icon. Oh, configure. Was that it? Yep. and that'll bring up the roll-up list layout. So what you can do from there is either add or remove fields that you don't need, or you can move things up. So like how you have email address at the bottom, you could just click on where it says predefined email address and move it closer to the top. Okay, so I'm in the configure roll-up list, and I'm not even seeing email as one of the predefined. You'll have to scroll down in the list. Oh, I see. Okay. Oh, never mind. Okay. So, all right. So if I wanted to, okay, and then, oh, I see. Oh, so I could, so before I do anything. So if I click on email address, oh, I see how I can just move it. Awesome. Okay. Got it. Yep. And then you would just hit save when you were done and then reload the roll-up list, and it will show the changes that you made. Awesome. All right. Very good, Tyler. Thank you. Yep. Not a problem. You have a great day. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1744.823626,
+    "salad_processing_time": 10.681481122970581,
+    "overall_processing_time": 1744.823626,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler Scott Shapiro.",
+    "job_id": "fb702998-c2f5-40aa-99ad-c15dcb1c3fc3",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler Scott Shapiro.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3060037547036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "recording_id": "3015002974036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:28:34.671235Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:28:34",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling. This is Brandon. How can I help you? Hello, Brandon. It's Jim with PC Recruiter. I got your inquiry through our website. I wanted to give you a call, see if I could help. Hey, how are you? I'm well. I'm well. So we already have PC Recruiter. I'm trying to better understand how the AI works. Okay. Have you seen it? Have you clicked into it and played around with it at all? and I'm not okay yeah that should be in your database already and what it's going to do is it's going to be I think primarily three areas there's content generators on the candidate summary the job description and any email field like any email send screen it's going to generate it kind of help you generate an email you kind of kind of get some prompts and everything like that probably the best thing to do may I send you over the there's a link to a video and a little explanation of what each part does it'll show you where to find it how to use it and then if you have questions reach out to me or tech support any of us can answer any questions about it if that would work that would be good okay let me send it over and I've got Brandon at very tough management group calm mm-hmm Perfect. I'll send it over shortly. And then any questions or anything, just give us a call back, but that'll kind of give you the basics. It'll kind of give you a general walkthrough. Okay. Sounds good. Very well. All right. Thanks. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 468.011465,
+    "salad_processing_time": 15.743354082107544,
+    "overall_processing_time": 468.011465,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling.  This is Brandon.  How can I help you? Hello, Brandon.",
+    "job_id": "3805ee64-93c2-4621-9e09-e4d270bd4d7a",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling.  This is Brandon.  How can I help you? Hello, Brandon.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3015002974036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

@@ -1,0 +1,4821 @@
+{
+  "recording_id": "2994792538037",
+  "version": "2.0",
+  "timestamp": "2025-12-19T17:29:34.483245Z",
+  "call_metadata": {
+    "date": "2025-12-19",
+    "time": "17:28:59",
+    "duration_seconds": 226.728,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 907245
+  },
+  "transcription": {
+    "text": "Thank you for calling Nain Sequence Technology. This is Garrett. How may I help you? Hi, Garrett. This is Erica Eichelbohm with Morgan Consulting Resources. And I have a question about fixing the settings in PCR to send email notifications when we receive an application through our website. Oh, okay. Let me pull up your database here. Morgan Consulting. Okay. And do you have – do you know if you have an automation already set up for that and it stopped working or you need to set up that automation? We have it set up and it stopped working on May 29th for everyone. Okay. Let's check a few things. Thank you. Okay, that's probably where the issue is. So the database has an email address that it sends these emails from. It's not tied to any username. but it's the settings live in the system settings up at the top so let's see do you have admin access do you know to the database I don't know I don't think okay we can check if you if you go to system in the main menu of PCR look for email setup on the left? Okay, system email setup, okay. And then on the right, do you have an option that says outgoing mail settings? No. Okay, so that's something that somebody with admin access would need to change, but the outgoing mail email address lost the connection from PCR to the email provider, Office 365. So Let me see what you have here. The email that was plugged in is Nicole at MorganConsulting.com. So that just needs to be reconnected. Okay. Do you want me to email you those steps to get back to the... Yeah, that would be great. Okay, perfect. Can you copy Nicole at MorganConsulting.com on that email so she can reactivate? Yeah, absolutely. Okay. All right. I will send that out now. Any other questions that you have? Any other issues? Nope. Oh, actually, when she reactivates her email, will it send all the former, like everything since May 29th, or will it just resume going forward? It'll just resume going forward. It won't do anything retroactive. Okay, gotcha. Okay, well, that sounds like it's going to be fixed then. Yep, absolutely. Just reconnecting there. So, yeah, if you do have trouble, though, after I send that email, just hit reply and we can walk you through it. Awesome. Thank you so much. Thanks. Have a good one. You too. Bye-bye. Bye.",
+    "confidence": 0.9500000000000007,
+    "language": "en-US",
+    "language_probability": 0.99,
+    "word_count": 417,
+    "duration_seconds": 226.728,
+    "processing_time_seconds": 66.3708884716034,
+    "salad_processing_time": 59.70258641242981,
+    "overall_processing_time": 0,
+    "segments": [
+      {
+        "id": 0,
+        "start": 1.667,
+        "end": 4.117,
+        "text": "Thank you for calling Nain Sequence Technology.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 1,
+        "start": 4.98,
+        "end": 5.476,
+        "text": "This is Garrett.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 2,
+        "start": 5.884,
+        "end": 6.599,
+        "text": "How may I help you?",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 3,
+        "start": 7.605,
+        "end": 8.036,
+        "text": "Hi, Garrett.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "id": 4,
+        "start": 8.3,
+        "end": 10.535,
+        "text": "This is Erica Eichelbohm with Morgan Consulting Resources.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "id": 5,
+        "start": 11.84,
+        "end": 20.759,
+        "text": "And I have a question about fixing the settings in PCR to send email notifications when we receive an application through our website.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "id": 6,
+        "start": 22.04,
+        "end": 22.555,
+        "text": "Oh, okay.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "id": 7,
+        "start": 23.26,
+        "end": 25.471,
+        "text": "Let me pull up your database here.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "id": 8,
+        "start": 27.4,
+        "end": 27.745,
+        "text": "Morgan Consulting.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "id": 9,
+        "start": 28.9,
+        "end": 28.984,
+        "text": "Okay.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "id": 10,
+        "start": 33.48,
+        "end": 36.266,
+        "text": "And do you have – do you know if you have an automation already set up for that and it stopped working or you need to set up that automation?",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 11,
+        "start": 43.362,
+        "end": 47.539,
+        "text": "We have it set up and it stopped working on May 29th for everyone.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "id": 12,
+        "start": 47.68,
+        "end": 47.762,
+        "text": "Okay.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "id": 13,
+        "start": 49.647,
+        "end": 50.796,
+        "text": "Let's check a few things.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "id": 14,
+        "start": 83.28,
+        "end": 83.42,
+        "text": "Thank you.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "id": 15,
+        "start": 99.26,
+        "end": 100.477,
+        "text": "Okay, that's probably where the issue is.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 16,
+        "start": 100.82,
+        "end": 103.288,
+        "text": "So the database has an email address that it sends these emails from.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 17,
+        "start": 107.46,
+        "end": 108.84,
+        "text": "It's not tied to any username.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 18,
+        "start": 108.92,
+        "end": 133.76,
+        "text": "but it's the settings live in the system settings up at the top so let's see do you have admin access do you know to the database I don't know I don't think okay we can check if you if you go to system in the main menu of PCR look for email setup on the left?",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 19,
+        "start": 133.76,
+        "end": 140.02,
+        "text": "Okay, system email setup, okay.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "id": 20,
+        "start": 140.02,
+        "end": 144.24,
+        "text": "And then on the right, do you have an option that says outgoing mail settings?",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 21,
+        "start": 144.24,
+        "end": 145.92,
+        "text": "No.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "id": 22,
+        "start": 145.92,
+        "end": 160.56,
+        "text": "Okay, so that's something that somebody with admin access would need to change, but the outgoing mail email address lost the connection from PCR to the email provider, Office 365.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 23,
+        "start": 160.56,
+        "end": 163.62,
+        "text": "So Let me see what you have here.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 24,
+        "start": 163.62,
+        "end": 167.24,
+        "text": "The email that was plugged in is Nicole at MorganConsulting.com.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 25,
+        "start": 167.24,
+        "end": 169.64,
+        "text": "So that just needs to be reconnected.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 26,
+        "start": 170.64,
+        "end": 171.32,
+        "text": "Okay.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "id": 27,
+        "start": 171.34,
+        "end": 174.66,
+        "text": "Do you want me to email you those steps to get back to the...",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 28,
+        "start": 175.14,
+        "end": 176.14,
+        "text": "Yeah, that would be great.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "id": 29,
+        "start": 176.4,
+        "end": 177.5,
+        "text": "Okay, perfect.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 30,
+        "start": 177.7,
+        "end": 182.24,
+        "text": "Can you copy Nicole at MorganConsulting.com on that email so she can reactivate?",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "id": 31,
+        "start": 182.72,
+        "end": 183.8,
+        "text": "Yeah, absolutely.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 32,
+        "start": 184.26,
+        "end": 184.6,
+        "text": "Okay.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "id": 33,
+        "start": 185.02,
+        "end": 186.14,
+        "text": "All right.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 34,
+        "start": 186.14,
+        "end": 187.46,
+        "text": "I will send that out now.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 35,
+        "start": 187.46,
+        "end": 190.42,
+        "text": "Any other questions that you have?",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 36,
+        "start": 190.42,
+        "end": 191.36,
+        "text": "Any other issues?",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 37,
+        "start": 191.6,
+        "end": 192.74,
+        "text": "Nope.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "id": 38,
+        "start": 192.74,
+        "end": 202.76,
+        "text": "Oh, actually, when she reactivates her email, will it send all the former, like everything since May 29th, or will it just resume going forward?",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "id": 39,
+        "start": 203.44,
+        "end": 204.94,
+        "text": "It'll just resume going forward.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 40,
+        "start": 204.94,
+        "end": 206.92,
+        "text": "It won't do anything retroactive.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 41,
+        "start": 207.82,
+        "end": 208.58,
+        "text": "Okay, gotcha.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "id": 42,
+        "start": 208.58,
+        "end": 211.74,
+        "text": "Okay, well, that sounds like it's going to be fixed then.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "id": 43,
+        "start": 212.8,
+        "end": 213.74,
+        "text": "Yep, absolutely.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 44,
+        "start": 213.74,
+        "end": 214.96,
+        "text": "Just reconnecting there.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 45,
+        "start": 214.96,
+        "end": 220.28,
+        "text": "So, yeah, if you do have trouble, though, after I send that email, just hit reply and we can walk you through it.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 46,
+        "start": 224.71,
+        "end": 224.918,
+        "text": "Awesome.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 47,
+        "start": 225.759,
+        "end": 226.59,
+        "text": "Thank you so much.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 48,
+        "start": 226.382,
+        "end": 226.59,
+        "text": "Thanks.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 49,
+        "start": 225.759,
+        "end": 226.59,
+        "text": "Have a good one.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 50,
+        "start": 226.174,
+        "end": 226.59,
+        "text": "You too.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 51,
+        "start": 226.382,
+        "end": 226.59,
+        "text": "Bye-bye.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "id": 52,
+        "start": 226.382,
+        "end": 226.59,
+        "text": "Bye.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_01"
+      }
+    ],
+    "word_segments": [
+      {
+        "start": 1.667,
+        "end": 1.848,
+        "timestamp": [
+          1.667,
+          1.848
+        ],
+        "word": "Thank",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 1.888,
+        "end": 1.968,
+        "timestamp": [
+          1.888,
+          1.968
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 1.988,
+        "end": 2.089,
+        "timestamp": [
+          1.988,
+          2.089
+        ],
+        "word": "for",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 2.109,
+        "end": 2.33,
+        "timestamp": [
+          2.109,
+          2.33
+        ],
+        "word": "calling",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 2.35,
+        "end": 2.571,
+        "timestamp": [
+          2.35,
+          2.571
+        ],
+        "word": "Nain",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 2.591,
+        "end": 2.932,
+        "timestamp": [
+          2.591,
+          2.932
+        ],
+        "word": "Sequence",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 3.073,
+        "end": 4.117,
+        "timestamp": [
+          3.073,
+          4.117
+        ],
+        "word": "Technology.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 4.98,
+        "end": 5.125,
+        "timestamp": [
+          4.98,
+          5.125
+        ],
+        "word": "This",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 5.249,
+        "end": 5.29,
+        "timestamp": [
+          5.249,
+          5.29
+        ],
+        "word": "is",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 5.311,
+        "end": 5.476,
+        "timestamp": [
+          5.311,
+          5.476
+        ],
+        "word": "Garrett.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 5.884,
+        "end": 5.966,
+        "timestamp": [
+          5.884,
+          5.966
+        ],
+        "word": "How",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 5.987,
+        "end": 6.048,
+        "timestamp": [
+          5.987,
+          6.048
+        ],
+        "word": "may",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 6.068,
+        "end": 6.089,
+        "timestamp": [
+          6.068,
+          6.089
+        ],
+        "word": "I",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 6.17,
+        "end": 6.456,
+        "timestamp": [
+          6.17,
+          6.456
+        ],
+        "word": "help",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 6.517,
+        "end": 6.599,
+        "timestamp": [
+          6.517,
+          6.599
+        ],
+        "word": "you?",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 7.605,
+        "end": 7.708,
+        "timestamp": [
+          7.605,
+          7.708
+        ],
+        "word": "Hi,",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 7.728,
+        "end": 8.036,
+        "timestamp": [
+          7.728,
+          8.036
+        ],
+        "word": "Garrett.",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 8.3,
+        "end": 8.663,
+        "timestamp": [
+          8.3,
+          8.663
+        ],
+        "word": "This",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 8.803,
+        "end": 8.884,
+        "timestamp": [
+          8.803,
+          8.884
+        ],
+        "word": "is",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 8.965,
+        "end": 9.146,
+        "timestamp": [
+          8.965,
+          9.146
+        ],
+        "word": "Erica",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 9.166,
+        "end": 9.589,
+        "timestamp": [
+          9.166,
+          9.589
+        ],
+        "word": "Eichelbohm",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 9.609,
+        "end": 9.709,
+        "timestamp": [
+          9.609,
+          9.709
+        ],
+        "word": "with",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 9.75,
+        "end": 9.931,
+        "timestamp": [
+          9.75,
+          9.931
+        ],
+        "word": "Morgan",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 9.951,
+        "end": 10.192,
+        "timestamp": [
+          9.951,
+          10.192
+        ],
+        "word": "Consulting",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 10.313,
+        "end": 10.535,
+        "timestamp": [
+          10.313,
+          10.535
+        ],
+        "word": "Resources.",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 11.84,
+        "end": 12.001,
+        "timestamp": [
+          11.84,
+          12.001
+        ],
+        "word": "And",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 12.041,
+        "end": 12.201,
+        "timestamp": [
+          12.041,
+          12.201
+        ],
+        "word": "I",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 12.281,
+        "end": 12.642,
+        "timestamp": [
+          12.281,
+          12.642
+        ],
+        "word": "have",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 12.662,
+        "end": 12.682,
+        "timestamp": [
+          12.662,
+          12.682
+        ],
+        "word": "a",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 13.243,
+        "end": 13.764,
+        "timestamp": [
+          13.243,
+          13.764
+        ],
+        "word": "question",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 13.804,
+        "end": 14.085,
+        "timestamp": [
+          13.804,
+          14.085
+        ],
+        "word": "about",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 14.125,
+        "end": 14.305,
+        "timestamp": [
+          14.125,
+          14.305
+        ],
+        "word": "fixing",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 14.325,
+        "end": 14.466,
+        "timestamp": [
+          14.325,
+          14.466
+        ],
+        "word": "the",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 14.486,
+        "end": 17.512,
+        "timestamp": [
+          14.486,
+          17.512
+        ],
+        "word": "settings",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 17.713,
+        "end": 17.893,
+        "timestamp": [
+          17.713,
+          17.893
+        ],
+        "word": "in",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 18.013,
+        "end": 18.314,
+        "timestamp": [
+          18.013,
+          18.314
+        ],
+        "word": "PCR",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 18.454,
+        "end": 18.614,
+        "timestamp": [
+          18.454,
+          18.614
+        ],
+        "word": "to",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 18.635,
+        "end": 18.715,
+        "timestamp": [
+          18.635,
+          18.715
+        ],
+        "word": "send",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 18.735,
+        "end": 18.935,
+        "timestamp": [
+          18.735,
+          18.935
+        ],
+        "word": "email",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 18.955,
+        "end": 19.276,
+        "timestamp": [
+          18.955,
+          19.276
+        ],
+        "word": "notifications",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 19.296,
+        "end": 19.376,
+        "timestamp": [
+          19.296,
+          19.376
+        ],
+        "word": "when",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 19.396,
+        "end": 19.436,
+        "timestamp": [
+          19.396,
+          19.436
+        ],
+        "word": "we",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 19.456,
+        "end": 19.637,
+        "timestamp": [
+          19.456,
+          19.637
+        ],
+        "word": "receive",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 19.657,
+        "end": 19.697,
+        "timestamp": [
+          19.657,
+          19.697
+        ],
+        "word": "an",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 19.757,
+        "end": 20.258,
+        "timestamp": [
+          19.757,
+          20.258
+        ],
+        "word": "application",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 20.278,
+        "end": 20.478,
+        "timestamp": [
+          20.278,
+          20.478
+        ],
+        "word": "through",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 20.498,
+        "end": 20.559,
+        "timestamp": [
+          20.498,
+          20.559
+        ],
+        "word": "our",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 20.579,
+        "end": 20.759,
+        "timestamp": [
+          20.579,
+          20.759
+        ],
+        "word": "website.",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 22.04,
+        "end": 22.349,
+        "timestamp": [
+          22.04,
+          22.349
+        ],
+        "word": "Oh,",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 22.411,
+        "end": 22.555,
+        "timestamp": [
+          22.411,
+          22.555
+        ],
+        "word": "okay.",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 23.26,
+        "end": 23.421,
+        "timestamp": [
+          23.26,
+          23.421
+        ],
+        "word": "Let",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 23.561,
+        "end": 23.642,
+        "timestamp": [
+          23.561,
+          23.642
+        ],
+        "word": "me",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 24.064,
+        "end": 24.164,
+        "timestamp": [
+          24.064,
+          24.164
+        ],
+        "word": "pull",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 24.225,
+        "end": 24.285,
+        "timestamp": [
+          24.225,
+          24.285
+        ],
+        "word": "up",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 24.828,
+        "end": 24.988,
+        "timestamp": [
+          24.828,
+          24.988
+        ],
+        "word": "your",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 25.008,
+        "end": 25.25,
+        "timestamp": [
+          25.008,
+          25.25
+        ],
+        "word": "database",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 25.27,
+        "end": 25.471,
+        "timestamp": [
+          25.27,
+          25.471
+        ],
+        "word": "here.",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 27.4,
+        "end": 27.522,
+        "timestamp": [
+          27.4,
+          27.522
+        ],
+        "word": "Morgan",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 27.542,
+        "end": 27.745,
+        "timestamp": [
+          27.542,
+          27.745
+        ],
+        "word": "Consulting.",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 28.9,
+        "end": 28.984,
+        "timestamp": [
+          28.9,
+          28.984
+        ],
+        "word": "Okay.",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 33.48,
+        "end": 33.54,
+        "timestamp": [
+          33.48,
+          33.54
+        ],
+        "word": "And",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 33.56,
+        "end": 33.6,
+        "timestamp": [
+          33.56,
+          33.6
+        ],
+        "word": "do",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 33.62,
+        "end": 33.68,
+        "timestamp": [
+          33.62,
+          33.68
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 33.7,
+        "end": 33.781,
+        "timestamp": [
+          33.7,
+          33.781
+        ],
+        "word": "have",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 33.78,
+        "end": 33.91,
+        "timestamp": [
+          33.78,
+          33.91
+        ],
+        "word": "–",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 33.821,
+        "end": 33.861,
+        "timestamp": [
+          33.821,
+          33.861
+        ],
+        "word": "do",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 33.881,
+        "end": 33.941,
+        "timestamp": [
+          33.881,
+          33.941
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 33.961,
+        "end": 34.041,
+        "timestamp": [
+          33.961,
+          34.041
+        ],
+        "word": "know",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 34.061,
+        "end": 34.101,
+        "timestamp": [
+          34.061,
+          34.101
+        ],
+        "word": "if",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 34.121,
+        "end": 34.181,
+        "timestamp": [
+          34.121,
+          34.181
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 34.202,
+        "end": 34.282,
+        "timestamp": [
+          34.202,
+          34.282
+        ],
+        "word": "have",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 34.302,
+        "end": 34.342,
+        "timestamp": [
+          34.302,
+          34.342
+        ],
+        "word": "an",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 34.362,
+        "end": 34.562,
+        "timestamp": [
+          34.362,
+          34.562
+        ],
+        "word": "automation",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 34.582,
+        "end": 34.723,
+        "timestamp": [
+          34.582,
+          34.723
+        ],
+        "word": "already",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 34.743,
+        "end": 34.803,
+        "timestamp": [
+          34.743,
+          34.803
+        ],
+        "word": "set",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 34.823,
+        "end": 34.863,
+        "timestamp": [
+          34.823,
+          34.863
+        ],
+        "word": "up",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 34.883,
+        "end": 34.943,
+        "timestamp": [
+          34.883,
+          34.943
+        ],
+        "word": "for",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 34.963,
+        "end": 35.043,
+        "timestamp": [
+          34.963,
+          35.043
+        ],
+        "word": "that",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 35.063,
+        "end": 35.124,
+        "timestamp": [
+          35.063,
+          35.124
+        ],
+        "word": "and",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 35.144,
+        "end": 35.184,
+        "timestamp": [
+          35.144,
+          35.184
+        ],
+        "word": "it",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 35.204,
+        "end": 35.344,
+        "timestamp": [
+          35.204,
+          35.344
+        ],
+        "word": "stopped",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 35.364,
+        "end": 35.504,
+        "timestamp": [
+          35.364,
+          35.504
+        ],
+        "word": "working",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 35.524,
+        "end": 35.564,
+        "timestamp": [
+          35.524,
+          35.564
+        ],
+        "word": "or",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 35.584,
+        "end": 35.645,
+        "timestamp": [
+          35.584,
+          35.645
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 35.665,
+        "end": 35.745,
+        "timestamp": [
+          35.665,
+          35.745
+        ],
+        "word": "need",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 35.765,
+        "end": 35.805,
+        "timestamp": [
+          35.765,
+          35.805
+        ],
+        "word": "to",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 35.825,
+        "end": 35.885,
+        "timestamp": [
+          35.825,
+          35.885
+        ],
+        "word": "set",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 35.905,
+        "end": 35.945,
+        "timestamp": [
+          35.905,
+          35.945
+        ],
+        "word": "up",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 35.965,
+        "end": 36.045,
+        "timestamp": [
+          35.965,
+          36.045
+        ],
+        "word": "that",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 36.066,
+        "end": 36.266,
+        "timestamp": [
+          36.066,
+          36.266
+        ],
+        "word": "automation?",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 43.362,
+        "end": 43.502,
+        "timestamp": [
+          43.362,
+          43.502
+        ],
+        "word": "We",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 43.522,
+        "end": 43.603,
+        "timestamp": [
+          43.522,
+          43.603
+        ],
+        "word": "have",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 43.623,
+        "end": 43.663,
+        "timestamp": [
+          43.623,
+          43.663
+        ],
+        "word": "it",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 43.683,
+        "end": 43.743,
+        "timestamp": [
+          43.683,
+          43.743
+        ],
+        "word": "set",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 43.763,
+        "end": 43.804,
+        "timestamp": [
+          43.763,
+          43.804
+        ],
+        "word": "up",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 45.35,
+        "end": 45.41,
+        "timestamp": [
+          45.35,
+          45.41
+        ],
+        "word": "and",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 45.43,
+        "end": 45.471,
+        "timestamp": [
+          45.43,
+          45.471
+        ],
+        "word": "it",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 45.491,
+        "end": 45.651,
+        "timestamp": [
+          45.491,
+          45.651
+        ],
+        "word": "stopped",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 45.672,
+        "end": 45.872,
+        "timestamp": [
+          45.672,
+          45.872
+        ],
+        "word": "working",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 45.892,
+        "end": 45.933,
+        "timestamp": [
+          45.892,
+          45.933
+        ],
+        "word": "on",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 45.953,
+        "end": 46.013,
+        "timestamp": [
+          45.953,
+          46.013
+        ],
+        "word": "May",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 46.033,
+        "end": 46.073,
+        "timestamp": [
+          46.033,
+          46.073
+        ],
+        "word": "29th",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 46.093,
+        "end": 46.154,
+        "timestamp": [
+          46.093,
+          46.154
+        ],
+        "word": "for",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 46.174,
+        "end": 47.539,
+        "timestamp": [
+          46.174,
+          47.539
+        ],
+        "word": "everyone.",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 47.68,
+        "end": 47.762,
+        "timestamp": [
+          47.68,
+          47.762
+        ],
+        "word": "Okay.",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 49.647,
+        "end": 50.05,
+        "timestamp": [
+          49.647,
+          50.05
+        ],
+        "word": "Let's",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 50.07,
+        "end": 50.292,
+        "timestamp": [
+          50.07,
+          50.292
+        ],
+        "word": "check",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 50.312,
+        "end": 50.373,
+        "timestamp": [
+          50.312,
+          50.373
+        ],
+        "word": "a",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 50.393,
+        "end": 50.534,
+        "timestamp": [
+          50.393,
+          50.534
+        ],
+        "word": "few",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 50.554,
+        "end": 50.796,
+        "timestamp": [
+          50.554,
+          50.796
+        ],
+        "word": "things.",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 83.28,
+        "end": 83.35,
+        "timestamp": [
+          83.28,
+          83.35
+        ],
+        "word": "Thank",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 83.35,
+        "end": 83.42,
+        "timestamp": [
+          83.35,
+          83.42
+        ],
+        "word": "you.",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 99.26,
+        "end": 99.402,
+        "timestamp": [
+          99.26,
+          99.402
+        ],
+        "word": "Okay,",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 99.544,
+        "end": 99.747,
+        "timestamp": [
+          99.544,
+          99.747
+        ],
+        "word": "that's",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 99.767,
+        "end": 99.97,
+        "timestamp": [
+          99.767,
+          99.97
+        ],
+        "word": "probably",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 99.99,
+        "end": 100.092,
+        "timestamp": [
+          99.99,
+          100.092
+        ],
+        "word": "where",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 100.112,
+        "end": 100.193,
+        "timestamp": [
+          100.112,
+          100.193
+        ],
+        "word": "the",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 100.234,
+        "end": 100.396,
+        "timestamp": [
+          100.234,
+          100.396
+        ],
+        "word": "issue",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 100.436,
+        "end": 100.477,
+        "timestamp": [
+          100.436,
+          100.477
+        ],
+        "word": "is.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 100.82,
+        "end": 100.92,
+        "timestamp": [
+          100.82,
+          100.92
+        ],
+        "word": "So",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 100.94,
+        "end": 101.041,
+        "timestamp": [
+          100.94,
+          101.041
+        ],
+        "word": "the",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 101.061,
+        "end": 101.863,
+        "timestamp": [
+          101.061,
+          101.863
+        ],
+        "word": "database",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 101.884,
+        "end": 101.944,
+        "timestamp": [
+          101.884,
+          101.944
+        ],
+        "word": "has",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 101.964,
+        "end": 102.024,
+        "timestamp": [
+          101.964,
+          102.024
+        ],
+        "word": "an",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 102.044,
+        "end": 102.164,
+        "timestamp": [
+          102.044,
+          102.164
+        ],
+        "word": "email",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 102.185,
+        "end": 102.506,
+        "timestamp": [
+          102.185,
+          102.506
+        ],
+        "word": "address",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 102.586,
+        "end": 102.666,
+        "timestamp": [
+          102.586,
+          102.666
+        ],
+        "word": "that",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 102.686,
+        "end": 102.726,
+        "timestamp": [
+          102.686,
+          102.726
+        ],
+        "word": "it",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 102.746,
+        "end": 102.927,
+        "timestamp": [
+          102.746,
+          102.927
+        ],
+        "word": "sends",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 102.947,
+        "end": 103.047,
+        "timestamp": [
+          102.947,
+          103.047
+        ],
+        "word": "these",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 103.067,
+        "end": 103.188,
+        "timestamp": [
+          103.067,
+          103.188
+        ],
+        "word": "emails",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 103.208,
+        "end": 103.288,
+        "timestamp": [
+          103.208,
+          103.288
+        ],
+        "word": "from.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 107.46,
+        "end": 107.683,
+        "timestamp": [
+          107.46,
+          107.683
+        ],
+        "word": "It's",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 107.704,
+        "end": 107.785,
+        "timestamp": [
+          107.704,
+          107.785
+        ],
+        "word": "not",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 107.825,
+        "end": 108.069,
+        "timestamp": [
+          107.825,
+          108.069
+        ],
+        "word": "tied",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 108.089,
+        "end": 108.251,
+        "timestamp": [
+          108.089,
+          108.251
+        ],
+        "word": "to",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 108.312,
+        "end": 108.414,
+        "timestamp": [
+          108.312,
+          108.414
+        ],
+        "word": "any",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 108.454,
+        "end": 108.84,
+        "timestamp": [
+          108.454,
+          108.84
+        ],
+        "word": "username.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 108.92,
+        "end": 109.356,
+        "timestamp": [
+          108.92,
+          109.356
+        ],
+        "word": "but",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 109.356,
+        "end": 109.792,
+        "timestamp": [
+          109.356,
+          109.792
+        ],
+        "word": "it's",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 109.792,
+        "end": 110.227,
+        "timestamp": [
+          109.792,
+          110.227
+        ],
+        "word": "the",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 110.227,
+        "end": 110.663,
+        "timestamp": [
+          110.227,
+          110.663
+        ],
+        "word": "settings",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 110.663,
+        "end": 111.099,
+        "timestamp": [
+          110.663,
+          111.099
+        ],
+        "word": "live",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 111.099,
+        "end": 111.535,
+        "timestamp": [
+          111.099,
+          111.535
+        ],
+        "word": "in",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 111.535,
+        "end": 111.971,
+        "timestamp": [
+          111.535,
+          111.971
+        ],
+        "word": "the",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 111.971,
+        "end": 112.406,
+        "timestamp": [
+          111.971,
+          112.406
+        ],
+        "word": "system",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 112.406,
+        "end": 112.842,
+        "timestamp": [
+          112.406,
+          112.842
+        ],
+        "word": "settings",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 112.842,
+        "end": 113.278,
+        "timestamp": [
+          112.842,
+          113.278
+        ],
+        "word": "up",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 113.278,
+        "end": 113.714,
+        "timestamp": [
+          113.278,
+          113.714
+        ],
+        "word": "at",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 113.714,
+        "end": 114.149,
+        "timestamp": [
+          113.714,
+          114.149
+        ],
+        "word": "the",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 114.149,
+        "end": 114.585,
+        "timestamp": [
+          114.149,
+          114.585
+        ],
+        "word": "top",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 114.585,
+        "end": 115.021,
+        "timestamp": [
+          114.585,
+          115.021
+        ],
+        "word": "so",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 115.021,
+        "end": 115.457,
+        "timestamp": [
+          115.021,
+          115.457
+        ],
+        "word": "let's",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 115.457,
+        "end": 115.893,
+        "timestamp": [
+          115.457,
+          115.893
+        ],
+        "word": "see",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 115.893,
+        "end": 116.328,
+        "timestamp": [
+          115.893,
+          116.328
+        ],
+        "word": "do",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 116.328,
+        "end": 116.764,
+        "timestamp": [
+          116.328,
+          116.764
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 116.764,
+        "end": 117.2,
+        "timestamp": [
+          116.764,
+          117.2
+        ],
+        "word": "have",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 117.2,
+        "end": 117.636,
+        "timestamp": [
+          117.2,
+          117.636
+        ],
+        "word": "admin",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 117.636,
+        "end": 118.072,
+        "timestamp": [
+          117.636,
+          118.072
+        ],
+        "word": "access",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 118.072,
+        "end": 118.507,
+        "timestamp": [
+          118.072,
+          118.507
+        ],
+        "word": "do",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 118.507,
+        "end": 118.943,
+        "timestamp": [
+          118.507,
+          118.943
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 118.943,
+        "end": 119.379,
+        "timestamp": [
+          118.943,
+          119.379
+        ],
+        "word": "know",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 119.379,
+        "end": 119.815,
+        "timestamp": [
+          119.379,
+          119.815
+        ],
+        "word": "to",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 119.815,
+        "end": 120.251,
+        "timestamp": [
+          119.815,
+          120.251
+        ],
+        "word": "the",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 120.251,
+        "end": 120.686,
+        "timestamp": [
+          120.251,
+          120.686
+        ],
+        "word": "database",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 120.686,
+        "end": 121.122,
+        "timestamp": [
+          120.686,
+          121.122
+        ],
+        "word": "I",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 121.122,
+        "end": 121.558,
+        "timestamp": [
+          121.122,
+          121.558
+        ],
+        "word": "don't",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 121.558,
+        "end": 121.994,
+        "timestamp": [
+          121.558,
+          121.994
+        ],
+        "word": "know",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 121.994,
+        "end": 122.429,
+        "timestamp": [
+          121.994,
+          122.429
+        ],
+        "word": "I",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 122.429,
+        "end": 122.865,
+        "timestamp": [
+          122.429,
+          122.865
+        ],
+        "word": "don't",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 122.865,
+        "end": 123.301,
+        "timestamp": [
+          122.865,
+          123.301
+        ],
+        "word": "think",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 123.301,
+        "end": 123.737,
+        "timestamp": [
+          123.301,
+          123.737
+        ],
+        "word": "okay",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 123.737,
+        "end": 124.173,
+        "timestamp": [
+          123.737,
+          124.173
+        ],
+        "word": "we",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 124.173,
+        "end": 124.608,
+        "timestamp": [
+          124.173,
+          124.608
+        ],
+        "word": "can",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 124.608,
+        "end": 125.044,
+        "timestamp": [
+          124.608,
+          125.044
+        ],
+        "word": "check",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 125.044,
+        "end": 125.48,
+        "timestamp": [
+          125.044,
+          125.48
+        ],
+        "word": "if",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 125.48,
+        "end": 125.916,
+        "timestamp": [
+          125.48,
+          125.916
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 125.916,
+        "end": 126.352,
+        "timestamp": [
+          125.916,
+          126.352
+        ],
+        "word": "if",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 126.352,
+        "end": 126.787,
+        "timestamp": [
+          126.352,
+          126.787
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 126.787,
+        "end": 127.223,
+        "timestamp": [
+          126.787,
+          127.223
+        ],
+        "word": "go",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 127.223,
+        "end": 127.659,
+        "timestamp": [
+          127.223,
+          127.659
+        ],
+        "word": "to",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 127.659,
+        "end": 128.095,
+        "timestamp": [
+          127.659,
+          128.095
+        ],
+        "word": "system",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 128.095,
+        "end": 128.531,
+        "timestamp": [
+          128.095,
+          128.531
+        ],
+        "word": "in",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 128.531,
+        "end": 128.966,
+        "timestamp": [
+          128.531,
+          128.966
+        ],
+        "word": "the",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 128.966,
+        "end": 129.402,
+        "timestamp": [
+          128.966,
+          129.402
+        ],
+        "word": "main",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 129.402,
+        "end": 129.838,
+        "timestamp": [
+          129.402,
+          129.838
+        ],
+        "word": "menu",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 129.838,
+        "end": 130.274,
+        "timestamp": [
+          129.838,
+          130.274
+        ],
+        "word": "of",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 130.274,
+        "end": 130.709,
+        "timestamp": [
+          130.274,
+          130.709
+        ],
+        "word": "PCR",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 130.709,
+        "end": 131.145,
+        "timestamp": [
+          130.709,
+          131.145
+        ],
+        "word": "look",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 131.145,
+        "end": 131.581,
+        "timestamp": [
+          131.145,
+          131.581
+        ],
+        "word": "for",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 131.581,
+        "end": 132.017,
+        "timestamp": [
+          131.581,
+          132.017
+        ],
+        "word": "email",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 132.017,
+        "end": 132.453,
+        "timestamp": [
+          132.017,
+          132.453
+        ],
+        "word": "setup",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 132.453,
+        "end": 132.888,
+        "timestamp": [
+          132.453,
+          132.888
+        ],
+        "word": "on",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 132.888,
+        "end": 133.324,
+        "timestamp": [
+          132.888,
+          133.324
+        ],
+        "word": "the",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 133.324,
+        "end": 133.76,
+        "timestamp": [
+          133.324,
+          133.76
+        ],
+        "word": "left?",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 133.76,
+        "end": 135.012,
+        "timestamp": [
+          133.76,
+          135.012
+        ],
+        "word": "Okay,",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 135.012,
+        "end": 136.264,
+        "timestamp": [
+          135.012,
+          136.264
+        ],
+        "word": "system",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 136.264,
+        "end": 137.516,
+        "timestamp": [
+          136.264,
+          137.516
+        ],
+        "word": "email",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 137.516,
+        "end": 138.768,
+        "timestamp": [
+          137.516,
+          138.768
+        ],
+        "word": "setup,",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 138.768,
+        "end": 140.02,
+        "timestamp": [
+          138.768,
+          140.02
+        ],
+        "word": "okay.",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 140.02,
+        "end": 140.301,
+        "timestamp": [
+          140.02,
+          140.301
+        ],
+        "word": "And",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 140.301,
+        "end": 140.583,
+        "timestamp": [
+          140.301,
+          140.583
+        ],
+        "word": "then",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 140.583,
+        "end": 140.864,
+        "timestamp": [
+          140.583,
+          140.864
+        ],
+        "word": "on",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 140.864,
+        "end": 141.145,
+        "timestamp": [
+          140.864,
+          141.145
+        ],
+        "word": "the",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 141.145,
+        "end": 141.427,
+        "timestamp": [
+          141.145,
+          141.427
+        ],
+        "word": "right,",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 141.427,
+        "end": 141.708,
+        "timestamp": [
+          141.427,
+          141.708
+        ],
+        "word": "do",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 141.708,
+        "end": 141.989,
+        "timestamp": [
+          141.708,
+          141.989
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 141.989,
+        "end": 142.271,
+        "timestamp": [
+          141.989,
+          142.271
+        ],
+        "word": "have",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 142.271,
+        "end": 142.552,
+        "timestamp": [
+          142.271,
+          142.552
+        ],
+        "word": "an",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 142.552,
+        "end": 142.833,
+        "timestamp": [
+          142.552,
+          142.833
+        ],
+        "word": "option",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 142.833,
+        "end": 143.115,
+        "timestamp": [
+          142.833,
+          143.115
+        ],
+        "word": "that",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 143.115,
+        "end": 143.396,
+        "timestamp": [
+          143.115,
+          143.396
+        ],
+        "word": "says",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 143.396,
+        "end": 143.677,
+        "timestamp": [
+          143.396,
+          143.677
+        ],
+        "word": "outgoing",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 143.677,
+        "end": 143.959,
+        "timestamp": [
+          143.677,
+          143.959
+        ],
+        "word": "mail",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 143.959,
+        "end": 144.24,
+        "timestamp": [
+          143.959,
+          144.24
+        ],
+        "word": "settings?",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 144.976,
+        "end": 145.184,
+        "timestamp": [
+          144.976,
+          145.184
+        ],
+        "word": "No.",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 145.92,
+        "end": 146.408,
+        "timestamp": [
+          145.92,
+          146.408
+        ],
+        "word": "Okay,",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 146.408,
+        "end": 146.896,
+        "timestamp": [
+          146.408,
+          146.896
+        ],
+        "word": "so",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 146.896,
+        "end": 147.384,
+        "timestamp": [
+          146.896,
+          147.384
+        ],
+        "word": "that's",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 147.384,
+        "end": 147.872,
+        "timestamp": [
+          147.384,
+          147.872
+        ],
+        "word": "something",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 147.872,
+        "end": 148.36,
+        "timestamp": [
+          147.872,
+          148.36
+        ],
+        "word": "that",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 148.36,
+        "end": 148.848,
+        "timestamp": [
+          148.36,
+          148.848
+        ],
+        "word": "somebody",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 148.848,
+        "end": 149.336,
+        "timestamp": [
+          148.848,
+          149.336
+        ],
+        "word": "with",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 149.336,
+        "end": 149.824,
+        "timestamp": [
+          149.336,
+          149.824
+        ],
+        "word": "admin",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 149.824,
+        "end": 150.312,
+        "timestamp": [
+          149.824,
+          150.312
+        ],
+        "word": "access",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 150.312,
+        "end": 150.8,
+        "timestamp": [
+          150.312,
+          150.8
+        ],
+        "word": "would",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 150.8,
+        "end": 151.288,
+        "timestamp": [
+          150.8,
+          151.288
+        ],
+        "word": "need",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 151.288,
+        "end": 151.776,
+        "timestamp": [
+          151.288,
+          151.776
+        ],
+        "word": "to",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 151.776,
+        "end": 152.264,
+        "timestamp": [
+          151.776,
+          152.264
+        ],
+        "word": "change,",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 152.264,
+        "end": 152.752,
+        "timestamp": [
+          152.264,
+          152.752
+        ],
+        "word": "but",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 152.752,
+        "end": 153.24,
+        "timestamp": [
+          152.752,
+          153.24
+        ],
+        "word": "the",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 153.24,
+        "end": 153.728,
+        "timestamp": [
+          153.24,
+          153.728
+        ],
+        "word": "outgoing",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 153.728,
+        "end": 154.216,
+        "timestamp": [
+          153.728,
+          154.216
+        ],
+        "word": "mail",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 154.216,
+        "end": 154.704,
+        "timestamp": [
+          154.216,
+          154.704
+        ],
+        "word": "email",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 154.704,
+        "end": 155.192,
+        "timestamp": [
+          154.704,
+          155.192
+        ],
+        "word": "address",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 155.192,
+        "end": 155.68,
+        "timestamp": [
+          155.192,
+          155.68
+        ],
+        "word": "lost",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 155.68,
+        "end": 156.168,
+        "timestamp": [
+          155.68,
+          156.168
+        ],
+        "word": "the",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 156.168,
+        "end": 156.656,
+        "timestamp": [
+          156.168,
+          156.656
+        ],
+        "word": "connection",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 156.656,
+        "end": 157.144,
+        "timestamp": [
+          156.656,
+          157.144
+        ],
+        "word": "from",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 157.144,
+        "end": 157.632,
+        "timestamp": [
+          157.144,
+          157.632
+        ],
+        "word": "PCR",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 157.632,
+        "end": 158.12,
+        "timestamp": [
+          157.632,
+          158.12
+        ],
+        "word": "to",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 158.12,
+        "end": 158.608,
+        "timestamp": [
+          158.12,
+          158.608
+        ],
+        "word": "the",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 158.608,
+        "end": 159.096,
+        "timestamp": [
+          158.608,
+          159.096
+        ],
+        "word": "email",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 159.096,
+        "end": 159.584,
+        "timestamp": [
+          159.096,
+          159.584
+        ],
+        "word": "provider,",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 159.584,
+        "end": 160.072,
+        "timestamp": [
+          159.584,
+          160.072
+        ],
+        "word": "Office",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 160.072,
+        "end": 160.56,
+        "timestamp": [
+          160.072,
+          160.56
+        ],
+        "word": "365.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 160.56,
+        "end": 160.942,
+        "timestamp": [
+          160.56,
+          160.942
+        ],
+        "word": "So",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 160.942,
+        "end": 161.325,
+        "timestamp": [
+          160.942,
+          161.325
+        ],
+        "word": "Let",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 161.325,
+        "end": 161.707,
+        "timestamp": [
+          161.325,
+          161.707
+        ],
+        "word": "me",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 161.708,
+        "end": 162.09,
+        "timestamp": [
+          161.708,
+          162.09
+        ],
+        "word": "see",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 162.09,
+        "end": 162.472,
+        "timestamp": [
+          162.09,
+          162.472
+        ],
+        "word": "what",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 162.472,
+        "end": 162.855,
+        "timestamp": [
+          162.472,
+          162.855
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 162.855,
+        "end": 163.238,
+        "timestamp": [
+          162.855,
+          163.238
+        ],
+        "word": "have",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 163.238,
+        "end": 163.62,
+        "timestamp": [
+          163.238,
+          163.62
+        ],
+        "word": "here.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 163.62,
+        "end": 163.982,
+        "timestamp": [
+          163.62,
+          163.982
+        ],
+        "word": "The",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 163.982,
+        "end": 164.344,
+        "timestamp": [
+          163.982,
+          164.344
+        ],
+        "word": "email",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 164.344,
+        "end": 164.706,
+        "timestamp": [
+          164.344,
+          164.706
+        ],
+        "word": "that",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 164.706,
+        "end": 165.068,
+        "timestamp": [
+          164.706,
+          165.068
+        ],
+        "word": "was",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 165.068,
+        "end": 165.43,
+        "timestamp": [
+          165.068,
+          165.43
+        ],
+        "word": "plugged",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 165.43,
+        "end": 165.792,
+        "timestamp": [
+          165.43,
+          165.792
+        ],
+        "word": "in",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 165.792,
+        "end": 166.154,
+        "timestamp": [
+          165.792,
+          166.154
+        ],
+        "word": "is",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 166.154,
+        "end": 166.516,
+        "timestamp": [
+          166.154,
+          166.516
+        ],
+        "word": "Nicole",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 166.516,
+        "end": 166.878,
+        "timestamp": [
+          166.516,
+          166.878
+        ],
+        "word": "at",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 166.878,
+        "end": 167.24,
+        "timestamp": [
+          166.878,
+          167.24
+        ],
+        "word": "MorganConsulting.com.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 167.24,
+        "end": 167.583,
+        "timestamp": [
+          167.24,
+          167.583
+        ],
+        "word": "So",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 167.583,
+        "end": 167.926,
+        "timestamp": [
+          167.583,
+          167.926
+        ],
+        "word": "that",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 167.926,
+        "end": 168.269,
+        "timestamp": [
+          167.926,
+          168.269
+        ],
+        "word": "just",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 168.269,
+        "end": 168.611,
+        "timestamp": [
+          168.269,
+          168.611
+        ],
+        "word": "needs",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 168.611,
+        "end": 168.954,
+        "timestamp": [
+          168.611,
+          168.954
+        ],
+        "word": "to",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 168.954,
+        "end": 169.297,
+        "timestamp": [
+          168.954,
+          169.297
+        ],
+        "word": "be",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 169.297,
+        "end": 169.64,
+        "timestamp": [
+          169.297,
+          169.64
+        ],
+        "word": "reconnected.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 170.876,
+        "end": 171.084,
+        "timestamp": [
+          170.876,
+          171.084
+        ],
+        "word": "Okay.",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 171.34,
+        "end": 171.577,
+        "timestamp": [
+          171.34,
+          171.577
+        ],
+        "word": "Do",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 171.577,
+        "end": 171.814,
+        "timestamp": [
+          171.577,
+          171.814
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 171.814,
+        "end": 172.051,
+        "timestamp": [
+          171.814,
+          172.051
+        ],
+        "word": "want",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 172.051,
+        "end": 172.289,
+        "timestamp": [
+          172.051,
+          172.289
+        ],
+        "word": "me",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 172.289,
+        "end": 172.526,
+        "timestamp": [
+          172.289,
+          172.526
+        ],
+        "word": "to",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 172.526,
+        "end": 172.763,
+        "timestamp": [
+          172.526,
+          172.763
+        ],
+        "word": "email",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 172.763,
+        "end": 173.0,
+        "timestamp": [
+          172.763,
+          173.0
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 173.0,
+        "end": 173.237,
+        "timestamp": [
+          173.0,
+          173.237
+        ],
+        "word": "those",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 173.237,
+        "end": 173.474,
+        "timestamp": [
+          173.237,
+          173.474
+        ],
+        "word": "steps",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 173.474,
+        "end": 173.711,
+        "timestamp": [
+          173.474,
+          173.711
+        ],
+        "word": "to",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 173.711,
+        "end": 173.949,
+        "timestamp": [
+          173.711,
+          173.949
+        ],
+        "word": "get",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 173.949,
+        "end": 174.186,
+        "timestamp": [
+          173.949,
+          174.186
+        ],
+        "word": "back",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 174.186,
+        "end": 174.423,
+        "timestamp": [
+          174.186,
+          174.423
+        ],
+        "word": "to",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 174.423,
+        "end": 174.66,
+        "timestamp": [
+          174.423,
+          174.66
+        ],
+        "word": "the...",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 175.14,
+        "end": 175.34,
+        "timestamp": [
+          175.14,
+          175.34
+        ],
+        "word": "Yeah,",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 175.34,
+        "end": 175.54,
+        "timestamp": [
+          175.34,
+          175.54
+        ],
+        "word": "that",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 175.54,
+        "end": 175.74,
+        "timestamp": [
+          175.54,
+          175.74
+        ],
+        "word": "would",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 175.74,
+        "end": 175.94,
+        "timestamp": [
+          175.74,
+          175.94
+        ],
+        "word": "be",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 175.94,
+        "end": 176.14,
+        "timestamp": [
+          175.94,
+          176.14
+        ],
+        "word": "great.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 176.4,
+        "end": 176.95,
+        "timestamp": [
+          176.4,
+          176.95
+        ],
+        "word": "Okay,",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 176.95,
+        "end": 177.5,
+        "timestamp": [
+          176.95,
+          177.5
+        ],
+        "word": "perfect.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 177.7,
+        "end": 178.049,
+        "timestamp": [
+          177.7,
+          178.049
+        ],
+        "word": "Can",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 178.049,
+        "end": 178.398,
+        "timestamp": [
+          178.049,
+          178.398
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 178.398,
+        "end": 178.748,
+        "timestamp": [
+          178.398,
+          178.748
+        ],
+        "word": "copy",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 178.748,
+        "end": 179.097,
+        "timestamp": [
+          178.748,
+          179.097
+        ],
+        "word": "Nicole",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 179.097,
+        "end": 179.446,
+        "timestamp": [
+          179.097,
+          179.446
+        ],
+        "word": "at",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 179.446,
+        "end": 179.795,
+        "timestamp": [
+          179.446,
+          179.795
+        ],
+        "word": "MorganConsulting.com",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 179.795,
+        "end": 180.145,
+        "timestamp": [
+          179.795,
+          180.145
+        ],
+        "word": "on",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 180.145,
+        "end": 180.494,
+        "timestamp": [
+          180.145,
+          180.494
+        ],
+        "word": "that",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 180.494,
+        "end": 180.843,
+        "timestamp": [
+          180.494,
+          180.843
+        ],
+        "word": "email",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 180.843,
+        "end": 181.192,
+        "timestamp": [
+          180.843,
+          181.192
+        ],
+        "word": "so",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 181.192,
+        "end": 181.542,
+        "timestamp": [
+          181.192,
+          181.542
+        ],
+        "word": "she",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 181.542,
+        "end": 181.891,
+        "timestamp": [
+          181.542,
+          181.891
+        ],
+        "word": "can",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 181.891,
+        "end": 182.24,
+        "timestamp": [
+          181.891,
+          182.24
+        ],
+        "word": "reactivate?",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 182.72,
+        "end": 183.26,
+        "timestamp": [
+          182.72,
+          183.26
+        ],
+        "word": "Yeah,",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 183.26,
+        "end": 183.8,
+        "timestamp": [
+          183.26,
+          183.8
+        ],
+        "word": "absolutely.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 184.326,
+        "end": 184.534,
+        "timestamp": [
+          184.326,
+          184.534
+        ],
+        "word": "Okay.",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 185.02,
+        "end": 185.58,
+        "timestamp": [
+          185.02,
+          185.58
+        ],
+        "word": "All",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 185.58,
+        "end": 186.14,
+        "timestamp": [
+          185.58,
+          186.14
+        ],
+        "word": "right.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 186.14,
+        "end": 186.36,
+        "timestamp": [
+          186.14,
+          186.36
+        ],
+        "word": "I",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 186.36,
+        "end": 186.58,
+        "timestamp": [
+          186.36,
+          186.58
+        ],
+        "word": "will",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 186.58,
+        "end": 186.8,
+        "timestamp": [
+          186.58,
+          186.8
+        ],
+        "word": "send",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 186.8,
+        "end": 187.02,
+        "timestamp": [
+          186.8,
+          187.02
+        ],
+        "word": "that",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 187.02,
+        "end": 187.24,
+        "timestamp": [
+          187.02,
+          187.24
+        ],
+        "word": "out",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 187.24,
+        "end": 187.46,
+        "timestamp": [
+          187.24,
+          187.46
+        ],
+        "word": "now.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 187.46,
+        "end": 187.953,
+        "timestamp": [
+          187.46,
+          187.953
+        ],
+        "word": "Any",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 187.953,
+        "end": 188.447,
+        "timestamp": [
+          187.953,
+          188.447
+        ],
+        "word": "other",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 188.447,
+        "end": 188.94,
+        "timestamp": [
+          188.447,
+          188.94
+        ],
+        "word": "questions",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 188.94,
+        "end": 189.433,
+        "timestamp": [
+          188.94,
+          189.433
+        ],
+        "word": "that",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 189.433,
+        "end": 189.927,
+        "timestamp": [
+          189.433,
+          189.927
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 189.927,
+        "end": 190.42,
+        "timestamp": [
+          189.927,
+          190.42
+        ],
+        "word": "have?",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 190.42,
+        "end": 190.733,
+        "timestamp": [
+          190.42,
+          190.733
+        ],
+        "word": "Any",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 190.733,
+        "end": 191.047,
+        "timestamp": [
+          190.733,
+          191.047
+        ],
+        "word": "other",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 191.047,
+        "end": 191.36,
+        "timestamp": [
+          191.047,
+          191.36
+        ],
+        "word": "issues?",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 192.066,
+        "end": 192.274,
+        "timestamp": [
+          192.066,
+          192.274
+        ],
+        "word": "Nope.",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 192.74,
+        "end": 193.141,
+        "timestamp": [
+          192.74,
+          193.141
+        ],
+        "word": "Oh,",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 193.141,
+        "end": 193.542,
+        "timestamp": [
+          193.141,
+          193.542
+        ],
+        "word": "actually,",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 193.542,
+        "end": 193.942,
+        "timestamp": [
+          193.542,
+          193.942
+        ],
+        "word": "when",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 193.942,
+        "end": 194.343,
+        "timestamp": [
+          193.942,
+          194.343
+        ],
+        "word": "she",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 194.343,
+        "end": 194.744,
+        "timestamp": [
+          194.343,
+          194.744
+        ],
+        "word": "reactivates",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 194.744,
+        "end": 195.145,
+        "timestamp": [
+          194.744,
+          195.145
+        ],
+        "word": "her",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 195.145,
+        "end": 195.546,
+        "timestamp": [
+          195.145,
+          195.546
+        ],
+        "word": "email,",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 195.546,
+        "end": 195.946,
+        "timestamp": [
+          195.546,
+          195.946
+        ],
+        "word": "will",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 195.946,
+        "end": 196.347,
+        "timestamp": [
+          195.946,
+          196.347
+        ],
+        "word": "it",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 196.347,
+        "end": 196.748,
+        "timestamp": [
+          196.347,
+          196.748
+        ],
+        "word": "send",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 196.748,
+        "end": 197.149,
+        "timestamp": [
+          196.748,
+          197.149
+        ],
+        "word": "all",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 197.149,
+        "end": 197.55,
+        "timestamp": [
+          197.149,
+          197.55
+        ],
+        "word": "the",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 197.55,
+        "end": 197.95,
+        "timestamp": [
+          197.55,
+          197.95
+        ],
+        "word": "former,",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 197.95,
+        "end": 198.351,
+        "timestamp": [
+          197.95,
+          198.351
+        ],
+        "word": "like",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 198.351,
+        "end": 198.752,
+        "timestamp": [
+          198.351,
+          198.752
+        ],
+        "word": "everything",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 198.752,
+        "end": 199.153,
+        "timestamp": [
+          198.752,
+          199.153
+        ],
+        "word": "since",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 199.153,
+        "end": 199.554,
+        "timestamp": [
+          199.153,
+          199.554
+        ],
+        "word": "May",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 199.554,
+        "end": 199.954,
+        "timestamp": [
+          199.554,
+          199.954
+        ],
+        "word": "29th,",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 199.954,
+        "end": 200.355,
+        "timestamp": [
+          199.954,
+          200.355
+        ],
+        "word": "or",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 200.355,
+        "end": 200.756,
+        "timestamp": [
+          200.355,
+          200.756
+        ],
+        "word": "will",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 200.756,
+        "end": 201.157,
+        "timestamp": [
+          200.756,
+          201.157
+        ],
+        "word": "it",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 201.157,
+        "end": 201.558,
+        "timestamp": [
+          201.157,
+          201.558
+        ],
+        "word": "just",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 201.558,
+        "end": 201.958,
+        "timestamp": [
+          201.558,
+          201.958
+        ],
+        "word": "resume",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 201.958,
+        "end": 202.359,
+        "timestamp": [
+          201.958,
+          202.359
+        ],
+        "word": "going",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 202.359,
+        "end": 202.76,
+        "timestamp": [
+          202.359,
+          202.76
+        ],
+        "word": "forward?",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 203.44,
+        "end": 203.74,
+        "timestamp": [
+          203.44,
+          203.74
+        ],
+        "word": "It'll",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 203.74,
+        "end": 204.04,
+        "timestamp": [
+          203.74,
+          204.04
+        ],
+        "word": "just",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 204.04,
+        "end": 204.34,
+        "timestamp": [
+          204.04,
+          204.34
+        ],
+        "word": "resume",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 204.34,
+        "end": 204.64,
+        "timestamp": [
+          204.34,
+          204.64
+        ],
+        "word": "going",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 204.64,
+        "end": 204.94,
+        "timestamp": [
+          204.64,
+          204.94
+        ],
+        "word": "forward.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 204.94,
+        "end": 205.336,
+        "timestamp": [
+          204.94,
+          205.336
+        ],
+        "word": "It",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 205.336,
+        "end": 205.732,
+        "timestamp": [
+          205.336,
+          205.732
+        ],
+        "word": "won't",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 205.732,
+        "end": 206.128,
+        "timestamp": [
+          205.732,
+          206.128
+        ],
+        "word": "do",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 206.128,
+        "end": 206.524,
+        "timestamp": [
+          206.128,
+          206.524
+        ],
+        "word": "anything",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 206.524,
+        "end": 206.92,
+        "timestamp": [
+          206.524,
+          206.92
+        ],
+        "word": "retroactive.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 207.82,
+        "end": 208.2,
+        "timestamp": [
+          207.82,
+          208.2
+        ],
+        "word": "Okay,",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 208.2,
+        "end": 208.58,
+        "timestamp": [
+          208.2,
+          208.58
+        ],
+        "word": "gotcha.",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 208.58,
+        "end": 208.867,
+        "timestamp": [
+          208.58,
+          208.867
+        ],
+        "word": "Okay,",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 208.867,
+        "end": 209.155,
+        "timestamp": [
+          208.867,
+          209.155
+        ],
+        "word": "well,",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 209.155,
+        "end": 209.442,
+        "timestamp": [
+          209.155,
+          209.442
+        ],
+        "word": "that",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 209.442,
+        "end": 209.729,
+        "timestamp": [
+          209.442,
+          209.729
+        ],
+        "word": "sounds",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 209.729,
+        "end": 210.016,
+        "timestamp": [
+          209.729,
+          210.016
+        ],
+        "word": "like",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 210.016,
+        "end": 210.304,
+        "timestamp": [
+          210.016,
+          210.304
+        ],
+        "word": "it's",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 210.304,
+        "end": 210.591,
+        "timestamp": [
+          210.304,
+          210.591
+        ],
+        "word": "going",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 210.591,
+        "end": 210.878,
+        "timestamp": [
+          210.591,
+          210.878
+        ],
+        "word": "to",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 210.878,
+        "end": 211.165,
+        "timestamp": [
+          210.878,
+          211.165
+        ],
+        "word": "be",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 211.165,
+        "end": 211.453,
+        "timestamp": [
+          211.165,
+          211.453
+        ],
+        "word": "fixed",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 211.453,
+        "end": 211.74,
+        "timestamp": [
+          211.453,
+          211.74
+        ],
+        "word": "then.",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 212.8,
+        "end": 213.27,
+        "timestamp": [
+          212.8,
+          213.27
+        ],
+        "word": "Yep,",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 213.27,
+        "end": 213.74,
+        "timestamp": [
+          213.27,
+          213.74
+        ],
+        "word": "absolutely.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 213.74,
+        "end": 214.147,
+        "timestamp": [
+          213.74,
+          214.147
+        ],
+        "word": "Just",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 214.147,
+        "end": 214.553,
+        "timestamp": [
+          214.147,
+          214.553
+        ],
+        "word": "reconnecting",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 214.553,
+        "end": 214.96,
+        "timestamp": [
+          214.553,
+          214.96
+        ],
+        "word": "there.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 214.96,
+        "end": 215.191,
+        "timestamp": [
+          214.96,
+          215.191
+        ],
+        "word": "So,",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 215.191,
+        "end": 215.423,
+        "timestamp": [
+          215.191,
+          215.423
+        ],
+        "word": "yeah,",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 215.423,
+        "end": 215.654,
+        "timestamp": [
+          215.423,
+          215.654
+        ],
+        "word": "if",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 215.654,
+        "end": 215.885,
+        "timestamp": [
+          215.654,
+          215.885
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 215.885,
+        "end": 216.117,
+        "timestamp": [
+          215.885,
+          216.117
+        ],
+        "word": "do",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 216.117,
+        "end": 216.348,
+        "timestamp": [
+          216.117,
+          216.348
+        ],
+        "word": "have",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 216.348,
+        "end": 216.579,
+        "timestamp": [
+          216.348,
+          216.579
+        ],
+        "word": "trouble,",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 216.579,
+        "end": 216.81,
+        "timestamp": [
+          216.579,
+          216.81
+        ],
+        "word": "though,",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 216.81,
+        "end": 217.042,
+        "timestamp": [
+          216.81,
+          217.042
+        ],
+        "word": "after",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 217.042,
+        "end": 217.273,
+        "timestamp": [
+          217.042,
+          217.273
+        ],
+        "word": "I",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 217.273,
+        "end": 217.504,
+        "timestamp": [
+          217.273,
+          217.504
+        ],
+        "word": "send",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 217.504,
+        "end": 217.736,
+        "timestamp": [
+          217.504,
+          217.736
+        ],
+        "word": "that",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 217.736,
+        "end": 217.967,
+        "timestamp": [
+          217.736,
+          217.967
+        ],
+        "word": "email,",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 217.967,
+        "end": 218.198,
+        "timestamp": [
+          217.967,
+          218.198
+        ],
+        "word": "just",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 218.198,
+        "end": 218.43,
+        "timestamp": [
+          218.198,
+          218.43
+        ],
+        "word": "hit",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 218.43,
+        "end": 218.661,
+        "timestamp": [
+          218.43,
+          218.661
+        ],
+        "word": "reply",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 218.661,
+        "end": 218.892,
+        "timestamp": [
+          218.661,
+          218.892
+        ],
+        "word": "and",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 218.892,
+        "end": 219.123,
+        "timestamp": [
+          218.892,
+          219.123
+        ],
+        "word": "we",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 219.123,
+        "end": 219.355,
+        "timestamp": [
+          219.123,
+          219.355
+        ],
+        "word": "can",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 219.355,
+        "end": 219.586,
+        "timestamp": [
+          219.355,
+          219.586
+        ],
+        "word": "walk",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 219.586,
+        "end": 219.817,
+        "timestamp": [
+          219.586,
+          219.817
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 219.817,
+        "end": 220.049,
+        "timestamp": [
+          219.817,
+          220.049
+        ],
+        "word": "through",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 220.049,
+        "end": 220.28,
+        "timestamp": [
+          220.049,
+          220.28
+        ],
+        "word": "it.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 224.71,
+        "end": 224.918,
+        "timestamp": [
+          224.71,
+          224.918
+        ],
+        "word": "Awesome.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 225.759,
+        "end": 225.967,
+        "timestamp": [
+          225.759,
+          225.967
+        ],
+        "word": "Thank",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 225.967,
+        "end": 226.174,
+        "timestamp": [
+          225.967,
+          226.174
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 226.174,
+        "end": 226.382,
+        "timestamp": [
+          226.174,
+          226.382
+        ],
+        "word": "so",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 226.382,
+        "end": 226.59,
+        "timestamp": [
+          226.382,
+          226.59
+        ],
+        "word": "much.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 226.382,
+        "end": 226.59,
+        "timestamp": [
+          226.382,
+          226.59
+        ],
+        "word": "Thanks.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 225.759,
+        "end": 225.967,
+        "timestamp": [
+          225.759,
+          225.967
+        ],
+        "word": "Have",
+        "speaker": "SPEAKER_02"
+      },
+      {
+        "start": 225.967,
+        "end": 226.174,
+        "timestamp": [
+          225.967,
+          226.174
+        ],
+        "word": "a",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 226.174,
+        "end": 226.382,
+        "timestamp": [
+          226.174,
+          226.382
+        ],
+        "word": "good",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 226.382,
+        "end": 226.59,
+        "timestamp": [
+          226.382,
+          226.59
+        ],
+        "word": "one.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 226.174,
+        "end": 226.382,
+        "timestamp": [
+          226.174,
+          226.382
+        ],
+        "word": "You",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 226.382,
+        "end": 226.59,
+        "timestamp": [
+          226.382,
+          226.59
+        ],
+        "word": "too.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 226.382,
+        "end": 226.59,
+        "timestamp": [
+          226.382,
+          226.59
+        ],
+        "word": "Bye-bye.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "start": 226.382,
+        "end": 226.59,
+        "timestamp": [
+          226.382,
+          226.59
+        ],
+        "word": "Bye.",
+        "speaker": "SPEAKER_01"
+      }
+    ],
+    "speakers": [
+      {
+        "id": "SPEAKER_01",
+        "label": "Speaker_01",
+        "speaking_time": 90.0,
+        "segment_count": 32,
+        "average_confidence": 0.95
+      },
+      {
+        "id": "SPEAKER_02",
+        "label": "Speaker_02",
+        "speaking_time": 45.42,
+        "segment_count": 15,
+        "average_confidence": 0.95
+      },
+      {
+        "id": "SPEAKER_00",
+        "label": "Speaker_00",
+        "speaking_time": 4.44,
+        "segment_count": 6,
+        "average_confidence": 0.95
+      }
+    ],
+    "srt_content": "1\n00:00:01,667 --> 00:00:04,117\nThank you for calling Nain Sequence Technology.\n\n2\n00:00:04,980 --> 00:00:05,476\nThis is Garrett.\n\n3\n00:00:05,884 --> 00:00:06,599\nHow may I help you?\n\n4\n00:00:07,605 --> 00:00:08,036\nHi, Garrett.\n\n5\n00:00:08,300 --> 00:00:10,535\nThis is Erica Eichelbohm with Morgan Consulting Resources.\n\n6\n00:00:11,840 --> 00:00:19,276\nAnd I have a question about fixing the settings in PCR to send email notifications\n\n7\n00:00:19,296 --> 00:00:20,759\nwhen we receive an application through our website.\n\n8\n00:00:22,040 --> 00:00:22,555\nOh, okay.\n\n9\n00:00:23,260 --> 00:00:25,471\nLet me pull up your database here.\n\n10\n00:00:27,400 --> 00:00:27,745\nMorgan Consulting.\n\n11\n00:00:28,900 --> 00:00:28,984\nOkay.\n\n12\n00:00:33,480 --> 00:00:35,124\nAnd do you have – do you know if you have an automation already set up for that and\n\n13\n00:00:35,144 --> 00:00:36,266\nit stopped working or you need to set up that automation?\n\n14\n00:00:43,362 --> 00:00:47,539\nWe have it set up and it stopped working on May 29th for everyone.\n\n15\n00:00:47,680 --> 00:00:47,762\nOkay.\n\n16\n00:00:49,647 --> 00:00:50,796\nLet's check a few things.\n\n17\n00:01:23,280 --> 00:01:23,420\nThank you.\n\n18\n00:01:39,260 --> 00:01:40,477\nOkay, that's probably where the issue is.\n\n19\n00:01:40,820 --> 00:01:43,288\nSo the database has an email address that it sends these emails from.\n\n20\n00:01:47,460 --> 00:01:48,840\nIt's not tied to any username.\n\n21\n00:01:48,920 --> 00:01:56,764\nbut it's the settings live in the system settings up at the top so let's see do you\n\n22\n00:01:56,764 --> 00:02:04,173\nhave admin access do you know to the database I don't know I don't think okay we\n\n23\n00:02:04,173 --> 00:02:12,453\ncan check if you if you go to system in the main menu of PCR look for email setup\n\n24\n00:02:12,453 --> 00:02:13,760\non the left?\n\n25\n00:02:13,760 --> 00:02:20,020\nOkay, system email setup, okay.\n\n26\n00:02:20,020 --> 00:02:24,240\nAnd then on the right, do you have an option that says outgoing mail settings?\n\n27\n00:02:24,240 --> 00:02:25,920\nNo.\n\n28\n00:02:25,920 --> 00:02:26,408\nOkay,\n\n29\n00:02:26,408 --> 00:02:32,264\nso that's something that somebody with admin access would need to change,\n\n30\n00:02:32,264 --> 00:02:39,096\nbut the outgoing mail email address lost the connection from PCR to the email\n\n31\n00:02:39,096 --> 00:02:40,560\nprovider, Office 365.\n\n32\n00:02:40,560 --> 00:02:43,620\nSo Let me see what you have here.\n\n33\n00:02:43,620 --> 00:02:47,240\nThe email that was plugged in is Nicole at MorganConsulting.com.\n\n34\n00:02:47,240 --> 00:02:49,640\nSo that just needs to be reconnected.\n\n35\n00:02:50,640 --> 00:02:51,320\nOkay.\n\n36\n00:02:51,340 --> 00:02:54,660\nDo you want me to email you those steps to get back to the...\n\n37\n00:02:55,140 --> 00:02:56,140\nYeah, that would be great.\n\n38\n00:02:56,400 --> 00:02:57,500\nOkay, perfect.\n\n39\n00:02:57,700 --> 00:03:02,240\nCan you copy Nicole at MorganConsulting.com on that email so she can reactivate?\n\n40\n00:03:02,720 --> 00:03:03,800\nYeah, absolutely.\n\n41\n00:03:04,260 --> 00:03:04,600\nOkay.\n\n42\n00:03:05,020 --> 00:03:06,140\nAll right.\n\n43\n00:03:06,140 --> 00:03:07,460\nI will send that out now.\n\n44\n00:03:07,460 --> 00:03:10,420\nAny other questions that you have?\n\n45\n00:03:10,420 --> 00:03:11,360\nAny other issues?\n\n46\n00:03:11,600 --> 00:03:12,740\nNope.\n\n47\n00:03:12,740 --> 00:03:13,141\nOh,\n\n48\n00:03:13,141 --> 00:03:13,542\nactually,\n\n49\n00:03:13,542 --> 00:03:15,546\nwhen she reactivates her email,\n\n50\n00:03:15,546 --> 00:03:17,950\nwill it send all the former,\n\n51\n00:03:17,950 --> 00:03:19,954\nlike everything since May 29th,\n\n52\n00:03:19,954 --> 00:03:22,760\nor will it just resume going forward?\n\n53\n00:03:23,440 --> 00:03:24,940\nIt'll just resume going forward.\n\n54\n00:03:24,940 --> 00:03:26,920\nIt won't do anything retroactive.\n\n55\n00:03:27,820 --> 00:03:28,580\nOkay, gotcha.\n\n56\n00:03:28,580 --> 00:03:31,740\nOkay, well, that sounds like it's going to be fixed then.\n\n57\n00:03:32,800 --> 00:03:33,740\nYep, absolutely.\n\n58\n00:03:33,740 --> 00:03:34,960\nJust reconnecting there.\n\n59\n00:03:34,960 --> 00:03:35,191\nSo,\n\n60\n00:03:35,191 --> 00:03:35,423\nyeah,\n\n61\n00:03:35,423 --> 00:03:36,579\nif you do have trouble,\n\n62\n00:03:36,579 --> 00:03:36,810\nthough,\n\n63\n00:03:36,810 --> 00:03:37,967\nafter I send that email,\n\n64\n00:03:37,967 --> 00:03:40,280\njust hit reply and we can walk you through it.\n\n65\n00:03:44,710 --> 00:03:44,918\nAwesome.\n\n66\n00:03:45,759 --> 00:03:46,590\nThank you so much.\n\n67\n00:03:46,382 --> 00:03:46,590\nThanks.\n\n68\n00:03:45,759 --> 00:03:46,590\nHave a good one.\n\n69\n00:03:46,174 --> 00:03:46,590\nYou too.\n\n70\n00:03:46,382 --> 00:03:46,590\nBye-bye.\n\n71\n00:03:46,382 --> 00:03:46,590\nBye.\n\n",
+    "summary": "Email notifications for website applications will resume going forward.",
+    "job_id": "fe5c72cc-1b5f-4fd4-a377-3d5df006d6b0",
+    "timestamps": {
+      "started": "2025-12-19T17:27:53.517402+00:00",
+      "submitted": "2025-12-19T17:27:53.517563+00:00",
+      "completed": "2025-12-19T17:28:59.888283+00:00"
+    }
+  },
+  "ai_analysis": {
+    "summary": "Email notifications for website applications will resume going forward.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [
+      {
+        "timestamp": 5.884,
+        "segment_id": 2,
+        "type": "issue_reported",
+        "text": "How may I help you?",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "timestamp": 99.26,
+        "segment_id": 15,
+        "type": "issue_reported",
+        "text": "Okay, that's probably where the issue is.",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "timestamp": 190.42,
+        "segment_id": 36,
+        "type": "issue_reported",
+        "text": "Any other issues?",
+        "speaker": "SPEAKER_01"
+      },
+      {
+        "timestamp": 208.58,
+        "segment_id": 42,
+        "type": "solution_offered",
+        "text": "Okay, well, that sounds like it's going to be fixed then.",
+        "speaker": "SPEAKER_02"
+      }
+    ],
+    "conversation_flow": {
+      "speaker_changes": 23,
+      "total_segments": 53,
+      "agent_speaking_percentage": 0.0,
+      "customer_speaking_percentage": 100.0,
+      "average_turn_duration": 6.08,
+      "conversation_pace": "rapid"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "resolved",
+    "first_call_resolution": true,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "1PuEimTHaPWfxmyjttew9PNioPsNxAtJL",
+    "google_drive_url": "https://drive.google.com/file/d/1PuEimTHaPWfxmyjttew9PNioPsNxAtJL/view",
+    "local_path": "/data/transcriptions/json/2025/12/19/2994792538037.json",
+    "backup_status": "completed",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.9500000000000007,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

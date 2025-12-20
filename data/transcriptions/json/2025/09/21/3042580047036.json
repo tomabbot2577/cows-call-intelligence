@@ -1,0 +1,100 @@
+{
+  "recording_id": "3042580047036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:53:42.439511Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:53:42",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Integrity Bookkeeping, this is Melissa. Hi, Melissa. It's Robin again for Kathy. Just one second. Okay. Thank you. hi hey um so here's what i'm doing and i think it's okay to do some of these that it was just old cards that they've already replaced so i'm just deleting them out the way it cleans it up that's okay right yes if you've got a current card on file yeah yeah yeah only yeah and then the other people like if there is one so all of them like like if they have a good card and then, you know, it's not in this list. I mean, just like deleting one without even saying anything because it's bad anyway. And then they already have one set. Some people, they have like, it's expired, but they haven't been invoiced yet. And then there's a couple of people where it's expired, but it's already tried to process. So there's like a little bit different, letting them know that they have an invoice. Okay. That's open. So if you see these reduce, as far as what's expired, That is why. Excellent. Yeah, I'm in the stored payment method. I have it sorted by expiration date. So you're getting all the red ones that say expired. I'm just kind of going through those. About halfway there. A little less than halfway. All right. So I just want to give you a heads up. We're on the same page. Sure. Okay. Thanks so much. You can't do that. Alrighty. Thank you. Thank you. Bye. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1305.067191,
+    "salad_processing_time": 7.982429265975952,
+    "overall_processing_time": 1305.067191,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Integrity Bookkeeping, this is Melissa.  Hi, Melissa.  It's Robin again for Kathy.",
+    "job_id": "ea04a57d-c5b7-4f71-aa50-72b698126ce9",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Integrity Bookkeeping, this is Melissa.  Hi, Melissa.  It's Robin again for Kathy.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Billing",
+        "confidence": 0.7
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "billing",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3042580047036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "recording_id": "3091337620037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:21:12.600467Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:21:12",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technologies. This is Tyler. How can I help you? Hi, Tyler. My name is Chad Petticord. How are you? Good. How are you, Chad? I'm doing great. Thanks. I know in the past you guys have been a little squeamish about talking to me regarding API access to my databases. I have a general question here. I have an API user account that has full permission in the names and security settings, and I can verify that the authentication works, and I can call on companies, but I get a 404 error every time I'm trying to, like, query a specific name. And so what I'm looking for is, do you guys know or can you check or help me check if the endpoint is available and turned on in my API environment? So we've simplified our API access. So there is no, like, endpoints turned, like, on and off. Okay. For the API. What endpoint are you using? I'm trying to hit the one that is for names. What I'm trying to do is simple right now is a call that just says, does the record Jason Chup exist? And while I get authenticated, I don't get a result. It returns no result, and it actually comes back with a 404 error. And this is the same if I'm trying to do the endpoint for companies and just trying to find a company like a company named Swinerton. Let me pop in here. Specifically, I have an API user account that's set up across all my databases. You know, it's the same account over and over again, but I'm specifically talking about my specialty trades database. What are you using to run the API call? Well, I've used two different apps. I've used Replit for one, and then the second thing I'm trying is a tool called Manus.im. I'm not familiar with any of those. Yeah. Manus is an agentic – basically, it's an AI that can take action, and so it can hit PCR and do it like through an agent browser type, but it also has the API connectivity, and so it has successfully run a script that looks at the specific REST URL, whatever that base URL is for my company and all that, and authenticates with my user password. And while it can see that there are companies, it can't find a specific company. If it can see their names, it still can't see a specific name. Now, you're using the candidates endpoint, correct, for names? In the case I started with talking to you, it is the names endpoint, yes. But I've even tried it for the companies and found the same issue. Okay. So I was going to say it's candidates as the endpoint for the name records. Yes. Okay. Let me verify on my end. I think that's right. I'm just going to go check my line of code here. This is a tricky subject, I understand, because you have to be technical. I am not. Well, typically with our API, that's kind of outside the scope of normal support. Right. like we because we have the open API and we allow free access to it but we don't we don't provide technical consulting support on it I understand yeah so we have our API documentation and I've been consulting that yes okay I can't confirm it is the candidates endpoint and then the slash companies is my other endpoint So, the not found error is what I get. And if I try it another way, I get a 404 error, which is, I think, the same as the not found, right? So, I'm just wondering, when you say you simplified it, does that mean it's enabled in general? It's just there. It's on. If I successfully set up a user, I should have access. I just have to figure out. Yeah, like what are you putting in as like your API key and your app ID? Specifically, hang on a second here. My API key or the user setting? So typically when you're setting up the connection, like it has you enter your API key, the app ID, and then your database URL. Right. The user I have is called API user, and then I have a password for that, and I also have a key. I gotta go look for it. It's down by text here. Oh, yeah. Okay, I've got it here. It's a long, drawn-out character. So the way we simplified our API access is you can literally just type in the words now, just like API key and app ID. You don't have to have that big, long string anymore. Okay. And then how are you pointing it at the database? Oh. So, let me go back and cover this ground while I'm looking for this. So, I've got my base ID, and then my specific API ID is specialtytrades underscore MR Indian Apples North. So, the HTTP address is like the www.pcrnet REST API access tokens, and then it has my database ID. And then I'm using... What you have is the database ID. Yeah, it's a specialty space trades.mrandianapolisnorth. And I got that from what I generated in the user settings for that. and then what was the name of the software that you were using in well I'm trying replit dot dot r-e-p-l-i-t dot com that's a a no code type of software creator and then the other thing I'm trying is manis.im my end goal just to kind of give you my overview is for example i have 500 records out of linkedin that i have found that previously like pcr capture used to look into pcr and say yeah the Chad record's already there. It used to show me that icon. And what I've done now is instead of using that in LinkedIn, because somehow that's been blocked or barred, I've just exported those 500 records out of LinkedIn to a spreadsheet, which is what I do. You know, you can export 25 records at a time. I've just combined them all. And what I'm trying to do is I'm trying to say, okay, look at this spreadsheet, look at line one where it has Chad's name, and then call PCR and say, does chat already exist in the database? And if it does, just highlight in the spreadsheet, put yes in another column. And that, I thought, was going to be pretty easy to do with, like I said, just call on the candidates and call on the companies and say, is that there? Yeah, let me see here. and replit was R-E-P-L-I-T dot com yeah Yeah, I'm just trying. And you're using the first name, last name? Correct. Fields to? Yep. Yep. What I've been working from is the PCRecruiter.net API docs site that, you know, lays out how the API is set up and what the endpoints look like and so on and so forth. I didn't know. Maybe is that information old now today? No, that's up to date. Okay. Yeah, I'm even trying to chat GPT in here. How's air? So, if I have, if I understand this correctly, this is what I've maybe you can confirm with. If I'm in the section of the API developer site and I go to the candidate section, that endpoint explains explicitly how you retrieve, create data, and then these are the parameters, name, candidate username, the first and last name. Those are the data parameters. And so as long as I'm following that, I should be able to see that data in PCR when I call on it, assuming I'm successfully authenticated. Yeah. So like, for example, in that documentation where it has like the API endpoints, if you go under candidates it gives you like search for candidates in the database right right that's the get call and yeah yeah I need to go back and maybe I made a mistake somewhere in that Because what it's – you guys are just basically giving me a clear example of what that API call should return when you output all those fields. Yep. Yeah, okay. Well, knowing that everything should be just set up once I'm authenticated means I've got to go back and examine what's wrong with one of my calls. And, you know, it's a good question. are you using names or are you using cans? I was using cans, but I just need to go back and like check my, check my work and retrace my steps and make sure that I'm getting everything entered properly. And what I usually do for stuff like that, just throw the call into chat GPT. Yeah. That can usually point you in the right direction. Yeah. Good idea. All right. Hey, thanks for answering my questions. I do appreciate it. yeah not a problem sorry it wouldn't be more help but the devil's in the details yeah alright thanks for your time see ya yep have a good one",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 2119.750687,
+    "salad_processing_time": 62.279492139816284,
+    "overall_processing_time": 2119.750687,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technologies.  This is Tyler.  How can I help you? Hi, Tyler.",
+    "job_id": "f8ad85a3-72d4-47a9-8903-9b2e8e4337a8",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technologies.  This is Tyler.  How can I help you? Hi, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [
+      {
+        "type": "SOFTWARE",
+        "value": "PCRecruiter",
+        "mentions": 1
+      }
+    ],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "technical"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3091337620037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

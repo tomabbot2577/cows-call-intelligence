@@ -1,0 +1,130 @@
+{
+  "recording_id": "3020351970036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:33:59.819847Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:33:59",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hey, Tyler. This is Eric over at Comcentric. How's it going, Eric? Pretty good. Do you have an issue with emails being forwarded from Indeed candidates that apply? I think something broke on it about a week ago, and we're not getting the email notifications forwarded anymore. So I wondered if there's a change on your end or if something broke on our end or if we can troubleshoot it somehow. Yeah. So did you normally get this email from PCR or from Indeed? They were being forwarded, I believe, from Indeed. Or I'm sorry, it's from PCRecruiter. But I think they were Indeed applicants, yeah. So we have an Indeed in it, like... Yeah, the XML feed. Yeah. And we were getting those emails regularly, and then it stopped about maybe a week and a half ago. Would you be able to forward me one of those emails so I can take a look at it real quick? Yeah. just while I go in here and look at some of the system settings. What's your email? Is it Tyler? Yeah, just Tyler at mainsequence.net. And this is the last one we got, which was on July 8th at 534 a.m. The weird thing is we're still getting the ones that apply directly through the link, but not the Indeed ones, if that makes sense. Yeah. So the ones that say Indeed apply stopped coming on July 8th, but we've gotten some of the direct applies through you guys as recently as the 14th. So it says position inquiry. And they show up differently in the inbox here. All the settings look correct. Is it – because there's a spot where the email is set up, and I forgot where it's at, in PCR. are we using a direct integration with Outlook, or is it using SendGrid? So that uses Outlook. Okay. Did that link break? Because I can go in and... Did you test it? Yeah, I tested it. That one's working. Okay. Yeah. Let me... Do you mind if I put you on a brief hold? I'm going to have our webmaster, Drew, take a look at your XML feed real quick. Sure. Because you said it's just the Indeed ones, right, that aren't coming over? Correct. Yeah, the other ones seem to slow down a little bit, but it's mainly Indeed that we've noticed just completely stopped. All right. Yeah, give me two seconds here. I'm going to put you out of the holes for just a second. All right, thanks for holding there. It looks like Drew is on the other line. Let me... I'm just checking all these settings here. It looks like it's set up correctly. Yes, I think something changed. Maybe the XML feed changed the way it's coming in from Indeed or something. I don't know. Am I speculating? Yeah, I know Indeed's been making changes lately. And so the way you guys typically have it coming through might need to be adjusted or something. All right, let me do this. Let me get your phone number here, because I'm going to have to connect with Drew on this one when he's available, and that way I don't eat up too much of your time here just sitting on the phone. That way I can give you a call back as soon as I connect with him. what's a good phone number for you? 303 324 6665 Perfect. Alrighty. So yeah, let me get a hold of Drew and we'll take a look at it and then I'll call you back with what we find. Okay, perfect. Thank you. Thanks. Thanks. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 649.035826,
+    "salad_processing_time": 66.83764314651489,
+    "overall_processing_time": 649.035826,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "job_id": "3df18c25-ccad-45c8-8a2f-6f5a94f27394",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [
+      {
+        "type": "SOFTWARE",
+        "value": "PCRecruiter",
+        "mentions": 1
+      }
+    ],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3020351970036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

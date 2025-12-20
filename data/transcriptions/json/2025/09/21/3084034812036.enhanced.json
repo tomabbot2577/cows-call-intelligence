@@ -1,0 +1,117 @@
+{
+  "recording_id": "3084034812036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:16:22.333693Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:16:22",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hi. Hello. Hello. Oh, I got to see. I go. Let's see. Did these even go yet? Hold on one second. I got to call that guy back in one minute, though. So probably not. Hi. The sequence issue. Yeah. He might be. Reading, reading. That's not an email. Okay. So it seems to be working. And I don't know if it had something to do with. he had two images in his signature that said, you know, the base 64 long strings. I've removed that, and now I'm getting the emails from him, even just like a regular email. But I cannot get rid of this task that says error sending email from email address. Let me see. Did these actually send, though? Hold on one second. Send email. Waiting. Did I get this, though? yeah I got it it went to promotions yours is going to go at 11 35 and so in five minutes but I cannot get rid of did you do the remove all from sequence I did that first but it pops keeps popping back up but it is now working but I can't get the error to go away What's ODBC? The Monson Group. M-O-N-S-O-N-G-R-O-U-P. And he doesn't have access to... Oh, maybe I need to... Well, no. Maybe I need to do it. I just can't retry. I did retry all of somebody. I can't remember who I did it as. Here. Oops. This is a long chat window. Okay. And then the sequence is named. Well, that Logan person doesn't have any sequencing permissions. He's got read-only. Yeah, which is probably why that task is. Yeah, so send as denied. Read-only means they can go in and do their task. They can't create a sequence. They can't activate it. Oh, that's interesting. They're trying to, like, spoof email, almost. What do you mean? Where are you seeing that? In the error task. Error sending email address from SendGrid. So I don't think they can interact with, like, global tasks. So am I good to try to remove that? I can't. How are you seeing that? If you just go, if you click into the task and, like, copy the text, you won't be able to see it all but just open a notepad oh okay is that reported 55 side Roxanne that the Monson group is not allowed to send as okay well that's weird because it's using the SendGrid email alias unless it's related to a different sequence could be those global paths don't tell you what sequence it's for like those global errors okay so I would just do instead of retry all I would try remove all from sequence so the Roxanne I think I saw that under outgoing mail setting oh that could be that's the outgoing male setting that's not his but in his sequence I was pretty sure it had his sun grid his sun grid yeah but regardless I would just try doing the remove all from sequences. So, cause you tried, you said you did the retry all right. Yeah. Were you logged in as Logan when you tried that? Uh, gosh, I don't even remember now. Let me go. I would just log in as like admin. Okay. And then just see, since it's already tried to refill, just to remove all from sequence. Yeah. Okay. Or just do retry all again, but as like an admin level user. I think I did that already. Okay. Let's see if it pops back up. It's not popping back up. okay all right not popping back up yet I don't think I have to wait on that do I know okay all right I will just let him know it's probably related to another sequence and but it is actually working and yeah cuz those global paths stay around even if the sequence that was related to goes away because it's a global error okay sequence specific error okay what can i say this without causing too much alarm let's what should i say here um okay let me think on this how do i want to word this um it wasn't related to that sequence he just happened to be in it but the error has been now cleared. Keep it simple. Sometimes less is more, right? Okay. Okay. All right. Yep. I just got the email. Okay, cool. All right. So they should be good. Okay. Thank you. No problem. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1978.905683,
+    "salad_processing_time": 79.01275706291199,
+    "overall_processing_time": 1978.905683,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hi.  Hello.  Hello.",
+    "job_id": "3ebbbe4b-7bb3-4a82-bfa4-98066afe7edb",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hi.  Hello.  Hello.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3084034812036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

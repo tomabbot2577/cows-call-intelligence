@@ -1,0 +1,117 @@
+{
+  "recording_id": "3018870250037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:32:21.644596Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:32:21",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hey, how's it going? Yo. Hey, I'm taking a look at 101.708 right now. Okay. How did you get... Let me double check here. How did you get the rating to show in the record card? So you can only do it in PCR 9. You would go to a detail pane for a record and then click on the star rating at the top right in the screenshot there. Okay. And then if you refresh the page, if that doesn't already update, I think you get a refresh, honestly. I did refresh and I don't see the rating system in trunk. Okay. Oh, are you You know what? I probably didn't put this in there You have to click the A to Z sorting at the top of the step and choose rating Okay, I see it now Sorry, I might have not put that in there Oh wait, yeah That's in there, sorry, it's step two But if I go into the pipeline How do I go? Oh, I've seen the rating in trunk on PCRM. But you can't adjust it, or that will only appear if you've opened up PCR9 and adjusted the stars. there's no way to adjust the stars in oh because the detail pains different exactly yep gotcha so all the ratings will just stay at zero if you're you know in PCRM you won't be able to affect that number. Gotcha. I see what the issue is now. I thought it was just like you couldn't see them. Oh, gotcha, okay. Yeah. Gotcha. I honestly didn't really know that that was available, so that was a surprise to me. In PTR 9 even. we'll send it up and see what they say sounds good that could have been one of those things I was like purposely left out again true yeah but like I said the worst we can do is send it up and they'll tell us no right perfect alright thanks Garrett talk to you later bye",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 593.367816,
+    "salad_processing_time": 13.353013038635254,
+    "overall_processing_time": 593.367816,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hey, how's it going? Yo.  Hey, I'm taking a look at 101. 708 right now.",
+    "job_id": "374363b3-fbbe-40bd-9a1d-cb88a293dcdb",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hey, how's it going? Yo.  Hey, I'm taking a look at 101. 708 right now.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": true,
+      "solution_offered": false,
+      "proper_closing": false
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3018870250037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

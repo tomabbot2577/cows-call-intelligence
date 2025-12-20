@@ -1,0 +1,112 @@
+{
+  "recording_id": "3009319523037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:22:28.676086Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:22:28",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hi, Tyler. My name is Rich Vandermeer. I called before. For some reason, my emails aren't being deleted. And I know there's a simple way of getting rid of that, and I wanted to see what that is again. Yeah, that should take us just a second here. Do you have the PCR mail open right now? Yes, I do. So what you're going to do is, are you using Chrome as your browser? Yes. Okay. So in the top right-hand corner of Chrome, while you're on that PCR mail page, click those three dots. Got it. You're going to go down to where it says Delete Browsing Data. Okay. And then once that new tab opens up, you'll want to make sure it's set to Advanced. Okay. The time range you want to set to all time. Okay. And the only box that you want to have checked down at the bottom is the one that says cached images and files. On check and everything else. Yeah, that's the way it is right now. Okay, perfect. And then you'll go ahead and hit delete data. Okay. Then once it does its thing, you'll want to exit out of the PCR mail page and then just refresh PC Recruiter to log yourself out. And then you'll log back in once that page refreshes and then open up PCR mail again. Okay. But you'll want to make sure that you don't just log out of the main page. you actually want to hit the refresh button up in the top left-hand corner, so that way the change for the clear cache takes effect. Oh, shit. What if I did log completely out? No, that's fine. You just need to refresh the tab. So you'll see up in the top left-hand corner of your Chrome browser, you'll see the back and forth arrows, and then there's that little circle arrow. Just click that circle arrow to refresh the page, and then you can log back in. Okay, I'm sorry, where is that now? So it's in the top left-hand corner of Chrome. So you'll see where you have, like, the web address. It's to the left of that. Okay, it's like two circle arrows going either way? Yeah, so there's the back and forth arrow, and then there should be one that looks like a circle with an arrow pointing at the end of it. Hit that. I see that. So click on that, and it says, Connection Secure Notifications, Reset Permission. cookie site? To the left of that. The little circle arrow to the left of that. And if you hover over it, it'll say reload this page. Okay. So it has you to just reload this page then? Just click on that? Yep. Okay. Then once it's reloaded, go ahead and log back into PC Recruiter. Then you can open up PCR mail, and you should be able to delete those messages. Beautiful. Because what will happen is once... What those cached images and files do is Chrome will save cached images and files to help pages load faster when you go back to them. But if that cache gets gummed up and pretty full, it can affect actions on websites because it didn't load everything properly because it's using all those old files. Perfect. Yep, you're right. Everything is deleting now, so we're all good. Perfect. All right, man. Thank you so much. Not a problem. You have yourself a great day. Have a great day. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 254.955688,
+    "salad_processing_time": 28.95585298538208,
+    "overall_processing_time": 254.955688,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hi, Tyler.",
+    "job_id": "c92c7b0b-80a2-4ea4-bf9c-01a2cfc09155",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hi, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3009319523037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "recording_id": "3035684010036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:46:46.465211Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:46:46",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence. This is Robin. Hey, Robin. It's Vince Brown. How are you? I'm good. How are you doing? I'm doing well. How's your summer? Not fun enough. Not fun? Oh. What could you be doing that would make it more fun? Getting to the beach more. I only got to go work so far. It's either I'm busy that weekend or, of course, it rains on the weekend. Right. Yeah. Well, there's been a lot of rain out east this year, hasn't there? Well, today it's raining. It's either that or it's like super monkey and hot. Yeah, I'm hearing that from everybody. Like during the week, it's like 90 and so humid, but then it'll rain on the weekend, or at least when I have time on the weekend. But now, so which beach do you get to? I go to like Mentor Headlands or Fairport Harbor. It's like eastern suburbs of Cleveland. Oh, got it. Okay. and so is that like it's on lake gary beach yeah i was gonna say yeah it's on the great lakes there okay gotcha um in cleveland yes we do have beaches i know well and i uh i guess i was hallucinating because for some reason i thought you guys were located in the columbus area i guess i'm just uh no we're more we're on like east side of cleveland now is that just you or is that that Main Seasons 2. Yeah. Is it? Yeah. That's so weird. Yes, we are. Not Columbus. I don't know how I could fuck that up because I was recruiting out of Progressive for years, and I was recruiting for Grange Insurance for years, and I very much know the difference between the new cities. So it's like, how do I know that? Progressive is like right around the corner from me. Oh, yeah. They're Goliath there. Yeah. They actually closed some of their buildings, though. like I live in like our school district called Mayfield but it's like Mayfield Highland Heights Mayfield Village and they had their big office in Mayfield Village and then they had another one that's Mayfield Village I guess it'd be Mayfield Heights but like basically they gave a lot to the schools because of those properties and they actually closed one of them down because they just have so many people working from home now right I know well shit in the height of COVID nationwide wide down there in Columbus for sure. They, they furloughed like eight. I, it was an astounding number, like 11,000 employees and they actually sold one of their biggest office buildings and just did a full remote, almost an almost full remote thing, which of course is changing a bit now, but yeah, it's just so amazing. Anyway, I didn't call to talk real estate, but get to the beach more. Who do you usually go with? Do you get kids out there with you? No, they don't want to hang out with me anymore. They're like 19 and 21. Right. I just go with a friend. Love it. Love it. Well, good luck with that. They go with their own friends. Right. Yeah, they don't want us to be seen with mom. Yeah, right? That's good. Well, I was calling here because unless I'm losing my mind, And when you do a presentation through PCR now, it lets you know if the person's profile has been viewed. And I thought that it actually automatically moved the pipeline forward. It can. It can, depending on how it's configured, to do it. So, I mean, are you getting the activity that is viewed? I get the notification that it's viewed, but it doesn't move it forward in the pipeline. Okay. Give me one second here. Let me get out of what I was in here. A recent example would be Charles Valinati. C-H-A-V-A-L. We'll get you there. Okay. Let's see. I have to search group. Okay. Got that. It depends. Like you could set it like, and it's only based on your primary template. Like, so like if you had the legacy or new pipeline, um, and you might have it set where only if it's in, was currently at a certain stage. So that could be an issue too. Um, what is your database is Vince Brown, not sandbox. I assume. What is your username? V Brown. And you sent it from the pipeline? 100% yeah and I am 99% convinced that it used to do it and I can't imagine that I would un-configure it to do that. I don't know. Okay so what is the job? Oh so just you can just put in COO for title. Is that the one at Northern Neck Insurance? Yes. Okay let me first see what pipeline template this has. Or actually hold on one second. There's so many options, different setup options anymore so it gets a little confusing. Okay so what does this job particularly have? Okay so customize, I'm going to customize your layout so I can tell which template it has. The pipeline template used for this job is named primary pipeline no assessment. Okay so let's see Now, it could be the pipeline template that you're using. You're using like a different one that has no assessment? Yeah, so I don't quite understand that because I really only ever have one. Once the new functionality came out, I've only really ever had one template that I use. Well, that's what I have too. I have one for split partners, and then I have the – but for clients, I only have one for clients. So if you go to like system and you go to database setup and go to pipeline setup. Okay, system. And then database setup. And then pipeline setup. Hold on. I'm sorry. I'm not. I see in settings. If I do a search, I just see update database, replace data and logging options. Never mind. Why would it not find us? It only searches at the right, not at the left. So if you were just going to use that search box, just type the word pipeline and then go to pipeline setup. Oh, I see. Okay. Okay, database setup. I'm there. Sorry. Okay. So when you go to pipeline setup, you have three templates. you have primary which is your primary one and then you have this other one called primary pipeline no assessment i never use that okay i only ever that is the one that is currently on that ceo coo position like if you go to position and it should be in your recently viewed to pop right up I added the pipeline template name under the office group so that I could see what template this one's using so this is using that one called no assessment now so it could be happening is if you're moving people in the pipeline and oh you got feedback received you got feedback received did you move them over there history yeah so I'm over okay I'm moving more yes yeah so when you do the like you know when presentations viewed or or a feedback received it can only be based on your primary template. It can't like so this job is using a different template so that's why it didn't happen probably for this job it might be for others. Like if you so let's now go to system and go to presentations and then to go to candidate presentation templates. Okay. So where it says like change pipeline step under viewed and when it's submitted when you click on it like where it's going to change from or move to it can only be based on one template. So because that other job has a different pipeline template that's why it's not happening for that position. Let me just try something here for... Let me see if your other jobs... So I don't understand because I'm just all I'm doing is linking them like like I always start with just linking them so I'm not even like I'm not even right it's just your it should be popping up like what template to use you mean when I create the position when you create the position and then for that job you happen to pick that other one that said no assessment so that's why I can't recognize moving the steps because you could have completely different steps in that template that you're not using that wouldn't be recognized. So you can only pick from your primary. So you only have, you have two jobs that are available that have the no assessment pipeline, the actuary modeling position at MAPFRE, and then a director of project management at Mutual of MCLAW. Let me see. Is there anything else? Where is this? Oh, oh, oh position. Or is that just filled? Maybe that's why. oh because it has status appending so if you go to position and hit search I added you can see what template it's using it'll be way over at the right so if you do like position status maybe A for your search at the very far right oh I see okay yeah so the ones that have that template called no assessment those won't be able to move them because they have a completely different setup okay yeah your presentation move somebody but it's got to be based on only one template got it okay that solves my problem thank you dear and I hate to say it I'm up against a hard stop here okay thank you Robin I appreciate it. Oh, you are welcome. Okay. If you have any jobs or maybe you don't have candidates in it yet, you know, just. I can change it. Just, you can't change it because if you have people in there, they don't land in the right spot yet. Just create a new job. Okay. Okay. Thank you so much. I appreciate that. You are welcome. Have a good day. You too. Bye-bye. Thanks. Bye. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you. Thank you.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1080.101604,
+    "salad_processing_time": 21.905407428741455,
+    "overall_processing_time": 1080.101604,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Hey, Robin.",
+    "job_id": "7423027a-2445-4e99-a8b2-52e5fd05f09c",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Hey, Robin.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3035684010036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

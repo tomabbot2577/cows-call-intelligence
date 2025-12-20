@@ -1,0 +1,95 @@
+{
+  "recording_id": "3056027217036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:05:37.517265Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:05:37",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Green Sequence Technology. This is Tyler. How can I help you? Tyler, Ernie Bivona. How's it going, Ernie? Good, good. Question for you. I started the presentation on a candidate. I said, wait a minute, I'm missing some information, which I now have. So I saved the draft. Where is the draft? Where would I go to find the draft? Let me pop in and take... Was it just like an email, or were you actually using the presentation feature? Presentation. So would it be under the company? Would it be under the candidate? Where would I find under the hiring authority? Which database are you in? Industrial. It's the only one we use. You can get rid of the others. We don't use them. Let me take a look here. Let me find where those are stored here. I looked under email. I didn't see any drafts. I looked under the individual. I suppose I could look under the company. Were you sending the presentation directly from the job description? from the job description? Well, you know, you put the candidate in the pipeline. Okay, so from, yeah, from the pipeline. But where would it be? Which position was it for? Director of Sales and Marketing. Thank you. Let me take a look here. I'm trying to see where they're at. I never could find them. So where were you hitting save as draft? before you send it you can save a draft because in the candidate presentations feature I'm not seeing that at all well if I go to email save draft okay so you're doing an email not the candidate presentation oh So those will be... Was it the... Yep, I found it. All right. So, where you'll find the draft, if you go into PCR mail, it's under the personal folders, the drafts. So, you'll see where it says. And then it says personal. Yep, click the little plus sign to the left of personal. to open up those folders. Draft 10. Oh, there it is. Okay. Never knew it. Yep. Yeah, if it's just like a regular email you're sending and you save it to drafts, it'll be in the personal folder under drafts. All right, thank you. Yep, not a problem. Thank you. All right. Have a good one. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1656.655728,
+    "salad_processing_time": 22.96912932395935,
+    "overall_processing_time": 1656.655728,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Green Sequence Technology.  This is Tyler.  How can I help you? Tyler, Ernie Bivona.",
+    "job_id": "128cd267-6009-40ee-bb50-f20b77a48670",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Green Sequence Technology.  This is Tyler.  How can I help you? Tyler, Ernie Bivona.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3056027217036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

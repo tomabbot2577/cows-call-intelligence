@@ -1,0 +1,206 @@
+{
+  "recording_id": "2993782718037",
+  "analysis_timestamp": "2025-09-21T18:45:16.636863",
+  "analysis_version": "2.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "John Kelsey",
+        "role": "customer",
+        "company": null,
+        "confidence_score": 0.9,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-09-21"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "sales_demo",
+    "CALL PURPOSE": [
+      "Schedule a demo with Robin",
+      "Provide Zoom link for demo"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "customer_identification": {
+      "primary_contact_name": "John Kelsey",
+      "primary_contact_role": null,
+      "company_name": null,
+      "phone_numbers": null,
+      "email_addresses": null,
+      "key_decision_makers": null,
+      "team_members": {
+        "Robin": null
+      }
+    },
+    "business_context": {
+      "industry_or_business_type": null,
+      "company_size_indicators": null,
+      "technology_stack_mentions": null,
+      "current_challenges_pain_points": null,
+      "growth_stage_indicators": null
+    },
+    "relationship_mapping": {
+      "previous_interactions_referenced": true,
+      "existing_service_usage": null,
+      "account_history_mentions": null,
+      "relationship_duration_indicators": null,
+      "trust_level_indicators": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "scheduling",
+      "issue_severity": "low",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "medium"
+    },
+    "resolution_tracking": {
+      "issue_status": "resolved",
+      "resolution_steps_taken": [
+        "resend Zoom invite",
+        "coordinate with Robin to rejoin Zoom meeting"
+      ],
+      "outstanding_action_items": [],
+      "next_steps_required": []
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": [],
+      "knowledge_base_gaps_identified": []
+    },
+    "agent_performance": {
+      "problem_solving_approach": "proactive",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "sufficient",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Neutral",
+      "trust_level_signals": "Moderate",
+      "communication_style": "Informal and reactive",
+      "rapport_quality": "Moderate"
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Active",
+      "product_adoption_level": "Initial",
+      "feature_utilization": "Low",
+      "expansion_opportunities": "Undetermined"
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Responsiveness",
+      "risk_indicators": "Confusion in scheduling, potential miscommunication",
+      "loyalty_signals": "Willingness to reschedule and continue conversation",
+      "advocacy_potential": "Low to moderate"
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Email, Zoom",
+      "response_time_expectations": "Immediate to short-term",
+      "information_style_preferences": "Direct and brief",
+      "decision-making_patterns": "Dependent on immediate communication and confirmation"
+    }
+  },
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium"
+  },
+  "action_items": [],
+  "participants": {
+    "primary_employee": {
+      "name": "Robin Montoni",
+      "extension": "5466",
+      "phone": "6145466",
+      "email": "robin.montoni@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5466"
+    },
+    "primary_customer": {
+      "name": "John Kelsey",
+      "company": "t hear anything sinc",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "John Kelsey",
+        "company": "t hear anything sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to try and cop this",
+        "company": "t hear anything sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Jim",
+        "company": "t hear anything sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not sure if that was looking for",
+        "company": "t hear anything sinc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Robin Montoni",
+        "extension": "5466",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-09-21"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": []
+    }
+  }
+}

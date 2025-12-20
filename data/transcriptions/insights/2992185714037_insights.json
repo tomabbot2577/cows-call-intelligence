@@ -1,0 +1,174 @@
+{
+  "recording_id": "2992185714037",
+  "analysis_timestamp": "2025-09-21T16:54:50.114923",
+  "analysis_version": "2.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Kevin Moran",
+        "role": "agent",
+        "company": null,
+        "confidence_score": 0.9,
+        "validation_reason": "Likely an employee based on the 'agent' role"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-09-21"
+    }
+  },
+  "call_classification": {
+    "call_type": "account_management",
+    "call_purpose": [
+      "update agreement with new date",
+      "address any questions"
+    ],
+    "urgency_level": "medium",
+    "outcome_status": "pending"
+  },
+  "customer_profile": {
+    "customer_identification": {
+      "primary_contact_name": "Kevin Moran",
+      "primary_contact_role": null,
+      "company_name": null,
+      "phone_numbers": [
+        "440-856-0314"
+      ],
+      "email_addresses": [],
+      "key_decision_makers": [],
+      "team_members": []
+    },
+    "business_context": {
+      "industry": null,
+      "company_size": null,
+      "technology_stack": [],
+      "challenges_pain_points": [],
+      "growth_stage": null
+    },
+    "relationship_mapping": {
+      "previous_interactions": [],
+      "existing_service_usage": [],
+      "account_history": [],
+      "relationship_duration": null,
+      "trust_level": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "billing",
+      "issue_severity": "medium",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "low"
+    },
+    "resolution_tracking": {
+      "issue_status": "resolved",
+      "resolution_steps_taken": "updated agreement with new date",
+      "outstanding_action_items": [],
+      "next_steps_required": "customer to review updated agreement"
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "none",
+      "knowledge_base_gaps_identified": "none"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "proactive",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "adequate",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationshipHealth": {
+      "overallSatisfactionIndicators": "Unknown",
+      "trustLevelSignals": "Moderate",
+      "communicationStyle": "Responsive",
+      "rapportQuality": "Casual"
+    },
+    "customerJourneyStage": {
+      "onboardingStatus": "Completed",
+      "productAdoptionLevel": "Moderate",
+      "featureUtilization": "Partial",
+      "expansionOpportunities": "Potential"
+    },
+    "retentionFactors": {
+      "satisfactionDrivers": "Unknown",
+      "riskIndicators": "Low",
+      "loyaltySignals": "Moderate",
+      "advocacyPotential": "Unknown"
+    },
+    "communicationPreferences": {
+      "preferredContactMethods": "Phone",
+      "responseTimeExpectations": "Quick",
+      "informationStylePreferences": "Direct",
+      "decisionMakingPatterns": "Prompt"
+    }
+  },
+  "key_metrics": {
+    "call_type": "account_management",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium"
+  },
+  "action_items": [],
+  "participants": {
+    "primary_employee": {
+      "name": "Unknown",
+      "extension": "",
+      "phone": "",
+      "email": "",
+      "department": "",
+      "role": "",
+      "employee_id": ""
+    },
+    "primary_customer": {
+      "name": "Kevin Moran",
+      "company": "",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "Kevin Moran",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-09-21"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "get back to you"
+      ]
+    }
+  }
+}

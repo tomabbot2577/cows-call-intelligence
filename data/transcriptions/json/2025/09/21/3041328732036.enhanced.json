@@ -1,0 +1,112 @@
+{
+  "recording_id": "3041328732036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:52:21.852096Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:52:21",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling. This is Garrett. How may I help you? Garrett, it's Annie and Barry Sabransky from Prime Staffing. How are you? Good. How are you? Good. Okay. So Barry's Outlook portal seems to have disappeared. Could you guys do a screen share? I'm walking through how to put it in. Sure. Is he using Outlook Classic or Outlook New? Outlook Classic. Okay. Yeah, let's take a look then. I'm going to fire up a screen share meeting. I'll just have you go to meetings.ringcentral.com. No, meetings.ringcentral.com, Barry. Barry? So meetings.ringcentral.com? Yes. Perfect. Yep. And when you're there, let me know when you're ready for the meeting ID. Just hit log in. Okay. Meeting ID. That is 948-990-467. Annie, thank you for doing it right away. Perfect. And then once you're on there, you could say continue without audio since we're already on the phone. Okay. and then just click the blue share button down at the bottom and select your entire screen up at the top that's right and then hit share bear excellent that's loading on my end great I can see that so if we open up all right so this is yet classic if you go to file at the top left and then go to where it's in yellow it says slow and disabled com add-ins click on where it says manage com add-ins kind of to the left of that okay use that options drop-down kind of at the bottom there where it says options and say enable this add-in and then apply And then that's fine. You can just hit apply on that. And you should be good when you go back to your main page. page. You just hit the back at the top left. Okay. And it'll reopen. It should be on there again. So I think it just had trouble loading one of these times and it put it into the, like, kind of a timeout where it was taking too long to load Outlook because of it. I have a question while you're on the phone. Sure. Someone showed me where, like, it's not loading Outlook now. I've got to turn my computer off to turn it back on, okay? Isn't there a way I could disable Outlook so it could do it automatically? Yeah, so you could actually, if you just want to right-click on the Windows logo down at the bottom on your taskbar, if you right-click on that, yep, right there, the Windows, It'll give you the option to open Task Manager, kind of middle, bottom. It says Task Manager. There it is. So here you can select Outlook from the list. It might be under Microsoft Outlook or just Outlook. Yeah, there it is, Microsoft Outlook. A little bit lower. You're on Office. There we go, Microsoft Outlook right there. Did I just end task for the wrong one or no? Possibly, but it looks like it reopened again. And that doesn't cause a problem if I ended something, right? Right. No, I think it was just the Microsoft 365 launcher or something. So that should be in good shape. Yeah, so you don't have to restart your computer each time. You can just open that task manager and end task on Outlook. Beautiful. Let's just try one thing right now of you on the phone. Sure. Yep, it's right there, perfect. Awesome. Garrett, I really appreciate it. Thank you so much. Thank you. Yeah, happy to help. Annie, I appreciate you helping me so quickly. Yeah, no worries. No, that's it, Garrett. Thank you so much. Have a good day, Garrett. Take care. Thanks, Garrett. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1264.074262,
+    "salad_processing_time": 16.621147394180298,
+    "overall_processing_time": 1264.074262,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling.  This is Garrett.  How may I help you? Garrett, it's Annie and Barry Sabransky from Prime Staffing.",
+    "job_id": "cb58a300-9262-4d45-9d83-0b37d4c1e4d5",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling.  This is Garrett.  How may I help you? Garrett, it's Annie and Barry Sabransky from Prime Staffing.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": true,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3041328732036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

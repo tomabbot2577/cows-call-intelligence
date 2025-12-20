@@ -1,0 +1,121 @@
+{
+  "recording_id": "3032579998036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:44:58.753103Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:44:58",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " My main sequence, this is Robin. Hi, Robin. Good morning. My name is Mikhail, and I am from Kronos Consulting, a user of PC Recruiter. So my issue is I'm not able to log in successfully to PC Recruiter today. And whenever it is successfully logged in, I always encounter the error of PC Recruiter being logged out. So maybe we can check on this. you might need to go to whoever maintains your database. Let's see. You're with Kronos Consulting. Is that correct? Yep. Okay. Check the database. See maybe some of the credentials you're logging in it. We cannot do anything about password or things like, or security. So, but I'm not sure if this has something to do with it, but I, yeah, let me, yeah, if it's locked, if it's locked out, it could be that, You have something connecting the PC Recruiter with maybe your username, but it's got the wrong password. So let me see. I don't think that's the issue because at times I'm able to log in, but it automatically logs me out. And I'm not sure if... So you're saying it's disabled or... I mean, that's two different messages. Do you know a username that's a full administrator? No, it's just... Yeah, I'm not a full, I don't have full administration apps. Do you know who does, like what their username would be? Because normally there's like an admin account. I could peek that. Oh, wait, I missed a letter. Hold on one second. I don't know the username. Hold on. Okay, one moment. One moment. Let me just check. It was, I'm just typing something here real quick. Let's see. Let me check something. Okay. Okay, so you're logged in. So you're not getting that you're locked out, right? Yeah, I am. That's not the issue. Okay, so I thought that's what you said. Okay, so what are you experiencing then? so earlier when i was logging in i am automatically being logged out and i'm getting the error message that pc recruiter is automatically logged out after a number of minutes oh okay and then right and then right now as i'm trying to log in it just won't go through okay so one thing could be you have different IP addresses, which would cause a logout. Let me get a list of the ones that you've used today. Hold on one second. So I was actually about to tell you that I changed internet providers today. Oh, okay. So does that have something to do with it? It could be, yeah. Do you know what your IP address is right now? Let me double check that. I've seen a few being used for you. So your new network, it looks like they do change. It's possible that they change IP addresses because it's definitely changed several times today. Let me double check, okay? Yeah, that'll help. All righty. Well, obviously, I'm going to my computer settings. Is it the IPv4 address that you need? Yeah, you can just go like, what's my IP? And it usually tells you to. It's like a website. Oh, okay. That's one way to tell. Oh, you don't have a time zone selected. What's your time zone? you follow every zone a time zone that could also cause an issue too so Arizona the one like doesn't that doesn't change correct yes okay let me set that because that could definitely be an issue as well your username did not have any time zone selected so it's kind of running off eastern time zone which would cause a conflict that could be one thing but you also have this IP address issue. Okay. Do you want an IP address right now? I have it. Yeah. What is my IP address? Okay. IPv4 says 112.20. Okay. Is it NN115? No. Okay. It ends in 130. 130. Okay. That's another one then. 1 1 2 is it the 203 107 like what I don't let me list that one too let's see what you might need to do is check with whoever your new provider is and tell them you need a static IP address. Otherwise, this can be an ongoing issue. Can you go ahead and try logging into PC Recruiter now? Because one thing I did do is change your time zone. That could be an issue, but I also want to see exactly what... So I just tried and it won't go through. It just won't log in. Okay. So I guess it's an issue with my new internet provider. Yeah. Okay, what's the newest one that you said? 112. 112, 203. Okay. 104. Okay. 130. 130, okay. I'm going to try whitelisting some of these but you could have an issue if it's going to keep going on. Let's see. I'm going to go ahead and put these in there. It looks like you've had some other ones for your database before. Okay. Let's do this. Let's have you close Chrome or at least close PC Recruiter window. Go back to Chrome and try it now. Let's see if this helps. One sec. So I'm trying it now. Okay, it successfully logged in. Let me just see if it will automatically log me out. Let me just go around and open some profiles. The other thing that you might want to do as well, I think it's probably mainly this IP address and the time zone. But the other thing that will help with out being logged out is you're using Chrome. Yep. If you go up to the top right of Chrome and go to those three vertical dots, go to settings. Okay. Go to performance. Okay. and where it says memory make sure that option is turned off okay because what also could happen too again i don't think it's related but it can certainly be an issue is if your computer ever gets low on memory what happens is chrome will suspend your tab as you're working another tab so when you go back to your main screen of peace recruiter it's going to try to reload it which It basically means it's reloading your URL, which will take you back to the login screen. So that's just one more thing. Okay. And to make sure that it is off, right? Yeah. That one I would recommend turning off. Okay. All right. Yeah, it's off on my end. So, yeah. Okay. And, yeah, let me – okay, there. It automatically logged me out. It did again. Yeah, what about – Okay, let me see. It did it again. Okay. Let me see what it was recognizing as your log in that time. Yeah, I think it's this, and we could put like a string of zeros, but it's really not ideal. Okay, so this was a different IP address, it looks like. This was ending in 192.168.275. That's another one. Although right now it seems it refreshed, okay, and I was able to enter an activity. Okay. Yeah. It's so weird. I added this last one in. I would see if there is, you know, whoever your new provider is, reach out to them as soon as possible and say, I need to be using a software that requires a static IP address for security and see if they can switch that. It's usually like a network setting, but it kind of depends who you're with. Okay, but that's something that I have to do with my provider. The thing is that I had this internet connected by a third party. So I'm not really sure. But so far, it is working well so far. yeah I'm not just sure though it will be on an error again in a few minutes here but I was able to log an activity which I'm not able to do earlier okay and that's what I yeah this is just um yeah and I rather not like I mean I could advise the administrator to say oh if you it's like 0.0 0.0.0 or something like that but then you keep it like open where it would never log somebody out because of an IP address change so that's not very secure to do. We don't really recommend doing it ever. Oh so right now when you whitelisted me does that mean that you're going to put it out again because it's not secure? It could if your IP address changes again it could log you out again is the problem. Okay. All right. Well, I don't think it will change because I've already... Hopefully. Yeah, I already have this internet provider fixed at home. Yeah, but anyway, so far it is working well. If I have any more issues... Oh, that one was me. Hold on one second. Oh, that was edited. Hold on one second. That was not... This is the one. That was me. Hold on one second. That was me changing it. That wasn't you logging in. Hold on. Let me take my IP address out. Where's my IP address? Let's see what you're in as right this moment. Those were me. Okay. I say keep an eye on it. Because I don't see logged in. Can you log out, log in one more time? I just want to see what IP address it tracks for you. All right. Without having to close the tab, right? Just log in. Yeah, I would close everything PC Recruiter and then go back in and log in. All right. And then let me know once you do. Okay, it logged in, but it logged me out again. That error message of PC Recruiter was inactive, so let me try again. I think I'm going to have you try one more thing too. Now it doesn't let me. Okay. Okay. Let's try this because I also changed your time zone. and I want to make sure your launcher is not storing things how it was before. Can you go, like, down, I assume, are you on Windows? No, Chrome. Oh, Windows, yeah, yeah, yeah. Okay. If you can, like, kind of right-click down at the very bottom of Windows, like, I want you to go to your Task Manager. Mm-hmm. Okay. Let me know when you're there. Yep. Okay, so scroll down. It'll be under background processes, and I'm going to have you look for Java TM platform SC binary. I only have Java update checker and Java update scheduler. Okay, that could be a different issue then. Okay. So right now I'm logged in. Yeah, but I want to make sure that you have Java Launcher, because that also controls things, too. Let me see here. I'm going to get right off your user record. Okay, let's see. I'm going to send you a meeting link here. Okay. Okay. Just sent you a meeting link. Okay. Give me one second to load this. Okay. So, I do have a question, though. I got the IP address from the website that you've mentioned, but my computer settings says a different IP address. Do you think that's the thing? Could be. I can check both of them are in the list. I'm now joining the call. I don't have to be on camera, right? No, no, you can turn off camera. And you don't need to join audio either since we're already on the phone together. Hold on one second. I just stay on mute. Yeah. Bear with me one second because I have so many windows open. Where did it go? Okay. There it is. Okay. I'm going to admit you in. Okay. All right. So here's what I'm going to have you do. At the bottom of your meeting screen, you'll click share screen. But I'm going to have you go over at the right where it says entire screen. Okay. And then select which screen to show. Okay. Can you do me a favor and go to the Windows search option down at the very bottom? Okay. I wonder if you don't even have to. Type in the word add to start with. This one? Yeah. Okay. Let's go to add or remove programs. I'm going to set opening up any other screen oh this is always sorry that's not what we're looking for okay let's go down at the bottom again different versions give me different options here sorry about that let's go the window search again down at the bottom here type in the word system. Okay, there we go. System control panel. Sometimes I see the system settings. I see... Okay, now go to apps over at the left and go to installed apps. Okay. Let's go down to the Js. And are you a new PC Recruiter user? No. Or is this a new computer? Only the Wi-Fi connection is new. Okay. Oops, there's Java. Java update 401. That's a little old. Okay. Okay. We can update that one. And then let's go down a little bit to the P's and look for PC Recruiter Launcher. Okay. Okay. You have that one. Okay, let's do this. Let's go to a new browser tab. Because you should have had that launcher option. Let's go to java.com. And hit download where it says, yeah, that option. Okay, let's go down on this page. Download Java for desktops. Go down on this page, download Java for desktops. Okay, you're going to click open file. Open that download at the top right. Okay. Now it's going to ask you, do you want this device to make changes to your computer? You're going to hit yes, and then here you're going to hit install. Oh, okay. Now, at the end of this, it should detect that you have an older version of Java, and I'll have you hit uninstall when we see that window. Okay. it shouldn't affect my other PC Recruiter functions like the resume inhaler, right? Well, this is actually needed for several of those things. So I'm just wanting to see if there's something out of date because I'm kind of surprised that it wasn't running in the background anyway. Let's hit close. Did you see the uninstall option that maybe I just overlooked there for a moment? I did not. Okay. let's go back to that system settings option unless yours is set to automatically delete on this older version which is where go down to the the window search option yeah we're gonna go actually you know what go back to that settings icon cuz you're actually still in there I think okay let's click apps again just so this list refreshes okay go back to installed apps yeah let's see if we now have a more recent version okay let's go to the J's okay what okay so now it's the more recent one okay that's good let's let's go to task manager again okay you want me to do reload it yeah let's do that okay yeah might as well okay okay so okay so let's go down to the J under background processes let's go to the J's So under background processes, do you see that Java TMSE binary? I don't see it. It's a J. Okay, let's exit out of here. Another J. Yeah, I'm not seeing it. Okay, let's exit out of here yeah so close yeah and then we'll get out of the settings screen as well and then I'm gonna have you do this down by your date and time you have a couple icons to the left of there click on the one that has the up arrow okay no no no down near the bottom down a little bit more okay and the up arrow so over to the left from where you are now it's going to show your hidden processes down there so over to the left can you hear me yeah I think I'm just confused okay over to the left now go down exactly down from where you are right now no um not in these calendars at all okay so hover where your date and time is for now okay okay now just move over to the left staying on where it's got that black background go to the left go left the one that's got the arrow facing up there you go there okay So you don't even have launch or running for some reason. Okay, I wonder if that's what you think. Let's go ahead and have you go to Chrome. Open a Chrome window, yeah. Or do you typically use Edge? Which one do you use? Chrome. Okay, so let's go to Chrome. Okay, hold on. This is a new Chrome tab. Okay, have you go to Pace Recruiter. type in your password when you log in are you ever getting like a prompt about opening the control loader because it should yes okay here hit the always allow option that's why we couldn't find in the brock okay and then say open control loader that's what actually says it's okay to use our launcher and things like that. Okay, so now you're in. Let's have you move around a little because you probably were not able to open attachments and things like that. Okay, so this is my issue, right? So whenever I click on items after logging in. So you're at 947. Okay, let's do this. Let's go to the three vertical dots up at the top. Okay. Go to delete browsing data. Uncheck cookies and other site data. Uncheck that one. And then where it says time range, set that to all time. Where is that? Right above. It's in the dropdown. All time. Okay. Okay. Hit delete data. Okay, let's have you close these tabs. I'd love if you could just kind of force all of Chrome to close completely. Okay, so let's get out of these two. So if you go to like the three vertical dots, just do file and then go all the way down to exit. So it'd be at the bottom. Oh, so close all of Chrome for now. Yeah, let's do that. Kind of do like a whole new refresh here. Okay. Okay, let's go back over to your database. Because I've changed your time zone that you are now Arizona. Let's do this. Annette, let's right click on that launcher icon, which is the one with the little C in the middle. No, over the first one up in that pop-up. Go to the first one. Yeah, right click and select exit. Oh, sorry. I clicked on open. Sorry about that. Let me click on exit. Okay. Yes? Yes. Okay. let's go back to Chrome now go back to PC recruiter Now this is first time it's gonna take a little bit slower because we cleared cache and everything. So that's why okay. Okay let's go ahead and log in. Why is this going on here? Are you working from home by any chance? Yes. I wonder if there's something about your network even hung up in the back end that's the only new one so I suspect it has indeed something to do with the internet can you like restart your computer and maybe even like your router I want to see what it's I'm not sure about restarting the router because I have other people working as well. Is this how you're recognizing that you're logging in right now? Can you try restarting your computer at least? Okay, so we hang up. Are you calling through your computer? Yes. Okay. Why don't you... Okay, so I emailed you the invite. Do you have like a headset? Sorry? Do you have a headset that you can call through? I assume so because you have RingCentral. Looks like you have RingCentral. I can use my phone. Here's what I can do. Yeah, here's what I can do. I can stay in the meeting, and then I'll just hang up the phone call, but I'll stay on for the audio in the meeting. Okay. After you restart, just that meeting link that I emailed you, just go back in that way but join the computer audio yeah okay um can i have like five minutes though or not even five maybe like four do a complete yeah yeah yeah shut it down let it sit for a couple minutes and then restart and then i'll be back over in the meeting within like three four minutes. I'm just going to run to the little girls room, they say. So, yeah. Okay. So I'll be back in just join through the computer audio. Okay. No worries. Yeah. Let me shut down and let me rejoin. Okay. Sounds good. Thank you. Okay. Thank you very much, Robin. I'll talk to you in a moment.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1022.333399,
+    "salad_processing_time": 127.41484379768372,
+    "overall_processing_time": 1022.333399,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " My main sequence, this is Robin.  Hi, Robin.  Good morning.",
+    "job_id": "14400532-ba2b-4f8f-b247-410281e6d37d",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " My main sequence, this is Robin.  Hi, Robin.  Good morning.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "resolved",
+    "first_call_resolution": true,
+    "escalation_required": true,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3032579998036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

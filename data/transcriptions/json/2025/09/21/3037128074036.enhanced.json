@@ -1,0 +1,121 @@
+{
+  "recording_id": "3037128074036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:47:59.835389Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:47:59",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Garrett, did they merge your general support with your advanced support or something? Because when I pressed 4 when I dialed in here, that wasn't an option. We're in the company directory. That used to get me into advanced support. Yeah, it's all been merged into just the support line now. All right. Okay. Look, this is Ron Eddy. I have a problem with one of the emails in my alias list, which was working fine yesterday. I got up this morning to send out an email, and it's saying that it can't connect to the server, even though when I go in and test the connection, it tests fine. And even though when I go to send it directly from my email client, my regular email client, it sends and receives email just fine. Okay. What's your username? I'll just take a look here. Admin. Okay, perfect. Logging in now, and I'll check the alias. Which alias is it specifically? That's the second one in the list. It says COEM for company email. Gotcha. All right. Yep, that is testing positive. Let me try this here. I'm going to just try sending myself an email. I know I'm somewhere in this database. Yep. Okay. Let's see. Okay. Yeah. I sent an email to myself from, oh, wait, you know what? I didn't select the right, sorry, let me do that one more time. I didn't select the right alias, sorry. The whole reason I was doing that was to test that one alias. Whoops. All right, here we go. Okay, could not send mail. User rate limit exceeded. Okay, yeah, so the extra, you know, kind of details listed there is saying user rate limit exceeded. So it seems like for SMTP connection to that particular email address, you've hit some kind of limit with your provider, whether it might be an hour limit or a daily limit. But yeah, it's coming back in the error kind of notes there, user rate limit exceeded. I don't see that on my test connection. It just says okay. I see it when I actually go to send an email. I'll hit send and it says, you know, uh-oh, PC recruiter could not connect to email alias. There's a button to say show detailed error and that will give you some more information. And I'll just let me put that in a Google search user rate limit exceeded just to see if I get any other. It gets the number of requests or actions performed by a user within a specific time frame has surpassed the maximum allowed threshold by a service. OK, yes, that's what it is. It seems like for this particular email address, your provider, you've hit a limit or a quota for either a few hours or for the day. for that area. So what, do I just wait and then tomorrow it's reset or something? Yeah, most likely. This is Gmail, right? Yeah, Gmail, I don't think the rate limit lasts more than for a day. So I think you should be in good shape. All right. Well, I don't even know what the rate limit is. And they don't want to tell you either. I thought it was supposed to be 500. But they do make it difficult to find that information on some of these providers. Gmail. Yeah, it might be 500. Let me I'm going to do a quick Google search to while I got you still on the phone. Gmail, SNTP rate limit. I thought I held below that yesterday. I mean, I got fairly close to it, but... Okay, so Gmail SMTP servers both have daily and per-minute sending limits. Okay. Daily limit of 500 emails. Okay. And then per-minute limit is often around 60 emails. for per minute. So I don't know if that might have gotten bumped, but you can use our PCR settings in your alias to say put in X number of milliseconds in between each. Let's see. Okay, yeah, you have that 1,500. So that's good. I feel like that's too few. Maybe double that. Maybe put it at 3,000, and then we probably have no chance of hitting the 60 emails per minute. But, I mean, 1,500 should be fine as well. So, yeah, maybe it wasn't the per-minute limit. Maybe you just went one over the 500 emails or something really close to it for the day limit rather than the minute. I'm looking at what I sent out on that email yesterday, and there was one bulk email. It was about 89 recipients. the other one was looks like the other one was 200 and something so it shouldn't the other one was 271 so I mean I might have been around 350, 375 but hell that's not anywhere close to 500 right 500 per day and interestingly I don't know I don't know what time zone. The 271 didn't even come yesterday. I said 89 yesterday, and then this morning at 1215 and 1245, that's when the 271 group went out. So that would have all come this morning. It's almost like, you know, they're saying the 271. Here's what I don't understand. Why is it only affecting PCR? because I can go in there right now and send an email to myself if I just go into my email client, you know, like gmail.com. I can send an email out and receive one in there, but I can't send it through PCR. That's because it's using something called the SMTP service to connect to Gmail. So it's like a different, what would the word be? Like a different protocol, I guess, would be the word. So rather than just sending from the Gmail, it uses an SMTP connection, and they have a specific limit for your SMTP connection, it sounds like, at Gmail. Yeah, maybe it's smaller than the 500 then. Okay, yeah, maybe that's a possibility. That's a good point. Maybe this 500 is just using Gmail in general for the day, but maybe SMTP through that line of connection, it's a smaller number. That very well could be. That's a good guess, actually. I'd say that's probably probably right I mean I don't know what else to assume because I deliberately put that last group of 271 over into this morning so we show on 81 instead of 731 and because I knew I'd sent 89 out already yesterday and our 79 and it still popped me okay I don't need to reset passwords or anything like that do I now? I mean, we're no, no, we'll be, you're, you're good on, on the PCR side, the connection still connected. And, and so, yeah, it's just that they put you in the, like the timeout corner, I guess, that Gmail and they, yeah, they need to be more clear at Gmail what these limits are because guessing isn't helping anybody, you know, and they, even at Google search doesn't give me the exact answers we're looking for. So yeah, I, I'm not sure. Those idiots that control Google and Gmail, they love to try to hide everything. You've got to come to us. I hate that company, and I hate that service. Yeah, I agree. They're such a dominant player. You don't have a lot of choices. Right. Yeah, so I guess I would just wait another maybe 24 hours, and if that's still giving you a problem, we could see what else we could do, maybe find some more information about Google. But, yeah, maybe just try again tomorrow and see if you're still having the same issue. No, I probably won't. You guys aren't open tomorrow, though, are you? Oh, today's Friday. Yeah, we're not open tomorrow. Yeah, unfortunately. Well, I'll wait. I'll just wait and see what happens. And maybe I'll boost that up to 2,000 milliseconds instead of 1,500 to slow that down a little bit just to make sure it wasn't a per minute. But I can't believe that at 1,500 milliseconds, there's no way you should be able to get out more than that. 60 per minute. Exactly, right. Yeah, it's probably the per day one. All right, well, we'll figure it out. I'm not going to worry about this now. We'll figure this out and go from there. I appreciate your help, man. Yeah, no problem. Reach out if you have other questions come up. All right, we'll do. Thanks, Garrett. Thanks. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1119.493067,
+    "salad_processing_time": 84.98107767105103,
+    "overall_processing_time": 1119.493067,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Garrett, did they merge your general support with your advanced support or something? Because when I pressed 4 when I dialed in here, that wasn't an option.",
+    "job_id": "d4035117-2580-4733-97de-53b436904203",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Garrett, did they merge your general support with your advanced support or something? Because when I pressed 4 when I dialed in here, that wasn't an option.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3037128074036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

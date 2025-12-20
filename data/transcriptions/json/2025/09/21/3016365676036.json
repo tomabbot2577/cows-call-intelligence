@@ -1,0 +1,95 @@
+{
+  "recording_id": "3016365676036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:29:24.892533Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:29:24",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hey, good afternoon, Tyler. Thanks for taking my call. I am having a problem with one of my emails in my account, and I need your help in getting one of the emails off squared away. Yeah, is it just like you're not able to send with one of them? Well, the email account in PCR, when it goes over to email the mail server and everything, It doesn't look like the emails are syncing. I've been troubleshooting it for a while now. I know you guys are out of the office for condolences and everything like that, but I wasn't able to figure it out. Yeah, let me take a look. What is your username for PC Recruiter? My username is TJW, but the username in question for the email is going to be FLPCR. so it's in the imap that they're not syncing over yeah something something's there they have a microsoft outlook account and i've logged that in with the little one button click type thing and it brought up their mailboxes but i don't i can't seem to get it to update or anything like that Gotcha. So it looks like you didn't set the sent in trash folder, which is needed for that first initial sync, which I can do on my end here for you real quick. I could have sworn I did, but I knew there was something I was missing. Yep. And then it does take about 24 hours for it to do its first initial sync, too. So you're not going to see them right away. No, it looks like, yeah, no, I just didn't even feel like it was syncing. So I only put one Outlook 365 Outlook connected there, right? That's correct. And then I would go to configure. I go to email folders. And then I select one of these for sent and one for junk, right? Underneath the Office 365 header. Yes. And that's what I did. And I'm looking at it here. and it could be the wrong one. It's not exactly alphabetical, but down towards the bottom, bottom, bottom, it says right there, sent items is the sent folder. Yep. So I just went in and set the ones for the Office 365. What's the difference that I'm not seeing here? because I'm under the email folders, and the very first one is personal, inbox, read items, sent items, deleted, blocked, drafts, right? You see that? Archive, calendar, birthdays, and stuff. Yep. And then it goes inbox, and then 2025. So I skipped all past that, and I came down to... Oh, maybe I didn't. That's ridiculous. How is it not showing on the email side? I'm not questioning you. I'm trying to figure out how to learn this. There it is. It's all the way down toward the bottom. Okay, I've got to send items not in 365 is what you're saying. I just see that. And you just sent the sent and deleted items for the 365 account. Correct. Yep. Okay. And do we have to do the same thing for the deleted? The other one, the trash folder? Yep, the sent item and deleted items is the trash folder. Deleted. For Office 365. Okay. And deleted was, I'm just double checking to see if I know where it's at. It should be under D, right? I think. But no. Did you find a deleted folder? Yep. Okay. Yep, so if you refresh that PCR mail page, you'll see that they're marked now. Now, how come I got a 365 mail with all the folders below, which are correctly deleted and sent, and then there's another inbox up there? I guess that's the personal? Yeah, those personal ones will always be there. That's for the old POP3 feature. right right okay so I don't need to worry about any of that kind of stuff nope and then under the 365 now inbox that's when we start doing grab all or grab new or something like that right it'll sync by itself yeah it'll sync by itself like I said it usually takes about 24 hours we say for it to sync depending on how large the mail server is and how many emails it's pulling in. But if you give it overnight, you'll start seeing emails in there. And so the personal emails, I mean, you can look at them, but they're not really anything. Those are the old ones, right? That's like you said, the old top three, not the IMAP and everything. Yep, exactly. All right. Well, perfect. Thank you very much. deleted is already kind of updating under the Microsoft Office one, so that's good. It's already got stuff in there. Yeah, like I said, it'll start doing its initial pulls, and depending on the size mail server, it might be done earlier than tomorrow morning, but we always say just give it a little time just to be safe. All right. Well, thank you very much. I appreciate it. That was simple and easy. More than happy to help. I wish you knew something about your back office API and stuff like that, but that's a different conversation. Yeah. Yeah. All righty. Well, you have yourself a great rest of the day. All right. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 495.511899,
+    "salad_processing_time": 26.09398627281189,
+    "overall_processing_time": 495.511899,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, good afternoon, Tyler.",
+    "job_id": "dfabd7e3-08b4-4a2c-8e5b-22dfa8645471",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, good afternoon, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3016365676036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

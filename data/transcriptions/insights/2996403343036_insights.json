@@ -1,0 +1,288 @@
+{
+  "recording_id": "2996403343036",
+  "analysis_timestamp": "2025-12-19T18:11:32.241871",
+  "analysis_version": "2.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Kim McCurry",
+        "role": "customer",
+        "company": "VDC Recruiting Group",
+        "confidence_score": 0.95,
+        "validation_reason": "Clearly identified as customer"
+      },
+      {
+        "name": "Ryan McBrien",
+        "role": "customer",
+        "company": "VDC Recruiting Group",
+        "confidence_score": 0.95,
+        "validation_reason": "Clearly identified as customer"
+      }
+    ],
+    "mentioned_contacts": [
+      {
+        "name": "R. McBride",
+        "role": "customer",
+        "context": "email account"
+      }
+    ],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "support_technical",
+    "CALL PURPOSE": [
+      "troubleshooting email connection",
+      "assisting with computer setup"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "partially_resolved"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Kim McCurry",
+      "Company/organization name": "VDC Recruiting Group",
+      "Phone numbers mentioned": null,
+      "Email addresses mentioned": null,
+      "Key decision makers referenced": "Ryan McBrien",
+      "Team members and their roles": null
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": "Recruiting",
+      "Company size indicators": null,
+      "Technology stack mentions": "PCR, Office 365",
+      "Current challenges/pain points": "Email connection issue with an old computer",
+      "Growth stage indicators": null
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": "Spoke with Garrett yesterday",
+      "Existing service usage": "Using PCR software",
+      "Account history mentions": null,
+      "Relationship duration indicators": null,
+      "Trust level indicators": "Garrett was able to help resolve the issue"
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "technical",
+      "issue_severity": "medium",
+      "technical_complexity_level": "medium",
+      "time_sensitivity": "low"
+    },
+    "resolution_tracking": {
+      "issue_status": "resolved",
+      "resolution_steps_taken": [
+        "logged in under Ryan's username",
+        "checked email connection",
+        "reconnected email to Office",
+        "edited email alias",
+        "connected to Microsoft",
+        "tested email connection",
+        "adjusted delay between emails"
+      ],
+      "outstanding_action_items": [],
+      "next_steps_required": []
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "medium",
+      "number_of_contacts_required": "2",
+      "self_service_opportunities_missed": "email setup documentation",
+      "knowledge_base_gaps_identified": "email connection troubleshooting"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "step-by-step troubleshooting",
+      "communication_clarity": "clear and concise",
+      "technical_knowledge_demonstrated": "strong understanding of email setup and Office integration",
+      "empathy_and_rapport_building": "friendly and helpful tone"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "High",
+      "trust_level_signals": "High",
+      "communication_style": "Clear and responsive",
+      "rapport_quality": "Friendly and familiar"
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Completed",
+      "product_adoption_level": "Intermediate",
+      "feature_utilization": "Moderate",
+      "expansion_opportunities": "High"
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Effective support and problem resolution",
+      "risk_indicators": "Low",
+      "loyalty_signals": "Repeated interactions, positive feedback",
+      "advocacy_potential": "High"
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone",
+      "response_time_expectations": "Immediate",
+      "information_style_preferences": "Direct and instructional",
+      "decision-making_patterns": "Consultative"
+    }
+  },
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium"
+  },
+  "action_items": [],
+  "participants": {
+    "primary_employee": {
+      "name": "Garrett Komyati",
+      "extension": "5427",
+      "phone": "6145427",
+      "email": "garrett.komyati@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5427"
+    },
+    "primary_customer": {
+      "name": "with VDC Recruiting Group",
+      "company": "s your name and what company",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "with VDC Recruiting Group",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "noticing one other thing here",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just going to log in under Ryan here",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "noticing one other thing",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Garrett",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "trying to revamp an old computer that hasn",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "sure it",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just going to log in under Ryan",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "And then does it have the correct email address in the",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "And you should be in good shape to send out",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "already click on email oh oh",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "already click on email oh oh here so if you just want to go to your main PCR screen and then up in the main menu you",
+        "company": "s your name and what company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Garrett Komyati",
+        "extension": "5427",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [
+        "issue",
+        "trouble"
+      ],
+      "urgency_indicators": [],
+      "follow_up_mentions": []
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "recording_id": "3027214798036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:40:39.041078Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:40:39",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Please hold while I try to connect you. Hi, Jason. Hey, Ashley. How are you doing? Good, good. I'm sorry to bother you. I feel like I'm just emailing like a crazy person. But I think I just had one question. And it's only because this is really like messing up everybody's like days here in New York. And it seems to be like we're the only state in our company that's having all these issues. So, you know, when Joanna is back this afternoon, I'm going to have her create the default company. And then I am going to start posting jobs under it to see if I get things. But my question for you is that is it going to solve our issue of uploading candidates into the system? Like we're still going to have to do it manually through the default company. So, like, how do we get that fixed? so the the reason um this is kind of like a very it it's simple in a way um but it's also like system-wide so the default company is something that is necessary for your database to function in a lot of different ways um if you don't have a default company your resume importer won't work um every database like it in all of our all pc recruiter users um every database should have a default company. This is kind of like, I don't want to call it a fail safe. It's like a default response in different situations. So if the typical behavior of the default company is that if you don't know where someone works, or maybe you don't particularly care where they work, the default company is a catch all for candidates. The way it interacts with the job board is web candidates that apply typically go into the default company. So if the default company is not there when web candidates try to apply, there's nowhere for them to go. So that's why that error is being thrown. There's nowhere for PCR to help them. Now, how come they're not going into the job that they're applying for? It's going to be the company and the job are going to be different. They will go into the job when they apply for it, but the company itself is to house their current employment. So to circle back on that also, you aren't going to post your positions under the default company. You'll be able to post your positions like normal, like just continue posting your positions as you always have done. The only thing that is missing is that you need to have a company in there that is listed as your default. No change in process necessary. The only other thing is, so right now, I think I mentioned to you, we have a company named Candidates, right? And because I had mentioned to you that when I went in to go create a new company named Candidates or just a new company in general, it didn't give me the option of default company. But when I look at the one that we have that says Candidates, it does give me the option of default company. But then when I try to save it, it always automatically goes back to client company. Despite if I select default company and click the save, it saves under client company. I don't know if Joanna is going to have the same issue. I'm going to have her try, but I just think that's weird. Yeah. Let me hop into your database for a second to take a look at that. Because it's like at some point, the default company was changed. I'm not entirely sure when that happened. The only record I found of that happening was back in 2022, and I don't think it would make sense that that happened three years ago and you're just now experiencing this issue. Right. Yeah. Yeah. So I guess what you're saying is that even when Joanna creates a candidate company under default company, I would still post the job under the client company, correct? Yeah. It's actually very weird because now I, so I logged back into one of the other client companies and I see a few applicants on some of the jobs that I was waiting like literally a week for. So I don't know if like things are fixing itself or if they're just like able to apply now. I hate this. I don't know. Yeah, I know. The thing about your job board is it's very complicated. It's involving a lot of different systems that aren't even just us. So people could be taking different pathways. Yeah. But this is one that we want to make sure we open back up and other people aren't really experiencing issues on. So let me – hold on. Let me go back into your database. I'm trying to find it. Where are we? There we go. And you said the company was called Candidates? Yeah. Okay. Let me take a look at it. And I actually ended up posting a position under there, like not knowing if I should. So maybe I should delete it. I don't know. You probably should take that out of there because if the company is listed on the site, then that's the – I imagine, again, your job board is relatively complicated, so I can't completely guarantee this. But if it's pulling the company name from the record it's listed to, then it would say that they work at – the job is for candidates rather than saying the job is for – delete it. Okay. Okay. When was the last thing that happened with this? Candidates, activities. Okay. So I think this candidates company is probably what's supposed to be your default company. It's just something switched on it. I'm having trouble locating exactly what happened. Yeah. But I believe this is it because it has like 19,000 people on it, which sounds like that is where people would be applying to. Do you mind if on the record, I try to change it to default company? Yeah, for sure. What else do we have to lose? Okay. That seemed to have worked. on my end. I wonder if you may be limited in access and that field might be restricted in some way. Okay, so now when I go into candidates, it says default company. So maybe it just didn't let me do it. Yeah, it might have been a security restriction. Okay. So that you don't need to create the default company at this point. You only want one. You only ever should have one. And this Candidates one is listed here as that one. I would say... Sorry, continue. I was just going to say, I would say whenever Rosie gets back, just confirm this with her, because I want to make sure we're not making any kind of, like, big error, because I don't know exactly how your database functions. I don't know if Rosie would have a little more input on how the exact functionality is supposed to go. But this is kind of, we're in an emergency, so we're doing something that's going to fix it. Got it. Okay. And like, see, now when I went to go upload a resume, it worked. Yeah, yeah. I imagined it was the lack of default company. So you have one now. Your candidates should be okay. The resume parsing should be okay. But I'll keep this ticket open. And if you want to email that chain on, like, does Rosie get back on Monday? No, she's back now. She's just in back-to-back for an hour. So I'll update the thing that you created the one default company. It seemed to have fixed my resume uploading. I'm going to also check in with the rest of the team and see if they have any additional issues that they have going on. And then I'll put it in that email if they do. Okay, perfect. Once we have some confirmation that this is resolved, we can go ahead and close that out. But I'll wait for you. Awesome. Thank you so much. I appreciate your time. Yeah, absolutely. Bye. Okay, bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 872.415317,
+    "salad_processing_time": 44.263641357421875,
+    "overall_processing_time": 872.415317,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Please hold while I try to connect you.  Hi, Jason.  Hey, Ashley.",
+    "job_id": "5abd05fe-26eb-43b2-a119-4edb033cc17a",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Please hold while I try to connect you.  Hi, Jason.  Hey, Ashley.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "resolved",
+    "first_call_resolution": true,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3027214798036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

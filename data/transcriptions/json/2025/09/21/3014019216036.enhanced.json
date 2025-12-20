@@ -1,0 +1,112 @@
+{
+  "recording_id": "3014019216036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:26:54.225240Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:26:54",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Good morning, this is Jim. Hey, Jim, it's great to get to know you. I will. I will. Thanks for connecting this morning. Yeah. So I wanted to see if we could help. And I don't know if you even ever got the invite that Bill sent because Bill scheduled a call, but it looked like only he and I were on the invite. I did not get the invite. But that's the second invite I haven't gotten today from people. So it's all good. Don't worry about that. Don't worry. Those things tend to get confusing. For sure. For sure. We're glad we could connect. So, yeah, I understand. I think what little I know is you've used us before in the past and I want to see how you help now. I have used you in the past. And as I was telling Bill, I was the next MRI guy. OK. And I got so frustrated with MRI. Well, I'd always been frustrated with MRI, but a couple of years ago, I just threw everything out. and yeah so I went to clockwork which I hate and I am kind of looking at seeing where you guys and I suspect I think I was just on an old version of PCR I wasn't on any sort of online version I don't know what I was on but I couldn't get any help from MRI on the thing, and it sucked, and I hated them, and there you go. So now I'm interested to see what you all have going and what it all looks like right now. Okay, yeah, so, yeah, we have our cloud-based piece. We now have a premium package, which adds some email campaign functionality, sequencing, advanced reporting. We even have a CRM access piece, almost like a separate software that shares the same database. So it has like a deal pipeline, sales funnel, stuff like that. So we have a lot of different things coming up within the system there. Are you still using Clockwork or did you use anything at all now? I use Clockwork, but, I mean, it's not good. Okay. And what are kind of the main things you're looking for software to do? Just make sure we fit the bill. so you know what am I you know that's what am I trying to figure out how to do it's get better organized to be honest with you I mean you know it's a name you know it's you know right now it's just a Rolodex for me if there's something I can do better than a Rolodex candidly I probably want to clean it out. I think I've got a lot of people that I just want to get rid of. But, you know, what I'm looking for is something that's as easy to use as my iPhone. I don't really do a lot of sequencing campaigns, but it would be nice, you know, it would be nice to get it better organized, you know, from a reach-out standpoint. to be able to get hiring managers into a place where I can just send them updates, things of the sort. You tell me what I should be doing. Perfect, perfect. Well, probably the good first step would be to set up a demo time, and I could do it today. I don't have time right now because I have an 11 o'clock already scheduled, but I could do noon, 1, or 3 today, if any of those times would work. 3 will work. Okay. 3 Eastern. What I'll do, let me email you Zoom. So I can do a screen share. We'll both dial into the Zoom. We will kind of run through, and I can kind of do a custom demo, answer questions, show you anything and everything you want to see and nothing you don't. So we can do that custom demo, and I will get that over to you shortly. Perfect. Sounds great. All right. We'll speak at 3. All right. Thank you. Thanks, Jeff. Appreciate it. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 406.584109,
+    "salad_processing_time": 38.13560914993286,
+    "overall_processing_time": 406.584109,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Good morning, this is Jim.  Hey, Jim, it's great to get to know you.  I will.",
+    "job_id": "ad586caf-1182-4a78-be50-0e3f8c4c62b7",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Good morning, this is Jim.  Hey, Jim, it's great to get to know you.  I will.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": true,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3014019216036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

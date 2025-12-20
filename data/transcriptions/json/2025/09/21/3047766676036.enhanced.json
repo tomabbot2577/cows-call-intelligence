@@ -1,0 +1,112 @@
+{
+  "recording_id": "3047766676036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:58:15.344072Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:58:15",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Good afternoon. This is Jim. Jim, James Cairns. Hi, James. How are you? Hey, I'm great. How are you doing, man? I'm all right. I'm all right. Did you get my email I just a few minutes ago sent over the paperwork? I did. I did. I got it. Yeah, thank you so much. Yeah, you know what? I kind of feel like a fool here because I thought that we were paying $230 on top of the $95 per month, like $115. on top of the 95 for two people. Yeah, no, it was total of 115 instead of 95. Okay, all right. All right, well, then in that case, I think I might just keep it. Let me think about this. Okay. We're not really, like, I do like the campaigns, you know, like the way it's set up and, you know, how it emails and all that stuff. I think I'm just going to keep it. But I guess I'll, I've got, can I just save this email though the one you send me just in case not like that new contract or whatever yeah save that email if you decide you want to downgrade just sign it let me know uh you'll want to pay that invoice if you haven't already from the 15th through Robin yeah it's already paid yeah it comes out like auto pay now so okay yeah it's just instead of 95 you were at 115 so it's like 20 bucks per user per month it's not okay all right okay all right yeah because we weren't really using like the AI I don't know I'm not I think for us we have kind of built out our processes and just we don't even use it I'm like is this worth it but now that I know it's only 20 bucks a month I think that's fine there's some good analytics in there so okay all right Jim appreciate it man thank you so much no problem sounds good thank you all right bye",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1440.050602,
+    "salad_processing_time": 12.22003173828125,
+    "overall_processing_time": 1440.050602,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Good afternoon.  This is Jim.  Jim, James Cairns.",
+    "job_id": "e7cf2ab0-e60c-4675-a040-ecf3e874cbe5",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Good afternoon.  This is Jim.  Jim, James Cairns.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3047766676036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

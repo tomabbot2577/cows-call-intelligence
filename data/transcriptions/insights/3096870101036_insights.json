@@ -1,0 +1,353 @@
+{
+  "recording_id": "3096870101036",
+  "analysis_timestamp": "2025-12-19T21:00:34.138532",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Brian",
+        "role": "customer",
+        "confidence_score": 0.8,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [
+      {
+        "name": "Garrett",
+        "role": "trainer"
+      }
+    ],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "account_management",
+    "CALL PURPOSE": [
+      "Contract adjustment",
+      "Training clarification"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "customer_identification": {
+      "primary_contact_name": "Brian",
+      "primary_contact_role": null,
+      "company_name": null,
+      "phone_numbers": null,
+      "email_addresses": null,
+      "key_decision_makers": null,
+      "team_members_and_roles": null
+    },
+    "business_context": {
+      "industry_or_business_type": null,
+      "company_size_indicators": null,
+      "technology_stack_mentions": null,
+      "current_challenges_pain_points": null,
+      "growth_stage_indicators": null
+    },
+    "relationship_mapping": {
+      "previous_interactions_referenced": true,
+      "existing_service_usage": true,
+      "account_history_mentions": true,
+      "relationship_duration_indicators": null,
+      "trust_level_indicators": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "billing",
+      "issue_severity": "medium",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "medium"
+    },
+    "resolution_tracking": {
+      "issue_status": "pending",
+      "resolution_steps_taken": [
+        "reviewed contract numbers",
+        "confirmed understanding of agreement"
+      ],
+      "outstanding_action_items": [
+        "update agreement with correct numbers",
+        "assign Garrett as trainer"
+      ],
+      "next_steps_required": [
+        "Jim to update agreement",
+        "Brian to send updated agreement with request for Garrett as trainer"
+      ]
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "0",
+      "knowledge_base_gaps_identified": "0"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "collaborative",
+      "communication_clarity": "high",
+      "technical_knowledge_demonstrated": "medium",
+      "empathy_and_rapport_building": "high"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Positive, as both parties are actively working to resolve issues and clarify details.",
+      "trust_level_signals": "Moderate, as there is reliance on each other to handle tasks and follow through with commitments.",
+      "communication_style": "Informal and direct, with immediate addressing of concerns and clarifications.",
+      "rapport_quality": "Good, evidenced by casual sign-offs and expressions of appreciation."
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Active, with ongoing adjustments to contracts and clarifications.",
+      "product_adoption_level": "Intermediate, as the customer is engaging in specific services like training.",
+      "feature_utilization": "Specific features like training are being utilized and discussed for optimization.",
+      "expansion_opportunities": "Present, as the customer discusses additional costs and services."
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Responsive communication and willingness to adjust details as per customer requests.",
+      "risk_indicators": "Potential miscommunications regarding contract details and email follow-ups.",
+      "loyalty_signals": "Customer requests specific personnel for services indicating satisfaction with past interactions.",
+      "advocacy_potential": "High, as the customer seems to trust and prefer specific service providers."
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Email and direct calls for urgent clarifications.",
+      "response_time_expectations": "Immediate to short-term, as evidenced by same-day email reviews and responses.",
+      "information_style_preferences": "Direct and detail-oriented, focusing on specific figures and contractual terms.",
+      "decision-making_patterns": "Customer makes quick decisions based on the information provided and prefers specific personnel."
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "I just needed to adjust the numbers on the contract aren't right because I just paid everybody and paid for the four.",
+      "So if he fixes that, and I wrote you and Jim back, I kind of heard back from Jim. I figured he'd give you a call.",
+      "I very much would like Garrett as our trainer. And it's almost a slam dunk.",
+      "I want to get this done before I go."
+    ],
+    "qa_pairs": [
+      {
+        "question": "Did you see my email earlier?",
+        "answer": "I did see an email from you like Friday. No, no, those weren't today."
+      },
+      {
+        "question": "Can you just hit him up?",
+        "answer": "Yeah just hey get this ready oh can i hit him yeah i'll hit him up."
+      },
+      {
+        "question": "You said you had a specific guy Garrett?",
+        "answer": "He's probably going to be the guy that's going to get assigned to you."
+      }
+    ],
+    "searchable_tags": [
+      "contract adjustment",
+      "training cost",
+      "Garrett",
+      "trade show",
+      "agreement update",
+      "Jim",
+      "email communication",
+      "deadline",
+      "paperwork",
+      "proposals",
+      "payment",
+      "scheduling",
+      "client request",
+      "follow-up"
+    ],
+    "semantic_themes": [
+      "Contract and payment adjustments",
+      "Scheduling and training arrangements",
+      "Communication and follow-up processes"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 60,
+      "Customer talk percentage": 40,
+      "Balanced conversation indicator": "Somewhat Balanced"
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 2,
+      "Number of interruptions by customer": 1,
+      "Interruption impact on flow": "Minimal"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 10,
+      "Awkward pauses detected": 2,
+      "Hold time indicators": "None"
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": false,
+      "Company name mentioned": false,
+      "Verification steps taken": false,
+      "Required disclosures made": false,
+      "Proper closing used": true
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": "Medium"
+    },
+    "agent_talk_pct_calculated": 77.1,
+    "customer_talk_pct_calculated": 22.9
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 77.1,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "contract adjustment",
+      "training cost",
+      "Garrett",
+      "trade show",
+      "agreement update",
+      "Jim",
+      "email communication",
+      "deadline",
+      "paperwork",
+      "proposals",
+      "payment",
+      "scheduling",
+      "client request",
+      "follow-up"
+    ],
+    "semantic_themes": [
+      "Contract and payment adjustments",
+      "Scheduling and training arrangements",
+      "Communication and follow-up processes"
+    ],
+    "key_quotes": [
+      "I just needed to adjust the numbers on the contract aren't right because I just paid everybody and paid for the four.",
+      "So if he fixes that, and I wrote you and Jim back, I kind of heard back from Jim. I figured he'd give you a call.",
+      "I very much would like Garrett as our trainer. And it's almost a slam dunk.",
+      "I want to get this done before I go."
+    ],
+    "qa_pairs": [
+      {
+        "question": "Did you see my email earlier?",
+        "answer": "I did see an email from you like Friday. No, no, those weren't today."
+      },
+      {
+        "question": "Can you just hit him up?",
+        "answer": "Yeah just hey get this ready oh can i hit him yeah i'll hit him up."
+      },
+      {
+        "question": "You said you had a specific guy Garrett?",
+        "answer": "He's probably going to be the guy that's going to get assigned to you."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Brian Caine",
+      "extension": "7776",
+      "phone": "6147776",
+      "email": "brian.caine@mainsequence.net",
+      "department": "Sales",
+      "role": "Sales Representative",
+      "employee_id": "EMP_7776"
+    },
+    "primary_customer": {
+      "name": "kind of heard back",
+      "company": "",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "kind of heard back",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "did see an email",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "all on jim and jim would be the one who would have to can you so you just want to hit him up yeah just can you just yeah just hey get this ready oh can",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Brian Caine",
+        "extension": "7776",
+        "department": "Sales",
+        "role": "Sales Representative"
+      },
+      {
+        "name": "Brian Coverstone",
+        "extension": "7123",
+        "department": "Development",
+        "role": "Developer"
+      },
+      {
+        "name": "Garrett Komyati",
+        "extension": "5427",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "training"
+      ],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": []
+    }
+  }
+}

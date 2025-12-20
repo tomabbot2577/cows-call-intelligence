@@ -1,0 +1,121 @@
+{
+  "recording_id": "3022820948037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:36:17.300165Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:36:17",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " The person you are trying to reach is currently unavailable. Please leave a message after the tone. When you have finished, please hang up or press the pound key for more options. Hey, Kevin, it's Jim with PC Recruiter. I wanted to follow up with you concerning your inquiry through our website at pcrecruiter.net the other day. I just wanted to check in, see how I could help. If you would, give me a quick call or drop me an email. My phone number is 440-856-0314. That's 440-856-0314. I'll pop you an email as well. Please let me know how I can help or when you have some time to speak. Thanks. We'll talk to you soon. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 725.341583,
+    "salad_processing_time": 5.590590476989746,
+    "overall_processing_time": 725.341583,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " The person you are trying to reach is currently unavailable.  Please leave a message after the tone.  When you have finished, please hang up or press the pound key for more options.",
+    "job_id": "fcbde66e-aa16-432f-b65b-a195d149a81d",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " The person you are trying to reach is currently unavailable.  Please leave a message after the tone.  When you have finished, please hang up or press the pound key for more options.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": false
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": [
+      "follow_up_required"
+    ]
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3022820948037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

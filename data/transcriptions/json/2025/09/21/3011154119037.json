@@ -1,0 +1,95 @@
+{
+  "recording_id": "3011154119037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:24:01.886731Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:24:01",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hey, Tyler. It's Annie from Time Scrapping. How are you? Good. How are you? Good. Okay. So, listen. Warren got an email from Marketing at Main Sequence, and it says, Let's see. PCR AI is now active in your database for a limited time, and the subject line says your free AI tools are now active from PC Recruiter. What is this? So it's our AI suite that we made available for all of our customers for a limited time. That way they can try out the tools and see if they want to add them permanently. So how do we get access to it? It's already there. Well, how do I see it? So in that email, we have the link to our learning center that goes over how to use every single tool. Oh. Okay, go ahead. The only one that we may have to activate for you is the AI search, just because some databases need an upgrade to their search index before that can be activated. but all the other ones like the AI email generator, the summary generator, job description, all of those are already active in the database for you. So to find it, I'd have to look at that video? So for all of them, they'll all be there in that video. like it'll show you which sections they're in. So like when you go to create a form letter or send an email, you'll see the little AI icon. Oh, okay. Um, let's see if I can figure it out. And then if you wanted the AI search, if you don't see that available for you, just send a ticket to, uh, support or send an email to support at main sequence.net, requesting it. Okay. And then they'll we'll be able to get that. Okay. Because I don't see it. I'm telling you it's not here. In the quick search? Yeah, it's not here. Okay. So yeah, it would be up by that quick search. So if you just send in that fresh test ticket, they'll be able to get it all enabled for you. that'll go to our tech team they'll check to see if you need the upgrade and all that but the other parts should be there like the email generator the form letter creator the job descriptor generator and the name summary generator those are all in it automatically I guess what I'm saying is I wouldn't even know how to use it. I guess there would have to be a training. And it's an upgrade as well. It's like more money every month, correct? Hello? Hello? Ah.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 304.397405,
+    "salad_processing_time": 21.5801682472229,
+    "overall_processing_time": 304.397405,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "job_id": "2160419d-6d88-4ab7-be50-e487624987ba",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3011154119037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

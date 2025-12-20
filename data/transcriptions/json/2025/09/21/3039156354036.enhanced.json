@@ -1,0 +1,121 @@
+{
+  "recording_id": "3039156354036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:49:22.156874Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:49:22",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hi, you've reached John. Please leave a message. Thank you. At the tone, please record your message. When you have finished recording, you may hang up or press 1 for more options. Hi, John. It's Jim with PC Recruiter. I wanted to give you a quick call just to follow up with you. I was checking in just to make sure everything was going well with your training. Everything happened well. I was out of the office last week, so I asked Jason to reach out and get training going for you. before my return. So I just wanted to give you a quick call and just check in, make sure everything was well, make sure your training was happening, see if there was any further questions around PC Recruiter that you needed from me. My direct line is 440-856-0314. 440-856-0314. Let me know, like I said, if there's anything you need, any questions or anything like that, or even to let me know how your PC Recruiter onboarding is going. Thanks, John. Hope to talk soon. Bye-bye. Thank you.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1165.246278,
+    "salad_processing_time": 4.827145338058472,
+    "overall_processing_time": 1165.246278,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hi, you've reached John.  Please leave a message.  Thank you.",
+    "job_id": "cf531d0f-4efa-4207-bd7f-cfb7f8ab6494",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hi, you've reached John.  Please leave a message.  Thank you.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": [
+      "follow_up_required"
+    ]
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3039156354036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

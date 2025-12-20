@@ -1,0 +1,95 @@
+{
+  "recording_id": "3083036957036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:15:59.261146Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:15:59",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Secret Technology. Tyler, how can I help you? Hey, Tyler. Melinda Hooser with Owens Medical Placement. How are you? Good. How are you? I'm good, good, good. I just have a question, a stupid one. But I sent out a meeting invite the other day through PCR, and I need to cancel it. How do I do that? Yeah. So what you can do, let me see here, just to make sure that's exactly where I think it's going to be. Your username is MPH, correct? Right. All right. And what day was the meeting for? The meeting was for tomorrow. I sent the invite on this. Gotcha. Was it the interview? Yes. Okay. So if you go to schedule up at the top. Okay, wait, let me find schedule. Okay, so I'm in, I'm looking at the email right now. Should I go back into, I should go over to my PCR? Correct. Okay. Okay, so schedule, okay, yep. And then you'll click on the 11th. Okay. I see I'm live interview with Eddie. Yep, and then you can click on that interview. Like you'll see next to it there's that little down arrow and like a little message box. Okay, click on the message box. Yep. Okay. Then you could edit. Okay. And then in here you can, like, are you just like updating it or deleting it? No, I just, I'm canceling it altogether. Okay. So yeah, you would just hit the delete. Just hit delete. Okay. Are you sure you want to delete this item from the schedule. Okay. Perfect. All right. It didn't go away on my calendar, but it probably will, huh? Yeah. Do you have it set up like with the Outlook sync with the portal? What does that mean? So like do you have PC recruiter inside of your Outlook? I don't. You know what? I'm so stupid when it comes to this. I don't even know. And you can always just delete it from your other calendar as well. Okay. Okay. Gotcha. Gotcha. Gotcha. Okay. Um, be safe. Okay. One quick question to, I'll be on the line. Can you go on to my email account? Like your outlook? Yeah. No, no. I'm on PCR. No, my email. Oh yeah. Your PCR mail. Yes. Yep. Yep, I'm in there now. Can you tell me what the heck all these mail delivery system fail, fail, fail, fail, what all that is? Where are those at? Like in your inbox? Yeah, they're in my inbox. It's like 10 of them when you first click on the in the inbox. Did you try to send like a bulk mail? Nope. When I looked at one of them, I don't even know what it is. Yeah, it's the same thing. I don't even know who these people are. You don't think it's a scam or something, do you? No. Okay. Well, I'll just delete them all. Yeah, I'm not even seeing those people in, like, your PC recruiter database. No. Yeah, and it looks like they're all Yahoo addresses, too. Yeah. Yeah. Yeah, I'm not sure what those are. Okay, I'll just delete them. All right. Thank you so much. I appreciate your help. Yep. Not a problem. Have a good day. All right. Talk to you soon. Bye-bye. You too. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1968.350281,
+    "salad_processing_time": 32.27536678314209,
+    "overall_processing_time": 1968.350281,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Secret Technology.  Tyler, how can I help you? Hey, Tyler.  Melinda Hooser with Owens Medical Placement.",
+    "job_id": "6b64824b-02fb-4007-bbca-91362e3e15bb",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Secret Technology.  Tyler, how can I help you? Hey, Tyler.  Melinda Hooser with Owens Medical Placement.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3083036957036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

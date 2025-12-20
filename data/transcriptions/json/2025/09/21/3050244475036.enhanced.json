@@ -1,0 +1,119 @@
+{
+  "recording_id": "3050244475036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:00:19.261280Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:00:19",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hey, Tyler. This is Peter Duflo from, well, we used to be Strategic Ventures. We're now SV Executive Search. I changed my firm's name, but same guys. I have a question. Is there a way to get a full backup of our PCR database? Yes. Now, there is a fee associated with it, just so you're aware of that. How big is the fee? I believe it's $175. Okay, nothing significant. Yeah. And how's it delivered? It's in a .back file. Yeah, I'm not technical. Yeah, so it's essentially like if you were putting it into another database. well okay let me make it easier I would I'm selling my firm so yeah well I may be selling my firm so what I would want is a backup of it so that I at a future point could send it back to you guys and say set my PCR up again yep yeah that would be yeah that would be the type of file we would need excuse me yeah that's so basically what i would be looking tell me would you just be able to send me an email or do i even need a backup do you guys keep a backup and i if i said six months from now hey i want you guys to set me back up um yeah you just call in and talk to one of our account representatives and they'd be able to get you all signed back up with like a new agreement and all that. But you do keep a backup of it? Yep, for, yeah, for a little bit at least. Okay. If I wanted to be safe, I can pay a hundred and whatever, 70 whatever dollars and you'll send me the backup and I could, could I then, you know, let's say it's a year down the road. Could I email it back to you and you guys can restore my PCR? Yep. Okay. And how long does it take, you know, how much notice do I need to give you to get a copy of that backup? Usually we stay at least like a day or two, just so we can schedule it out for our techs, just to make sure that they have enough time in their day to get it. And you can always call in and talk to one of us or your account rep and request like a certain day. So like let's say you wanted like, hey, next Friday I want a backup. You can always schedule it out like that as well. Okay, and how do you deliver it to me? It's sent to you in an email, like a ZIP file. okay so database isn't that big that you've got a zip file will include everything in my pcr database i mean i've been on pcr for i don't know 10 15 years yeah so the dot back file um it's relatively small just because it's condensed down it's like the sql coding of the database. And then you'll also receive a separate, like separate folders with all the resumes and all the attachments as well. Okay. I actually don't have any attachments onto it. It's just, but all the candidate, all the information and my company records and name records will all be in that backup? Yep. Okay. Okay. Well, if I decide to do this, I'll get back to you and have you send me a backup of it. Sounds good. Okay. Appreciate your time today. Not a problem. Have a great day. You too. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1501.033207,
+    "salad_processing_time": 18.941582679748535,
+    "overall_processing_time": 1501.033207,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "job_id": "c2c884af-c458-4f13-abb2-9bcf43bf26b2",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "technical"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3050244475036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

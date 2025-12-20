@@ -1,0 +1,102 @@
+{
+  "recording_id": "3037748528036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:48:40.659351Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:48:40",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Good, good. Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Yes, hi, Garrett. My name is Karen Guy-Smith calling from J. Anderson Corporation. And I had a few technical questions to ask. Sure, okay. Okay. So the one thing I just did, I went to a company on my PCR, and I clicked on search, which gives me all of the companies, right? Right, okay. I think 1,900, almost 2,000, 1,955 pages, I guess, or screens of companies. But the last couple, it seems like they're gobbledygook. I'm just wondering if that was something in our database that you know that was put in there by I just don't know it just has it almost seems like it might be a different language or something okay let me take a look here so I'll just do a basic search I'm in your database now you said go to the last page okay I see that You see that? All right. Yeah. Let me check the activities here. OK, so this was done during an import in 2013. Yeah. By username C-R-A-L. So, yeah, I think these got imported. Maybe somebody was having trouble with an import, the import feature. and it seems like I just clicked on a couple here and they don't really have any names under them. Okay, I didn't want to click on it because I didn't know it was somebody trying to hack it or you know what I mean? Oh no, yeah, these have been in here for a while. Yeah, 2013. So yeah, feel free to delete those and And, you know, as you try to delete a company, it will say, you know, it can't be deleted because there are names associated with this. So we have that safety feature in there. But it looks like most of these don't have names associated with them. So you should be able to just delete them. Right. And I remember she was an employee from quite a few years back. So, yeah. Okay. So that was number one. So I'll do that. Delete those. When I go into the PCR capture tool, the default company goes to truest bank for everything. And I'm wondering, it was resumes, and I just want to get it back to the default company being resumes as opposed to... Sure. And then I was looking for resumes in the company, and I couldn't – would that be in company, or would that be – yeah, it was resumes. So I just pulled up the name of that company, Truist Bank, and I looked at the change log. And so what's happened is people have changed the name of that company record over time. So I have on in 2024 in July, username JAS changed it from resumes to vector solutions. And then on maybe a month later in 2024, username HTS switched it from vector solutions to unassigned. um oh and and then more recently um may 2025 it was changed from unassigned to truest bank so it's kind of the by the admin so that's been kind of a history of what's happened with that record so um let me check yeah that one does the truest bank record has 7,937 names in it So I believe that would be the one you want as your default company. It's just that the company name needs to be changed on that record. Yes. Yeah. Yes. So, okay. So you said James changed it to Dexter Companies, you said? Let me see. It was, so yeah, username JAS in 2024, July 2024, changed it to Vector Solutions. It was V-E-C-T-O-R, Vector Solutions. And then a month later, HTS, the username HTS, changed it from Vector Solutions to Unassigned. And then finally, the last change was, where was that? May 2025. Yep, May 2025. It was changed from unassigned to truest bank by the admin username. By admin, which is me. Oh, okay. I'm like, what? Okay. So I don't even recall doing that. All right. So I'm thinking, how do I change it back to resumes? So I would find Truist Bank and just change the name? Exactly. Just change the company name field to resumes and hit save, and then it'll be labeled correctly. It's still going to be your default company that PCR capture is pointing to, and you'll have about 7,000 or so names under that newly named resumes company. Okay. So let me just double check it. Okay. Wow. Okay. And let's see. I think I know how to change the name. Add resume. Can you remind me again how to change this name? Do I go to... So you would open the Truist Bank record. Do you have that company record open? I have that, yes. And then you should see company name is one of the fields on that record. It says edit company? Yeah, below Edit Company where it starts listing the different fields, you'll see one that's called Company Name. Oh, yes. And you could just backspace that and type in resumes and then hit Save in the Action menu with a little floppy disk. Okay. That's bizarre. That was unintended. Okay. Sometimes I think what happens... Actually, it's a pretty common thing that we see where one of our customers wants to take a name record and change what company they're associated with. And so they'll accidentally click on the company name and type in a new one and adjust the company record rather than staying at the name record and just saying, I want to change company. Right, right, right, right, right. Okay. All right, so that's a training moment for everybody. So, okay, I will do that. Yay, now I got it back. All right, and so when I go to PCR capture, then it should read as the default company and go to that as opposed to, yeah, okay. Okay. Are you guys going to be, you know, is there any intention for you, a main sequence to close at the end of the year or anything? Yeah, nothing like that. We just had some changes in our management structure. so we have you know a few people that left management and a few people that came in but yeah now now we're we're just back to normal operation no plans and clothing okay okay all right all right well for right now i think that was it um those are the main major things I thank you very much yeah no problem my name's Garrett and yeah if any other issues come up just give us a call let us know perfect thank you so much Garrett thanks have a good one alright you too enjoy the weekend you too bye",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1140.319378,
+    "salad_processing_time": 32.449238538742065,
+    "overall_processing_time": 1140.319378,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Good, good.  Thank you for calling Main Sequence Technology.  This is Garrett.",
+    "job_id": "130529cf-4e83-498b-a492-47359378c906",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Good, good.  Thank you for calling Main Sequence Technology.  This is Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "technical"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3037748528036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

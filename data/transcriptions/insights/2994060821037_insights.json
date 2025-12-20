@@ -1,0 +1,363 @@
+{
+  "recording_id": "2994060821037",
+  "analysis_timestamp": "2025-12-19T17:11:15.486869",
+  "analysis_version": "2.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Jim",
+        "role": "customer",
+        "company": null,
+        "confidence_score": 0.8,
+        "validation_reason": "Likely a real customer name"
+      },
+      {
+        "name": "Oscar",
+        "role": "customer",
+        "company": null,
+        "confidence_score": 0.7,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "sales_negotiation",
+    "CALL PURPOSE": [
+      "discussing setup process for PC Recruiter",
+      "explaining pricing and next steps"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Oscar",
+      "Company/organization name": "TrustForm AI",
+      "Phone numbers mentioned": null,
+      "Email addresses mentioned": null,
+      "Key decision makers referenced": null,
+      "Team members and their roles": null
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": null,
+      "Company size indicators": null,
+      "Technology stack mentions": [
+        "PC Recruiter",
+        "Dimensional Search",
+        "LinkedIn",
+        "HireEasy",
+        "ZoomInfo",
+        "Recentral"
+      ],
+      "Current challenges/pain points": null,
+      "Growth stage indicators": null
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": null,
+      "Existing service usage": [
+        "PC Recruiter"
+      ],
+      "Account history mentions": null,
+      "Relationship duration indicators": null,
+      "Trust level indicators": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "billing",
+      "issue_severity": "medium",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "medium"
+    },
+    "resolution_tracking": {
+      "issue_status": "pending",
+      "resolution_steps_taken": [
+        "discussed setup process",
+        "clarified pricing and billing",
+        "agreed on delayed start date"
+      ],
+      "outstanding_action_items": [
+        "send paperwork to customer",
+        "assign trainer",
+        "follow up on July 7th"
+      ],
+      "next_steps_required": [
+        "customer to sign paperwork",
+        "customer to pay invoice",
+        "trainer to contact customer"
+      ]
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "none",
+      "knowledge_base_gaps_identified": "none"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "effective",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "adequate",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "RELATIONSHIP_HEALTH": {
+      "Overall_satisfaction_indicators": "Positive, both parties are polite and cooperative",
+      "Trust_level_signals": "High, as evidenced by the customer's willingness to proceed with the setup and training",
+      "Communication_style": "Clear and direct, with both parties actively participating and confirming details",
+      "Rapport_quality": "Good, with friendly exchanges and mutual respect"
+    },
+    "CUSTOMER_JOURNEY_STAGE": {
+      "Onboarding_status": "In progress, with paperwork and setup being arranged",
+      "Product_adoption_level": "Initial, customer is at the stage of understanding pricing and setup",
+      "Feature_utilization": "Not started, as the customer has not yet been trained or given access to the system",
+      "Expansion_opportunities": "Mentioned, with potential to add more users which increases monthly cost"
+    },
+    "RETENTION_FACTORS": {
+      "Satisfaction_drivers": "Clear communication, structured training, and setup process",
+      "Risk_indicators": "Potential delay in training due to customer's schedule and preference to align payment with usage",
+      "Loyalty_signals": "Customer shows interest in long-term use by discussing training schedules and system capabilities",
+      "Advocacy_potential": "High, customer mentions hearing good things and looking forward to training"
+    },
+    "COMMUNICATION_PREFERENCES": {
+      "Preferred_contact_methods": "Phone calls, as used for detailed discussions and arrangements",
+      "Response_time_expectations": "Immediate to short-term, as seen in the prompt arrangement of paperwork and follow-ups",
+      "Information_style_preferences": "Detailed and instructional, necessary for understanding the setup and training processes",
+      "Decision-making_patterns": "Customer prefers making informed decisions, aligning payment with training and usage start"
+    }
+  },
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium"
+  },
+  "action_items": [],
+  "participants": {
+    "primary_employee": {
+      "name": "Brian Caine",
+      "extension": "7776",
+      "phone": "6147776",
+      "email": "brian.caine@mainsequence.net",
+      "department": "Sales",
+      "role": "Sales Representative",
+      "employee_id": "EMP_7776"
+    },
+    "primary_customer": {
+      "name": "just looking forward to actually start",
+      "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "just looking forward to actually start",
+        "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not really clear as far as the monthly",
+        "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "using it almost immediately",
+        "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "here to help",
+        "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "PC Recruiter trainer on our end",
+        "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "doing pretty well",
+        "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "doing great",
+        "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Your trainer",
+        "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "spoke yesterday with the tech team",
+        "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "seen or heard anything",
+        "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "looking forward to it",
+        "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to email you the paperwork",
+        "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "definitely encouraging",
+        "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "will jot that down",
+        "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "tracking",
+        "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "ll have one coach",
+        "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Jim",
+        "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "having trouble getting it",
+        "company": "m going to email you the paperwork. I just need to know company name and street address to produce the paperwork. Sure, yeah. So my company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Brian Caine",
+        "extension": "7776",
+        "department": "Sales",
+        "role": "Sales Representative"
+      },
+      {
+        "name": "Brian Coverstone",
+        "extension": "7123",
+        "department": "Development",
+        "role": "Developer"
+      },
+      {
+        "name": "Robin Montoni",
+        "extension": "5466",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "invoice",
+        "training",
+        "account"
+      ],
+      "mentioned_issues": [
+        "problem",
+        "trouble"
+      ],
+      "urgency_indicators": [
+        "immediately"
+      ],
+      "follow_up_mentions": [
+        "reach out"
+      ]
+    }
+  }
+}

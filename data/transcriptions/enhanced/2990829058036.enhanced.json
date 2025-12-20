@@ -1,0 +1,96 @@
+{
+  "recording_id": "2990829058036",
+  "version": "3.0",
+  "timestamp": "2025-09-21T23:47:31.857112Z",
+  "processing_complete": true,
+  "call_metadata": {
+    "date": "2025-09-21",
+    "duration_seconds": 157.248,
+    "word_count": 458,
+    "customer": {
+      "name": "",
+      "phone": null,
+      "company": null
+    },
+    "employee": {
+      "name": "",
+      "extension": null,
+      "department": null
+    }
+  },
+  "transcript_text": "Hi, this is Jan. Hey, Jan, it's Jim from EC Recruiter. Yeah, Jan, do you hear me? Hey, Jim, how's it going? Not too bad, not too bad. I wanted to give a call. I got your ticket update here just to confirm. I realized the month-to-month agreement I sent was for five users. I need to correct it to one, so I will go ahead and do that in a minute here. And then your final data transfer, are you looking for that to happen on the 27th Friday afternoon, or should you wait until the 30th? What's preferred? No, no, we're ready to do it on that date I put down twice now, which was Friday the 27th. Perfect. All right, that's what I had. Yep, that is good. At noon is ideal. Okay, perfect. And have you filled out the form for that data transfer yet? I don't really know what form you're talking about. I already did one for the first one, and this is the second one for the same project. Perfect. Same thing. They'll need a form each time. I will route this ticket over to Nick, and he'll email that to you, the form, the invoice. We'll get those two done between today and Friday, and I will queue it up to be pulled Friday at noon. Yeah, and you said get two done. We've already had one done. so what do you need to do why did you say you need to get two done get two oh no well i don't think i said no not two done we have just one backup on the the 27th at noon and they just need a new uh form and invoice each time because it's per oh i thought you said you don't need a new form and invoice each time oh no you do yeah with that they need a new form and invoice just to make sure it's legit and pay the cost to do it or whatever. So I will have Nick get that to you. Okay, great. I will then send over, I'll send over the new contract for the month-to-month one user. That way, once you sign that, you don't auto-renew on the 29th of this month. You'll be on a month-to-month for as long or short as you need to be as we proceed. Right. Yep, yep. Yeah, just need confirmation that the 27th is going to work because I submitted that nine days ago and didn't hear anything back, and that's kind of unnerving. Perfect. No, it will be good, and I will let them know that you want confirmation. Okay, great. Thank you. I'll look for the email from Nick. Okay, bye-bye. Bye-bye.",
+  "ai_insights": {
+    "sentiment_analysis": {
+      "customer_sentiment": "positive",
+      "call_quality_score": 8.5,
+      "call_type": "technical_support",
+      "key_topics": [
+        "data transfer",
+        "contract renewal",
+        "form and invoice"
+      ],
+      "summary": "The customer, Jan, is confirming the details of an upcoming data transfer scheduled for Friday, the 27th, and the agent, Jim, is ensuring that the necessary form and invoice are provided. They also discuss updating the customer's contract to a month-to-month agreement.",
+      "follow_up_needed": null,
+      "escalation_required": null
+    },
+    "process_recommendations": {
+      "process_improvements": [],
+      "employee_coaching": {
+        "strengths": [],
+        "improvements": [],
+        "suggested_phrases": []
+      },
+      "follow_up_actions": [],
+      "knowledge_base_updates": [],
+      "escalation": {
+        "required": false,
+        "risk_level": "low",
+        "reason": ""
+      },
+      "performance_metrics": {
+        "efficiency_score": 5.0,
+        "training_priority": "low"
+      }
+    },
+    "call_resolution": {
+      "problem_statement": "The customer, Jan, needed to correct the month-to-month agreement from 5 users to 1 user, and confirm the date for the final data transfer, which was scheduled for Friday, January 27th at noon.",
+      "resolution_status": "resolved",
+      "resolution_details": "The employee, Jim, confirmed the data transfer date of January 27th at noon and stated that he would send the new contract for the month-to-month agreement with 1 user. He also mentioned that he would have Nick send the necessary form and invoice for the data transfer.",
+      "follow_up": {
+        "type": "email_followup",
+        "details": "Nick will email the form and invoice for the data transfer to the customer.",
+        "timeline": "Between today and Friday, January 27th"
+      },
+      "loop_closure": {
+        "solution_summarized": true,
+        "understanding_confirmed": true,
+        "asked_if_anything_else": true,
+        "next_steps_provided": true,
+        "timeline_given": true,
+        "contact_info_provided": false,
+        "closure_score": 8.0
+      },
+      "quality_assessment": {
+        "missed_best_practices": [
+          "Providing contact information for the employee or the company"
+        ],
+        "improvement_suggestions": [
+          "The employee could have provided their contact information or the company's contact information to the customer in case they have any further questions or concerns."
+        ],
+        "customer_satisfaction_likely": "high",
+        "call_back_risk": "low",
+        "escalation_probability": "low"
+      }
+    }
+  },
+  "pipeline_metadata": {
+    "ai_model_versions": {
+      "sentiment": "deepseek/deepseek-r1",
+      "recommendations": "deepseek/deepseek-r1",
+      "name_extraction": "anthropic/claude-3-opus",
+      "embeddings": "openai/text-embedding-ada-002"
+    },
+    "processing_date": "2025-09-21T23:47:31.857138Z",
+    "version": "3.0"
+  }
+}

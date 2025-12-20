@@ -1,0 +1,211 @@
+{
+  "recording_id": "2998907343036",
+  "analysis_timestamp": "2025-12-19T18:37:08.616746",
+  "analysis_version": "2.0",
+  "contact_information": {
+    "phone_numbers": [
+      "440-856-0314"
+    ],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Glenn Gardner",
+        "role": "customer",
+        "confidence_score": 0.9,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "account_management",
+    "CALL PURPOSE": [
+      "Upgrade subscription plan",
+      "Confirm agreement details"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "customer_identification": {
+      "primary_contact_name": "Glenn Gardner",
+      "primary_contact_role": null,
+      "company_name": null,
+      "phone_numbers": [
+        "440-856-0314"
+      ],
+      "email_addresses": null,
+      "key_decision_makers": null,
+      "team_members": [
+        {
+          "name": "Suzanne",
+          "role": null
+        },
+        {
+          "name": "Jim Lombardo",
+          "role": "PC recruiter"
+        }
+      ]
+    },
+    "business_context": {
+      "industry": null,
+      "company_size": null,
+      "technology_stack": [
+        "email campaigns",
+        "AI suite"
+      ],
+      "challenges_pain_points": [
+        "Glenn was on the enterprise plan which did not include email campaigns"
+      ],
+      "growth_stage": null
+    },
+    "relationship_mapping": {
+      "previous_interactions": [
+        {
+          "date": "Friday",
+          "details": "Glenn left a voicemail"
+        }
+      ],
+      "existing_service_usage": [
+        {
+          "service": "premium plus",
+          "cost": 235
+        },
+        {
+          "service": "premium",
+          "cost": 210
+        }
+      ],
+      "account_history": null,
+      "relationship_duration": null,
+      "trust_level": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "billing",
+      "issue_severity": "medium",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "medium"
+    },
+    "resolution_tracking": {
+      "issue_status": "resolved",
+      "resolution_steps_taken": "agent offered alternative package to meet customer's needs",
+      "outstanding_action_items": "send new agreement to customer for signature",
+      "next_steps_required": "customer to review and sign new agreement"
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "none",
+      "knowledge_base_gaps_identified": "none"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "proactive",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "adequate",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Moderate, as the customer is considering downgrading to save costs but still needs specific features",
+      "trust_level_signals": "Moderate, as the customer is willing to renegotiate terms and continue the relationship",
+      "communication_style": "Direct and responsive, with clear intentions to resolve the customer's needs",
+      "rapport_quality": "Good, as the sales representative promptly returned the call and remembered the customer's previous package details"
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Completed, as the customer has previous experience with different service tiers",
+      "product_adoption_level": "High, as the customer has used multiple product tiers",
+      "feature_utilization": "Specific, interested primarily in email campaigns, not AI suite",
+      "expansion_opportunities": "Limited, customer is looking to downgrade rather than expand services"
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Cost efficiency and essential feature availability (email campaigns)",
+      "risk_indicators": "Potential dissatisfaction with cost relative to features not used (AI suite)",
+      "loyalty_signals": "Customer is open to staying with the company but is sensitive to pricing",
+      "advocacy_potential": "Unclear, depends on the outcome and satisfaction with the new arrangement"
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone and email, as both were used and offered as options for further communication",
+      "response_time_expectations": "Prompt, as evidenced by the quick callback and offer to send paperwork",
+      "information_style_preferences": "Direct and detailed, providing specific information about pricing and features",
+      "decision-making_patterns": "Cost-conscious and feature-specific decision making"
+    }
+  },
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium"
+  },
+  "action_items": [],
+  "participants": {
+    "primary_employee": {
+      "name": "Jim Lombardo",
+      "extension": "5401",
+      "phone": "6145401",
+      "email": "jim.lombardo@mainsequence.net",
+      "department": "Sales",
+      "role": "Sales Representative",
+      "employee_id": "EMP_5401"
+    },
+    "primary_customer": {
+      "name": "think",
+      "company": "I can do is I can actually increase you to the premium not the premium plus so the premium does not include the AI suite or any of that but it does inc",
+      "phone": "440-856-0314",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "think",
+        "company": "I can do is I can actually increase you to the premium not the premium plus so the premium does not include the AI suite or any of that but it does inc",
+        "phone": "440-856-0314",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Jim Lombardo",
+        "extension": "5401",
+        "department": "Sales",
+        "role": "Sales Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "call back",
+        "get back to you"
+      ]
+    }
+  }
+}

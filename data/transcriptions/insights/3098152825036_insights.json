@@ -1,0 +1,695 @@
+{
+  "recording_id": "3098152825036",
+  "analysis_timestamp": "2025-12-19T22:05:28.402187",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [
+      "602-962-5713"
+    ],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Garrett",
+        "role": "customer",
+        "confidence_score": 0.9,
+        "validation_reason": "Likely a real customer name"
+      },
+      {
+        "name": "Robin",
+        "role": "customer",
+        "confidence_score": 0.8,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "support_technical",
+    "CALL PURPOSE": [
+      "troubleshooting",
+      "screen share for issue resolution"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "resolved"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Nick",
+      "Company/organization name": null,
+      "Phone numbers mentioned": [
+        "602-962-5713"
+      ],
+      "Email addresses mentioned": null,
+      "Key decision makers referenced": "Robin",
+      "Team members and their roles": null
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": null,
+      "Company size indicators": null,
+      "Technology stack mentions": [
+        "PCRecruiter",
+        "RingCentral"
+      ],
+      "Current challenges/pain points": [
+        "Pipeline layout changes",
+        "Integrating RingCentral with PCRecruiter"
+      ],
+      "Growth stage indicators": null
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": [
+        "Two-hour meeting with Robin last week"
+      ],
+      "Existing service usage": [
+        "Using PCRecruiter"
+      ],
+      "Account history mentions": null,
+      "Relationship duration indicators": null,
+      "Trust level indicators": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "Technical",
+      "issue_severity": "Medium",
+      "technical_complexity_level": "Medium",
+      "time_sensitivity": "Low"
+    },
+    "resolution_tracking": {
+      "issue_status": "Resolved",
+      "resolution_steps_taken": [
+        "Screen sharing to troubleshoot issue",
+        "Provided instructions on pipeline setup",
+        "Assisted with RingCentral integration",
+        "Helped with PCR capture setup",
+        "Customized roll-up list layout"
+      ],
+      "outstanding_action_items": [
+        "Send email with instructions on RingCentral setup",
+        "Send email with instructions on PCR capture setup"
+      ],
+      "next_steps_required": "None"
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "Medium",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "None",
+      "knowledge_base_gaps_identified": "None"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "Effective",
+      "communication_clarity": "Clear",
+      "technical_knowledge_demonstrated": "Strong",
+      "empathy_and_rapport_building": "Good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "High",
+      "trust_level_signals": "High",
+      "communication_style": "Open and responsive",
+      "rapport_quality": "Strong"
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Completed",
+      "product_adoption_level": "Intermediate",
+      "feature_utilization": "Moderate",
+      "expansion_opportunities": "High"
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Effective support and problem resolution",
+      "risk_indicators": "Low",
+      "loyalty_signals": "High engagement and utilization of support",
+      "advocacy_potential": "High"
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone and screen sharing",
+      "response_time_expectations": "Immediate to short wait",
+      "information_style_preferences": "Detailed and instructional",
+      "decision-making_patterns": "Consultative and collaborative"
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "I just had a two-hour meeting with Robin last week, and we went through all the settings for PCS.",
+      "This entire pipeline layout got changed from what me and Robin saved. I don't know if we saved it. I don't know if we forgot to save it. We had it on Friday, and for some reason it's not here today.",
+      "Okay, so this will be applied to any positions you create moving forward. Any positions that you had already in the database didn't have this applied to it.",
+      "It's going to use the older pipeline but as you create new positions you'll be able to template to apply to it."
+    ],
+    "qa_pairs": [
+      {
+        "question": "How do we apply this to the whole team?",
+        "answer": "This will be applied to any positions you create moving forward. Any positions that you had already in the database didn't have this applied to it. It's going to use the older pipeline but as you create new positions you'll be able to template to apply to it."
+      },
+      {
+        "question": "So if we create a new position like just to verify...",
+        "answer": "Anything made after the creation of the template will be able to have the new setup for the pipeline."
+      }
+    ],
+    "searchable_tags": [
+      "PCS settings",
+      "pipeline layout",
+      "system settings",
+      "template application",
+      "position creation",
+      "database management",
+      "screen share",
+      "meeting ID",
+      "RingCentral",
+      "technical support",
+      "settings change",
+      "team collaboration",
+      "user frustration"
+    ],
+    "semantic_themes": [
+      "Technical issues with pipeline settings",
+      "User confusion and need for verification",
+      "Application of new templates to existing and future positions"
+    ]
+  },
+  "conversation_quality": {
+    "TalkToListenRatio": {
+      "AgentTalkPercentage": 55,
+      "CustomerTalkPercentage": 45,
+      "BalancedConversationIndicator": true
+    },
+    "InterruptionAnalysis": {
+      "NumberOfInterruptionsByAgent": 0,
+      "NumberOfInterruptionsByCustomer": 0,
+      "InterruptionImpactOnFlow": "Minimal"
+    },
+    "SilenceDeadAir": {
+      "TotalSilenceDurationEstimate": 15,
+      "AwkwardPausesDetected": 2,
+      "HoldTimeIndicators": false
+    },
+    "ComplianceIndicators": {
+      "ProperGreetingUsed": false,
+      "CompanyNameMentioned": false,
+      "VerificationStepsTaken": false,
+      "RequiredDisclosuresMade": false,
+      "ProperClosingUsed": false
+    },
+    "CommunicationEffectiveness": {
+      "ClarityScore": 8,
+      "ProfessionalismScore": 9,
+      "ActiveListeningIndicators": true,
+      "AcknowledgmentPhrasesUsed": true,
+      "PersonalizationLevel": "Moderate"
+    },
+    "agent_talk_pct_calculated": 96.7,
+    "customer_talk_pct_calculated": 3.3
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 96.7,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "PCS settings",
+      "pipeline layout",
+      "system settings",
+      "template application",
+      "position creation",
+      "database management",
+      "screen share",
+      "meeting ID",
+      "RingCentral",
+      "technical support",
+      "settings change",
+      "team collaboration",
+      "user frustration"
+    ],
+    "semantic_themes": [
+      "Technical issues with pipeline settings",
+      "User confusion and need for verification",
+      "Application of new templates to existing and future positions"
+    ],
+    "key_quotes": [
+      "I just had a two-hour meeting with Robin last week, and we went through all the settings for PCS.",
+      "This entire pipeline layout got changed from what me and Robin saved. I don't know if we saved it. I don't know if we forgot to save it. We had it on Friday, and for some reason it's not here today.",
+      "Okay, so this will be applied to any positions you create moving forward. Any positions that you had already in the database didn't have this applied to it.",
+      "It's going to use the older pipeline but as you create new positions you'll be able to template to apply to it."
+    ],
+    "qa_pairs": [
+      {
+        "question": "How do we apply this to the whole team?",
+        "answer": "This will be applied to any positions you create moving forward. Any positions that you had already in the database didn't have this applied to it. It's going to use the older pipeline but as you create new positions you'll be able to template to apply to it."
+      },
+      {
+        "question": "So if we create a new position like just to verify...",
+        "answer": "Anything made after the creation of the template will be able to have the new setup for the pipeline."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Garrett Komyati",
+      "extension": "5427",
+      "phone": "6145427",
+      "email": "garrett.komyati@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5427"
+    },
+    "primary_customer": {
+      "name": "name",
+      "company": "we sign their company",
+      "phone": "602-962-5713",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "name",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "log out",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "lot of other information",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Nick",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "the exact one that Robin was working on it may have actually been this one let me just double check oh okay this is probably this is what you",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "This entire pipeline layout got changed",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "up right",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Just one moment",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "the percent that we sign their company at this is",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "trying to figure out is how to hook up people",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "glad you figured that one out quick",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "ll give you the option to delete it",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "where",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "like if we",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "So",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not logged in",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "and then the other one was calling",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "trying to see so that makes sense Let me see what else we got because we got",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just pulling up the list",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not logging in",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Garrett",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to try to get back with the team right now",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "by the way",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "where you can sign into the correct account and hit authorize",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "one second",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "So with this one right",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "could send about the parse",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "okay so from",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "so helpful",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "sorry",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "sure",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "email after this with instructions kind of how to do that",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "ll fill in some of the fields that it automatically grabs",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Are we able to put that on",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "call directly from",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Let me just see",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "all the records",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "parse",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "re copying",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "ll be able to template to apply to it so it might be the position you pulled up might be created before you made the pipeline template well let me see really quick because we had already created that like robin was showing me it and it was all under this one right",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "And",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Give me just two seconds",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "what has changed",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "looking to do is",
+        "company": "we sign their company",
+        "phone": "602-962-5713",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Garrett Komyati",
+        "extension": "5427",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      },
+      {
+        "name": "Nick Bradach",
+        "extension": "5431",
+        "department": "Management",
+        "role": "Manager"
+      },
+      {
+        "name": "Robin Montoni",
+        "extension": "5466",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "account"
+      ],
+      "mentioned_issues": [
+        "problem"
+      ],
+      "urgency_indicators": [],
+      "follow_up_mentions": []
+    }
+  }
+}

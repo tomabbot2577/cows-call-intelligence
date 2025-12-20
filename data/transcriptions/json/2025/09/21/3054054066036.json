@@ -1,0 +1,104 @@
+{
+  "recording_id": "3054054066036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:04:33.757330Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:04:33",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Good afternoon, this is Adam Hey there Adam, I just called your other phone number Anyway, this is Mackenzie at PC Recruiter Hi, how's it going? Good, how are you? Sure, yeah, I'm good Are you ready to get credentialed? Did you get access to the server console? Yeah, the ADJ Yep And then you clicked on the connect button and it tells you to install an agent on your box or a remote utility, which gives you the screen share to the server. There's a little computer. Yeah. It says status connected. I don't see a connect button. Okay. So after you logged into the web console for the agent, then it gave you the list of the SN7, and then you click on, there's a little icon that you click that establishes the connection. It gives you a little pop-up, says, hey, proceed, and it opens up a screen. So now you're at the login screen for the server, yes? Where would this icon be located? I actually don't see an icon to be clicked. I actually have no options. When I click it, nothing happens. Oh, hang on a second. I can screen share with you if you'd like. Hang on just a second. I might have failed to check a box when I set up your remote user. I'm just going to get my earpiece so that I can talk to you here. Hear me okay, McKenzie? Yeah, you sound different, but I can hear you. Yeah, now you're on my AirPod, so let me... Cool. Yeah, there's no right-click menu. Yeah, hang tight. I may have failed to – I added you as a user and gave you access to the device, but I don't think I gave you access to actually issue the remote connect command. So hold on a second. Sure, sure, sure. That makes sense. I get for doing things fast. All right. Well, that's because I forgot to enable the connection. My apologies. Okay, I'm just authenticating and then you should be good to go. All right, you may need to refresh your page and then you'll have a little icon. Okay, I'm refreshing the page. It may require you to re-login. Yeah. When I change permissions, that's usually what happens. Let me go log in. Verification code. All right. I entered that. Screens loading still. Taking a lot longer to load. All right, we got it. Ninja One Remote is now a new button I see. I'm going to click on that. Yes. Perfect. to do a one-time install. This install does not require administrative rights. That's what actually allows the screen share to happen. Geez, it's a big install. It's a big installer. For some reason it's, or no it's not big but for some reason it's saying 12 minutes left that's a quite quite the download time it's only no it's like 64 megabytes it's not yeah yeah i see it says 33.5 megabytes and i have pretty good internet so i don't know what's up with that well maybe there's a clog today I have two loading bars happening going on here has my network throttled or something oh me as a tester that was my fault throttling my own internet getting in my own way here hopefully that yeah it's done now sometimes you gotta test things on slow 3G to mimic the customer Sorry about that. All right. That is okay. I read accepted. Okay. Well, and once you install this and it completes, you'll need to close the little windows and from the webpage, relaunch a Ninja one connect button. Okay. You said close a DJ is, and no, no, no, No, you just need to relaunch that Ninja One button. Oh, okay. Sorry. Okay. All right. So yeah, I'm staring at a Windows login now. Okay, so now what I'm looking at is trying to get the credential that you need, but I think I have to log into their – yeah, I'm now working on getting that access for you. Give me just a second. the username is going to be p-c-r-a-d-m okay and then the password i'm going to set that for you right now How about this? Let me do – I'm going to send you this password, and I believe that this is still a functioning password because I didn't know Sean had moved on, so we have not changed the password. then you can update the password on your side and you can send me a text and I'll document that. Okay. What is your cell phone number, please? 440 is the area code. Yep. 856-5482. 440-856-5482. Yep. And I've just sent you a picture showing the username and the password. And if you want to try and grab that password and use that as the username and password to log in, you should have console access. Okay. Give me a second here. Okay. Backspace out the user name. What the heck? PCR ADM. Let me make sure I type that right. Did that successfully log you in? I am in there. Okay. So you have server console access, and I think they also gave you admin access into the PCR database itself. If you need anything from me, you're welcome to reach back out. Okay. So just do my thing, figure it out, and let you know what happens? I mean, I have never had any involvement other than supplying the server and installing the SQL instance, and then everything else was handled by main sequence. All the application installation, configuration, development, And all of that was hands-off. I didn't even install the app. I have in years past run the install and configured, but all of that has been managed by Sean for the last several years. Okay, cool. I do have a bunch of TXT files on the desktop. I'm going to read through those before I do anything. There may be some important information in there that I could use. Yeah, I'll be on here for a while just kind of like researching, and then I'll try. I do have things I want to try. I do have instructions. Yeah, I understood that there was maybe an API coding that needs to be updated or changed to get the PCR web to function. So if you need anything from me, just feel free to reach out. I'm happy to help. I don't, you know, I have not had any intimate involvement in actually managing the instance of PCR that is here on this server. So I will do what I can to help you, but that's where the line is. I have a question. If I go through this and it doesn't work and maybe I find out that there is some API changes, are you the person that would do that or do you know who that would go to? So if there's some, you know, I don't know anything about what was transacted by Sean and whomever to set up this transmission of the data to the corporate office. I have no idea. I've always been once removed. I'm here to support from a server administration perspective, but the application itself and any customization that was required therein, I don't want to say that it's out of my lane. I'm happy to do whatever I can to help, but it's just, I mean, I have not been involved. Okay. Understood. I just want to know if it was you or someone else, but that answers my question. All right. Cool. Yeah. Yeah. Yeah, and I think, I mean, Tommy's been struggling, but it sounded like you guys somewhere or somehow, I don't know who was involved, but there was some sort of an API change that happened at the end of the year. And it sounds like maybe that's the gap, is that whatever change was made at the beginning of the year needs to similarly be made, if possible, into this instance. Yeah, that's what I think that's what the developers like thought I brought it to a couple of them and that's what they thought but then I think we just wanted to try this because this was a solution in the past so we're trying this first and then we're gonna, we're gonna. Yeah. Okay. Well, good luck to you. And this remote access that you have is now established. I'm not going to turn it off. You have the username. You have the password. If you want to change the password, feel free to do so. I can always rechange that password using my administration tool if ever we need to get back into that PCR admin account. But it was created for main sequence to do whatever it is that they have to do when they have to help with the server. Okay. And Sean McLaughlin had that password documented. So if you feel that it's prudent to update it and change it to, you know, he no longer has access to this console. I deleted and disabled that. So you guys are the only one that have remote access to this server. All right. Thank you. All right. Thanks, McKenzie. Appreciate your time and your energy. Yep. Yep. Thank you, Adam. Have a good rest of your day. I'll let you know what I find out. Thanks. Have a good weekend. All right. Thank you. You too.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1627.553985,
+    "salad_processing_time": 31.82236623764038,
+    "overall_processing_time": 1627.553985,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Good afternoon, this is Adam Hey there Adam, I just called your other phone number Anyway, this is Mackenzie at PC Recruiter Hi, how's it going? Good, how are you? Sure, yeah, I'm good Are you ready to get credentialed? Did you get access to the server console? Yeah, the ADJ Yep And then you clicked on the connect button and it tells you to install an agent on your box or a remote utility, which gives you the screen share to the server.  There's a little computer.  Yeah.",
+    "job_id": "36e8b073-3296-46e7-924c-369c6cbf6270",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Good afternoon, this is Adam Hey there Adam, I just called your other phone number Anyway, this is Mackenzie at PC Recruiter Hi, how's it going? Good, how are you? Sure, yeah, I'm good Are you ready to get credentialed? Did you get access to the server console? Yeah, the ADJ Yep And then you clicked on the connect button and it tells you to install an agent on your box or a remote utility, which gives you the screen share to the server.  There's a little computer.  Yeah.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3054054066036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

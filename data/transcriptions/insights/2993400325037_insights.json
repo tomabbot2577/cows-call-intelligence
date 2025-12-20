@@ -1,0 +1,202 @@
+{
+  "recording_id": "2993400325037",
+  "analysis_timestamp": "2025-09-21T17:18:20.118482",
+  "analysis_version": "2.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Jonah Shields",
+        "role": "customer",
+        "company": "Dimensional Search",
+        "confidence_score": 0.95,
+        "validation_reason": "Clearly identified as the customer"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-09-21"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "support_billing",
+    "CALL PURPOSE": [
+      "Change account for PCR fee billing"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "customer_identification": {
+      "primary_contact_name": "Jonah Shields",
+      "primary_contact_role": null,
+      "company_name": "Dimensional Search",
+      "phone_numbers": [
+        null
+      ],
+      "email_addresses": [
+        null
+      ],
+      "key_decision_makers": null,
+      "team_members": null
+    },
+    "business_context": {
+      "industry": null,
+      "company_size": null,
+      "technology_stack": null,
+      "challenges_pain_points": "Need to change the account that is being drafted for PCR fee",
+      "growth_stage": null
+    },
+    "relationship_mapping": {
+      "previous_interactions": null,
+      "existing_service_usage": "PCR fee",
+      "account_history": null,
+      "relationship_duration": null,
+      "trust_level": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "billing",
+      "issue_severity": "low",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "medium"
+    },
+    "resolution_tracking": {
+      "issue_status": "pending",
+      "resolution_steps_taken": "transferred to billing, transferred to voicemail for Robin",
+      "outstanding_action_items": "customer to leave voicemail for Robin, Robin to follow up with customer",
+      "next_steps_required": "customer to wait for Robin's follow-up, Robin to update account information"
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "none identified",
+      "knowledge_base_gaps_identified": "none identified"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "effective",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "sufficient",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Neutral",
+      "trust_level_signals": "Moderate",
+      "communication_style": "Direct and responsive",
+      "rapport_quality": "Functional"
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Completed",
+      "product_adoption_level": "Basic",
+      "feature_utilization": "Low",
+      "expansion_opportunities": "Moderate"
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Responsiveness",
+      "risk_indicators": "Low feature utilization",
+      "loyalty_signals": "Neutral",
+      "advocacy_potential": "Low"
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone",
+      "response_time_expectations": "Immediate",
+      "information_style_preferences": "Direct",
+      "decision-making_patterns": "Seeks assistance for administrative tasks"
+    }
+  },
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium"
+  },
+  "action_items": [],
+  "participants": {
+    "primary_employee": {
+      "name": "Garrett Komyati",
+      "extension": "5427",
+      "phone": "6145427",
+      "email": "garrett.komyati@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5427"
+    },
+    "primary_customer": {
+      "name": "Garrett",
+      "company": "",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "Garrett",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "in the right spot",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Garrett Komyati",
+        "extension": "5427",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      },
+      {
+        "name": "Robin Montoni",
+        "extension": "5466",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-09-21"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "billing",
+        "account"
+      ],
+      "mentioned_issues": [],
+      "urgency_indicators": [
+        "asap"
+      ],
+      "follow_up_mentions": [
+        "call back",
+        "get back to you"
+      ]
+    }
+  }
+}

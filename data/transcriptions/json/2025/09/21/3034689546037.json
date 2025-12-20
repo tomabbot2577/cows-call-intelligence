@@ -1,0 +1,95 @@
+{
+  "recording_id": "3034689546037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:46:18.286414Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:46:18",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " with this is Garrett with Main Sequence Technology. I have Connie on the line. She said that you needed help integrating RingCentral for her username. Yeah, I need to have that done. Can you do that? Sure. It would be something that you would have to do as the system administrator to configure her username. I could walk you through those. No, we're not allowed to make changes to your database and your username. It's not my username, nor is it my database. Who's, let's see, Connected Services. You are the contract signer for this database. This is yours. Yes, sir. So you would have the... I'm not asking you to change the username or anything like that. I'm just asking you to set up her RingCentral settings. She's already set up for RingCentral. So she needs to have it flipped over to working on her desktop with RingCentral. Is her phone number set up in there? It is not set up in PCR under her username settings. That's something a system admin such as yourself would have to do. I've never had you guys turn me down ever, and I've been with you since 2017. I'm not turning you down or anything. It's just the way you set up a user so that they can connect to RingCentral would be in the system settings. You would just go to system, edit the user, and enter in a few phone numbers so that it can connect to that RingCentral phone number. Okay, cool. Thanks. Bye. Connie, I'll do it when I get back. Give me a half hour. Okay. Talk to you later. Bye. All right. Yeah, no problem. Yeah, just reach out whenever if you need more help with that or I can walk anybody through those steps. If you could walk me through the step, I would do it. You can tell he's not happy. Sure. You just don't have the user permissions to access that part of PCR. It would require an admin user to do that. Talk to you later. Bye. All right. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1064.041033,
+    "salad_processing_time": 20.848254919052124,
+    "overall_processing_time": 1064.041033,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " with this is Garrett with Main Sequence Technology.  I have Connie on the line.  She said that you needed help integrating RingCentral for her username.",
+    "job_id": "c764cd49-d60d-4945-a4b2-516228dfc060",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " with this is Garrett with Main Sequence Technology.  I have Connie on the line.  She said that you needed help integrating RingCentral for her username.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": false
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3034689546037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

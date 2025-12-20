@@ -1,0 +1,102 @@
+{
+  "recording_id": "3032996851036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:45:11.078401Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:45:11",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hi, Garrett. I have a, I believe, fairly simple question. I tried doing it on my own, but wasn't able to. I want to search within a roll-up, and then once I search within the roll-up, I want to take everyone off the roll-up who doesn't have a specific specialty that I put on there. And so I went to roll-up, and I clicked the name roll up, and then I clicked filter, and then I typed which roll up I want to filter, which is the one I currently clicked. And then I want to, under the specialty tab, I want to take out anyone who has nothing in that specialty. But when I left the box under a blank, I left equal to, not equal to empty. Sorry, I left it as is empty and then I left it as equal to with nothing in it and neither screened out what I filtered out what I wanted. So how do I filter that specialty? Oh, okay. Following what I'm asking. Yeah, that made sense. Let me jump into your database. What's your name and what company are you with? It's Your Source Recruiters and my name is Judd. I think technically in your system it might be called your source for crouton. And my name is Joe. Oh, yeah, you're right. It is. Okay. Perfect. I found that. And let me just log into your database here. And go to the roll-ups. And which roll-up are you looking through? The one called MD Safety 1028. Perfect. Got that. Two thousand nine hundred and forty nine people. Yep. That's the one. OK, so I go to filter. All right. I'll go to specialty in the first drop down. I'll say is empty. OK. Yeah. So down below where it says filter by roll up list, that would be if you want to find names that are on a separate roll up list. So you would probably not adjust that down below where it says filter by roll-up list. I think you mentioned that. Yeah, I did. So it's specialty, and then I want to leave that as is empty and not touch the filter by roll-up list. Right. Yeah. So that filter by roll-up list, you could use it to say, show me all the names that are on MD safety and filter that by roll-up. A different, yeah, exactly. Okay. Nope. Okay, so walk me through it here. What do I do now? So you have specialty selected, is empty selected, and then go to the add button. Specialty. And then it's is empty. Exactly, yep. Okay, go to the add. Add, and you can put an and there under add. And it'll probably say in the generated query specialty underscore one, is null. Then you could click filter. I was not clicking that add button. Oh okay yeah so that kind of adds it into the query box on the right and then you hit filter. It should have let's see yep 136 names. Okay now if I want to then select all, all results, and then I want to remove them from the roll-up. How do I remove from roll-up with the X? There we go. Yeah, it's the X, not the trash. That's a little more severe. That deletes them from the data with the X. I'm always very careful of that, even though I know you guys have the backup, but I'm always careful about it. Oh, wow, that was huge. okay awesome thank you so much oh crap no I just clicked a button no I didn't want to click okay amazing so that took off no no no I just I was on one page of the roll up and then I changed the page I had the roll up open somewhere else and then when I changed page it just skipped me back to because it took 136 people off but I found it pretty easily okay amazing that is a game changer so just use that add button thank you so much I really appreciate it. Yeah, happy to help. Definitely reach out if you have any other questions. Awesome. Have an excellent day, Garrett. You too. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1029.117439,
+    "salad_processing_time": 22.88739252090454,
+    "overall_processing_time": 1029.117439,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "job_id": "ff5a5163-bcd1-4407-845c-67e448771627",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "technical"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3032996851036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

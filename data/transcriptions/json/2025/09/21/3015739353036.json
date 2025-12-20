@@ -1,0 +1,95 @@
+{
+  "recording_id": "3015739353036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:29:10.198157Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:29:10",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Good morning. This is Jim. Hey, Jim. It's John. Hey, John. How are you? Oh, frustrated. Yeah, anytime I call your number, it just rings a busy signal, like no email, no voice, no nothing. Right, and I've called and complained. They spent like two hours going over my phone. They made me remove the SIM chip. I'm now on an eSIM. They changed every setting, and she's like, well, can you have somebody with one of those numbers call you right now? I'm like, no, I don't have – these people can't just stop doing whatever they're doing to try and call to see if the thing works. Like how is it my – I can't be the only one having this problem. Let me look here. It came through as 559, but I have it as 599. So I have the wrong area code in my system. Let me take a look and see. And I thought that's – and I might have typed it in wrong off your email. That could have just been my fault. Okay. I hope they call it in. Let's see. Five, five, not yes. The first time I had it wrong and then it's correct in your email. I had the wrong area code. No, but the first time it used to be wrong in your email. It looks like the first time we exchanged numbers, it was five, nine, nine, but now it's in your signature is five, five, nine. So it is correct. Now I've corrected it. Now we should be good. Now. Do you want, everything should be good. Do you want to try calling me on it? It works for sure. Yeah. Let me give you a call. Just a second. All right. Thank you. Talk soon.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 488.281653,
+    "salad_processing_time": 9.355972528457642,
+    "overall_processing_time": 488.281653,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Good morning.  This is Jim.  Hey, Jim.",
+    "job_id": "e1e99698-3786-4cf5-9778-077441f895dd",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Good morning.  This is Jim.  Hey, Jim.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3015739353036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

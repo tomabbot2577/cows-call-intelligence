@@ -1,0 +1,423 @@
+{
+  "recording_id": "2990871412036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T14:25:30.536597Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "14:25:29",
+    "duration_seconds": 8.856,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 35757
+  },
+  "transcription": {
+    "text": "I'm sorry, the person you are trying to reach has a voicemail box that has not been set up yet. Please try your call again later. Goodbye.",
+    "confidence": 0.9499999999999998,
+    "language": "en-US",
+    "language_probability": 0.99,
+    "word_count": 27,
+    "duration_seconds": 8.856,
+    "processing_time_seconds": 7.8407886028289795,
+    "salad_processing_time": 4.048777341842651,
+    "overall_processing_time": 0,
+    "segments": [
+      {
+        "id": 0,
+        "start": 0.1,
+        "end": 5.1,
+        "text": "I'm sorry, the person you are trying to reach has a voicemail box that has not been set up yet.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "id": 1,
+        "start": 5.2,
+        "end": 6.7,
+        "text": "Please try your call again later.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "id": 2,
+        "start": 6.8,
+        "end": 7.05,
+        "text": "Goodbye.",
+        "confidence": 0.95,
+        "words": [],
+        "speaker": "SPEAKER_00"
+      }
+    ],
+    "word_segments": [
+      {
+        "start": 0.1,
+        "end": 0.35,
+        "timestamp": [
+          0.1,
+          0.35
+        ],
+        "word": "I'm",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 0.35,
+        "end": 0.6,
+        "timestamp": [
+          0.35,
+          0.6
+        ],
+        "word": "sorry,",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 0.6,
+        "end": 0.85,
+        "timestamp": [
+          0.6,
+          0.85
+        ],
+        "word": "the",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 0.85,
+        "end": 1.1,
+        "timestamp": [
+          0.85,
+          1.1
+        ],
+        "word": "person",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 1.1,
+        "end": 1.35,
+        "timestamp": [
+          1.1,
+          1.35
+        ],
+        "word": "you",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 1.35,
+        "end": 1.6,
+        "timestamp": [
+          1.35,
+          1.6
+        ],
+        "word": "are",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 1.6,
+        "end": 1.85,
+        "timestamp": [
+          1.6,
+          1.85
+        ],
+        "word": "trying",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 1.85,
+        "end": 2.1,
+        "timestamp": [
+          1.85,
+          2.1
+        ],
+        "word": "to",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 2.1,
+        "end": 2.35,
+        "timestamp": [
+          2.1,
+          2.35
+        ],
+        "word": "reach",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 2.35,
+        "end": 2.6,
+        "timestamp": [
+          2.35,
+          2.6
+        ],
+        "word": "has",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 2.6,
+        "end": 2.85,
+        "timestamp": [
+          2.6,
+          2.85
+        ],
+        "word": "a",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 2.85,
+        "end": 3.1,
+        "timestamp": [
+          2.85,
+          3.1
+        ],
+        "word": "voicemail",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 3.1,
+        "end": 3.35,
+        "timestamp": [
+          3.1,
+          3.35
+        ],
+        "word": "box",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 3.35,
+        "end": 3.6,
+        "timestamp": [
+          3.35,
+          3.6
+        ],
+        "word": "that",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 3.6,
+        "end": 3.85,
+        "timestamp": [
+          3.6,
+          3.85
+        ],
+        "word": "has",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 3.85,
+        "end": 4.1,
+        "timestamp": [
+          3.85,
+          4.1
+        ],
+        "word": "not",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 4.1,
+        "end": 4.35,
+        "timestamp": [
+          4.1,
+          4.35
+        ],
+        "word": "been",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 4.35,
+        "end": 4.6,
+        "timestamp": [
+          4.35,
+          4.6
+        ],
+        "word": "set",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 4.6,
+        "end": 4.85,
+        "timestamp": [
+          4.6,
+          4.85
+        ],
+        "word": "up",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 4.85,
+        "end": 5.1,
+        "timestamp": [
+          4.85,
+          5.1
+        ],
+        "word": "yet.",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 5.2,
+        "end": 5.45,
+        "timestamp": [
+          5.2,
+          5.45
+        ],
+        "word": "Please",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 5.45,
+        "end": 5.7,
+        "timestamp": [
+          5.45,
+          5.7
+        ],
+        "word": "try",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 5.7,
+        "end": 5.95,
+        "timestamp": [
+          5.7,
+          5.95
+        ],
+        "word": "your",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 5.95,
+        "end": 6.2,
+        "timestamp": [
+          5.95,
+          6.2
+        ],
+        "word": "call",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 6.2,
+        "end": 6.45,
+        "timestamp": [
+          6.2,
+          6.45
+        ],
+        "word": "again",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 6.45,
+        "end": 6.7,
+        "timestamp": [
+          6.45,
+          6.7
+        ],
+        "word": "later.",
+        "speaker": "SPEAKER_00"
+      },
+      {
+        "start": 6.8,
+        "end": 7.05,
+        "timestamp": [
+          6.8,
+          7.05
+        ],
+        "word": "Goodbye.",
+        "speaker": "SPEAKER_00"
+      }
+    ],
+    "speakers": [
+      {
+        "id": "SPEAKER_00",
+        "label": "Speaker_00",
+        "speaking_time": 6.75,
+        "segment_count": 3,
+        "average_confidence": 0.95
+      }
+    ],
+    "srt_content": "1\n00:00:00,100 --> 00:00:00,600\nI'm sorry,\n\n2\n00:00:00,600 --> 00:00:04,850\nthe person you are trying to reach has a voicemail box that has not been set up\n\n3\n00:00:04,850 --> 00:00:05,100\nyet.\n\n4\n00:00:05,200 --> 00:00:06,700\nPlease try your call again later.\n\n5\n00:00:06,800 --> 00:00:07,050\nGoodbye.\n\n",
+    "summary": "Voicemail box not set up, please try again later.",
+    "job_id": "e00c6ed6-a3f7-4c7a-975a-1ae90ff3008b",
+    "timestamps": {
+      "started": "2025-09-21T14:25:21.699292+00:00",
+      "submitted": "2025-09-21T14:25:21.699438+00:00",
+      "completed": "2025-09-21T14:25:29.540073+00:00"
+    }
+  },
+  "ai_analysis": {
+    "summary": "Voicemail box not set up, please try again later.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 1,
+      "total_segments": 3,
+      "agent_speaking_percentage": 0.0,
+      "customer_speaking_percentage": 100.0,
+      "average_turn_duration": 6.75,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": true,
+      "solution_offered": false,
+      "proper_closing": false
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "1mx1w5CEMhoo8msyNjMz87dJ-rxojaXoW",
+    "google_drive_url": "https://drive.google.com/file/d/1mx1w5CEMhoo8msyNjMz87dJ-rxojaXoW/view",
+    "local_path": "/data/transcriptions/json/2025/09/21/2990871412036.json",
+    "backup_status": "completed",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.9499999999999998,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

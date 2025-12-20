@@ -1,0 +1,104 @@
+{
+  "recording_id": "3001875643036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:14:42.657864Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:14:42",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hi, Garrett. My name is Tracy, and I am with Symbio. And in PCR, none of my emails are logging. Oh, okay. Let me take a look. I'll just log into your database here. Are you in the Symbio Partners, Inc., or Symbio Read Only? I'm assuming that's the first database. is and I think it's the former of those two. Okay. What's your PCR username? I just went blank. Well shoot. Are you currently logged into PCR right now? I am. If you hover over the profile picture area at the top right, there's a circle up there it'll tell you your username and what database you're in. And just as it's not saying anything bear with me I'm sorry. No problem. Here what I can do actually I'll log in as the admin and then just kind of check the user list. Oh, T. Johnson, that's your username. Okay, thank you. No problem. I'll just re-log in T. Johnson. And let me check your email settings. Okay, so it looks like you do not have an incoming or outgoing email set up in PCR. So do you use PCR to send and receive emails, or are you mostly in Outlook? Yes. No, I use PCR, and it's always worked. It just stopped the last couple of days. I noticed it late last night. Okay, yeah, so in the T. Johnson username, you do not have an outgoing email connected or an incoming email connected. So I can show you how to set that up. Please. So go to the gear icon in a circle to the right of that profile picture. Okay. It's got a drop-down menu, and then the first option will be email. Okay. Go ahead and click on that. That opens up PCR mail in a new tab. And you'll want to go to configure at the top left, which is another gear icon. Okay. And then we'll start by setting up the incoming mail. So go to mail servers below that. Okay. And in the bottom frame, click the three horizontal lines at the top right of the bottom frame. Okay. And select add. Okay. And who is your email provider? Is it Gmail or Office 365? It's Gmail. Okay, cool. Go ahead and hit sign in with Google, the bottom left there. Okay. And it should prompt you to sign in to the correct Gmail address. Okay. And once you're all signed in, it'll fill out all the fields in the add mail server pop-up window for you. And then do I hit save? Check on, there's a, in the bottom center, there's a dropdown that says save sent email to sent items folder. Switch that to no. Gmail will duplicate your sent items. Okay. And then go to test connection at the bottom. We're hoping to see green lettering somewhere in that test result. There is no green lettering. It says lookup failed. Okay. Go ahead and hit save at the bottom, and then I'll refresh on my end, and I'll be able to see what got entered in there. One second. Refresh. Configure mail servers. Okay. See it started there. Okay, ready for requests. Lookup failed. Okay. I have not seen that one before. We'll do a test though in a minute here. Nope, yeah, it doesn't look like it is working. Sign in with Google. Test connection. Okay, let's try this. Go to Configure again at the top, and then Alias Address List. Okay. And then in the bottom frame, click on the pencil icon to edit that alias. Okay. And then hit Sign In with Google at the bottom left there. And that should fill in most of the fields for you. Let me know if it... It did. Okay. Does Reply To have something entered in on the right there? Reply To address? It does not. Okay. Go ahead and copy the From address on the left over to Reply To on the right so that those match. Okay. And then right below that it'll say maps server select the server use that drop down to select the Gmail mail server we just created okay and then finally bottom left it says delay between emails set that to 3000 okay and then hit test connection at the bottom of that and let me know if you see green lettering I do oh excellent so that's good that's the outgoing mail you You can close the test and then hit save. And then, let's see, we will maybe have to create an app specific password for the other one we were doing. Yeah, okay. So are you using a Google Chrome browser or Microsoft Edge? I, it's Chrome. Okay, good. So at the top right of your browser there, it should have like a, either a profile picture or the first letter of your name in a circle. It does. Okay, awesome. Click on that and then go to manage your Google account. Okay. Okay. And that'll open up your Google. On the left, go to security. Okay. And let's see, there's a heading called how you sign into Google. At the top there of that heading, let's see, yeah, two-step verification. Does that have a green check mark next to it? It does. Okay, excellent. So, two-step is on. Next, we'll look at app. Okay, so then in the search bar at the top where it says search Google account, type in app password, app space password. Okay. And you're looking for search results there that say app passwords. Okay. Click on that. and then let's see that would be probably asking you to sign in again it is okay go ahead and sign in okay and then is it asking you to name the app specific password down below there. Okay, just enter something like PCR, PC Recruiter, something like that. And then hit create. And that will give you a password that only, yeah, that only works between Google and PCR. So you can copy that. And we're actually going to needed to paste it somewhere so that we can remove the space characters. So if you have like a notepad or something where you can paste that, copy and paste it and then just backspace every time you see a space in there. Okay. And then copy it again now that all the spaces are removed. Let's see and then we'll go back to our PCR mail tab that we have open where we were kind of editing PCR mail settings. And that's under my name? I forget where that is. So that would be a browser tab you still have open up at the top right above the web address field you'll have all your different browser tabs there should be one that's called PCR mail still open if you're not seeing it okay oh perfect go ahead and open that and then you still have the option to click on mail servers up at the top there I do awesome Go ahead and click on that. And then in the bottom frame, it has your mail server that we started making. To the left of it, it says Action. Click on that and select Edit. Okay. And then paste that password. You could clear out whatever password is currently there in the password field. And then paste the one that you just made. Where all the spaces are taken out. Okay. And then hit test connection. And fingers crossed, we're hoping for some green lettering on that as well. It's loading. Okay. Still loading. Still loading. Okay. Usually take – it doesn't take that long. Try closing that test and just hit save, and then I'll kind of refresh in my end and try to run the test. Okay. So let me hit refresh here. I'm going to mail servers, edit test connection. Yeah, it's doing that. It just keeps loading for me as well. Let's see. All right. let's do this go ahead and in the drop down at the bottom left that says active yes switch that to active no okay and hit save okay and then let's go in the bottom frame you could you know close that if it's after you hit save if the pop-up didn't close you can close the pop-up and then in the bottom frame click on the three horizontal lines at the top right again and we'll add in a new one with the add button okay so we'll kind of manually fill this out instead so feel free to paste in that same password that you've copied into the password field to start since that's Still copied there. Okay. And then description at the top left, go ahead and enter just your first name and then the word Gmail. We can kind of differentiate this one. Okay. The server name, enter I-M as in Michael, A-P. so imap.gmail.com. Okay. And then the username is going to be your email address. Okay. And then where it says save sent email to sent items folders, switch that to no. And there is nothing in server name is that okay oh sorry server name that one's going to be where you put in the imap.gmail.com sorry uh i must have that's where i put i'm sure i did it wrong what do i use as server type just imap yeah just imap that's oh no actually there's one called imap ssl let's actually choose that one for server type. Okay. Server name is the imap.gmail.com. Your username is your email address and we already pasted in that special app password. Okay, cool. Then hit test connection down at the bottom and hopefully that will give us green lettering somewhere. Still perpetually loading. Do you want me to try to change it to active no again and save? Keep it at active yes and just hit save and then I'll run the test again on my side, see if that's any different. I'm hitting refresh. Let's take a look at the one you have active. There you go. And test connection, let's see. Yeah, it looks like it's just going to keep loading. Let me see if Gmail is having trouble overall. I'll just do a quick Google search. Gmail. Thank you. I'm not sure. Yeah, I'm not seeing anything related to... email being down today, but yeah, that test is not going through. Let's see. Let's see if we can send out email from PCR currently. So if you go to back to your main PCR tab, or actually I could do this test. I'm just going to put my own name in your database and send myself a test from your username to see if it's working. Okay. So I'm going to go to PC. I'll put myself in the default company. All right. email address. Okay so I created myself a name record I'm just going to try to send an email PCR support test It's saying it can't send email. Precondition check. Look up this error. I am not sure. let's do this let's jump on a screen share really quick and I'll take a look at your gmail account see if anything pops out to me but yeah usually it would work where you can send email and receive email following the steps we just took but nothing's connecting so go to a new tab in your browser and just go to meetings.ringcentral.com. Okay. And then once you're there, is it asking you for a meeting ID to join a meeting? It is. Okay. so that is 1-8-0-4-0-9-5-0-5. All right. If it asks about joining with audio, you can say continue without audio since we're already connected. Okey-doke. And then just click the blue share button down at the bottom and select your entire screen up at the top. Okay. Awesome. I can see that. Feel free to minimize the RingCentral window there up at the top. It looks like kind of up higher. It's hidden. It's like too high. Are you able to drag that just by clicking in the white area and dragging? Let's see. Not letting me do anything. Okay. Here, let me try this. I'm going to do an ask for remote control. Just allow that. Okay. So, yeah, that's... Oh, there we go. Okay. So we're going to go back to... Okay. So we're going to go back to... Okay. to go back to email account. All right. And this is for Tracy at SymbioGroup. Okay. Okay. And let's see. So when you view email or send email outside of PCR, like do you have like a program like Outlook that you use at all or do you go to gmail.com? I try to always do it within Chrome, but if it would be another, it would probably be Outlook. Okay. Go ahead and open up Outlook and we'll take a look to see how that's set up. okay there we go all right and tracy it's in my group.com all right Then let's see here. Maybe I still have the, yeah, awesome. This is Tracy. Account properties. Microsoft Exchange. Okay, it might be that your email is hosted through Microsoft Office rather than Gmail. Let's try that. That might be what the issue is. So if we go back to PCR. Oh, wait. There we go. I'm going to switch this one back to not active. Save that. Close. And I'm going to add in a new mail server. And try sign up. Oh, that's what it is. I believe that your email is hosted by Microsoft, not Google. So let's see if this gives us a... I am so sorry. No, it's all right. Oh, there we go. We got the green. So that's a good sign. I'm just going to switch this to no. Oops. Switch that to no. Hit save. And we'll close that. And then I can get rid of this Tracy Gmail one. There we go. And then I'll go to alias address. Let's do the same thing here. We can edit this one. We'll do sign in with Microsoft instead. And go here, go test connection. Okay, there's one extra setting for that, but I know how to fix that one. All right, so that's good. Email folders, we're going to tell PCR what your sent folder is. There it is. Mark as sent items, and then I'll tell PCR what your trash folder is. Those will all be mapped. Trash. Or you know what? Maybe it's called deleted items sometimes. There it is. Trash folder. Okay. So we've connected your incoming mail, outgoing mail. We've mapped the two folders it needs. I'm going to turn on a preference here under activities. that says you want to have activities written for incoming and outgoing mail. We'll save that. And then the last piece here, we'll actually have to go to the Microsoft admin here. and turn on or allow the connection between PCR and your email. Oh, social account that has permission. Okay, so do you have an IT team or another member of your team that has access to the Microsoft account? Yes. Okay. They might have to change something to allow you to connect. But also, it does look like you are set up in here. Test connection there. Auto activities. Okay. Okay, so that is set up where we might not need to connect in PCR now. All right, so do you know a specific name record or something in PCR where the activity wasn't being written that I could just take a quick look at? In my PCR notes under activities? Yeah, so if I go to maybe go back to PCR, is there a certain person you're missing an email to or from? This one that's up right now, Caitlin Kulig, I sent one shortly before I called you. Gotcha. Okay, so I go to activities, email. And I don't know if it's helpful, but I have my Microsoft Word. I have the password. Okay. No, that's all right. We'll just take a look here. So this is the email address we have under Caitlin, the last name, period, Caitlin at gmail.com. So you said we sent out an email to her. Let's go to your sent items. You'll need to probably go up. It was more recent than those. Okay, good call. Yeah, let's see. There it is. Yeah. And let's see. and let's see I'm Caitlin to this is weird out I'm not able to see there we go oh it is not listing and there we go contact Caitlin at gmail Okay, those match. Yeah, that is strange. This definitely should be recorded in your activities. Let me check one other spot. Wait, where do I want to go? Minimize this. Go to emails. Image found. And does that look, it's spelled right, correct? We would have to probably zoom in a little bit more. No spelling mistakes there on the email address? Correct. Okay. Sometimes that's why things don't record as activities. So, yeah, nothing in there. No, it's not even listed. Okay. I am not sure. I'm not sure. Okay. Let's see. I'm going to go ahead and do that. I'm going to go ahead and do that. Okay. I'm going to go ahead and do that. Okay. I'm going to go ahead and do that. Okay. I'm going to go ahead and do that. Okay. I'm going to go ahead and do that. Okay. I'm going to go ahead and do that. Okay. I'm going to go ahead and do that. Okay. I'm going to go ahead and do that. Okay. I'm going to go ahead and do that. Okay. I'm going to go ahead and do that. Okay. I'm going to go ahead and do that. Okay. I'm going to go ahead and do that. Okay. I'm going to go ahead and do that. Same one. Okay. I'm a little stumped here. Mail, auto activities is correct still. Johnson. Yep. Okay. I'm going to do one more test on my screen here. I'm going to try to send myself that email again and see if it's just the Caitlin issue there, or if it's across the board that the activities aren't writing. I can't send from inside of PCR, so let's do this. We'll go to email and earn it. Sorry, home. Your email. Okay. Thank you. All right, now I'll check my email. There, okay, I got that right away. And this is incoming. if I go to my name record. Okay, that registered the outgoing email. Yeah, I'm not sure what's going on with the specific Caitlin record. It might just be a kind of a one-off fluke. If everything's correct on the matching email address, that's usually what it is. It's like a spelling error. So K-U-L-I-G period, C-A-I-T-L-I-N at gmail.com. And this is K-U-L-I-G dot C-A-T. Yep, everything looks right there. There's no space after gmail.com. Okay. Okay. Yeah. What I could do is take a ticket, create a ticket and take a look a little bit later, kind of see if there's anything else our team suggests. Okay. And then in the meantime, if you get any more issues where you're not getting an activity written, just let us know. But everything's set up correctly and connected, so I'm not sure what happened there with that one. But, yeah, I'll reach back out after I do a little bit more research. Okay. Sounds good. Thank you. Thanks. Have a good one. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 605.794371,
+    "salad_processing_time": 183.76971626281738,
+    "overall_processing_time": 605.794371,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "job_id": "e65218e7-06e3-453f-90f2-f13c03093ced",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hi, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3001875643036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

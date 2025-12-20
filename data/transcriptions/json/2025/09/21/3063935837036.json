@@ -1,0 +1,95 @@
+{
+  "recording_id": "3063935837036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:12:06.686760Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:12:06",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hey, Tyler. Scott Shapiro. Good morning. How's it going, Scott? Good question. So when I'm in PCR and I want to look at someone's LinkedIn profile, right, I click on the LinkedIn icon. sometimes it's taking me to the LinkedIn public page and in other cases it's taking me to LinkedIn Navigator which is something new that started occurring do you have LinkedIn Sales Navigator I have LinkedIn Recruiter which also includes LinkedIn Navigator it will depend on where you capture them from, from which page oh okay so if you get to that from the navigator page that's the URL it picks up got it understood okay that makes sense alright thank you that's all I wanted to know no problem have a good one bye",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1856.339085,
+    "salad_processing_time": 3.3488614559173584,
+    "overall_processing_time": 1856.339085,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "job_id": "b4bb5db6-efac-40b1-8ee4-501653070a45",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3063935837036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

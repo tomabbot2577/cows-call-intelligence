@@ -1,0 +1,112 @@
+{
+  "recording_id": "3039180455036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:49:28.717558Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:49:28",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hey Tyler, it's Truett Neely. How you doing? Good. How are you, Truett? Good. Hey, I need your help. We're redoing all of our stages for Roll of Bliss across the company. And so a lot of that's just kind of admin work. But before I do that, I need to have a key that shows the stage sort order. I don't think you can change that then so I need to know how PCR automatically sorts that on a roll-up list all the stages are clicked so that we can design the stages around the way that PCR was designed yeah so give me one second here You can just email it to me. So we don't really have a sort order like in a document. The easiest way to tell is if you look at the global stage setup in the database, so if you go to system i usually just do okay sorry i'm in the car yeah but it's i could take a screenshot of it and send it to you okay okay and that'll tell me yeah so just like how it follows like it'll show you which ones appear first yeah because it's a grid right so it has columns and rows essentially and i don't know how it flows throughout the stages because i think some of the ones at the beginning uh aren't necessarily listed at the top you know yep yeah i'll take some screenshots and send it over to you real quick okay and then if we're changing it do i what's the best way to do Do I need to change my stages and then just, since I'm a model user, copy that to somebody else? Yep, that's usually the easiest way. Okay, you talked about global stages. So, like, am I able to change that within PCR and then everybody that is a user would adopt that? Only if you require global roll-up list stages and turn it on. But that would be for roll-up lists going forward. not existing ones. So if you're already using the regular ones, the global stages. Okay. Got it. And what does global stages actually do? Like I get that it starts after you turn it on, but what's the purpose? So it allows you to create multiple templates. So let's say you have like a recruiting template and a sourcing template. It would make it so you could select which template you're using on a roll-up, and it can force all the users to use at least one of those templates in their roll-up lists. I like that, actually. So you could have one for business development and one for recruiting? Yep. Oh, wow. Okay. And what other constraints are there other than it just has to be on roll-up lists going forward? anything so you wouldn't be able to apply it to like existing roll-ups where there's stages already selected so okay so if the stages are already selected you'd have to make a new roll-up list add all the names to the new one and then none of the old stages would carry over correct okay so if we had an existing roll-up list of let's say a thousand names and we already had stages on that but we want to be able to still maintain you know the the idea of the stages in the next one how would you go about even doing that how would you convert it you you would manually have to convert it. Geez, really? No other way? Nope. Okay. Yeah, that's why it's like it's kind of one or another with either the global stages or the regular stages. Okay. And then when you do the global stages, does it run automations? Like, we didn't notice this until we started copying them over. But when we do automation setup, let's say for myself, and then they copy that to a new person, they don't, like there's not global automations that are set up and then you can just go customize that per person. It was like duplicating all of the automations. Does that make sense? Yeah, the automations work the same through global stages as they do for the regular stages. Oh, they do? Okay, so you can't have, you can't have, we leave a voicemail and then it sends them a text and then the username of the person in PCR. are like it's not a it's not a global it's not it's not global where you could just have one automation set to one stage and everybody use it it's everybody would have duplicate automations so with the with some of those automations yeah with the ones that really trigger it as like the form letters. Right. With the text message, a lot of times you can set it to who, let me see, it's been a little bit. I'll give you, I'll give you an example. Like we have one stage we're going to have where it's, it's saying, like after we text somebody through sense and they ask about like where's this job located we all want to send them the same response um and so we'll have a stage that says hey happy to share details let's get on the phone so i just want to write that automation one time and then when when any user clicks that stage on a roll-up list then it would trigger that text and it would just have the you know insert field pcr user name or whatever it was for their phone number or that field, we would have that put in. So then depending on what user is actually logged in, it would just send their details instead. Otherwise, we have it duplicated. So the only way you could do that is with like the insert signature? Right. Because when you do the send form letter option in the Rollup List Automations, you can either leave it blank for it to come from the system administrator email or you can select a logged in user where logged in user would be the one triggering the automation okay but you'd have all the same like insert fields that you would for a form letter right the PCR user name PCR user contact email phone number all of that yes you could do it that way those ones can be a little bit tricky typically the best way for the form letters is the just like the current user email signature okay but current email signature is just the actual email signature that you'd have in an email right correct that's not pulling fields from pcr um what i mean is when we when we do an automation you can make it right whatever you want so if you go into the automation and it's like hey first name i totally understand i totally understand where you're coming from let's get on the phone so it personalizes that you can still have that there is a well what i'm saying is i don't want to have to create i was having to create individual automations based on my automations for any user we add to the database i just want to have all of the automations written down for the entire company and so there may only be five and then anybody that is the new user just has those automations you know already set up that's all all i'm trying to do gotcha so you could do very basic ones then with the roll-up list stages where it's just like hi first name yeah so sorry we didn't connect give me my phone numbers in my signature give me a call if you have a have a minute yep and then it puts in that current current user signature you know calendly yes that's what we use all the time is we leave a voicemail and then we we do the change the stage to a voicemail and it sends the person a text message hey john i just left you a voicemail i don't know what your schedule's like today here's a link to my calendar and so then you could have a custom field in pcr that has you know calendly link and it'll send that candidate the calendly link and so i just want whoever is logged in to send the correct Calendly link and then obviously address them by the right name. That's the idea. Yeah. So do you have like an office Calendly link then? No, it's individual. So they're putting their individual Calendly on these candidates? They're sending them to the candidates. Yeah. So like an individual recruiter would leave 100 voicemails in a day and then they would have 80 or 90 text messages going out to the people they didn't connect with and be like hey i left you a voicemail today here's a link to my calendar and it's that recruiter's calendly link and so all we have to do is make a custom field in pcr that says calendly yeah but so they're putting it on the name records for the candidates they're working with no they're putting it on their own name record and PCR. So it would just say, well, there, there has to be some kind of field, I guess, in the system. On the record, it would have to be, it would have to, yeah. Cause for it to pull into an insert field from a name record, it's going to pull from the record that it's sending to. Right. Yeah. Yeah. You're right. So then we'd have to do something of like system user, you know, email address number two or something like that. We'd have to pull a field that's not being used yet. I think there's something like that, isn't there? I mean, there's a bunch of information for all of the PCR users. It says the phone number, it says the extension, it says a whole bunch of stuff. So you can grab a field that allows that number of characters to be permitted. and there's the yeah the ones that are available for a phone letter are the current user so like their username the email address that's on their user record their email signature their username their full first and last name their contact phone and their office extension we can put it as office extension. Is there a character limit on office extension? Let me see. I've never tried it, but I can here real quick. Good. I don't think putting in the email address makes any difference either does it? I mean it's almost like just a directory listing but it doesn't do anything when you put in an email address for a user. So that does pull for some things like presentations and other like profiles like if you get notified on things? Oh yeah that's right like CDSs. that doesn't look like that let me pull a longer web address here put it in there oh there is a character limit so 128 or 256 or is it really short it's really short it. Okay. Is that something Drew could change on the back end? Not for those ones, unfortunately. Those ones are hard-coded. I can double-check and ask him, but... Or if there's another field that we can... Or if there's another field we can throw it into, that's fine, but... Yeah, like another user field. Uh-huh. Because that's the most popular use case that we have is sending them out like a link to our calendar and people book that way all the time because they're current, you know, we recruit in healthcare. So they're seeing patients and then they'll do it like on a lunch break or a cancellation and we'll end up getting candidates that way. Yeah. So, yeah, I can ask you about that and then send you over kind of what those all up list stages look like. I'll also send you over a link to our learning center that goes a little bit more in depth on the global stages as well, if you want to take a look. Okay. Okay. And then what you're sending me as far as those screenshots, that's going to – I'll be able to tell how it's going to sort. Yep. Okay. All right. Well, thanks, Tyler. Yep. Not a problem. Talk to you soon. All right, man. All right. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1169.084503,
+    "salad_processing_time": 83.06847643852234,
+    "overall_processing_time": 1169.084503,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey Tyler, it's Truett Neely.",
+    "job_id": "8a4e1902-ded2-43ff-8b3f-4c232f401568",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey Tyler, it's Truett Neely.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3039180455036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

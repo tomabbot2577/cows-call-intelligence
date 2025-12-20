@@ -1,0 +1,100 @@
+{
+  "recording_id": "3090971484037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:20:51.980454Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:20:51",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hey, Garrett. It's Jenny with Sandia's Executive Search. How are you? Good. How are you? Good, good. Hey, I was hoping to do a screen share with you guys so you can see a search I'm working on. My Boolean with the keywords, it's pulling some weird stuff. So I'm hoping for some pointers. Sure. Let me start a screen share. Go ahead and enter in a new website in your browser. Just go to meetings.ringcentral.com. Okay. Is it asking for a meeting ID? Yes. Okay. that's 762-370, sorry, did I say that wrong? 762-372-454. Sorry. All right, I'm calling you via RingCentral, so I hope this doesn't do an echo. I think I had an issue with this last time. You could just hit the mute at the bottom left and it'll cut out any echo and then click the blue share button down at the bottom and select your entire screen up at the top cool I can see that okay cool all right so for some reason it's picking every letter a this is one of the search results I'm thinking it's to save a lot but I have it in quotation so I'm not sure what I'm doing. Okay, so the highlighting doesn't represent like the reason why it was pulled as a result. It will highlight letters like the letter A, but that wouldn't be like the sole reason that it found it. So there's probably another term in there that's matching in that resume. So yeah, the highlights are a little bit misleading, but let's see if there's another term that it found. Oh, doesn't look quite good. Is there something to do with, like, manager up towards? Okay, I don't know if that was one of your search terms. You can actually use, let's see. Do you want me to hit search and you can see, like, other examples? Yeah, yeah, we could look at other examples for sure. But yeah, it would mean that one of your search terms are in that resume and that's why it was pulled up. But it just highlights a little bit misleading to match the A and save a lot. So we can yeah, we could check other people or we could just look through the Michael Madden resume and find out which term it actually is matching. Okay. And when you hover over it, it looks like it's just matching A. Oh, okay. And the keywords, it's matching two of my actual keywords. But I was just wondering why resume is popping up. I just want to make sure I'm not getting a ton of people on this list. With the letter A. Yeah. Based on that, it might be looking for A. go back to advanced search again underlined at the top left and let me just look over the search built here okay so yeah Okay, yeah, that does look pretty good. And then up above, title like superintendent, that's good as well. Actually, I usually have it like this. I don't know that it matters, but... Yeah, that should be fine either way. All right, let's do a test. If you take out the A in Save-A-Lot and then hit search again, let's see if that Michael person comes up, Michael Madden. That took it down by 700 people. Yeah. And then it took away the resume for him. Yeah, the resume for him. Okay. And Save-A-Lot is in quotes. Yeah, I'm not sure why. Yeah. It's functioning like that. That is strange. I mean, that's just one grocery store, so I could take that out. But I just thought it was odd because I think I'm telling it the right thing to do. Right. Yeah. It seems like you built it correctly. It's just not coming back with the expected behavior. I can I can check with my team and see if anything's changed or maybe they think something's wrong with the search. just to check with them. But yeah, I think save a lot. I'll just remove this one. Yeah. I'll just remove this one for this particular search. But yeah, from time to time, I do have second quotations that has the word A in it. So I guess that would not give us ideal results moving forward unless we can figure it out. Right. Yeah. Okay. Yeah. Let me open a ticket and see if anybody has advice from the team on the best way to manage that. Awesome. Cool. Anything else you've been having trouble with? No, that's it. I just noticed it today. I'm like, holy crap, why are there so many people? Yeah. Yeah, that makes sense. Cool. Yeah, I'll get back to you. Let me make sure I have your best email address here. Is it admin at sandiosexecutivesearch.com? Yes. Perfect. All right. I will get back to you soon. All right. Cool. Thanks, Garrett. Thanks.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 2109.208378,
+    "salad_processing_time": 53.93973708152771,
+    "overall_processing_time": 2109.208378,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "job_id": "1de6c25b-5c00-40c4-8723-63cf9704bb72",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": true,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3090971484037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

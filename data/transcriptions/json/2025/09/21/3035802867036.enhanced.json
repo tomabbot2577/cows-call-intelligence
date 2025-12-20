@@ -1,0 +1,117 @@
+{
+  "recording_id": "3035802867036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:46:55.524291Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:46:55",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hey, Tyler. We have one of our users is running into an issue where everything that pops up in PCR is super small. It usually comes up about once every two to three weeks, and clearing the cache or repairing the controller will usually do that. Actually, it will always do that. Just wanted to see if there was a permanent fix or something that we need to do a little bit different. Since it keeps coming back up. Do you know who the user is? I'd have to double check that username. I'm blanking at the moment. Or like what company they're with? Yeah, it'd be for odbc.mrindianapolisnorth. Yeah, because a lot of times that has to do specifically with the browser, especially if it's an older computer. Okay, it should be pretty recent within the last two years. But let me make sure that the Chrome is fully updated. especially a lot of times too like if they're working with a bunch of tabs open that's going to cause that cash to fill up quicker and our and if they're leaving their computer on overnight, that can affect it too. And usually, if their PCR is running on overnight while we run updates, and that launcher is still running, that can cause issues. Like that. Understood, understood. So just making sure they're shutting down their computer. Do you update about every month or so? We try to update every couple weeks. like okay and that timeline kind of does match up okay yeah like we just like we just ran one uh this past week like tuesday i believe it was tuesday or wednesday and then probably like two or three weeks before that we had run another one okay and looking on my side now they have not restarted the computer since the 11th of this month so yeah i think that might actually be the culprit yeah it's probably causing the cash to just get gummed up so especially because what will happen is if you leave your computer on for too long and not restarting it oh yeah that launcher will get stuck open as well like it'll time out that session and get stuck ah so okay we always recommend even if like it's once a week you just restarting the computer. Yeah, I try to tell everyone, either when you get in for the week on Monday morning, or when you leave for the day on Friday, restart it, shut it down, whatever, because it's like, that's the best way to finish it out. But, yeah, I think that might be the culprit this time. Thank you so much for your help. Yep, not a problem. Alright, have a good one. You too. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1085.15965,
+    "salad_processing_time": 16.300997972488403,
+    "overall_processing_time": 1085.15965,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "job_id": "29b8ad9d-fcec-493e-ae2b-d082f1f5f615",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3035802867036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

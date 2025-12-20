@@ -1,0 +1,358 @@
+{
+  "recording_id": "3096858743036",
+  "analysis_timestamp": "2025-12-19T20:56:10.936323",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Tom Braun",
+        "role": "customer",
+        "company": null,
+        "confidence_score": 0.9,
+        "validation_reason": "Likely a real customer name"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "account_management",
+    "CALL PURPOSE": [
+      "Request to discontinue PCR mail",
+      "Request to discontinue PCR subscription"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Tom Braun",
+      "Company/organization name": null,
+      "Phone numbers mentioned": null,
+      "Email addresses mentioned": null,
+      "Key decision makers referenced": null,
+      "Team members and their roles": {
+        "Jim Lombardo": "Account rep"
+      }
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": null,
+      "Company size indicators": null,
+      "Technology stack mentions": "PCR",
+      "Current challenges/pain points": "Retiring and winding down business, including PCR",
+      "Growth stage indicators": "Discontinuing services"
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": "Remember Jim from many years ago",
+      "Existing service usage": "PCR subscription",
+      "Account history mentions": null,
+      "Relationship duration indicators": "Many years ago",
+      "Trust level indicators": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "billing",
+      "issue_severity": "low",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "medium"
+    },
+    "resolution_tracking": {
+      "issue_status": "pending",
+      "resolution_steps_taken": [
+        "Contacted account representative",
+        "Transferred to voicemail"
+      ],
+      "outstanding_action_items": [
+        "Account representative to contact customer",
+        "Contract changes to be made"
+      ],
+      "next_steps_required": [
+        "Account representative to call customer back",
+        "Customer to confirm contract changes"
+      ]
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": 1,
+      "self_service_opportunities_missed": [
+        "Customer could have contacted account representative directly"
+      ],
+      "knowledge_base_gaps_identified": []
+    },
+    "agent_performance": {
+      "problem_solving_approach": "adequate",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "low",
+      "empathy_and_rapport_building": "good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "RELATIONSHIP_HEALTH": {
+      "Overall_satisfaction_indicators": "Customer is initiating discontinuation, which may indicate dissatisfaction or simply a change in life circumstances.",
+      "Trust_level_signals": "Customer remembers the account rep by name, indicating previous positive interactions and a level of trust.",
+      "Communication_style": "Clear and direct, customer states needs straightforwardly.",
+      "Rapport_quality": "Friendly, customer recalls account rep fondly."
+    },
+    "CUSTOMER_JOURNEY_STAGE": {
+      "Onboarding_status": "Completed, as the customer has been with the company long enough to remember staff names.",
+      "Product_adoption_level": "High, as the customer has been using the service until retirement.",
+      "Feature_utilization": "Not specified, but implied to be satisfactory until the decision to retire.",
+      "Expansion_opportunities": "None, as the customer is winding down the business."
+    },
+    "RETENTION_FACTORS": {
+      "Satisfaction_drivers": "Previously high, given long-term use and familiarity with staff.",
+      "Risk_indicators": "High, customer is retiring and plans to terminate the service.",
+      "Loyalty_signals": "Strong, based on tenure and personal connections with staff.",
+      "Advocacy_potential": "Possible, if the exit process is handled well and the customer's positive memories are reinforced."
+    },
+    "COMMUNICATION_PREFERENCES": {
+      "Preferred_contact_methods": "Phone, as demonstrated by the customer initiating a call to discuss service discontinuation.",
+      "Response_time_expectations": "High, customer was transferred immediately to voicemail due to unavailability and expects a call the following morning.",
+      "Information_style_preferences": "Direct and efficient, as evidenced by the straightforward nature of the call.",
+      "Decision-making_patterns": "Decisive, customer has clear plans and timelines for discontinuation."
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "I've retired, and I need to start winding down my business, including my PCR.",
+      "What I'd like to do is to discontinue the PCR mail now, And then maybe at the end of October, discontinue my PCR subscription.",
+      "He'll be able to answer any questions and help you with the transition there, any contract changes.",
+      "He'll give you a call back tomorrow as soon as he's available."
+    ],
+    "qa_pairs": [
+      {
+        "question": "Can you help me discontinue my PCR mail and subscription?",
+        "answer": "I'll get you in contact with your account rep, Jim Lombardo. He'll be able to answer any questions and help you with the transition there, any contract changes."
+      },
+      {
+        "question": "When will Jim Lombardo call me back?",
+        "answer": "He'll give you a call back tomorrow as soon as he's available."
+      }
+    ],
+    "searchable_tags": [
+      "PCR",
+      "subscription",
+      "retirement",
+      "business wind down",
+      "account rep",
+      "contract changes",
+      "transition",
+      "voicemail",
+      "customer service",
+      "InSequence Technology",
+      "Jim Lombardo",
+      "discontinuation",
+      "mail",
+      "October",
+      "call back"
+    ],
+    "semantic_themes": [
+      "Business wind down and retirement",
+      "Discontinuation of PCR services",
+      "Customer service and account management"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 60,
+      "Customer talk percentage": 40,
+      "Balanced conversation indicator": "Somewhat Balanced"
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 0,
+      "Number of interruptions by customer": 0,
+      "Interruption impact on flow": "None"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 10,
+      "Awkward pauses detected": 1,
+      "Hold time indicators": "Minimal"
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": true,
+      "Company name mentioned": true,
+      "Verification steps taken": false,
+      "Required disclosures made": false,
+      "Proper closing used": true
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": "Moderate"
+    },
+    "agent_talk_pct_calculated": 24.3,
+    "customer_talk_pct_calculated": 75.7
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 24.3,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "PCR",
+      "subscription",
+      "retirement",
+      "business wind down",
+      "account rep",
+      "contract changes",
+      "transition",
+      "voicemail",
+      "customer service",
+      "InSequence Technology",
+      "Jim Lombardo",
+      "discontinuation",
+      "mail",
+      "October",
+      "call back"
+    ],
+    "semantic_themes": [
+      "Business wind down and retirement",
+      "Discontinuation of PCR services",
+      "Customer service and account management"
+    ],
+    "key_quotes": [
+      "I've retired, and I need to start winding down my business, including my PCR.",
+      "What I'd like to do is to discontinue the PCR mail now, And then maybe at the end of October, discontinue my PCR subscription.",
+      "He'll be able to answer any questions and help you with the transition there, any contract changes.",
+      "He'll give you a call back tomorrow as soon as he's available."
+    ],
+    "qa_pairs": [
+      {
+        "question": "Can you help me discontinue my PCR mail and subscription?",
+        "answer": "I'll get you in contact with your account rep, Jim Lombardo. He'll be able to answer any questions and help you with the transition there, any contract changes."
+      },
+      {
+        "question": "When will Jim Lombardo call me back?",
+        "answer": "He'll give you a call back tomorrow as soon as he's available."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Garrett Komyati",
+      "extension": "5427",
+      "phone": "6145427",
+      "email": "garrett.komyati@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5427"
+    },
+    "primary_customer": {
+      "name": "Tom Braun",
+      "company": "ve retired, and I need to start winding down my business, inc",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "Tom Braun",
+        "company": "ve retired, and I need to start winding down my business, inc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "And he",
+        "company": "ve retired, and I need to start winding down my business, inc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "remember Jim",
+        "company": "ve retired, and I need to start winding down my business, inc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "call",
+        "company": "ve retired, and I need to start winding down my business, inc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Garrett",
+        "company": "ve retired, and I need to start winding down my business, inc",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Garrett Komyati",
+        "extension": "5427",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      },
+      {
+        "name": "Jim Lombardo",
+        "extension": "5401",
+        "department": "Sales",
+        "role": "Sales Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "account"
+      ],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "call back"
+      ]
+    }
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "recording_id": "3007856820036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:20:58.083145Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:20:58",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hi, this is Jan. Hi, Jan, Jim with PC Recruiter. How are you? There you go. Great, great. Thanks for giving me a call. Sorry, it's been a little crazy here. Yeah, so we're ready to go ahead and freeze everything but my seat. I want to keep myself on. We're still, I'll be honest with you, we're still feeling out pre-late and seeing if it's going to be the right fit for us. The jury's still out a little bit, but I'm giving my team, you know, a chance to, you know, get it going, and I'm picking it up. There's some things I don't like about it, and there's some things I really like about it, so I'm going to spend another month on it and see where we're at. But I don't want to be paying, you know, both places that our industry is significantly down. and we're trying to reduce costs in spending. So I know the agreement starts up again on the 9th, or that's when the new contract goes into effect. So today's the 8th. Yeah, and I think you moved to month-to-month, right? Yes. I think you did, yes. So it looks like I'm looking at my records. I have you already marked down to one user. So that's already – I will confirm that with Robin that in our billing system you're marked to one user. And I'll pop a quick email once I do. Okay. Yeah, you should be good. And month to month is in effect. So, yeah. Great. And then, yeah, again, when they freeze the others, they shouldn't – that wouldn't erase their activity in the system if we come back, right? That will still be there? Yeah. Oh, yeah. Nothing gets deleted. So what will happen? They're not going to turn them off. Just try to make sure they're not using, but they still – they could still log on if they needed to. um right they're not going to be deleted nothing will be removed okay now i can go in through you know my end and and make them inactive i can also do a work ticket if needed but i wanted to just you know have a voice call with you to make sure um the billing would reflect that they're off the system sure yeah the billing already does i'll confirm with robin like i said in the billing system but yeah okay there's nothing else that you need to do while confirm just to make sure that you're one user and then if you ever are ready to cancel just pop me an email let me know and your month to month so early term or if you need to add people back pop me you can have people back for a month to or whatever right oh that's terrific I appreciate that no problem okay yeah I will just confirm once I talk with Robin and kind of let you know but it's perfect It looks like you're down to one right now. You're all good. All right. Great. Thanks so much. No problem. Thank you. Okay. We'll be in touch. Bye-bye. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 207.918753,
+    "salad_processing_time": 32.264668464660645,
+    "overall_processing_time": 207.918753,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hi, this is Jan.  Hi, Jan, Jim with PC Recruiter.  How are you? There you go.",
+    "job_id": "3d05c3d8-2ba3-4235-a601-2aadd3dc8d64",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hi, this is Jan.  Hi, Jan, Jim with PC Recruiter.  How are you? There you go.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Billing",
+        "confidence": 0.7
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "billing",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": true,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "billing"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3007856820036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

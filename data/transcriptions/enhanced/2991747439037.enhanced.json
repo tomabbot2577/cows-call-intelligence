@@ -1,0 +1,96 @@
+{
+  "recording_id": "2991747439037",
+  "version": "3.0",
+  "timestamp": "2025-09-21T23:47:31.947491Z",
+  "processing_complete": true,
+  "call_metadata": {
+    "date": "2025-09-21",
+    "duration_seconds": 217.44,
+    "word_count": 333,
+    "customer": {
+      "name": "",
+      "phone": null,
+      "company": null
+    },
+    "employee": {
+      "name": "",
+      "extension": null,
+      "department": null
+    }
+  },
+  "transcript_text": "Thank you for calling PC Recruiter. This is Mike. Yes, I left a message yesterday. Nobody called me back because I got my bill got charged. I mean, my credit card, which I didn't understand why, because I don't have PC Recruiter anymore. Got it. Hold on a second. Let's see what, give me a second. Are you with allied personnel? Yes. I don't believe, I don't, you have, I don't think I've paid for it for a while. I don't know what the history is. I mean, I canceled it, but have they been charging me all along? That I don't know, but I'll \u2013 let me see. Let's see. Let's see if someone from Billing is available right now. Thank you. So I don't think they're available. I can do is have, I'll create a ticket just to make sure something's logged and then I'll assign it over to the billing department to have them give you a call to fix that one that has already been charged and then confirm that you haven't been billed after you've Yeah, I don't know what they, why all of a sudden they got, I don't know what the deal is, you know, why all of a sudden did they charge me if they didn't, I don't know. I mean, I canceled it months ago, so I don't know. And I can't get it. I left a message yesterday. Nobody called me back. Yep, sorry about that. But I'll get a ticket submitted, and then I'll email billing at Main Sequence just to make sure it's on their radar and that somebody from there will give you a call. Yeah, they can call me on my cell phone, this phone number. Yep, I got it, 5680225. Yeah. Yeah. all right great I will have them give you a call on yourself and what is your name Mike last name is keys keys okay all right okay Mike okay thank you you're welcome bye bye",
+  "ai_insights": {
+    "sentiment_analysis": {
+      "customer_sentiment": "negative",
+      "call_quality_score": 7.0,
+      "call_type": "billing_inquiry",
+      "key_topics": [
+        "Billing issue",
+        "Canceled service",
+        "Unexpected charges"
+      ],
+      "summary": "The customer is frustrated because he was unexpectedly charged for a PC Recruiter service that he had canceled months ago, and he has been unable to get a response from the company about this issue.",
+      "follow_up_needed": false,
+      "escalation_required": false
+    },
+    "process_recommendations": {
+      "process_improvements": [],
+      "employee_coaching": {
+        "strengths": [],
+        "improvements": [],
+        "suggested_phrases": []
+      },
+      "follow_up_actions": [],
+      "knowledge_base_updates": [],
+      "escalation": {
+        "required": false,
+        "risk_level": "low",
+        "reason": ""
+      },
+      "performance_metrics": {
+        "efficiency_score": 5.0,
+        "training_priority": "low"
+      }
+    },
+    "call_resolution": {
+      "problem_statement": "The customer was charged for a PC Recruiter service that they had previously cancelled, and they are seeking an explanation and resolution for the unexpected charge.",
+      "resolution_status": "partially_resolved",
+      "resolution_details": "The employee was unable to immediately resolve the issue, but they created a ticket to have the billing department follow up with the customer to investigate the unexpected charge and confirm that the customer is no longer being billed.",
+      "follow_up": {
+        "type": "employee_callback",
+        "details": "The billing department will call the customer on the provided phone number to address the issue.",
+        "timeline": "The billing department will call the customer as soon as possible."
+      },
+      "loop_closure": {
+        "solution_summarized": true,
+        "understanding_confirmed": true,
+        "asked_if_anything_else": true,
+        "next_steps_provided": true,
+        "timeline_given": true,
+        "contact_info_provided": true,
+        "closure_score": 8.0
+      },
+      "quality_assessment": {
+        "missed_best_practices": [
+          "The employee could not immediately resolve the issue and had to create a ticket for the billing department to follow up."
+        ],
+        "improvement_suggestions": [
+          "The employee could have tried to reach out to the billing department directly during the call to get a more immediate resolution."
+        ],
+        "customer_satisfaction_likely": "medium",
+        "call_back_risk": "low",
+        "escalation_probability": "low"
+      }
+    }
+  },
+  "pipeline_metadata": {
+    "ai_model_versions": {
+      "sentiment": "deepseek/deepseek-r1",
+      "recommendations": "deepseek/deepseek-r1",
+      "name_extraction": "anthropic/claude-3-opus",
+      "embeddings": "openai/text-embedding-ada-002"
+    },
+    "processing_date": "2025-09-21T23:47:31.947508Z",
+    "version": "3.0"
+  }
+}

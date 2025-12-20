@@ -1,0 +1,95 @@
+{
+  "recording_id": "3043650141037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:54:31.218070Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:54:31",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hey, Tyler. Alyssa at HC Pursuit. How are you? It's been a busy morning. How are you? I'll bet it has. I don't know what's going on with PCR capture, but I had my admin give you guys a call about that one, which I'm imagining you already know about. Maybe not. So it's putting, like, the state and the city and the city and the state. Yep. Yep. We have a fix in place for that. We're just getting ready to push it to the Chrome store. We just have to wait for them to approve it. Yeah, one wonders how that happened. I don't even want to know. It's fine. Yeah, I have no idea either. It's so weird. Anyway, that's not what I called because I knew that was already in process. I have a question, though. We have a, we're using a predefined field of degree type. And, of course, it only has so many characters that can be put in there. Is there any way to increase the number of characters that is available in that field? Not with that one, unfortunately. Right, because it's a predefined field. Yep, all that stuff is hard-coded. good times. Yeah, we, you know, we regularly talk to people that have, like, three or four degrees, so we kind of run out of space, especially if they're, you know, we want to put, like, we don't want to just put BS or something. We want to put, like, BS, land survey, and photo chromatry, or whatever the bullshit is they have. So you get what I'm saying. It's too short. All right. The only way would be like a custom field. Yeah, which we have license and registration right above that. So I'm just going to tell my colleagues to, you know, do what they can in the degree thing and then in the license and registration field, just pop in any additional information they want. It's not like the end of the world, but just wanted to know. All right. And then, you know, we're using like the older version. And then I saw about whatever you guys got going on with this AI search thing. Do we have to be in the latest version of PCR to use the AI search? No. It does require a back-end search upgrade, though, which as part of the AI trial, like so all the other AI features are active in your database right now. It's just the AI search. We didn't roll out because some databases do need help with that upgrade. I'm checking yours now. So even like on the older versions, it's just a matter of what your search index is set to. Let me just see what yours is. Yeah. So yours is keyword version two. We would have to do an upgrade to Lucene first. And so we'd have to upgrade to Lucene, do a re-index, and then we can enable the AI search. Okay. Any, that request though, we just need from Steve Holmes, the contract signer for the, what do you call it? for the request up to Lucene, be like, hey, I want to upgrade to Lucene so I can have the AI search activated. He could just email into support at main sequence dot net and just say that, and we can get that process started. Support. And sequence request to upgrade. How do you spell Lucene? Ah, two, two, two. I always misspell it. Give me one second. See, look at me being smart and asking, not assuming. It is... Where is it? I don't know how to spell leucine and, you know, the amino acid, but I'm pretty sure that's not it. It is L-U-C-E-N-E. so we can get AI search enabled. The other thing, I mean, someday we're going to have to switch up to whatever your newest thing is. at what point do we, would it make sense, like, sometimes I feel like, well, do I just need to fly out to Ohio and spend a day, you know, like, learning all of this shit? Because I've been using PC Recruiter for so long, the good old-fashioned way, that it's going to be really difficult to do the whole new thing. And I don't know the best way for me to learn to do the new thing because I'm the one that has to teach everybody here and try to make everybody here do it, you know. So the good news is with PCR 9, which is what we call like the current interface, that's not going away anytime soon. We're still supporting it. We're still adding features to it. that's not going away anytime in the near future. Okay. If you would like to even see just like a demo of PCRM and kind of just get a feel for it, like how it looks, kind of see how you can kind of play around in it. If you reach out to, do you have Jim Lombardo's contact information? I don't know. Let me take a look. Hold on. So it looks like you had Jim Wise before. But he's retired. Let's see. I do have his Jim at Main Sequence and his extension. Perfect. So you can always give Jim a call or shoot him an email. Be like, hey, I just want to get a demo of PCRM, kind of see what it looks like. and he can go over all the account stuff with you because it does require the premium package, so as they call it, and he'd be able to answer any questions. Yeah, I'll talk to Steve about that when he's back in the office and we'll figure out when we want to do anything like that. Yep, yeah. So he'd be your best point of contact for that. Okay. Groovy. All right. In the meantime, he needs to send that email about Lucene, and we'll go from there. Yep. Yeah. And once we get that in, we'll send them some information just like about Lucene in general. and then once our senior tech goes through that upgrade, we'll send out an email again saying, hey, you're up to date and the AI search is active in the database. Cool. Yeah, I mean, we've got, you know, almost 200,000 names in our database. We should be using it as beneficially and easily as possible, right? Exactly. because we've been invested in this tool for a really long time yep and what what's nice is that the lucene upgrade is usually a charge for it but during this ai trial it's free for the upgrade so it's good time to do it yes well because it's just a cleaner and smoother searching index and your searches are going to work faster with it. Oh, goody. So it's not going to change, like the interface that we use now for advanced search and everything, that's not going to change unless we're using the AI thing. Yeah, the interface won't change. There are some quirks to Lucene. Just like with some of the denominators, I can actually send you over that information if you want to look at it real quick. Sure. Yeah, sure. Let me find it here. Okay. let me let me grab this what's a good email for you abickler at hc pursuits dot com a b i c k l e r yep at H like hotel, C like Charlie, Pursuit in the singular. All right. Just sent that on over to you. Wonderful. All right. Well, thank you, and I'll talk with Steve, and hopefully we'll start crawling into the future with you guys. I feel like, you know, grr, we've been, you know, kind of like we know what we know. You know, I'm struggling to get everybody to, you know, fully utilize things, but we'll do what we can. All right. Cool. All righty. If you need anything else, just let us know. Of course, you guys are the best. Appreciate it. And listen, I saw, you know, about the passing of the teammates and I spoke with him once upon a time and that really sucks. And I'm just wanted to my condolences to all of you because that's just dreadful. Yeah, I appreciate it. Way too young. So I was actually friends with Jared for many years before I even started here. He was actually the one that got me the job here. Oh, my gosh. Tyler, I'm so sorry. Yeah, it's dreadful. It was a rough one, but he he had some stuff going on. Just good to know he's not in pain anymore. Yeah, for sure. That's that's always the best thing. We just lost my stepdad, who's 92 and not a tragedy. You know what I'm saying? But, you know, he had developed cancer and it did turn out to be, you know, lung cancer, not operable and everything like that. So, yeah, just he's not in pain and that's a blessing. And that's just the way you have to look at things sometimes. But sorry about Jared. And, yeah, I just was like, holy crap, that's terrible. So I did make a small donation. Well, we appreciate that. Yeah, well, at least I can do. You guys are always so great. So and that's that was the whole how you started this little tidbit of conversation. But yeah, you guys, I know I can always call you guys and get you and get help. And I appreciate you. So thank you very much. And we'll we'll talk soon. Sounds good. You have a great rest of your day. You too, Tyler. Take care. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1329.612838,
+    "salad_processing_time": 81.24951243400574,
+    "overall_processing_time": 1329.612838,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "job_id": "2e50186b-8588-4ee0-bef3-e7e0d67bca0f",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3043650141037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

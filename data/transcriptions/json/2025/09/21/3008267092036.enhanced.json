@@ -1,0 +1,112 @@
+{
+  "recording_id": "3008267092036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:21:23.921590Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:21:23",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hello, you've reached Melanie Tanner. I can't get to my phone right now. Please leave your name and number and I'll get back to you as soon as I can. Thank you. Hi, Melanie. This is Mackenzie from PC Recruiter. I was just hoping to catch you with some free time to help you get your portal installed. I guess I will reach out to you via email and or I will try calling you back. If you'd like to call the support line and get to me, my extension is 778. Or my direct number is 440-340-3794. So hopefully connect with you soon to get your portal connection set up. All right, Melanie, talk to you later. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 220.238958,
+    "salad_processing_time": 2.31966233253479,
+    "overall_processing_time": 220.238958,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hello, you've reached Melanie Tanner.  I can't get to my phone right now.  Please leave your name and number and I'll get back to you as soon as I can.",
+    "job_id": "92c4c672-08a5-4bb0-8875-45ecef4810c0",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hello, you've reached Melanie Tanner.  I can't get to my phone right now.  Please leave your name and number and I'll get back to you as soon as I can.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3008267092036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

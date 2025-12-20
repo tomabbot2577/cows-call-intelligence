@@ -1,0 +1,117 @@
+{
+  "recording_id": "3053206533036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:03:06.703118Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:03:06",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Oh, hey, Tyler. This is Jason Gibson with Sunset Transportation. How are you, my friend? Good. How are you? I'm doing well. I'm doing well. Thank you for asking. I just had a quick question regarding profiles. Mm-hmm. So the way that I utilize PCR, I use it for in-house. well i'm not just for in-house i use it for external but i um my background is third party i used pcr in a couple of firms i worked with so when i started in-house um i requested pcr as my app contracting system so that i could um not just handle internal applications and and that sort of thing would also recruit um i'm working with another company or not another company our parent company has asked me to conduct a search. I'm conducting that search and I had created a profile for each of the candidates to complete where they list their salary range. We are at the stage in the interview process where the senior VP of HR does not want to share the salary with the folks that will be conducting the interview. So I was curious, is there a way to hide the salary information on a presentation of the candidate's information that includes their profile? So if you ask that in the profile and you're sharing the profile, no. Yeah. Okay. Because that information is already in there. Yes. Is there a... Let me see here. If I go to the profile and I change the – can I temporarily, upon sharing, change – can I hide that question, I wonder? Let me see. If I go to – So even if you change in the profile setup, like if you take those questions out, you would then have to re-save the profile like save the new profile to the record without the salary information hmm okay so I would just have to maybe I just delete maybe I just delete that information altogether on the profile you could but like I said when you save a profile to a name record it's saved in the attachments as it was when it was completed so even if you delete it from like the profile setup you would then have to go into the candidates submit a new submit that profile again without the salary information hmm i see what you're saying Interesting. I'm wondering if... Yeah, that definitely makes a difference if I... Because I want to ask that information of the candidate, but they don't want them to see that information in the interview. Okay, I think I will probably just need to create a separate profile without the salary information. yeah that would probably be the best bet and manually put that information yeah especially like you said it's sucks that it has to be done manually like copying some stuff over but you would have to manually go in and redo every profile anyway to take out that salary information if it was on the original one. I got you. I got you. Okay. And then what about the other question I had? When I'm sending emails, I'm noticing that I'm getting double signatures. Like when I look at the email in my Outlook, there are double signatures. Do you know why that's happening? what email are you sending out are you sending a form letter out of PC Recruiter yeah so what form letter are you sending I don't know it happens on Let me see here. Let me find an example of one. Okay. Hi, Taylor. Thank you for... Thank you for considering sunset. And that would be in a pipeline email. Is it the thank you for your interest in sunset transportation? Yes. Is that one that automatically goes out for like the rejection letter? Yeah. Yeah. You only have some current user email signature in there once. It says, well, does it read, Hi, Tiffany, thank you for considering an opportunity with Sunset Transportation. we appreciate the time you took to apply for the operation support position while we were impressed with your qualifications. No, not that one. Okay. Let me see. So I sent this out yesterday, Tiffany's farm. Let me go and find out which Tiffany I can probably pull up by most recent activity. This is Tiffany Sam. She applied to Operation Support Nashville. What's the first and last name of the candidate? Tiffany is the first name and the last name is Sam. P-H-A-M. a m which database is that person in the bgc no some transportation so i'm not seeing that name record in here You said the last name was Than, P-H-A-N? P as in Paul, H-A-N as in Mary. There we go. If I go to the pipeline setup. Yeah, so that's the letter that's selected for not a fit. MSHOS, okay, out of process. Is that the correct letter? That's what I'm looking at right now. All right, so it's called Rejection Not a Fit. If that's the one, yeah. Yeah, so that form letter looks correct. are you able to forward me the email so I can take a look at it what's your email address it's ttroutman t-r-a-u-t-m-a-n at main sequence dot net ttroutman at main sequence dot net yep okay just one t correct T-T-R-O-T-M-A-N. T-T-R-A-U-T-M-A-N. Oh, I'm sorry. T-T-R-A-U-T-M-A-N. Why is it not letting me change the email? Okay, there we go. Perfect. So, T-R-A-U-T-M-A-N. Yep, just got it. Perfect. And the pipelines, this is interesting. I just got a return email. It also sent it to TTROTMAN. And just, I just got a return email saying non-existent. But you did, just to verify, you did receive the email. Yep. Excellent. If I go into letters, pipeline emails. All right. Here, what I'm going to do. Oh, you know what? I may have discovered the solution. Could it be because I'm sending it from the web? I'm moving it through the pipeline on the web version, and my default signature attaches to the name letters already, and now that can't be right. No. What I'm going to do, I'm going to add myself to a test position here. Do you have, like, a test position I can add my record to? Yeah, you can add it to the regular position. I think that would be more helpful, wouldn't it? I mean, you can see what happens. Yeah. Yeah, what's a good position? Let's do Operation Support in Nashville, but I also just realized that it's happening on the Director of Strategic Sales. Okay, I'll try it on that one. Which one? The Director of Strategic Sales. Okay. so let me I'm just going to add myself into the inbox and then move myself to not a fit I'm wondering if it's just like a weird Outlook thing but it's displaying Your Oh I got two emails Yeah that's what I That's what I just realized I just realized I sent One of them has it listed as the name and PCR and one of the has it listed by their email address. And the one listed by the email address has two signatures. Yeah, let me see if you have like a web automation plan that's running as well. Thank you. Excuse me. Thank you. Aha! I see the issue. What is it? So, in that position, so that... specific position is using the Amanda director strategic sales pipeline template so it's set to send a default letter that rejection but it's also in the automation plan sending a form letter so sending like a regular name letter and the regular okay so which how do we know which is which oh shoot Tyler can you hold for just a minute I need to tell this guy I'll call him back Just one minute, please. Tyler, are you there? Yep, I'm here. Okay. So do I need to, maybe I should remove the name automation since I know that now all these are going to be managed through the pipeline. Yeah, I'm seeing which one's given us the issue. Thank you. Thank you. Two seconds here. All right, let me try this again here. So I'm just going to restore myself and move myself to out of process again. For some reason, it's that form letter one, or the pipeline email that's doing it, not the form letter. Really? Yeah. But it's like the different one. It's the rejection candidate not interested Amanda one. That's doubling up the signature. Rejection. Not a fit. I'm on a... Okay. Let me take a look at the source code here. Oh, I wonder if that was causing an issue. Let me... Because it looks like it was trying to send a copy of the resume as well. So let's save that. Go on to here again. Thank you. No, it's still doing it. All right, let me play around with this one on my end for a little bit, just so I don't need up too much of your time here. Worst comes to worst, I'll put in a ticket to send up to our production issue verification team. but what you can always do for now is just turn off the send email for that pipeline template and just have it send that automation one so it doesn't double up on you well the difficulty is the difficulty with that is and I thought about that as we were talking through this if you look at the pipeline So if you look at the pipeline template for Amara Arvada, this pipeline has six out-of-process steps, and each one of them have a different letter. like if it's a location thing I specify in the rejection hey we're looking for local candidates we appreciate you following up let's see if it does it with another letter then because then that'll narrow it down for us if it's a different letter for each one if there's just something wrong with that letter yeah so what's one that has a different letter like location you said And location should have a different one. Timing should have a different one. Yeah, each one of those steps should be different. Yeah, it's doing it there too. there's something up with your signature that's causing an issue Let me test this in my database real quick. Thank you. Thank you. Give me two seconds here, just making sure mine is set up the same way. Thank you. Thank you. Let me check the email on my end here. Thank you. Why did I not get the email? I'll go to my spam. That's weird. Oh, hold on. I might have messed up the email setup. Thank you. There we go. Yeah, it doubled up my signature too. I think that's just a bug. Got to put a ticket in for it. Has anyone else mentioned it? Nope. You're the first one I've gotten for it. So yeah, what I can do is put in a ticket. Let me test one other thing here real quick. That will hopefully make it easy on us. Thank you. Now, even without adding the insert field, it's still putting it in there twice. Like the signature insert field, it's adding it twice still. Yeah. So I'm going to have to put a ticket in for this one to get it sent up to the production verification or production issue verification team to get this fixed for us. What you could do is just get rid of the send emails and then use those other automation plans to send the form letter, like the specific ones for each step. that's going to be the workaround for right now while this is getting fixed. So I would unselect in the pipeline. Yes, in the pipeline setup, you'd unselect the send email. And then where it says add automation plan, you would do the send form letter option. so unselect and select send email and add form letter Add form letter, okay, as an automation. All right, excellent. And then I was also curious, in the presentation, I can take out the compensation. Can I write a summary of the candidate that can be presented in the presentation? Yes. Yes. Yeah, if you add that summary section to your presentation templates, you can either do an on-the-fly summary that you write in there, or if you add a summary to the summary section of a name record, you could just input, there's an option to just take the summary from the name record and autofill it into the candidate write-up section. Okay, so if I'm on the candidate record, and I am right now, let's just go to one of these examples. Taylor Beard. Where would I add the summary? So on a name record where it says like edit name, resume, attachments, rollups, presentations. If you go into the options menu next to that, there's a summary option. Okay. I have it listed as tagged. I don't see it listed here. Summary. Oh, I'm sorry. No, it's not. Okay, now it is. Okay, so I write the summary here. And then in the presentation, excuse me. Okay. All right. Okay. So that is Taylor Beard. And then in the presentation I would go to If I then go back to... that's weird. So I'm trying to see where this... if I pinned it to the name record, shouldn't it show up in this little of these categories up here to the left? yes but you're you have quite a few pinned so you might have to use the little arrows on the back and forth a bit okay I don't need to call so I can take that one off And you may need to just reload the name record as well. Okay. Okay. Okay. Okay. Okay, now I'll go back into the name record. Yeah, it's still not listed. We go here and So I'm in the name record, and if I want to change what's pinned, I typically would just come in here. Okay, I unpin that. The name I want to keep, I'd roll up something, key presentation, lead record, change company, remove the Zoom info. Those are not those options. Those are the pinned, like, action options, It's not the different page options. You'll see like edit name, red link, pipeline activities. Oh, yes. Oh, my goodness. I'm sorry. Yes. So I do have a lot pinned. I don't need notes pinned. Activities, emails. Summary. Change log. Details I need. Rollup I like to have. Length I like to have. Presentations. Feedback I don't need. Okay. Okay. Alright, so I just refreshed those. Then if I refresh reload again, it should be in there. So if I When I do, for example, if I want to go to my presentation, if I go to my presentation setup. Go to settings and go to presentation. Okay, candidate presentation templates and I select Armada. Yeah, you would just add a section in the template that's one of the candidate write-up sections. Ah, okay. So I create candidate summary and then for the section type it would be candidate write up. Because then in that candidate write up there's a button that you can press when you're sending out the presentation that says just populate it with the summary. That's on the name record. interesting okay all right excellent i will toy around with this and uh sir i recently appreciate your help um today and did you say that you would submit a ticket for yep yeah i already got it submitted i'm working on it right now to get signed up excellent all right my friend i appreciate your help today i'm more than happy to if you need anything else just let me know all right i'll talk to you soon man have a good one all right see you",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1584.284038,
+    "salad_processing_time": 150.1769142150879,
+    "overall_processing_time": 1584.284038,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Oh, hey, Tyler.",
+    "job_id": "6e8e41a9-bd6f-473f-91f1-02e1c7f8e2c9",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Oh, hey, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "resolved",
+    "first_call_resolution": true,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3053206533036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

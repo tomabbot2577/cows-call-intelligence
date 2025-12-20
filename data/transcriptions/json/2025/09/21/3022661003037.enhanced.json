@@ -1,0 +1,128 @@
+{
+  "recording_id": "3022661003037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:36:04.970065Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:36:04",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hey, good morning, Garrett. I have a couple different things that I need help with on PCR, and I don't know if it's at your level or, you know, it has to be extradited higher. First and foremost, I'm getting ready to do a large data dump from a company called MindScope through Mr. Lombardo and a guy named Mike on the back end, I guess. But my question is, in order to prepare for that, like, terabyte of information going in there with attachments, CSV files, all that kind of stuff, is there a way to compartmentalize company data in PCR? Like under my database, Healthcare Match Now, is there a way to compartmentalize groups or organizations so that they can kind of view and use their own information separately? Oh, so like siloing? Maybe. So like you want them to be able to only see certain records when they log into the database? Correct. Yes, there is a way to do that. It's called the groups feature. It's a security permissions feature where you would assign, you would build out a couple groups in the same area that you would build out new usernames. and then you can assign the group to be, you know, anybody in this group only has permission to see records assigned to that group. And then you would go record by record and assign them to that group. Okay, so if we're doing like a mass CSV or something like that, obviously there's some field mapping and things like that that can go in there. which field would you match a map to the group to like isolate it to that group like i understand first name last name email those are all relatively common sense right um it would be the username field actually on the record would be switched to the name of the group that you created in your database and then it would fall under that group and then any username is um you know attached to that group will be able to just see those records that are attached to the group. Got it. Okay, so I create a group, call it like, I don't know, Company A, whatever. Right. I assign users that already have seats in PCR to that group and then restrict them to see only those groups. Would that be correct? Right, exactly. Okay. And then when I bring in either new data or old data or whatever, I can assign that to username slash group company A, and they will all map or whatever you want to call it with all the additional fields and name, resume, and all that. But they'll map under that group company A. So everybody assigned to company A will have access to and manipulable of that group of data. Right. Yes, that's one way people do it. Kind of more often, though, you could just build multiple databases. There's no extra charge to have multiple databases with PCR. So you could just set up a whole separate database and then have them log into that. Sometimes that's a little less tricky than the group's setup. But if you were intent on just kind of having that one database with everything in it, then you could use the groups feature. I'm curious about the database, multiple databases. I never knew that was even possibly an option. Yeah, absolutely. So, would it be possible to have something like, okay, one, let's say, massive database that has everything, right? I mean, just because of the historical data or whatever. And then create like two more like sub databases with a slice of that database assigned to that so that that particular sub database, let's say, can grow and continue to emerge or whatever. yeah um definitely so you would it wouldn't be like a sub database where um it it won't like update the large database as the sub databases get updated they'll just be kind of separate so you'll have maybe that old one with historical data like you said the mass giant database and then you can create two separate databases and put in whatever you want in those but they will They will not be linked where, you know, I make a change on this record. It only gets changed in that database, if that makes sense. Ah, okay. All right. So talk me through that, or you can do it for me if you like, but try and learn as much as I can through you guys so that you don't have to keep doing stuff for me. No worries. So actually, to create an additional database, that's something our tech team would have to do. So we would just open a ticket and have them build you an additional database. And yeah, like I said, there's no charge. And then, yeah, feel free to start filling that up. But if you are working with Mike Keyes on doing like kind of a conversion, like you mentioned from MindScope, maybe that would be something to bring up to him so he could actually bring the data in to kind of create the database. Yeah. So he might actually be the best person to create the database and move it over. I can check for you. One second. I don't know what his schedule is. I mean, you guys obviously are doing stuff on the backside there. And I have one other thing I probably need your help with if he's not directly available now. Sure. Okay, one second here. So, yeah, it went right to his voicemail. He must be either off today or on another call. So I can transfer you to his voicemail. But what was the other thing you had questions about? So the other thing is I have one, maybe two current clients under my database right now that are having problems with their emails. And I have not been able to get it fixed, and I don't know why. Okay. I thought I replicated everything with other working email boxes and set, but I'm not getting the folders in there to populate and be able to select the sent or the, what is it on the traffic? Okay. Gotcha. All right. Let me log in. Which username is having the issue? Admin. Okay. Admin is having the issue right now. I'm in his file. Okay. or TCR tab or whatever you want to call it. I'm actually calling him here on video sideways because I might need a username or password because he's got a Microsoft Outlook email. Got it. Yeah, it looks like the outgoing email set up correctly, but I am noticing what you said there where on the left there is no folders for the incoming mail on the mail server side. Right. So let's actually. And that was set up last week by Robin, I thought. So I would have assumed over the weekend that would have populated, but I checked it this morning and like you said, there's nothing there. Yeah, there's, yeah, something's up with that. We could try just going through the steps again real quick and then. Sure. Maybe make that one inactive for now. So if you go to. Mail servers. Mail servers at the top and then in the bottom frame, go to action, edit on that one listed and where it says active at the bottom left, switch that to no and hit save. And then we'll just try from scratch again on that one. So if we're still in mail servers, go to the plus sign in the action menu and then click on sign in with Microsoft. Right. And hopefully it prompts you to sign into the right one there. Yeah, well, no. Unfortunately, it took me to the one that I have in Microsoft or, yeah, through their company. But I don't need to use that one. That's the problem. Oh, does it fill in all those fields for you automatically? Okay. That's all right. So we have a trick for that. You can close that pop-up window. and at the top right of your browser, click the three dots and go to incognito mode. And that should not kind of preload your Microsoft account. Yeah, new window. And then you'll just want to go back to PCR, incognito. Now I feel like sneaky. Let's see. I'll sign into his account. Admin. Yep. And then open his email. Yes, I made a rounded look. Got it. Email. Okay. Now, all of those things are highlighted, but that's not going to matter. So we're going to add mail server. Come down back to the little plus sign. and now I'm going to try and sign in and it won't pre-populate my stuff. Okay. All right, that's good. And let's see, this will say work. It should be his password. I'm going to text confirmation to him. Well, I guess we'll do that. CP can get me a code. I'm not asking him for the code since it links to his cell phone. you guys run Chrome in incognito mode for the most part to prevent that kind of stuff yeah when we have somebody setting up multiple users or email set up for a different user we'll do incognito because once you sign in once in that browser it kind of just states that the browser yeah he's not getting the code but I understand what we're doing here he may not be available but I can handle this and that should if I do this correctly and get the code there then that just aligns his Microsoft Outlook with this with PCR email and then it will take some time and it'll just kind of map the you know using the IMAP they'll just it'll just copy whatever's on the domain server right right your next steps after you make that connection and I would definitely hit test connection in the bottom yeah once you do that but you'll have email folders listed there up at the top center next to mail servers that's where you can go and click the wrench and a gear icon in the action menu and you would be selecting the sent folder and selecting the trash folder in your mail server that you just set up so that PCR can map and know this one's trash this one sent and once you do that I think you'll be in good shape and you can you can do that even before the folders start populating with emails and get all fully synced right right now you have to do that first i get that i just have to have the folders there to even select and i i don't gotcha so um all right now one of the other people told me that their email wasn't working either so while i'm waiting on this code since that's going to take a minute. Can we look into a different user? It's going to be SLPCR. She said that her email was good, but she says it's not. So I want to make sure. SLPCR. Okay. And let's see. I'll pull up her email and see what she's talking about. All right, so I'm testing her outgoing mail right now, and that is good. So then the incoming mail, big test, that's good as well. Make sure the folders are mapped. Okay, so it doesn't look like the deleted folder is mapped or – Oh, wait, there's multiple mail servers here. This is strange. Let's see. It was 365 deleted. So you got a personal one, and then that goes down in another inbox with, like, journal junk mail and all that kind of stuff. And then there's the Office 365 Sheila AS at Medicare staffing. That one, okay. That one looks like it's set up correctly, the Office 365. Yeah, it looks like she has everything mapped correctly. Let me check one more setting here to make sure. Activities are turned on. Yep, those are turned on. So yeah, I'm seeing incoming mail in her inbox for that Office 365 one from today. So that part looks like it's working. I could actually just send myself a test email from her account to see if it writes activities. Maybe that's the main issue. We could try that. Now there's something on her calendar. In her calendar folder under the Office 365 Sheila AS Medicare staffing, it's got a retrieval using the IMAP4 protocol failed for the following message. I don't know what that means, but it's some sort of calendar issue. Okay. Let's see. Let's see. So this message hasn't been deleted. You might be able to view it using either Outlook or Outlook web app. You can also contact the sender to find out what the message says. That was on 7-21. So just to take a – oh, I see. You might be able to view it using Outlook or Outlook web. Yeah, it might be specifically formatted for Outlook, whatever that message was, rather than for just a general like PCR. I think it's related to the Outlook calendar if it's in that calendar folder. So it might be just some kind of file format that only makes sense when viewing through Outlook. All right. I just got the information. I'm logging back into the admin to see if I can use this code for that. I apologize. Jumping back and forth. It probably is. No worries. He just texted back. so oh no worries in the meantime i'll send myself an email from the slpcr username and see if it sends them back okay let me see if this one works this might be an old it might be old by now yeah There we go. All right, verified. Stay signed in. Yes, we're still signed in. Okay, now it put all his information in there. Active. save sent email IMAP. I should do the IMAP SSL, right? I believe. Correct. Yep. All right. And now that that's done, save it first. Yeah, just save and test. There you go. Perfect. It says test connection mode. Yeah, that says okay. Authentication complete by Microsoft Exchange Server. Okay, that's good. And then email folders. I don't have email folders for that yet. Okay. Do I have to check back a little bit? He does have a lot of individual folders. He's got a bunch of them. Okay. It might be and should be pretty automatic with the folder list, not the emails inside, though. So I think something is wrong. Let me finish here. Okay, so, yeah, I just did the test with the SLPCR. LPCR. I sent and received an email to my own record I made for myself in the database from that user, and it recorded an email outgoing and an email incoming activity. So that wasn't in good shape. Let me log back into admin and take a look. Yeah, and if it's your calendar thing, then that's just going to be between her and Microsoft anyway. I'm not worried about that okay yeah let's see admin email figure oh wait still look again SSL he's here what's going on here reload Now, I had had a trouble ticket, tech ticket put in for this particular email account because They had some old emails in there from, like, I guess the pop three days or whatever. So they had to take them out from the back side. I wasn't able to delete them. Gotcha. But I don't think that should – well, it shouldn't have messed anything up. I'm just trying to – obviously, it's not going to be email folders. Yeah, these are – I can confirm they're definitely missing. so I think something is wrong with the connection even though it's saying that the connection is positive it should list the emails right off the bat I mean email folders right off the bat so that you can select the scent so let me think here next steps we could It's through Outlook. It's through Office 365. Are you an admin on the Office 365 account that has each email address under it? I wonder if there's... There could be some kind of setting in there that differentiates your setup versus this email setup, possibly. Thank you. What's the best way to let's jump on a quick screen share and then maybe take a look at the admin account real quick. Sure. So in a new tab in your browser, go to meetings dot ring central dot com. Got it. Join a meeting and all that good stuff. ID. Perfect. And let me get you that ID. Okay, the ID is 300796 718 718 Join you. Allow. Open Ring Central. Awesome. And you can mute at the bottom left since we're already on the phone. And then just click the blue share button down below. Select your entire screen at the top if it lets you. Yeah, the entire screen. I'll keep everything on the center screen. So there's... Good, I can see that. We're in the email game. There's the admin. There's email. So open a new tab. Oh, yeah. Maybe go to just admin.microsoft.com in a new tab there. Okay. All right. I'm in the account. I think I need permission there. Go to users. Oh, that's old. It looks like 1020. Okay, yeah, go to Users and then Active Users. Okay, and then click on the username that's having the issue. This one here. Okay. And then go to Mail up at the top. Okay. That's, yeah, that might be the issue. Go to manage email apps and hopefully, yeah, I would turn on IMAP and even pop. There's probably no problem turning that on. Hit save changes. Excellent. And then we'll jump back to PCR. and hit refresh up at the top. Let's see if that does anything on the browser there. Okay. Go to configure at the top left, mail servers, and edit that one we just put in. And I would maybe just hit save one more time, see if that helps. That's good. Okay. And go ahead and close that. Go to email folders at the top. Still nothing, I'm guessing, based on what's on the left there. No. Oh, wait. That's starting there now. Excellent. Okay. So now at this point, you can go to the gear icon in the action menu. And we're looking for cent, exactly. Like I said, he's got a bunch in here, so I don't know if they're alphabetical or not. Oh, yeah, they're starting to look alphabetical at some point. That's good. Let me check S's real quick just in case it's down here. If not, I have to scroll through everything. QPs, QRSs. Okay. Sometimes it's pretty far at the bottom, the sent one. There it is. So that's the personal one. It's got to start at Office 365 downwards. I would try way at the bottom. There might be something. I think we're kind of looking at sent items. There it is. Mark is excellent. And then you could close that pop-up once it reloads. Perfect. Close that. And then we're doing the wrench in the bottom frame action menu. We just got to look for the deleted items or it might be called trash. But there it is. It's easier to hem right there. So this is trash folder. We populate. Good. And that's done. And now we just wait for these things to... Yeah. And that one, since it's so many folders, could actually take the full 24 hours. But since we were able to map the scent and trash, I think we're in a much better spot this time around. So we could even delete that other mail server. If you just want to go back to configure at the top, go to mail servers, and then the one that's under no, you could try deleting, and it might take a minute to kind of refresh that. All right, no, that's good. Cool. So, yeah, this time tomorrow, if there's still an issue, definitely call back in, but I think you'll be in good shape. It'll start syncing up. This part, we hadn't seen this part yet right here under the folders. So that's good. And now that I've got those two synced, I don't have any problem just taking 24 hours. I just couldn't even get to this part. So that'll probably work. All right. Thank you very much. Yeah, if you can put a note in to Mr. Keyes. He's also getting this one terabyte file from me as well. So I know he'll be working on that. So this is in kind of relation to that. But I want that loaded into this database under like a new database. I guess I can't make a new database, right? Right, yeah. It would either be our tech team or maybe Mike, as he's doing the conversion, he can create a new database. Got it. Well, that also lets me look at some of this stuff because there might have been problems with that as well. You went to mail and you went here. So, yeah, so that one says all apps allowed. That's why that sheet hers was working. Okay. So now I fixed that thanks to your help. I'm double-checking him. And we're all up. All right. We can get out of here. We can't get out. All right. Thank you very much, sir. I appreciate that. That was super helpful. This RingCentral works, like, pretty much all the time, right? I mean, because you guys use RingCentral, and I have the RingCentral app, so you can do this. is there a way to control remote control? Can you do that if you needed to jump on board and take it? So you can do that from this ring central anytime. Yeah. As long as you have the app installed on your computer, we can do the ask for remote control. But if it's just through the browser, it doesn't let us, but it looks like you, yeah, you definitely have it installed. So that's good. Right. So anybody on the, on the team that I have, I can do the same thing. You know, just invite them to a RingCentral meeting, have them share, or do I – I guess I would share the screen and then I ask for remote control access. Yeah, so if there's – well, if their screen is being shared, there's a button at the top of the RingCentral meeting that I see called View Options. and it actually lists ask for remote control for me, where it would probably the recipient, you, for example, would get a pop-up saying, yes, would you like to allow this, yes or no? No, I have one that says remote control. So does that mean I would be requesting remote control for you? Most likely, yeah. Yeah, you could click on it and see, and I'll see if I get a pop-up. Yeah, don't give me. Sure. All right. So it says don't allow request. Oh, I think that's just settings related to if I request it from you. Oh, you're right. Okay. So let's see. If I share it, you have to go on there and request permission for me to take control. Is that the way it works? Yeah. So since your screen is being shared, I have that view options, ask for remote control at the top of the meeting. Okay. So if I need to go into one of my people, I have them share their screen with me, try and talk them through it. If they aren't doing it, then I say, okay, go to the top, or I go to the top, and I say, let me request permission. And then they grant me permission, and then we just do that, and then I start controlling their message. Okay. Perfect. Thank you very much, sir. Thank you very much. No problem. Let me actually transfer you. I could transfer you over to my keys voicemail. I think that'd be good to get that moving with the alternate databases. So let me send you that. Thank you. No problem. OK, I'm transferring you now and definitely reach out if you have any other questions. You will do. Thank you so much. Have a good day. You too. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 718.636057,
+    "salad_processing_time": 150.86233520507812,
+    "overall_processing_time": 718.636057,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, good morning, Garrett.",
+    "job_id": "6bdf708a-6b8b-431e-945c-551b3600fc7b",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Garrett.  How may I help you? Hey, good morning, Garrett.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "resolved",
+    "first_call_resolution": true,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3022661003037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

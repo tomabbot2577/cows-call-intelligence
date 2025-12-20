@@ -1,0 +1,100 @@
+{
+  "recording_id": "3006097823037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:17:42.435468Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:17:42",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hi, Tyler. My name is Jamie Marks, and I work with a company that uses PCR recruiter quite frequently. Our entire team is experiencing quite a bit of latency within PCR, and I wanted to just ask if you all were aware of anything or any possible solutions for our team with what we're experiencing. Yeah, let me pop into the database real quick and take a look because I haven't had any other reports of it. Let me just take a look here. I wonder if we're not on the most recent version. Does that make sense? So when we do updates, they're all updated at the same time. Uh-huh. So they would be on the most recent version. Is there any specific user that's having any issues? We all are, and so everybody on the team is. Yeah, because I'm in the database right now, and everything's moving pretty quickly. Was it anything specific that they were doing in the database that seemed to be running slow? Yeah. So, for instance, when I click on a particular job that we're recruiting for, it literally takes about 20 seconds to load from clicking on the job to loading the job itself and then going into, let's say, the pipeline. So that's just one example. yeah it's loading up pretty quick for me here now are you all in an office or are you remote we are remote and this latency probably has been occurring over the last three weeks i'm guessing because i'm in there right now what i can do is submit a ticket for you um okay and have one of our senior techs just kind of run some back-end maintenance to see if that can help with anything um okay just to make sure that everything's running smooth on the back end of Like I said, I'm in your database right now and switching between positions, opening pipelines, and everything's loading up right away for me. But if you're all remote and working in different areas, do you know if you're all using the same internet provider or if it's different internet providers? Likely different because we're different parts of the country. Gotcha. And everything was fine until about three weeks ago. Okay. So yeah, let me go ahead and put in a ticket for you. Like I said, I'll have one of our senior techs go in and just do some routine back-end maintenance and see if we might possibly be able to move you to a different server. And that can sometimes help with that. Okay. And then once that's done and I get the go ahead, I'll shoot you an email back in that ticket and have you confirm if it's running quicker for you. Okay, sounds great. And then let me just make sure I hand you down. What was your name again for me? Yeah, of course. It's Jamie Marks, J-A-I, M as in Mary, E, M as in Mary, A-R-K-S as in Sam. Perfect. So you'll get an email here shortly saying that I opened that ticket for you. And then if you have any other questions, while I'm having the senior tech do his thing, you can always respond to that ticket and it'll flag me that you emailed back in. Okay, sounds great. Alrighty, I will talk to you here shortly. Like I said, if you have any questions in the meantime, please don't hesitate to let us know. Okay, great. Thank you. Yep. Have a great day. You too. Bye. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 84.432402,
+    "salad_processing_time": 19.290947198867798,
+    "overall_processing_time": 84.432402,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hi, Tyler.",
+    "job_id": "a74b93e0-f653-4fde-99ff-28038ec4c4d3",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hi, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3006097823037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

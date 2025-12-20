@@ -1,0 +1,101 @@
+{
+  "recording_id": "3032502732036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:44:54.689226Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:44:54",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hi, yes. I am new to the PCR recruiting database. Is there any way I can just be emailed like a document that has all of the different... I'm not a good video learner and to print off everything individually. Is there just like one main document that has all the instructions in it? Like for, are you looking for like something specific or just like the basics? The basics. I'm not trying to get crazy. I think I just need the basic instructions. So we do have a learning center where it does have like all the articles. so we do have one that's called getting started where it has like the basic orientation terms to know so if you go to click on each one I could just click on one so that they are separate articles but we don't have just like one document that has like everything in it just because there's so much in the software it's kind of broken down into chunks okay so that's the only way to do it yep yeah and it would be learning.pcrecruiter.net is our learning center yep and then when you get to that site you'll see where it'll say pc recruiter 9 additional tools or PCRM. Yeah. What company are you with so I can make sure you're... ULA. United Labor Agency. Sorry. I'm pulling you up. So you would click on where it says PCR9 or PCRecruiter9. Nine. Okay. In that learning center. Those instructions. Yep. And then get started. Yep. And then. Yeah, there's the orientation, terms to know, then the new user. Okay. Yep, so that'll get you going in the right direction. Okay, thank you. Yep, not a problem. You have a great day. You too. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1019.459866,
+    "salad_processing_time": 5.9414963722229,
+    "overall_processing_time": 1019.459866,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hi, yes.",
+    "job_id": "0c502831-3533-41bc-935d-715dc5c338e1",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hi, yes.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [
+      {
+        "type": "SOFTWARE",
+        "value": "PCRecruiter",
+        "mentions": 1
+      }
+    ],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3032502732036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

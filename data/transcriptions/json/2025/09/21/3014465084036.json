@@ -1,0 +1,100 @@
+{
+  "recording_id": "3014465084036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:27:37.134854Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:27:37",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " yes hi Bob love it hey Bob hello it's Kenzie from calling back hi I found it um okay let me log in hang on one second I was gonna say we were close we were so close we were that's funny okay hold on let me just log back in okay I don't know yeah just to say before we get there. I'm not sure you could add your own custom one, but there are a list of 15 or so that you can turn on and off. I found the screen where you turn them on and off. Okay. So it would be when you go to a name, you go to the configure... I think it's actually customize gear menu. Yeah, it's called customize. Yeah. And then on that screen where we were looking at it before... Sure. Go ahead. And then in the top right corner of this screen, there's an action menu. And inside that action menu, there's configure status, which is an action, which is like a looks like a tag. Yes, I see it. And then that little window configure status is where you can check on or off the statuses that you see in that drop down. So it's just I can't add to it. I can just select out of that. OK. Right. So that's the you have the predefined status field, which is the word predefined is kind of weird. It's kind of confusing, but it's it's just kind of means like it's defaulted into like the structure of the database. And a custom field is stored in like a different table. And that's something you'd like create yourself as a user. You can create custom fields. Right. So since you have the predefined status field, those are just the statuses that are like out of the box in PC Recruiter. So those are the ones we have. And we just gave you the option to check them on or off. If you wanted to, it might be kind of like a big setup for like a payoff later where you can, I guess you could make that you did have a custom field name status. You can make the list of default values that you wanted there. And then you'd have to kind of migrate that into your layouts. And then you'd have to make sure every user like did the same so that you're all using the same field. And then you could kind of go from there and like start using the custom field from there. You'd want to if you did that, you'd want to like backfill the data from the predefined field to the custom field, which I believe is. Which is possible, I believe that's possible to do. All right. So I just collected from that configure status. It's kind of how you want to do it. But to answer your question directly, this is the screen. And I don't know if you're going to have more questions. I was kind of answering questions you might have later, I guess, already. No, no, no. That's perfect. That's perfect. I appreciate your thought, getting the answer and getting back to me. I'll just have to work with what my choices are on that. That's it. Yeah. And if you do need assistance. You know what it is? And there's a bunch of people that I'm going to be working with that own their own companies. So because they're all different companies, oh, wait a minute. You know what? Maybe I could just create a roll-up list. Because what I'm looking for, let's say there's a new concept I'm going to be implementing as part of my offering. I'm going to become an AI talent partner, meaning I'm going to help companies implement their AI solutions. Not just make placements. Got it. So I'm getting introduced to people that I have the same idea nationally. And I wanted to tag all of those people. So when I want to just reach out to the group, I've got the group. And I was hoping to add a status called AI Talent Partner People. But you know what? I don't need to do it under this status. I'll just create a roll-up list and add them to that roll-up list. You could do that. the status field... Is there a different way to do it? Yeah, you could do a couple ways. I mean, PCR is very customizable, so there's many ways to do many things. How would you do that? Well, the roll-up does make sense if you're just like, as you get them, you can put them on this roll-up list, and they're kind of sectioned off on a roll-up. You can get them all easily. That's like a... Roll-ups are a nice way to just gather records of a certain whatever, however you really want to gather them for whatever reasons. So that is a good solution. But you could also, it sounds like you were trying to change the status field. And maybe I think maybe just making a new custom field might be just a better option because the status field has its own uses and stuff. Some of those statuses have certain functions work differently. For example, if you turn a name record to manager or employee, um there's like things on the back end that allow them to like log into like the um like employer portal which is like an old an old thing that you need to be like used you know so it's like the status kind of has code surrounding it already so it might make more sense just to make like a new a new custom field if you wanted to actually have a marker on the name record itself uh you could have a new custom field with like a couple options maybe like your three different categories of like type of customer or whatever and you apply it to the field or you sorry you apply it to the layout right underneath the status field and it's just like another new field that you kind of use like going forward and then you can like categorize them or something or something like that it could be like that or the roll-up is a great option too though because that yeah that's just it's easy it's easy that is probably the better way to do it but i understand and i could add that as a custom one underneath status got it yeah so Trying to edit that field is probably, you might want to leave that alone, make a new field. Okay. I got another question while I have you on the line. You know, when I transferred to PC Recruiter a couple of years ago, I came from a product called Big Biller by, I forgot what the name of the company is, doesn't even matter. So what PCR was gracious enough to do was copy over my databases. If you logged in and you went to pull down the database, 2024 is the newest. But I have something called old database. What if I wanted to try to find all people, because my target market for this concept is going to be HR people. So, you know, the highest HR, VP of HR, chief human resource officer, what would be the best and easiest way? Because I don't really go into my old database. I don't need to. But what if I have a ton of people from my old database that have those titles that I could then transfer them to the 2024 database? You know what I'm saying? But I don't know the best way. Like I'm going to log out of PCR right now. Hang on. Let me do this with you. sure okay hold on a second okay I'm going to go into PC recruiter I'm going to go into the database called old that's what it's called old and I'm going to log in it's the same password and I'm logged into it now if I want to find just those people you know what is the easiest and best way to do that without having to pull up a thousand other different variations. Like I thought I would go into name, the name record, and I would go into keywords. Instead of going to first name, the drop-down title, and going to title, I thought I'd go to keywords and type C-H-R-O. Now, do I have to use Boolean here where I would say or, or do I put a comma? Yeah, the keywords box does use Boolean commands like and, or. Okay, so I'm going to go CHRO or now VP of Human Resources is, quote, because it's multiple words, Vice President of, and now it could be HR, right? So that's going to be closed parenthesis or space, quote, vice president of human resources, unquote, right? Now what if I wanted to just find that? So if I type that CHRO or, quote, Vice President of HR, unquote, space, or, quote, Vice President of Human Resources, and I hit search, that should pull up just those titles. Exactly correct. When you say those titles, do you mean like in their title field on the name? Yeah, I mean, I want to look for those people who have those titles, CHRO. How about this? Or, quote, Chief Human Resource Officer. Okay. So the people I want to find in my database have one, two, three, four main titles, CHRO, or VP of HR, or Vice President of Human Resources. or chief human resource officer, or, hang on, actually, I just thought of this, or, quote, VP of HR. Because I might have them as just VP of HR, but not spelled out. Now, when I hit search, let me see something. When I hit search. you get records like chris nickerson that is title of owner which is not something well i'm getting recruiter just human resources owner you know i i don't how do i do a search by those kind of titles okay so let me explain the best way to do it yeah i kind of want to pull back the curtain a little bit on what the basic search is doing specifically with the keywords box um so the keywords box is sort of different than the fields like right above it where you can choose there's like well in the basic search there's only three fields you can search and then like a little value next to it because when i copy that into the title list it doesn't pull up anything okay um well okay one second let me let me finish the thought so the yeah sorry yeah the keywords box is different so the top the top part the three fields are actually using like sql to interact with a specific column of a specific table in the sql database like so for example you pick the first name field which is really like one column of one database and then you uh when you enter in a value in the box right next to say first name uh you're like basically creating a sql statement to search that specific one field for those values that you entered and that enters the sorry the values that you would enter you know what to be honest with you you're you're talking above my pay grade i'm not interested and i don't care how okay all right well let me okay i'll simplify it a bit um the the keywords box is searching more than just the database it's searching through like resumes attachments and profiles and things and the boxes that the boxes at the top are searching like one specific field for like the very specific value. So it sounds like you want to. Do I do the title or title dropdown? When you go to the first name, there's a dropdown. And you have a choice of title or title dropdown. So I click title and I just typed in C-H-R-O, search, nothing. C-H-R-O, nothing. Okay, let's see. Title drop-down, does CHRO do anything in that? I don't know. I didn't try that yet. Let me try drop-down. Oh, I see. The title drop-down pulls all of the values. I see. Yeah, now I'm going to have to scroll through 10,000 different titles. Can I type it there? I've raced it and I'm CHRO. Let me see if that does it. Nope. it's kind of like trying it's trying to complete your you know honest to god i mean what i'm asking right now with you doesn't seem like rocket science shit i just want to find people who have a certain title how do i do it no that's it shouldn't be so difficult the the title field is kind of weird in that little ui it's giving you a drop down and it's not letting you like add or search something that's not already in the dropdown. Well, it does. When I went to the title dropdown, when I went to the title dropdown, it gets please select. And instead of scrolling through 3,000 variations of titles, I erased the please select. And I just typed in CHRO. And it doesn't even, because SVP, human resources, and CHRO, That's the only thing that comes up. Right. Is there a value to grade up CHRO? No. Because I think what the title drop-down field is doing is it is querying the database for all of the different titles and then organizing them alphabetically and then showing them to you. So anything that's not on this list is not in the database in that particular field. But even if it is, let's say I'm seeing SVP, human resources, and CHRO, right? That is one. I click it, and now what's filled out in the dropdown is SVP, human resources. But yet when I hit search, I'm getting SVP of global sales, marketing, SVP of EMEA, finance. Why is it not just pulling up what I put in? Oh, really? Interesting. I mean, it was one of the ones. I tried it, and I got just one record with that one. All right. Let me, okay, I have to go back. I'm going to have the title drop down. Do me a favor. Listen, because, again, I've got to jump on a call. Just look into it. Just find out, how do I gather from old databases just a handful of specific titles? everything related to HR executives, a chief human resource officer, a VP of HR, VP of human resources, you know, et cetera. Maybe VP of talent acquisition, you know, certain titles in the database. I just want to find those. And I was thinking if I put them in quotes, that would do it. You know, just like Boolean, you know, you put it in quotes exactly because it's multiple words, you know, but I don't know. But if you can get back to me on that, just like you did on this thing, that would be great. Okay. Before I let you go, Boolean only works in the keywords box. It doesn't work in the top fields. So I just want to let you know that that shouldn't work. Makes sense. Okay. Yeah. Like you said, it searches everything. Notes, resumes. Right. Yeah. The keywords box does that, but the fields above it, you don't have to enter an and or anything like that. You know why it's difficult? Because when I'm in LinkedIn and I import them through your product, I forgot what they call that. The capture tool? Captured, correct. I'm capturing whatever their title is. Like, for example, if it was a salesperson, in LinkedIn, you could have a salesperson with 10 different variations. Sales representative, account executive, regional sales manager, enterprise sales, channel sales, but it's a salesperson. You follow? Yeah, yeah, yeah. Yeah. It's tough to incorporate all those in your search for sure. Yeah. Yeah. That's what I'm trying to understand how to do. If so, I don't miss it. anybody. Okay. I can send you some like tips and tricks on how to search in VCR. You know, please, please. And again, so I could find just those HR people, VP, CHC level, et cetera. Okay. Um, I just thought of it. That's why I'm glad I asked you because that was something I was going to call about as well. All right. All right. Yeah, you can, I'll let you go and I'll get back to you and I'll send you, uh, some correspondence via email. Wonderful. Anything you could do, I'd really appreciate. Thanks. All right. No problem. God, have a good afternoon. I'll talk soon. You too. Thank you. Thank you. You too. Bye. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 433.855817,
+    "salad_processing_time": 240.92199087142944,
+    "overall_processing_time": 433.855817,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " yes hi Bob love it hey Bob hello it's Kenzie from calling back hi I found it um okay let me log in hang on one second I was gonna say we were close we were so close we were that's funny okay hold on let me just log back in okay I don't know yeah just to say before we get there.  I'm not sure you could add your own custom one, but there are a list of 15 or so that you can turn on and off.  I found the screen where you turn them on and off.",
+    "job_id": "232e10ee-afb8-42fb-a50f-774301d055c6",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " yes hi Bob love it hey Bob hello it's Kenzie from calling back hi I found it um okay let me log in hang on one second I was gonna say we were close we were so close we were that's funny okay hold on let me just log back in okay I don't know yeah just to say before we get there.  I'm not sure you could add your own custom one, but there are a list of 15 or so that you can turn on and off.  I found the screen where you turn them on and off.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": true,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3014465084036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

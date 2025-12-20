@@ -1,0 +1,119 @@
+{
+  "recording_id": "3014739455036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:28:02.340497Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:28:02",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling me in sequence technology. This is Mackenzie. How can I help you? Hi, Mackenzie. My name is Lori Hollingsworth. I'm with FloraSearch. Excuse me. And I was calling. I have a question for you guys. Martin Zara from our office wanted me to call and ask you a question. OK. What's the question? um he was wondering if we had rest api i have no idea what that is i was wondering when you say when you say okay you guys um um okay so recently uh we went through a change where i don't believe you needed that I don't think you need that anymore, and we have, like, a default. I don't think you need to pay for that service anymore. Let me get the thing that just means. Sorry, one second. Let me pull it up. It's been a few months since this change. I'm just trying to find, like, the actual. yeah because I don't know what it is but he's at a trade show and wanted me to find out the information oh actually it might be might be conflating two different things we we do have api like yes we do have an api there's api documentation you can connect like via pc recruiter via api there's many like api based integrations with pc recruiter so in in the general sense of like does pc recruiter use api and have an available API? The answer is yes. But I think I was conflating what you asked me with something that happened recently where people would call and ask if they needed a specific username and password. He was wondering about a token, bearer token. A bearer token? Okay, yeah, okay. You are asking what I thought. Okay, cool, cool, cool. So I don't think you actually need any specific we used to okay so as far as i know there was a pro or there was like a system that we would pay for um to get analytics on our api users and that that analytics service like wasn't giving us what we really needed out of it um so that was the service that like would need the bearer token. So since we don't have that anymore, I believe we do not need it. Let me double check. Let me just make sure if somebody... I wish I knew more about it. Yeah, it's like a long, it's a lot to learn. And there's a bit of a learning curve to just supporting softwares and working within them a lot and using the API. API is just a technical term for just communicating with the software in, like, the back end instead of having, like, PC Recruiter, like, in the front end where you, like, have a username and login and there's buttons to click, right? You could code, you could code basically, like, a string of, like, commands and, like, send data straight to the database with just, like, a command, like through the back end and that would be like you connect to the api and do that that's kind of how so there's integrations between softwares where you kind of they just communicate via the back end and you know transfer data back and forth and it looks inside you can see it inside pcr you know as a user uh so yeah we have api and i i'm just making sure let me sorry i'm trying to explain and also type a message i'm going to have to pause now go ahead and that's okay Thank you. Thank you. I'm just muted for a second. Okay. Thank you. Thank you. Thank you. I found some instructions on how to set up an API username inside PCRecruiter and then get the database ID. However, you said the word bearer token and I don't see the word bearer token in these. I did find what I was talking about, though. The API key and app ID are things that we no longer need. So maybe Barotoken is something you need, and then I maybe can help you achieve that. But I believe, yeah. So if there's like an app or something in the API, if you're using our API and they're asking for an API key, an app ID, you can just put in the very generic value of API key or APPID for those two values. So maybe bearer token is something you need. I might have misspoke earlier. I might have been, sorry, conflating the two things in haste. I apologize for that. Does that make sense? Sorry to kind of backpedal there. um so we i don't know you were yeah i don't know you were typing i don't know if you like reiterated what i said somewhere else need to change that but um so i'm trying to figure i'm trying to find out um for you you're looking for specifically a bearer token is that correct Well, yeah, he was, yeah, he said that. Let's see. I mean, if you go into the web, whatever it's called, where you can find out about stuff. The Learning Center? Yeah. It has this API thing. Let's see here. Yeah, maybe. That's a great. Use an endpoint called access token to generate a session. Let's see if I can print this again. Use the bearer token. Required parameters. Bearer token. Oh, I think I found it. Okay. You said you were on the Learning Center. Can you go to search API and then there's an actual, it says the documentation for the REST API can be found at, and then there's a URL that says API docs underscore V2 at the end of it? Quick start guide. Quick start guide. Mine just says welcome to PCRAPI docs. Perfect. Okay, perfect. Yeah, if you click on access token on the left, I believe there should be like a left-hand menu of a bunch of different areas. Under access token, you can search for the word bearer. It says a retrieved session token can be used with an authorization header as a bearer token. Right. To create a session token, you can use a post call to the access token endpoint with the required parameters. Okay, so if he's in the API and using the API and he knows a little bit about it, he could probably, this is probably what he needs, this exact screen, this access token screen on how to, it says example request call. these are the commands um as you see like bits of code at the bottom of the screen these are the commands that you'd like them to like a specific address that we you know would give or are kind of we kind of we are the address these recruiter like our servers you know um and there's code here ready to accept those commands and do certain things based on what you say pretty much um so does so he would he would maybe really just need this this exact url be Like, I think you could create one by following these steps and then lead him to this access token screen. I think that would be, I think that could possibly lead him to his goal. If that does not, I mean, you can always call back or I don't know how, maybe you can just send that to him. Or let's make sure, hold on, let me try to digest this maybe for another minute before I just leave this there. All right, hold on. about things, so I don't want to send them. Yeah, it's a bearer token. Authorization header as a bearer token can be included in the URL. I do know a small bit about the idea. I use your name password and our database ID, which is flora-search, correct? So the post call that you make... Okay, hold on, the session ID. Okay, a session ID is also known as a bearer token, essentially. So the first thing, yeah, the first thing he sends the post, you do a post call to that address. So it's like a post call. You see P-O-S-T and capitalize and then space REST API access token is like the endpoint. And then I guess you give it your information inside those things, like your username and password and database ID. and then the response will give you back a session ID, which is the bearer token. Does that make sense? I think so. So I can just give them this link to the API stuff. Okay. I will give it a chance. Oh, sorry. Yeah, great. I was going to say below that, if you wanted to delete the token, the delete, I think the delete, like, command for that is under it. So I think, like, if you're done and want that token to be, like, securely, like, closed, you can close it. Like, basically, that's what the delete portion at the end is for, I think. Right. Okay. Because maybe it's like an open door until you close it sort of thing. Right. You're basically like saying, hey, I need a session ID, and then you close it. Okay. But I think there's – I don't think it's that simple. I think I'm oversimplifying it. I think it probably closes after some time of inaccuracy. He knows more. Yeah, yeah, yeah. And I do. People who are savvy with the API would probably know, yeah, that stuff. I'm kind of guessing. Right. also thing from basic things i've heard that's kind of my feeling on it okay i mean just tell him to go into well i'll give him the link but then i'll also tell him in the wisdom base or whatever it has the details yeah this api documentation um i know the person who did it and he was really proud of it so i think it's pretty decent and i trust him so i i was able to comprehend this so i think it's pretty i think he'll be able to you you make a post you get a response and the response is what he needed. The session ID is the bear token that he needs. I will get the information over to him. I appreciate your help. Yeah, no problem. You're welcome. Have a great rest of your day. You said your name was Lori Hollingsworth, right? Correct. I'll get you. I'll log the call. Thank you very much. Have a good rest of your day, Lori. Okay. All right. And what was your name? Hi, my name is Mackenzie. Mackenzie. Okay. Yeah. I forgot to write it down. I usually do. Okay. Thanks very much. You're welcome. Thank you. You too. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 448.380236,
+    "salad_processing_time": 66.22577476501465,
+    "overall_processing_time": 448.380236,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling me in sequence technology.  This is Mackenzie.  How can I help you? Hi, Mackenzie.",
+    "job_id": "aca9621e-3341-40af-8200-f88b8a2922e2",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling me in sequence technology.  This is Mackenzie.  How can I help you? Hi, Mackenzie.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [
+      {
+        "type": "SOFTWARE",
+        "value": "PCRecruiter",
+        "mentions": 1
+      }
+    ],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "technical"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3014739455036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

@@ -1,0 +1,123 @@
+{
+  "recording_id": "3044194214037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:55:14.057095Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:55:14",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hello? Hi, this is Isabel. Ines. Hi, this is Robin Montoni with Main Sequence. Hi, how are you? I'm good. How are you doing? Good. So the issue is we switched billing systems. So let me see. Can I even see what your card ended in before? So in the old system, it was kind of like a sales receipt that processed. and at that time looked like it was a card ending in 4004. It was an American Express. But all those details are basically encrypted. So the issue is that you have to put in your card details in our new system. Okay. Is there any way I can just like fill out a form? I could do it with you over the phone if you want. And then should I be using your email address? Because these were going to YCabera, but I think that might be outdated. Yeah. Okay. Let me fix that first. Hold on one second. That way you get the information that you're supposed to. Isabel, do you want to add that there? Okay. Okay. So let me go over to our new system. How's Bert doing? He's doing good. I see them on Facebook. They're quite the travelers, aren't they? Yeah, they just had their 30th wedding anniversary. Isn't that awesome? Mm-hmm. So I used to work for MRI. It's a corporate office. So when they did their franchise training class, that's how I originally met them. Many years ago. I just aged myself. They were young, very young back then, well, we all were. Okay. So, yeah, so the new system, like, we don't have any card details. So I can add that for you. Okay, so let's see. Add steward card. Okay. So what is the name on the card? It's my name, Isabel Cosby. Okay. And then the card number? It is 372719353631083. Okay. Let me read that back. 372719353631083. Yep. Okay. And then what is the expiration? It is 07 of 29. Okay. And the security number on the back? Oh, actually, no. This is American Express. That would be on the front. Okay, and what is the address and all that stuff for the card, like where the bill goes? So it should be the address we have on file. The 190 Congress Park Drive? Yep. Okay, Delray Beach. So the big one, I think, is the zip code to verify, 33445? Yep. Okay, I'm going to save that. And then do you want me to put it on auto pay, kind of like how it was before, where it was just automatically processed on the due date? Yes, please. Okay. Edit. We'll do edit. Not on created date. We want it on due date and with that card. Okay. So, and I think I took a look at this already. No, there was one applied. So let me fix something because there's a late charge applied to one of them. So I'm going to take that off. Thank you. since we had the wrong email and stuff. Okay. So, yes, this one only. Okay. So there's three invoices. Let me just wait until it refreshes. Hold on one second. Okay, now it's showing the right amount. Do you want me to go ahead and then process the ones that are open? Yes, you can go ahead and do that. Okay, so that would be... Okay, so that would be your May, June, July, and then going forward, so the next would be August 27th, that one would just automatically process. Perfect. Okay. All right, I will do that now. Let me see, click here if you wish to auto-pay. Yes. Yeah. All right, you should be getting receipts at your email address now. Awesome. Thank you so much for your help. I'm thinking you can send me a call and help me with this over the phone. Yeah, sometimes it's just easier. Now, in that email, there is a customer billing portal. There's a link. You would want to sign up now using the email address, the iCosby email address. Okay. And once you sign up in that, it doesn't use anything with your PCR credentials because, well, you may not even be a PCR user. But once you create an account in that portal, you can always go in and view your invoices. It would just be the ones from the new system, basically these last few. But there's also a vault area. So if you ever need to change your card or anything like that, you can go in there and handle that. If you ever need to print receipts or things like that, at least now we have a site you can go to to do all that. Awesome. I appreciate it. Well, have a great week. Thank you. And thank you so much for handling this. Thank you. Have a good day. You too. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1350.715374,
+    "salad_processing_time": 49.38049364089966,
+    "overall_processing_time": 1350.715374,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hello? Hi, this is Isabel.  Ines.  Hi, this is Robin Montoni with Main Sequence.",
+    "job_id": "4aff40ec-a6a1-4e47-a00d-18986d2d3b55",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hello? Hi, this is Isabel.  Ines.  Hi, this is Robin Montoni with Main Sequence.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Billing",
+        "confidence": 0.7
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "billing",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "billing"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3044194214037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

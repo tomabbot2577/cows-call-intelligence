@@ -1,0 +1,456 @@
+{
+  "recording_id": "3096806046036",
+  "analysis_timestamp": "2025-12-19T20:54:52.090568",
+  "analysis_version": "3.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Tyler",
+        "role": "customer",
+        "company": null,
+        "confidence_score": 0.8,
+        "validation_reason": "Likely a real customer name based on context"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "CALL TYPE": "support_technical",
+    "CALL PURPOSE": [
+      "troubleshooting technical issue with remote desktop and Outlook integration",
+      "requesting assistance with resolving the issue"
+    ],
+    "URGENCY LEVEL": "medium",
+    "OUTCOME STATUS": "pending"
+  },
+  "customer_profile": {
+    "CUSTOMER IDENTIFICATION": {
+      "Primary contact name and role": "Rochelle",
+      "Company/organization name": "Symbio",
+      "Phone numbers mentioned": null,
+      "Email addresses mentioned": null,
+      "Key decision makers referenced": null,
+      "Team members and their roles": null
+    },
+    "BUSINESS CONTEXT": {
+      "Industry or business type": "Small company",
+      "Company size indicators": "small company",
+      "Technology stack mentions": "remote desktop, PCR, Outlook",
+      "Current challenges/pain points": "issues with Outlook integration with PCR, unable to pull emails",
+      "Growth stage indicators": null
+    },
+    "RELATIONSHIP MAPPING": {
+      "Previous interactions referenced": "I've called you guys about this before",
+      "Existing service usage": "using PCR and Outlook",
+      "Account history mentions": null,
+      "Relationship duration indicators": null,
+      "Trust level indicators": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "Technical",
+      "issue_severity": "Medium",
+      "technical_complexity_level": "Low",
+      "time_sensitivity": "Low"
+    },
+    "resolution_tracking": {
+      "issue_status": "Resolved",
+      "resolution_steps_taken": [
+        "Verified username and database access",
+        "Confirmed Outlook version and add-in requirements",
+        "Provided step-by-step instructions for reinstalling and configuring the PCR Outlook portal"
+      ],
+      "outstanding_action_items": [],
+      "next_steps_required": "Customer to follow provided instructions and contact support if issues arise"
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "Low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "None",
+      "knowledge_base_gaps_identified": "None"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "Effective",
+      "communication_clarity": "Clear",
+      "technical_knowledge_demonstrated": "Good",
+      "empathy_and_rapport_building": "Good"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Customer expresses overall satisfaction with past support but is currently facing issues.",
+      "trust_level_signals": "Customer trusts support enough to reach out for help with a recurring issue.",
+      "communication_style": "Open and detailed communication, customer provides necessary information and examples.",
+      "rapport_quality": "Friendly and cooperative interaction, customer and support use casual conversation."
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Previously onboarded but facing issues due to new system changes.",
+      "product_adoption_level": "High, as customer has used the system before and prefers the classic version.",
+      "feature_utilization": "Customer uses key features but struggles with new system integration.",
+      "expansion_opportunities": "Potential to enhance customer's use of additional features or newer versions."
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Effective and responsive support, familiarity with product features.",
+      "risk_indicators": "System changes causing disruptions and potential frustration.",
+      "loyalty_signals": "Repeated use and reliance on the product, willingness to resolve issues.",
+      "advocacy_potential": "High, if current issues are resolved promptly and effectively."
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone calls for immediate assistance.",
+      "response_time_expectations": "Immediate assistance during the call, expects follow-up via email.",
+      "information_style_preferences": "Prefers step-by-step instructions and direct solutions.",
+      "decision-making_patterns": "Relies on support for technical decisions, follows recommendations."
+    }
+  },
+  "rag_metadata": {
+    "key_quotes": [
+      "I can barely hear you Tyler you sound like you're in a tunnel can you hear me okay is that better that is much better okay I was like I think he said Tyler how are you not too bad and yourself I'm good I'm good this is Rochelle I'm with Symbio and we have we are going fully remote here we're a small company and we moved to a remote desktop and I'm sure it's something simple.",
+      "I've called you guys about this before, but I don't recall how to do it, but I realized it's not, even though it says it, I logged out of my PCR and logged back in to authenticate RingCentral. So it would pull text. And also I think it's pulling text. Okay, but like my email, my Outlook, it quit pulling those. And I think it's a quick fix, but I don't recall how to do it.",
+      "I think we were looking more at PCR capture maybe, and we didn't look at the \u2013 to make sure the add-on was on the Outlook is what I'm thinking.",
+      "Because another thing you guys have done for me in the past, too, is backdate it to make sure it's pulling. that aren't, emails aren't missed, I guess, to pull anything that maybe didn't come over in the last month or days."
+    ],
+    "qa_pairs": [
+      {
+        "question": "What's your username for the database?",
+        "answer": "R-A-G-U-I-L-E-R-A."
+      },
+      {
+        "question": "Now, on this remote desktop, are you using the installed classic version of Outlook?",
+        "answer": "I don't know the answer to that, but I have been using that, and I like it, and I've never had an issue, so is that an issue?"
+      },
+      {
+        "question": "No, that's what you need for the PCR Outlook portal if that's what you were using before was the add-in that was like inside of your outlook where you can like also like parse the resumes and things like that maybe the add-in is not on my outlook since we switched over this has all happened in the last like couple days like it's been a whole thing trying to get everything switched over so um but your outlook looks the same as it was before though like the classic installed version on that remote desktop",
+        "answer": "Yes. I mean, it's what I've always used. Like, it's tried to do the new version over the last couple months and not always go back to the original. So, yes, it should be the classic. Yes."
+      }
+    ],
+    "searchable_tags": [
+      "remote desktop",
+      "Outlook",
+      "PCR",
+      "RingCentral",
+      "add-in",
+      "authentication",
+      "email sync",
+      "IT support",
+      "small business",
+      "remote work",
+      "technical issue",
+      "backdate",
+      "IT migration",
+      "classic Outlook",
+      "PCR capture"
+    ],
+    "semantic_themes": [
+      "Technical support for email and software integration issues",
+      "Transition to remote work and associated IT challenges",
+      "Software add-in installation and functionality in a remote desktop environment"
+    ]
+  },
+  "conversation_quality": {
+    "TALK-TO-LISTEN RATIO": {
+      "Agent talk percentage": 55,
+      "Customer talk percentage": 45,
+      "Balanced conversation indicator": "Moderately Balanced"
+    },
+    "INTERRUPTION ANALYSIS": {
+      "Number of interruptions by agent": 2,
+      "Number of interruptions by customer": 1,
+      "Interruption impact on flow": "Minimal"
+    },
+    "SILENCE/DEAD AIR": {
+      "Total silence duration estimate (seconds)": 10,
+      "Awkward pauses detected": 2,
+      "Hold time indicators": "None"
+    },
+    "COMPLIANCE INDICATORS": {
+      "Proper greeting used": true,
+      "Company name mentioned": true,
+      "Verification steps taken": true,
+      "Required disclosures made": false,
+      "Proper closing used": false
+    },
+    "COMMUNICATION EFFECTIVENESS": {
+      "Clarity score (1-10)": 8,
+      "Professionalism score (1-10)": 9,
+      "Active listening indicators": true,
+      "Acknowledgment phrases used": true,
+      "Personalization level": "Moderate"
+    },
+    "agent_talk_pct_calculated": 95.6,
+    "customer_talk_pct_calculated": 4.4
+  },
+  "sales_signals": {},
+  "key_metrics": {
+    "call_type": "other",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium",
+    "lead_qualification_score": 0,
+    "sales_stage": "unknown",
+    "talk_to_listen_ratio": 95.6,
+    "compliance_score": 5,
+    "professionalism_score": 7,
+    "clarity_score": 7,
+    "competitors_detected": false,
+    "buying_signals_strength": 0
+  },
+  "action_items": [],
+  "vertex_ai_metadata": {
+    "searchable_tags": [
+      "remote desktop",
+      "Outlook",
+      "PCR",
+      "RingCentral",
+      "add-in",
+      "authentication",
+      "email sync",
+      "IT support",
+      "small business",
+      "remote work",
+      "technical issue",
+      "backdate",
+      "IT migration",
+      "classic Outlook",
+      "PCR capture"
+    ],
+    "semantic_themes": [
+      "Technical support for email and software integration issues",
+      "Transition to remote work and associated IT challenges",
+      "Software add-in installation and functionality in a remote desktop environment"
+    ],
+    "key_quotes": [
+      "I can barely hear you Tyler you sound like you're in a tunnel can you hear me okay is that better that is much better okay I was like I think he said Tyler how are you not too bad and yourself I'm good I'm good this is Rochelle I'm with Symbio and we have we are going fully remote here we're a small company and we moved to a remote desktop and I'm sure it's something simple.",
+      "I've called you guys about this before, but I don't recall how to do it, but I realized it's not, even though it says it, I logged out of my PCR and logged back in to authenticate RingCentral. So it would pull text. And also I think it's pulling text. Okay, but like my email, my Outlook, it quit pulling those. And I think it's a quick fix, but I don't recall how to do it.",
+      "I think we were looking more at PCR capture maybe, and we didn't look at the \u2013 to make sure the add-on was on the Outlook is what I'm thinking.",
+      "Because another thing you guys have done for me in the past, too, is backdate it to make sure it's pulling. that aren't, emails aren't missed, I guess, to pull anything that maybe didn't come over in the last month or days."
+    ],
+    "qa_pairs": [
+      {
+        "question": "What's your username for the database?",
+        "answer": "R-A-G-U-I-L-E-R-A."
+      },
+      {
+        "question": "Now, on this remote desktop, are you using the installed classic version of Outlook?",
+        "answer": "I don't know the answer to that, but I have been using that, and I like it, and I've never had an issue, so is that an issue?"
+      },
+      {
+        "question": "No, that's what you need for the PCR Outlook portal if that's what you were using before was the add-in that was like inside of your outlook where you can like also like parse the resumes and things like that maybe the add-in is not on my outlook since we switched over this has all happened in the last like couple days like it's been a whole thing trying to get everything switched over so um but your outlook looks the same as it was before though like the classic installed version on that remote desktop",
+        "answer": "Yes. I mean, it's what I've always used. Like, it's tried to do the new version over the last couple months and not always go back to the original. So, yes, it should be the classic. Yes."
+      }
+    ],
+    "lead_score": 0,
+    "sales_stage": "unknown",
+    "compliance_score": {},
+    "quality_score": 0,
+    "competitors_mentioned": []
+  },
+  "participants": {
+    "primary_employee": {
+      "name": "Tyler Trautman",
+      "extension": "5467",
+      "phone": "6145467",
+      "email": "tyler.trautman@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5467"
+    },
+    "primary_customer": {
+      "name": "Let me pop in",
+      "company": "re a small company",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "Let me pop in",
+        "company": "re a small company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to do",
+        "company": "re a small company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "thinking",
+        "company": "re a small company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "pulling everything",
+        "company": "re a small company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "running",
+        "company": "re a small company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "good",
+        "company": "re a small company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to do here is",
+        "company": "re a small company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "good this is Rochelle",
+        "company": "re a small company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Let me find it",
+        "company": "re a small company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "going to do is",
+        "company": "re a small company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "sure it",
+        "company": "re a small company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "step instructions",
+        "company": "re a small company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "in the next couple minutes",
+        "company": "re a small company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "just look out for an email",
+        "company": "re a small company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "not wasting too much of your time",
+        "company": "re a small company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "with Symbio and we have we are going fully remote here we",
+        "company": "re a small company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "assumed it was on",
+        "company": "re a small company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "with Symbio and we have we are going fully remote",
+        "company": "re a small company",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Tyler Trautman",
+        "extension": "5467",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [],
+      "mentioned_issues": [
+        "problem",
+        "issue"
+      ],
+      "urgency_indicators": [],
+      "follow_up_mentions": [
+        "call back"
+      ]
+    }
+  }
+}

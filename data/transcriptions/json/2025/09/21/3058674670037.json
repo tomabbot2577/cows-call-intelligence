@@ -1,0 +1,95 @@
+{
+  "recording_id": "3058674670037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:07:18.250776Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:07:18",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " thank you following mean sequence technology this is Tyler how can I help you hi I'm this is Maggie Cunningham with bank search I just have a suggestion that's for your software you know how in the and maybe there's a way to do this let's say I'm in NPA right we're a network of recruiters and let's say there's a recruiter that sends me two or three candidates and I input them on PC Recruiter and the referral I would put in would be that recruiter, right? Yeah, you could put in that person. Okay. Then what do I do? But if I go to that person's name and then want to see the people that they have referred to me, there's no connection there, right? so you could set up an association or you can always run a search based on that referrer field okay okay then that's what i'll do that's what i needed to know because we had software many years ago and you could like click on that and then it would bring up that person and show everyone that they referred but instead what i do is a search for that person for refer that person's name and refer, right? Yep. Okay. Okay. I'll try that. Thank you. That was it. Not a problem. You have a great day. You too. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1707.844707,
+    "salad_processing_time": 5.649787664413452,
+    "overall_processing_time": 1707.844707,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " thank you following mean sequence technology this is Tyler how can I help you hi I'm this is Maggie Cunningham with bank search I just have a suggestion that's for your software you know how in the and maybe there's a way to do this let's say I'm in NPA right we're a network of recruiters and let's say there's a recruiter that sends me two or three candidates and I input them on PC Recruiter and the referral I would put in would be that recruiter, right? Yeah, you could put in that person.  Okay.  Then what do I do? But if I go to that person's name and then want to see the people that they have referred to me, there's no connection there, right? so you could set up an association or you can always run a search based on that referrer field okay okay then that's what i'll do that's what i needed to know because we had software many years ago and you could like click on that and then it would bring up that person and show everyone that they referred but instead what i do is a search for that person for refer that person's name and refer, right? Yep.",
+    "job_id": "9456fe14-7270-4b5e-8b38-f6c1e0a27a32",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " thank you following mean sequence technology this is Tyler how can I help you hi I'm this is Maggie Cunningham with bank search I just have a suggestion that's for your software you know how in the and maybe there's a way to do this let's say I'm in NPA right we're a network of recruiters and let's say there's a recruiter that sends me two or three candidates and I input them on PC Recruiter and the referral I would put in would be that recruiter, right? Yeah, you could put in that person.  Okay.  Then what do I do? But if I go to that person's name and then want to see the people that they have referred to me, there's no connection there, right? so you could set up an association or you can always run a search based on that referrer field okay okay then that's what i'll do that's what i needed to know because we had software many years ago and you could like click on that and then it would bring up that person and show everyone that they referred but instead what i do is a search for that person for refer that person's name and refer, right? Yep.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3058674670037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

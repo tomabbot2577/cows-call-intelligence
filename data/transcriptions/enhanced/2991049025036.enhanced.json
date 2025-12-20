@@ -1,0 +1,111 @@
+{
+  "recording_id": "2991049025036",
+  "version": "3.0",
+  "timestamp": "2025-09-21T23:47:31.821154Z",
+  "processing_complete": true,
+  "call_metadata": {
+    "date": "2025-09-21",
+    "duration_seconds": 72.576,
+    "word_count": 241,
+    "customer": {
+      "name": "",
+      "phone": null,
+      "company": null
+    },
+    "employee": {
+      "name": "",
+      "extension": null,
+      "department": null
+    }
+  },
+  "transcript_text": "Hi, this is Barry. Here's the new message and I will call you back. Thank you. Hey Barry, it's Jim Lombardo with PC Recruiter. I wanted to give a quick call. Make sure you got the email that the data has been moved over. Mackenzie sent that out a little over an hour ago, so the data is moved over to your new Cornerstone Building Solutions database. Note, he changed the password to every username in the database to the same thing. It's in that email. And also note, I want to make sure you don't make any changes to the old NIT Building Solutions database any longer, since that's not going to be what would be in your new database now. I want to talk to you, see about the cancellation of that, when that's going to happen, and when you wanted to get in queue for that to happen. I talked with Scott. He was hoping to keep it for like another week, maybe until the end of the month, which I think we talked about, so we can just kind of go back and refer to any setups or details or formats or anything like that. But give me a quick call. Let me know what you think on that. And make sure you've got everything set up and you need out of base. My phone number is 440-856-0314. That's 440-856-0314. Thanks. We'll talk to you soon. Bye-bye.",
+  "ai_insights": {
+    "sentiment_analysis": {
+      "customer_sentiment": "positive",
+      "call_quality_score": 8.5,
+      "call_type": "technical_support",
+      "key_topics": [
+        "database migration",
+        "password change",
+        "cancellation of old database",
+        "timeline for transition"
+      ],
+      "summary": "The employee, Jim Lombardo from PC Recruiter, called Barry from Cornerstone Building Solutions to confirm that the data has been moved over to the new database, provide the new password information, and discuss the timeline for cancelling the old NIT Building Solutions database.",
+      "follow_up_needed": null,
+      "escalation_required": null
+    },
+    "process_recommendations": {
+      "process_improvements": [
+        "Implement a standardized process for database migrations, including clear communication of new login credentials and timelines for decommissioning old systems.",
+        "Develop a checklist or workflow to ensure all necessary steps are completed during a database transition, such as verifying data transfer, testing new system access, and coordinating the retirement of legacy systems."
+      ],
+      "employee_coaching": {
+        "strengths": [
+          "The employee proactively reached out to the customer to confirm the data migration and provide the new login information.",
+          "The employee demonstrated good communication by summarizing the key details and next steps."
+        ],
+        "improvements": [
+          "The employee could have provided a more specific timeline for the old database cancellation, rather than leaving it open-ended.",
+          "The employee could have offered to follow up with the customer after the call to ensure all their questions were answered."
+        ],
+        "suggested_phrases": [
+          "I'd be happy to provide a more detailed timeline for the old database cancellation. When would be a good time for me to follow up with you on that?",
+          "Please let me know if you have any other questions or concerns, and I'll be sure to address them."
+        ]
+      },
+      "follow_up_actions": [
+        "Schedule a follow-up call with the customer to confirm the old database has been successfully cancelled and address any remaining questions or concerns.",
+        "Review the database migration process and identify opportunities to improve documentation, training, or automation to prevent similar issues in the future."
+      ],
+      "knowledge_base_updates": [
+        "Create a detailed guide for database migration, including best practices for communication, credential management, and system decommissioning.",
+        "Document common issues and resolutions related to database transitions to aid future support efforts."
+      ],
+      "escalation": {
+        "required": false,
+        "risk_level": "low",
+        "reason": "The call was handled well, and there are no immediate concerns that require escalation."
+      },
+      "performance_metrics": {
+        "efficiency_score": 8.5,
+        "training_priority": "medium"
+      }
+    },
+    "call_resolution": {
+      "problem_statement": "The customer, Barry from Cornerstone Building Solutions, needed to be informed about the data migration to the new database and the password changes.",
+      "resolution_status": "resolved",
+      "resolution_details": "The employee, Jim Lombardo from PC Recruiter, informed Barry that the data has been moved over to the new Cornerstone Building Solutions database, and the password for every username has been changed to the same thing, which is provided in the email. Jim also discussed the cancellation of the old NIT Building Solutions database and the timeline for that.",
+      "follow_up": {
+        "type": "none",
+        "details": "No further follow-up is needed.",
+        "timeline": "N/A"
+      },
+      "loop_closure": {
+        "solution_summarized": true,
+        "understanding_confirmed": true,
+        "asked_if_anything_else": true,
+        "next_steps_provided": true,
+        "timeline_given": true,
+        "contact_info_provided": true,
+        "closure_score": 9.0
+      },
+      "quality_assessment": {
+        "missed_best_practices": [],
+        "improvement_suggestions": [],
+        "customer_satisfaction_likely": "high",
+        "call_back_risk": "low",
+        "escalation_probability": "low"
+      }
+    }
+  },
+  "pipeline_metadata": {
+    "ai_model_versions": {
+      "sentiment": "deepseek/deepseek-r1",
+      "recommendations": "deepseek/deepseek-r1",
+      "name_extraction": "anthropic/claude-3-opus",
+      "embeddings": "openai/text-embedding-ada-002"
+    },
+    "processing_date": "2025-09-21T23:47:31.821186Z",
+    "version": "3.0"
+  }
+}

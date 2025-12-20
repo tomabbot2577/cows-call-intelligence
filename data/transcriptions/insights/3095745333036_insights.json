@@ -1,0 +1,212 @@
+{
+  "recording_id": "3095745333036",
+  "analysis_timestamp": "2025-12-19T19:45:39.390819",
+  "analysis_version": "2.0",
+  "contact_information": {
+    "phone_numbers": [],
+    "email_addresses": [],
+    "participants": [
+      {
+        "name": "Lisa",
+        "role": "account_manager",
+        "company": "Ohio Labor Law Poster Service",
+        "confidence_score": 0.8,
+        "validation_reason": "Likely a real customer contact"
+      }
+    ],
+    "mentioned_contacts": [],
+    "recording_metadata": {
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "call_duration": null,
+      "call_date": "2025-12-19"
+    }
+  },
+  "call_classification": {
+    "call_type": "account_management",
+    "call_purpose": [
+      "customer inquiry",
+      "transfer to specific representative"
+    ],
+    "urgency_level": "medium",
+    "outcome_status": "pending"
+  },
+  "customer_profile": {
+    "customerIdentification": {
+      "primaryContactName": "Lisa",
+      "primaryContactRole": "Account Manager",
+      "companyName": "Ohio Labor Law Poster Service",
+      "phoneNumbers": [],
+      "emailAddresses": [],
+      "keyDecisionMakers": [
+        "Nick"
+      ],
+      "teamMembers": []
+    },
+    "businessContext": {
+      "industry": "Labor Law Poster Service",
+      "companySize": null,
+      "technologyStack": [],
+      "challenges": null,
+      "growthStage": null
+    },
+    "relationshipMapping": {
+      "previousInteractions": null,
+      "existingServiceUsage": null,
+      "accountHistory": null,
+      "relationshipDuration": null,
+      "trustLevel": null
+    }
+  },
+  "support_analysis": {
+    "issue_classification": {
+      "primary_issue_category": "transfer/request",
+      "issue_severity": "low",
+      "technical_complexity_level": "low",
+      "time_sensitivity": "low"
+    },
+    "resolution_tracking": {
+      "issue_status": "pending",
+      "resolution_steps_taken": "attempted transfer to Nick",
+      "outstanding_action_items": "complete transfer to Nick",
+      "next_steps_required": "verify Nick's availability and complete transfer"
+    },
+    "customer_effort": {
+      "call_complexity_for_customer": "low",
+      "number_of_contacts_required": "1",
+      "self_service_opportunities_missed": "none",
+      "knowledge_base_gaps_identified": "none"
+    },
+    "agent_performance": {
+      "problem_solving_approach": "straightforward",
+      "communication_clarity": "clear",
+      "technical_knowledge_demonstrated": "none required",
+      "empathy_and_rapport_building": "minimal"
+    }
+  },
+  "sales_analysis": {},
+  "relationship_analysis": {
+    "relationship_health": {
+      "overall_satisfaction_indicators": "Unknown",
+      "trust_level_signals": "Unknown",
+      "communication_style": "Professional and direct",
+      "rapport_quality": "Neutral, as there is limited interaction data"
+    },
+    "customer_journey_stage": {
+      "onboarding_status": "Unknown",
+      "product_adoption_level": "Unknown",
+      "feature_utilization": "Unknown",
+      "expansion_opportunities": "Unknown"
+    },
+    "retention_factors": {
+      "satisfaction_drivers": "Unknown",
+      "risk_indicators": "Unknown",
+      "loyalty_signals": "Unknown",
+      "advocacy_potential": "Unknown"
+    },
+    "communication_preferences": {
+      "preferred_contact_methods": "Phone based on the interaction",
+      "response_time_expectations": "Immediate, as evidenced by direct call transfer",
+      "information_style_preferences": "Direct and purpose-specific",
+      "decision-making_patterns": "Unknown"
+    }
+  },
+  "key_metrics": {
+    "call_type": "account_management",
+    "urgency_level": "medium",
+    "outcome_status": "pending",
+    "customer_satisfaction_score": 7,
+    "resolution_time": null,
+    "sales_opportunity_score": 5,
+    "relationship_health_score": 7,
+    "escalation_risk": "low",
+    "churn_risk_score": 3,
+    "upsell_opportunity": "medium"
+  },
+  "action_items": [],
+  "participants": {
+    "primary_employee": {
+      "name": "Garrett Komyati",
+      "extension": "5427",
+      "phone": "6145427",
+      "email": "garrett.komyati@mainsequence.net",
+      "department": "Customer Service",
+      "role": "Customer Service Representative",
+      "employee_id": "EMP_5427"
+    },
+    "primary_customer": {
+      "name": "Garrett",
+      "company": "",
+      "phone": "",
+      "email": "",
+      "role": "",
+      "source": "transcript"
+    },
+    "all_customers_identified": [
+      {
+        "name": "Garrett",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "an account manager with the Ohio Labor Law Poster Service",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "calling on",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      },
+      {
+        "name": "Lisa",
+        "company": "",
+        "phone": "",
+        "email": "",
+        "role": "",
+        "source": "transcript"
+      }
+    ],
+    "all_employees_mentioned": [
+      {
+        "name": "Garrett Komyati",
+        "extension": "5427",
+        "department": "Customer Service",
+        "role": "Customer Service Representative"
+      },
+      {
+        "name": "Nick Bradach",
+        "extension": "5431",
+        "department": "Management",
+        "role": "Manager"
+      }
+    ],
+    "call_metadata": {
+      "direction": "unknown",
+      "from_number": "unknown",
+      "to_number": "unknown",
+      "from_extension": null,
+      "to_extension": null,
+      "duration": null,
+      "date": "2025-12-19"
+    },
+    "call_context": {
+      "mentioned_products": [
+        "service",
+        "account"
+      ],
+      "mentioned_issues": [],
+      "urgency_indicators": [],
+      "follow_up_mentions": []
+    }
+  }
+}

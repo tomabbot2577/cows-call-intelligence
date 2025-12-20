@@ -1,0 +1,119 @@
+{
+  "recording_id": "3034304936037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:45:48.674115Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:45:48",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence. This is Robin. Oh, hi. Good afternoon. This is Diana Farrington calling from Magellan Aerospace. I'm calling about one of your invoice numbers, invoice number 220-3437. Okay. Hold on one second. Yeah, go ahead. Yeah. I've got cool stuff up here. Okay. Let's see. bear with me one second I've got to go in different systems okay Right. So the reason I'm calling is I was made aware that your banking information has changed. Yes. And so I just wanted to speak to somebody regarding that just to verify that over the phone. Yes. Did I send it? What email address did I send it to? You're probably dealing with Anshana Suendran. Oh, yes. Yes. That's who I emailed. I actually had her email address in one area but not in another. so yeah I guess we received a payment but it might have been to our old Huntington account and it needs to go to the KeyBank account that was sending out those details. Sure and that's great anytime we have a banking information change we just need to verify that verbally. Oh okay I get it I totally get it yeah um what I sent was let me see I have it stored and I believe I attached the letter from KeyBank as well. The account number ends in 809. Right. So do you have the full account number there? Oh, do you want me to, would you like me to send this to you? Okay. Yeah. What's your email address? I have to do it. I'm sorry. I have to do it over the phone. Unfortunately, we can't take email verification. Oh, okay. And that's the reason I'm calling. Okay. So if you have the account number, you can just let me know what that would be. No problem. Okay, the account number is, oh, gosh, my eyes are getting bad. Six. I just had an eye appointment this morning. Reading's a little bit. Well, it's probably blurry. Well, you know, I couldn't see far away. I couldn't see far away, and now I'm like having a hard time. It's just this font. It's hard for me to see. Okay, 6536-8809. That's the account number. Okay. And then the routing number is 0210-52053. Perfect. Okay. And then any, if you need like an email for that, it would be billing at mainsequence.net. Okay. So it's billing. That'd be I-L-L-I-N-G at mainsequence.net. Okay, perfect. That's great. I appreciate your help. Thank you very much for verifying that and we'll have the pay mail to you shortly. Okay, thank you so much. Yeah, bye-bye now. Alrighty, bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1047.388999,
+    "salad_processing_time": 9.477880239486694,
+    "overall_processing_time": 1047.388999,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Oh, hi.",
+    "job_id": "4aa1cd78-cdcc-4cf7-b9ae-d2b08750a007",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Oh, hi.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Billing",
+        "confidence": 0.7
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "billing",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [
+      "billing"
+    ],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3034304936037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "recording_id": "3014231136036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:27:12.885984Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:27:12",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence. This is Robin. Hey, Robin. It's Jeff Richmond. How are you today? I'm good. How are you doing? I'm good. I'm good. I just had a question. I've been using PCRM lately. Okay. And it just seems a little bit unstable. So I'm getting some error messages, and it says contact support. Okay. So like if I go look at somebody's name. So I don't know if that's just me or if it's just kind of going through its bug stages or what. Like is there a system outage? No, not that I'm aware of. Can we do a screen share? Yeah. Okay. Do you have RingCentral or no? Yeah. I'm going to book it through RingCentral. Let me leave that. Let me restart a new one. Okay. So if you go to your RingCentral app. Yeah. and go to video and select join and I'll give you a meeting ID yeah 0 5 0 3 9 4 8 1 0 Okay. If you can click share. Yeah. Let me just put it on the screen. so I'm getting this okay little name let me just try okay let me see what's going on that's in you and that's fine if I hit the name button then I get this error message. Name button does it. Okay let me try that on mine. Sure. I'm a little new to troubleshooting that one so I'm a little slow. No worries. Okay. Okay mine's loading right up. What happens if you reload section? Nothing? Nothing. Same thing. Yeah. And it does things with companies, positions. Well, I get into like, no, almost everything else works. Okay. Let's go to name again for a moment. Yeah. Recently viewed. Let's try. go to recently modified I wonder if there's something okay maybe I'll reset it resetting columns have you done anything as major as far as your columns No. Okay, let's try that. Okay, let's go recently viewed again because that's what it normally will go to. Okay. So I hit whatever. Let's say Sandy. That's fine. Okay. Let's just hit name again over at the left. Let's go to company and then go back. I don't know. It's fucking a little off. Yeah. Can I, I can just use PCR 9 and sit like for now, right? like this this I can go back yeah but we need to figure out why it's happening for you though yeah yeah no for sure I don't think there's any other issues that I can think of let me try something here what is your can you go back to your main screen for moment may for is that what you have at the okay let's see try I'm going to go in this you and see what happens there databases Okay, so we start with NAFOR, end with NAFOR. Let's see what happens if I do it from here. And you are in which database? The one called NAFOR? Okay. Yeah. Jay Richman. Yeah. The formatting wasn't, there was something wrong with the formatting on the loading page, too. Yeah, I'm getting it. I feel like it doesn't like something. I'm just trying to figure out what. Let's see. Recently modified. Is it my login ID? No, no. Let's see. Okay. Okay. Let's see. Thank you. Thank you. I'm going to have to run this by somebody. I'm not really sure what's causing this. Okay. If you just, another, just if you go look at my screen right now, you see how it's sort of, I don't know, the login screen's all, the formatting's all messed up. Oh. Right. That's, so if I, if you go to a fresh screen and log in, that's what you get. Okay. And you're, let's try this to start. Let's go to the three vertical dots at the top right. Yeah. go to delete browsing data yeah change time range to all time and then keep cached images and files selected that's the only thing let's try delete data on okay let's close Chrome let's go back to Chrome I don't think this is going to fix the names thing because I'm it's happening on my computer too but we're going to try there's a start so that worked the logins better okay click name you know something else is going on I recently something else again I don't know what this is reload section what is going on here so if you reset it to default it works for a moment it seems for a bit yeah okay and then back in it doesn't yeah I don't know um okay and I'm not having that issue in my database either so that's what's kind of like on your personal database but yeah it is you're seeing it replicated on my database yes I tried your database on my computer and it was fine but it's not happening in my database on my computer that's why I'm a little I'm a little stumped here I log you out I don't know what I did there I hit some lock screen button on my I left it looks like you stopped sharing screen that's all you're still in the meeting it seems though yeah Okay. All right. I'll leave it with you. Yeah. Let me find out what I can, what kind of tips I can get. All righty. Okay. Thanks, Robin. All right. Thanks. Bye. Bye. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 418.279275,
+    "salad_processing_time": 13.340694904327393,
+    "overall_processing_time": 418.279275,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Hey, Robin.",
+    "job_id": "95909250-2bfc-4610-90a6-7699106d011d",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence.  This is Robin.  Hey, Robin.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Technical Support",
+        "confidence": 0.8
+      },
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "technical",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": false,
+      "solution_offered": false,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3014231136036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

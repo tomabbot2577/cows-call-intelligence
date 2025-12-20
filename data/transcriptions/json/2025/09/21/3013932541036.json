@@ -1,0 +1,95 @@
+{
+  "recording_id": "3013932541036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:26:34.927017Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:26:34",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Hi, this is Craig, and you reached me on my mobile. Leave me a number and a message, and I'll get back to you at my first opportunity. Thanks for calling. Talk soon. Good morning, Craig. It's Jim Lombardo with PC Recruiter. I wanted to give you a quick call following up with you. I think Bill Kubitschek tried to schedule a call between the three of us this morning at 945, but we aren't sure if you were included in the meeting invite. So he and I were dialed in waiting. We didn't see you. So I wanted to give you a quick call and see if we couldn't connect I'm happy to talk with you. Let me know what works I can set up the time to chat today Discovery call could squeeze in a full demo at some point. I'm happy to help I had emailed you also before you would Contacted bill so I'm open a little bit this afternoon quite a bit tomorrow. Give me a quick call Let me know what works four four zero eight five six zero three one four. That's four four zero eight five six Thanks, Craig. We'll talk to you soon.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 394.272491,
+    "salad_processing_time": 8.896413326263428,
+    "overall_processing_time": 394.272491,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Hi, this is Craig, and you reached me on my mobile.  Leave me a number and a message, and I'll get back to you at my first opportunity.  Thanks for calling.",
+    "job_id": "1cd73b20-9962-4787-996a-86e1b032f864",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Hi, this is Craig, and you reached me on my mobile.  Leave me a number and a message, and I'll get back to you at my first opportunity.  Thanks for calling.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "general",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": false,
+      "empathy_shown": false,
+      "solution_offered": true,
+      "proper_closing": false
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3013932541036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}

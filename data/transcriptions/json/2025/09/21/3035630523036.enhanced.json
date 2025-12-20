@@ -1,0 +1,124 @@
+{
+  "recording_id": "3035630523036",
+  "version": "2.0",
+  "timestamp": "2025-09-21T22:46:42.548295Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "22:46:42",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence. Thank you. How can I help you? Yes, hey, good morning. This is Scott Shapiro. Your name again? Tyler. You said Hyatt? Tyler. Tyler, Tyler. Hey, Tyler, good morning. How are you doing, Scott? Doing very good. So I was hoping you can help me. So we are a Main Sequence PCR customer for nine years now. And we just signed up an account with MailChimp to help support our bulk email. Okay. And I need to be able to integrate PCR with MailChimp so that we can continue to do our bulk email out of PCR. I know of people that have PCR that have this capability. So I'm hoping you could help me get this set up. So a lot of times when people do that, did MailChimp provide you with like an SMTP server at all to be able to? No. It's a, what's it called, an SMTP server or like SMTP server information. Hold on a second. This would be, so I'm actually got a live customer support chat with MailChimp now. So I'm asking them for, it's the MailChimp SMTP server information? Yes. It's essentially what we can do. Because we don't have a direct integration with MailChimp. Right. I know some people have used Zapier as well. Yeah. So, okay. Okay, so, yeah, MailChimp recommended Zapier, so how does that work? Let me – I guess Zapier puts MailChimp and PCR together? Correct. Okay. So I guess if I talk to Zapier – Yeah, they will be able to help you create the connection. What you do in Zapier is you pick two apps to connect to each other Right I'm not very familiar with the MailChimp on Zapier I'm looking them up right now to see exactly how it ties to the two Let me Okay. Yeah, I just asked MailChimp support about the SMTP server info. It looks like they're typing back. Yeah, so essentially what you can do in Zapier is you can connect PPP to MailChimp. Right. So he just – I'm trying to look for that, but I'm not finding anything. You can find our SMTP integrations here. Let me just click on this and see. Okay, so it says, after you created a Mailchimp transaction account, you could find your SMT credentials on the SMT and API information page. The host for all accounts is, and so this is what he gave me, smptype.madrillapp.com. And then it says you can use any active API key for your account as your SMT password. Use ports 25, 587, or 2525 for non-encrypted communication between your system and MailChimp. Does any of this make sense to you? Yep. So we could try to – essentially, we could create a new alias for you in PC Recruiter that would send through MailChimp's servers. Right. But can the alias just be my – because I'm using MailChimp, the alias can still just be my normal email address, right? It doesn't have to change from Scott at Stay Gold Solutions, correct? Correct. It can be one and the same. Okay. Which is what I would prefer. Okay. Yeah, and that's if you want the campaigns to send out through PC Recruiter. Which we do. Okay. Because what you can also do with Zapier is when the – you can create a Zap that, like, when names are added to a roll-up list, it creates a new campaign in MailChimp. Yeah, like I said, we want to continue to do, first and foremost, what I want to just do is be able to just continue to do what we've been doing, which is sending our bulk email through PCR. Because, you know, as with our roll-up lists, you know, as they continue to grow, we could just send them directly out of PCR or edit them accordingly. I want to keep everything simple. The only advantage I saw by emailing out of MailChimp was that we could create logos and stuff that wouldn't be spam, but obviously you can't do that in PCR and that's fine. So what I'm going to do is take a look at your email aliases real quick. Yeah. So I have, so there's two active employees, myself and Alexis. Alrighty. Let me just see if I can set this one up. All right. And then what was that SMTP server that they gave you? It is smtp.maryapplenancydavidrobertindigolollipoplollipopapplepeterpeter.com. One more time for me. You cut out there. All right. It's smtp.maryapplenancydavidrobertindigolollipoplollipopapplepeterpeter.com. So it looks like manrealapp.com. All right. Did they say what you would need to use for your SMTP server or username? I don't see anything here. I mean, I could send you the link that they shared with me for the SMPT integration. So when you signed up, did you use the scott at stateholdsolutions.com as the email address that you signed up with MailChimp? I did use that email address, but that's not my username for the account, but I did use that email address, yeah. Okay, perfect. It's usually that email address, it looks like. and then that's not right i did sign up with that but that's not the username for my my mailchimp account but i think yeah yeah the smtp username is always an email address yep yep so it's the same email it's any email address perfect and then did they give you that api key or did they say like where to find one for you It says you can use any active API key for your account as your SMT password. Since the API key is sufficient for authentication, Mailchimp doesn't use the SMT username to authenticate your request, but we recommend using your Mailchimp account's primary contact email as the username. Okay, perfect. Let me see if they say... So within your Mailchimp account, there's usually under account settings or API keys or integrations, that's typically where you can find that API key. Okay, so let me see. So integrations... I'm not sure. So it says integrations, but there's a search. There's a search bar that says search for an integration name or category. It might not be under there then. Do you see a section for like API keys or account settings? Let's see. ... ... Home, Campaigns, Automations, SMS, Audience, Analytics, Website, and then Integrations. And then there's a Manage button, but that's not going to do that. You want to do, maybe, is it best that we could do, you want to do like a screen share? Can we do something like that so you can see my MailChimp account? Yeah, we could take a look at it. Do you want to send me something? Yeah, I'll send you a, I'll email you a meeting link here. By the way, one of the reasons why I will never get rid of PCR is your guys' customer support is awesome. We appreciate that. We pride ourselves on our support over here. Yeah. All right. Just emailed that link on over to you. You should get it here in just a second. Yep, just got it. All right. Then at the bottom of the meeting window, you're going to see a blue box with an arrow that says share. Yep. Then you'll want to share your entire screen. Perfect. Okay. Let me get rid of this now. Hold on. Okay, so. Can you see this? Yep. Okay. Can you click on the S in the top right-hand corner? Can you go to where it says browse apps and integrations. I just want to see. Maybe it's over there. I'm just looking what... I mean, they're also pretty good with their live help. Yeah, I would say maybe chat them and ask where they can find the API key. Um, okay, so let me, where can I find the API key? Right? That's it? yep X that's just the last part we need And as long as the connection tests correctly on your end, I can help you set it up for the other user as well for their alias. Okay. So here's something, right? Yep. Go to that one. So create a key? Yes. Okay. I would just call it PCR just like that? yep then generate generate all right go ahead I'll do the copy to clipboard if you can go into the ring central chat for me or just reply to my email with that key? It might be easier. I'll get ready. There it is. Perfect. So they just sent me this. Hold on. I think we're okay. Yeah, I think we got there. Me too. They just sent me, but I think we got there anyway. All right, let me test this on my end here real quick. Let's see if this will actually send out. It's not liking the authentication. Oh, they said a specific port, right? In that first email? SMTP server port was 25? They said, let me go back. Oh, I just lost it. Let me see. this is in the way I don't know that's not it I I need to oh there it is I found it okay It's still not liking those settings that they're giving us. um Go ahead and hit done. on that. I'm done? Yep. I'm wondering if it didn't make that API key active. Right. Yeah, because that's what it says. Now you can see down at the bottom it shows it was created. Oh, there we go. I like that sound. Let me try this now. Thank you. Thank you. Why is it saying relay access? it's authenticating correctly but so so Thank you. so uh I'm just looking to see if I can find someone else's settings. Okay. Thank you. Oh, that's not it. . Do you remember who you talked to that said they had set it up with PC Recruiter before? Yeah, it's Adam Dalva at SearchMax. Perfect. Thank you. I'm not seeing them using MailChimp. I'm seeing them using SendGrid. I'm sorry, say that again? They're using SendGrid. Okay. That's why he told me he used MailChimp. Unless they're using it outside of PC Recruiter. No, he's not. Yeah, because all his aliases are SendGrid. Let me do this. Let me get your phone number from you. I'm going to ask around the office and see if anybody else has set one up. Yeah. Just so I'm not wasting too much of your time here. And once I have those settings, I can give you a call back here. Yeah, I mean, someone has to be using it, I'm sure. Yeah, nine times out of ten, if they expect SMTP relay, we can connect with them. So I just have to find what exactly the setting, because each one's a little bit different. Got it. Okay. But, I mean, we can do this. We should be able to. Okay. If we're not, then I guess Zapier is going to be the go-between? Yes. Okay. So, okay. Well, let's see if we can get this done. If not, call me back, and I guess then I can always get Zapier on the phone, and we can figure out how to do this then. Yep. So what's a good phone number for you? 516 445 4162 Perfect. Let me ask for my office here real quick and then I'll get back to you as soon as I have an answer. Awesome, Tyler. Appreciate it. Thank you. Thanks, Scott. Bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1077.421537,
+    "salad_processing_time": 200.78387832641602,
+    "overall_processing_time": 1077.421537,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence.  Thank you.  How can I help you? Yes, hey, good morning.",
+    "job_id": "94d68ed0-6a00-4f23-bda7-971623791ee9",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence.  Thank you.  How can I help you? Yes, hey, good morning.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [
+      {
+        "type": "follow_up",
+        "description": "Follow up with customer",
+        "priority": "high",
+        "assigned_to": "agent"
+      }
+    ],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "pending",
+    "first_call_resolution": false,
+    "escalation_required": false,
+    "follow_up_needed": true,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3035630523036.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  },
+  "embeddings": {
+    "text_embedding": null,
+    "summary_embedding": null,
+    "model": "text-embedding-ada-002"
+  },
+  "classifications": {
+    "intent": null,
+    "urgency": null,
+    "category": null,
+    "subcategory": null
+  },
+  "ml_metadata": {
+    "suitable_for_training": true,
+    "quality_score": 0.95,
+    "has_ground_truth": false,
+    "annotations": []
+  }
+}

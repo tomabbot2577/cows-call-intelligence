@@ -1,0 +1,661 @@
+{% extends "base.html" %}
+
+{% block title %}Transcript - {{ recording_id }}{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1><i class="fas fa-microphone me-2"></i>Call Transcript</h1>
+        <div>
+            <a href="{{ url_for('insight_detail', recording_id=recording_id) }}" class="btn btn-primary">
+                <i class="fas fa-brain me-2"></i>View AI Insights
+            </a>
+            <a href="{{ url_for('insights_list') }}" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Back to List
+            </a>
+        </div>
+    </div>
+
+    <!-- Call Metadata -->
+    <div class="card mb-4">
+        <div class="card-header bg-light">
+            <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Call Information</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>Recording ID:</strong>
+                    <p class="text-muted">{{ recording_id }}</p>
+                </div>
+                <div class="col-md-3">
+                    <strong>Customer:</strong>
+                    <p class="text-muted">
+                        {{ transcript.customer_name|default('Unknown', true) }}
+                        {% if transcript.customer_phone %}
+                            <br><small><i class="fas fa-phone"></i> {{ transcript.customer_phone }}</small>
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <strong>Employee:</strong>
+                    <p class="text-muted">
+                        {{ transcript.employee_name|default('Unknown', true) }}
+                        {% if transcript.employee_extension %}
+                            <br><small>Ext: {{ transcript.employee_extension }}</small>
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <strong>Call Date:</strong>
+                    <p class="text-muted">
+                        {% if transcript.call_date %}
+                            {{ transcript.call_date[:10] }}
+                        {% else %}
+                            -
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <strong>Duration:</strong>
+                    <p class="text-muted">
+                        {% if transcript.duration_seconds %}
+                            {{ (transcript.duration_seconds / 60)|round(1) }} minutes
+                        {% else %}
+                            -
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <strong>Word Count:</strong>
+                    <p class="text-muted">{{ transcript.word_count|default(0, true)|format_number }}</p>
+                </div>
+                <div class="col-md-3">
+                    <strong>Sentiment:</strong>
+                    <p class="text-muted">
+                        {% if transcript.customer_sentiment %}
+                            {% if transcript.customer_sentiment == 'positive' %}
+                                <span class="badge bg-success">{{ transcript.customer_sentiment|title }}</span>
+                            {% elif transcript.customer_sentiment == 'negative' %}
+                                <span class="badge bg-danger">{{ transcript.customer_sentiment|title }}</span>
+                            {% else %}
+                                <span class="badge bg-secondary">{{ transcript.customer_sentiment|title }}</span>
+                            {% endif %}
+                        {% else %}
+                            <span class="badge bg-secondary">Not analyzed</span>
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="col-md-3">
+                    <strong>Quality Score:</strong>
+                    <p class="text-muted">
+                        {% if transcript.call_quality_score %}
+                            {{ transcript.call_quality_score|round(1) }}/10
+                        {% else %}
+                            -
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4 AI Layers Accordion -->
+    <div class="accordion mb-4" id="aiLayersAccordion">
+
+        <!-- Layer 1: Entity Extraction (already shown above in metadata, so collapsed) -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <i class="fas fa-users me-2"></i><strong>Layer 1: Entity Extraction</strong>
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne">
+                <div class="accordion-body">
+                    <p>Entity information is displayed in the Call Information section above.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Layer 2: Enhanced Sentiment & Quality Analysis -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-heart me-2"></i><strong>Layer 2: Enhanced Sentiment & Quality Analysis</strong>
+                </button>
+            </h2>
+            <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo">
+                <div class="accordion-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <p><strong>Customer Sentiment:</strong>
+                                {% if transcript.customer_sentiment %}
+                                    {% if transcript.customer_sentiment == 'positive' %}
+                                        <span class="badge bg-success">{{ transcript.customer_sentiment|title }}</span>
+                                    {% elif transcript.customer_sentiment == 'negative' %}
+                                        <span class="badge bg-danger">{{ transcript.customer_sentiment|title }}</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">{{ transcript.customer_sentiment|title }}</span>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="badge bg-secondary">Not analyzed</span>
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p><strong>Quality Score:</strong>
+                                <span class="badge bg-info">{{ transcript.quality_score or transcript.call_quality_score or 0 }}/10</span>
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p><strong>Overall Rating:</strong>
+                                <span class="badge bg-warning">{{ transcript.overall_call_rating|default(0, true) }}/10</span>
+                            </p>
+                        </div>
+                        <div class="col-md-3">
+                            <p><strong>Call Type:</strong> {{ transcript.call_type|default('Unknown', true) }}</p>
+                        </div>
+                    </div>
+
+                    {% if transcript.sentiment_reasoning %}
+                    <div class="mt-3">
+                        <p><strong>Sentiment Reasoning:</strong></p>
+                        <div class="alert alert-info">
+                            <i class="fas fa-brain me-2"></i>{{ transcript.sentiment_reasoning }}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if transcript.quality_reasoning %}
+                    <div class="mt-3">
+                        <p><strong>Quality Reasoning:</strong></p>
+                        <div class="alert alert-success">
+                            <i class="fas fa-star me-2"></i>{{ transcript.quality_reasoning }}
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if transcript.summary %}
+                    <div class="mt-3">
+                        <p><strong>Summary:</strong></p>
+                        <div class="alert alert-light">{{ transcript.summary }}</div>
+                    </div>
+                    {% endif %}
+                    {% if transcript.key_topics %}
+                    <div class="mt-3">
+                        <p><strong>Key Topics:</strong></p>
+                        <div>
+                            {% for topic in transcript.key_topics %}
+                                <span class="badge bg-primary me-2">{{ topic }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endif %}
+
+                    {% if transcript.coaching_notes %}
+                    <div class="mt-3">
+                        <p><strong>Coaching Notes:</strong></p>
+                        <div class="alert alert-warning">
+                            <i class="fas fa-clipboard-check me-2"></i>{{ transcript.coaching_notes }}
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="mt-3">
+                        <p><strong>Follow-up Required:</strong>
+                            <span class="badge {% if transcript.follow_up_needed or transcript.follow_up_required %}bg-warning{% else %}bg-success{% endif %}">
+                                {{ 'Yes' if (transcript.follow_up_needed or transcript.follow_up_required) else 'No' }}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Layer 3: Call Resolution & Loop Closure -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <i class="fas fa-check-circle me-2"></i><strong>Layer 3: Call Resolution & Loop Closure</strong>
+                </button>
+            </h2>
+            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree">
+                <div class="accordion-body">
+                    {% if transcript.resolution_status or transcript.solution_summarized is not none %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6>Resolution Status</h6>
+                                <p><strong>Status:</strong> {{ transcript.resolution_status|default('Not analyzed', true) }}</p>
+                                <p><strong>Problem Statement:</strong> {{ transcript.problem_statement|default('Not identified', true) }}</p>
+                                {% if transcript.resolution_details %}
+                                <p><strong>Resolution Details:</strong> {{ transcript.resolution_details }}</p>
+                                {% endif %}
+                                {% if transcript.follow_up_type %}
+                                <p><strong>Follow-up Type:</strong> {{ transcript.follow_up_type }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Loop Closure Quality</h6>
+                                <p><strong>Closure Score:</strong>
+                                    <span class="badge bg-info">{{ transcript.closure_score|default(0, true) }}/10</span>
+                                </p>
+                                <p><strong>Solution Summarized:</strong>
+                                    <span class="badge {% if transcript.solution_summarized %}bg-success{% else %}bg-warning{% endif %}">
+                                        {{ 'Yes' if transcript.solution_summarized else 'No' }}
+                                    </span>
+                                </p>
+                                <p><strong>Understanding Confirmed:</strong>
+                                    <span class="badge {% if transcript.understanding_confirmed %}bg-success{% else %}bg-warning{% endif %}">
+                                        {{ 'Yes' if transcript.understanding_confirmed else 'No' }}
+                                    </span>
+                                </p>
+                                <p><strong>Next Steps Provided:</strong>
+                                    <span class="badge {% if transcript.next_steps_provided %}bg-success{% else %}bg-warning{% endif %}">
+                                        {{ 'Yes' if transcript.next_steps_provided else 'No' }}
+                                    </span>
+                                </p>
+                                <p><strong>Timeline Given:</strong>
+                                    <span class="badge {% if transcript.timeline_given %}bg-success{% else %}bg-warning{% endif %}">
+                                        {{ 'Yes' if transcript.timeline_given else 'No' }}
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                        {% if transcript.missed_best_practices %}
+                        <div class="mt-3">
+                            <p><strong>Best Practices Missed:</strong></p>
+                            <ul>
+                                {% for practice in transcript.missed_best_practices %}
+                                <li>{{ practice }}</li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                        {% endif %}
+                    {% else %}
+                        <p class="text-muted">Resolution analysis not yet available for this call.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Layer 4: Process Recommendations -->
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                    <i class="fas fa-lightbulb me-2"></i><strong>Layer 4: Process Recommendations</strong>
+                </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour">
+                <div class="accordion-body">
+                    {% if transcript.process_improvements or transcript.efficiency_score is not none %}
+                        <div class="row">
+                            <div class="col-md-6">
+                                {% if transcript.process_improvements %}
+                                <h6>Process Improvements</h6>
+                                <ul>
+                                    {% for improvement in transcript.process_improvements %}
+                                    <li>{{ improvement }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+
+                                {% if transcript.employee_strengths %}
+                                <h6>Employee Strengths</h6>
+                                <ul class="list-unstyled">
+                                    {% for strength in transcript.employee_strengths %}
+                                    <li><i class="fas fa-star text-success me-1"></i>{{ strength }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                {% if transcript.employee_improvements %}
+                                <h6>Areas for Improvement</h6>
+                                <ul>
+                                    {% for improvement in transcript.employee_improvements %}
+                                    <li>{{ improvement }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+
+                                {% if transcript.follow_up_actions %}
+                                <h6>Follow-up Actions</h6>
+                                <ul>
+                                    {% for action in transcript.follow_up_actions %}
+                                    <li>{{ action }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        {% if transcript.escalation_needed or transcript.escalation_required %}
+                        <div class="alert alert-warning mt-3">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            <strong>Escalation Required:</strong>
+                            Risk Level: <span class="badge bg-danger">{{ transcript.risk_level|default('High', true) }}</span>
+                            {% if transcript.escalation_reason %}
+                            <br>Reason: {{ transcript.escalation_reason }}
+                            {% endif %}
+                        </div>
+                        {% endif %}
+
+                        <div class="mt-3">
+                            <p><strong>Efficiency Score:</strong>
+                                <span class="badge bg-info">{{ transcript.efficiency_score|default(0, true) }}/10</span>
+                            </p>
+                        </div>
+                    {% else %}
+                        <p class="text-muted">Recommendations not yet available for this call.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Knowledge Base Updates -->
+    {% if transcript.knowledge_base_updates %}
+    <div class="card mb-4">
+        <div class="card-header bg-secondary text-white">
+            <h5 class="mb-0"><i class="fas fa-book me-2"></i>Knowledge Base Updates</h5>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                {% for update in transcript.knowledge_base_updates %}
+                    <li class="list-group-item"><i class="fas fa-edit me-2 text-secondary"></i>{{ update }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Escalation & Risk Assessment -->
+    {% if transcript.rec_escalation_required or transcript.risk_level %}
+    <div class="card mb-4 border-{% if transcript.risk_level == 'high' %}danger{% elif transcript.risk_level == 'medium' %}warning{% else %}success{% endif %}">
+        <div class="card-header bg-{% if transcript.risk_level == 'high' %}danger{% elif transcript.risk_level == 'medium' %}warning{% else %}success{% endif %} text-white">
+            <h5 class="mb-0"><i class="fas fa-exclamation-triangle me-2"></i>Risk Assessment</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <strong>Escalation Required:</strong>
+                    <span class="badge bg-{% if transcript.rec_escalation_required %}danger{% else %}success{% endif %} ms-2">
+                        {% if transcript.rec_escalation_required %}Yes{% else %}No{% endif %}
+                    </span>
+                </div>
+                <div class="col-md-6">
+                    <strong>Risk Level:</strong>
+                    <span class="badge bg-{% if transcript.risk_level == 'high' %}danger{% elif transcript.risk_level == 'medium' %}warning{% else %}success{% endif %} ms-2">
+                        {{ transcript.risk_level|title if transcript.risk_level else 'Low' }}
+                    </span>
+                </div>
+            </div>
+            {% if transcript.escalation_reason %}
+            <div class="mt-3">
+                <strong>Escalation Reason:</strong>
+                <p class="text-muted mt-1">{{ transcript.escalation_reason }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Call Resolution & Problem Solving -->
+    {% if transcript.problem_statement or transcript.resolution_status %}
+    <div class="card mb-4">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0"><i class="fas fa-check-circle me-2"></i>Call Resolution</h5>
+        </div>
+        <div class="card-body">
+            {% if transcript.problem_statement %}
+            <div class="mb-3">
+                <strong>Problem Statement:</strong>
+                <p class="text-muted mt-1">{{ transcript.problem_statement }}</p>
+            </div>
+            {% endif %}
+            <div class="row">
+                {% if transcript.resolution_status %}
+                <div class="col-md-4">
+                    <strong>Resolution Status:</strong>
+                    <span class="badge bg-{% if transcript.resolution_status == 'resolved' %}success{% elif transcript.resolution_status == 'partial' %}warning{% else %}danger{% endif %} ms-2">
+                        {{ transcript.resolution_status|title }}
+                    </span>
+                </div>
+                {% endif %}
+                {% if transcript.follow_up_type %}
+                <div class="col-md-4">
+                    <strong>Follow-up Required:</strong>
+                    <span class="badge bg-{% if transcript.follow_up_type == 'none' %}success{% else %}warning{% endif %} ms-2">
+                        {{ transcript.follow_up_type|title }}
+                    </span>
+                </div>
+                {% endif %}
+                {% if transcript.customer_satisfaction_likely %}
+                <div class="col-md-4">
+                    <strong>Customer Satisfaction:</strong>
+                    <span class="badge bg-{% if transcript.customer_satisfaction_likely == 'high' %}success{% elif transcript.customer_satisfaction_likely == 'medium' %}warning{% else %}danger{% endif %} ms-2">
+                        {{ transcript.customer_satisfaction_likely|title }}
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+            {% if transcript.resolution_details %}
+            <div class="mt-3">
+                <strong>Resolution Details:</strong>
+                <p class="text-muted mt-1">{{ transcript.resolution_details }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Loop Closure Quality -->
+    {% if transcript.closure_score or transcript.solution_summarized is not none %}
+    <div class="card mb-4">
+        <div class="card-header bg-info text-white">
+            <h5 class="mb-0"><i class="fas fa-sync me-2"></i>Loop Closure Quality</h5>
+        </div>
+        <div class="card-body">
+            {% if transcript.closure_score %}
+            <div class="text-center mb-3">
+                <h4 class="text-{% if transcript.closure_score >= 8 %}success{% elif transcript.closure_score >= 6 %}warning{% else %}danger{% endif %}">
+                    {{ transcript.closure_score|round(1) }}/10
+                </h4>
+                <small class="text-muted">Overall Closure Score</small>
+            </div>
+            {% endif %}
+            <div class="row">
+                {% if transcript.solution_summarized is not none %}
+                <div class="col-md-6 mb-2">
+                    <i class="fas fa-{% if transcript.solution_summarized %}check text-success{% else %}times text-danger{% endif %} me-2"></i>
+                    Solution Summarized
+                </div>
+                {% endif %}
+                {% if transcript.understanding_confirmed is not none %}
+                <div class="col-md-6 mb-2">
+                    <i class="fas fa-{% if transcript.understanding_confirmed %}check text-success{% else %}times text-danger{% endif %} me-2"></i>
+                    Understanding Confirmed
+                </div>
+                {% endif %}
+                {% if transcript.asked_if_anything_else is not none %}
+                <div class="col-md-6 mb-2">
+                    <i class="fas fa-{% if transcript.asked_if_anything_else %}check text-success{% else %}times text-danger{% endif %} me-2"></i>
+                    Asked If Anything Else
+                </div>
+                {% endif %}
+                {% if transcript.next_steps_provided is not none %}
+                <div class="col-md-6 mb-2">
+                    <i class="fas fa-{% if transcript.next_steps_provided %}check text-success{% else %}times text-danger{% endif %} me-2"></i>
+                    Next Steps Provided
+                </div>
+                {% endif %}
+                {% if transcript.timeline_given is not none %}
+                <div class="col-md-6 mb-2">
+                    <i class="fas fa-{% if transcript.timeline_given %}check text-success{% else %}times text-danger{% endif %} me-2"></i>
+                    Timeline Given
+                </div>
+                {% endif %}
+                {% if transcript.contact_info_provided is not none %}
+                <div class="col-md-6 mb-2">
+                    <i class="fas fa-{% if transcript.contact_info_provided %}check text-success{% else %}times text-danger{% endif %} me-2"></i>
+                    Contact Info Provided
+                </div>
+                {% endif %}
+            </div>
+            {% if transcript.missed_best_practices %}
+            <div class="mt-3">
+                <h6 class="text-warning"><i class="fas fa-exclamation-triangle me-2"></i>Missed Best Practices</h6>
+                <ul class="list-unstyled">
+                    {% for practice in transcript.missed_best_practices %}
+                        <li class="mb-1 text-muted"><i class="fas fa-minus me-2"></i>{{ practice }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            {% if transcript.improvement_suggestions %}
+            <div class="mt-3">
+                <h6 class="text-info"><i class="fas fa-lightbulb me-2"></i>Improvement Suggestions</h6>
+                <ul class="list-unstyled">
+                    {% for suggestion in transcript.improvement_suggestions %}
+                        <li class="mb-1 text-muted"><i class="fas fa-arrow-right me-2"></i>{{ suggestion }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Risk Assessment Details -->
+    {% if transcript.call_back_risk or transcript.escalation_probability %}
+    <div class="card mb-4">
+        <div class="card-header bg-warning text-dark">
+            <h5 class="mb-0"><i class="fas fa-shield-alt me-2"></i>Risk Assessment Details</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                {% if transcript.call_back_risk %}
+                <div class="col-md-4">
+                    <strong>Call-back Risk:</strong>
+                    <span class="badge bg-{% if transcript.call_back_risk == 'low' %}success{% elif transcript.call_back_risk == 'medium' %}warning{% else %}danger{% endif %} ms-2">
+                        {{ transcript.call_back_risk|title }}
+                    </span>
+                </div>
+                {% endif %}
+                {% if transcript.escalation_probability %}
+                <div class="col-md-4">
+                    <strong>Escalation Probability:</strong>
+                    <span class="badge bg-{% if transcript.escalation_probability == 'low' %}success{% elif transcript.escalation_probability == 'medium' %}warning{% else %}danger{% endif %} ms-2">
+                        {{ transcript.escalation_probability|title }}
+                    </span>
+                </div>
+                {% endif %}
+                {% if transcript.follow_up_timeline %}
+                <div class="col-md-4">
+                    <strong>Follow-up Timeline:</strong>
+                    <p class="text-muted mb-0">{{ transcript.follow_up_timeline }}</p>
+                </div>
+                {% endif %}
+            </div>
+            {% if transcript.follow_up_details %}
+            <div class="mt-3">
+                <strong>Follow-up Details:</strong>
+                <p class="text-muted mt-1">{{ transcript.follow_up_details }}</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Performance Metrics -->
+    {% if transcript.efficiency_score or transcript.training_priority %}
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="fas fa-chart-line me-2"></i>Performance Metrics</h5>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                {% if transcript.efficiency_score %}
+                <div class="col-md-4">
+                    <strong>Efficiency Score:</strong>
+                    <p class="text-muted">{{ transcript.efficiency_score|round(1) }}/10</p>
+                </div>
+                {% endif %}
+                {% if transcript.training_priority %}
+                <div class="col-md-4">
+                    <strong>Training Priority:</strong>
+                    <span class="badge bg-{% if transcript.training_priority == 'high' %}danger{% elif transcript.training_priority == 'medium' %}warning{% else %}success{% endif %} ms-2">
+                        {{ transcript.training_priority|title }}
+                    </span>
+                </div>
+                {% endif %}
+                {% if transcript.follow_up_needed %}
+                <div class="col-md-4">
+                    <strong>Follow-up Needed:</strong>
+                    <span class="badge bg-{% if transcript.follow_up_needed %}warning{% else %}success{% endif %} ms-2">
+                        {% if transcript.follow_up_needed %}Yes{% else %}No{% endif %}
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% endif %}
+
+    <!-- Full Transcript -->
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="fas fa-file-alt me-2"></i>Full Transcript</h5>
+        </div>
+        <div class="card-body">
+            {% if transcript_lines %}
+                <div class="transcript-content" style="max-height: 600px; overflow-y: auto;">
+                    {% for paragraph in transcript_lines %}
+                        <p class="mb-3">{{ paragraph }}</p>
+                    {% endfor %}
+                </div>
+            {% elif transcript.transcript_text %}
+                <div class="transcript-content" style="max-height: 600px; overflow-y: auto;">
+                    <pre style="white-space: pre-wrap; word-wrap: break-word;">{{ transcript.transcript_text }}</pre>
+                </div>
+            {% else %}
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    No transcript text available for this recording.
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="mt-4 text-center">
+        <a href="{{ url_for('insight_detail', recording_id=recording_id) }}" class="btn btn-primary">
+            <i class="fas fa-brain me-2"></i>View AI Insights
+        </a>
+        <a href="{{ url_for('insights_list') }}" class="btn btn-outline-secondary">
+            <i class="fas fa-list me-2"></i>Back to Insights List
+        </a>
+        <button onclick="window.print();" class="btn btn-outline-info">
+            <i class="fas fa-print me-2"></i>Print Transcript
+        </button>
+    </div>
+</div>
+
+<style>
+.transcript-content {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+}
+
+@media print {
+    .btn, .navbar {
+        display: none !important;
+    }
+}
+</style>
+{% endblock %}

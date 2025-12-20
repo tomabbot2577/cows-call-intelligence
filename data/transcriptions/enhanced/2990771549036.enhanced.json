@@ -1,0 +1,104 @@
+{
+  "recording_id": "2990771549036",
+  "version": "3.0",
+  "timestamp": "2025-09-21T23:47:31.762260Z",
+  "processing_complete": true,
+  "call_metadata": {
+    "date": "2025-09-21",
+    "duration_seconds": 391.32,
+    "word_count": 889,
+    "customer": {
+      "name": "",
+      "phone": null,
+      "company": null
+    },
+    "employee": {
+      "name": "",
+      "extension": null,
+      "department": null
+    }
+  },
+  "transcript_text": "Thank you for calling Main Sequence Technology. This is Garrett. How may I help you? Hey, Garrett. This is Jeremy Vanzelis with the SARTorx Group. I am having some trouble. I've got a user in PCR, and we have them set up with a personal Gmail account for them to use in their PCR mail in their user record but I need to update that to their search works but I'm having a hard time getting it to sync up can you welcome to it yes which database is it in MRN for Sheen Hills, yeah. Perfect. And what is the username? Ava Vanzelis. Ava Vanzelis. All right. I'm going to jump over to, so let's start by going to the tiny gear icon at the top right of PCR and select email from that drop down to open up PCR mail. Okay. And should I be doing this from her user? Yes. You'll need to sign in as that user. One moment. Okay. Okay. Are you still here? I had to switch over to my cell phone from the \u2013 Yeah, no problem. Okay. So, go to the gear. Yeah, gear at the top right. Email, exactly. Okay. Then at the top left of PCRMails, configure, another gear icon. Click on that. Got it. And we'll start with the incoming mail first. We're just going to mail servers. And then at the bottom there, it'll have a mail server listed. Use the action dropdown to edit it. Okay. And this looks like it has Outlook Office 365. Let me test the connection on that. Well, that one looks like it is set up correctly. Okay. Yeah, we tried to do this Friday, but it has not worked. Okay. Oh, okay. All right, so let me test another thing. I'll go to the alias. Let's see. Alias testing connection. Okay, so the incoming mail looks like it's connected. It's just the outgoing mail that's not connected currently. Let me look up this. Oh, I know this error. It says SMTP client authentication is disabled for tenant. Not a problem. Okay. Okay. So I'm going to have you go in a new tab, go to admin.microsoft.com. One sec. I'm going to go back to my desk because this is where I manage all of this. Oh, good. Okay. Perfect. So I have that up right now. Excellent. And are you managed by GoDaddy? Is it having any GoDaddy logos up at the top or is this strictly through Microsoft? strictly through Microsoft excellent okay so if you're on the admin page go to the on the left you should see users and then active users underneath it okay got it and then click on the name of the user to have this it'll have like a fly out window from the right okay and then in the main menu of that fly out window it'll say mail select that got it and then on the right, I believe it'll say email apps, and then there'll be a button to manage email apps. Got it. Okay. And that should give you a list that should basically all be checked, especially the last one related to SMTP. Okay. It was not. So I will check that and save changes. Save changes. Excellent. So it could take up to 10, maybe even 15 minutes to register that you've turned that on but let's go back to pcr mail and we can run a test to see if it's connected yet just to start off here let's see I'm going to look at one other thing while we're waiting on that too okay yeah you already mapped the folders excellent and you have the activities turned on subject body. Okay. Yeah. It's literally everything else is set up. It's just that one check needed to be turned on. So yeah, let's test that. Do you still have PCR mail pulled up? We do. Yeah. Should we go back to the mail servers button? Mail servers is good. Go to alias address list at the top. Okay. Got it. And then in the bottom frame, click the pencil icon to edit that email alias. Yes, sir. And then hit test connection. It still might be red. Like I said, it might take 10 to 15 minutes, but I think we've adjusted what needs adjusted for that to turn green. Yeah, we got the authentication is red. Authentication unsuccessful. So we might just wait 10 minutes and try that again. Exactly. Yep. And so in the meantime, you can receive in email. That's been working. It looks like it's already synced based on some of the folders on the left there. You still have 248 messages in an inbox. So that is working. It's just you weren't able to send email out. So that's what we're waiting on then. Awesome. OK. All right. Well, then we'll give it some time and test it again in a little bit. I appreciate it. Thanks for pointing me to the admin center. Yeah, no problem. And if you don't get a positive test result in the next 15 minutes or so, give us a call back and we'll continue to troubleshoot. Thank you so much. All right. Awesome. Have a great rest of your day. You too. Thank you.",
+  "ai_insights": {
+    "sentiment_analysis": {
+      "customer_sentiment": "positive",
+      "call_quality_score": 8.5,
+      "call_type": "technical_support",
+      "key_topics": [
+        "email configuration",
+        "SMTP authentication",
+        "PCR mail setup"
+      ],
+      "summary": "The customer was having trouble syncing a user's personal Gmail account with their PCR mail, and the agent was able to guide them through the necessary steps to enable SMTP client authentication in the Microsoft admin portal, which resolved the issue.",
+      "follow_up_needed": null,
+      "escalation_required": null
+    },
+    "process_recommendations": {
+      "process_improvements": [
+        "Review standard procedures"
+      ],
+      "employee_coaching": {
+        "strengths": [
+          "Professional communication"
+        ],
+        "improvements": [
+          "Could improve response time"
+        ],
+        "suggested_phrases": []
+      },
+      "follow_up_actions": [
+        "Follow up with customer"
+      ],
+      "knowledge_base_updates": [],
+      "escalation": {
+        "required": false,
+        "risk_level": "low",
+        "reason": ""
+      },
+      "performance_metrics": {
+        "efficiency_score": 5.0,
+        "training_priority": "low"
+      }
+    },
+    "call_resolution": {
+      "problem_statement": "The customer, Jeremy Vanzelis from SARTorx Group, was having trouble updating a user's email address in PCR (Patient Care Record) from a personal Gmail account to their work email address. The issue was that the email sync was not working properly.",
+      "resolution_status": "partially_resolved",
+      "resolution_details": "The employee, Garrett, was able to identify the issue and guide the customer through the steps to enable SMTP client authentication in the Microsoft admin portal. However, the changes have not taken effect yet and the email sync is still not working.",
+      "follow_up": {
+        "type": "employee_callback",
+        "details": "The employee needs to follow up with the customer in 10-15 minutes to check if the email sync is working after the authentication changes have been applied.",
+        "timeline": "10-15 minutes"
+      },
+      "loop_closure": {
+        "solution_summarized": true,
+        "understanding_confirmed": true,
+        "asked_if_anything_else": true,
+        "next_steps_provided": true,
+        "timeline_given": true,
+        "contact_info_provided": false,
+        "closure_score": 8.0
+      },
+      "quality_assessment": {
+        "missed_best_practices": [
+          "Providing the employee's contact information for future reference"
+        ],
+        "improvement_suggestions": [
+          "The employee could have provided their contact information to the customer in case the issue persists or the customer has any further questions."
+        ],
+        "customer_satisfaction_likely": "medium",
+        "call_back_risk": "low",
+        "escalation_probability": "low"
+      }
+    }
+  },
+  "pipeline_metadata": {
+    "ai_model_versions": {
+      "sentiment": "deepseek/deepseek-r1",
+      "recommendations": "deepseek/deepseek-r1",
+      "name_extraction": "anthropic/claude-3-opus",
+      "embeddings": "openai/text-embedding-ada-002"
+    },
+    "processing_date": "2025-09-21T23:47:31.762287Z",
+    "version": "3.0"
+  }
+}

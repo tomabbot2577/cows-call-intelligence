@@ -1,0 +1,100 @@
+{
+  "recording_id": "3058532668037",
+  "version": "2.0",
+  "timestamp": "2025-09-21T23:07:15.479647Z",
+  "call_metadata": {
+    "date": "2025-09-21",
+    "time": "23:07:15",
+    "duration_seconds": 0,
+    "direction": "unknown",
+    "from": {
+      "number": "unknown",
+      "name": "",
+      "extension": "",
+      "department": ""
+    },
+    "to": {
+      "number": "unknown",
+      "name": "",
+      "company": ""
+    },
+    "file_size_bytes": 0
+  },
+  "transcription": {
+    "text": " Thank you for calling Main Sequence Technology. This is Tyler. How can I help you? Hey, Tyler. I think I was just talking with you. Yeah. Yeah, sorry. It got disconnected. I had somebody came to the door, and I walked, I think, too far away from the phone. Sorry. No, not at all. So I'm getting the same thing. Let me try it in my test database here. Okay. So we did it in Vision and in – I've had him go ahead and try Dental, and it did the same thing. I tried it in Chrome and in Edge. Same thing. Is he saying this just recently started happening? You know, I guess, because he said they just told him to call in to us to check, and I did the basics, clear cache, cookies, update Chrome, update the extensions, did all that, rebooted the machine, and everything still. So that's kind of how we go. A lot of times they get weird glitches. It's mostly just Chrome's got a pending update and update the extensions. But I'm assuming it must have just started for him just calling in, or he may be just new. I'm not really familiar with him myself, actually. Yeah, because it's not happening to me in my database. So that's why I was wondering if there's something set up on the back end that wasn't done if he's new and was set up. I think he is new, actually. Yeah, let me try this again here, though. Let me try this. Thank you. I wonder if it's just there is a user setting. Because mine, by default, will show all the fields regardless, and it doesn't do it. That's what I was looking for, yeah, because I actually did that. I opened up the bottom email field, then went back up to the phone field, opened them both up, had all the show all fields for those two. And then when you put data in both, it doesn't ask. So, and I was wondering, I'm like, I thought those fields are always open, but maybe I'm wrong. I don't use PCR daily, just help them. Yeah, let me... Aha, I found it. In his user settings, he has the save alert turned on. I was looking for that and I couldn't find it but I'm not as familiar with this so if you go to the gear icon in the very top right hand corner PC Recruiter by the profile picture and then go to user preferences and in the navigation configuration there's a save alert Do you mind if I turn that off for just a second to see if that fixes it for him here? No, I'm not on the phone with him at the moment, but yeah, I mean, probably that's what that is. If that would do, I mean, you could test it. I guess if you turn it off on your end, it's not going to turn it off on his end. Is that right? I'm not as familiar with how y'all's little setup is there. Yeah. Well, I'm logged in as the user right now. I'm just testing it in real time. I'll turn it right back. But, I mean, yeah. But would you flipping switches on your end, does that affect him? Or does he have to log out and log in to, like, accept, you know, to see the same things you've changed? It's still doing it anyway, so I'm turning it back on. Oh, it's because I didn't save it. Hold on. Now, like I said, I'll literally be in here for two seconds past the next. No, you're fine. I mean, I don't know if you look, I'm just not familiar. I'm curious when y'all log in as him, does that, you're doing it, he can still be in there, it's fine, or does that knock him out? Yeah, no, no, no, he can still be in there. But do the changes go globally across both? Like between databases? Yeah, like, well, no, I mean, if you make a change on your end, does it instantly show up on his login session, or does he have to like log out, log in to see it? It would instantly show on his. Okay. Like, as he reloads the page. Yeah, yeah. Okay. That's what I was wondering. All right. That fixed it. So it is that and save it. Okay. Yep. It's that save alert. Perfect. Because I will go in and check that. Do you want me to just leave it? I was in the ETS dental final database. Do you want me to just leave that? So you're going to have to do it. Yeah, you can leave it in that one. You're going to have to do it in each one. Yeah, it would be a user preference in each database that he's in. All right, I'll get with him and show him so he knows if it happens again, so somebody there knows how to turn it off. And I could help him. Yeah, yeah. That's awesome. I appreciate that. Yeah, because I didn't want to mess around with him too much. I'm like, yeah, I've done the basics. Let me see. This sounds more back-end, you know. Yeah, it's just one of those quirky little preferences on that details screen. And it just didn't stay on. Or I guess it's glitched and turned on, or he may have accidentally turned it on. Yeah, or they copied from a user that had it on, like when they created his username. Yeah, yeah, yeah. I got you. That is possible. Yep. Oh, that is good to know. Just go to the gear icon, go to user preferences, and then under navigation configuration, just uncheck the save alert and then save that change. Perfect. I will do that and get with him, let him know, and then we'll test it, and it should be fine. Yep, yeah, and if you're having any hiccups, just let us know. Yes, sir. Thank you very much. I appreciate it. Yep, you have a great day. Yes, sir. You too. Bye-bye.",
+    "confidence": 0.95,
+    "language": "en-US",
+    "language_probability": 1.0,
+    "word_count": 0,
+    "duration_seconds": 0,
+    "processing_time_seconds": 1706.274353,
+    "salad_processing_time": 30.1321222782135,
+    "overall_processing_time": 1706.274353,
+    "segments": [],
+    "word_segments": [],
+    "speakers": [],
+    "srt_content": "",
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "job_id": "9c52e026-7ba3-4be3-ba2c-2742202b3f84",
+    "timestamps": []
+  },
+  "ai_analysis": {
+    "summary": " Thank you for calling Main Sequence Technology.  This is Tyler.  How can I help you? Hey, Tyler.",
+    "sentiment": {
+      "overall": "neutral",
+      "customer": "neutral",
+      "agent": "professional",
+      "score": 0.5
+    },
+    "topics": [
+      {
+        "name": "Account Access",
+        "confidence": 0.75
+      }
+    ],
+    "entities": [],
+    "action_items": [],
+    "customer_satisfaction": {
+      "predicted_score": 3,
+      "indicators": [
+        "neutral_interaction"
+      ]
+    },
+    "key_moments": [],
+    "conversation_flow": {
+      "speaker_changes": 0,
+      "total_segments": 0,
+      "agent_speaking_percentage": 0,
+      "customer_speaking_percentage": 0,
+      "average_turn_duration": 0,
+      "conversation_pace": "slow"
+    }
+  },
+  "support_metrics": {
+    "issue_type": "account",
+    "resolution_status": "resolved",
+    "first_call_resolution": true,
+    "escalation_required": false,
+    "follow_up_needed": false,
+    "agent_performance": {
+      "greeting": true,
+      "empathy_shown": true,
+      "solution_offered": true,
+      "proper_closing": true
+    }
+  },
+  "n8n_metadata": {
+    "workflow_ready": true,
+    "processing_queue": "support_calls",
+    "tags": [],
+    "webhook_url": "",
+    "automation_triggers": []
+  },
+  "storage": {
+    "google_drive_id": "",
+    "google_drive_url": "",
+    "local_path": "/data/transcriptions/json/2025/09/21/3058532668037.json",
+    "backup_status": "pending",
+    "retention_days": 90
+  }
+}
