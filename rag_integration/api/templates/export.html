@@ -1,0 +1,226 @@
+{% extends "base.html" %}
+
+{% block title %}Export{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="bi bi-cloud-upload me-2"></i>Export to RAG Systems</h2>
+</div>
+
+{% if status.get('error') %}
+<div class="alert alert-danger">
+    <i class="bi bi-exclamation-triangle me-2"></i>{{ status.error }}
+</div>
+{% endif %}
+
+<!-- Export Status -->
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card bg-success text-white">
+            <div class="card-body text-center">
+                <h3>{{ status.get('database', {}).get('total_transcripts', 0) }}</h3>
+                <div>Total Transcripts</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-primary text-white">
+            <div class="card-body text-center">
+                <h3>{{ status.get('exports', {}).get('files_count', 0) }}</h3>
+                <div>Exported Files</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-info text-white">
+            <div class="card-body text-center">
+                <h3>{{ status.get('gcs', {}).get('bucket', 'N/A') }}</h3>
+                <div>GCS Bucket</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Database Info -->
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="bi bi-database me-2"></i>Database Status
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Date Range:</strong> {{ status.get('database', {}).get('date_range', 'N/A') }}</p>
+                <p><strong>With Insights:</strong> {{ status.get('database', {}).get('with_insights', 0) }}</p>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Export Directory:</strong> <code>{{ status.get('exports', {}).get('directory', 'N/A') }}</code></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Export Form -->
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="bi bi-gear me-2"></i>Run Export
+    </div>
+    <div class="card-body">
+        <form id="exportForm">
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="form-label">Export Type:</label>
+                    <select name="export_type" class="form-select" id="exportType" onchange="toggleDateField()">
+                        <option value="incremental">Incremental (Last 24 hours)</option>
+                        <option value="full">Full Export (All Data)</option>
+                        <option value="since">Since Date</option>
+                    </select>
+                </div>
+                <div class="col-md-4" id="sinceDateDiv" style="display: none;">
+                    <label class="form-label">Since Date:</label>
+                    <input type="date" name="since_date" class="form-control" id="sinceDate">
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Batch Size:</label>
+                    <input type="number" name="batch_size" class="form-control" value="100" min="10" max="500">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <label class="form-label">Options:</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="skip_gcs" id="skipGcs">
+                        <label class="form-check-label" for="skipGcs">
+                            Skip GCS Upload (local export only)
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="skip_gemini" id="skipGemini">
+                        <label class="form-check-label" for="skipGemini">
+                            Skip Gemini Import
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="skip_vertex" id="skipVertex">
+                        <label class="form-check-label" for="skipVertex">
+                            Skip Vertex AI Import
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-primary btn-lg" onclick="startExport()">
+                <i class="bi bi-cloud-upload me-2"></i>Start Export
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Export Status -->
+<div class="card" id="exportStatus" style="display: none;">
+    <div class="card-header">
+        <i class="bi bi-hourglass-split me-2"></i>Export Progress
+    </div>
+    <div class="card-body">
+        <div class="alert alert-info" id="exportMessage">
+            <i class="bi bi-info-circle me-2"></i>Export started in background...
+        </div>
+    </div>
+</div>
+
+<!-- Recent Exports -->
+<div class="card mt-4">
+    <div class="card-header">
+        <i class="bi bi-clock-history me-2"></i>Recent Export Files
+    </div>
+    <div class="card-body">
+        {% if status.get('exports', {}).get('latest_files') %}
+        <ul class="list-group">
+            {% for file in status.get('exports', {}).get('latest_files', []) %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <code>{{ file }}</code>
+                <span class="badge bg-secondary">JSONL</span>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="text-muted">No export files found.</p>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Info Box -->
+<div class="card mt-4 border-info">
+    <div class="card-header bg-info text-white">
+        <i class="bi bi-info-circle me-2"></i>About RAG Export
+    </div>
+    <div class="card-body">
+        <p>The export pipeline performs the following steps:</p>
+        <ol>
+            <li><strong>Read from PostgreSQL</strong> - Fetches calls with ALL 5 layers of analysis complete</li>
+            <li><strong>Format to JSONL</strong> - Converts data to RAG-ready format with metadata</li>
+            <li><strong>Upload to GCS</strong> - Stores files in Google Cloud Storage bucket</li>
+            <li><strong>Import to Gemini</strong> - Enables semantic search via Gemini File Search</li>
+            <li><strong>Import to Vertex AI</strong> - Enables structured queries via Vertex AI RAG</li>
+        </ol>
+        <p class="mb-0"><strong>Note:</strong> Only calls with complete analysis (all 5 layers) are exported to ensure quality.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function toggleDateField() {
+    const exportType = document.getElementById('exportType').value;
+    const sinceDateDiv = document.getElementById('sinceDateDiv');
+    sinceDateDiv.style.display = exportType === 'since' ? 'block' : 'none';
+}
+
+async function startExport() {
+    const form = document.getElementById('exportForm');
+    const exportType = document.getElementById('exportType').value;
+
+    let sinceDate = null;
+    if (exportType === 'since') {
+        sinceDate = document.getElementById('sinceDate').value;
+        if (!sinceDate) {
+            alert('Please select a date');
+            return;
+        }
+    }
+
+    const data = {
+        since_date: exportType === 'full' ? null : (exportType === 'since' ? sinceDate : null),
+        batch_size: parseInt(form.querySelector('[name="batch_size"]').value),
+        skip_gcs: form.querySelector('[name="skip_gcs"]').checked,
+        skip_gemini: form.querySelector('[name="skip_gemini"]').checked,
+        skip_vertex: form.querySelector('[name="skip_vertex"]').checked
+    };
+
+    document.getElementById('exportStatus').style.display = 'block';
+    document.getElementById('exportMessage').innerHTML = '<i class="bi bi-hourglass-split me-2"></i>Starting export...';
+
+    try {
+        const response = await fetch('/api/v1/rag/export', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (result.status === 'started') {
+            document.getElementById('exportMessage').innerHTML =
+                '<i class="bi bi-check-circle me-2"></i>Export started successfully! Running in background...';
+            document.getElementById('exportMessage').className = 'alert alert-success';
+        } else {
+            throw new Error(result.error || 'Unknown error');
+        }
+    } catch (error) {
+        document.getElementById('exportMessage').innerHTML =
+            '<i class="bi bi-x-circle me-2"></i>Export failed: ' + error.message;
+        document.getElementById('exportMessage').className = 'alert alert-danger';
+    }
+}
+</script>
+{% endblock %}

@@ -1,0 +1,177 @@
+/* COWS RAG Custom Styles */
+
+:root {
+    --primary-color: #2c3e50;
+    --secondary-color: #3498db;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --danger-color: #e74c3c;
+    --purple-color: #8e44ad;
+}
+
+/* Badge colors for RAG systems */
+.badge-gemini {
+    background-color: var(--purple-color) !important;
+}
+
+.badge-vertex {
+    background-color: #16a085 !important;
+}
+
+/* Card hover effect */
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* Stat cards */
+.stat-card .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* Response box */
+.response-box {
+    background: #f8f9fa;
+    border-left: 4px solid var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: 0 10px 10px 0;
+    white-space: pre-wrap;
+    font-family: 'Monaco', 'Consolas', monospace;
+    font-size: 0.9rem;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+/* Filter tags */
+.filter-tag {
+    display: inline-block;
+    background: #e8f4f8;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    margin: 0.25rem;
+    font-size: 0.85rem;
+    color: var(--primary-color);
+}
+
+/* Query input */
+.query-input {
+    font-size: 1.1rem;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+/* Purple button outline */
+.btn-outline-purple {
+    border-color: var(--purple-color);
+    color: var(--purple-color);
+}
+
+.btn-outline-purple:hover {
+    background-color: var(--purple-color);
+    color: white;
+}
+
+.btn-check:checked + .btn-outline-purple {
+    background-color: var(--purple-color);
+    color: white;
+}
+
+/* Progress bars */
+.progress {
+    height: 20px;
+    border-radius: 10px;
+}
+
+.progress-bar {
+    border-radius: 10px;
+}
+
+/* Sidebar */
+.sidebar {
+    background: white;
+    min-height: calc(100vh - 56px);
+    box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+}
+
+.sidebar .nav-link {
+    color: var(--primary-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0;
+    transition: all 0.2s;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+    background-color: rgba(52, 152, 219, 0.1);
+    color: var(--secondary-color);
+    border-left: 3px solid var(--secondary-color);
+}
+
+.sidebar .nav-link i {
+    margin-right: 0.75rem;
+    width: 20px;
+}
+
+/* Navbar gradient */
+.navbar {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Code blocks */
+code {
+    background: #f1f1f1;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+/* Loading spinner */
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+}
+
+/* List group hover */
+.list-group-item {
+    transition: background-color 0.2s;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+/* Alert icons */
+.alert i {
+    font-size: 1.1rem;
+}
+
+/* Form controls */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+/* Custom scrollbar */
+.response-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.response-box::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.response-box::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.response-box::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}

@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+
+{% block title %}Query RAG{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="bi bi-search me-2"></i>Query Call Intelligence</h2>
+</div>
+
+<!-- Query Form -->
+<div class="card mb-4">
+    <div class="card-body">
+        <form method="post" action="/query">
+            <div class="mb-3">
+                <label for="query" class="form-label">Ask a question about your calls:</label>
+                <textarea class="form-control query-input" id="query" name="query" rows="3"
+                    placeholder="e.g., What are customers complaining about? / Show calls with churn risk > 7 / Agent John's performance this week">{{ query if query else '' }}</textarea>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4">
+                    <label class="form-label">RAG System:</label>
+                    <div class="btn-group w-100" role="group">
+                        <input type="radio" class="btn-check" name="system" id="auto" value="auto"
+                            {{ 'checked' if not selected_system or selected_system == 'auto' else '' }}>
+                        <label class="btn btn-outline-primary" for="auto">
+                            <i class="bi bi-magic me-1"></i>Auto
+                        </label>
+
+                        <input type="radio" class="btn-check" name="system" id="gemini" value="gemini"
+                            {{ 'checked' if selected_system == 'gemini' else '' }}>
+                        <label class="btn btn-outline-purple" for="gemini" style="border-color: #8e44ad; color: #8e44ad;">
+                            <i class="bi bi-stars me-1"></i>Gemini
+                        </label>
+
+                        <input type="radio" class="btn-check" name="system" id="vertex" value="vertex"
+                            {{ 'checked' if selected_system == 'vertex' else '' }}>
+                        <label class="btn btn-outline-success" for="vertex">
+                            <i class="bi bi-funnel me-1"></i>Vertex
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-8 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="bi bi-send me-2"></i>Query
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- System Info -->
+<div class="row mb-4">
+    <div class="col-md-6">
+        <div class="card border-purple" style="border-color: #8e44ad !important;">
+            <div class="card-header text-white" style="background-color: #8e44ad;">
+                <i class="bi bi-stars me-2"></i>Gemini (Semantic)
+            </div>
+            <div class="card-body">
+                <p class="mb-2">Best for open-ended questions:</p>
+                <ul class="small mb-0">
+                    <li>What are customers complaining about?</li>
+                    <li>Summarize competitor mentions</li>
+                    <li>Find patterns in negative calls</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card border-success">
+            <div class="card-header bg-success text-white">
+                <i class="bi bi-funnel me-2"></i>Vertex (Structured)
+            </div>
+            <div class="card-body">
+                <p class="mb-2">Best for filtered queries:</p>
+                <ul class="small mb-0">
+                    <li>Calls with churn risk > 7</li>
+                    <li>Agent John's calls this week</li>
+                    <li>Escalated support calls</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if error %}
+<div class="alert alert-danger">
+    <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+</div>
+{% endif %}
+
+{% if result %}
+<!-- Results -->
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span>
+            <i class="bi bi-chat-quote me-2"></i>Response
+        </span>
+        <span>
+            <span class="badge {{ 'badge-gemini' if result.system == 'gemini' else 'badge-vertex' }} me-2">
+                {{ result.system | upper }}
+            </span>
+            <span class="badge bg-secondary">{{ result.query_time_ms }}ms</span>
+        </span>
+    </div>
+    <div class="card-body">
+        {% if result.filters %}
+        <div class="mb-3">
+            <strong>Filters Applied:</strong>
+            {% for key, value in result.filters.items() %}
+            <span class="filter-tag">{{ key }}: {{ value }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="response-box">{{ result.response }}</div>
+
+        {% if result.citations %}
+        <div class="mt-3">
+            <strong>Citations:</strong>
+            <ul class="small">
+                {% for citation in result.citations %}
+                <li>{{ citation.source if citation.source else citation.call_id }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endif %}
+
+<!-- Example Queries -->
+<div class="card mt-4">
+    <div class="card-header">
+        <i class="bi bi-lightbulb me-2"></i>Example Queries
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h6>Semantic Queries (Gemini)</h6>
+                <ul class="small">
+                    <li><a href="#" onclick="setQuery('What are the most common customer complaints?')">What are the most common customer complaints?</a></li>
+                    <li><a href="#" onclick="setQuery('Summarize all competitor mentions in calls')">Summarize all competitor mentions in calls</a></li>
+                    <li><a href="#" onclick="setQuery('What training do agents need based on recent calls?')">What training do agents need based on recent calls?</a></li>
+                    <li><a href="#" onclick="setQuery('Find patterns in calls that resulted in escalation')">Find patterns in calls that resulted in escalation</a></li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h6>Structured Queries (Vertex)</h6>
+                <ul class="small">
+                    <li><a href="#" onclick="setQuery('Show all calls with churn risk score > 7')">Show all calls with churn risk score > 7</a></li>
+                    <li><a href="#" onclick="setQuery('Agent performance summary for this week')">Agent performance summary for this week</a></li>
+                    <li><a href="#" onclick="setQuery('All escalated calls from last month')">All escalated calls from last month</a></li>
+                    <li><a href="#" onclick="setQuery('Calls with quality score < 5 that need follow-up')">Calls with quality score < 5 that need follow-up</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function setQuery(text) {
+    document.getElementById('query').value = text;
+    document.getElementById('query').focus();
+    return false;
+}
+</script>
+{% endblock %}
