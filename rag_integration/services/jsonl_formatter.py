@@ -1,4 +1,4 @@
-"""JSONL Formatter - Converts database records to RAG-ready format."""
+"""JSONL Formatter - Converts database records to RAG-ready format for Vertex AI."""
 
 import json
 from datetime import datetime, date
@@ -10,7 +10,13 @@ logger = logging.getLogger(__name__)
 
 
 class JSONLFormatter:
-    """Formats call data into JSONL for RAG systems."""
+    """
+    Formats call data into JSONL for Vertex AI RAG systems.
+
+    Structure:
+    - content.text: Formatted with clear [LAYER X] headers for semantic search chunking
+    - struct_data: Flattened for Vertex AI Search filtering with booleans, numerics, arrays
+    """
 
     def format_call(self, call_data: Dict[str, Any]) -> Dict[str, Any]:
         """Format a single call record for RAG ingestion."""
@@ -25,47 +31,45 @@ class JSONLFormatter:
         }
 
     def _build_content_text(self, data: Dict[str, Any]) -> str:
-        """Build formatted text with embedded metadata for semantic search."""
+        """
+        Build formatted text with clear [LAYER X] headers for semantic search.
+        Headers allow semantic search to find relevant chunks even if metadata gets split.
+        """
         call_date = data.get("call_date", "Unknown")
         if isinstance(call_date, (datetime, date)):
             call_date = call_date.strftime("%Y-%m-%d")
 
         call_time = data.get("call_time", "")
         if call_time:
-            call_time = str(call_time)[:8]  # HH:MM:SS
+            call_time = str(call_time)[:8]
 
         duration = data.get("duration_seconds", 0) or 0
         duration_min, duration_sec = divmod(int(duration), 60)
 
-        # Build key topics string
-        key_topics = data.get("key_topics", [])
-        if isinstance(key_topics, list):
-            topics_str = ", ".join(key_topics) if key_topics else "N/A"
-        else:
-            topics_str = str(key_topics) if key_topics else "N/A"
+        # Build key topics array
+        key_topics = self._parse_array(data.get("key_topics"))
+        topics_str = ", ".join(key_topics) if key_topics else "N/A"
 
         # Build arrays from Layer 3/4 data
-        frustration_points = self._format_array(data.get("frustration_points"))
-        delight_moments = self._format_array(data.get("delight_moments"))
-        process_gaps = self._format_array(data.get("process_gaps"))
-        strengths = self._format_array(data.get("employee_strengths"))
-        improvements = self._format_array(data.get("employee_improvements"))
-        followup_actions = self._format_array(data.get("followup_actions"))
+        frustration_points = self._format_array_display(data.get("frustration_points"))
+        delight_moments = self._format_array_display(data.get("delight_moments"))
+        process_gaps = self._format_array_display(data.get("process_gaps"))
+        strengths = self._format_array_display(data.get("employee_strengths"))
+        improvements = self._format_array_display(data.get("employee_improvements"))
+        followup_actions = self._format_array_display(data.get("followup_actions"))
 
-        return f"""[CALL METADATA]
+        return f"""[LAYER 1 - CALL METADATA & PARTICIPANTS]
 Call ID: {data.get('recording_id', 'Unknown')}
 Date: {call_date} {call_time}
 Duration: {duration_min}:{duration_sec:02d}
 Direction: {data.get('direction', 'Unknown')}
-
-[PARTICIPANTS]
 Employee: {data.get('employee_name', 'Unknown')}
 Department: {data.get('employee_department', 'N/A')}
 Customer: {data.get('customer_name', 'Unknown')}
 Company: {data.get('customer_company', 'N/A')}
 Phone: {data.get('customer_phone') or data.get('from_number', 'N/A')}
 
-[LAYER 2 - SENTIMENT & QUALITY]
+[LAYER 2 - SENTIMENT & QUALITY ANALYSIS]
 Customer Sentiment: {data.get('customer_sentiment', 'N/A')}
 Sentiment Reasoning: {data.get('sentiment_reasoning', 'N/A')}
 Call Quality Score: {data.get('call_quality_score', 'N/A')}/10
@@ -76,19 +80,21 @@ Issue Category: {data.get('issue_category', 'N/A')}
 Key Topics: {topics_str}
 Summary: {data.get('summary', 'N/A')}
 
-[LAYER 3 - RESOLUTION & PERFORMANCE]
+[LAYER 3 - RESOLUTION & PERFORMANCE METRICS]
 Problem Complexity: {data.get('problem_complexity', 'N/A')}
 Resolution Effectiveness: {data.get('resolution_effectiveness', 'N/A')}/10
-First Call Resolution: {data.get('first_call_resolution', 'N/A')}
+First Call Resolution: {self._bool_to_yesno(data.get('first_call_resolution'))}
 Empathy Score: {data.get('empathy_score', 'N/A')}/10
 Communication Clarity: {data.get('communication_clarity', 'N/A')}/10
-Active Listening: {data.get('active_listening_score', 'N/A')}/10
-Employee Knowledge: {data.get('employee_knowledge_level', 'N/A')}/10
+Active Listening Score: {data.get('active_listening_score', 'N/A')}/10
+Employee Knowledge Level: {data.get('employee_knowledge_level', 'N/A')}/10
 Customer Effort Score: {data.get('customer_effort_score', 'N/A')}/10 (lower is better)
 Churn Risk: {data.get('churn_risk_score') or data.get('resolution_churn_risk', 'N/A')}
 Revenue Impact: {data.get('revenue_impact', 'N/A')}
+Frustration Points: {frustration_points}
+Delight Moments: {delight_moments}
 
-[LOOP CLOSURE METRICS]
+[LAYER 3 - LOOP CLOSURE QUALITY]
 Solution Summarized: {self._bool_to_yesno(data.get('solution_summarized'))}
 Understanding Confirmed: {self._bool_to_yesno(data.get('understanding_confirmed'))}
 Asked If Anything Else: {self._bool_to_yesno(data.get('asked_if_anything_else'))}
@@ -98,103 +104,163 @@ Contact Info Provided: {self._bool_to_yesno(data.get('contact_info_provided'))}
 Thanked Customer: {self._bool_to_yesno(data.get('thanked_customer'))}
 Confirmed Satisfaction: {self._bool_to_yesno(data.get('confirmed_satisfaction'))}
 
-[CUSTOMER EXPERIENCE]
-Frustration Points: {frustration_points}
-Delight Moments: {delight_moments}
-
-[PROCESS INSIGHTS]
-Process Gaps: {process_gaps}
-Automation Opportunities: {self._format_array(data.get('automation_opportunities'))}
-Knowledge Base Gaps: {self._format_array(data.get('knowledge_base_gaps'))}
-
-[LAYER 4 - RECOMMENDATIONS]
+[LAYER 4 - RECOMMENDATIONS & COACHING]
 Employee Strengths: {strengths}
 Areas for Improvement: {improvements}
-Suggested Phrases: {self._format_array(data.get('suggested_phrases'))}
+Suggested Phrases: {self._format_array_display(data.get('suggested_phrases'))}
 Follow-up Actions: {followup_actions}
+Process Gaps: {process_gaps}
+Automation Opportunities: {self._format_array_display(data.get('automation_opportunities'))}
+Knowledge Base Gaps: {self._format_array_display(data.get('knowledge_base_gaps'))}
 Escalation Required: {self._bool_to_yesno(data.get('escalation_required') or data.get('rec_escalation_needed'))}
 Risk Level: {data.get('risk_level', 'N/A')}
 Training Priority: {data.get('training_priority', 'N/A')}
 Coaching Notes: {data.get('coaching_notes', 'N/A')}
+
+[LAYER 5 - ADVANCED METRICS & INTELLIGENCE]
+Buying Signals Detected: {self._bool_to_yesno(self._extract_buying_signals(data.get('buying_signals')))}
+Sales Opportunity Score: {data.get('sales_opportunity_score', 'N/A')}/10
+Competitors Mentioned: {self._format_competitors_display(data.get('competitor_intelligence'))}
+Talk/Listen Ratio Balance: {self._format_jsonb(data.get('talk_listen_ratio'), 'balance_score')}/10
+Compliance Score: {data.get('compliance_score', 'N/A')}/100
+Urgency Level: {self._format_jsonb(data.get('urgency'), 'level')} (Score: {data.get('urgency_score', 'N/A')}/10)
+Key Quotes: {self._format_key_quotes(data.get('key_quotes'))}
+Q&A Pairs Extracted: {self._count_qa_pairs(data.get('qa_pairs'))}
+{self._format_qa_pairs(data.get('qa_pairs'))}
 
 [TRANSCRIPT]
 {data.get('transcript_text', 'No transcript available')}
 """
 
     def _build_struct_data(self, data: Dict[str, Any]) -> Dict[str, Any]:
-        """Build structured data for filtered queries in Vertex AI."""
+        """
+        Build flattened structured data for Vertex AI Search filtering.
+
+        - Boolean fields for quick filtering (competitor_mentioned: true)
+        - Numeric scores for range queries (churn_risk_score >= 7)
+        - Arrays for multi-value fields (topics, competitor_names)
+        """
         call_date = data.get("call_date")
         if isinstance(call_date, (datetime, date)):
             call_date_str = call_date.strftime("%Y-%m-%d")
         else:
             call_date_str = str(call_date) if call_date else None
 
+        # Parse arrays
+        key_topics = self._parse_array(data.get("key_topics"))
+        competitor_names = self._extract_competitors(data.get("competitor_intelligence"))
+
         return {
-            # Identifiers
+            # === IDENTIFIERS ===
             "call_id": str(data.get("recording_id")),
             "call_date": call_date_str,
 
-            # Participants
+            # === PARTICIPANTS (strings) ===
             "employee_name": data.get("employee_name"),
             "employee_department": data.get("employee_department"),
             "customer_name": data.get("customer_name"),
             "customer_company": data.get("customer_company"),
             "customer_phone": data.get("customer_phone") or data.get("from_number"),
 
-            # Call metadata
+            # === CALL METADATA (numerics) ===
             "duration_seconds": self._safe_int(data.get("duration_seconds")),
-            "direction": data.get("direction"),
+            "duration_minutes": self._safe_int(data.get("duration_seconds")) // 60 if data.get("duration_seconds") else None,
             "word_count": self._safe_int(data.get("word_count")),
+            "direction": data.get("direction"),
 
-            # Sentiment & Quality (Layer 2)
-            "customer_sentiment": data.get("customer_sentiment"),
-            "call_quality_score": self._safe_float(data.get("call_quality_score")),
-            "customer_satisfaction_score": self._safe_float(data.get("customer_satisfaction_score")),
-            "overall_call_rating": self._safe_float(data.get("overall_call_rating")),
-            "call_type": data.get("call_type"),
-            "issue_category": data.get("issue_category"),
-            "churn_risk_score": self._safe_float(data.get("churn_risk_score")),
+            # === LAYER 2: SENTIMENT & QUALITY (mixed) ===
+            "customer_sentiment": data.get("customer_sentiment"),  # string: positive/negative/neutral
+            "call_quality_score": self._safe_float(data.get("call_quality_score")),  # 0-10
+            "customer_satisfaction_score": self._safe_float(data.get("customer_satisfaction_score")),  # 0-10
+            "overall_call_rating": self._safe_float(data.get("overall_call_rating")),  # 0-10
+            "call_type": data.get("call_type"),  # string
+            "issue_category": data.get("issue_category"),  # string
+            "topics": key_topics,  # array of strings
 
-            # Resolution (Layer 3)
-            "problem_complexity": data.get("problem_complexity"),
-            "resolution_effectiveness": self._safe_float(data.get("resolution_effectiveness")),
-            "empathy_score": self._safe_float(data.get("empathy_score")),
-            "communication_clarity": self._safe_float(data.get("communication_clarity")),
-            "active_listening_score": self._safe_float(data.get("active_listening_score")),
-            "customer_effort_score": self._safe_float(data.get("customer_effort_score")),
-            "first_call_resolution": data.get("first_call_resolution"),
+            # === LAYER 3: RESOLUTION METRICS (numerics) ===
+            "problem_complexity": data.get("problem_complexity"),  # string: simple/medium/complex
+            "resolution_effectiveness": self._safe_float(data.get("resolution_effectiveness")),  # 0-10
+            "empathy_score": self._safe_float(data.get("empathy_score")),  # 0-10
+            "communication_clarity": self._safe_float(data.get("communication_clarity")),  # 0-10
+            "active_listening_score": self._safe_float(data.get("active_listening_score")),  # 0-10
+            "employee_knowledge_level": self._safe_float(data.get("employee_knowledge_level")),  # 0-10
+            "customer_effort_score": self._safe_float(data.get("customer_effort_score")),  # 1-10 (lower better)
+            "churn_risk_score": self._safe_float(data.get("churn_risk_score")),  # 0-10
 
-            # Flags
-            "follow_up_needed": data.get("follow_up_needed"),
-            "escalation_required": data.get("escalation_required") or data.get("rec_escalation_needed"),
-            "risk_level": data.get("risk_level"),
+            # === LAYER 3: BOOLEAN FLAGS (for quick filtering) ===
+            "first_call_resolution": self._safe_bool(data.get("first_call_resolution")),
+            "follow_up_needed": self._safe_bool(data.get("follow_up_needed")),
+            "escalation_required": self._safe_bool(data.get("escalation_required") or data.get("rec_escalation_needed")),
+            "solution_summarized": self._safe_bool(data.get("solution_summarized")),
+            "understanding_confirmed": self._safe_bool(data.get("understanding_confirmed")),
+            "next_steps_provided": self._safe_bool(data.get("next_steps_provided")),
 
-            # Loop closure (for filtering)
-            "solution_summarized": data.get("solution_summarized"),
-            "understanding_confirmed": data.get("understanding_confirmed"),
+            # === LAYER 4: RISK & PRIORITY ===
+            "risk_level": data.get("risk_level"),  # string: low/medium/high
+            "training_priority": data.get("training_priority"),  # string
+
+            # === LAYER 5: ADVANCED METRICS ===
+            "has_layer5": data.get("has_layer5") is not None,
+            "sales_opportunity_score": self._safe_int(data.get("sales_opportunity_score")),  # 0-10
+            "compliance_score": self._safe_int(data.get("compliance_score")),  # 0-100
+            "urgency_score": self._safe_int(data.get("urgency_score")),  # 0-10
+
+            # === LAYER 5: BOOLEAN FLAGS (for quick filtering) ===
+            "buying_signals_detected": self._extract_buying_signals(data.get("buying_signals")),  # boolean
+            "competitor_mentioned": len(competitor_names) > 0,  # boolean for quick filter
+            "has_qa_pairs": self._count_qa_pairs(data.get("qa_pairs")) > 0,  # boolean
+
+            # === LAYER 5: ARRAYS (for multi-value queries) ===
+            "competitor_names": competitor_names,  # array of strings
+            "qa_pairs_count": self._count_qa_pairs(data.get("qa_pairs")),  # int
+
+            # === COMPUTED FLAGS (for common queries) ===
+            "is_high_risk": self._is_high_risk(data),  # churn_risk >= 7 or escalation_required
+            "is_low_quality": self._safe_float(data.get("call_quality_score")) is not None and self._safe_float(data.get("call_quality_score")) < 5,
+            "is_negative_sentiment": data.get("customer_sentiment") == "negative",
+            "has_sales_opportunity": self._safe_int(data.get("sales_opportunity_score")) is not None and self._safe_int(data.get("sales_opportunity_score")) >= 7,
         }
 
-    def _format_array(self, value: Any) -> str:
-        """Format array or JSON value as string."""
+    # === HELPER METHODS ===
+
+    def _parse_array(self, value: Any) -> List[str]:
+        """Parse value into a list of strings."""
         if value is None:
-            return "N/A"
+            return []
         if isinstance(value, list):
-            return ", ".join(str(v) for v in value) if value else "N/A"
+            return [str(v) for v in value if v]
         if isinstance(value, str):
             try:
                 parsed = json.loads(value)
                 if isinstance(parsed, list):
-                    return ", ".join(str(v) for v in parsed) if parsed else "N/A"
+                    return [str(v) for v in parsed if v]
             except:
-                pass
-            return value if value else "N/A"
-        return str(value)
+                # Maybe comma-separated string
+                if ',' in value:
+                    return [v.strip() for v in value.split(',') if v.strip()]
+                return [value] if value else []
+        return []
+
+    def _format_array_display(self, value: Any) -> str:
+        """Format array for display in content text."""
+        arr = self._parse_array(value)
+        return ", ".join(arr) if arr else "N/A"
 
     def _bool_to_yesno(self, value: Any) -> str:
-        """Convert boolean to Yes/No string."""
+        """Convert boolean to Yes/No string for display."""
         if value is None:
             return "N/A"
         return "Yes" if value else "No"
+
+    def _safe_bool(self, value: Any) -> Optional[bool]:
+        """Safely convert to boolean."""
+        if value is None:
+            return None
+        if isinstance(value, bool):
+            return value
+        if isinstance(value, str):
+            return value.lower() in ('true', 'yes', '1')
+        return bool(value)
 
     def _safe_int(self, value: Any) -> Optional[int]:
         """Safely convert to int."""
@@ -210,9 +276,110 @@ Coaching Notes: {data.get('coaching_notes', 'N/A')}
         if value is None:
             return None
         try:
-            return float(value)
+            return round(float(value), 2)
         except:
             return None
+
+    def _format_jsonb(self, value: Any, key: str) -> str:
+        """Extract a value from JSONB field for display."""
+        if value is None:
+            return "N/A"
+        data = value if isinstance(value, dict) else {}
+        if isinstance(value, str):
+            try:
+                data = json.loads(value)
+            except:
+                return "N/A"
+        return str(data.get(key, "N/A")) if isinstance(data, dict) else "N/A"
+
+    def _format_competitors_display(self, value: Any) -> str:
+        """Format competitor names for display."""
+        competitors = self._extract_competitors(value)
+        return ", ".join(competitors) if competitors else "None"
+
+    def _format_key_quotes(self, value: Any) -> str:
+        """Format key quotes for display."""
+        if value is None:
+            return "N/A"
+        data = value if isinstance(value, dict) else {}
+        if isinstance(value, str):
+            try:
+                data = json.loads(value)
+            except:
+                return "N/A"
+        quotes = data.get("quotes", []) if isinstance(data, dict) else []
+        if not quotes:
+            return "N/A"
+        return "; ".join(f'"{q}"' for q in quotes[:3])
+
+    def _format_qa_pairs(self, value: Any) -> str:
+        """Format Q&A pairs for display in content."""
+        if value is None:
+            return ""
+        data = value if isinstance(value, dict) else {}
+        if isinstance(value, str):
+            try:
+                data = json.loads(value)
+            except:
+                return ""
+        pairs = data.get("pairs", []) if isinstance(data, dict) else []
+        if not pairs:
+            return ""
+        formatted = []
+        for pair in pairs[:5]:
+            q = pair.get("question", "")
+            a = pair.get("answer", "")
+            if q and a:
+                formatted.append(f"  Q: {q}\n  A: {a}")
+        return "\n".join(formatted) if formatted else ""
+
+    def _count_qa_pairs(self, value: Any) -> int:
+        """Count Q&A pairs."""
+        if value is None:
+            return 0
+        data = value if isinstance(value, dict) else {}
+        if isinstance(value, str):
+            try:
+                data = json.loads(value)
+            except:
+                return 0
+        pairs = data.get("pairs", []) if isinstance(data, dict) else []
+        return len(pairs)
+
+    def _extract_buying_signals(self, value: Any) -> bool:
+        """Extract buying signals detected boolean."""
+        if value is None:
+            return False
+        data = value if isinstance(value, dict) else {}
+        if isinstance(value, str):
+            try:
+                data = json.loads(value)
+            except:
+                return False
+        if isinstance(data, dict):
+            return bool(data.get("buying_signals_detected", False))
+        return False
+
+    def _extract_competitors(self, value: Any) -> List[str]:
+        """Extract competitor names as array."""
+        if value is None:
+            return []
+        data = value if isinstance(value, dict) else {}
+        if isinstance(value, str):
+            try:
+                data = json.loads(value)
+            except:
+                return []
+        if isinstance(data, dict):
+            competitors = data.get("competitors_mentioned", []) or data.get("competitors", [])
+            return [str(c) for c in competitors] if competitors else []
+        return []
+
+    def _is_high_risk(self, data: Dict[str, Any]) -> bool:
+        """Check if call is high risk (churn_risk >= 7 or escalation required)."""
+        churn = self._safe_float(data.get("churn_risk_score"))
+        escalation = self._safe_bool(data.get("escalation_required") or data.get("rec_escalation_needed"))
+        return (churn is not None and churn >= 7) or (escalation is True)
 
 
 class JSONLWriter:
@@ -253,11 +420,21 @@ if __name__ == "__main__":
         "customer_name": "Jane Doe",
         "customer_sentiment": "positive",
         "call_quality_score": 8.5,
+        "churn_risk_score": 3,
+        "key_topics": ["billing", "upgrade", "support"],
         "transcript_text": "Hello, this is a test transcript...",
+        "competitor_intelligence": {"competitors_mentioned": ["Bullhorn", "Crelate"]},
+        "buying_signals": {"buying_signals_detected": True},
+        "qa_pairs": {"pairs": [{"question": "How much?", "answer": "$99/month"}]},
     }
 
     formatter = JSONLFormatter()
     result = formatter.format_call(test_data)
 
-    print("Formatted document:")
-    print(json.dumps(result, indent=2, default=str))
+    print("=" * 60)
+    print("FORMATTED DOCUMENT")
+    print("=" * 60)
+    print("\n--- struct_data (for filtering) ---")
+    print(json.dumps(result["struct_data"], indent=2, default=str))
+    print("\n--- content.text (first 1000 chars) ---")
+    print(result["content"]["text"][:1000])

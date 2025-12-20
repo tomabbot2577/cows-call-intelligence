@@ -14,9 +14,10 @@ The system automatically routes queries to the optimal backend based on query pa
 | Metric | Value |
 |--------|-------|
 | Total Transcripts | 3,194 |
-| All 5 Layers Complete | **1,341 calls** |
-| Files in Gemini | 16 JSONL files |
-| Files in GCS | 16 JSONL files |
+| All 5 Layers Complete | **3,077 calls** |
+| Q&A Pairs Extracted | **3,077 calls** |
+| Files in Vertex AI | 7 JSONL files |
+| Files in GCS | `gs://call-recording-rag-data` |
 | GCS Bucket | `call-recording-rag-data` |
 | Web UI | http://31.97.102.13:8081 |
 | Status | **Fully Operational** |
@@ -572,10 +573,77 @@ python process_advanced_metrics.py
 - Service account JSON excluded from git
 - Password: `!pcr123` (same as main dashboard)
 
+## JSONL Structure for Vertex AI
+
+The JSONL format is optimized for Vertex AI RAG with:
+
+### content.text
+Formatted with clear `[LAYER X]` section headers for semantic search chunking:
+
+```
+[LAYER 1 - CALL METADATA & PARTICIPANTS]
+Call ID, Date, Duration, Employee, Customer, Company, Phone
+
+[LAYER 2 - SENTIMENT & QUALITY ANALYSIS]
+Customer Sentiment, Call Quality Score, Call Type, Key Topics, Summary
+
+[LAYER 3 - RESOLUTION & PERFORMANCE METRICS]
+Problem Complexity, Resolution Effectiveness, Empathy Score, Churn Risk
+Frustration Points, Delight Moments
+
+[LAYER 3 - LOOP CLOSURE QUALITY]
+Solution Summarized, Understanding Confirmed, Next Steps Provided, etc.
+
+[LAYER 4 - RECOMMENDATIONS & COACHING]
+Employee Strengths, Areas for Improvement, Follow-up Actions
+Process Gaps, Knowledge Base Gaps
+
+[LAYER 5 - ADVANCED METRICS & INTELLIGENCE]
+Buying Signals, Sales Opportunity Score, Competitors Mentioned
+Compliance Score, Urgency Level, Key Quotes, Q&A Pairs
+
+[TRANSCRIPT]
+Full transcript text
+```
+
+### struct_data (Flattened for Vertex AI Filtering)
+
+**Boolean Fields** (for quick filtering):
+- `first_call_resolution`, `follow_up_needed`, `escalation_required`
+- `solution_summarized`, `understanding_confirmed`, `next_steps_provided`
+- `buying_signals_detected`, `competitor_mentioned`, `has_qa_pairs`
+- `is_high_risk`, `is_low_quality`, `is_negative_sentiment`, `has_sales_opportunity`
+
+**Numeric Scores** (for range queries):
+- `call_quality_score`, `churn_risk_score` (0-10)
+- `empathy_score`, `communication_clarity`, `active_listening_score` (0-10)
+- `sales_opportunity_score`, `compliance_score`, `urgency_score`
+- `duration_seconds`, `duration_minutes`, `qa_pairs_count`
+
+**Arrays** (for multi-value queries):
+- `topics` - Key topics from the call
+- `competitor_names` - List of competitors mentioned
+
+**Example Queries**:
+```sql
+-- High risk calls (churn >= 7 or escalation required)
+WHERE struct_data.is_high_risk = true
+
+-- Calls with competitor mentions
+WHERE struct_data.competitor_mentioned = true
+
+-- Low quality calls needing training
+WHERE struct_data.call_quality_score < 5
+
+-- Calls with sales opportunity
+WHERE struct_data.has_sales_opportunity = true
+```
+
 ## Version History
 
 | Date | Version | Changes |
 |------|---------|---------|
+| Dec 20, 2025 | 2.3 | Added Q&A pairs extraction for all 3,077 calls, updated JSONL formatter with [LAYER X] headers, flattened struct_data with boolean/numeric/array fields for Vertex AI filtering |
 | Dec 20, 2025 | 2.2 | Added automated RAG sync cron job with duplicate tracking in rag_exports table |
 | Dec 20, 2025 | 2.1 | Updated Vertex AI to us-west1, added null query validation, agent dropdown in reports |
 | Dec 2025 | 2.0 | Upgraded to google.genai SDK, gemini-2.0-flash, new GCS bucket (call-recording-rag-data) |

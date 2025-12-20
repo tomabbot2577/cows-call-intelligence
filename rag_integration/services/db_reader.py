@@ -144,7 +144,17 @@ class DatabaseReader:
             rec.training_priority,
 
             -- Advanced Metrics (Layer 5)
-            cam.recording_id as has_layer5
+            cam.recording_id as has_layer5,
+            cam.buying_signals,
+            cam.competitor_intelligence,
+            cam.talk_listen_ratio,
+            cam.compliance,
+            cam.key_quotes,
+            cam.qa_pairs,
+            cam.urgency,
+            cam.sales_opportunity_score,
+            cam.compliance_score,
+            cam.urgency_score
 
         FROM transcripts t
         {join_type} insights i ON t.recording_id = i.recording_id
