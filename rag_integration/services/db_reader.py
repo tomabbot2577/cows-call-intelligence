@@ -624,7 +624,6 @@ class DatabaseReader:
                     JOIN call_resolutions cr ON t.recording_id = cr.recording_id
                     WHERE {risk_filter}
                       AND t.call_date IS NOT NULL
-                      AND (t.employee_name IS NOT NULL AND t.employee_name != '' AND t.employee_name != 'Unknown')
                     ORDER BY
                         CASE cr.churn_risk
                             WHEN 'high' THEN 1
@@ -966,7 +965,6 @@ class DatabaseReader:
                     LEFT JOIN call_resolutions cr ON t.recording_id = cr.recording_id
                     WHERE {sentiment_clause}
                       AND t.call_date IS NOT NULL
-                      AND (t.employee_name IS NOT NULL AND t.employee_name != '' AND t.employee_name != 'Unknown')
                     ORDER BY
                         CASE
                             WHEN LOWER(i.customer_sentiment) IN ('negative', 'frustrated', 'angry') THEN 1
@@ -1006,16 +1004,14 @@ class DatabaseReader:
                 # Sentiment by agent
                 cur.execute(f"""
                     SELECT
-                        t.employee_name,
+                        COALESCE(NULLIF(t.employee_name, ''), 'Unknown Agent') as employee_name,
                         COUNT(*) as call_count,
                         SUM(CASE WHEN LOWER(i.customer_sentiment) IN ('negative', 'frustrated', 'angry') THEN 1 ELSE 0 END) as negative_count,
                         SUM(CASE WHEN LOWER(i.customer_sentiment) IN ('positive', 'satisfied', 'happy') THEN 1 ELSE 0 END) as positive_count,
                         ROUND(AVG(i.call_quality_score)::numeric, 1) as avg_quality
                     FROM transcripts t
                     JOIN insights i ON t.recording_id = i.recording_id
-                    WHERE t.employee_name IS NOT NULL
-                      AND t.employee_name != ''
-                    GROUP BY t.employee_name
+                    GROUP BY COALESCE(NULLIF(t.employee_name, ''), 'Unknown Agent')
                     HAVING COUNT(*) >= 5
                     ORDER BY
                         SUM(CASE WHEN LOWER(i.customer_sentiment) IN ('negative', 'frustrated', 'angry') THEN 1 ELSE 0 END) DESC
@@ -1202,7 +1198,6 @@ class DatabaseReader:
                     WHERE i.call_quality_score IS NOT NULL
                       AND i.call_quality_score < 5
                       AND t.call_date IS NOT NULL
-                      AND (t.employee_name IS NOT NULL AND t.employee_name != '' AND t.employee_name != 'Unknown')
                     ORDER BY i.call_quality_score ASC, t.call_date DESC
                     LIMIT 25
                 """)
@@ -1239,17 +1234,15 @@ class DatabaseReader:
                 # Quality by agent
                 cur.execute("""
                     SELECT
-                        t.employee_name,
+                        COALESCE(NULLIF(t.employee_name, ''), 'Unknown Agent') as employee_name,
                         COUNT(*) as total_calls,
                         ROUND(AVG(i.call_quality_score)::numeric, 1) as avg_quality,
                         SUM(CASE WHEN i.call_quality_score < 5 THEN 1 ELSE 0 END) as low_quality_count,
                         SUM(CASE WHEN i.call_quality_score >= 8 THEN 1 ELSE 0 END) as high_quality_count
                     FROM transcripts t
                     JOIN insights i ON t.recording_id = i.recording_id
-                    WHERE t.employee_name IS NOT NULL
-                      AND t.employee_name != ''
-                      AND i.call_quality_score IS NOT NULL
-                    GROUP BY t.employee_name
+                    WHERE i.call_quality_score IS NOT NULL
+                    GROUP BY COALESCE(NULLIF(t.employee_name, ''), 'Unknown Agent')
                     HAVING COUNT(*) >= 5
                     ORDER BY AVG(i.call_quality_score) ASC
                     LIMIT 15

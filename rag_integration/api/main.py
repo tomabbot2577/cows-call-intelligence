@@ -375,12 +375,22 @@ async def api_churn_report(request: Request, min_score: int = 7):
         for call in churn_data['high_risk_calls'][:20]:  # Top 20
             topics = ", ".join(call['topics'][:3]) if call['topics'] else "N/A"
             issues = ", ".join(call['issues'][:2]) if isinstance(call['issues'], list) and call['issues'] else (call['issues'] if call['issues'] else "N/A")
+
+            # Mark unknown values for partial match handling
+            customer_name = call['customer_name']
+            customer_company = call['customer_company']
+            agent = call['agent']
+
+            customer_label = customer_name if customer_name and customer_name != 'Unknown' else f"UNKNOWN (use phone {call['from_number']} or call context)"
+            company_label = customer_company if customer_company and customer_company != 'Unknown' else "UNKNOWN COMPANY"
+            agent_label = agent if agent and agent != 'Unknown' else f"UNKNOWN AGENT (infer from call context)"
+
             calls_str += f"""
 - Call ID: {call['call_id']}
   Date: {call['call_date']}
-  Customer: {call['customer_name']} at {call['customer_company']}
+  Customer: {customer_label} at {company_label}
   From: {call['from_number']} | To: {call['to_number']}
-  Agent: {call['agent']}
+  Agent: {agent_label}
   Risk Level: {call['risk_level'].upper()}
   Sentiment: {call['sentiment']}
   Quality Score: {call['quality_score']}/10
@@ -428,7 +438,15 @@ Based on this data, provide:
 CRITICAL RULES:
 - Use ONLY the actual customer names, company names, and dates from the data above
 - Do NOT invent dates - use the call dates provided (are in 2025 or early 2026)
-- Do NOT use placeholder text like [Insert Name]"""
+- Do NOT use placeholder text like [Insert Name]
+
+HANDLING UNKNOWN VALUES:
+- When you see "UNKNOWN" for a customer, agent, or company, do NOT skip these entries
+- For UNKNOWN customers: Label as "Unknown Caller (partial match - see phone number XXX)" and use the phone number to help identify
+- For UNKNOWN agents: Label as "Unknown Agent (best guess from call context)" and try to infer from the summary who might have handled it
+- For UNKNOWN companies: Label as "Unknown Company (partial match)" and look for company mentions in the summary
+- ALWAYS clearly state when an identification is a PARTIAL MATCH or BEST GUESS, not a confirmed identity
+- Include these unknown entries in your analysis - they may represent important at-risk customers we haven't identified yet"""
 
         service = get_query_service()
         result = service.query(prompt, force_system="gemini")
@@ -697,10 +715,20 @@ async def api_quality_report(request: Request, focus: str = "low_quality"):
         for call in quality_data.get('low_quality_calls', [])[:15]:
             topics = ", ".join(call['topics'][:3]) if call['topics'] else "N/A"
             improvements = "; ".join(call['improvements'][:3]) if call['improvements'] else "None identified"
+
+            # Mark unknown values for partial match handling
+            employee = call['employee_name']
+            customer = call['customer_name']
+            company = call['customer_company']
+
+            employee_label = employee if employee and employee not in ('Unknown', 'Unknown Agent', '') else f"UNKNOWN AGENT (infer from context)"
+            customer_label = customer if customer and customer != 'Unknown' else f"UNKNOWN CALLER (phone: {call['from_number']})"
+            company_label = company if company and company != 'Unknown' else "UNKNOWN COMPANY"
+
             calls_str += f"""
 - Date: {call['call_date']}
-  PC Recruiter Agent: {call['employee_name']}
-  Customer: {call['customer_name']} at {call['customer_company']}
+  PC Recruiter Agent: {employee_label}
+  Customer: {customer_label} at {company_label}
   Phone: From {call['from_number']} To {call['to_number']}
   Quality Score: {call['quality_score']}/10
   Why Low Quality: {call['quality_reasoning'][:200]}...
@@ -775,7 +803,15 @@ Based on this ACTUAL data, provide:
 CRITICAL RULES:
 - Use ONLY the actual agent names, customer names, companies, and dates from the data above
 - Do NOT invent dates - use the call dates provided (are in 2025 or early 2026)
-- Do NOT use placeholder text like [Insert Name]"""
+- Do NOT use placeholder text like [Insert Name]
+
+HANDLING UNKNOWN VALUES:
+- When you see "UNKNOWN AGENT", "UNKNOWN CALLER", or "UNKNOWN COMPANY", do NOT skip these entries
+- For UNKNOWN agents: Label as "Unknown Agent (best guess from call context: [your inference])" - use the summary to try identifying who handled the call
+- For UNKNOWN callers: Label as "Unknown Caller (partial match - phone: XXX)" and use the phone number as identifier
+- For UNKNOWN companies: Label as "Unknown Company (partial match)" and check the summary for company mentions
+- ALWAYS clearly state when an identification is a PARTIAL MATCH or BEST GUESS, not a confirmed identity
+- Include these unknown entries in quality analysis - they represent calls that need attention regardless of identity"""
 
         service = get_query_service()
         result = service.query(prompt, force_system="gemini")
@@ -817,10 +853,20 @@ async def api_sentiment_report(request: Request, analysis: str = "negative"):
         calls_str = ""
         for call in sentiment_data['calls'][:15]:  # Top 15 for prompt
             topics = ", ".join(call['topics'][:3]) if call['topics'] else "N/A"
+
+            # Mark unknown values for partial match handling
+            employee = call['employee_name']
+            customer = call['customer_name']
+            company = call['customer_company']
+
+            employee_label = employee if employee and employee not in ('Unknown', 'Unknown Agent', '') else f"UNKNOWN AGENT (infer from context)"
+            customer_label = customer if customer and customer != 'Unknown' else f"UNKNOWN CALLER (phone: {call['from_number']})"
+            company_label = company if company and company != 'Unknown' else "UNKNOWN COMPANY"
+
             calls_str += f"""
 - Date: {call['call_date']}
-  PC Recruiter Agent: {call['employee_name']}
-  Customer: {call['customer_name']} at {call['customer_company']}
+  PC Recruiter Agent: {employee_label}
+  Customer: {customer_label} at {company_label}
   Phone: From {call['from_number']} To {call['to_number']}
   Sentiment: {call['sentiment']} (Quality: {call['quality_score']}/10)
   Reasoning: {call['sentiment_reasoning'][:200]}...
@@ -890,7 +936,15 @@ CRITICAL RULES:
 - Use ONLY the actual names, companies, and dates from the data above
 - Do NOT invent dates - use the call dates provided (are in 2025 or early 2026)
 - Do NOT use placeholder text like [Insert Name]
-- Reference specific calls by their actual date, agent name, and customer company"""
+- Reference specific calls by their actual date, agent name, and customer company
+
+HANDLING UNKNOWN VALUES:
+- When you see "UNKNOWN AGENT", "UNKNOWN CALLER", or "UNKNOWN COMPANY", do NOT skip these entries
+- For UNKNOWN agents: Label as "Unknown Agent (best guess from call context: [your inference])" - try to identify from the call summary
+- For UNKNOWN callers: Label as "Unknown Caller (partial match - phone: XXX)" and use the phone number as identifier
+- For UNKNOWN companies: Label as "Unknown Company (partial match)" and check the summary for company mentions
+- ALWAYS clearly state when an identification is a PARTIAL MATCH or BEST GUESS, not a confirmed identity
+- These unknown entries may represent important patterns - include them in your analysis"""
 
         service = get_query_service()
         result = service.query(prompt, force_system="gemini")
