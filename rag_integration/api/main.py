@@ -347,7 +347,7 @@ async def api_status(request: Request):
 
 
 @app.get("/api/v1/rag/reports/churn")
-async def api_churn_report(request: Request, min_score: int = 7):
+async def api_churn_report(request: Request, min_score: int = 7, date_range: str = None, start_date: str = None, end_date: str = None):
     """Get churn risk report with actual data."""
     if not check_auth(request):
         raise HTTPException(status_code=401, detail="Not authenticated")
@@ -358,8 +358,8 @@ async def api_churn_report(request: Request, min_score: int = 7):
         # Map score to risk level: 7+ = high only, 5+ = high + medium
         risk_level = 'high' if min_score >= 7 else 'medium'
 
-        # Get actual churn risk data from database
-        churn_data = db.get_churn_risk_data(risk_level)
+        # Get actual churn risk data from database with date filtering
+        churn_data = db.get_churn_risk_data(risk_level, date_range=date_range, start_date=start_date, end_date=end_date)
 
         if churn_data['total_high_risk'] == 0:
             return {
@@ -454,6 +454,7 @@ HANDLING UNKNOWN VALUES:
         return {
             "report": "churn_risk",
             "risk_level": risk_level,
+            "date_range": churn_data.get('date_range', 'all'),
             "data": churn_data,
             "response": result["response"],
             "generated_at": datetime.now().isoformat()
@@ -565,7 +566,7 @@ CRITICAL: Use the actual numbers and dates provided. Do NOT use placeholder text
 
 
 @app.get("/api/v1/rag/reports/customer/{company_name}")
-async def api_customer_report(request: Request, company_name: str):
+async def api_customer_report(request: Request, company_name: str, date_range: str = None, start_date: str = None, end_date: str = None):
     """Get customer/company report with actual data."""
     if not check_auth(request):
         raise HTTPException(status_code=401, detail="Not authenticated")
@@ -573,8 +574,8 @@ async def api_customer_report(request: Request, company_name: str):
     try:
         db = get_db()
 
-        # Get actual customer data from database
-        customer_data = db.get_customer_report(company_name)
+        # Get actual customer data from database with date filtering
+        customer_data = db.get_customer_report(company_name, date_range=date_range, start_date=start_date, end_date=end_date)
 
         if customer_data.get('total_calls', 0) == 0:
             return {
@@ -670,6 +671,7 @@ CRITICAL: Use the actual data and dates provided. Do NOT use placeholder text or
         return {
             "report": "customer",
             "company": customer_data['company_name'],
+            "date_range": customer_data.get('date_range', 'all'),
             "data": customer_data,
             "response": result["response"],
             "generated_at": datetime.now().isoformat()

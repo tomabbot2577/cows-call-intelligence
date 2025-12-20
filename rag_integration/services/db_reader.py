@@ -583,16 +583,39 @@ class DatabaseReader:
 
                 return result
 
-    def get_churn_risk_data(self, risk_level: str = 'high') -> Dict[str, Any]:
+    def get_churn_risk_data(self, risk_level: str = 'high', date_range: str = None, start_date: str = None, end_date: str = None) -> Dict[str, Any]:
         """
         Get actual churn risk data from the database.
 
         Args:
             risk_level: Risk level to filter - 'high', 'medium', or 'all'
+            date_range: 'last_30', 'mtd', 'qtd', 'ytd', or None for all time
+            start_date: Custom start date (YYYY-MM-DD)
+            end_date: Custom end date (YYYY-MM-DD)
         """
         with self.get_connection() as conn:
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
                 result = {}
+
+                # Build date filter
+                date_filter = ""
+                if start_date and end_date:
+                    date_filter = f"AND t.call_date >= '{start_date}'::date AND t.call_date < '{end_date}'::date + INTERVAL '1 day'"
+                    result['date_range'] = f"{start_date} to {end_date}"
+                elif date_range == 'last_30':
+                    date_filter = "AND t.call_date >= CURRENT_DATE - INTERVAL '30 days'"
+                    result['date_range'] = 'last_30'
+                elif date_range == 'mtd':
+                    date_filter = "AND t.call_date >= DATE_TRUNC('month', CURRENT_DATE)"
+                    result['date_range'] = 'mtd'
+                elif date_range == 'qtd':
+                    date_filter = "AND t.call_date >= DATE_TRUNC('quarter', CURRENT_DATE)"
+                    result['date_range'] = 'qtd'
+                elif date_range == 'ytd':
+                    date_filter = "AND t.call_date >= DATE_TRUNC('year', CURRENT_DATE)"
+                    result['date_range'] = 'ytd'
+                else:
+                    result['date_range'] = 'all_time'
 
                 # Build risk filter
                 if risk_level == 'high':
@@ -603,7 +626,6 @@ class DatabaseReader:
                     risk_filter = "cr.churn_risk IS NOT NULL AND cr.churn_risk != 'none' AND cr.churn_risk != 'low'"
 
                 # High risk calls with details (including phone numbers)
-                # Only include calls with valid dates and employee names
                 cur.execute(f"""
                     SELECT
                         t.recording_id,
@@ -624,6 +646,7 @@ class DatabaseReader:
                     JOIN call_resolutions cr ON t.recording_id = cr.recording_id
                     WHERE {risk_filter}
                       AND t.call_date IS NOT NULL
+                      {date_filter}
                     ORDER BY
                         CASE cr.churn_risk
                             WHEN 'high' THEN 1
@@ -730,12 +753,15 @@ class DatabaseReader:
 
                 return [dict(row) for row in cur.fetchall()]
 
-    def get_customer_report(self, company_name: str) -> Dict[str, Any]:
+    def get_customer_report(self, company_name: str, date_range: str = None, start_date: str = None, end_date: str = None) -> Dict[str, Any]:
         """
         Get comprehensive report data for a customer company.
 
         Args:
             company_name: Company name to search for
+            date_range: 'last_30', 'mtd', 'qtd', 'ytd', or None for all time
+            start_date: Custom start date (YYYY-MM-DD)
+            end_date: Custom end date (YYYY-MM-DD)
         """
         from ..config.company_names import get_company_search_patterns, canonicalize_company_name
 
@@ -746,8 +772,31 @@ class DatabaseReader:
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
                 result = {'company_name': canonical}
 
+                # Build date filter based on date_range or custom dates
+                date_filter = ""
+                if start_date and end_date:
+                    date_filter = f"AND call_date >= '{start_date}'::date AND call_date < '{end_date}'::date + INTERVAL '1 day'"
+                    result['date_range'] = f"{start_date} to {end_date}"
+                elif date_range == 'last_30':
+                    date_filter = "AND call_date >= CURRENT_DATE - INTERVAL '30 days'"
+                    result['date_range'] = 'last_30'
+                elif date_range == 'mtd':
+                    date_filter = "AND call_date >= DATE_TRUNC('month', CURRENT_DATE)"
+                    result['date_range'] = 'mtd'
+                elif date_range == 'qtd':
+                    date_filter = "AND call_date >= DATE_TRUNC('quarter', CURRENT_DATE)"
+                    result['date_range'] = 'qtd'
+                elif date_range == 'ytd':
+                    date_filter = "AND call_date >= DATE_TRUNC('year', CURRENT_DATE)"
+                    result['date_range'] = 'ytd'
+                else:
+                    result['date_range'] = 'all'
+
+                # Date filter with t. prefix for joined queries
+                date_filter_t = date_filter.replace("AND call_date", "AND t.call_date") if date_filter else ""
+
                 # Total calls and contacts
-                cur.execute("""
+                cur.execute(f"""
                     SELECT
                         COUNT(*) as total_calls,
                         COUNT(DISTINCT customer_name) as unique_contacts,
@@ -755,6 +804,7 @@ class DatabaseReader:
                         MAX(call_date) as last_call
                     FROM transcripts
                     WHERE LOWER(customer_company) LIKE ANY(%s)
+                    {date_filter}
                 """, (patterns,))
                 row = cur.fetchone()
                 result['total_calls'] = row['total_calls'] if row else 0
@@ -766,7 +816,7 @@ class DatabaseReader:
                     return result
 
                 # Contact list
-                cur.execute("""
+                cur.execute(f"""
                     SELECT
                         customer_name,
                         COUNT(*) as call_count,
@@ -775,7 +825,7 @@ class DatabaseReader:
                     WHERE LOWER(customer_company) LIKE ANY(%s)
                       AND customer_name IS NOT NULL
                       AND customer_name != ''
-                      AND customer_name != 'Unknown'
+                      {date_filter}
                     GROUP BY customer_name
                     ORDER BY call_count DESC
                     LIMIT 10
@@ -783,7 +833,7 @@ class DatabaseReader:
                 result['contacts'] = [dict(row) for row in cur.fetchall()]
 
                 # Sentiment distribution
-                cur.execute("""
+                cur.execute(f"""
                     SELECT
                         i.customer_sentiment,
                         COUNT(*) as count
@@ -791,25 +841,27 @@ class DatabaseReader:
                     JOIN insights i ON t.recording_id = i.recording_id
                     WHERE LOWER(t.customer_company) LIKE ANY(%s)
                       AND i.customer_sentiment IS NOT NULL
+                      {date_filter_t}
                     GROUP BY i.customer_sentiment
                 """, (patterns,))
                 result['sentiment_distribution'] = {row['customer_sentiment']: row['count'] for row in cur.fetchall()}
 
                 # Quality metrics
-                cur.execute("""
+                cur.execute(f"""
                     SELECT
                         ROUND(AVG(i.call_quality_score)::numeric, 1) as avg_quality,
                         ROUND(AVG(i.customer_satisfaction_score)::numeric, 1) as avg_satisfaction
                     FROM transcripts t
                     JOIN insights i ON t.recording_id = i.recording_id
                     WHERE LOWER(t.customer_company) LIKE ANY(%s)
+                    {date_filter_t}
                 """, (patterns,))
                 row = cur.fetchone()
                 result['avg_quality'] = float(row['avg_quality']) if row and row['avg_quality'] else 0
                 result['avg_satisfaction'] = float(row['avg_satisfaction']) if row and row['avg_satisfaction'] else 0
 
                 # Churn risk
-                cur.execute("""
+                cur.execute(f"""
                     SELECT
                         cr.churn_risk,
                         COUNT(*) as count
@@ -817,12 +869,13 @@ class DatabaseReader:
                     JOIN call_resolutions cr ON t.recording_id = cr.recording_id
                     WHERE LOWER(t.customer_company) LIKE ANY(%s)
                       AND cr.churn_risk IS NOT NULL
+                      {date_filter_t}
                     GROUP BY cr.churn_risk
                 """, (patterns,))
                 result['churn_risk_distribution'] = {row['churn_risk']: row['count'] for row in cur.fetchall()}
 
                 # Call types
-                cur.execute("""
+                cur.execute(f"""
                     SELECT
                         i.call_type,
                         COUNT(*) as count
@@ -830,21 +883,21 @@ class DatabaseReader:
                     JOIN insights i ON t.recording_id = i.recording_id
                     WHERE LOWER(t.customer_company) LIKE ANY(%s)
                       AND i.call_type IS NOT NULL
+                      {date_filter_t}
                     GROUP BY i.call_type
                     ORDER BY count DESC
                 """, (patterns,))
                 result['call_types'] = {row['call_type']: row['count'] for row in cur.fetchall()}
 
                 # Agents who handled their calls
-                cur.execute("""
+                cur.execute(f"""
                     SELECT
-                        t.employee_name,
+                        COALESCE(NULLIF(t.employee_name, ''), 'Unknown Agent') as employee_name,
                         COUNT(*) as call_count
                     FROM transcripts t
                     WHERE LOWER(t.customer_company) LIKE ANY(%s)
-                      AND t.employee_name IS NOT NULL
-                      AND t.employee_name != ''
-                    GROUP BY t.employee_name
+                      {date_filter_t}
+                    GROUP BY COALESCE(NULLIF(t.employee_name, ''), 'Unknown Agent')
                     ORDER BY call_count DESC
                     LIMIT 5
                 """, (patterns,))
@@ -854,7 +907,7 @@ class DatabaseReader:
                 ]
 
                 # Recent calls with summaries
-                cur.execute("""
+                cur.execute(f"""
                     SELECT
                         t.recording_id,
                         t.call_date,
@@ -868,6 +921,7 @@ class DatabaseReader:
                     JOIN insights i ON t.recording_id = i.recording_id
                     LEFT JOIN call_resolutions cr ON t.recording_id = cr.recording_id
                     WHERE LOWER(t.customer_company) LIKE ANY(%s)
+                    {date_filter_t}
                     ORDER BY t.call_date DESC
                     LIMIT 10
                 """, (patterns,))
@@ -886,12 +940,13 @@ class DatabaseReader:
                 ]
 
                 # Common issues/topics
-                cur.execute("""
+                cur.execute(f"""
                     SELECT i.key_topics
                     FROM transcripts t
                     JOIN insights i ON t.recording_id = i.recording_id
                     WHERE LOWER(t.customer_company) LIKE ANY(%s)
                       AND i.key_topics IS NOT NULL
+                      {date_filter_t}
                     LIMIT 20
                 """, (patterns,))
 

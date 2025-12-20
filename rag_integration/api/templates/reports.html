@@ -25,7 +25,30 @@
                             <option value="8">8+ (Critical)</option>
                         </select>
                     </div>
-                    <button type="button" class="btn btn-danger" onclick="generateReport('churn')">
+                    <div class="mb-3">
+                        <label class="form-label">Date Range:</label>
+                        <select name="date_range" class="form-select" onchange="toggleCustomDateRange(this, 'churn')">
+                            <option value="">All Time</option>
+                            <option value="last_30">Last 30 Days</option>
+                            <option value="mtd" selected>Month to Date (MTD)</option>
+                            <option value="qtd">Quarter to Date (QTD)</option>
+                            <option value="ytd">Year to Date (YTD)</option>
+                            <option value="custom">Custom Range...</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 custom-date-range" id="churnCustomDates" style="display: none;">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="form-label">Start Date:</label>
+                                <input type="date" name="start_date" class="form-control">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">End Date:</label>
+                                <input type="date" name="end_date" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-danger" onclick="generateChurnReport()">
                         <i class="bi bi-file-earmark-text me-1"></i>Generate Report
                     </button>
                 </form>
@@ -186,6 +209,29 @@
                         <small class="text-muted">Or enter company name:</small>
                         <input type="text" name="custom_company" class="form-control mt-1" placeholder="Type company name...">
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Date Range:</label>
+                        <select name="date_range" class="form-select" onchange="toggleCustomDateRange(this, 'customer')">
+                            <option value="">All Time</option>
+                            <option value="last_30">Last 30 Days</option>
+                            <option value="mtd" selected>Month to Date (MTD)</option>
+                            <option value="qtd">Quarter to Date (QTD)</option>
+                            <option value="ytd">Year to Date (YTD)</option>
+                            <option value="custom">Custom Range...</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 custom-date-range" id="customerCustomDates" style="display: none;">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="form-label">Start Date:</label>
+                                <input type="date" name="start_date" class="form-control">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">End Date:</label>
+                                <input type="date" name="end_date" class="form-control">
+                            </div>
+                        </div>
+                    </div>
                     <button type="button" class="btn btn-success" onclick="generateCustomerReport()">
                         <i class="bi bi-file-earmark-text me-1"></i>Generate Report
                     </button>
@@ -249,15 +295,27 @@ function toggleCustomDateRange(selectElement, formType) {
     }
 }
 
-async function generateReport(type) {
-    const form = document.getElementById(type + 'Form');
+async function generateChurnReport() {
+    const form = document.getElementById('churnForm');
     const minScore = form.querySelector('[name="min_score"]').value;
+    const dateRange = form.querySelector('[name="date_range"]').value;
+    const startDate = form.querySelector('[name="start_date"]').value;
+    const endDate = form.querySelector('[name="end_date"]').value;
 
     showLoading('Analyzing churn risk data...');
 
     try {
         currentAbortController = new AbortController();
-        const response = await fetch(`/api/v1/rag/reports/churn?min_score=${minScore}`, {
+        const params = new URLSearchParams();
+        params.append('min_score', minScore);
+        if (dateRange && dateRange !== 'custom') {
+            params.append('date_range', dateRange);
+        }
+        if (dateRange === 'custom' && startDate && endDate) {
+            params.append('start_date', startDate);
+            params.append('end_date', endDate);
+        }
+        const response = await fetch(`/api/v1/rag/reports/churn?${params.toString()}`, {
             signal: currentAbortController.signal
         });
 
@@ -268,7 +326,8 @@ async function generateReport(type) {
         const data = await response.json();
 
         if (data.data && data.data.total_high_risk > 0) {
-            showReport(`Churn Risk Report (${data.data.total_high_risk} high-risk customers)`, data.response);
+            const dateLabel = data.date_range && data.date_range !== 'all' ? ` - ${data.date_range}` : '';
+            showReport(`Churn Risk Report (${data.data.total_high_risk} at-risk customers${dateLabel})`, data.response);
         } else {
             showReport('Churn Risk Report', data.response || 'No high-risk customers found.');
         }
@@ -432,6 +491,9 @@ async function generateCustomerReport() {
     const form = document.getElementById('customerForm');
     const selectCompany = form.querySelector('[name="company_name"]').value;
     const customCompany = form.querySelector('[name="custom_company"]').value;
+    const dateRange = form.querySelector('[name="date_range"]').value;
+    const startDate = form.querySelector('[name="start_date"]').value;
+    const endDate = form.querySelector('[name="end_date"]').value;
 
     const companyName = customCompany || selectCompany;
 
@@ -444,7 +506,19 @@ async function generateCustomerReport() {
 
     try {
         currentAbortController = new AbortController();
-        const response = await fetch(`/api/v1/rag/reports/customer/${encodeURIComponent(companyName)}`, {
+        let url = `/api/v1/rag/reports/customer/${encodeURIComponent(companyName)}`;
+        const params = new URLSearchParams();
+        if (dateRange && dateRange !== 'custom') {
+            params.append('date_range', dateRange);
+        }
+        if (dateRange === 'custom' && startDate && endDate) {
+            params.append('start_date', startDate);
+            params.append('end_date', endDate);
+        }
+        if (params.toString()) {
+            url += '?' + params.toString();
+        }
+        const response = await fetch(url, {
             signal: currentAbortController.signal
         });
 
@@ -455,7 +529,8 @@ async function generateCustomerReport() {
         const data = await response.json();
 
         if (data.data && data.data.total_calls > 0) {
-            showReport(`Customer Report: ${data.company} (${data.data.total_calls} calls)`, data.response);
+            const dateLabel = data.date_range && data.date_range !== 'all' ? ` - ${data.date_range}` : '';
+            showReport(`Customer Report: ${data.company} (${data.data.total_calls} calls${dateLabel})`, data.response);
         } else {
             showReport(`Customer Report: ${companyName}`, data.response || 'No calls found for this company.');
         }
