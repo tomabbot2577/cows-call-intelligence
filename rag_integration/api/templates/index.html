@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="bi bi-speedometer2 me-2"></i>Dashboard</h2>
+    <span class="text-muted">Last updated: {{ now().strftime('%Y-%m-%d %H:%M') if now else 'N/A' }}</span>
+</div>
+
+{% if error %}
+<div class="alert alert-danger">
+    <i class="bi bi-exclamation-triangle me-2"></i>{{ error }}
+</div>
+{% endif %}
+
+<!-- Summary Stats -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card stat-card text-white">
+            <div class="card-body text-center">
+                <div class="stat-number">{{ stats.get('total_transcripts', 0) | default(0) }}</div>
+                <div>Total Transcripts</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white">
+            <div class="card-body text-center">
+                <div class="stat-number">{{ stats.get('ready_for_export', 0) | default(0) }}</div>
+                <div>Ready for RAG Export</div>
+                <small>(All 5 Layers Complete)</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-info text-white">
+            <div class="card-body text-center">
+                <div class="stat-number">{{ stats.get('with_insights', 0) | default(0) }}</div>
+                <div>With Sentiment Analysis</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-dark">
+            <div class="card-body text-center">
+                <div class="stat-number">{{ stats.get('with_resolutions', 0) | default(0) }}</div>
+                <div>With Resolutions</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Layer Progress -->
+<div class="row mb-4">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <i class="bi bi-layers me-2"></i>Analysis Layer Progress
+            </div>
+            <div class="card-body">
+                {% set total = stats.get('total_transcripts', 1) %}
+
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between mb-1">
+                        <span>Layer 1: Name Extraction</span>
+                        <span>{{ stats.get('with_names', 0) }}/{{ total }}</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" style="width: {{ (stats.get('with_names', 0) / total * 100) | round }}%"></div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between mb-1">
+                        <span>Layer 2: Sentiment Analysis</span>
+                        <span>{{ stats.get('with_insights', 0) }}/{{ total }}</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar bg-info" style="width: {{ (stats.get('with_insights', 0) / total * 100) | round }}%"></div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between mb-1">
+                        <span>Layer 3: Resolution Tracking</span>
+                        <span>{{ stats.get('with_resolutions', 0) }}/{{ total }}</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar bg-warning" style="width: {{ (stats.get('with_resolutions', 0) / total * 100) | round }}%"></div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between mb-1">
+                        <span>Layer 4: Recommendations</span>
+                        <span>{{ stats.get('with_recommendations', 0) }}/{{ total }}</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar bg-success" style="width: {{ (stats.get('with_recommendations', 0) / total * 100) | round }}%"></div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between mb-1">
+                        <strong>All Layers Complete (Ready for RAG)</strong>
+                        <strong>{{ stats.get('ready_for_export', 0) }}/{{ total }}</strong>
+                    </div>
+                    <div class="progress" style="height: 25px;">
+                        <div class="progress-bar bg-success" style="width: {{ (stats.get('ready_for_export', 0) / total * 100) | round }}%">
+                            {{ ((stats.get('ready_for_export', 0) / total * 100) | round) }}%
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <i class="bi bi-calendar-range me-2"></i>Date Range
+            </div>
+            <div class="card-body">
+                <p><strong>Earliest:</strong> {{ stats.get('earliest_date', 'N/A') }}</p>
+                <p><strong>Latest:</strong> {{ stats.get('latest_date', 'N/A') }}</p>
+            </div>
+        </div>
+
+        <div class="card mt-3">
+            <div class="card-header">
+                <i class="bi bi-cloud-upload me-2"></i>Export Status
+            </div>
+            <div class="card-body">
+                <p><strong>GCS Bucket:</strong> {{ pipeline.get('gcs', {}).get('bucket', 'N/A') }}</p>
+                <p><strong>Exported Files:</strong> {{ pipeline.get('exports', {}).get('files_count', 0) }}</p>
+                <a href="/export" class="btn btn-primary btn-sm">
+                    <i class="bi bi-upload me-1"></i>Manage Exports
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sentiment Distribution -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <i class="bi bi-emoji-smile me-2"></i>Sentiment Distribution
+            </div>
+            <div class="card-body">
+                {% for sentiment, count in stats.get('sentiment_distribution', {}).items() %}
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span>
+                        {% if sentiment == 'positive' %}
+                        <i class="bi bi-emoji-smile text-success me-2"></i>
+                        {% elif sentiment == 'negative' %}
+                        <i class="bi bi-emoji-frown text-danger me-2"></i>
+                        {% else %}
+                        <i class="bi bi-emoji-neutral text-warning me-2"></i>
+                        {% endif %}
+                        {{ sentiment | capitalize }}
+                    </span>
+                    <span class="badge bg-secondary">{{ count }}</span>
+                </div>
+                {% else %}
+                <p class="text-muted">No sentiment data available</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <i class="bi bi-telephone me-2"></i>Call Types
+            </div>
+            <div class="card-body">
+                {% for call_type, count in stats.get('call_type_distribution', {}).items() %}
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span>{{ call_type | capitalize }}</span>
+                    <span class="badge bg-primary">{{ count }}</span>
+                </div>
+                {% else %}
+                <p class="text-muted">No call type data available</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Quick Actions -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="bi bi-lightning me-2"></i>Quick Actions
+            </div>
+            <div class="card-body">
+                <a href="/query" class="btn btn-primary me-2">
+                    <i class="bi bi-search me-1"></i>Query RAG
+                </a>
+                <a href="/reports" class="btn btn-info me-2">
+                    <i class="bi bi-file-earmark-bar-graph me-1"></i>Generate Reports
+                </a>
+                <a href="/export" class="btn btn-success me-2">
+                    <i class="bi bi-cloud-upload me-1"></i>Export to GCS
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
