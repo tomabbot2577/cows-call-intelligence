@@ -117,6 +117,36 @@
             </div>
         </div>
     </div>
+
+    <!-- Customer/Company Report -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-success text-white">
+                <i class="bi bi-building me-2"></i>Customer Report
+            </div>
+            <div class="card-body">
+                <p>Analyze all interactions with a specific customer company.</p>
+                <form id="customerForm">
+                    <div class="mb-3">
+                        <label class="form-label">Customer Company:</label>
+                        <select name="company_name" class="form-select" required>
+                            <option value="">Select a company...</option>
+                            {% for customer in customers %}
+                            <option value="{{ customer.customer_company }}">{{ customer.customer_company }} ({{ customer.call_count }} calls)</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <small class="text-muted">Or enter company name:</small>
+                        <input type="text" name="custom_company" class="form-control mt-1" placeholder="Type company name...">
+                    </div>
+                    <button type="button" class="btn btn-success" onclick="generateCustomerReport()">
+                        <i class="bi bi-file-earmark-text me-1"></i>Generate Report
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Report Output -->
@@ -130,36 +160,56 @@
     </div>
 </div>
 
-<!-- Loading Spinner -->
-<div class="text-center mt-4" id="loadingSpinner" style="display: none;">
-    <div class="spinner-border text-primary" role="status">
-        <span class="visually-hidden">Generating report...</span>
+<!-- Loading Overlay -->
+<div id="loadingOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: center;">
+    <div class="card" style="max-width: 400px; text-align: center;">
+        <div class="card-body p-4">
+            <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <h5 class="mb-2">Generating Report...</h5>
+            <p class="text-muted mb-3" id="loadingMessage">Querying database and analyzing data with AI. This may take 15-30 seconds.</p>
+            <button type="button" class="btn btn-outline-secondary" onclick="cancelReport()">
+                <i class="bi bi-x-circle me-1"></i>Cancel
+            </button>
+        </div>
     </div>
-    <p class="mt-2">Generating report...</p>
 </div>
 {% endblock %}
 
 {% block extra_js %}
 <script>
+// Global abort controller for cancelling requests
+let currentAbortController = null;
+
 async function generateReport(type) {
     const form = document.getElementById(type + 'Form');
     const minScore = form.querySelector('[name="min_score"]').value;
 
-    showLoading();
+    showLoading('Analyzing churn risk data...');
 
     try {
-        // Use Gemini for churn reports
-        const query = `Identify all customers at high risk of churning (churn risk score >= ${minScore}). For each high-risk customer, provide: customer name, company, churn risk score, reason for risk, and recommended action to retain them.`;
-
-        const response = await fetch('/api/v1/rag/query', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({query: query, force_system: 'gemini'})
+        currentAbortController = new AbortController();
+        const response = await fetch(`/api/v1/rag/reports/churn?min_score=${minScore}`, {
+            signal: currentAbortController.signal
         });
+
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
+
         const data = await response.json();
 
-        showReport('Churn Risk Report', data.response);
+        if (data.data && data.data.total_high_risk > 0) {
+            showReport(`Churn Risk Report (${data.data.total_high_risk} high-risk customers)`, data.response);
+        } else {
+            showReport('Churn Risk Report', data.response || 'No high-risk customers found.');
+        }
     } catch (error) {
+        if (error.name === 'AbortError') {
+            hideLoading();
+            return;
+        }
         showReport('Error', 'Failed to generate report: ' + error.message);
     }
 }
@@ -174,29 +224,33 @@ async function generateAgentReport() {
         return;
     }
 
-    showLoading();
+    showLoading(`Analyzing performance data for ${agentName}...`);
 
     try {
-        // Use Gemini for agent reports (more reliable)
-        let query = `Analyze agent ${agentName}'s performance. `;
-        if (dateRange === 'today') {
-            query += 'Focus on today\'s calls. ';
-        } else if (dateRange === 'this_week') {
-            query += 'Focus on this week\'s calls. ';
-        } else if (dateRange === 'this_month') {
-            query += 'Focus on this month\'s calls. ';
+        currentAbortController = new AbortController();
+        let url = `/api/v1/rag/reports/agent/${encodeURIComponent(agentName)}`;
+        if (dateRange) {
+            url += `?date_range=${dateRange}`;
         }
-        query += 'Provide: total calls handled, average quality score, key strengths, areas for improvement, and specific coaching recommendations with examples.';
 
-        const response = await fetch('/api/v1/rag/query', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({query: query, force_system: 'gemini'})
-        });
+        const response = await fetch(url, { signal: currentAbortController.signal });
+
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
+
         const data = await response.json();
 
-        showReport(`Agent Report: ${agentName}`, data.response);
+        if (data.metrics && data.metrics.total_calls > 0) {
+            showReport(`Agent Report: ${data.agent} (${data.metrics.total_calls} calls)`, data.response);
+        } else {
+            showReport(`Agent Report: ${agentName}`, data.response || 'No calls found for this agent.');
+        }
     } catch (error) {
+        if (error.name === 'AbortError') {
+            hideLoading();
+            return;
+        }
         showReport('Error', 'Failed to generate report: ' + error.message);
     }
 }
@@ -205,24 +259,30 @@ async function generateQualityReport() {
     const form = document.getElementById('qualityForm');
     const focus = form.querySelector('[name="focus"]').value;
 
-    showLoading();
+    showLoading('Analyzing call quality data...');
 
     try {
-        const queries = {
-            'low_quality': 'Analyze all calls with quality score below 5. What are the common issues and how can they be improved?',
-            'trends': 'What are the quality score trends over the past month? Are we improving or declining?',
-            'by_type': 'Compare quality scores across different call types. Which types have the lowest quality?'
-        };
-
-        const response = await fetch('/api/v1/rag/query', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({query: queries[focus]})
+        currentAbortController = new AbortController();
+        const response = await fetch(`/api/v1/rag/reports/quality?focus=${focus}`, {
+            signal: currentAbortController.signal
         });
+
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}. Please restart the service.`);
+        }
+
         const data = await response.json();
 
-        showReport('Quality Analysis Report', data.response);
+        if (data.data && data.data.total_low_quality > 0) {
+            showReport(`Quality Analysis Report (${data.data.total_low_quality} low quality calls)`, data.response);
+        } else {
+            showReport('Quality Analysis Report', data.response || 'No low quality calls found.');
+        }
     } catch (error) {
+        if (error.name === 'AbortError') {
+            hideLoading();
+            return;
+        }
         showReport('Error', 'Failed to generate report: ' + error.message);
     }
 }
@@ -231,39 +291,101 @@ async function generateSentimentReport() {
     const form = document.getElementById('sentimentForm');
     const analysis = form.querySelector('[name="analysis"]').value;
 
-    showLoading();
+    showLoading('Analyzing customer sentiment data...');
 
     try {
-        const queries = {
-            'negative': 'What are the main drivers of negative customer sentiment? Provide specific examples and recommendations.',
-            'trends': 'How has customer sentiment changed over time? Identify any patterns or concerning trends.',
-            'by_agent': 'Compare customer sentiment across different agents. Who handles difficult situations best?'
-        };
-
-        const response = await fetch('/api/v1/rag/query', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({query: queries[analysis]})
+        currentAbortController = new AbortController();
+        const response = await fetch(`/api/v1/rag/reports/sentiment?analysis=${analysis}`, {
+            signal: currentAbortController.signal
         });
+
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}. Please restart the service.`);
+        }
+
         const data = await response.json();
 
-        showReport('Sentiment Analysis Report', data.response);
+        if (data.data && data.data.total_matching > 0) {
+            showReport(`Sentiment Analysis Report (${data.data.total_matching} calls analyzed)`, data.response);
+        } else {
+            showReport('Sentiment Analysis Report', data.response || 'No matching calls found.');
+        }
     } catch (error) {
+        if (error.name === 'AbortError') {
+            hideLoading();
+            return;
+        }
         showReport('Error', 'Failed to generate report: ' + error.message);
     }
 }
 
-function showLoading() {
-    document.getElementById('loadingSpinner').style.display = 'block';
+async function generateCustomerReport() {
+    const form = document.getElementById('customerForm');
+    const selectCompany = form.querySelector('[name="company_name"]').value;
+    const customCompany = form.querySelector('[name="custom_company"]').value;
+
+    const companyName = customCompany || selectCompany;
+
+    if (!companyName) {
+        alert('Please select or enter a company name');
+        return;
+    }
+
+    showLoading(`Analyzing data for ${companyName}...`);
+
+    try {
+        currentAbortController = new AbortController();
+        const response = await fetch(`/api/v1/rag/reports/customer/${encodeURIComponent(companyName)}`, {
+            signal: currentAbortController.signal
+        });
+
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (data.data && data.data.total_calls > 0) {
+            showReport(`Customer Report: ${data.company} (${data.data.total_calls} calls)`, data.response);
+        } else {
+            showReport(`Customer Report: ${companyName}`, data.response || 'No calls found for this company.');
+        }
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            hideLoading();
+            return;
+        }
+        showReport('Error', 'Failed to generate report: ' + error.message);
+    }
+}
+
+function showLoading(message) {
+    document.getElementById('loadingMessage').textContent = message || 'Querying database and analyzing data with AI. This may take 15-30 seconds.';
+    document.getElementById('loadingOverlay').style.display = 'flex';
     document.getElementById('reportOutput').style.display = 'none';
 }
 
+function hideLoading() {
+    document.getElementById('loadingOverlay').style.display = 'none';
+}
+
+function cancelReport() {
+    if (currentAbortController) {
+        currentAbortController.abort();
+        currentAbortController = null;
+    }
+    hideLoading();
+}
+
 function showReport(title, content) {
-    document.getElementById('loadingSpinner').style.display = 'none';
+    hideLoading();
     document.getElementById('reportOutput').style.display = 'block';
     document.getElementById('reportTitle').textContent = title;
     document.getElementById('reportContent').textContent = content;
     document.getElementById('reportTime').textContent = new Date().toLocaleString();
+
+    // Scroll to report
+    document.getElementById('reportOutput').scrollIntoView({ behavior: 'smooth' });
 }
 </script>
 {% endblock %}

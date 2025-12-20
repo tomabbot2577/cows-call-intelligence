@@ -135,14 +135,34 @@ python -m uvicorn rag_integration.api.main:app --host 0.0.0.0 --port 8081
 |--------|----------|-------------|
 | GET | `/` | Dashboard home |
 | GET | `/query` | Query interface |
+| GET | `/reports` | Reports page |
+| GET | `/export` | Export management page |
 | GET | `/health` | Health check |
 | POST | `/api/v1/rag/query` | Execute RAG query |
 | POST | `/api/v1/rag/export` | Trigger export pipeline |
 | GET | `/api/v1/rag/status` | System status |
-| GET | `/api/v1/rag/reports/churn` | Churn risk report |
-| GET | `/api/v1/rag/reports/agent/{name}` | Agent performance report |
-| GET | `/reports` | Reports page |
-| GET | `/export` | Export management page |
+| GET | `/api/v1/rag/customers` | List customer companies |
+| GET | `/api/v1/rag/routing/explain` | Explain query routing |
+
+### Data-Backed Report Endpoints (NEW - December 2025)
+
+All report endpoints query the PostgreSQL database for REAL data, then use Gemini AI
+to generate analysis. No hallucinated data - reports use actual names, dates, and scores.
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/v1/rag/reports/churn?min_score=7` | Churn risk report (high-risk customers) |
+| GET | `/api/v1/rag/reports/agent/{name}?date_range=this_week` | Agent performance metrics |
+| GET | `/api/v1/rag/reports/customer/{company_name}` | Customer relationship report |
+| GET | `/api/v1/rag/reports/sentiment?analysis=negative` | Sentiment analysis report |
+| GET | `/api/v1/rag/reports/quality?focus=low_quality` | Call quality analysis |
+
+**Features:**
+- Loading overlay with cancel button in Web UI
+- Filters out calls with NULL dates or unknown employees
+- Uses canonical employee names (22 PC Recruiter staff)
+- Excludes internal companies (PC Recruiter, Main Sequence)
+- Date range: June 2025 onwards (including 2026)
 
 ## Query Examples
 

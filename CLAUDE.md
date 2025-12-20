@@ -540,16 +540,37 @@ print(result['response'][:500])
 "
 ```
 
+### Data-Backed Reports (NEW - December 2025)
+All reports use ACTUAL data from the database, not AI hallucinations:
+
+| Report | Endpoint | Description |
+|--------|----------|-------------|
+| **Churn Risk** | `/api/v1/rag/reports/churn` | High-risk customers with real names, dates, scores |
+| **Agent Performance** | `/api/v1/rag/reports/agent/{name}` | Agent metrics with call history |
+| **Customer Report** | `/api/v1/rag/reports/customer/{company}` | Customer relationship analysis |
+| **Sentiment Analysis** | `/api/v1/rag/reports/sentiment` | Negative sentiment drivers with examples |
+| **Quality Analysis** | `/api/v1/rag/reports/quality` | Low quality calls with root causes |
+
+**Features:**
+- Loading overlay with cancel button
+- Real employee names (22 PC Recruiter staff)
+- Real customer companies (excludes PC Recruiter/Main Sequence)
+- Filters out calls with NULL dates or unknown employees
+- AI analysis uses actual data, not placeholders
+
 ### Key Files
 ```
 rag_integration/
+├── config/
+│   ├── employee_names.py     # 22 canonical PC Recruiter employees
+│   └── company_names.py      # Customer company normalization
 ├── services/
 │   ├── db_reader.py          # Read-only PostgreSQL (5-layer verification)
 │   ├── gemini_file_search.py # Gemini RAG (google.genai SDK)
 │   ├── gcs_uploader.py       # GCS upload
 │   └── query_router.py       # Auto-routing
 ├── api/
-│   ├── main.py               # FastAPI + Web UI
+│   ├── main.py               # FastAPI + Web UI (18 endpoints)
 │   └── templates/            # Jinja2 templates
 └── exports/                  # 16 JSONL files
 ```
@@ -565,17 +586,31 @@ RAG_API_PASSWORD=!pcr123
 RAG_DATABASE_URL=postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights
 ```
 
-### Service Management
+### Service Management (systemd)
 ```bash
-# Start RAG API
-source venv/bin/activate
-nohup python -m uvicorn rag_integration.api.main:app --host 0.0.0.0 --port 8081 > logs/rag_api.log 2>&1 &
+# Start/Stop/Restart RAG API
+sudo systemctl start cows-rag-api.service
+sudo systemctl stop cows-rag-api.service
+sudo systemctl restart cows-rag-api.service
 
-# Stop RAG API
-pkill -f "uvicorn rag_integration"
+# Check status
+sudo systemctl status cows-rag-api.service
+
+# View logs
+sudo journalctl -u cows-rag-api.service -f
+tail -f /var/log/cows/rag-api.log
 
 # Check health
 curl http://localhost:8081/health
+```
+
+### PC Recruiter Employees (22 staff)
+```
+Bill Kubicek, Dylan Bello, James Blair, Nicholas Bradach, Robin Montoni,
+Garrett Komyati, Jim Blair, John Blair, Mackenzie Scalise, Tyler Fleig,
+Matt Lester, Chris Morrison, Michael Depto, Angela Mc Aleer, Linda Bailey,
+Victoria Eck, Kathy Harden, John Turk, Andrew Blair, Davisha, Lisa Rogers,
+Samuel Barnes
 ```
 
 See `RAG_INTEGRATION.md` for full documentation.
