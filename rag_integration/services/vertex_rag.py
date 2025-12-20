@@ -163,7 +163,7 @@ When providing analysis:
 
             # Generate with RAG
             model = GenerativeModel(
-                "gemini-1.5-pro-001",
+                "gemini-2.0-flash-001",
                 system_instruction=self._system_instruction
             )
 
@@ -190,7 +190,7 @@ When providing analysis:
                 "filters_applied": filter_expr,
                 "system": "vertex",
                 "corpus": self.corpus_name,
-                "model": "gemini-1.5-pro-001"
+                "model": "gemini-2.0-flash-001"
             }
 
         except Exception as e:

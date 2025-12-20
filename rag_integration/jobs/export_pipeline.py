@@ -211,7 +211,12 @@ class ExportPipeline:
                 "status": "ready",
                 "database": {
                     "total_transcripts": db_stats.get("total_transcripts", 0),
-                    "with_insights": db_stats.get("with_insights", 0),
+                    "layer1_names": db_stats.get("with_names", 0),
+                    "layer2_insights": db_stats.get("with_insights", 0),
+                    "layer3_resolutions": db_stats.get("with_resolutions", 0),
+                    "layer4_recommendations": db_stats.get("with_recommendations", 0),
+                    "layer5_advanced_metrics": db_stats.get("with_advanced_metrics", 0),
+                    "all_5_layers_complete": db_stats.get("ready_for_export", 0),
                     "date_range": f"{db_stats.get('earliest_date')} to {db_stats.get('latest_date')}"
                 },
                 "exports": {
