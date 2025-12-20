@@ -1,0 +1,28 @@
+# RAG Integration Dependencies
+# Install with: pip install -r rag_integration/requirements.txt
+
+# FastAPI and Web
+fastapi>=0.109.0
+uvicorn[standard]>=0.27.0
+jinja2>=3.1.0
+python-multipart>=0.0.6
+
+# Google Cloud
+google-cloud-storage>=2.14.0
+google-cloud-aiplatform>=1.38.0
+google-generativeai>=0.3.0
+
+# Database
+psycopg2-binary>=2.9.9
+
+# Email
+aiosmtplib>=3.0.0
+
+# Utilities
+python-dotenv>=1.0.0
+pydantic>=2.5.0
+pydantic-settings>=2.1.0
+
+# Already in main requirements.txt (not duplicated):
+# - httpx
+# - tenacity

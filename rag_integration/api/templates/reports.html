@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+
+{% block title %}Reports{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="bi bi-file-earmark-bar-graph me-2"></i>Reports</h2>
+</div>
+
+<div class="row">
+    <!-- Churn Risk Report -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-danger text-white">
+                <i class="bi bi-exclamation-triangle me-2"></i>Churn Risk Report
+            </div>
+            <div class="card-body">
+                <p>Identify customers at high risk of churning based on call analysis.</p>
+                <form method="get" action="/api/v1/rag/reports/churn" id="churnForm">
+                    <div class="mb-3">
+                        <label class="form-label">Minimum Risk Score:</label>
+                        <select name="min_score" class="form-select">
+                            <option value="5">5+ (Medium & High)</option>
+                            <option value="7" selected>7+ (High Risk)</option>
+                            <option value="8">8+ (Critical)</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-danger" onclick="generateReport('churn')">
+                        <i class="bi bi-file-earmark-text me-1"></i>Generate Report
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agent Performance Report -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-primary text-white">
+                <i class="bi bi-person-badge me-2"></i>Agent Performance Report
+            </div>
+            <div class="card-body">
+                <p>Analyze individual agent performance with coaching recommendations.</p>
+                <form id="agentForm">
+                    <div class="mb-3">
+                        <label class="form-label">Agent Name:</label>
+                        <input type="text" name="agent_name" class="form-control" placeholder="Enter agent name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Date Range:</label>
+                        <select name="date_range" class="form-select">
+                            <option value="">All Time</option>
+                            <option value="today">Today</option>
+                            <option value="this_week" selected>This Week</option>
+                            <option value="this_month">This Month</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="generateAgentReport()">
+                        <i class="bi bi-file-earmark-text me-1"></i>Generate Report
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quality Analysis Report -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-warning text-dark">
+                <i class="bi bi-star me-2"></i>Quality Analysis
+            </div>
+            <div class="card-body">
+                <p>Analyze call quality trends and identify improvement areas.</p>
+                <form id="qualityForm">
+                    <div class="mb-3">
+                        <label class="form-label">Focus Area:</label>
+                        <select name="focus" class="form-select">
+                            <option value="low_quality">Low Quality Calls (< 5)</option>
+                            <option value="trends">Quality Trends Over Time</option>
+                            <option value="by_type">Quality by Call Type</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-warning" onclick="generateQualityReport()">
+                        <i class="bi bi-file-earmark-text me-1"></i>Generate Report
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sentiment Analysis Report -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-info text-white">
+                <i class="bi bi-emoji-smile me-2"></i>Sentiment Analysis
+            </div>
+            <div class="card-body">
+                <p>Understand customer sentiment patterns and drivers.</p>
+                <form id="sentimentForm">
+                    <div class="mb-3">
+                        <label class="form-label">Analysis Type:</label>
+                        <select name="analysis" class="form-select">
+                            <option value="negative">Negative Sentiment Drivers</option>
+                            <option value="trends">Sentiment Trends</option>
+                            <option value="by_agent">Sentiment by Agent</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-info" onclick="generateSentimentReport()">
+                        <i class="bi bi-file-earmark-text me-1"></i>Generate Report
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Report Output -->
+<div class="card mt-4" id="reportOutput" style="display: none;">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="bi bi-file-text me-2"></i><span id="reportTitle">Report</span></span>
+        <span class="badge bg-secondary" id="reportTime"></span>
+    </div>
+    <div class="card-body">
+        <div class="response-box" id="reportContent"></div>
+    </div>
+</div>
+
+<!-- Loading Spinner -->
+<div class="text-center mt-4" id="loadingSpinner" style="display: none;">
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Generating report...</span>
+    </div>
+    <p class="mt-2">Generating report...</p>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+async function generateReport(type) {
+    const form = document.getElementById(type + 'Form');
+    const formData = new FormData(form);
+    const params = new URLSearchParams(formData).toString();
+
+    showLoading();
+
+    try {
+        const response = await fetch(`/api/v1/rag/reports/${type}?${params}`);
+        const data = await response.json();
+
+        showReport('Churn Risk Report', data.response);
+    } catch (error) {
+        showReport('Error', 'Failed to generate report: ' + error.message);
+    }
+}
+
+async function generateAgentReport() {
+    const form = document.getElementById('agentForm');
+    const agentName = form.querySelector('[name="agent_name"]').value;
+    const dateRange = form.querySelector('[name="date_range"]').value;
+
+    if (!agentName) {
+        alert('Please enter an agent name');
+        return;
+    }
+
+    showLoading();
+
+    try {
+        let url = `/api/v1/rag/reports/agent/${encodeURIComponent(agentName)}`;
+        if (dateRange) {
+            url += `?date=${dateRange}`;
+        }
+
+        const response = await fetch(url);
+        const data = await response.json();
+
+        showReport(`Agent Report: ${agentName}`, data.response);
+    } catch (error) {
+        showReport('Error', 'Failed to generate report: ' + error.message);
+    }
+}
+
+async function generateQualityReport() {
+    const form = document.getElementById('qualityForm');
+    const focus = form.querySelector('[name="focus"]').value;
+
+    showLoading();
+
+    try {
+        const queries = {
+            'low_quality': 'Analyze all calls with quality score below 5. What are the common issues and how can they be improved?',
+            'trends': 'What are the quality score trends over the past month? Are we improving or declining?',
+            'by_type': 'Compare quality scores across different call types. Which types have the lowest quality?'
+        };
+
+        const response = await fetch('/api/v1/rag/query', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({query: queries[focus], force_system: 'vertex'})
+        });
+        const data = await response.json();
+
+        showReport('Quality Analysis Report', data.response);
+    } catch (error) {
+        showReport('Error', 'Failed to generate report: ' + error.message);
+    }
+}
+
+async function generateSentimentReport() {
+    const form = document.getElementById('sentimentForm');
+    const analysis = form.querySelector('[name="analysis"]').value;
+
+    showLoading();
+
+    try {
+        const queries = {
+            'negative': 'What are the main drivers of negative customer sentiment? Provide specific examples and recommendations.',
+            'trends': 'How has customer sentiment changed over time? Identify any patterns or concerning trends.',
+            'by_agent': 'Compare customer sentiment across different agents. Who handles difficult situations best?'
+        };
+
+        const response = await fetch('/api/v1/rag/query', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({query: queries[analysis], force_system: 'gemini'})
+        });
+        const data = await response.json();
+
+        showReport('Sentiment Analysis Report', data.response);
+    } catch (error) {
+        showReport('Error', 'Failed to generate report: ' + error.message);
+    }
+}
+
+function showLoading() {
+    document.getElementById('loadingSpinner').style.display = 'block';
+    document.getElementById('reportOutput').style.display = 'none';
+}
+
+function showReport(title, content) {
+    document.getElementById('loadingSpinner').style.display = 'none';
+    document.getElementById('reportOutput').style.display = 'block';
+    document.getElementById('reportTitle').textContent = title;
+    document.getElementById('reportContent').textContent = content;
+    document.getElementById('reportTime').textContent = new Date().toLocaleString();
+}
+</script>
+{% endblock %}

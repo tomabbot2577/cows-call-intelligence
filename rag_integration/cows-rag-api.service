@@ -1,0 +1,19 @@
+[Unit]
+Description=COWS RAG API Service
+After=network.target postgresql.service
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/call-recording-system
+Environment="PATH=/var/www/call-recording-system/venv/bin"
+EnvironmentFile=/var/www/call-recording-system/.env
+ExecStart=/var/www/call-recording-system/venv/bin/python -m uvicorn rag_integration.api.main:app --host 0.0.0.0 --port 8081
+Restart=always
+RestartSec=5
+StandardOutput=append:/var/log/cows/rag-api.log
+StandardError=append:/var/log/cows/rag-api-error.log
+
+[Install]
+WantedBy=multi-user.target

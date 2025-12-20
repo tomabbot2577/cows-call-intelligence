@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - COWS RAG</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 400px;
+        }
+        .login-logo {
+            font-size: 3rem;
+            color: #3498db;
+            margin-bottom: 1rem;
+        }
+        .login-title {
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .login-subtitle {
+            color: #7f8c8d;
+            margin-bottom: 2rem;
+        }
+        .form-control {
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            border-radius: 8px;
+        }
+        .btn-login {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            border: none;
+            padding: 0.75rem;
+            font-size: 1.1rem;
+            border-radius: 8px;
+        }
+        .btn-login:hover {
+            background: linear-gradient(135deg, #2980b9, #1a5276);
+        }
+    </style>
+</head>
+<body>
+    <div class="login-card text-center">
+        <div class="login-logo">
+            <i class="bi bi-telephone-fill"></i>
+        </div>
+        <h2 class="login-title">COWS RAG</h2>
+        <p class="login-subtitle">Call Intelligence Platform</p>
+
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            <i class="bi bi-exclamation-circle me-2"></i>{{ error }}
+        </div>
+        {% endif %}
+
+        <form method="post" action="/login">
+            <div class="mb-4">
+                <input type="password" class="form-control" name="password"
+                       placeholder="Enter password" required autofocus>
+            </div>
+            <button type="submit" class="btn btn-primary btn-login w-100">
+                <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+            </button>
+        </form>
+    </div>
+</body>
+</html>
