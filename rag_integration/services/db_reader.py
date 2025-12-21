@@ -17,6 +17,42 @@ load_dotenv()
 logger = logging.getLogger(__name__)
 
 
+def get_employee_search_patterns(employee_name: str) -> List[str]:
+    """
+    Get all search patterns for an employee name.
+    Returns LIKE patterns for all name variations.
+
+    Args:
+        employee_name: Canonical employee name (e.g., "Robin Montoni")
+
+    Returns:
+        List of LIKE patterns (e.g., ["%robin%", "%robin montoni%", "%montoni%"])
+    """
+    from ..config.employee_names import canonicalize_employee_name, NAME_VARIATIONS
+
+    canonical = canonicalize_employee_name(employee_name) or employee_name
+
+    # Start with the canonical name
+    name_variations = set()
+    name_variations.add(canonical.lower())
+
+    # Add all known variations that map to this canonical name
+    for variation, canon in NAME_VARIATIONS.items():
+        if canon == canonical:
+            name_variations.add(variation.lower())
+
+    # Also add first name and last name separately
+    parts = canonical.split()
+    if len(parts) >= 2:
+        name_variations.add(parts[0].lower())  # First name
+        name_variations.add(parts[-1].lower())  # Last name
+
+    # Create LIKE patterns
+    patterns = [f"%{v}%" for v in name_variations]
+
+    return patterns
+
+
 class DatabaseReader:
     """Read-only access to call recording database."""
 
@@ -583,7 +619,7 @@ class DatabaseReader:
 
                 return result
 
-    def get_churn_risk_data(self, risk_level: str = 'high', date_range: str = None, start_date: str = None, end_date: str = None) -> Dict[str, Any]:
+    def get_churn_risk_data(self, risk_level: str = 'high', date_range: str = None, start_date: str = None, end_date: str = None, employee_filter: str = None) -> Dict[str, Any]:
         """
         Get actual churn risk data from the database.
 
@@ -592,6 +628,7 @@ class DatabaseReader:
             date_range: 'last_30', 'mtd', 'qtd', 'ytd', or None for all time
             start_date: Custom start date (YYYY-MM-DD)
             end_date: Custom end date (YYYY-MM-DD)
+            employee_filter: Canonical employee name to filter by (None for admin/all)
         """
         with self.get_connection() as conn:
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
@@ -617,6 +654,15 @@ class DatabaseReader:
                 else:
                     result['date_range'] = 'all_time'
 
+                # Build employee filter using all name variations
+                employee_filter_clause = ""
+                employee_params = []
+                if employee_filter:
+                    employee_patterns = get_employee_search_patterns(employee_filter)
+                    employee_filter_clause = "AND (LOWER(t.employee_name) LIKE ANY(%s))"
+                    employee_params = [employee_patterns]
+                    result['filtered_by'] = employee_filter
+
                 # Build risk filter
                 if risk_level == 'high':
                     risk_filter = "cr.churn_risk = 'high'"
@@ -626,7 +672,7 @@ class DatabaseReader:
                     risk_filter = "cr.churn_risk IS NOT NULL AND cr.churn_risk != 'none' AND cr.churn_risk != 'low'"
 
                 # High risk calls with details (including phone numbers)
-                cur.execute(f"""
+                query = f"""
                     SELECT
                         t.recording_id,
                         t.call_date,
@@ -647,6 +693,7 @@ class DatabaseReader:
                     WHERE {risk_filter}
                       AND t.call_date IS NOT NULL
                       {date_filter}
+                      {employee_filter_clause}
                     ORDER BY
                         CASE cr.churn_risk
                             WHEN 'high' THEN 1
@@ -655,7 +702,8 @@ class DatabaseReader:
                         END,
                         t.call_date DESC
                     LIMIT 50
-                """)
+                """
+                cur.execute(query, employee_params if employee_params else None)
 
                 high_risk_calls = []
                 for row in cur.fetchall():
@@ -753,7 +801,7 @@ class DatabaseReader:
 
                 return [dict(row) for row in cur.fetchall()]
 
-    def get_customer_report(self, company_name: str, date_range: str = None, start_date: str = None, end_date: str = None) -> Dict[str, Any]:
+    def get_customer_report(self, company_name: str, date_range: str = None, start_date: str = None, end_date: str = None, employee_filter: str = None) -> Dict[str, Any]:
         """
         Get comprehensive report data for a customer company.
 
@@ -762,6 +810,7 @@ class DatabaseReader:
             date_range: 'last_30', 'mtd', 'qtd', 'ytd', or None for all time
             start_date: Custom start date (YYYY-MM-DD)
             end_date: Custom end date (YYYY-MM-DD)
+            employee_filter: Canonical employee name to filter by (None for admin/all)
         """
         from ..config.company_names import get_company_search_patterns, canonicalize_company_name
 
@@ -792,20 +841,43 @@ class DatabaseReader:
                 else:
                     result['date_range'] = 'all'
 
+                # Build employee filter using all name variations
+                employee_filter_clause = ""
+                employee_filter_clause_t = ""
+                employee_patterns = None
+                if employee_filter:
+                    employee_patterns = get_employee_search_patterns(employee_filter)
+                    employee_filter_clause = "AND (LOWER(employee_name) LIKE ANY(%s))"
+                    employee_filter_clause_t = "AND (LOWER(t.employee_name) LIKE ANY(%s))"
+                    result['filtered_by'] = employee_filter
+
                 # Date filter with t. prefix for joined queries
                 date_filter_t = date_filter.replace("AND call_date", "AND t.call_date") if date_filter else ""
 
                 # Total calls and contacts
-                cur.execute(f"""
-                    SELECT
-                        COUNT(*) as total_calls,
-                        COUNT(DISTINCT customer_name) as unique_contacts,
-                        MIN(call_date) as first_call,
-                        MAX(call_date) as last_call
-                    FROM transcripts
-                    WHERE LOWER(customer_company) LIKE ANY(%s)
-                    {date_filter}
-                """, (patterns,))
+                if employee_patterns:
+                    cur.execute(f"""
+                        SELECT
+                            COUNT(*) as total_calls,
+                            COUNT(DISTINCT customer_name) as unique_contacts,
+                            MIN(call_date) as first_call,
+                            MAX(call_date) as last_call
+                        FROM transcripts
+                        WHERE LOWER(customer_company) LIKE ANY(%s)
+                        {date_filter}
+                        {employee_filter_clause}
+                    """, (patterns, employee_patterns))
+                else:
+                    cur.execute(f"""
+                        SELECT
+                            COUNT(*) as total_calls,
+                            COUNT(DISTINCT customer_name) as unique_contacts,
+                            MIN(call_date) as first_call,
+                            MAX(call_date) as last_call
+                        FROM transcripts
+                        WHERE LOWER(customer_company) LIKE ANY(%s)
+                        {date_filter}
+                    """, (patterns,))
                 row = cur.fetchone()
                 result['total_calls'] = row['total_calls'] if row else 0
                 result['unique_contacts'] = row['unique_contacts'] if row else 0
@@ -963,7 +1035,7 @@ class DatabaseReader:
                 return result
 
 
-    def get_sentiment_report_data(self, sentiment_filter: str = 'negative', date_range: str = None, start_date: str = None, end_date: str = None) -> Dict[str, Any]:
+    def get_sentiment_report_data(self, sentiment_filter: str = 'negative', date_range: str = None, start_date: str = None, end_date: str = None, employee_filter: str = None) -> Dict[str, Any]:
         """
         Get actual sentiment data from the database for reporting.
 
@@ -972,6 +1044,7 @@ class DatabaseReader:
             date_range: 'last_30', 'mtd', 'qtd', 'ytd', or None for all time
             start_date: Custom start date (YYYY-MM-DD)
             end_date: Custom end date (YYYY-MM-DD)
+            employee_filter: Canonical employee name to filter by (None for admin/all)
         """
         with self.get_connection() as conn:
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
@@ -1003,6 +1076,14 @@ class DatabaseReader:
                 else:
                     result['date_range'] = 'all_time'
 
+                # Build employee filter using all name variations
+                employee_filter_clause = ""
+                employee_patterns = None
+                if employee_filter:
+                    employee_patterns = get_employee_search_patterns(employee_filter)
+                    employee_filter_clause = "AND (LOWER(t.employee_name) LIKE ANY(%s))"
+                    result['filtered_by'] = employee_filter
+
                 # Build sentiment filter
                 if sentiment_filter == 'negative':
                     sentiment_clause = "LOWER(i.customer_sentiment) IN ('negative', 'frustrated', 'angry', 'upset')"
@@ -1025,7 +1106,7 @@ class DatabaseReader:
                 result['sentiment_distribution'] = {row['customer_sentiment']: row['count'] for row in cur.fetchall()}
 
                 # Calls matching the filter with full details
-                cur.execute(f"""
+                query = f"""
                     SELECT
                         t.recording_id,
                         t.call_date,
@@ -1050,6 +1131,7 @@ class DatabaseReader:
                     WHERE {sentiment_clause}
                       AND t.call_date IS NOT NULL
                       {date_filter_with_t}
+                      {employee_filter_clause}
                     ORDER BY
                         CASE
                             WHEN LOWER(i.customer_sentiment) IN ('negative', 'frustrated', 'angry') THEN 1
@@ -1059,7 +1141,8 @@ class DatabaseReader:
                         i.call_quality_score ASC NULLS LAST,
                         t.call_date DESC
                     LIMIT 30
-                """)
+                """
+                cur.execute(query, [employee_patterns] if employee_patterns else None)
 
                 calls = []
                 for row in cur.fetchall():
@@ -1209,7 +1292,7 @@ class DatabaseReader:
                 return result
 
 
-    def get_quality_report_data(self, focus: str = 'low_quality', date_range: str = None, start_date: str = None, end_date: str = None) -> Dict[str, Any]:
+    def get_quality_report_data(self, focus: str = 'low_quality', date_range: str = None, start_date: str = None, end_date: str = None, employee_filter: str = None) -> Dict[str, Any]:
         """
         Get call quality data from the database for reporting.
 
@@ -1218,6 +1301,7 @@ class DatabaseReader:
             date_range: 'last_30', 'mtd', 'qtd', 'ytd', or None for all time
             start_date: Custom start date (YYYY-MM-DD)
             end_date: Custom end date (YYYY-MM-DD)
+            employee_filter: Canonical employee name to filter by (None for admin/all)
         """
         with self.get_connection() as conn:
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
@@ -1248,6 +1332,14 @@ class DatabaseReader:
                     result['date_range'] = 'ytd'
                 else:
                     result['date_range'] = 'all_time'
+
+                # Build employee filter using all name variations
+                employee_filter_clause = ""
+                employee_patterns = None
+                if employee_filter:
+                    employee_patterns = get_employee_search_patterns(employee_filter)
+                    employee_filter_clause = "AND (LOWER(t.employee_name) LIKE ANY(%s))"
+                    result['filtered_by'] = employee_filter
 
                 # Overall quality distribution
                 cur.execute(f"""
@@ -1288,7 +1380,7 @@ class DatabaseReader:
                 result['total_calls_with_quality'] = row['total_calls'] if row else 0
 
                 # Low quality calls (score < 5) with full details
-                cur.execute(f"""
+                query = f"""
                     SELECT
                         t.recording_id,
                         t.call_date,
@@ -1314,9 +1406,11 @@ class DatabaseReader:
                       AND i.call_quality_score < 5
                       AND t.call_date IS NOT NULL
                       {date_filter_with_t}
+                      {employee_filter_clause}
                     ORDER BY i.call_quality_score ASC, t.call_date DESC
                     LIMIT 25
-                """)
+                """
+                cur.execute(query, [employee_patterns] if employee_patterns else None)
 
                 low_quality_calls = []
                 for row in cur.fetchall():

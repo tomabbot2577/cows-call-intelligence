@@ -1,0 +1,265 @@
+{% extends "base.html" %}
+
+{% block title %}User Management{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="bi bi-people me-2"></i>User Management</h2>
+    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addUserModal">
+        <i class="bi bi-person-plus me-1"></i>Add User
+    </button>
+</div>
+
+{% if request.query_params.get('message') %}
+<div class="alert alert-success alert-dismissible fade show">
+    <i class="bi bi-check-circle me-2"></i>{{ request.query_params.get('message') }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+{% endif %}
+
+{% if request.query_params.get('reset') %}
+<div class="alert alert-success alert-dismissible fade show">
+    <i class="bi bi-check-circle me-2"></i>
+    Password reset for <strong>{{ request.query_params.get('reset') }}</strong>. Default password: <code>changeme123</code>
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+{% endif %}
+
+{% if request.query_params.get('role_changed') %}
+<div class="alert alert-success alert-dismissible fade show">
+    <i class="bi bi-check-circle me-2"></i>
+    Role changed for <strong>{{ request.query_params.get('role_changed') }}</strong>.
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+{% endif %}
+
+{% if request.query_params.get('toggled') %}
+<div class="alert alert-success alert-dismissible fade show">
+    <i class="bi bi-check-circle me-2"></i>
+    Status toggled for <strong>{{ request.query_params.get('toggled') }}</strong>.
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+{% endif %}
+
+<div class="card">
+    <div class="card-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <span class="badge bg-primary">{{ users|length }} Users</span>
+            </div>
+            <div class="col-auto">
+                <input type="text" class="form-control form-control-sm" id="userSearch" placeholder="Search...">
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0" id="usersTable">
+                <thead class="table-light">
+                    <tr>
+                        <th>Display Name</th>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Last Login</th>
+                        <th width="180">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for u in users %}
+                    <tr class="{{ 'table-secondary' if not u.is_active else '' }}">
+                        <td><strong>{{ u.display_name }}</strong></td>
+                        <td><code>{{ u.username }}</code></td>
+                        <td><small>{{ u.email or '-' }}</small></td>
+                        <td>
+                            {% if u.role == 'admin' %}
+                            <span class="badge bg-danger">Admin</span>
+                            {% else %}
+                            <span class="badge bg-secondary">User</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if u.is_active %}
+                            <span class="badge bg-success">Active</span>
+                            {% else %}
+                            <span class="badge bg-warning text-dark">Inactive</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if u.last_login %}
+                            <small>{{ u.last_login.strftime('%Y-%m-%d %H:%M') }}</small>
+                            {% else %}
+                            <small class="text-muted">Never</small>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <div class="btn-group btn-group-sm">
+                                <!-- Edit -->
+                                <button class="btn btn-outline-primary" title="Edit User"
+                                    onclick="editUser('{{ u.id }}', '{{ u.username }}', '{{ u.display_name }}', '{{ u.email or '' }}', '{{ u.role }}', '{{ u.employee_name or '' }}', {{ 'true' if u.is_active else 'false' }})">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+
+                                <!-- Reset Password -->
+                                <form action="/admin/users/{{ u.username }}/reset-password" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-outline-warning" title="Reset Password"
+                                        onclick="return confirm('Reset password for {{ u.display_name }} to changeme123?')">
+                                        <i class="bi bi-key"></i>
+                                    </button>
+                                </form>
+
+                                <!-- Toggle Active -->
+                                <form action="/admin/users/{{ u.username }}/toggle-active" method="post" class="d-inline">
+                                    {% if u.is_active %}
+                                    <button type="submit" class="btn btn-outline-secondary" title="Deactivate"
+                                        onclick="return confirm('Deactivate {{ u.display_name }}?')">
+                                        <i class="bi bi-person-slash"></i>
+                                    </button>
+                                    {% else %}
+                                    <button type="submit" class="btn btn-outline-success" title="Activate">
+                                        <i class="bi bi-person-check"></i>
+                                    </button>
+                                    {% endif %}
+                                </form>
+
+                                <!-- Delete -->
+                                {% if u.username != 'admin' %}
+                                <form action="/admin/users/{{ u.username }}/delete" method="post" class="d-inline">
+                                    <button type="submit" class="btn btn-outline-danger" title="Delete"
+                                        onclick="return confirm('DELETE {{ u.display_name }}? This cannot be undone!')">
+                                        <i class="bi bi-trash"></i>
+                                    </button>
+                                </form>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Add User Modal -->
+<div class="modal fade" id="addUserModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/admin/users/add" method="post">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-person-plus me-2"></i>Add New User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Display Name *</label>
+                        <input type="text" class="form-control" name="display_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Username *</label>
+                        <input type="text" class="form-control" name="username" required pattern="[a-zA-Z0-9_]+">
+                        <small class="text-muted">Letters, numbers, underscore only</small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email *</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Role *</label>
+                        <select class="form-select" name="role" required>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Employee Name</label>
+                        <input type="text" class="form-control" name="employee_name">
+                        <small class="text-muted">For matching to call recordings</small>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Initial Password</label>
+                        <input type="text" class="form-control" name="password" value="changeme123">
+                        <small class="text-muted">User must change on first login</small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-success">Add User</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Edit User Modal -->
+<div class="modal fade" id="editUserModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/admin/users/edit" method="post">
+                <input type="hidden" name="user_id" id="edit_user_id">
+                <div class="modal-header">
+                    <h5 class="modal-title"><i class="bi bi-pencil me-2"></i>Edit User</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-control" id="edit_username" disabled>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Display Name *</label>
+                        <input type="text" class="form-control" name="display_name" id="edit_display_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email *</label>
+                        <input type="email" class="form-control" name="email" id="edit_email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Role *</label>
+                        <select class="form-select" name="role" id="edit_role" required>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Employee Name</label>
+                        <input type="text" class="form-control" name="employee_name" id="edit_employee_name">
+                    </div>
+                    <div class="form-check mb-3">
+                        <input type="checkbox" class="form-check-input" name="is_active" id="edit_is_active" value="true">
+                        <label class="form-check-label" for="edit_is_active">Active</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+// Search filter
+document.getElementById('userSearch').addEventListener('keyup', function() {
+    const filter = this.value.toLowerCase();
+    const rows = document.querySelectorAll('#usersTable tbody tr');
+    rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        row.style.display = text.includes(filter) ? '' : 'none';
+    });
+});
+
+function editUser(id, username, displayName, email, role, employeeName, isActive) {
+    document.getElementById('edit_user_id').value = id;
+    document.getElementById('edit_username').value = username;
+    document.getElementById('edit_display_name').value = displayName;
+    document.getElementById('edit_email').value = email;
+    document.getElementById('edit_role').value = role;
+    document.getElementById('edit_employee_name').value = employeeName;
+    document.getElementById('edit_is_active').checked = isActive;
+    new bootstrap.Modal(document.getElementById('editUserModal')).show();
+}
+</script>
+{% endblock %}

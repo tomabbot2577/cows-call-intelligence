@@ -381,6 +381,139 @@ Q&A Pairs Extracted: {self._count_qa_pairs(data.get('qa_pairs'))}
         escalation = self._safe_bool(data.get("escalation_required") or data.get("rec_escalation_needed"))
         return (churn is not None and churn >= 7) or (escalation is True)
 
+    # === FRESHDESK Q&A FORMATTING ===
+
+    def format_freshdesk_qa(self, qa_data: Dict[str, Any]) -> Dict[str, Any]:
+        """Format a Freshdesk Q&A record for RAG ingestion."""
+        qa_id = qa_data.get("qa_id", "unknown")
+        content_text = self._build_freshdesk_content(qa_data)
+        struct_data = self._build_freshdesk_struct_data(qa_data)
+
+        return {
+            "id": qa_id,  # Already prefixed with fd_
+            "content": {"mime_type": "text/plain", "text": content_text},
+            "struct_data": struct_data
+        }
+
+    def _build_freshdesk_content(self, data: Dict[str, Any]) -> str:
+        """Build formatted text for Freshdesk Q&A."""
+        resolved_at = data.get("resolved_at", "Unknown")
+        if isinstance(resolved_at, (datetime, date)):
+            resolved_at = resolved_at.strftime("%Y-%m-%d %H:%M")
+
+        created_at = data.get("created_at", "Unknown")
+        if isinstance(created_at, (datetime, date)):
+            created_at = created_at.strftime("%Y-%m-%d %H:%M")
+
+        tags = data.get("tags", [])
+        tags_str = ", ".join(tags) if tags else "None"
+
+        priority_map = {1: "Low", 2: "Medium", 3: "High", 4: "Urgent"}
+        priority = priority_map.get(data.get("priority"), "Unknown")
+
+        # AI-enriched fields
+        ai_topics = data.get("ai_topics", [])
+        ai_topics_str = ", ".join(ai_topics) if ai_topics else "N/A"
+        ai_summary = data.get("ai_summary", "")
+
+        content = f"""[SOURCE: FRESHDESK SUPPORT TICKET]
+Ticket ID: #{data.get('ticket_id', 'Unknown')}
+Category: {data.get('category', 'General')}
+Tags: {tags_str}
+Priority: {priority}
+Created: {created_at}
+Resolved: {resolved_at}
+
+[SUPPORT AGENT]
+Agent Name: {data.get('agent_name', 'Unknown')}
+
+[CUSTOMER/REQUESTER]
+Requester Email: {data.get('requester_email', 'Unknown')}
+
+[QUESTION/PROBLEM]
+{data.get('question', 'No question available')}
+
+[ANSWER/SOLUTION]
+{data.get('answer', 'No answer available')}
+"""
+
+        # Add AI analysis section if enriched
+        if data.get('enriched_at'):
+            content += f"""
+[AI ANALYSIS]
+Summary: {ai_summary or 'N/A'}
+Key Topics: {ai_topics_str}
+Problem Type: {data.get('ai_problem_type', 'N/A')}
+Product Area: {data.get('ai_product_area', 'N/A')}
+Customer Sentiment: {data.get('ai_sentiment', 'N/A')}
+Problem Complexity: {data.get('ai_complexity', 'N/A')}
+Resolution Quality: {data.get('ai_resolution_quality', 'N/A')}/10
+Resolution Complete: {self._bool_to_yesno(data.get('ai_resolution_complete'))}
+Follow-up Needed: {self._bool_to_yesno(data.get('ai_follow_up_needed'))}
+"""
+            if data.get('ai_knowledge_gap'):
+                content += f"Knowledge Gap: {data.get('ai_knowledge_gap')}\n"
+            if data.get('ai_suggested_article'):
+                content += f"Suggested KB Article: {data.get('ai_suggested_article')}\n"
+
+        content += f"""
+[METADATA]
+Source: Freshdesk Support Ticket
+Q&A ID: {data.get('qa_id', 'Unknown')}
+"""
+        return content
+
+    def _build_freshdesk_struct_data(self, data: Dict[str, Any]) -> Dict[str, Any]:
+        """Build structured data for Freshdesk Q&A for filtering."""
+        resolved_at = data.get("resolved_at")
+        if isinstance(resolved_at, (datetime, date)):
+            resolved_at_str = resolved_at.strftime("%Y-%m-%d")
+        else:
+            resolved_at_str = str(resolved_at)[:10] if resolved_at else None
+
+        created_at = data.get("created_at")
+        if isinstance(created_at, (datetime, date)):
+            created_at_str = created_at.strftime("%Y-%m-%d")
+        else:
+            created_at_str = str(created_at)[:10] if created_at else None
+
+        tags = data.get("tags", [])
+        if isinstance(tags, str):
+            try:
+                tags = json.loads(tags)
+            except:
+                tags = [tags] if tags else []
+
+        return {
+            # === IDENTIFIERS ===
+            "qa_id": data.get("qa_id"),
+            "ticket_id": self._safe_int(data.get("ticket_id")),
+            "source_type": "freshdesk",
+
+            # === DATES ===
+            "created_date": created_at_str,
+            "resolved_date": resolved_at_str,
+
+            # === PARTICIPANTS ===
+            "agent_name": data.get("agent_name"),
+            "requester_email": data.get("requester_email"),
+
+            # === CATEGORIZATION ===
+            "category": data.get("category"),
+            "tags": tags if isinstance(tags, list) else [],
+            "priority": self._safe_int(data.get("priority")),
+
+            # === CONTENT FLAGS ===
+            "has_question": bool(data.get("question")),
+            "has_answer": bool(data.get("answer")),
+            "question_length": len(data.get("question", "")) if data.get("question") else 0,
+            "answer_length": len(data.get("answer", "")) if data.get("answer") else 0,
+
+            # === COMPUTED FLAGS ===
+            "is_freshdesk": True,
+            "is_call_recording": False,
+        }
+
 
 class JSONLWriter:
     """Writes documents to JSONL files."""

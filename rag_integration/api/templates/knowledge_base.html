@@ -1,0 +1,311 @@
+{% extends "base.html" %}
+
+{% block title %}Knowledge Base{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-8">
+        <!-- Search Box -->
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <i class="bi bi-book me-2"></i>Knowledge Base Search
+            </div>
+            <div class="card-body">
+                <p class="text-muted mb-3">
+                    Search for solutions from past call resolutions. Find how similar problems were solved before.
+                </p>
+                <form action="/knowledge-base/search" method="post">
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control" name="query"
+                            placeholder="e.g., How to reset a password? or Customer can't login..."
+                            value="{{ query or '' }}" autofocus>
+                        <button class="btn btn-primary" type="submit">
+                            <i class="bi bi-search me-1"></i>Search
+                        </button>
+                    </div>
+                </form>
+                <div class="mt-3">
+                    <small class="text-muted">Popular searches:</small>
+                    <div class="mt-2 d-flex flex-wrap gap-1">
+                        <a href="/knowledge-base/search?q=email integration" class="badge bg-primary text-white text-decoration-none">email integration</a>
+                        <a href="/knowledge-base/search?q=PCRecruiter login issue" class="badge bg-primary text-white text-decoration-none">PCRecruiter login issue</a>
+                        <a href="/knowledge-base/search?q=RingCentral voicemail" class="badge bg-primary text-white text-decoration-none">RingCentral voicemail</a>
+                        <a href="/knowledge-base/search?q=LinkedIn integration" class="badge bg-primary text-white text-decoration-none">LinkedIn integration</a>
+                        <a href="/knowledge-base/search?q=database search error" class="badge bg-primary text-white text-decoration-none">database search error</a>
+                        <a href="/knowledge-base/search?q=add new user" class="badge bg-secondary text-white text-decoration-none">add new user</a>
+                        <a href="/knowledge-base/search?q=candidate import" class="badge bg-secondary text-white text-decoration-none">candidate import</a>
+                        <a href="/knowledge-base/search?q=training request" class="badge bg-secondary text-white text-decoration-none">training request</a>
+                        <a href="/knowledge-base/search?q=phone capture" class="badge bg-secondary text-white text-decoration-none">phone capture</a>
+                        <a href="/knowledge-base/search?q=account setup" class="badge bg-secondary text-white text-decoration-none">account setup</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Results -->
+        {% if search_results %}
+        <div class="card mb-4">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <span><i class="bi bi-list-check me-2"></i>Results for "{{ query }}"</span>
+                <span class="badge bg-primary">{{ search_results.result_count }} found</span>
+            </div>
+            <div class="card-body">
+                <!-- RAG Summary if available -->
+                {% if search_results.rag_summary %}
+                <div class="alert alert-info mb-4">
+                    <h6><i class="bi bi-robot me-2"></i>AI Summary</h6>
+                    <div style="white-space: pre-wrap;">{{ search_results.rag_summary }}</div>
+                </div>
+                {% endif %}
+
+                <!-- Database Results -->
+                {% if search_results.results %}
+                {% for result in search_results.results %}
+                <div class="card mb-3 border-start border-{{ 'info' if result.source == 'freshdesk' else 'primary' }} border-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- Source Badge -->
+                                <div class="mb-2">
+                                    {% if result.source == 'freshdesk' %}
+                                    <span class="badge bg-info">
+                                        <i class="bi bi-ticket-detailed me-1"></i>Freshdesk Ticket #{{ result.ticket_id }}
+                                    </span>
+                                    {% else %}
+                                    <span class="badge bg-primary">
+                                        <i class="bi bi-telephone me-1"></i>Call Recording
+                                    </span>
+                                    {% if result.call_id %}
+                                    <span class="badge bg-secondary ms-1">{{ result.call_id[:20] }}...</span>
+                                    {% endif %}
+                                    {% endif %}
+                                </div>
+                                <h5 class="card-title text-{{ 'info' if result.source == 'freshdesk' else 'primary' }}">
+                                    <i class="bi bi-question-circle me-2"></i>{{ result.question }}
+                                </h5>
+                                <div class="mb-3 p-3 bg-light rounded">
+                                    <h6 class="text-success"><i class="bi bi-check-circle me-1"></i>Solution:</h6>
+                                    <p class="mb-0" style="white-space: pre-wrap;">{{ result.answer }}</p>
+                                </div>
+                                <div class="row text-muted small">
+                                    <div class="col-md-3">
+                                        <i class="bi bi-person me-1"></i><strong>{{ 'Agent' if result.source == 'freshdesk' else 'Resolved by' }}:</strong><br>
+                                        {{ result.resolved_by or 'Unknown' }}
+                                    </div>
+                                    <div class="col-md-3">
+                                        <i class="bi bi-building me-1"></i><strong>{{ 'Requester' if result.source == 'freshdesk' else 'Customer' }}:</strong><br>
+                                        {{ result.customer or 'Unknown' }}<br>
+                                        <small class="text-muted">{{ result.company or '' }}</small>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <i class="bi bi-calendar me-1"></i><strong>Date:</strong><br>
+                                        {{ result.date }}
+                                    </div>
+                                    <div class="col-md-3">
+                                        {% if result.source == 'freshdesk' %}
+                                        <i class="bi bi-tag me-1"></i><strong>Category:</strong><br>
+                                        {{ result.company or 'General' }}
+                                        {% elif result.quality_score %}
+                                        <i class="bi bi-star me-1"></i><strong>Quality:</strong><br>
+                                        {{ result.quality_score }}/10
+                                        {% endif %}
+                                        {% if result.resolution_status %}
+                                        <br><span class="badge bg-{{ 'success' if result.resolution_status == 'resolved' else 'warning' }}">{{ result.resolution_status }}</span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Feedback Buttons -->
+                        <div class="mt-3 pt-3 border-top">
+                            <span class="text-muted me-2">Was this helpful?</span>
+                            <button class="btn btn-sm btn-outline-success me-1" onclick="submitFeedback({{ search_results.search_id }}, true, {{ loop.index0 }})">
+                                <i class="bi bi-hand-thumbs-up"></i> Yes
+                            </button>
+                            <button class="btn btn-sm btn-outline-danger" onclick="submitFeedback({{ search_results.search_id }}, false, {{ loop.index0 }})">
+                                <i class="bi bi-hand-thumbs-down"></i> No
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="text-center py-4">
+                    <i class="bi bi-search fs-1 text-muted"></i>
+                    <p class="mt-2 text-muted">No matching solutions found in the database.</p>
+                    {% if search_results.rag_summary %}
+                    <p>Check the AI Summary above for relevant information.</p>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Error Display -->
+        {% if search_results and search_results.error %}
+        <div class="alert alert-warning">
+            <i class="bi bi-exclamation-triangle me-2"></i>
+            Note: {{ search_results.error }}
+        </div>
+        {% endif %}
+
+    </div>
+
+    <div class="col-lg-4">
+        <!-- Stats Card -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="bi bi-graph-up me-2"></i>KB Statistics (Last 30 Days)
+            </div>
+            <div class="card-body">
+                <div class="row text-center">
+                    <div class="col-6 mb-3">
+                        <h3 class="text-primary mb-0">{{ stats.total_searches or 0 }}</h3>
+                        <small class="text-muted">Total Searches</small>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <h3 class="text-success mb-0">{{ stats.helpful_rate or 0 }}%</h3>
+                        <small class="text-muted">Helpful Rate</small>
+                    </div>
+                    <div class="col-6">
+                        <h3 class="text-info mb-0">{{ stats.unique_agents or 0 }}</h3>
+                        <small class="text-muted">Unique Users</small>
+                    </div>
+                    <div class="col-6">
+                        <h3 class="text-warning mb-0">{{ stats.total_feedback or 0 }}</h3>
+                        <small class="text-muted">Feedback Given</small>
+                    </div>
+                </div>
+                <hr>
+                <a href="/knowledge-base/stats" class="btn btn-sm btn-outline-primary w-100">
+                    <i class="bi bi-bar-chart me-1"></i>View Detailed Stats
+                </a>
+            </div>
+        </div>
+
+        <!-- Top Searches -->
+        {% if stats.top_searches %}
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="bi bi-fire me-2"></i>Popular Searches
+            </div>
+            <ul class="list-group list-group-flush">
+                {% for search in stats.top_searches[:5] %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <a href="#" onclick="document.querySelector('input[name=query]').value='{{ search.query }}'; document.querySelector('form').submit(); return false;">
+                        {{ search.query[:40] }}{% if search.query|length > 40 %}...{% endif %}
+                    </a>
+                    <span class="badge bg-primary rounded-pill">{{ search.count }}</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <!-- Knowledge Gaps -->
+        {% if stats.knowledge_gaps %}
+        <div class="card mb-4">
+            <div class="card-header bg-warning text-dark">
+                <i class="bi bi-question-circle me-2"></i>Questions Without Answers
+            </div>
+            <ul class="list-group list-group-flush">
+                {% for gap in stats.knowledge_gaps[:5] %}
+                <li class="list-group-item">
+                    <small>{{ gap.query[:50] }}{% if gap.query|length > 50 %}...{% endif %}</small>
+                    <span class="badge bg-warning text-dark float-end">{{ gap.count }}x</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <!-- Low-Rated Queries -->
+        {% if stats.low_rated_queries %}
+        <div class="card mb-4">
+            <div class="card-header bg-danger text-white">
+                <i class="bi bi-exclamation-triangle me-2"></i>Needs Improvement
+            </div>
+            <ul class="list-group list-group-flush">
+                {% for query in stats.low_rated_queries[:5] %}
+                <li class="list-group-item">
+                    <small>{{ query.query[:40] }}{% if query.query|length > 40 %}...{% endif %}</small>
+                    <span class="badge bg-danger float-end">{{ query.helpful_rate }}% helpful</span>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        <!-- Recent Feedback -->
+        {% if stats.recent_feedback %}
+        <div class="card">
+            <div class="card-header">
+                <i class="bi bi-chat-dots me-2"></i>Recent Feedback
+            </div>
+            <ul class="list-group list-group-flush">
+                {% for fb in stats.recent_feedback[:3] %}
+                <li class="list-group-item">
+                    <div class="d-flex align-items-start">
+                        {% if fb.helpful %}
+                        <i class="bi bi-hand-thumbs-up text-success me-2"></i>
+                        {% else %}
+                        <i class="bi bi-hand-thumbs-down text-danger me-2"></i>
+                        {% endif %}
+                        <div>
+                            <small class="d-block">{{ fb.query[:30] }}...</small>
+                            {% if fb.comment %}
+                            <small class="text-muted fst-italic">"{{ fb.comment[:50] }}..."</small>
+                            {% endif %}
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Feedback Toast -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+    <div id="feedbackToast" class="toast" role="alert">
+        <div class="toast-header">
+            <i class="bi bi-check-circle text-success me-2"></i>
+            <strong class="me-auto">Thank You!</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">
+            Your feedback helps improve our knowledge base.
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+async function submitFeedback(searchId, helpful, resultIndex) {
+    try {
+        const formData = new FormData();
+        formData.append('search_id', searchId);
+        formData.append('helpful', helpful);
+        if (resultIndex !== undefined) {
+            formData.append('result_index', resultIndex);
+        }
+
+        const response = await fetch('/api/v1/kb/feedback', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            // Show toast
+            const toast = new bootstrap.Toast(document.getElementById('feedbackToast'));
+            toast.show();
+        }
+    } catch (error) {
+        console.error('Error submitting feedback:', error);
+    }
+}
+</script>
+{% endblock %}

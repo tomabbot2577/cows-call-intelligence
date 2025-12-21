@@ -19,6 +19,88 @@ This is a **production-ready AI-powered call recording system** that automatical
 
 ---
 
+## 📚 COWS PCR INTELLIGENCE SYSTEM (Knowledge Base)
+
+### Overview
+A separate FastAPI web application providing AI-powered knowledge base search across:
+- **5,314+ Freshdesk Q&A pairs** synced from support tickets
+- **Call recording transcripts** with AI-extracted resolutions
+- **Gemini RAG integration** for intelligent answer generation
+
+### Access
+- **URL:** http://31.97.102.13:8081
+- **Login:** Username/password authentication
+- **Branding:** "COWS PCR Intelligence System"
+
+### Key Features
+1. **Knowledge Base Search** (`/knowledge-base`)
+   - Full-text search across Freshdesk tickets and call transcripts
+   - AI-generated summaries using Google Gemini
+   - Popular search examples on landing page
+   - Feedback system (thumbs up/down)
+
+2. **User Management** (`/admin/users`)
+   - Add/Edit/Delete users
+   - Role-based access (admin/user)
+   - Password reset functionality
+   - Email addresses (username@mainsequence.net)
+
+3. **Freshdesk Integration**
+   - Automatic sync every 15 minutes via cron
+   - Rate-limit aware (gentle sync)
+   - Q&A extraction from tickets and conversations
+   - AI enrichment for better search results
+
+### Database Tables (Knowledge Base)
+```sql
+kb_freshdesk_qa     -- Freshdesk ticket Q&A pairs (5,314+ records)
+kb_searches         -- Search query logs
+kb_feedback         -- User feedback on results
+users               -- User accounts with roles
+```
+
+### Files Structure
+```
+rag_integration/
+├── api/
+│   ├── main.py                    # FastAPI app (1400+ lines)
+│   └── templates/
+│       ├── base.html              # Base template
+│       ├── login.html             # Login page
+│       ├── knowledge_base.html    # KB main page
+│       ├── kb_search.html         # Search results
+│       └── admin_users.html       # User management
+├── services/
+│   ├── auth.py                    # Authentication service
+│   ├── kb_simple.py               # Knowledge base search
+│   └── freshdesk_scraper.py       # Freshdesk API client
+├── jobs/
+│   ├── freshdesk_sync_cron.py     # Cron sync job
+│   ├── freshdesk_gentle_sync.py   # Rate-limited sync
+│   └── cleanup_and_enrich.py      # AI enrichment
+└── migrations/
+    ├── 001_knowledge_base.sql
+    ├── 002_simple_kb.sql
+    ├── 003_users.sql
+    └── 004_freshdesk_qa.sql
+```
+
+### Systemd Service
+```bash
+# Service: cows-rag-api.service
+sudo systemctl status cows-rag-api.service
+sudo systemctl restart cows-rag-api.service
+
+# Logs
+tail -f /var/log/cows/rag-api.log
+```
+
+### Current Users (22 total)
+Admins: Bill Kubicek, James Blair, Brian Coverstone, Brian Eaton, Jacob Gooden, Andrew Rothman, Lisa Rogers
+Users: Dylan Bello, Nicholas Bradach, Joshua Fresenko, Wayne Geissinger, Thomas James, Garrett Komyati, James Lombardo, Sean McLaughlin, Robin Montoni, Matthew Mueller, Jason Salamon, Christian Salem, Mackenzie Scalise, Davesha Perkins, Samuel Barnes
+
+---
+
 ## 📊 CURRENT SYSTEM STATE
 
 ### Database Migration ✅
@@ -137,6 +219,9 @@ This is a **production-ready AI-powered call recording system** that automatical
 ```cron
 # RingCentral checks - 6 times daily
 0 7,10,13,15,17,20 * * * /var/www/call-recording-system/run_ringcentral_check.sh
+
+# Freshdesk Knowledge Base sync - every 15 minutes
+*/15 * * * * /var/www/call-recording-system/run_freshdesk_monitor.sh >> /var/www/call-recording-system/logs/freshdesk_monitor.log 2>&1
 
 # Log cleanup - daily at 2am
 0 2 * * * find /var/www/call-recording-system/logs -name "*.log" -mtime +30 -delete

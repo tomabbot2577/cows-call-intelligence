@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}Knowledge Gaps{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/knowledge-base">Knowledge Base</a></li>
+        <li class="breadcrumb-item active">Knowledge Gaps</li>
+    </ol>
+</nav>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2><i class="bi bi-question-circle me-2 text-warning"></i>Knowledge Gaps</h2>
+        <p class="text-muted mb-0">Questions that have been asked but don't have answers yet</p>
+    </div>
+    <a href="/knowledge-base/contribute" class="btn btn-success">
+        <i class="bi bi-plus-circle me-1"></i>Add Answer
+    </a>
+</div>
+
+{% if gaps %}
+<div class="card">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Question</th>
+                        <th width="100" class="text-center">Times Asked</th>
+                        <th width="120">Priority</th>
+                        <th width="120">First Asked</th>
+                        <th width="100" class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for gap in gaps %}
+                    <tr>
+                        <td>
+                            <div class="fw-bold">{{ gap.question }}</div>
+                            {% if gap.category_guess %}
+                            <small class="text-muted">Category guess: {{ gap.category_guess }}</small>
+                            {% endif %}
+                        </td>
+                        <td class="text-center">
+                            <span class="badge bg-{{ 'danger' if gap.times_asked >= 5 else 'warning' if gap.times_asked >= 3 else 'secondary' }} fs-6">
+                                {{ gap.times_asked }}
+                            </span>
+                        </td>
+                        <td>
+                            {% set priority = gap.calculated_priority or gap.priority %}
+                            <span class="badge bg-{{ 'danger' if priority == 'critical' else 'warning' if priority == 'high' else 'info' if priority == 'normal' else 'secondary' }}">
+                                {{ priority | upper }}
+                            </span>
+                        </td>
+                        <td>
+                            <small>{{ gap.first_asked_at.strftime('%Y-%m-%d') if gap.first_asked_at else 'Unknown' }}</small>
+                            {% if gap.days_open %}
+                            <br><small class="text-muted">{{ gap.days_open | int }} days ago</small>
+                            {% endif %}
+                        </td>
+                        <td class="text-center">
+                            <a href="/knowledge-base/contribute?gap_id={{ gap.id }}&question={{ gap.question | urlencode }}"
+                               class="btn btn-sm btn-success">
+                                <i class="bi bi-pencil"></i> Answer
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Legend -->
+<div class="card mt-4">
+    <div class="card-body">
+        <h6>Priority Levels</h6>
+        <div class="d-flex gap-3">
+            <span><span class="badge bg-danger">CRITICAL</span> 10+ times asked</span>
+            <span><span class="badge bg-warning">HIGH</span> 5-9 times asked</span>
+            <span><span class="badge bg-info">NORMAL</span> 3-4 times asked</span>
+            <span><span class="badge bg-secondary">LOW</span> 1-2 times asked</span>
+        </div>
+    </div>
+</div>
+
+{% else %}
+<div class="card">
+    <div class="card-body text-center py-5">
+        <i class="bi bi-check-circle fs-1 text-success mb-3 d-block"></i>
+        <h4>No Knowledge Gaps!</h4>
+        <p class="text-muted">
+            All questions have been answered. Great job keeping the knowledge base complete!
+        </p>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

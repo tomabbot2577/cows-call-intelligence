@@ -1,0 +1,259 @@
+{% extends "base.html" %}
+
+{% block title %}Search Knowledge Base{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/knowledge-base">Knowledge Base</a></li>
+        <li class="breadcrumb-item active">Search</li>
+    </ol>
+</nav>
+
+<h2 class="mb-4"><i class="bi bi-search me-2"></i>Search Knowledge Base</h2>
+
+<!-- Search Form -->
+<div class="card mb-4">
+    <div class="card-body">
+        <form id="searchForm" action="/knowledge-base/search" method="get">
+            <div class="row g-3">
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                        <input type="text" class="form-control form-control-lg" name="q" id="searchInput"
+                            value="{{ query or '' }}"
+                            placeholder="Describe your problem or question..."
+                            autofocus>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <select name="category" class="form-select form-select-lg">
+                        <option value="">All Categories</option>
+                        {% for cat in categories %}
+                        <option value="{{ cat.name }}" {{ 'selected' if category == cat.name else '' }}>
+                            {{ cat.display_name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-1">
+                    <button type="submit" id="searchBtn" class="btn btn-primary btn-lg w-100">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Loading Indicator (hidden by default) -->
+<div id="loadingIndicator" class="card mb-4" style="display: none;">
+    <div class="card-body text-center py-5">
+        <div class="spinner-border text-primary mb-3" role="status" style="width: 3rem; height: 3rem;">
+            <span class="visually-hidden">Searching...</span>
+        </div>
+        <h4 class="mb-2">Searching Knowledge Base...</h4>
+        <p class="text-muted mb-3">Using AI to find the best answers for you</p>
+        <button type="button" id="cancelBtn" class="btn btn-outline-danger" onclick="cancelSearch()">
+            <i class="bi bi-x-circle me-1"></i>Cancel Search
+        </button>
+    </div>
+</div>
+
+<!-- Results Container -->
+<div id="resultsContainer">
+{% if search_results %}
+<!-- Results Header -->
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h5>
+        {% if search_results.result_count > 0 %}
+        Found {{ search_results.result_count }} result{{ 's' if search_results.result_count != 1 else '' }}
+        {% else %}
+        No results found
+        {% endif %}
+        {% if query %}for "{{ query }}"{% endif %}
+    </h5>
+    {% if search_results.search_id %}
+    <small class="text-muted">Search ID: {{ search_results.search_id }}</small>
+    {% endif %}
+</div>
+
+{% if search_results.results %}
+<!-- Results List -->
+<div class="mb-4">
+    {% for result in search_results.results %}
+    <div class="card mb-3">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <div>
+                {% if result.source == 'freshdesk' %}
+                <span class="badge bg-warning text-dark"><i class="bi bi-ticket-perforated"></i> Freshdesk</span>
+                {% else %}
+                <span class="badge bg-primary"><i class="bi bi-telephone"></i> Call Recording</span>
+                {% endif %}
+                {% if result.resolved_by and result.resolved_by != 'Unknown' %}
+                <span class="badge bg-secondary ms-1"><i class="bi bi-person"></i> {{ result.resolved_by }}</span>
+                {% endif %}
+                {% if result.customer and result.customer != 'Unknown' %}
+                <span class="badge bg-info ms-1">{{ result.customer }}</span>
+                {% endif %}
+            </div>
+            <div>
+                {% if result.quality_score %}
+                <span class="badge bg-{% if result.quality_score >= 7 %}success{% elif result.quality_score >= 4 %}warning{% else %}danger{% endif %}">
+                    Quality: {{ result.quality_score }}/10
+                </span>
+                {% endif %}
+                {% if result.date and result.date != 'Unknown' %}
+                <small class="text-muted ms-2"><i class="bi bi-calendar"></i> {{ result.date }}</small>
+                {% endif %}
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-5">
+                    <h6 class="text-primary"><i class="bi bi-question-circle me-1"></i>Question</h6>
+                    <p class="mb-0">{{ result.question }}</p>
+                </div>
+                <div class="col-md-1 d-flex align-items-center justify-content-center">
+                    <i class="bi bi-arrow-right fs-4 text-muted"></i>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="text-success"><i class="bi bi-check-circle me-1"></i>Answer</h6>
+                    <p class="mb-0">{{ result.answer }}</p>
+                </div>
+            </div>
+        </div>
+        {% if result.ticket_id or result.company %}
+        <div class="card-footer text-muted small">
+            {% if result.ticket_id %}
+            <i class="bi bi-hash"></i> Ticket #{{ result.ticket_id }}
+            {% endif %}
+            {% if result.company and result.company != 'Unknown' %}
+            <span class="ms-2"><i class="bi bi-building"></i> {{ result.company }}</span>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+
+{% if search_results.rag_summary %}
+<!-- AI Analysis (Collapsible) -->
+<div class="card mb-4">
+    <div class="card-header">
+        <a class="text-decoration-none" data-bs-toggle="collapse" href="#aiAnalysis" role="button" aria-expanded="false">
+            <i class="bi bi-robot me-2"></i>AI Analysis <small class="text-muted">(click to expand)</small>
+        </a>
+    </div>
+    <div class="collapse" id="aiAnalysis">
+        <div class="card-body">
+            <pre style="white-space: pre-wrap; font-family: inherit;">{{ search_results.rag_summary }}</pre>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% else %}
+<!-- No Results -->
+<div class="card">
+    <div class="card-body text-center py-5">
+        <i class="bi bi-search fs-1 text-muted mb-3 d-block"></i>
+        <h4>No articles found</h4>
+        <p class="text-muted mb-4">
+            We couldn't find any knowledge base articles matching your search.
+        </p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="/knowledge-base/contribute" class="btn btn-success">
+                <i class="bi bi-plus-circle me-1"></i>Add This Knowledge
+            </a>
+            <a href="/knowledge-base" class="btn btn-outline-primary">
+                <i class="bi bi-arrow-left me-1"></i>Browse Categories
+            </a>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+{% else %}
+<!-- Initial State -->
+<div class="card">
+    <div class="card-body text-center py-5">
+        <i class="bi bi-search fs-1 text-primary mb-3 d-block"></i>
+        <h4>Search the Knowledge Base</h4>
+        <p class="text-muted">
+            Enter a problem description or keywords to find solutions from past resolved issues.
+        </p>
+    </div>
+</div>
+
+<!-- Popular Searches -->
+<div class="card mt-4">
+    <div class="card-header">
+        <i class="bi bi-lightning me-2"></i>Popular Searches
+    </div>
+    <div class="card-body">
+        <div class="d-flex flex-wrap gap-2">
+            <a href="/knowledge-base/search?q=PCR not loading" class="btn btn-outline-secondary btn-sm popular-search">PCR not loading</a>
+            <a href="/knowledge-base/search?q=email integration" class="btn btn-outline-secondary btn-sm popular-search">email integration</a>
+            <a href="/knowledge-base/search?q=import contacts" class="btn btn-outline-secondary btn-sm popular-search">import contacts</a>
+            <a href="/knowledge-base/search?q=login issues" class="btn btn-outline-secondary btn-sm popular-search">login issues</a>
+            <a href="/knowledge-base/search?q=sync problems" class="btn btn-outline-secondary btn-sm popular-search">sync problems</a>
+            <a href="/knowledge-base/search?q=export data" class="btn btn-outline-secondary btn-sm popular-search">export data</a>
+        </div>
+    </div>
+</div>
+{% endif %}
+</div>
+
+<script>
+let searchController = null;
+
+function recordClick(articleId, queryId) {
+    fetch(`/api/v1/kb/article/${articleId}/cited?query_id=${queryId}`, {
+        method: 'POST'
+    });
+}
+
+function showLoading() {
+    document.getElementById('loadingIndicator').style.display = 'block';
+    document.getElementById('resultsContainer').style.display = 'none';
+    document.getElementById('searchBtn').disabled = true;
+}
+
+function hideLoading() {
+    document.getElementById('loadingIndicator').style.display = 'none';
+    document.getElementById('resultsContainer').style.display = 'block';
+    document.getElementById('searchBtn').disabled = false;
+}
+
+function cancelSearch() {
+    if (searchController) {
+        searchController.abort();
+    }
+    hideLoading();
+    window.stop();
+    window.location.href = '/knowledge-base/search';
+}
+
+// Show loading on form submit
+document.getElementById('searchForm').addEventListener('submit', function(e) {
+    const query = document.getElementById('searchInput').value.trim();
+    if (query) {
+        showLoading();
+        searchController = new AbortController();
+    }
+});
+
+// Show loading on popular search click
+document.querySelectorAll('.popular-search').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+        showLoading();
+    });
+});
+
+// Hide loading when page finishes loading (in case of back navigation)
+window.addEventListener('pageshow', function() {
+    hideLoading();
+});
+</script>
+{% endblock %}

@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+
+{% block title %}Knowledge Base Statistics{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/knowledge-base">Knowledge Base</a></li>
+        <li class="breadcrumb-item active">Statistics</li>
+    </ol>
+</nav>
+
+<h2 class="mb-4"><i class="bi bi-graph-up me-2"></i>Knowledge Base Statistics (Last 30 Days)</h2>
+
+<!-- Summary Cards -->
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white h-100">
+            <div class="card-body text-center">
+                <h2>{{ stats.total_searches or 0 }}</h2>
+                <p class="mb-0">Total Searches</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white h-100">
+            <div class="card-body text-center">
+                <h2>{{ stats.helpful_rate or 0 }}%</h2>
+                <p class="mb-0">Helpful Rate</p>
+                <small>{{ stats.helpful_count or 0 }} / {{ stats.total_feedback or 0 }}</small>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-info text-white h-100">
+            <div class="card-body text-center">
+                <h2>{{ stats.unique_agents or 0 }}</h2>
+                <p class="mb-0">Unique Users</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-dark h-100">
+            <div class="card-body text-center">
+                <h2>{{ (stats.knowledge_gaps or [])|length }}</h2>
+                <p class="mb-0">Unanswered Queries</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Top Searches -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <i class="bi bi-fire me-2"></i>Top Searches
+            </div>
+            <div class="card-body p-0">
+                {% if stats.top_searches %}
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Query</th>
+                            <th width="80" class="text-center">Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for search in stats.top_searches %}
+                        <tr>
+                            <td>{{ search.query }}</td>
+                            <td class="text-center"><span class="badge bg-primary">{{ search.count }}</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p class="text-muted text-center py-4">No searches yet</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Low-Rated Queries -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-danger text-white">
+                <i class="bi bi-exclamation-triangle me-2"></i>Queries Needing Improvement
+            </div>
+            <div class="card-body p-0">
+                {% if stats.low_rated_queries %}
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Query</th>
+                            <th width="80" class="text-center">Searches</th>
+                            <th width="100" class="text-center">Helpful %</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for query in stats.low_rated_queries %}
+                        <tr>
+                            <td>{{ query.query[:50] }}{% if query.query|length > 50 %}...{% endif %}</td>
+                            <td class="text-center">{{ query.search_count }}</td>
+                            <td class="text-center"><span class="badge bg-danger">{{ query.helpful_rate }}%</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p class="text-success text-center py-4"><i class="bi bi-check-circle me-2"></i>All queries have good ratings!</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Knowledge Gaps -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-warning text-dark">
+                <i class="bi bi-question-circle me-2"></i>Unanswered Queries (Knowledge Gaps)
+            </div>
+            <div class="card-body p-0">
+                {% if stats.knowledge_gaps %}
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Query</th>
+                            <th width="100" class="text-center">Times Asked</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for gap in stats.knowledge_gaps %}
+                        <tr>
+                            <td>{{ gap.query }}</td>
+                            <td class="text-center"><span class="badge bg-warning text-dark">{{ gap.count }}</span></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p class="text-success text-center py-4"><i class="bi bi-check-circle me-2"></i>All queries returned results!</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Feedback -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header">
+                <i class="bi bi-chat-dots me-2"></i>Recent Feedback with Comments
+            </div>
+            <div class="card-body p-0">
+                {% if stats.recent_feedback %}
+                <ul class="list-group list-group-flush">
+                    {% for fb in stats.recent_feedback %}
+                    <li class="list-group-item">
+                        <div class="d-flex">
+                            {% if fb.helpful %}
+                            <i class="bi bi-hand-thumbs-up text-success fs-4 me-3"></i>
+                            {% else %}
+                            <i class="bi bi-hand-thumbs-down text-danger fs-4 me-3"></i>
+                            {% endif %}
+                            <div>
+                                <small class="text-muted d-block">Query: "{{ fb.query[:40] }}..."</small>
+                                {% if fb.comment %}
+                                <span class="fst-italic">"{{ fb.comment }}"</span>
+                                {% endif %}
+                                <small class="text-muted d-block mt-1">{{ fb.created_at.strftime('%Y-%m-%d %H:%M') if fb.created_at else '' }}</small>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p class="text-muted text-center py-4">No feedback with comments yet</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Searches Table -->
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="bi bi-clock-history me-2"></i>Recent Searches
+    </div>
+    <div class="card-body p-0">
+        {% if recent_searches %}
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Query</th>
+                        <th width="80" class="text-center">Results</th>
+                        <th width="100">User</th>
+                        <th width="100" class="text-center">Feedback</th>
+                        <th width="150">Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for search in recent_searches %}
+                    <tr>
+                        <td>{{ search.query[:60] }}{% if search.query|length > 60 %}...{% endif %}</td>
+                        <td class="text-center">
+                            {% if search.result_count == 0 %}
+                            <span class="badge bg-danger">0</span>
+                            {% else %}
+                            <span class="badge bg-success">{{ search.result_count }}</span>
+                            {% endif %}
+                        </td>
+                        <td><small>{{ (search.agent_id or 'anonymous')[:15] }}</small></td>
+                        <td class="text-center">
+                            {% if search.feedback_count > 0 %}
+                                {% if search.was_helpful %}
+                                <i class="bi bi-hand-thumbs-up text-success"></i>
+                                {% else %}
+                                <i class="bi bi-hand-thumbs-down text-danger"></i>
+                                {% endif %}
+                            {% else %}
+                            <small class="text-muted">-</small>
+                            {% endif %}
+                        </td>
+                        <td><small>{{ search.created_at.strftime('%Y-%m-%d %H:%M') if search.created_at else '' }}</small></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="text-muted text-center py-4">No searches recorded yet</p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="text-center">
+    <a href="/knowledge-base" class="btn btn-outline-primary">
+        <i class="bi bi-arrow-left me-1"></i>Back to Knowledge Base
+    </a>
+</div>
+{% endblock %}

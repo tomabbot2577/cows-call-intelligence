@@ -1,0 +1,226 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} - Knowledge Base{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/knowledge-base">Knowledge Base</a></li>
+        <li class="breadcrumb-item"><a href="/knowledge-base/search?category={{ article.category }}">{{ article.category_name or article.category }}</a></li>
+        <li class="breadcrumb-item active">Article</li>
+    </ol>
+</nav>
+
+<!-- Article Header -->
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <div>
+            {% if article.category_icon %}
+            <i class="bi {{ article.category_icon }} me-2" style="color: {{ article.category_color or '#6c757d' }};"></i>
+            {% endif %}
+            <span class="badge" style="background-color: {{ article.category_color or '#6c757d' }};">
+                {{ article.category_name or article.category }}
+            </span>
+            {% if article.verified %}
+            <span class="badge bg-success ms-2"><i class="bi bi-check-circle me-1"></i>Verified</span>
+            {% endif %}
+        </div>
+        <div>
+            <span class="text-muted me-3">
+                <i class="bi bi-eye me-1"></i>{{ article.view_count }} views
+            </span>
+            <span class="text-muted me-3">
+                <i class="bi bi-hand-thumbs-up me-1"></i>{{ article.helpful_count }} helpful
+            </span>
+            <span class="text-muted">
+                <i class="bi bi-bookmark me-1"></i>{{ article.times_cited }} citations
+            </span>
+        </div>
+    </div>
+    <div class="card-body">
+        <h2 class="mb-4">{{ article.title }}</h2>
+
+        <!-- Problem Section -->
+        <div class="mb-4">
+            <h5 class="text-danger"><i class="bi bi-exclamation-circle me-2"></i>Problem / Question</h5>
+            <div class="bg-light p-3 rounded">
+                {{ article.problem }}
+            </div>
+        </div>
+
+        <!-- Solution Section -->
+        <div class="mb-4">
+            <h5 class="text-success"><i class="bi bi-check-circle me-2"></i>Solution / Answer</h5>
+            <div class="bg-light p-3 rounded" style="white-space: pre-wrap;">{{ article.solution }}</div>
+        </div>
+
+        <!-- Tags -->
+        {% if article.tags %}
+        <div class="mb-4">
+            <h6>Tags</h6>
+            <div class="d-flex flex-wrap gap-2">
+                {% for tag in article.tags %}
+                <a href="/knowledge-base/search?q={{ tag }}" class="badge bg-secondary text-decoration-none">{{ tag }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- Source Information -->
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="bi bi-info-circle me-2"></i>Source Information
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-sm table-borderless">
+                    <tr>
+                        <td class="text-muted" width="150">Resolved By:</td>
+                        <td><strong>{{ article.resolved_by or 'Unknown' }}</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="text-muted">Asked By:</td>
+                        <td>{{ article.asked_by or 'Unknown' }}</td>
+                    </tr>
+                    <tr>
+                        <td class="text-muted">Company:</td>
+                        <td>{{ article.customer_company or 'Unknown' }}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <table class="table table-sm table-borderless">
+                    <tr>
+                        <td class="text-muted" width="150">Source:</td>
+                        <td>
+                            {% if article.source_type == 'call' %}
+                            <i class="bi bi-telephone me-1"></i>Call Recording
+                            {% elif article.source_type == 'ticket' %}
+                            <i class="bi bi-ticket me-1"></i>Support Ticket
+                            {% elif article.source_type == 'manual' %}
+                            <i class="bi bi-pencil me-1"></i>Manual Entry
+                            {% else %}
+                            {{ article.source_type }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-muted">Date Resolved:</td>
+                        <td>{{ article.resolved_date or 'Unknown' }}</td>
+                    </tr>
+                    {% if article.source_id %}
+                    <tr>
+                        <td class="text-muted">Source ID:</td>
+                        <td><code>{{ article.source_id }}</code></td>
+                    </tr>
+                    {% endif %}
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Feedback Section -->
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="bi bi-chat-dots me-2"></i>Was this helpful?
+    </div>
+    <div class="card-body">
+        <div id="feedbackButtons">
+            <button class="btn btn-outline-success btn-lg me-2" onclick="submitFeedback(true)">
+                <i class="bi bi-hand-thumbs-up me-1"></i>Yes, helpful
+            </button>
+            <button class="btn btn-outline-danger btn-lg" onclick="submitFeedback(false)">
+                <i class="bi bi-hand-thumbs-down me-1"></i>Not helpful
+            </button>
+        </div>
+        <div id="feedbackThanks" style="display: none;">
+            <div class="alert alert-success mb-0">
+                <i class="bi bi-check-circle me-2"></i>Thank you for your feedback!
+            </div>
+        </div>
+        <div id="feedbackForm" style="display: none;" class="mt-3">
+            <div class="mb-3">
+                <label class="form-label">What's wrong with this answer?</label>
+                <select id="issueType" class="form-select">
+                    <option value="incomplete">Answer is incomplete</option>
+                    <option value="outdated">Information is outdated</option>
+                    <option value="incorrect">Answer is incorrect</option>
+                    <option value="confusing">Answer is confusing</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Additional comments (optional)</label>
+                <textarea id="feedbackText" class="form-control" rows="3" placeholder="Help us improve this article..."></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="submitDetailedFeedback()">Submit Feedback</button>
+        </div>
+    </div>
+</div>
+
+<!-- Related Articles -->
+{% if article.related %}
+<div class="card mb-4">
+    <div class="card-header">
+        <i class="bi bi-link-45deg me-2"></i>Related Articles
+    </div>
+    <div class="list-group list-group-flush">
+        {% for related in article.related %}
+        <a href="/knowledge-base/article/{{ related.id }}" class="list-group-item list-group-item-action">
+            {{ related.title }}
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<!-- Actions -->
+<div class="d-flex justify-content-between">
+    <a href="javascript:history.back()" class="btn btn-outline-secondary">
+        <i class="bi bi-arrow-left me-1"></i>Back to Search
+    </a>
+    <div>
+        <a href="/knowledge-base/contribute?improve={{ article.id }}" class="btn btn-outline-primary">
+            <i class="bi bi-pencil me-1"></i>Suggest Improvement
+        </a>
+    </div>
+</div>
+
+<script>
+let feedbackSubmitted = false;
+
+function submitFeedback(helpful) {
+    if (feedbackSubmitted) return;
+
+    fetch('/api/v1/kb/article/{{ article.id }}/feedback?helpful=' + helpful, {
+        method: 'POST'
+    }).then(() => {
+        if (helpful) {
+            document.getElementById('feedbackButtons').style.display = 'none';
+            document.getElementById('feedbackThanks').style.display = 'block';
+            feedbackSubmitted = true;
+        } else {
+            document.getElementById('feedbackButtons').style.display = 'none';
+            document.getElementById('feedbackForm').style.display = 'block';
+        }
+    });
+}
+
+function submitDetailedFeedback() {
+    const issueType = document.getElementById('issueType').value;
+    const feedbackText = document.getElementById('feedbackText').value;
+
+    fetch('/api/v1/kb/article/{{ article.id }}/feedback?helpful=false&issue_type=' + issueType + '&feedback_text=' + encodeURIComponent(feedbackText), {
+        method: 'POST'
+    }).then(() => {
+        document.getElementById('feedbackForm').style.display = 'none';
+        document.getElementById('feedbackThanks').style.display = 'block';
+        feedbackSubmitted = true;
+    });
+}
+</script>
+{% endblock %}

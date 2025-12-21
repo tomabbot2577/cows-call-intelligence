@@ -88,9 +88,22 @@ def get_db():
 
 
 # Authentication
+def get_auth_service():
+    """Get AuthService instance."""
+    from rag_integration.services.auth import AuthService
+    return AuthService()
+
+
 def check_auth(request: Request) -> bool:
     """Check if user is authenticated."""
     return request.session.get("authenticated", False)
+
+
+def get_current_user(request: Request) -> Optional[Dict]:
+    """Get current user from session."""
+    if not check_auth(request):
+        return None
+    return request.session.get("user")
 
 
 def require_auth(request: Request):
@@ -98,6 +111,22 @@ def require_auth(request: Request):
     if not check_auth(request):
         raise HTTPException(status_code=401, detail="Not authenticated")
     return True
+
+
+def is_admin(request: Request) -> bool:
+    """Check if current user is admin."""
+    user = get_current_user(request)
+    return user and user.get('role') == 'admin'
+
+
+def get_employee_filter(request: Request) -> Optional[str]:
+    """Get employee name filter for non-admin users."""
+    user = get_current_user(request)
+    if not user:
+        return None
+    if user.get('role') == 'admin':
+        return None  # Admin sees all
+    return user.get('employee_name')
 
 
 # Pydantic models
@@ -142,13 +171,25 @@ async def login_page(request: Request):
 
 
 @app.post("/login")
-async def login(request: Request, password: str = Form(...)):
-    """Process login."""
-    config = get_config_instance()
-    if password == config.api_password:
+async def login(request: Request, username: str = Form(...), password: str = Form(...)):
+    """Process login with username and password."""
+    auth = get_auth_service()
+    user = auth.authenticate(username, password)
+
+    if user:
         request.session["authenticated"] = True
+        request.session["user"] = user
+
+        # Check if password change required
+        if user.get('must_change_password'):
+            return RedirectResponse(url="/change-password", status_code=303)
+
         return RedirectResponse(url="/", status_code=303)
-    return templates.TemplateResponse("login.html", {"request": request, "error": "Invalid password"})
+
+    return templates.TemplateResponse("login.html", {
+        "request": request,
+        "error": "Invalid username or password"
+    })
 
 
 @app.get("/logout")
@@ -156,6 +197,67 @@ async def logout(request: Request):
     """Logout."""
     request.session.clear()
     return RedirectResponse(url="/login", status_code=303)
+
+
+@app.get("/change-password", response_class=HTMLResponse)
+async def change_password_page(request: Request):
+    """Password change page."""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+
+    user = get_current_user(request)
+    forced = user.get('must_change_password', False) if user else False
+
+    return templates.TemplateResponse("change_password.html", {
+        "request": request,
+        "user": user,
+        "forced": forced,
+        "error": None,
+        "success": None
+    })
+
+
+@app.post("/change-password")
+async def change_password_submit(
+    request: Request,
+    current_password: str = Form(...),
+    new_password: str = Form(...),
+    confirm_password: str = Form(...)
+):
+    """Process password change."""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+
+    user = get_current_user(request)
+    if not user:
+        return RedirectResponse(url="/login", status_code=303)
+
+    # Validate passwords match
+    if new_password != confirm_password:
+        return templates.TemplateResponse("change_password.html", {
+            "request": request,
+            "user": user,
+            "forced": user.get('must_change_password', False),
+            "error": "New passwords do not match",
+            "success": None
+        })
+
+    auth = get_auth_service()
+    result = auth.change_password(user['username'], current_password, new_password)
+
+    if result['success']:
+        # Update session to remove must_change_password flag
+        user['must_change_password'] = False
+        request.session["user"] = user
+        return RedirectResponse(url="/?password_changed=1", status_code=303)
+    else:
+        return templates.TemplateResponse("change_password.html", {
+            "request": request,
+            "user": user,
+            "forced": user.get('must_change_password', False),
+            "error": result.get('error', 'Failed to change password'),
+            "success": None
+        })
 
 
 # Web UI routes
@@ -395,8 +497,11 @@ async def api_churn_report(request: Request, min_score: int = 7, date_range: str
         # Map score to risk level: 7+ = high only, 5+ = high + medium
         risk_level = 'high' if min_score >= 7 else 'medium'
 
+        # Get employee filter for non-admin users
+        employee_filter = get_employee_filter(request)
+
         # Get actual churn risk data from database with date filtering
-        churn_data = db.get_churn_risk_data(risk_level, date_range=date_range, start_date=start_date, end_date=end_date)
+        churn_data = db.get_churn_risk_data(risk_level, date_range=date_range, start_date=start_date, end_date=end_date, employee_filter=employee_filter)
 
         if churn_data['total_high_risk'] == 0:
             return {
@@ -507,6 +612,13 @@ async def api_agent_report(request: Request, agent_name: str, date_range: Option
     if not check_auth(request):
         raise HTTPException(status_code=401, detail="Not authenticated")
 
+    # Non-admin users can only view their own performance
+    user = get_current_user(request)
+    if user and user.get('role') != 'admin':
+        employee_name = user.get('employee_name')
+        if employee_name and agent_name.lower() not in employee_name.lower():
+            raise HTTPException(status_code=403, detail="You can only view your own performance reports")
+
     try:
         db = get_db()
 
@@ -611,8 +723,11 @@ async def api_customer_report(request: Request, company_name: str, date_range: s
     try:
         db = get_db()
 
+        # Get employee filter for non-admin users
+        employee_filter = get_employee_filter(request)
+
         # Get actual customer data from database with date filtering
-        customer_data = db.get_customer_report(company_name, date_range=date_range, start_date=start_date, end_date=end_date)
+        customer_data = db.get_customer_report(company_name, date_range=date_range, start_date=start_date, end_date=end_date, employee_filter=employee_filter)
 
         if customer_data.get('total_calls', 0) == 0:
             return {
@@ -753,8 +868,11 @@ async def api_quality_report(request: Request, focus: str = "low_quality", date_
     try:
         db = get_db()
 
+        # Get employee filter for non-admin users
+        employee_filter = get_employee_filter(request)
+
         # Get actual quality data from database
-        quality_data = db.get_quality_report_data(focus, date_range, start_date, end_date)
+        quality_data = db.get_quality_report_data(focus, date_range, start_date, end_date, employee_filter=employee_filter)
 
         # Format the low quality calls for the prompt
         calls_str = ""
@@ -904,8 +1022,11 @@ async def api_sentiment_report(request: Request, analysis: str = "negative", dat
     try:
         db = get_db()
 
+        # Get employee filter for non-admin users
+        employee_filter = get_employee_filter(request)
+
         # Get actual sentiment data from database
-        sentiment_data = db.get_sentiment_report_data(analysis, date_range, start_date, end_date)
+        sentiment_data = db.get_sentiment_report_data(analysis, date_range, start_date, end_date, employee_filter=employee_filter)
 
         if sentiment_data.get('total_matching', 0) == 0:
             return {
@@ -1055,6 +1176,538 @@ async def api_routing_explain(request: Request, query: str):
         "routed_to": system.value,
         "filters_extracted": filters
     }
+
+
+# ==========================================
+# KNOWLEDGE BASE ROUTES (Simple - searches RAG directly)
+# ==========================================
+
+def get_kb_service():
+    """Get Simple Knowledge Base service instance"""
+    from rag_integration.services.kb_simple import SimpleKBService
+    return SimpleKBService()
+
+
+@app.get("/knowledge-base", response_class=HTMLResponse)
+async def knowledge_base_page(request: Request):
+    """Knowledge Base main page with search"""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+
+    kb = get_kb_service()
+    stats = kb.get_stats(days=30)
+    recent_searches = kb.get_recent_searches(limit=10)
+
+    return templates.TemplateResponse("knowledge_base.html", {
+        "request": request,
+        "stats": stats,
+        "recent_searches": recent_searches
+    })
+
+
+@app.get("/knowledge-base/search", response_class=HTMLResponse)
+async def kb_search_get(
+    request: Request,
+    q: str = None,
+    category: str = None
+):
+    """KB search page (GET - for links and bookmarks)"""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+
+    kb = get_kb_service()
+    session_id = request.cookies.get('session', 'anonymous')
+    stats = kb.get_stats(days=30)
+
+    search_results = None
+    if q:
+        search_results = kb.search(q, agent_id=session_id)
+
+    return templates.TemplateResponse("kb_search.html", {
+        "request": request,
+        "stats": stats,
+        "search_results": search_results,
+        "query": q or "",
+        "category": category
+    })
+
+
+@app.post("/knowledge-base/search", response_class=HTMLResponse)
+async def kb_search_submit(
+    request: Request,
+    query: str = Form(...)
+):
+    """Process KB search from web form (POST)"""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+
+    kb = get_kb_service()
+    session_id = request.cookies.get('session', 'anonymous')
+
+    results = kb.search(query, agent_id=session_id)
+    stats = kb.get_stats(days=30)
+
+    return templates.TemplateResponse("kb_search.html", {
+        "request": request,
+        "stats": stats,
+        "search_results": results,
+        "query": query
+    })
+
+
+@app.get("/knowledge-base/stats", response_class=HTMLResponse)
+async def kb_stats_page(request: Request):
+    """KB usage statistics page"""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+
+    kb = get_kb_service()
+    stats = kb.get_stats(days=30)
+    recent_searches = kb.get_recent_searches(limit=50)
+
+    return templates.TemplateResponse("kb_stats.html", {
+        "request": request,
+        "stats": stats,
+        "recent_searches": recent_searches
+    })
+
+
+# Knowledge Base API Endpoints
+
+@app.get("/api/v1/kb/search")
+async def api_kb_search(
+    request: Request,
+    q: str
+):
+    """API: Search knowledge base using RAG"""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    kb = get_kb_service()
+    session_id = request.cookies.get('session', 'anonymous')
+
+    results = kb.search(q, agent_id=session_id)
+    return results
+
+
+@app.post("/api/v1/kb/feedback")
+async def api_kb_feedback(
+    request: Request,
+    search_id: int = Form(...),
+    helpful: bool = Form(...),
+    result_index: int = Form(None),
+    comment: str = Form(None)
+):
+    """API: Submit feedback for a search result"""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    kb = get_kb_service()
+    session_id = request.cookies.get('session', 'anonymous')
+
+    result = kb.submit_feedback(
+        search_id=search_id,
+        helpful=helpful,
+        result_index=result_index,
+        comment=comment,
+        agent_id=session_id
+    )
+
+    return result
+
+
+@app.get("/api/v1/kb/stats")
+async def api_kb_stats(
+    request: Request,
+    days: int = 30
+):
+    """API: Get KB usage statistics"""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    kb = get_kb_service()
+    stats = kb.get_stats(days=days)
+
+    return stats
+
+
+# ==========================================
+# FRESHDESK KB INTEGRATION (Admin Only)
+# ==========================================
+
+def get_freshdesk_scraper():
+    """Get Freshdesk scraper instance."""
+    from rag_integration.services.freshdesk_scraper import FreshdeskScraper
+    return FreshdeskScraper()
+
+
+@app.get("/admin/freshdesk", response_class=HTMLResponse)
+async def freshdesk_admin_page(request: Request):
+    """Freshdesk sync admin page"""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    try:
+        scraper = get_freshdesk_scraper()
+        qa_count = scraper.get_qa_count()
+        sync_history = scraper.get_sync_history(limit=10)
+        connection_test = scraper.test_connection()
+    except Exception as e:
+        qa_count = 0
+        sync_history = []
+        connection_test = {'success': False, 'error': str(e)}
+
+    return templates.TemplateResponse("freshdesk_admin.html", {
+        "request": request,
+        "qa_count": qa_count,
+        "sync_history": sync_history,
+        "connection_test": connection_test
+    })
+
+
+@app.post("/admin/freshdesk/sync")
+async def freshdesk_sync(
+    request: Request,
+    background_tasks: BackgroundTasks,
+    days: int = Form(30),
+    max_tickets: int = Form(100)
+):
+    """Start Freshdesk sync (runs in background)"""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    def run_sync():
+        try:
+            scraper = get_freshdesk_scraper()
+            stats = scraper.sync_tickets(since_days=days, max_tickets=max_tickets)
+            logger.info(f"Freshdesk sync complete: {stats}")
+        except Exception as e:
+            logger.error(f"Freshdesk sync failed: {e}")
+
+    background_tasks.add_task(run_sync)
+
+    return RedirectResponse(url="/admin/freshdesk?started=1", status_code=303)
+
+
+@app.get("/api/v1/kb/freshdesk/test")
+async def api_freshdesk_test(request: Request):
+    """API: Test Freshdesk connection"""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    scraper = get_freshdesk_scraper()
+    return scraper.test_connection()
+
+
+@app.get("/api/v1/kb/freshdesk/stats")
+async def api_freshdesk_stats(request: Request):
+    """API: Get Freshdesk Q&A stats"""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    scraper = get_freshdesk_scraper()
+    return {
+        "qa_count": scraper.get_qa_count(),
+        "sync_history": scraper.get_sync_history(limit=5)
+    }
+
+
+@app.post("/api/v1/kb/freshdesk/sync")
+async def api_freshdesk_sync(
+    request: Request,
+    background_tasks: BackgroundTasks,
+    days: int = 30,
+    max_tickets: int = 100
+):
+    """API: Start Freshdesk sync"""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    def run_sync():
+        try:
+            scraper = get_freshdesk_scraper()
+            stats = scraper.sync_tickets(since_days=days, max_tickets=max_tickets)
+            logger.info(f"Freshdesk sync complete: {stats}")
+        except Exception as e:
+            logger.error(f"Freshdesk sync failed: {e}")
+
+    background_tasks.add_task(run_sync)
+
+    return {"status": "started", "days": days, "max_tickets": max_tickets}
+
+
+@app.post("/api/v1/kb/freshdesk/export")
+async def api_freshdesk_export(
+    request: Request,
+    background_tasks: BackgroundTasks
+):
+    """API: Export Freshdesk Q&A to JSONL for Vertex AI RAG"""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    def run_export():
+        try:
+            scraper = get_freshdesk_scraper()
+            result = scraper.export_to_jsonl()
+            logger.info(f"Freshdesk JSONL export complete: {result}")
+        except Exception as e:
+            logger.error(f"Freshdesk export failed: {e}")
+
+    background_tasks.add_task(run_export)
+
+    return {"status": "started", "message": "JSONL export started"}
+
+
+@app.post("/admin/freshdesk/export")
+async def freshdesk_export(
+    request: Request,
+    background_tasks: BackgroundTasks
+):
+    """Admin: Export Freshdesk Q&A to JSONL"""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    def run_export():
+        try:
+            scraper = get_freshdesk_scraper()
+            result = scraper.export_to_jsonl()
+            logger.info(f"Freshdesk JSONL export complete: {result}")
+        except Exception as e:
+            logger.error(f"Freshdesk export failed: {e}")
+
+    background_tasks.add_task(run_export)
+
+    return RedirectResponse(url="/admin/freshdesk?exported=1", status_code=303)
+
+
+# ==========================================
+# ADMIN ROUTES (User Management)
+# ==========================================
+
+@app.get("/admin/users", response_class=HTMLResponse)
+async def admin_users_page(request: Request):
+    """Admin: User management page"""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    auth = get_auth_service()
+    users = auth.list_users()
+
+    return templates.TemplateResponse("admin_users.html", {
+        "request": request,
+        "user": get_current_user(request),
+        "users": users
+    })
+
+
+@app.post("/admin/users/{username}/reset-password")
+async def admin_reset_user_password(request: Request, username: str):
+    """Admin: Reset a user's password to default"""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    auth = get_auth_service()
+    admin_user = get_current_user(request)
+    result = auth.admin_reset_password(admin_user, username)
+
+    if result['success']:
+        return RedirectResponse(url=f"/admin/users?reset={username}", status_code=303)
+    else:
+        raise HTTPException(status_code=400, detail=result.get('error', 'Failed to reset password'))
+
+
+@app.post("/admin/users/sync")
+async def admin_sync_users(request: Request):
+    """Admin: Sync users from employee list"""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    auth = get_auth_service()
+    result = auth.sync_users_from_employees()
+
+    return RedirectResponse(url=f"/admin/users?synced={result['created']}", status_code=303)
+
+
+@app.post("/admin/users/{username}/role")
+async def admin_change_user_role(request: Request, username: str, role: str = Form(...)):
+    """Admin: Change a user's role"""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    auth = get_auth_service()
+    admin_user = get_current_user(request)
+    result = auth.change_user_role(admin_user, username, role)
+
+    if result['success']:
+        return RedirectResponse(url=f"/admin/users?role_changed={username}", status_code=303)
+    else:
+        raise HTTPException(status_code=400, detail=result.get('error', 'Failed to change role'))
+
+
+@app.post("/admin/users/{username}/toggle-active")
+async def admin_toggle_user_active(request: Request, username: str):
+    """Admin: Toggle a user's active status"""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    auth = get_auth_service()
+    admin_user = get_current_user(request)
+    result = auth.toggle_user_active(admin_user, username)
+
+    if result['success']:
+        return RedirectResponse(url=f"/admin/users?toggled={username}", status_code=303)
+    else:
+        raise HTTPException(status_code=400, detail=result.get('error', 'Failed to toggle status'))
+
+
+@app.post("/admin/users/add")
+async def admin_add_user(
+    request: Request,
+    display_name: str = Form(...),
+    username: str = Form(...),
+    email: str = Form(...),
+    role: str = Form("user"),
+    employee_name: str = Form(None),
+    password: str = Form("changeme123")
+):
+    """Admin: Add a new user"""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    import psycopg2
+    conn = psycopg2.connect(os.getenv('RAG_DATABASE_URL',
+        'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights'))
+
+    try:
+        with conn.cursor() as cur:
+            # Simple password hash format
+            password_hash = f"pbkdf2:sha256:600000$user${password}"
+
+            cur.execute("""
+                INSERT INTO users (username, password_hash, display_name, email, role, employee_name, is_active, must_change_password)
+                VALUES (%s, %s, %s, %s, %s, %s, true, true)
+            """, (username, password_hash, display_name, email, role, employee_name))
+            conn.commit()
+
+        return RedirectResponse(url=f"/admin/users?message=User {username} added", status_code=303)
+    except Exception as e:
+        conn.rollback()
+        raise HTTPException(status_code=400, detail=str(e))
+    finally:
+        conn.close()
+
+
+@app.post("/admin/users/edit")
+async def admin_edit_user(
+    request: Request,
+    user_id: int = Form(...),
+    display_name: str = Form(...),
+    email: str = Form(...),
+    role: str = Form(...),
+    employee_name: str = Form(None),
+    is_active: str = Form(None)
+):
+    """Admin: Edit an existing user"""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    import psycopg2
+    conn = psycopg2.connect(os.getenv('RAG_DATABASE_URL',
+        'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights'))
+
+    try:
+        with conn.cursor() as cur:
+            active = is_active == 'true'
+            cur.execute("""
+                UPDATE users
+                SET display_name = %s, email = %s, role = %s, employee_name = %s, is_active = %s
+                WHERE id = %s
+            """, (display_name, email, role, employee_name, active, user_id))
+            conn.commit()
+
+        return RedirectResponse(url=f"/admin/users?message=User updated", status_code=303)
+    except Exception as e:
+        conn.rollback()
+        raise HTTPException(status_code=400, detail=str(e))
+    finally:
+        conn.close()
+
+
+@app.post("/admin/users/{username}/delete")
+async def admin_delete_user(request: Request, username: str):
+    """Admin: Delete a user"""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    if username == 'admin':
+        raise HTTPException(status_code=400, detail="Cannot delete admin user")
+
+    import psycopg2
+    conn = psycopg2.connect(os.getenv('RAG_DATABASE_URL',
+        'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights'))
+
+    try:
+        with conn.cursor() as cur:
+            cur.execute("DELETE FROM users WHERE username = %s", (username,))
+            conn.commit()
+
+        return RedirectResponse(url=f"/admin/users?message=User {username} deleted", status_code=303)
+    except Exception as e:
+        conn.rollback()
+        raise HTTPException(status_code=400, detail=str(e))
+    finally:
+        conn.close()
+
+
+@app.get("/api/v1/admin/users")
+async def api_admin_list_users(request: Request):
+    """API: List all users (admin only)"""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    auth = get_auth_service()
+    users = auth.list_users()
+
+    return {"users": users, "count": len(users)}
 
 
 def create_app():

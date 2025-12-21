@@ -1,0 +1,201 @@
+{% extends "base.html" %}
+
+{% block title %}Freshdesk Sync{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="bi bi-ticket-detailed me-2"></i>Freshdesk Knowledge Base Sync</h2>
+</div>
+
+{% if request.query_params.get('started') %}
+<div class="alert alert-success alert-dismissible fade show">
+    <i class="bi bi-check-circle me-2"></i>
+    Sync started in background. Refresh to see progress.
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+{% endif %}
+
+{% if request.query_params.get('exported') %}
+<div class="alert alert-info alert-dismissible fade show">
+    <i class="bi bi-file-earmark-code me-2"></i>
+    JSONL export started. Files will be saved to the exports directory.
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+</div>
+{% endif %}
+
+<div class="row mb-4">
+    <!-- Connection Status -->
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="bi bi-plug me-2"></i>Connection
+                </h5>
+                {% if connection_test.success %}
+                <p class="text-success mb-0">
+                    <i class="bi bi-check-circle-fill me-1"></i>
+                    Connected to {{ connection_test.domain }}.freshdesk.com
+                </p>
+                {% else %}
+                <p class="text-danger mb-0">
+                    <i class="bi bi-x-circle-fill me-1"></i>
+                    Failed: {{ connection_test.error }}
+                </p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Q&A Count -->
+    <div class="col-md-4">
+        <div class="card h-100 bg-primary text-white">
+            <div class="card-body text-center">
+                <h5 class="card-title">Q&A Pairs in KB</h5>
+                <p class="display-4 mb-0">{{ qa_count }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sync Form -->
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <i class="bi bi-arrow-repeat me-2"></i>Sync Now
+                </h5>
+                <form action="/admin/freshdesk/sync" method="post">
+                    <div class="mb-2">
+                        <label class="form-label small">Days to sync</label>
+                        <select name="days" class="form-select form-select-sm">
+                            <option value="30">Last 30 days</option>
+                            <option value="90">Last 90 days</option>
+                            <option value="180">Last 6 months</option>
+                            <option value="365" selected>Last 1 year</option>
+                            <option value="730">Last 2 years</option>
+                            <option value="1825">Last 5 years</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small">Max tickets</label>
+                        <select name="max_tickets" class="form-select form-select-sm">
+                            <option value="100">100</option>
+                            <option value="500">500</option>
+                            <option value="1000" selected>1,000</option>
+                            <option value="2000">2,000</option>
+                            <option value="5000">5,000 (all)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100" {% if not connection_test.success %}disabled{% endif %}>
+                        <i class="bi bi-play-fill me-1"></i>Start Sync
+                    </button>
+                </form>
+                <hr class="my-3">
+                <form action="/admin/freshdesk/export" method="post">
+                    <button type="submit" class="btn btn-outline-primary w-100" {% if qa_count == 0 %}disabled{% endif %}>
+                        <i class="bi bi-file-earmark-code me-1"></i>Export to JSONL
+                    </button>
+                    <small class="text-muted d-block mt-1">Export Q&A to Vertex AI RAG format</small>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sync History -->
+<div class="card">
+    <div class="card-header">
+        <i class="bi bi-clock-history me-2"></i>Sync History
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>Started</th>
+                        <th>Status</th>
+                        <th>Tickets</th>
+                        <th>Created</th>
+                        <th>Updated</th>
+                        <th>Errors</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sync in sync_history %}
+                    <tr>
+                        <td>
+                            <small>{{ sync.started_at.strftime('%Y-%m-%d %H:%M') if sync.started_at else 'N/A' }}</small>
+                        </td>
+                        <td>
+                            {% if sync.status == 'completed' %}
+                            <span class="badge bg-success">Completed</span>
+                            {% elif sync.status == 'running' %}
+                            <span class="badge bg-primary">Running</span>
+                            {% elif sync.status == 'failed' %}
+                            <span class="badge bg-danger">Failed</span>
+                            {% else %}
+                            <span class="badge bg-secondary">{{ sync.status }}</span>
+                            {% endif %}
+                        </td>
+                        <td>{{ sync.tickets_processed or 0 }}</td>
+                        <td><span class="text-success">{{ sync.qa_pairs_created or 0 }}</span></td>
+                        <td><span class="text-info">{{ sync.qa_pairs_updated or 0 }}</span></td>
+                        <td>
+                            {% if sync.errors and sync.errors > 0 %}
+                            <span class="text-danger">{{ sync.errors }}</span>
+                            {% else %}
+                            <span class="text-muted">0</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if sync.completed_at and sync.started_at %}
+                            <small>{{ ((sync.completed_at - sync.started_at).total_seconds() / 60)|round(1) }} min</small>
+                            {% elif sync.status == 'running' %}
+                            <small class="text-muted">In progress...</small>
+                            {% else %}
+                            <small class="text-muted">-</small>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="7" class="text-center text-muted py-4">
+                            No sync history yet. Start your first sync above.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Info Card -->
+<div class="card mt-4">
+    <div class="card-header">
+        <i class="bi bi-info-circle me-2"></i>How It Works
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <h6>What Gets Synced</h6>
+                <ul class="mb-0">
+                    <li>Resolved and closed tickets from Freshdesk</li>
+                    <li>Ticket subject + description = Question</li>
+                    <li>First agent reply = Answer</li>
+                    <li>Category, tags, and agent info preserved</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h6>How to Use</h6>
+                <ul class="mb-0">
+                    <li>Q&A pairs appear in Knowledge Base search</li>
+                    <li>Mixed with call recording resolutions</li>
+                    <li>Freshdesk results show ticket ID</li>
+                    <li>Run sync regularly to keep KB updated</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

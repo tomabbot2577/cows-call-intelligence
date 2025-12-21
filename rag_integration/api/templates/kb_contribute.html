@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Contribute Knowledge{% endblock %}
+
+{% block content %}
+<nav aria-label="breadcrumb" class="mb-3">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/knowledge-base">Knowledge Base</a></li>
+        <li class="breadcrumb-item active">Contribute</li>
+    </ol>
+</nav>
+
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <i class="bi bi-plus-circle me-2"></i>Add New Knowledge
+            </div>
+            <div class="card-body">
+                <p class="text-muted mb-4">
+                    Share your knowledge! Describe a problem you've solved so others can benefit.
+                    Your contribution will be reviewed before being added to the knowledge base.
+                </p>
+
+                <form action="/knowledge-base/contribute" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Title <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="title" required
+                            placeholder="Brief title describing the issue, e.g., 'PCR not loading after login'">
+                        <div class="form-text">A short, descriptive title for this knowledge article</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Problem / Question <span class="text-danger">*</span></label>
+                        <textarea class="form-control" name="problem" rows="4" required
+                            placeholder="Describe the problem or question in detail. What was the user experiencing? What error messages appeared?"></textarea>
+                        <div class="form-text">Describe the issue that needed to be solved</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Solution / Answer <span class="text-danger">*</span></label>
+                        <textarea class="form-control" name="solution" rows="6" required
+                            placeholder="Describe the solution step by step. What fixed the problem? Include any specific settings, commands, or procedures."></textarea>
+                        <div class="form-text">Explain how the problem was resolved</div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Category</label>
+                            <select class="form-select" name="category">
+                                {% for cat in categories %}
+                                <option value="{{ cat.name }}">{{ cat.display_name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Tags</label>
+                            <input type="text" class="form-control" name="tags"
+                                placeholder="e.g., login, error, integration">
+                            <div class="form-text">Comma-separated keywords</div>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <label class="form-label">Why are you contributing this? (optional)</label>
+                        <textarea class="form-control" name="reason" rows="2"
+                            placeholder="e.g., This issue came up multiple times this week"></textarea>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                        <a href="/knowledge-base" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left me-1"></i>Cancel
+                        </a>
+                        <button type="submit" class="btn btn-success btn-lg">
+                            <i class="bi bi-send me-1"></i>Submit Contribution
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="bi bi-info-circle me-2"></i>Tips for Good Contributions
+            </div>
+            <div class="card-body">
+                <ul class="mb-0">
+                    <li class="mb-2"><strong>Be specific</strong> - Include exact error messages, steps, and settings</li>
+                    <li class="mb-2"><strong>Use clear language</strong> - Avoid jargon when possible</li>
+                    <li class="mb-2"><strong>Include context</strong> - What version, environment, or conditions apply?</li>
+                    <li class="mb-2"><strong>Step by step</strong> - Break solutions into numbered steps</li>
+                    <li><strong>Verify it works</strong> - Make sure the solution actually solves the problem</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-warning text-dark">
+                <i class="bi bi-question-circle me-2"></i>Need Ideas?
+            </div>
+            <div class="card-body">
+                <p class="mb-3">Check out the <a href="/knowledge-base/gaps">Knowledge Gaps</a> page to see questions that haven't been answered yet.</p>
+                <a href="/knowledge-base/gaps" class="btn btn-warning btn-sm w-100">
+                    View Unanswered Questions
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
