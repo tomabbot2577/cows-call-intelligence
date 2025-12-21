@@ -20,9 +20,21 @@ echo "========================================" >> "$LOG_FILE"
 echo "AI Layers Started: $(date)" >> "$LOG_FILE"
 echo "========================================" >> "$LOG_FILE"
 
+# Show status before processing
+echo "--- Status Before Processing ---" >> "$LOG_FILE"
+python process_all_layers_master.py --status >> "$LOG_FILE" 2>&1
+
 # Process all 5 layers with limit of 100 records each
+echo "" >> "$LOG_FILE"
+echo "--- Processing Layers ---" >> "$LOG_FILE"
 python process_all_layers_master.py --all --limit 100 >> "$LOG_FILE" 2>&1
 
+# Show status after processing
+echo "" >> "$LOG_FILE"
+echo "--- Status After Processing ---" >> "$LOG_FILE"
+python process_all_layers_master.py --status >> "$LOG_FILE" 2>&1
+
+echo "" >> "$LOG_FILE"
 echo "AI Layers completed: $(date)" >> "$LOG_FILE"
 echo "" >> "$LOG_FILE"
 
