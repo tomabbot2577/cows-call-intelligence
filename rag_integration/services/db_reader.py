@@ -2009,14 +2009,22 @@ class DatabaseReader:
                     record = dict(row)
                     record['call_date'] = str(record['call_date']) if record['call_date'] else None
 
-                    # Parse key_quotes JSONB
-                    quotes = record.get('key_quotes', [])
-                    if isinstance(quotes, str):
+                    # Parse key_quotes JSONB - handle both list and dict structures
+                    quotes_raw = record.get('key_quotes', [])
+                    if isinstance(quotes_raw, str):
                         import json
                         try:
-                            quotes = json.loads(quotes)
+                            quotes_raw = json.loads(quotes_raw)
                         except:
-                            quotes = []
+                            quotes_raw = []
+
+                    # Extract quotes - can be a list directly or a dict with 'key_quotes' key
+                    if isinstance(quotes_raw, dict):
+                        quotes = quotes_raw.get('key_quotes', []) or quotes_raw.get('quotes', [])
+                    elif isinstance(quotes_raw, list):
+                        quotes = quotes_raw
+                    else:
+                        quotes = []
 
                     if quotes and isinstance(quotes, list):
                         for quote in quotes:
