@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block title %}Pipeline Status - PCR COWS{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="bi bi-gear-wide-connected me-2"></i>Pipeline Status</h2>
+    <button class="btn btn-primary" onclick="location.reload()">
+        <i class="bi bi-arrow-clockwise me-1"></i>Refresh
+    </button>
+</div>
+
+<!-- Overall Status -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card {% if status.has_errors %}border-danger{% else %}border-success{% endif %}">
+            <div class="card-body">
+                <div class="d-flex align-items-center">
+                    {% if status.has_errors %}
+                    <i class="bi bi-exclamation-circle-fill text-danger me-3" style="font-size: 2rem;"></i>
+                    <div>
+                        <h4 class="mb-1 text-danger">Pipeline Errors Detected</h4>
+                        <p class="mb-0">One or more pipeline jobs have failed or not run as expected.</p>
+                    </div>
+                    {% else %}
+                    <i class="bi bi-check-circle-fill text-success me-3" style="font-size: 2rem;"></i>
+                    <div>
+                        <h4 class="mb-1 text-success">All Systems Operational</h4>
+                        <p class="mb-0">All pipeline jobs are running successfully.</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pipeline Schedule -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0"><i class="bi bi-clock me-2"></i>Daily Pipeline Schedule</h5>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Job</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for job in jobs %}
+                    <tr>
+                        <td><strong>{{ job.time }}</strong></td>
+                        <td>{{ job.name }}</td>
+                        <td>{{ job.description }}</td>
+                        <td>
+                            {% if job.status == 'ok' %}
+                            <span class="badge bg-success"><i class="bi bi-check-circle me-1"></i>OK</span>
+                            {% elif job.status == 'pending' %}
+                            <span class="badge bg-secondary"><i class="bi bi-clock me-1"></i>Pending</span>
+                            {% elif job.status == 'error' %}
+                            <span class="badge bg-danger"><i class="bi bi-x-circle me-1"></i>Error</span>
+                            {% else %}
+                            <span class="badge bg-warning"><i class="bi bi-question-circle me-1"></i>Unknown</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Alerts -->
+{% if alerts %}
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="mb-0"><i class="bi bi-bell me-2"></i>Recent Alerts</h5>
+    </div>
+    <div class="card-body">
+        <div class="list-group">
+            {% for alert in alerts %}
+            <div class="list-group-item list-group-item-danger">
+                <div class="d-flex justify-content-between">
+                    <strong>{{ alert.timestamp }}</strong>
+                </div>
+                <pre class="mb-0 mt-2" style="white-space: pre-wrap; font-size: 0.85rem;">{{ alert.content }}</pre>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- System Health -->
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-database me-2"></i>Database Status</h5>
+            </div>
+            <div class="card-body">
+                {% if db_status.connected %}
+                <p class="text-success mb-2"><i class="bi bi-check-circle me-2"></i>Connected</p>
+                {% else %}
+                <p class="text-danger mb-2"><i class="bi bi-x-circle me-2"></i>Disconnected</p>
+                {% endif %}
+                <ul class="list-unstyled mb-0">
+                    <li>Transcripts: <strong>{{ db_status.transcripts|default(0) }}</strong></li>
+                    <li>With AI Analysis: <strong>{{ db_status.with_insights|default(0) }}</strong></li>
+                    <li>Freshdesk KB: <strong>{{ db_status.freshdesk_qa|default(0) }}</strong></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="bi bi-hdd me-2"></i>Disk Usage</h5>
+            </div>
+            <div class="card-body">
+                <div class="progress mb-2" style="height: 25px;">
+                    <div class="progress-bar {% if disk_usage > 80 %}bg-danger{% elif disk_usage > 60 %}bg-warning{% else %}bg-success{% endif %}"
+                         style="width: {{ disk_usage }}%;">
+                        {{ disk_usage }}%
+                    </div>
+                </div>
+                <p class="mb-0 text-muted">{{ disk_used }} used of {{ disk_total }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cron Schedule Reference -->
+<div class="card mt-4">
+    <div class="card-header">
+        <h5 class="mb-0"><i class="bi bi-calendar-check me-2"></i>Cron Schedule Reference</h5>
+    </div>
+    <div class="card-body">
+        <pre class="mb-0" style="font-size: 0.85rem;">
+# Daily Pipeline (runs 2x: morning and evening)
+0 6,18    - RingCentral Download (fetch all calls + recordings)
+0:30 6,18 - Transcription (transcribe new recordings)
+0:30 7,19 - AI Layers 1-5 (insights, sentiment, recommendations)
+0:30 8,20 - Vertex RAG Export (upload analyzed calls)
+0 9,21    - Freshdesk Pipeline (sync, enrich, export KB)
+0 10,22   - Pipeline Verification (check for errors, send alerts)
+
+# Continuous
+*/5 * * * - Database Health Monitor (kill stuck queries)
+        </pre>
+    </div>
+</div>
+
+<p class="text-muted mt-3">
+    <small>Last checked: {{ status.last_check|default('Never') }}</small>
+</p>
+{% endblock %}

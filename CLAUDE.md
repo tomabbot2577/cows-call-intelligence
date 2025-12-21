@@ -6,16 +6,17 @@
 ## 🚀 PROJECT OVERVIEW
 
 This is a **production-ready AI-powered call recording system** that automatically:
-1. Downloads recordings from RingCentral (6x daily)
-2. Transcribes them using Salad Cloud API (with all enhanced features)
-3. **🧠 Generates AI insights using GPT-3.5-turbo**
-4. **📊 Provides web analytics dashboard**
-5. Stores in dual format (JSON for AI/LLM, Markdown for humans)
-6. Uploads to Google Drive for backup
-7. Tracks everything in PostgreSQL database
-8. Integrates with N8N for workflow automation
+1. Downloads **ALL calls + recordings** from RingCentral (2x daily at 6am/6pm)
+2. Captures complete call metadata (caller ID, extension, hold time, duration, direction)
+3. Transcribes recordings using Salad Cloud API (with all enhanced features)
+4. **🧠 Generates 5-layer AI insights** (names, sentiment, resolution, recommendations, metrics)
+5. **📊 Provides web analytics dashboard** with admin pipeline monitoring
+6. Exports to **Vertex AI RAG** for intelligent querying
+7. Syncs **Freshdesk KB** with AI enrichment
+8. Tracks everything in PostgreSQL with call_log table
+9. **📧 Sends email alerts** when pipeline jobs fail
 
-**Current Status:** ✅ FULLY IMPLEMENTED & DOCUMENTED WITH AI INSIGHTS
+**Current Status:** ✅ FULLY AUTOMATED 2X DAILY PIPELINE WITH MONITORING
 
 ---
 
@@ -58,10 +59,17 @@ A comprehensive FastAPI web application providing AI-powered intelligence across
    - Email addresses (username@mainsequence.net)
 
 3. **Freshdesk Integration**
-   - Automatic sync every 15 minutes via cron
+   - Automatic sync 2x daily (9am/9pm) via cron
    - Rate-limit aware (gentle sync)
    - Q&A extraction from tickets and conversations
    - AI enrichment for better search results
+   - Export to Vertex AI RAG
+
+4. **Pipeline Status** (`/admin/pipeline`)
+   - Real-time job status monitoring
+   - Alert history and details
+   - Database and disk health
+   - Cron schedule reference
 
 ### Database Tables (Knowledge Base)
 ```sql
@@ -302,19 +310,53 @@ SELECT * FROM kb_rag_exports WHERE status = 'imported' ORDER BY id DESC;
 
 ## 🔄 AUTOMATED SCHEDULE (RUNNING)
 
+### Daily Pipeline (2x Daily - 6am/6pm)
+The complete data pipeline runs twice daily with staggered jobs:
+
+| Time | Job | Script | Description |
+|------|-----|--------|-------------|
+| **6:00am/pm** | RingCentral v2 | `run_ringcentral_v2.sh` | Download ALL calls + recordings with full metadata |
+| **6:30am/pm** | Transcription v2 | `run_transcription_v2.sh` | Transcribe new recordings with call_log metadata |
+| **7:30am/pm** | AI Layers 1-5 | `run_ai_layers.sh` | Generate insights (names, sentiment, resolution, recommendations) |
+| **8:30am/pm** | Vertex RAG Export | `run_vertex_rag_export.sh` | Export analyzed calls to Vertex AI RAG + Gemini |
+| **9:00am/pm** | Freshdesk Pipeline | `run_freshdesk_pipeline.sh` | Sync tickets → AI enrich → Export to Vertex RAG |
+| **10:00am/pm** | Verification | `verify_cron_jobs.sh` | Check all jobs completed, email alerts on failure |
+
+### Continuous Monitoring
+| Interval | Job | Description |
+|----------|-----|-------------|
+| Every 5 min | Database Health | Kill stuck queries, monitor connections |
+
 ### Cron Jobs Active
 ```cron
-# RingCentral checks - 6 times daily
-0 7,10,13,15,17,20 * * * /var/www/call-recording-system/run_ringcentral_check.sh
+# RingCentral v2 - Every 12 hours (6am and 6pm)
+0 6,18 * * * /var/www/call-recording-system/scripts/run_ringcentral_v2.sh
 
-# Freshdesk Knowledge Base sync - every 15 minutes
-*/15 * * * * /var/www/call-recording-system/run_freshdesk_monitor.sh >> /var/www/call-recording-system/logs/freshdesk_monitor.log 2>&1
+# Transcription v2 - 30 min after RingCentral (6:30am and 6:30pm)
+30 6,18 * * * /var/www/call-recording-system/scripts/run_transcription_v2.sh
 
-# Log cleanup - daily at 2am
-0 2 * * * find /var/www/call-recording-system/logs -name "*.log" -mtime +30 -delete
+# AI Layers 1-5 - 1 hour after transcription (7:30am and 7:30pm)
+30 7,19 * * * /var/www/call-recording-system/scripts/run_ai_layers.sh
+
+# Vertex RAG Export - 1 hour after AI Layers (8:30am and 8:30pm)
+30 8,20 * * * /var/www/call-recording-system/scripts/run_vertex_rag_export.sh
+
+# Freshdesk Pipeline - 2x daily (9am and 9pm)
+0 9,21 * * * /var/www/call-recording-system/scripts/run_freshdesk_pipeline.sh
+
+# Pipeline Verification - Runs after all jobs complete (10am and 10pm)
+0 10,22 * * * /var/www/call-recording-system/scripts/verify_cron_jobs.sh
+
+# Database Health Monitor - Every 5 minutes
+*/5 * * * * /var/www/call-recording-system/scripts/db_health_monitor.sh
 ```
 
-**Next Check:** Will run automatically at scheduled times
+### Alert Notifications
+When the verification script detects failures:
+- **Email Alert:** Sent to `sabbey@mainsequence.net` via Gmail SMTP
+- **Web Dashboard:** Alert banner shown to admins at `/admin/pipeline`
+- **Alert Files:** Saved to `/var/www/call-recording-system/data/alerts/`
+
 **Logs:** `/var/www/call-recording-system/logs/`
 
 ---
@@ -459,6 +501,21 @@ SELECT * FROM kb_rag_exports WHERE status = 'imported' ORDER BY id DESC;
 - **Platform:** PostgreSQL 14 with pgvector
 
 #### Database Tables & Fields:
+
+**`call_log` Table (NEW - Tracks ALL Calls):**
+- RingCentral ID and session ID
+- Start time, duration, direction
+- Call type, action, result
+- From/To: phone, name, extension, location
+- Recording URL and status
+- Call legs (JSONB) for detailed routing
+- Raw metadata (JSONB) for complete API response
+
+**`extension_employee_map` Table (NEW - Learning System):**
+- Maps extension numbers to employee names
+- Occurrence count for confidence scoring
+- First/last seen timestamps
+- Confidence score (50+ calls = 95%, 20+ = 85%, etc.)
 
 **`transcripts` Table:**
 - Recording metadata (ID, dates, duration)

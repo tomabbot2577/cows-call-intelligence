@@ -1719,6 +1719,169 @@ async def api_admin_list_users(request: Request):
 
 
 # ==========================================
+# PIPELINE STATUS & MONITORING (Admin)
+# ==========================================
+
+def get_pipeline_status():
+    """Get pipeline status from status file."""
+    import json
+    from pathlib import Path
+
+    status_file = Path("/var/www/call-recording-system/data/pipeline_status.json")
+    alerts_dir = Path("/var/www/call-recording-system/data/alerts")
+
+    status = {
+        "has_errors": False,
+        "status": "OK",
+        "last_check": None,
+        "message": None
+    }
+
+    # Read status file
+    if status_file.exists():
+        try:
+            with open(status_file) as f:
+                status = json.load(f)
+        except:
+            pass
+
+    # Get recent alerts
+    alerts = []
+    if alerts_dir.exists():
+        alert_files = sorted(alerts_dir.glob("*.txt"), reverse=True)[:5]
+        for af in alert_files:
+            try:
+                alerts.append({
+                    "timestamp": af.stem.replace("pipeline_alert_", "").replace("_", " "),
+                    "content": af.read_text()[:2000]
+                })
+            except:
+                pass
+
+    return status, alerts
+
+
+def get_pipeline_jobs_status():
+    """Get status of each pipeline job."""
+    from datetime import datetime
+    from pathlib import Path
+
+    log_dir = Path("/var/www/call-recording-system/logs")
+    today = datetime.now().strftime("%Y%m%d")
+    current_hour = int(datetime.now().strftime("%H"))
+
+    jobs = [
+        {"time": "6:00am/pm", "name": "RingCentral Download", "description": "Fetch all calls + recordings", "log_pattern": "ringcentral_v2_", "hours": [6, 18]},
+        {"time": "6:30am/pm", "name": "Transcription", "description": "Transcribe new recordings", "log_pattern": "transcription_v2_", "hours": [6, 18]},
+        {"time": "7:30am/pm", "name": "AI Layers 1-5", "description": "Generate insights, sentiment, recommendations", "log_pattern": "ai_layers_", "hours": [7, 19]},
+        {"time": "8:30am/pm", "name": "Vertex RAG Export", "description": "Upload analyzed calls to RAG", "log_pattern": "vertex_rag_export_", "hours": [8, 20]},
+        {"time": "9:00am/pm", "name": "Freshdesk Pipeline", "description": "Sync, enrich, export KB", "log_pattern": "freshdesk_pipeline_", "hours": [9, 21]},
+    ]
+
+    for job in jobs:
+        log_file = log_dir / f"{job['log_pattern']}{today}.log"
+
+        # Check if job should have run
+        should_have_run = any(current_hour >= (h + 1) for h in job["hours"])
+
+        if not should_have_run:
+            job["status"] = "pending"
+        elif log_file.exists():
+            # Check log for errors
+            content = log_file.read_text()
+            if any(x in content.lower() for x in ["error", "failed", "exception", "traceback"]):
+                if "errors.*0" in content or "no errors" in content.lower():
+                    job["status"] = "ok"
+                else:
+                    job["status"] = "error"
+            elif any(x in content.lower() for x in ["complete", "success", "done"]):
+                job["status"] = "ok"
+            else:
+                job["status"] = "unknown"
+        else:
+            job["status"] = "error"
+
+    return jobs
+
+
+@app.get("/admin/pipeline", response_class=HTMLResponse)
+async def admin_pipeline_page(request: Request):
+    """Pipeline status page for admins."""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+
+    if not is_admin(request):
+        return RedirectResponse(url="/", status_code=303)
+
+    import subprocess
+
+    status, alerts = get_pipeline_status()
+    jobs = get_pipeline_jobs_status()
+
+    # Get database stats
+    db_status = {"connected": False}
+    try:
+        conn = get_db_connection()
+        cur = conn.cursor()
+        cur.execute("SELECT COUNT(*) FROM transcripts")
+        db_status["transcripts"] = cur.fetchone()[0]
+        cur.execute("SELECT COUNT(*) FROM insights")
+        db_status["with_insights"] = cur.fetchone()[0]
+        cur.execute("SELECT COUNT(*) FROM kb_freshdesk_qa")
+        db_status["freshdesk_qa"] = cur.fetchone()[0]
+        db_status["connected"] = True
+        conn.close()
+    except Exception as e:
+        db_status["error"] = str(e)
+
+    # Get disk usage
+    try:
+        result = subprocess.run(["df", "-h", "/var/www/call-recording-system"],
+                              capture_output=True, text=True)
+        lines = result.stdout.strip().split("\n")
+        if len(lines) > 1:
+            parts = lines[1].split()
+            disk_usage = int(parts[4].replace("%", ""))
+            disk_used = parts[2]
+            disk_total = parts[1]
+        else:
+            disk_usage, disk_used, disk_total = 0, "?", "?"
+    except:
+        disk_usage, disk_used, disk_total = 0, "?", "?"
+
+    return templates.TemplateResponse("admin_pipeline.html", {
+        "request": request,
+        "status": status,
+        "jobs": jobs,
+        "alerts": alerts,
+        "db_status": db_status,
+        "disk_usage": disk_usage,
+        "disk_used": disk_used,
+        "disk_total": disk_total,
+        "user": get_current_user(request)
+    })
+
+
+@app.get("/api/v1/admin/pipeline/status")
+async def api_pipeline_status(request: Request):
+    """API: Get pipeline status (admin only)."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    status, alerts = get_pipeline_status()
+    jobs = get_pipeline_jobs_status()
+
+    return {
+        "status": status,
+        "jobs": jobs,
+        "alerts": [a["timestamp"] for a in alerts]
+    }
+
+
+# ==========================================
 # SALES & COMPETITIVE INTELLIGENCE REPORTS (Layer 5)
 # ==========================================
 

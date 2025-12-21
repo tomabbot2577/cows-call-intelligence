@@ -177,11 +177,24 @@
                             <i class="bi bi-people"></i> Users
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if '/admin/pipeline' in request.url.path %}active{% endif %}" href="/admin/pipeline">
+                            <i class="bi bi-gear-wide-connected"></i> Pipeline Status
+                        </a>
+                    </li>
                     {% endif %}
                 </ul>
             </nav>
 
             <main class="col-md-10 ms-sm-auto content-area">
+                {% if request.session.get('user') and request.session.user.role == 'admin' and pipeline_alert %}
+                <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                    <strong>Pipeline Alert:</strong> {{ pipeline_alert.message }}
+                    <a href="/admin/pipeline" class="alert-link ms-2">View Details</a>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                {% endif %}
                 {% block content %}{% endblock %}
             </main>
         </div>
