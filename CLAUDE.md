@@ -19,18 +19,30 @@ This is a **production-ready AI-powered call recording system** that automatical
 
 ---
 
-## 📚 COWS PCR INTELLIGENCE SYSTEM (Knowledge Base)
+## 📚 PCR COWS WORKFLOW INTELLIGENCE PLATFORM
 
 ### Overview
-A separate FastAPI web application providing AI-powered knowledge base search across:
+A comprehensive FastAPI web application providing AI-powered intelligence across:
 - **5,314+ Freshdesk Q&A pairs** synced from support tickets
 - **Call recording transcripts** with AI-extracted resolutions
 - **Gemini RAG integration** for intelligent answer generation
+- **Sales & Competitive Intelligence** with Hormozi Blueprint analysis
+- **Layer 5 Advanced Metrics** for deep call insights
 
 ### Access
 - **URL:** http://31.97.102.13:8081
 - **Login:** Username/password authentication
-- **Branding:** "COWS PCR Intelligence System"
+- **Branding:** "PCR COWS Workflow Intelligence Platform"
+
+### Role-Based Access Control
+| Feature | Admin | User |
+|---------|-------|------|
+| Query & Search | ✅ | ✅ |
+| Knowledge Base | ✅ | ✅ |
+| Sales Intelligence | ✅ | ✅ |
+| Reports | ✅ | ✅ |
+| **Export** | ✅ | ❌ |
+| **User Management** | ✅ | ❌ |
 
 ### Key Features
 1. **Knowledge Base Search** (`/knowledge-base`)
@@ -773,19 +785,39 @@ Victoria Eck, Kathy Harden, John Turk, Andrew Blair, Davisha, Lisa Rogers,
 Samuel Barnes
 ```
 
-### Sales & Competitive Intelligence Module (NEW - December 2025)
+### Sales & Competitive Intelligence Module (Updated December 21, 2025)
 
-A new report module at `/sales-intelligence` providing Layer 5 insights:
+A comprehensive report module at `/sales-intelligence` providing Layer 5 insights:
 
 | Report | Endpoint | Description |
 |--------|----------|-------------|
 | **Sales Pipeline** | `/api/v1/rag/reports/sales-pipeline` | Buying signals and opportunity scores |
 | **Competitor Intelligence** | `/api/v1/rag/reports/competitor-intelligence` | Competitor mentions and analysis |
-| **Compliance Issues** | `/api/v1/rag/reports/compliance-issues` | Compliance and legal concerns |
-| **Urgent Calls** | `/api/v1/rag/reports/urgent-calls` | High-urgency calls requiring attention |
-| **Key Quotes** | `/api/v1/rag/reports/key-quotes` | Notable customer quotes |
-| **FAQ Extraction** | `/api/v1/rag/reports/faq-extraction` | Auto-extracted Q&A pairs |
+| **Compliance & Risk** | `/api/v1/rag/reports/compliance-risk` | Compliance issues and legal concerns |
+| **Urgency Queue** | `/api/v1/rag/reports/urgency-queue` | High-urgency calls requiring attention |
+| **Key Quotes Library** | `/api/v1/rag/reports/key-quotes` | 228+ customer quotes with topic filtering |
+| **Q&A Training Data** | `/api/v1/rag/reports/qa-training` | 1,149+ Q&A pairs for KB/chatbot training |
 | **Sales Call Analyzer** | `/api/v1/rag/reports/sales-call-analysis` | Hormozi Blueprint methodology |
+
+**Key Quotes Library Features:**
+- Topic dropdown for easy browsing (Training, Support, Features, Billing, etc.)
+- "Browse All Quotes" default shows all 228+ quotes
+- Date range filtering (All Time, Last 30 Days, QTD, YTD, Custom)
+- Search by sentiment (positive/negative feedback)
+
+**Q&A Training Data Features:**
+- 1,149+ Q&A pairs extracted from calls
+- Category filtering (Product, Technical, Pricing, Process, Policy)
+- Quality filtering (Complete, Partial, Unanswered)
+- FAQ candidate identification for knowledge base updates
+
+### Employee Name Variations
+
+The system handles employee name variations automatically:
+- **Canonical names** in dropdowns (e.g., "James Lombardo")
+- **Database variations** matched (e.g., "Jim", "Jim Lombardo", "James R Lombardo")
+- Function: `get_employee_name_variations(canonical_name)` returns all variants
+- Example: "James Lombardo" matches 82+ calls stored as "Jim"
 
 ### Hormozi Sales Call Analyzer
 
@@ -797,6 +829,13 @@ Deep analysis of individual sales calls using the **Hormozi Sales Blueprint** me
 - **Objection Handling** - AAA method (Acknowledge, Associate, Ask)
 - **Close Execution** - BANT qualification, stacked closes
 - **Talk Ratio** - Target 33% rep / 66% prospect
+
+**UI Features:**
+- Agent filter dropdown with all PC Recruiter employees
+- Date range selection (Last 30 Days, This Month, This Quarter)
+- Call selector shows customer company and date
+- Green "Analyze" button activates when call is selected
+- Alert popup if no call is selected
 
 **Usage:**
 1. Go to `/sales-intelligence`

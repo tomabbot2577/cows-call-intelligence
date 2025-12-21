@@ -1,15 +1,16 @@
-# COWS Hybrid RAG Integration
+# PCR COWS Workflow Intelligence Platform - RAG Integration
 
 ## Overview
 
-The COWS (Call Observation & Workflow System) Hybrid RAG Integration adds intelligent querying capabilities to the call recording system using a dual RAG (Retrieval Augmented Generation) approach:
+The **PCR COWS Workflow Intelligence Platform** provides AI-powered intelligent querying capabilities using a dual RAG (Retrieval Augmented Generation) approach:
 
 - **Gemini RAG** - For semantic, open-ended queries (Primary)
 - **Vertex AI RAG** - For structured, filtered queries (Secondary)
+- **Sales Intelligence** - For Layer 5 advanced metrics and Hormozi analysis
 
 The system automatically routes queries to the optimal backend based on query patterns.
 
-## Current Status (December 2025)
+## Current Status (December 21, 2025)
 
 | Metric | Value |
 |--------|-------|
@@ -163,6 +164,37 @@ to generate analysis. No hallucinated data - reports use actual names, dates, an
 - Uses canonical employee names (22 PC Recruiter staff)
 - Excludes internal companies (PC Recruiter, Main Sequence)
 - Date range: June 2025 onwards (including 2026)
+
+### Sales Intelligence Endpoints (NEW - December 21, 2025)
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/sales-intelligence` | Sales Intelligence dashboard page |
+| GET | `/api/v1/rag/reports/sales-pipeline` | Buying signals and opportunity scores |
+| GET | `/api/v1/rag/reports/competitor-intelligence` | Competitor mentions and analysis |
+| GET | `/api/v1/rag/reports/compliance-risk` | Compliance and legal concerns |
+| GET | `/api/v1/rag/reports/urgency-queue` | High-urgency calls requiring attention |
+| GET | `/api/v1/rag/reports/key-quotes` | 228+ customer quotes with topic filtering |
+| GET | `/api/v1/rag/reports/qa-training` | 1,149+ Q&A pairs for KB training |
+| POST | `/api/v1/rag/reports/sales-call-analysis` | Hormozi Blueprint sales call analysis |
+| GET | `/api/v1/rag/sales/calls-list` | List calls for analysis (supports name variations) |
+
+### Access Control (NEW - December 21, 2025)
+
+| Feature | Admin | User |
+|---------|-------|------|
+| Query & Search | ✅ | ✅ |
+| Knowledge Base | ✅ | ✅ |
+| Sales Intelligence | ✅ | ✅ |
+| Reports | ✅ | ✅ |
+| **Export** | ✅ | ❌ |
+| **User Management** | ✅ | ❌ |
+
+**Admin-Only Endpoints:**
+- `/export` - Export management page
+- `/api/v1/rag/export` - Trigger export pipeline
+- `/admin/users` - User management
+- All `/admin/*` routes
 
 ## Query Examples
 
