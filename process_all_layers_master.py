@@ -65,6 +65,55 @@ def get_db_connection():
     return psycopg2.connect(**DB_CONFIG, cursor_factory=RealDictCursor)
 
 
+def get_employee_by_extension(extension: str) -> str:
+    """Look up employee name by extension number from historical mapping"""
+    if not extension:
+        return None
+    conn = get_db_connection()
+    try:
+        cur = conn.cursor()
+        cur.execute("""
+            SELECT employee_name, confidence_score
+            FROM extension_employee_map
+            WHERE extension_number = %s
+            ORDER BY occurrence_count DESC, confidence_score DESC
+            LIMIT 1
+        """, (extension,))
+        result = cur.fetchone()
+        if result and result['confidence_score'] >= 0.5:
+            return result['employee_name']
+        return None
+    finally:
+        conn.close()
+
+
+def update_extension_mapping(extension: str, employee_name: str):
+    """Update the extension-to-employee mapping with new data"""
+    if not extension or not employee_name or employee_name in ('Unknown', ''):
+        return
+    conn = get_db_connection()
+    try:
+        cur = conn.cursor()
+        cur.execute("""
+            INSERT INTO extension_employee_map (extension_number, employee_name, occurrence_count, last_seen)
+            VALUES (%s, %s, 1, NOW())
+            ON CONFLICT (extension_number, employee_name)
+            DO UPDATE SET
+                occurrence_count = extension_employee_map.occurrence_count + 1,
+                last_seen = NOW(),
+                confidence_score = CASE
+                    WHEN extension_employee_map.occurrence_count + 1 >= 50 THEN 0.95
+                    WHEN extension_employee_map.occurrence_count + 1 >= 20 THEN 0.85
+                    WHEN extension_employee_map.occurrence_count + 1 >= 10 THEN 0.75
+                    WHEN extension_employee_map.occurrence_count + 1 >= 5 THEN 0.65
+                    ELSE 0.5
+                END
+        """, (extension, employee_name))
+        conn.commit()
+    finally:
+        conn.close()
+
+
 def call_llm(prompt: str, max_tokens: int = 500, model: str = None) -> dict:
     """Call OpenRouter LLM with fallback to secondary model"""
     model = model or PRIMARY_MODEL
@@ -279,6 +328,13 @@ Transcript (first 2500 chars):
                 employee = data.get('employee_name', 'Unknown')
                 company = data.get('customer_company', 'Unknown')
 
+                # Try to get employee from extension mapping if not found
+                if (not employee or employee == 'Unknown') and rec.get('to_extension_number'):
+                    mapped_employee = get_employee_by_extension(rec.get('to_extension_number'))
+                    if mapped_employee:
+                        employee = mapped_employee
+                        logger.info(f"    -> Employee from extension {rec.get('to_extension_number')}: {employee}")
+
                 if customer and customer != 'Unknown' or employee and employee != 'Unknown':
                     cur.execute("""
                         UPDATE transcripts
@@ -288,6 +344,10 @@ Transcript (first 2500 chars):
                     conn.commit()
                     success += 1
                     logger.info(f"  [{i}/{len(records)}] {rec['recording_id']}: {customer} / {employee}")
+
+                    # Update extension mapping for future lookups
+                    if employee and employee != 'Unknown' and rec.get('to_extension_number'):
+                        update_extension_mapping(rec.get('to_extension_number'), employee)
 
             time.sleep(1)
         except Exception as e:
