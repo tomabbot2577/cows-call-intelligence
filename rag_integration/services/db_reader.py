@@ -2099,10 +2099,14 @@ class DatabaseReader:
                         except:
                             qa_data = {}
 
-                    # Extract Q&A pairs
-                    pairs = qa_data.get('qa_pairs', []) if isinstance(qa_data, dict) else []
+                    # Extract Q&A pairs - handle both 'qa_pairs' and 'pairs' keys
+                    if isinstance(qa_data, dict):
+                        pairs = qa_data.get('qa_pairs', []) or qa_data.get('pairs', [])
+                    else:
+                        pairs = []
+
                     for pair in pairs:
-                        if isinstance(pair, dict):
+                        if isinstance(pair, dict) and pair.get('question') and pair.get('answer'):
                             qa_entry = {
                                 'recording_id': record['recording_id'],
                                 'call_date': record['call_date'],
@@ -2110,7 +2114,7 @@ class DatabaseReader:
                                 'employee_name': record['employee_name'],
                                 'question': pair.get('question', ''),
                                 'answer': pair.get('answer', ''),
-                                'category': pair.get('category', 'other'),
+                                'category': pair.get('category', pair.get('topic', 'other')),
                                 'answer_quality': pair.get('answer_quality', 'unknown'),
                                 'could_be_faq': pair.get('could_be_faq', False)
                             }
