@@ -99,6 +99,81 @@ tail -f /var/log/cows/rag-api.log
 Admins: Bill Kubicek, James Blair, Brian Coverstone, Brian Eaton, Jacob Gooden, Andrew Rothman, Lisa Rogers
 Users: Dylan Bello, Nicholas Bradach, Joshua Fresenko, Wayne Geissinger, Thomas James, Garrett Komyati, James Lombardo, Sean McLaughlin, Robin Montoni, Matthew Mueller, Jason Salamon, Christian Salem, Mackenzie Scalise, Davesha Perkins, Samuel Barnes
 
+### Vertex AI RAG Integration
+
+#### Overview
+Freshdesk KB data is exported to JSONL format and imported into Vertex AI RAG corpus for enhanced semantic search and AI-powered Q&A.
+
+#### Key Constraints (IMPORTANT!)
+- **File Size Limit:** JSONL files must be < 10MB for Vertex AI RAG import
+- **Solution:** Split large exports into parts of ~2000 records each (~6-7MB per part)
+- **SDK Version:** google-cloud-aiplatform >= 1.132.0 (latest)
+- **Chunk Size:** 512 tokens with 100 token overlap
+- **Embedding QPM:** Max 1000 requests per minute
+
+#### Corpus Information
+- **Project:** call-recording-481713
+- **Location:** us-west1
+- **Corpus Name:** mst_call_intelligence
+- **Corpus ID:** projects/call-recording-481713/locations/us-west1/ragCorpora/6917529027641081856
+
+#### GCS Bucket
+- **Bucket:** gs://call-recording-rag-data
+- **Prefix:** freshdesk/
+- **Files:** freshdesk_vertex_part_XX_TIMESTAMP.jsonl
+
+#### Import Methods
+
+**Full Export & Import:**
+```bash
+cd /var/www/call-recording-system
+source venv/bin/activate
+python -m rag_integration.jobs.freshdesk_vertex_import
+```
+
+**Export Only (JSONL files):**
+```bash
+python -m rag_integration.jobs.freshdesk_vertex_import --export-only
+```
+
+**Import Only (from existing GCS files):**
+```bash
+python -m rag_integration.jobs.freshdesk_vertex_import --import-only
+```
+
+#### JSONL Format
+```json
+{
+  "id": "fd_122136",
+  "content": {
+    "mime_type": "text/plain",
+    "text": "[SOURCE: FRESHDESK SUPPORT TICKET]\nTicket ID: 122136\n..."
+  },
+  "struct_data": {
+    "qa_id": "fd_122136",
+    "ticket_id": 122136,
+    "source_type": "freshdesk",
+    "ai_topics": ["PCRecruiter", "Activities"],
+    "ai_sentiment": "positive",
+    "ai_resolution_quality": 9,
+    "is_enriched": true
+  }
+}
+```
+
+#### Tracking Table
+```sql
+-- kb_rag_exports tracks all Vertex AI RAG exports
+SELECT * FROM kb_rag_exports WHERE status = 'imported' ORDER BY id DESC;
+```
+
+#### Current Status (Dec 21, 2025)
+- ✅ 5,307 Freshdesk Q&A pairs exported
+- ✅ Split into 3 parts (under 10MB each)
+- ✅ Uploaded to GCS
+- ✅ Imported to Vertex AI RAG corpus
+- ✅ Tracking table updated
+
 ---
 
 ## 📊 CURRENT SYSTEM STATE
