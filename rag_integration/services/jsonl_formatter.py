@@ -484,6 +484,13 @@ Q&A ID: {data.get('qa_id', 'Unknown')}
             except:
                 tags = [tags] if tags else []
 
+        ai_topics = data.get("ai_topics", [])
+        if isinstance(ai_topics, str):
+            try:
+                ai_topics = json.loads(ai_topics)
+            except:
+                ai_topics = [ai_topics] if ai_topics else []
+
         return {
             # === IDENTIFIERS ===
             "qa_id": data.get("qa_id"),
@@ -509,9 +516,23 @@ Q&A ID: {data.get('qa_id', 'Unknown')}
             "question_length": len(data.get("question", "")) if data.get("question") else 0,
             "answer_length": len(data.get("answer", "")) if data.get("answer") else 0,
 
+            # === AI ENRICHMENT ===
+            "ai_topics": ai_topics if isinstance(ai_topics, list) else [],
+            "ai_problem_type": data.get("ai_problem_type"),
+            "ai_product_area": data.get("ai_product_area"),
+            "ai_sentiment": data.get("ai_sentiment"),
+            "ai_complexity": data.get("ai_complexity"),
+            "ai_resolution_quality": self._safe_int(data.get("ai_resolution_quality")),
+            "ai_resolution_complete": self._safe_bool(data.get("ai_resolution_complete")),
+            "ai_follow_up_needed": self._safe_bool(data.get("ai_follow_up_needed")),
+            "is_enriched": data.get("enriched_at") is not None,
+
             # === COMPUTED FLAGS ===
             "is_freshdesk": True,
             "is_call_recording": False,
+            "is_high_quality": self._safe_int(data.get("ai_resolution_quality")) is not None and self._safe_int(data.get("ai_resolution_quality")) >= 8,
+            "is_negative_sentiment": data.get("ai_sentiment") == "negative",
+            "needs_follow_up": self._safe_bool(data.get("ai_follow_up_needed")) is True,
         }
 
 
