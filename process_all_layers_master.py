@@ -56,7 +56,7 @@ DB_CONFIG = {
 # Model configuration - Using OpenRouter (paid Gemini for speed)
 PRIMARY_MODEL = 'google/gemini-2.0-flash-001'
 SECONDARY_MODEL = 'google/gemini-2.0-flash-001'
-OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY', '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')
+OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY', 'REDACTED_OPENROUTER_KEY')
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 
@@ -226,21 +226,26 @@ def print_status():
 
 
 # ============================================================
-# LAYER 1: Name Extraction
+# LAYER 1: Name Extraction (with call_log metadata)
 # ============================================================
 def process_layer1(limit: int = 50) -> int:
-    """Extract customer and employee names"""
+    """Extract customer and employee names using call_log metadata"""
     logger.info(f"Layer 1: Processing up to {limit} records...")
 
     conn = get_db_connection()
     cur = conn.cursor()
 
     cur.execute("""
-        SELECT recording_id, transcript_text
-        FROM transcripts
-        WHERE transcript_text IS NOT NULL AND LENGTH(transcript_text) > 100
-        AND (customer_name IS NULL OR customer_name = '' OR customer_name = 'Unknown')
-        AND (employee_name IS NULL OR employee_name = '' OR employee_name = 'Unknown')
+        SELECT t.recording_id, t.transcript_text,
+               cl.direction, cl.call_result, cl.call_action,
+               cl.from_phone_number, cl.from_name, cl.from_extension_number,
+               cl.to_phone_number, cl.to_name, cl.to_extension_number,
+               cl.duration_seconds
+        FROM transcripts t
+        LEFT JOIN call_log cl ON t.recording_id = cl.ringcentral_id
+        WHERE t.transcript_text IS NOT NULL AND LENGTH(t.transcript_text) > 100
+        AND (t.customer_name IS NULL OR t.customer_name = '' OR t.customer_name = 'Unknown')
+        AND (t.employee_name IS NULL OR t.employee_name = '' OR t.employee_name = 'Unknown')
         LIMIT %s
     """, (limit,))
 
@@ -250,9 +255,20 @@ def process_layer1(limit: int = 50) -> int:
     success = 0
     for i, rec in enumerate(records, 1):
         try:
+            # Build context from call_log metadata
+            call_context = f"""
+Call Metadata:
+- Direction: {rec.get('direction', 'Unknown')}
+- Result: {rec.get('call_result', 'Unknown')}
+- Action: {rec.get('call_action', 'Unknown')}
+- Duration: {rec.get('duration_seconds', 0)} seconds
+- From: {rec.get('from_name') or rec.get('from_phone_number') or 'Unknown'} (ext: {rec.get('from_extension_number', 'N/A')})
+- To: {rec.get('to_name') or rec.get('to_phone_number') or 'Unknown'} (ext: {rec.get('to_extension_number', 'N/A')})
+"""
             prompt = f"""Extract names from this call transcript. Return ONLY JSON:
 {{"employee_name": "name or Unknown", "customer_name": "name or Unknown", "customer_company": "company or Unknown"}}
 
+{call_context}
 Transcript (first 2500 chars):
 {rec['transcript_text'][:2500]}"""
 
@@ -284,18 +300,23 @@ Transcript (first 2500 chars):
 
 
 # ============================================================
-# LAYER 2: Sentiment Analysis
+# LAYER 2: Sentiment Analysis (with call_log metadata)
 # ============================================================
 def process_layer2(limit: int = 50) -> int:
-    """Analyze sentiment and call quality"""
+    """Analyze sentiment and call quality using call_log metadata"""
     logger.info(f"Layer 2: Processing up to {limit} records...")
 
     conn = get_db_connection()
     cur = conn.cursor()
 
     cur.execute("""
-        SELECT t.recording_id, t.transcript_text, t.customer_name, t.employee_name
+        SELECT t.recording_id, t.transcript_text, t.customer_name, t.employee_name,
+               cl.direction, cl.call_result, cl.call_action,
+               cl.from_phone_number, cl.from_name, cl.from_extension_number,
+               cl.to_phone_number, cl.to_name, cl.to_extension_number,
+               cl.duration_seconds, cl.start_time
         FROM transcripts t
+        LEFT JOIN call_log cl ON t.recording_id = cl.ringcentral_id
         WHERE t.transcript_text IS NOT NULL AND LENGTH(t.transcript_text) > 100
         AND NOT EXISTS (SELECT 1 FROM insights i WHERE i.recording_id = t.recording_id)
         LIMIT %s
@@ -307,6 +328,17 @@ def process_layer2(limit: int = 50) -> int:
     success = 0
     for i, rec in enumerate(records, 1):
         try:
+            # Build context from call_log metadata
+            call_result = rec.get('call_result', 'Unknown')
+            call_context = f"""
+Call Metadata:
+- Direction: {rec.get('direction', 'Unknown')}
+- Result: {call_result} (e.g., Accepted, Missed, Voicemail, No Answer)
+- Action: {rec.get('call_action', 'Unknown')}
+- Duration: {rec.get('duration_seconds', 0)} seconds
+- From: {rec.get('from_name') or rec.get('from_phone_number') or 'Unknown'} (ext: {rec.get('from_extension_number', 'N/A')})
+- To: {rec.get('to_name') or rec.get('to_phone_number') or 'Unknown'} (ext: {rec.get('to_extension_number', 'N/A')})
+"""
             prompt = f"""Analyze this customer service call. Return ONLY JSON:
 {{
     "customer_sentiment": "positive/negative/neutral",
@@ -318,6 +350,7 @@ def process_layer2(limit: int = 50) -> int:
     "follow_up_needed": true/false
 }}
 
+{call_context}
 Customer: {rec.get('customer_name', 'Unknown')}
 Employee: {rec.get('employee_name', 'Unknown')}
 
@@ -365,18 +398,23 @@ Transcript:
 
 
 # ============================================================
-# LAYER 3: Resolution Analysis
+# LAYER 3: Resolution Analysis (with call_log metadata)
 # ============================================================
 def process_layer3(limit: int = 50) -> int:
-    """Analyze call resolution and closure"""
+    """Analyze call resolution and closure using call_log metadata"""
     logger.info(f"Layer 3: Processing up to {limit} records...")
 
     conn = get_db_connection()
     cur = conn.cursor()
 
     cur.execute("""
-        SELECT t.recording_id, t.transcript_text, t.customer_name, t.employee_name
+        SELECT t.recording_id, t.transcript_text, t.customer_name, t.employee_name,
+               cl.direction, cl.call_result, cl.call_action,
+               cl.from_phone_number, cl.from_name, cl.from_extension_number,
+               cl.to_phone_number, cl.to_name, cl.to_extension_number,
+               cl.duration_seconds
         FROM transcripts t
+        LEFT JOIN call_log cl ON t.recording_id = cl.ringcentral_id
         WHERE t.transcript_text IS NOT NULL AND LENGTH(t.transcript_text) > 100
         AND NOT EXISTS (SELECT 1 FROM call_resolutions cr WHERE cr.recording_id = t.recording_id)
         LIMIT %s
@@ -388,6 +426,18 @@ def process_layer3(limit: int = 50) -> int:
     success = 0
     for i, rec in enumerate(records, 1):
         try:
+            # Build context from call_log metadata
+            call_context = f"""
+Call Metadata:
+- Direction: {rec.get('direction', 'Unknown')}
+- Result: {rec.get('call_result', 'Unknown')}
+- Action: {rec.get('call_action', 'Unknown')}
+- Duration: {rec.get('duration_seconds', 0)} seconds
+- From: {rec.get('from_name') or rec.get('from_phone_number') or 'Unknown'}
+- To: {rec.get('to_name') or rec.get('to_phone_number') or 'Unknown'}
+- Customer: {rec.get('customer_name', 'Unknown')}
+- Employee: {rec.get('employee_name', 'Unknown')}
+"""
             prompt = f"""Analyze call resolution quality. Return ONLY JSON:
 {{
     "resolution_status": "resolved/partial/unresolved",
@@ -400,6 +450,7 @@ def process_layer3(limit: int = 50) -> int:
     "problem_complexity": "simple/medium/complex"
 }}
 
+{call_context}
 Transcript:
 {rec['transcript_text'][:4000]}"""
 
@@ -444,10 +495,10 @@ Transcript:
 
 
 # ============================================================
-# LAYER 4: Recommendations
+# LAYER 4: Recommendations (with call_log metadata)
 # ============================================================
 def process_layer4(limit: int = 50) -> int:
-    """Generate coaching recommendations"""
+    """Generate coaching recommendations using call_log metadata"""
     logger.info(f"Layer 4: Processing up to {limit} records...")
 
     conn = get_db_connection()
@@ -455,9 +506,14 @@ def process_layer4(limit: int = 50) -> int:
 
     cur.execute("""
         SELECT t.recording_id, t.transcript_text, t.customer_name, t.employee_name,
-               i.customer_sentiment, i.call_type, i.summary
+               i.customer_sentiment, i.call_type, i.summary,
+               cl.direction, cl.call_result, cl.call_action,
+               cl.from_phone_number, cl.from_name, cl.from_extension_number,
+               cl.to_phone_number, cl.to_name, cl.to_extension_number,
+               cl.duration_seconds
         FROM transcripts t
         LEFT JOIN insights i ON t.recording_id = i.recording_id
+        LEFT JOIN call_log cl ON t.recording_id = cl.ringcentral_id
         WHERE t.transcript_text IS NOT NULL AND LENGTH(t.transcript_text) > 100
         AND NOT EXISTS (SELECT 1 FROM call_recommendations r WHERE r.recording_id = t.recording_id)
         LIMIT %s
@@ -469,6 +525,16 @@ def process_layer4(limit: int = 50) -> int:
     success = 0
     for i, rec in enumerate(records, 1):
         try:
+            # Build context from call_log metadata
+            call_context = f"""
+Call Metadata:
+- Direction: {rec.get('direction', 'Unknown')}
+- Result: {rec.get('call_result', 'Unknown')}
+- Action: {rec.get('call_action', 'Unknown')}
+- Duration: {rec.get('duration_seconds', 0)} seconds
+- From: {rec.get('from_name') or rec.get('from_phone_number') or 'Unknown'}
+- To: {rec.get('to_name') or rec.get('to_phone_number') or 'Unknown'}
+"""
             prompt = f"""Generate coaching recommendations for this call. Return ONLY JSON:
 {{
     "process_improvements": ["improvement1", "improvement2"],
@@ -481,6 +547,7 @@ def process_layer4(limit: int = 50) -> int:
     "efficiency_score": 1-10
 }}
 
+{call_context}
 Customer: {rec.get('customer_name', 'Unknown')}
 Employee: {rec.get('employee_name', 'Unknown')}
 Sentiment: {rec.get('customer_sentiment', 'unknown')}
@@ -527,18 +594,23 @@ Transcript:
 
 
 # ============================================================
-# LAYER 5: Advanced Metrics
+# LAYER 5: Advanced Metrics (with call_log metadata)
 # ============================================================
 def process_layer5(limit: int = 50) -> int:
-    """Extract advanced metrics for RAG optimization"""
+    """Extract advanced metrics for RAG optimization using call_log metadata"""
     logger.info(f"Layer 5: Processing up to {limit} records...")
 
     conn = get_db_connection()
     cur = conn.cursor()
 
     cur.execute("""
-        SELECT t.recording_id, t.transcript_text
+        SELECT t.recording_id, t.transcript_text, t.customer_name, t.employee_name,
+               cl.direction, cl.call_result, cl.call_action,
+               cl.from_phone_number, cl.from_name, cl.from_extension_number,
+               cl.to_phone_number, cl.to_name, cl.to_extension_number,
+               cl.duration_seconds
         FROM transcripts t
+        LEFT JOIN call_log cl ON t.recording_id = cl.ringcentral_id
         WHERE t.transcript_text IS NOT NULL AND LENGTH(t.transcript_text) > 100
         AND NOT EXISTS (SELECT 1 FROM call_advanced_metrics m WHERE m.recording_id = t.recording_id)
         LIMIT %s
@@ -550,6 +622,18 @@ def process_layer5(limit: int = 50) -> int:
     success = 0
     for i, rec in enumerate(records, 1):
         try:
+            # Build context from call_log metadata
+            call_context = f"""
+Call Metadata:
+- Direction: {rec.get('direction', 'Unknown')}
+- Result: {rec.get('call_result', 'Unknown')}
+- Action: {rec.get('call_action', 'Unknown')}
+- Duration: {rec.get('duration_seconds', 0)} seconds
+- From: {rec.get('from_name') or rec.get('from_phone_number') or 'Unknown'}
+- To: {rec.get('to_name') or rec.get('to_phone_number') or 'Unknown'}
+- Customer: {rec.get('customer_name', 'Unknown')}
+- Employee: {rec.get('employee_name', 'Unknown')}
+"""
             prompt = f"""Extract advanced metrics from this call. Return ONLY JSON:
 {{
     "buying_signals": ["signal1"] or [],
@@ -561,6 +645,7 @@ def process_layer5(limit: int = 50) -> int:
     "sales_opportunity_score": 1-10
 }}
 
+{call_context}
 Transcript:
 {rec['transcript_text'][:4000]}"""
 
