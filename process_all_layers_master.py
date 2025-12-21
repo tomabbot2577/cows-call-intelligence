@@ -286,10 +286,10 @@ def process_layer1(limit: int = 50) -> int:
 
     cur.execute("""
         SELECT t.recording_id, t.transcript_text,
-               cl.direction, cl.call_result, cl.call_action,
-               cl.from_phone_number, cl.from_name, cl.from_extension_number,
-               cl.to_phone_number, cl.to_name, cl.to_extension_number,
-               cl.duration_seconds
+               cl.direction, cl.call_result, cl.call_action, cl.call_type,
+               cl.from_phone_number, cl.from_name, cl.from_extension_number, cl.from_location,
+               cl.to_phone_number, cl.to_name, cl.to_extension_number, cl.to_location,
+               cl.duration_seconds, cl.start_time, cl.session_id
         FROM transcripts t
         LEFT JOIN call_log cl ON t.recording_id = cl.ringcentral_id
         WHERE t.transcript_text IS NOT NULL AND LENGTH(t.transcript_text) > 100
@@ -304,15 +304,40 @@ def process_layer1(limit: int = 50) -> int:
     success = 0
     for i, rec in enumerate(records, 1):
         try:
+            # Determine employee vs customer based on call direction
+            direction = rec.get('direction', 'Unknown')
+
+            # For Inbound: TO party is employee, FROM party is customer
+            # For Outbound: FROM party is employee, TO party is customer
+            if direction == 'Inbound':
+                likely_employee_name = rec.get('to_name')
+                likely_employee_ext = rec.get('to_extension_number')
+                likely_customer_name = rec.get('from_name')
+                likely_customer_phone = rec.get('from_phone_number')
+                likely_customer_location = rec.get('from_location')
+            else:  # Outbound or Unknown
+                likely_employee_name = rec.get('from_name')
+                likely_employee_ext = rec.get('from_extension_number')
+                likely_customer_name = rec.get('to_name')
+                likely_customer_phone = rec.get('to_phone_number')
+                likely_customer_location = rec.get('to_location')
+
             # Build context from call_log metadata
+            call_time = rec.get('start_time')
+            call_time_str = call_time.strftime('%Y-%m-%d %H:%M') if call_time else 'Unknown'
+
             call_context = f"""
 Call Metadata:
-- Direction: {rec.get('direction', 'Unknown')}
+- Date/Time: {call_time_str}
+- Direction: {direction}
+- Type: {rec.get('call_type', 'Voice')}
 - Result: {rec.get('call_result', 'Unknown')}
 - Action: {rec.get('call_action', 'Unknown')}
 - Duration: {rec.get('duration_seconds', 0)} seconds
-- From: {rec.get('from_name') or rec.get('from_phone_number') or 'Unknown'} (ext: {rec.get('from_extension_number', 'N/A')})
-- To: {rec.get('to_name') or rec.get('to_phone_number') or 'Unknown'} (ext: {rec.get('to_extension_number', 'N/A')})
+- From: {rec.get('from_name') or rec.get('from_phone_number') or 'Unknown'} (ext: {rec.get('from_extension_number') or 'N/A'}, location: {rec.get('from_location') or 'N/A'})
+- To: {rec.get('to_name') or rec.get('to_phone_number') or 'Unknown'} (ext: {rec.get('to_extension_number') or 'N/A'}, location: {rec.get('to_location') or 'N/A'})
+- Likely Employee: {likely_employee_name or 'Unknown'} (ext: {likely_employee_ext or 'N/A'})
+- Likely Customer: {likely_customer_name or likely_customer_phone or 'Unknown'} (location: {likely_customer_location or 'N/A'})
 """
             prompt = f"""Extract names from this call transcript. Return ONLY JSON:
 {{"employee_name": "name or Unknown", "customer_name": "name or Unknown", "customer_company": "company or Unknown"}}
@@ -328,12 +353,21 @@ Transcript (first 2500 chars):
                 employee = data.get('employee_name', 'Unknown')
                 company = data.get('customer_company', 'Unknown')
 
-                # Try to get employee from extension mapping if not found
-                if (not employee or employee == 'Unknown') and rec.get('to_extension_number'):
-                    mapped_employee = get_employee_by_extension(rec.get('to_extension_number'))
+                # Use call_log data if AI couldn't extract names
+                if (not employee or employee == 'Unknown') and likely_employee_name:
+                    employee = likely_employee_name
+                    logger.info(f"    -> Employee from call_log ({direction}): {employee}")
+
+                if (not customer or customer == 'Unknown') and likely_customer_name:
+                    customer = likely_customer_name
+                    logger.info(f"    -> Customer from call_log: {customer}")
+
+                # Try extension mapping as fallback
+                if (not employee or employee == 'Unknown') and likely_employee_ext:
+                    mapped_employee = get_employee_by_extension(likely_employee_ext)
                     if mapped_employee:
                         employee = mapped_employee
-                        logger.info(f"    -> Employee from extension {rec.get('to_extension_number')}: {employee}")
+                        logger.info(f"    -> Employee from extension {likely_employee_ext}: {employee}")
 
                 if customer and customer != 'Unknown' or employee and employee != 'Unknown':
                     cur.execute("""
@@ -345,9 +379,9 @@ Transcript (first 2500 chars):
                     success += 1
                     logger.info(f"  [{i}/{len(records)}] {rec['recording_id']}: {customer} / {employee}")
 
-                    # Update extension mapping for future lookups
-                    if employee and employee != 'Unknown' and rec.get('to_extension_number'):
-                        update_extension_mapping(rec.get('to_extension_number'), employee)
+                    # Update extension mapping for future lookups (use correct extension based on direction)
+                    if employee and employee != 'Unknown' and likely_employee_ext:
+                        update_extension_mapping(likely_employee_ext, employee)
 
             time.sleep(1)
         except Exception as e:
