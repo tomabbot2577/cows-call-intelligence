@@ -215,8 +215,8 @@ from email.mime.multipart import MIMEMultipart
 smtp_host = "${SMTP_HOST}"
 smtp_port = int("${SMTP_PORT}")
 smtp_user = "${SMTP_USER}"
-# Use APP_PASSWORD if available, otherwise fall back to SMTP_PASSWORD
-smtp_pass = os.getenv('GMAIL_APP_PASSWORD', '') or "${SMTP_PASSWORD}"
+# Use GMAIL_APP_PASSWORD (spaces removed)
+smtp_pass = "${GMAIL_APP_PASSWORD}".replace(" ", "") if "${GMAIL_APP_PASSWORD}" else "${SMTP_PASSWORD}"
 to_email = "${ALERT_EMAIL}"
 
 if not smtp_user or not smtp_pass:
