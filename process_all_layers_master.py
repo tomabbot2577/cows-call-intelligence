@@ -433,8 +433,8 @@ Call Metadata:
 - Result: {rec.get('call_result', 'Unknown')}
 - Action: {rec.get('call_action', 'Unknown')}
 - Duration: {rec.get('duration_seconds', 0)} seconds
-- From: {rec.get('from_name') or rec.get('from_phone_number') or 'Unknown'}
-- To: {rec.get('to_name') or rec.get('to_phone_number') or 'Unknown'}
+- From: {rec.get('from_name') or rec.get('from_phone_number') or 'Unknown'} (ext: {rec.get('from_extension_number') or 'N/A'})
+- To: {rec.get('to_name') or rec.get('to_phone_number') or 'Unknown'} (ext: {rec.get('to_extension_number') or 'N/A'})
 - Customer: {rec.get('customer_name', 'Unknown')}
 - Employee: {rec.get('employee_name', 'Unknown')}
 """
@@ -532,8 +532,8 @@ Call Metadata:
 - Result: {rec.get('call_result', 'Unknown')}
 - Action: {rec.get('call_action', 'Unknown')}
 - Duration: {rec.get('duration_seconds', 0)} seconds
-- From: {rec.get('from_name') or rec.get('from_phone_number') or 'Unknown'}
-- To: {rec.get('to_name') or rec.get('to_phone_number') or 'Unknown'}
+- From: {rec.get('from_name') or rec.get('from_phone_number') or 'Unknown'} (ext: {rec.get('from_extension_number') or 'N/A'})
+- To: {rec.get('to_name') or rec.get('to_phone_number') or 'Unknown'} (ext: {rec.get('to_extension_number') or 'N/A'})
 """
             prompt = f"""Generate coaching recommendations for this call. Return ONLY JSON:
 {{
@@ -629,8 +629,8 @@ Call Metadata:
 - Result: {rec.get('call_result', 'Unknown')}
 - Action: {rec.get('call_action', 'Unknown')}
 - Duration: {rec.get('duration_seconds', 0)} seconds
-- From: {rec.get('from_name') or rec.get('from_phone_number') or 'Unknown'}
-- To: {rec.get('to_name') or rec.get('to_phone_number') or 'Unknown'}
+- From: {rec.get('from_name') or rec.get('from_phone_number') or 'Unknown'} (ext: {rec.get('from_extension_number') or 'N/A'})
+- To: {rec.get('to_name') or rec.get('to_phone_number') or 'Unknown'} (ext: {rec.get('to_extension_number') or 'N/A'})
 - Customer: {rec.get('customer_name', 'Unknown')}
 - Employee: {rec.get('employee_name', 'Unknown')}
 """
