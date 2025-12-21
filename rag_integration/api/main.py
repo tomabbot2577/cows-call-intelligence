@@ -16,9 +16,11 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from pydantic import BaseModel
 from starlette.middleware.sessions import SessionMiddleware
+from psycopg2.extras import RealDictCursor
 import uvicorn
 
 from rag_integration.config.settings import get_config
+from rag_integration.config.employee_names import get_canonical_employee_list, CANONICAL_EMPLOYEES, get_employee_name_variations
 from rag_integration.services.db_reader import DatabaseReader
 from rag_integration.services.gemini_file_search import GeminiFileSearchService
 from rag_integration.services.vertex_rag import VertexRAGService
@@ -1708,6 +1710,959 @@ async def api_admin_list_users(request: Request):
     users = auth.list_users()
 
     return {"users": users, "count": len(users)}
+
+
+# ==========================================
+# SALES & COMPETITIVE INTELLIGENCE REPORTS (Layer 5)
+# ==========================================
+
+@app.get("/sales-intelligence", response_class=HTMLResponse)
+async def sales_intelligence_page(request: Request):
+    """Sales & Competitive Intelligence reports page."""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+
+    # Use canonical employee list from config
+    agents = get_canonical_employee_list()
+
+    return templates.TemplateResponse("sales_intelligence.html", {
+        "request": request,
+        "agents": agents,
+        "user": get_current_user(request)
+    })
+
+
+@app.get("/api/v1/rag/reports/sales-pipeline")
+async def api_sales_pipeline_report(
+    request: Request,
+    min_score: int = 5,
+    date_range: str = None,
+    start_date: str = None,
+    end_date: str = None
+):
+    """Get sales pipeline report from Layer 5 buying signals."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        db = get_db()
+        employee_filter = get_employee_filter(request)
+
+        data = db.get_sales_pipeline_data(
+            min_score=min_score,
+            date_range=date_range,
+            start_date=start_date,
+            end_date=end_date,
+            employee_filter=employee_filter
+        )
+
+        if data['total_opportunities'] == 0:
+            return {
+                "report": "sales_pipeline",
+                "response": "No sales opportunities found matching the criteria.",
+                "data": data,
+                "generated_at": datetime.now().isoformat()
+            }
+
+        # Build prompt for AI analysis
+        opps_str = ""
+        for opp in data['opportunities'][:15]:
+            signals = ", ".join(opp['buying_signals'][:3]) if opp['buying_signals'] else "None detected"
+            opps_str += f"""
+- Date: {opp['call_date']}
+  Customer: {opp['customer_name'] or 'Unknown'} at {opp['customer_company'] or 'Unknown'}
+  Agent: {opp['employee_name'] or 'Unknown'}
+  Score: {opp['sales_opportunity_score']}/10
+  Buying Signals: {signals}
+  Summary: {(opp['summary'] or '')[:150]}...
+"""
+
+        from datetime import date
+        today = date.today().strftime("%Y-%m-%d")
+
+        prompt = f"""Generate a Sales Pipeline Report based on the following ACTUAL DATA.
+
+Today's date: {today}
+
+## OVERVIEW:
+- Total Opportunities: {data['total_opportunities']}
+- Hot Opportunities (Score 8-10): {data['hot_opportunities']}
+- Warm Opportunities (Score 5-7): {data['warm_opportunities']}
+
+## DISTRIBUTION:
+{data['by_signal_strength']}
+
+## TOP SALES OPPORTUNITIES:
+{opps_str}
+
+Based on this data, provide:
+1. Executive Summary of the sales pipeline
+2. Top 5 highest priority opportunities with specific next steps
+3. Common buying signals detected
+4. Recommended follow-up actions for the sales team
+5. Any patterns or trends in the opportunities
+
+Use the actual customer names, dates, and scores from the data."""
+
+        service = get_query_service()
+        result = service.query(prompt, force_system="gemini")
+
+        return {
+            "report": "sales_pipeline",
+            "data": data,
+            "response": result["response"],
+            "generated_at": datetime.now().isoformat()
+        }
+    except Exception as e:
+        logger.error(f"Sales pipeline report error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/rag/reports/competitor-intelligence")
+async def api_competitor_intelligence_report(
+    request: Request,
+    competitor: str = None,
+    date_range: str = None,
+    start_date: str = None,
+    end_date: str = None
+):
+    """Get competitor intelligence report from Layer 5 data."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        db = get_db()
+        employee_filter = get_employee_filter(request)
+
+        data = db.get_competitor_intelligence_data(
+            competitor=competitor,
+            date_range=date_range,
+            start_date=start_date,
+            end_date=end_date,
+            employee_filter=employee_filter
+        )
+
+        if data['total_mentions'] == 0:
+            return {
+                "report": "competitor_intelligence",
+                "response": "No competitor mentions found in the call data.",
+                "data": data,
+                "generated_at": datetime.now().isoformat()
+            }
+
+        # Build prompt
+        mentions_str = ""
+        for mention in data['mentions'][:10]:
+            comps = ", ".join(mention['competitors']) if mention['competitors'] else "None"
+            mentions_str += f"""
+- Date: {mention['call_date']}
+  Customer: {mention['customer_name'] or 'Unknown'} at {mention['customer_company'] or 'Unknown'}
+  Competitors Mentioned: {comps}
+  Summary: {(mention['summary'] or '')[:150]}...
+"""
+
+        counts_str = "\n".join([f"- {comp}: {count} mentions" for comp, count in list(data['competitor_counts'].items())[:10]])
+
+        from datetime import date
+        today = date.today().strftime("%Y-%m-%d")
+
+        prompt = f"""Generate a Competitor Intelligence Report based on the following ACTUAL DATA.
+
+Today's date: {today}
+
+## OVERVIEW:
+- Total Calls with Competitor Mentions: {data['total_mentions']}
+
+## COMPETITOR MENTION COUNTS:
+{counts_str}
+
+## SAMPLE COMPETITOR MENTIONS:
+{mentions_str}
+
+Based on this data, provide:
+1. Executive Summary of competitive landscape
+2. Top 3 most mentioned competitors and what customers are saying
+3. Potential switching risks (customers considering leaving for competitors)
+4. Our competitive advantages mentioned by customers
+5. Areas where we may be losing to competitors
+6. Recommendations for the sales/product team
+
+Use the actual company names and dates from the data."""
+
+        service = get_query_service()
+        result = service.query(prompt, force_system="gemini")
+
+        return {
+            "report": "competitor_intelligence",
+            "data": data,
+            "response": result["response"],
+            "generated_at": datetime.now().isoformat()
+        }
+    except Exception as e:
+        logger.error(f"Competitor intelligence report error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/rag/reports/compliance-risk")
+async def api_compliance_risk_report(
+    request: Request,
+    max_score: int = 70,
+    risk_level: str = None,
+    date_range: str = None,
+    start_date: str = None,
+    end_date: str = None
+):
+    """Get compliance and risk report from Layer 5 data."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        db = get_db()
+        employee_filter = get_employee_filter(request)
+
+        data = db.get_compliance_risk_data(
+            max_score=max_score,
+            risk_level=risk_level,
+            date_range=date_range,
+            start_date=start_date,
+            end_date=end_date,
+            employee_filter=employee_filter
+        )
+
+        if data['total_issues'] == 0:
+            return {
+                "report": "compliance_risk",
+                "response": f"No compliance issues found with score below {max_score}.",
+                "data": data,
+                "generated_at": datetime.now().isoformat()
+            }
+
+        # Build prompt
+        issues_str = ""
+        for issue in data['issues'][:12]:
+            issues_str += f"""
+- Date: {issue['call_date']}
+  Agent: {issue['employee_name'] or 'Unknown'}
+  Customer: {issue['customer_name'] or 'Unknown'} at {issue['customer_company'] or 'Unknown'}
+  Compliance Score: {issue['compliance_score']}/100
+  Risk Level: {issue['risk_level'].upper()}
+  Summary: {(issue['summary'] or '')[:150]}...
+"""
+
+        agents_str = ""
+        for agent in data['by_agent'][:8]:
+            agents_str += f"\n- {agent['agent']}: {agent['total_calls']} calls, Avg Compliance: {agent['avg_compliance']}, Low Compliance: {agent['low_compliance_count']}"
+
+        from datetime import date
+        today = date.today().strftime("%Y-%m-%d")
+
+        prompt = f"""Generate a Compliance & Risk Report based on the following ACTUAL DATA.
+
+Today's date: {today}
+
+## OVERVIEW:
+- Total Compliance Issues: {data['total_issues']}
+- Critical Risk (Score < 40): {data['critical_count']}
+- High Risk (Score 40-60): {data['high_count']}
+- Medium Risk (Score 60-70): {data['medium_count']}
+- Average Compliance Score: {data['avg_compliance_score']}/100
+
+## AGENTS WITH COMPLIANCE ISSUES:
+{agents_str or "None identified"}
+
+## COMPLIANCE ISSUE CALLS:
+{issues_str}
+
+Based on this data, provide:
+1. Executive Summary of compliance health
+2. Critical issues requiring immediate attention (with specific call details)
+3. Agents who need compliance training
+4. Common compliance failures detected
+5. Risk mitigation recommendations
+6. Suggested training topics
+
+Use the actual agent names, dates, and scores from the data."""
+
+        service = get_query_service()
+        result = service.query(prompt, force_system="gemini")
+
+        return {
+            "report": "compliance_risk",
+            "data": data,
+            "response": result["response"],
+            "generated_at": datetime.now().isoformat()
+        }
+    except Exception as e:
+        logger.error(f"Compliance risk report error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/rag/reports/urgency-queue")
+async def api_urgency_queue_report(
+    request: Request,
+    min_score: int = 7,
+    date_range: str = None,
+    start_date: str = None,
+    end_date: str = None
+):
+    """Get urgency queue report from Layer 5 data."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        db = get_db()
+        employee_filter = get_employee_filter(request)
+
+        data = db.get_urgency_queue_data(
+            min_score=min_score,
+            date_range=date_range,
+            start_date=start_date,
+            end_date=end_date,
+            employee_filter=employee_filter
+        )
+
+        if data['total_urgent'] == 0:
+            return {
+                "report": "urgency_queue",
+                "response": f"No urgent calls found with score >= {min_score}.",
+                "data": data,
+                "generated_at": datetime.now().isoformat()
+            }
+
+        # Build prompt
+        calls_str = ""
+        for call in data['urgent_calls'][:15]:
+            calls_str += f"""
+- Date: {call['call_date']} {call['call_time'] or ''}
+  Customer: {call['customer_name'] or 'Unknown'} at {call['customer_company'] or 'Unknown'}
+  Agent: {call['employee_name'] or 'Unknown'}
+  Urgency Score: {call['urgency_score']}/10
+  Level: {call['urgency_level'].upper()}
+  Resolution: {call['resolution_status'] or 'Unknown'}
+  Follow-up Needed: {call['follow_up_needed']}
+  Summary: {(call['summary'] or '')[:150]}...
+"""
+
+        from datetime import date
+        today = date.today().strftime("%Y-%m-%d")
+
+        prompt = f"""Generate an Urgency Queue Report based on the following ACTUAL DATA.
+
+Today's date: {today}
+
+## OVERVIEW:
+- Total Urgent Calls: {data['total_urgent']}
+- Immediate Action Required (Score 9-10): {data['immediate_action']}
+- High Priority (Score 7-8): {data['high_priority']}
+
+## URGENCY DISTRIBUTION:
+{data['by_urgency_level']}
+
+## URGENT CALLS:
+{calls_str}
+
+Based on this data, provide:
+1. Executive Summary of the urgency queue
+2. Top 5 calls requiring IMMEDIATE action with specific next steps
+3. Customers who may be at risk if not addressed quickly
+4. Recommended prioritization for the support team
+5. Patterns in urgent calls (time of day, type of issues)
+6. Suggestions to reduce future urgent calls
+
+Use the actual customer names, dates, and scores from the data."""
+
+        service = get_query_service()
+        result = service.query(prompt, force_system="gemini")
+
+        return {
+            "report": "urgency_queue",
+            "data": data,
+            "response": result["response"],
+            "generated_at": datetime.now().isoformat()
+        }
+    except Exception as e:
+        logger.error(f"Urgency queue report error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/rag/reports/key-quotes")
+async def api_key_quotes_report(
+    request: Request,
+    search: str = None,
+    quote_type: str = None,
+    date_range: str = None,
+    start_date: str = None,
+    end_date: str = None
+):
+    """Get key quotes report from Layer 5 data."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        db = get_db()
+        employee_filter = get_employee_filter(request)
+
+        data = db.get_key_quotes_data(
+            search_term=search,
+            quote_type=quote_type,
+            date_range=date_range,
+            start_date=start_date,
+            end_date=end_date,
+            employee_filter=employee_filter
+        )
+
+        if data['total_quotes'] == 0:
+            return {
+                "report": "key_quotes",
+                "response": "No key quotes found matching the criteria.",
+                "data": data,
+                "generated_at": datetime.now().isoformat()
+            }
+
+        # Build prompt
+        quotes_str = ""
+        for quote in data['quotes'][:20]:
+            quotes_str += f"""
+- "{quote['quote'][:200]}"
+  Date: {quote['call_date']}
+  Customer: {quote['customer_name'] or 'Unknown'} at {quote['customer_company'] or 'Unknown'}
+  Sentiment: {quote['sentiment'] or 'Unknown'}
+"""
+
+        from datetime import date
+        today = date.today().strftime("%Y-%m-%d")
+
+        search_context = f"Search term: '{search}'" if search else "All quotes"
+
+        prompt = f"""Generate a Key Quotes Library Report based on the following ACTUAL DATA.
+
+Today's date: {today}
+Filter: {search_context}
+
+## OVERVIEW:
+- Total Quotes Found: {data['total_quotes']}
+
+## KEY QUOTES:
+{quotes_str}
+
+Based on this data, provide:
+1. Summary of themes in the quotes
+2. Top 5 most impactful quotes for marketing/testimonials
+3. Pain points customers are expressing (verbatim)
+4. Feature requests or wishes mentioned
+5. Positive feedback that could be used as testimonials
+6. Suggested categories for organizing these quotes
+
+Preserve the exact wording of quotes - they are verbatim from customers."""
+
+        service = get_query_service()
+        result = service.query(prompt, force_system="gemini")
+
+        return {
+            "report": "key_quotes",
+            "data": data,
+            "response": result["response"],
+            "generated_at": datetime.now().isoformat()
+        }
+    except Exception as e:
+        logger.error(f"Key quotes report error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/rag/reports/qa-training")
+async def api_qa_training_report(
+    request: Request,
+    category: str = None,
+    quality: str = None,
+    faq_only: bool = False,
+    date_range: str = None,
+    start_date: str = None,
+    end_date: str = None
+):
+    """Get Q&A training data report from Layer 5 data."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        db = get_db()
+        employee_filter = get_employee_filter(request)
+
+        data = db.get_qa_training_data(
+            category=category,
+            quality=quality,
+            faq_only=faq_only,
+            date_range=date_range,
+            start_date=start_date,
+            end_date=end_date,
+            employee_filter=employee_filter
+        )
+
+        if data['total_qa_pairs'] == 0:
+            return {
+                "report": "qa_training",
+                "response": "No Q&A pairs found matching the criteria.",
+                "data": data,
+                "generated_at": datetime.now().isoformat()
+            }
+
+        # Build prompt
+        qa_str = ""
+        for qa in data['qa_pairs'][:15]:
+            qa_str += f"""
+Q: {qa['question'][:200]}
+A: {qa['answer'][:200]}
+  Category: {qa['category']}
+  Quality: {qa['answer_quality']}
+  FAQ Candidate: {qa['could_be_faq']}
+"""
+
+        kb_str = "\n".join([f"- {a['article']} ({a['count']} mentions)" for a in data['potential_kb_articles'][:10]])
+        cat_str = "\n".join([f"- {cat}: {count}" for cat, count in data['by_category'].items()])
+
+        from datetime import date
+        today = date.today().strftime("%Y-%m-%d")
+
+        prompt = f"""Generate a Q&A Training Data Report based on the following ACTUAL DATA.
+
+Today's date: {today}
+
+## OVERVIEW:
+- Total Q&A Pairs: {data['total_qa_pairs']}
+- FAQ Candidates: {data['faq_candidates']}
+- Unanswered Questions: {data['unanswered']}
+
+## BY CATEGORY:
+{cat_str}
+
+## POTENTIAL KB ARTICLES NEEDED:
+{kb_str or "None identified"}
+
+## SAMPLE Q&A PAIRS:
+{qa_str}
+
+Based on this data, provide:
+1. Summary of common question types
+2. Top 10 FAQ candidates that should be added to documentation
+3. Questions that went unanswered (need KB articles)
+4. Categories that need more documentation
+5. Training recommendations for agents based on common questions
+6. Suggested knowledge base improvements
+
+Focus on actionable insights for improving documentation and training."""
+
+        service = get_query_service()
+        result = service.query(prompt, force_system="gemini")
+
+        return {
+            "report": "qa_training",
+            "data": data,
+            "response": result["response"],
+            "generated_at": datetime.now().isoformat()
+        }
+    except Exception as e:
+        logger.error(f"Q&A training report error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# ==========================================
+# HORMOZI SALES CALL ANALYZER
+# ==========================================
+
+HORMOZI_ANALYSIS_PROMPT = '''You are a sales coach trained on the Hormozi Sales Blueprint. Analyze this call transcript against these criteria:
+
+## SPEED & RESPONSIVENESS CONTEXT
+- Was this call made within 60 seconds of lead opt-in? (391% higher close rate)
+- Was it same-day/next-day scheduling? (highest show rates)
+
+## OPENING ANALYSIS (First 60 seconds)
+Score each 1-10:
+1. PROOF: Did rep establish credibility immediately?
+2. PROMISE: Was the outcome/transformation stated?
+3. PLAN: Was a clear agenda set?
+
+Flag if: Rep asked "how can I help you?" (weak) vs. stated purpose confidently
+
+## CLOSER FRAMEWORK BREAKDOWN
+
+### CLARIFY (Why are they here?)
+- Find the moment rep asked what prompted the call
+- Did they tie it to a specific action? (clicked ad, scheduled, responded)
+- Quote the exact question used
+
+### LABEL (The Gap)
+- Identify where rep summarized: "So you're at X, you want Y, and Z is blocking you"
+- Was prospect confirmation obtained? (verbal yes)
+
+### OVERVIEW PAST PAIN (The Pain Cycle)
+This is where deals are won. Analyze:
+- What solutions had prospect tried before?
+- Did rep highlight what was MISSING from each attempt?
+- Was cost of failure quantified? (time/money/status/daily cost)
+- Time spent here: Target 40% of call
+
+RED FLAG: If rep spent <5 minutes on pain, they rushed to pitch
+
+### SELL THE VACATION (3-Pillar Pitch)
+- Identify the 3 pillars presented
+- Was each explained with a metaphor/analogy?
+- Was pitch under 2 minutes? (it should be)
+- Did rep talk about Maui, not the plane flight? (outcomes, not process)
+
+### EXPLAIN CONCERNS (Objection Handling)
+For each objection raised:
+1. Classify: TIME | MONEY | DECISION-MAKER | STALL | DETAIL
+2. Check AAA execution:
+   - Acknowledge (repeated back/validated)
+   - Associate (connected to success story or positive reframe)
+   - Ask (followed with question, not statement)
+3. Did rep ask: "What's your main concern?" before going into overcome?
+
+DETAIL OBJECTIONS: Did rep fall into the death trap?
+- Warning signs: Answering questions they didn't know prospect's preferred answer to
+- Correct approach: "Which certifications were you looking for?" before answering
+
+DECISION-MAKER OBJECTIONS: Check the 4-step process:
+1. "What would happen if they said no?" (1/3 say "I'd do it anyway" = done)
+2. "What do you think their main concern is?" (uncover real objection)
+3. Past agreements (evidence partner would approve)
+4. Support not permission (empowerment reframe)
+
+### REINFORCE (Post-Close)
+- Was there a warm handoff or cold hand-off?
+- Did rep use BAMFAM (book a meeting from a meeting)?
+- Were notes passed to next team member?
+
+## TALK RATIO ANALYSIS
+Calculate approximate:
+- Prospect talk time: ___% (target: 66%)
+- Rep talk time: ___% (target: 33%)
+
+"The person asking questions is the person closing"
+
+## QUESTION QUALITY AUDIT
+List the questions rep asked. Score each:
+- Open-ended exploration? (+1)
+- Closed/leading? (0)
+- Statement disguised as question? (-1)
+
+## STATEMENTS VS QUESTIONS
+Count how many times rep made a statement that could have been a question.
+Statements = bombs that can blow up in your face
+
+## SCRIPT ADHERENCE + DELIVERY
+- Were core script elements present?
+- EMPHASIS: Where did rep pause for impact?
+- TONE: Did they go low for trust, high for questions?
+- PACING: Slow for important points, fast for excitement?
+
+## ZOMBIE CHECK (BANT)
+Were these confirmed BEFORE asking for money?
+- [ ] Budget: "What have you invested in solving this before?"
+- [ ] Authority: "Is there anyone else involved in this decision?"
+- [ ] Need: Established through pain cycle
+- [ ] Timing: "When were you hoping to get started?"
+
+## RED FLAGS CHECKLIST
+- [ ] Asked prospect to repeat information from previous rep
+- [ ] Got into details before establishing pain
+- [ ] Answered price question without asking "compared to what?" or similar
+- [ ] Negotiated on price (never negotiate with terrorists)
+- [ ] Lost frame (prospect started asking all the questions)
+- [ ] Commission breath detected (pushy, not curious)
+- [ ] Talked past the close (prospect said yes, rep kept selling)
+
+## QUOTABLE MOMENTS
+Pull 3 quotes:
+1. Strongest moment (for training)
+2. Weakest moment (for coaching)
+3. Missed opportunity (with better alternative)
+
+## ONE-THING FOCUS
+Based on this call, what ONE thing should this rep drill for the next 1-2 weeks?
+
+## HOT STREAK CAPTURE
+If this was a successful close, document:
+- What made it work?
+- What should be replicated?
+- Which elements were slightly different from their usual?
+
+## OVERALL SCORES
+Provide scores out of 10 for each category:
+- Opening (Proof/Promise/Plan): /10
+- Pain Excavation: /10
+- Pitch Delivery: /10
+- Objection Handling: /10
+- Close Execution: /10
+- Overall Call Score: /10
+
+Provide analysis with specific quotes from the transcript where possible.
+'''
+
+
+@app.get("/api/v1/rag/reports/sales-call-analysis")
+async def api_sales_call_analysis(
+    request: Request,
+    recording_id: str = None,
+    date_range: str = None,
+    start_date: str = None,
+    end_date: str = None,
+    employee: str = None
+):
+    """Analyze a sales call using the Hormozi Sales Blueprint methodology."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        db = get_db()
+
+        # Build query to get call transcript
+        with db.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                if recording_id:
+                    # Analyze specific call
+                    cur.execute("""
+                        SELECT
+                            t.recording_id,
+                            t.call_date,
+                            t.call_time,
+                            t.duration_seconds,
+                            t.employee_name,
+                            t.customer_name,
+                            t.customer_company,
+                            t.transcript_text,
+                            i.customer_sentiment,
+                            i.call_quality_score,
+                            i.summary,
+                            i.call_type
+                        FROM transcripts t
+                        LEFT JOIN insights i ON t.recording_id = i.recording_id
+                        WHERE t.recording_id = %s
+                    """, (recording_id,))
+                    call = cur.fetchone()
+
+                    if not call:
+                        raise HTTPException(status_code=404, detail=f"Call {recording_id} not found")
+
+                    calls = [dict(call)]
+                else:
+                    # Get recent calls for analysis selection
+                    where_clauses = ["t.call_date IS NOT NULL", "t.transcript_text IS NOT NULL"]
+                    params = []
+
+                    if employee:
+                        where_clauses.append("t.employee_name ILIKE %s")
+                        params.append(f"%{employee}%")
+
+                    if start_date and end_date:
+                        where_clauses.append("t.call_date >= %s AND t.call_date <= %s")
+                        params.extend([start_date, end_date])
+                    elif date_range == 'last_30':
+                        where_clauses.append("t.call_date >= CURRENT_DATE - INTERVAL '30 days'")
+                    elif date_range == 'this_month':
+                        where_clauses.append("t.call_date >= DATE_TRUNC('month', CURRENT_DATE)")
+
+                    where_sql = " AND ".join(where_clauses)
+
+                    cur.execute(f"""
+                        SELECT
+                            t.recording_id,
+                            t.call_date,
+                            t.call_time,
+                            t.duration_seconds,
+                            t.employee_name,
+                            t.customer_name,
+                            t.customer_company,
+                            t.transcript_text,
+                            i.customer_sentiment,
+                            i.call_quality_score,
+                            i.summary,
+                            i.call_type
+                        FROM transcripts t
+                        LEFT JOIN insights i ON t.recording_id = i.recording_id
+                        WHERE {where_sql}
+                        AND LENGTH(t.transcript_text) > 500
+                        ORDER BY t.call_date DESC
+                        LIMIT 1
+                    """, params)
+
+                    call = cur.fetchone()
+                    if not call:
+                        return {
+                            "report": "sales_call_analysis",
+                            "response": "No calls found matching the criteria with sufficient transcript length.",
+                            "generated_at": datetime.now().isoformat()
+                        }
+                    calls = [dict(call)]
+
+        # Get the call to analyze
+        call_data = calls[0]
+        transcript = call_data.get('transcript_text', '')
+
+        if not transcript or len(transcript) < 100:
+            return {
+                "report": "sales_call_analysis",
+                "response": "Transcript too short for meaningful analysis.",
+                "call": {
+                    "recording_id": call_data.get('recording_id'),
+                    "employee": call_data.get('employee_name'),
+                    "date": str(call_data.get('call_date'))
+                },
+                "generated_at": datetime.now().isoformat()
+            }
+
+        # Prepare context for analysis
+        call_context = f"""
+## CALL METADATA
+- Recording ID: {call_data.get('recording_id')}
+- Date: {call_data.get('call_date')} {call_data.get('call_time', '')}
+- Duration: {call_data.get('duration_seconds', 0)} seconds ({round((call_data.get('duration_seconds', 0) or 0) / 60, 1)} minutes)
+- Agent/Rep: {call_data.get('employee_name', 'Unknown')}
+- Customer: {call_data.get('customer_name', 'Unknown')}
+- Company: {call_data.get('customer_company', 'Unknown')}
+- Call Type: {call_data.get('call_type', 'Unknown')}
+- Sentiment: {call_data.get('customer_sentiment', 'Unknown')}
+- Quality Score: {call_data.get('call_quality_score', 'N/A')}/10
+
+## TRANSCRIPT
+{transcript[:15000]}
+"""
+
+        # Use Gemini to analyze
+        from google import genai
+        from google.genai import types
+
+        config = get_config_instance()
+        client = genai.Client(api_key=config.gemini_api_key)
+
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=f"{HORMOZI_ANALYSIS_PROMPT}\n\n{call_context}",
+            config=types.GenerateContentConfig(
+                temperature=0.3,
+                max_output_tokens=4096
+            )
+        )
+
+        analysis = response.text
+
+        return {
+            "report": "sales_call_analysis",
+            "methodology": "Hormozi Sales Blueprint",
+            "call": {
+                "recording_id": call_data.get('recording_id'),
+                "date": str(call_data.get('call_date')),
+                "time": str(call_data.get('call_time', '')),
+                "duration_minutes": round((call_data.get('duration_seconds', 0) or 0) / 60, 1),
+                "employee": call_data.get('employee_name'),
+                "customer": call_data.get('customer_name'),
+                "company": call_data.get('customer_company'),
+                "call_type": call_data.get('call_type'),
+                "sentiment": call_data.get('customer_sentiment'),
+                "quality_score": call_data.get('call_quality_score')
+            },
+            "analysis": analysis,
+            "generated_at": datetime.now().isoformat()
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Sales call analysis error: {e}")
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/rag/reports/sales-calls-list")
+async def api_sales_calls_list(
+    request: Request,
+    date_range: str = None,
+    start_date: str = None,
+    end_date: str = None,
+    employee: str = None,
+    limit: int = 20
+):
+    """Get list of calls available for sales analysis."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        db = get_db()
+
+        with db.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                where_clauses = [
+                    "t.call_date IS NOT NULL",
+                    "t.transcript_text IS NOT NULL",
+                    "LENGTH(t.transcript_text) > 500"
+                ]
+                params = []
+
+                if employee:
+                    # Get all name variations for this employee
+                    variations = get_employee_name_variations(employee)
+                    if variations:
+                        # Build OR clause for all variations
+                        variation_clauses = []
+                        for var in variations:
+                            variation_clauses.append("t.employee_name ILIKE %s")
+                            params.append(f"%{var}%")
+                        where_clauses.append(f"({' OR '.join(variation_clauses)})")
+
+                if start_date and end_date:
+                    where_clauses.append("t.call_date >= %s AND t.call_date <= %s")
+                    params.extend([start_date, end_date])
+                elif date_range == 'last_30':
+                    where_clauses.append("t.call_date >= CURRENT_DATE - INTERVAL '30 days'")
+                elif date_range == 'this_month':
+                    where_clauses.append("t.call_date >= DATE_TRUNC('month', CURRENT_DATE)")
+                elif date_range == 'this_quarter':
+                    where_clauses.append("t.call_date >= DATE_TRUNC('quarter', CURRENT_DATE)")
+
+                where_sql = " AND ".join(where_clauses)
+                params.append(limit)
+
+                cur.execute(f"""
+                    SELECT
+                        t.recording_id,
+                        t.call_date,
+                        t.call_time,
+                        t.duration_seconds,
+                        t.employee_name,
+                        t.customer_name,
+                        t.customer_company,
+                        LENGTH(t.transcript_text) as transcript_length,
+                        i.customer_sentiment,
+                        i.call_quality_score,
+                        i.call_type,
+                        i.summary
+                    FROM transcripts t
+                    LEFT JOIN insights i ON t.recording_id = i.recording_id
+                    WHERE {where_sql}
+                    ORDER BY t.call_date DESC, t.call_time DESC
+                    LIMIT %s
+                """, params)
+
+                calls = []
+                for row in cur.fetchall():
+                    call = dict(row)
+                    call['call_date'] = str(call['call_date']) if call['call_date'] else None
+                    call['call_time'] = str(call['call_time']) if call['call_time'] else None
+                    call['duration_minutes'] = round((call.get('duration_seconds', 0) or 0) / 60, 1)
+                    calls.append(call)
+
+                return {
+                    "calls": calls,
+                    "count": len(calls),
+                    "filters": {
+                        "date_range": date_range,
+                        "employee": employee
+                    }
+                }
+
+    except Exception as e:
+        logger.error(f"Sales calls list error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 def create_app():

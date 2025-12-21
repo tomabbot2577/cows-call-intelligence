@@ -115,9 +115,8 @@ class QueryRouter:
 
         query_lower = query.lower()
 
-        # Score patterns
+        # Score patterns (numeric scores)
         score_patterns = [
-            (r'churn\s*(?:risk\s*)?score\s*([><=!]+)\s*(\d+)', 'churn_risk_score'),
             (r'quality\s*score\s*([><=!]+)\s*(\d+)', 'call_quality_score'),
             (r'empathy\s*score\s*([><=!]+)\s*(\d+)', 'empathy_score'),
             (r'satisfaction\s*score?\s*([><=!]+)\s*(\d+)', 'customer_satisfaction_score'),
@@ -129,6 +128,24 @@ class QueryRouter:
             if match:
                 op = match.group(1).replace('==', '=')
                 filters[field] = {"op": op, "value": int(match.group(2))}
+
+        # Churn risk - TEXT field ('none', 'low', 'medium', 'high')
+        # Handle both text-based and numeric queries
+        if 'high churn' in query_lower or 'high-churn' in query_lower:
+            filters["churn_risk"] = "high"
+        elif 'medium churn' in query_lower:
+            filters["churn_risk"] = "medium"
+        elif 'low churn' in query_lower:
+            filters["churn_risk"] = "low"
+        elif re.search(r'churn\s*risk\s*(?:score\s*)?(?:>|above|over)\s*7', query_lower):
+            # "churn risk > 7" or "churn risk above 7" = high risk
+            filters["churn_risk"] = "high"
+        elif re.search(r'churn\s*risk\s*(?:score\s*)?(?:>|above|over)\s*[4-6]', query_lower):
+            # "churn risk > 5" = medium or high
+            filters["churn_risk"] = "medium"  # Will match medium AND high in DB query
+        elif re.search(r'at[\s-]?risk', query_lower):
+            # "at risk" customers = high churn risk
+            filters["churn_risk"] = "high"
 
         # Agent/Employee name
         agent_patterns = [

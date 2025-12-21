@@ -114,7 +114,7 @@
             <div class="card-body">
                 <p class="mb-2"><strong>Best for filtered, metric-based queries:</strong></p>
                 <ul class="small mb-0">
-                    <li><a href="#" onclick="setQuery('Show all calls with churn risk score above 7', 'mtd')">Show all calls with churn risk score above 7 <span class="badge bg-secondary">MTD</span></a></li>
+                    <li><a href="#" onclick="setQuery('Show all calls with high churn risk', 'mtd')">Show all calls with high churn risk <span class="badge bg-secondary">MTD</span></a></li>
                     <li><a href="#" onclick="setQuery('List calls where quality score is below 5', 'last_30')">List calls where quality score is below 5 <span class="badge bg-secondary">30d</span></a></li>
                     <li><a href="#" onclick="setQuery('Find all escalated calls', 'mtd')">Find all escalated calls <span class="badge bg-secondary">MTD</span></a></li>
                     <li><a href="#" onclick="setQuery('Show calls with negative sentiment that need follow-up', 'last_30')">Show calls with negative sentiment that need follow-up <span class="badge bg-secondary">30d</span></a></li>
@@ -159,9 +159,13 @@
         {% if result.filters %}
         <div class="mb-3">
             <strong>Filters Applied:</strong>
-            {% for key, value in result.filters.items() %}
-            <span class="filter-tag">{{ key }}: {{ value }}</span>
-            {% endfor %}
+            {% if result.filters is mapping %}
+                {% for key, value in result.filters.items() %}
+                <span class="filter-tag">{{ key }}: {{ value }}</span>
+                {% endfor %}
+            {% else %}
+                <span class="filter-tag">{{ result.filters }}</span>
+            {% endif %}
         </div>
         {% endif %}
 

@@ -73,6 +73,38 @@ class DatabaseReader:
         finally:
             conn.close()
 
+    def _build_date_filter(
+        self,
+        date_range: str = None,
+        start_date: str = None,
+        end_date: str = None,
+        table_alias: str = "t"
+    ) -> str:
+        """Build SQL date filter clause for queries.
+
+        Args:
+            date_range: Preset range ('last_30', 'this_month', 'this_quarter', 'this_year')
+            start_date: Custom start date (YYYY-MM-DD)
+            end_date: Custom end date (YYYY-MM-DD)
+            table_alias: Table alias to use (default 't' for transcripts)
+
+        Returns:
+            SQL WHERE clause fragment (e.g., "AND t.call_date >= ...")
+        """
+        if start_date and end_date:
+            return f"AND {table_alias}.call_date >= '{start_date}'::date AND {table_alias}.call_date < '{end_date}'::date + INTERVAL '1 day'"
+
+        if date_range == 'last_30':
+            return f"AND {table_alias}.call_date >= CURRENT_DATE - INTERVAL '30 days'"
+        elif date_range == 'this_month':
+            return f"AND {table_alias}.call_date >= DATE_TRUNC('month', CURRENT_DATE)"
+        elif date_range == 'this_quarter':
+            return f"AND {table_alias}.call_date >= DATE_TRUNC('quarter', CURRENT_DATE)"
+        elif date_range == 'this_year':
+            return f"AND {table_alias}.call_date >= DATE_TRUNC('year', CURRENT_DATE)"
+
+        return ""
+
     def get_calls_for_export(
         self,
         since: Optional[datetime] = None,
@@ -1541,6 +1573,577 @@ class DatabaseReader:
                 from collections import Counter
                 topic_counts = Counter(all_topics)
                 result['low_quality_topics'] = [{'topic': t, 'count': c} for t, c in topic_counts.most_common(15)]
+
+                return result
+
+    # ==========================================
+    # SALES INTELLIGENCE REPORTS (Layer 5 Data)
+    # ==========================================
+
+    def get_sales_pipeline_data(
+        self,
+        min_score: int = 5,
+        date_range: str = None,
+        start_date: str = None,
+        end_date: str = None,
+        employee_filter: str = None
+    ) -> Dict[str, Any]:
+        """Get sales pipeline data from Layer 5 buying signals."""
+        result = {
+            'total_opportunities': 0,
+            'hot_opportunities': 0,
+            'warm_opportunities': 0,
+            'opportunities': [],
+            'by_signal_strength': {},
+            'date_range': date_range or 'all'
+        }
+
+        date_filter = self._build_date_filter(date_range, start_date, end_date)
+        employee_clause = f"AND t.employee_name ILIKE '%{employee_filter}%'" if employee_filter else ""
+
+        with self.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                # Get opportunities with buying signals
+                cur.execute(f"""
+                    SELECT
+                        t.recording_id,
+                        t.call_date,
+                        t.customer_name,
+                        t.customer_company,
+                        t.employee_name,
+                        t.from_number,
+                        i.summary,
+                        i.key_topics,
+                        m.buying_signals,
+                        m.sales_opportunity_score,
+                        m.key_quotes
+                    FROM transcripts t
+                    JOIN call_advanced_metrics m ON t.recording_id = m.recording_id
+                    LEFT JOIN insights i ON t.recording_id = i.recording_id
+                    WHERE m.sales_opportunity_score >= %s
+                    AND t.call_date IS NOT NULL
+                    {date_filter}
+                    {employee_clause}
+                    ORDER BY m.sales_opportunity_score DESC, t.call_date DESC
+                    LIMIT 100
+                """, (min_score,))
+
+                opportunities = []
+                for row in cur.fetchall():
+                    opp = dict(row)
+                    opp['call_date'] = str(opp['call_date']) if opp['call_date'] else None
+
+                    # Parse buying signals JSONB
+                    signals = opp.get('buying_signals', [])
+                    if isinstance(signals, str):
+                        import json
+                        try:
+                            signals = json.loads(signals)
+                        except:
+                            signals = []
+
+                    opp['buying_signals'] = signals if isinstance(signals, list) else []
+                    opp['signal_count'] = len(opp['buying_signals'])
+                    opportunities.append(opp)
+
+                result['opportunities'] = opportunities
+                result['total_opportunities'] = len(opportunities)
+                result['hot_opportunities'] = len([o for o in opportunities if o['sales_opportunity_score'] >= 8])
+                result['warm_opportunities'] = len([o for o in opportunities if 5 <= o['sales_opportunity_score'] < 8])
+
+                # Distribution by score
+                cur.execute(f"""
+                    SELECT
+                        CASE
+                            WHEN sales_opportunity_score >= 8 THEN 'hot'
+                            WHEN sales_opportunity_score >= 5 THEN 'warm'
+                            ELSE 'cold'
+                        END as category,
+                        COUNT(*) as count
+                    FROM call_advanced_metrics m
+                    JOIN transcripts t ON m.recording_id = t.recording_id
+                    WHERE t.call_date IS NOT NULL
+                    {date_filter}
+                    {employee_clause}
+                    GROUP BY category
+                """)
+                result['by_signal_strength'] = {row['category']: row['count'] for row in cur.fetchall()}
+
+                return result
+
+    def get_competitor_intelligence_data(
+        self,
+        competitor: str = None,
+        date_range: str = None,
+        start_date: str = None,
+        end_date: str = None,
+        employee_filter: str = None
+    ) -> Dict[str, Any]:
+        """Get competitor intelligence from Layer 5 data."""
+        result = {
+            'total_mentions': 0,
+            'competitor_counts': {},
+            'mentions': [],
+            'switching_analysis': {'from': {}, 'to': {}},
+            'date_range': date_range or 'all'
+        }
+
+        date_filter = self._build_date_filter(date_range, start_date, end_date)
+        employee_clause = f"AND t.employee_name ILIKE '%{employee_filter}%'" if employee_filter else ""
+
+        with self.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                # Get all mentions
+                cur.execute(f"""
+                    SELECT
+                        t.recording_id,
+                        t.call_date,
+                        t.customer_name,
+                        t.customer_company,
+                        t.employee_name,
+                        i.summary,
+                        m.competitor_intelligence,
+                        m.key_quotes
+                    FROM transcripts t
+                    JOIN call_advanced_metrics m ON t.recording_id = m.recording_id
+                    LEFT JOIN insights i ON t.recording_id = i.recording_id
+                    WHERE m.competitor_intelligence IS NOT NULL
+                    AND m.competitor_intelligence != '{{}}'::jsonb
+                    AND m.competitor_intelligence != '{{"competitors": []}}'::jsonb
+                    AND t.call_date IS NOT NULL
+                    {date_filter}
+                    {employee_clause}
+                    ORDER BY t.call_date DESC
+                    LIMIT 100
+                """)
+
+                mentions = []
+                competitor_counts = {}
+
+                for row in cur.fetchall():
+                    mention = dict(row)
+                    mention['call_date'] = str(mention['call_date']) if mention['call_date'] else None
+
+                    # Parse competitor_intelligence JSONB
+                    intel = mention.get('competitor_intelligence', {})
+                    if isinstance(intel, str):
+                        import json
+                        try:
+                            intel = json.loads(intel)
+                        except:
+                            intel = {}
+
+                    competitors_list = intel.get('competitors', [])
+                    if competitors_list:
+                        mention['competitors'] = competitors_list
+                        mentions.append(mention)
+
+                        # Count competitors
+                        for comp in competitors_list:
+                            if comp:
+                                competitor_counts[comp] = competitor_counts.get(comp, 0) + 1
+
+                result['mentions'] = mentions
+                result['total_mentions'] = len(mentions)
+                result['competitor_counts'] = dict(sorted(competitor_counts.items(), key=lambda x: x[1], reverse=True))
+
+                return result
+
+    def get_compliance_risk_data(
+        self,
+        max_score: int = 70,
+        risk_level: str = None,
+        date_range: str = None,
+        start_date: str = None,
+        end_date: str = None,
+        employee_filter: str = None
+    ) -> Dict[str, Any]:
+        """Get compliance and risk data from Layer 5."""
+        result = {
+            'total_issues': 0,
+            'critical_count': 0,
+            'high_count': 0,
+            'medium_count': 0,
+            'issues': [],
+            'by_agent': [],
+            'avg_compliance_score': 0,
+            'date_range': date_range or 'all'
+        }
+
+        date_filter = self._build_date_filter(date_range, start_date, end_date)
+        employee_clause = f"AND t.employee_name ILIKE '%{employee_filter}%'" if employee_filter else ""
+
+        with self.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                # Get low compliance calls
+                cur.execute(f"""
+                    SELECT
+                        t.recording_id,
+                        t.call_date,
+                        t.customer_name,
+                        t.customer_company,
+                        t.employee_name,
+                        t.from_number,
+                        i.summary,
+                        m.compliance,
+                        m.compliance_score,
+                        m.key_quotes
+                    FROM transcripts t
+                    JOIN call_advanced_metrics m ON t.recording_id = m.recording_id
+                    LEFT JOIN insights i ON t.recording_id = i.recording_id
+                    WHERE m.compliance_score <= %s
+                    AND m.compliance_score > 0
+                    AND t.call_date IS NOT NULL
+                    {date_filter}
+                    {employee_clause}
+                    ORDER BY m.compliance_score ASC, t.call_date DESC
+                    LIMIT 100
+                """, (max_score,))
+
+                issues = []
+                for row in cur.fetchall():
+                    issue = dict(row)
+                    issue['call_date'] = str(issue['call_date']) if issue['call_date'] else None
+
+                    # Determine risk level
+                    score = issue.get('compliance_score', 50)
+                    if score < 40:
+                        issue['risk_level'] = 'critical'
+                    elif score < 60:
+                        issue['risk_level'] = 'high'
+                    else:
+                        issue['risk_level'] = 'medium'
+
+                    issues.append(issue)
+
+                result['issues'] = issues
+                result['total_issues'] = len(issues)
+                result['critical_count'] = len([i for i in issues if i['risk_level'] == 'critical'])
+                result['high_count'] = len([i for i in issues if i['risk_level'] == 'high'])
+                result['medium_count'] = len([i for i in issues if i['risk_level'] == 'medium'])
+
+                # Compliance by agent
+                cur.execute(f"""
+                    SELECT
+                        t.employee_name as agent,
+                        COUNT(*) as total_calls,
+                        ROUND(AVG(m.compliance_score), 1) as avg_compliance,
+                        COUNT(CASE WHEN m.compliance_score < 50 THEN 1 END) as low_compliance_count
+                    FROM transcripts t
+                    JOIN call_advanced_metrics m ON t.recording_id = m.recording_id
+                    WHERE t.employee_name IS NOT NULL
+                    AND t.employee_name != 'Unknown'
+                    AND t.call_date IS NOT NULL
+                    AND m.compliance_score > 0
+                    {date_filter}
+                    {employee_clause}
+                    GROUP BY t.employee_name
+                    HAVING COUNT(CASE WHEN m.compliance_score < 50 THEN 1 END) > 0
+                    ORDER BY avg_compliance ASC
+                    LIMIT 20
+                """)
+                result['by_agent'] = [dict(row) for row in cur.fetchall()]
+
+                # Average compliance score
+                cur.execute(f"""
+                    SELECT ROUND(AVG(m.compliance_score), 1) as avg
+                    FROM call_advanced_metrics m
+                    JOIN transcripts t ON m.recording_id = t.recording_id
+                    WHERE m.compliance_score > 0
+                    AND t.call_date IS NOT NULL
+                    {date_filter}
+                    {employee_clause}
+                """)
+                row = cur.fetchone()
+                result['avg_compliance_score'] = row['avg'] if row and row['avg'] else 0
+
+                return result
+
+    def get_urgency_queue_data(
+        self,
+        min_score: int = 7,
+        sla_risk_only: bool = False,
+        date_range: str = None,
+        start_date: str = None,
+        end_date: str = None,
+        employee_filter: str = None
+    ) -> Dict[str, Any]:
+        """Get urgency queue data from Layer 5."""
+        result = {
+            'total_urgent': 0,
+            'immediate_action': 0,
+            'high_priority': 0,
+            'urgent_calls': [],
+            'by_urgency_level': {},
+            'date_range': date_range or 'all'
+        }
+
+        date_filter = self._build_date_filter(date_range, start_date, end_date)
+        employee_clause = f"AND t.employee_name ILIKE '%{employee_filter}%'" if employee_filter else ""
+
+        with self.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                # Get urgent calls
+                cur.execute(f"""
+                    SELECT
+                        t.recording_id,
+                        t.call_date,
+                        t.call_time,
+                        t.customer_name,
+                        t.customer_company,
+                        t.employee_name,
+                        t.from_number,
+                        i.summary,
+                        i.follow_up_needed,
+                        m.urgency,
+                        m.urgency_score,
+                        cr.resolution_status
+                    FROM transcripts t
+                    JOIN call_advanced_metrics m ON t.recording_id = m.recording_id
+                    LEFT JOIN insights i ON t.recording_id = i.recording_id
+                    LEFT JOIN call_resolutions cr ON t.recording_id = cr.recording_id
+                    WHERE m.urgency_score >= %s
+                    AND t.call_date IS NOT NULL
+                    {date_filter}
+                    {employee_clause}
+                    ORDER BY m.urgency_score DESC, t.call_date DESC
+                    LIMIT 100
+                """, (min_score,))
+
+                urgent_calls = []
+                for row in cur.fetchall():
+                    call = dict(row)
+                    call['call_date'] = str(call['call_date']) if call['call_date'] else None
+                    call['call_time'] = str(call['call_time']) if call['call_time'] else None
+
+                    # Parse urgency JSONB
+                    urgency = call.get('urgency', {})
+                    if isinstance(urgency, str):
+                        import json
+                        try:
+                            urgency = json.loads(urgency)
+                        except:
+                            urgency = {}
+
+                    call['urgency_level'] = urgency.get('level', 'medium')
+                    urgent_calls.append(call)
+
+                result['urgent_calls'] = urgent_calls
+                result['total_urgent'] = len(urgent_calls)
+                result['immediate_action'] = len([c for c in urgent_calls if c['urgency_score'] >= 9])
+                result['high_priority'] = len([c for c in urgent_calls if 7 <= c['urgency_score'] < 9])
+
+                # Distribution by urgency level
+                cur.execute(f"""
+                    SELECT
+                        CASE
+                            WHEN urgency_score >= 9 THEN 'critical'
+                            WHEN urgency_score >= 7 THEN 'high'
+                            WHEN urgency_score >= 5 THEN 'medium'
+                            ELSE 'low'
+                        END as level,
+                        COUNT(*) as count
+                    FROM call_advanced_metrics m
+                    JOIN transcripts t ON m.recording_id = t.recording_id
+                    WHERE t.call_date IS NOT NULL
+                    {date_filter}
+                    {employee_clause}
+                    GROUP BY level
+                    ORDER BY count DESC
+                """)
+                result['by_urgency_level'] = {row['level']: row['count'] for row in cur.fetchall()}
+
+                return result
+
+    def get_key_quotes_data(
+        self,
+        search_term: str = None,
+        quote_type: str = None,
+        date_range: str = None,
+        start_date: str = None,
+        end_date: str = None,
+        employee_filter: str = None
+    ) -> Dict[str, Any]:
+        """Get key quotes from Layer 5 data."""
+        result = {
+            'total_quotes': 0,
+            'quotes': [],
+            'by_type': {},
+            'date_range': date_range or 'all'
+        }
+
+        date_filter = self._build_date_filter(date_range, start_date, end_date)
+        employee_clause = f"AND t.employee_name ILIKE '%{employee_filter}%'" if employee_filter else ""
+        search_clause = f"AND m.key_quotes::text ILIKE '%{search_term}%'" if search_term else ""
+
+        with self.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                # Get calls with key quotes
+                cur.execute(f"""
+                    SELECT
+                        t.recording_id,
+                        t.call_date,
+                        t.customer_name,
+                        t.customer_company,
+                        t.employee_name,
+                        i.summary,
+                        i.customer_sentiment,
+                        m.key_quotes,
+                        m.buying_signals,
+                        m.sales_opportunity_score
+                    FROM transcripts t
+                    JOIN call_advanced_metrics m ON t.recording_id = m.recording_id
+                    LEFT JOIN insights i ON t.recording_id = i.recording_id
+                    WHERE m.key_quotes IS NOT NULL
+                    AND m.key_quotes != '[]'::jsonb
+                    AND t.call_date IS NOT NULL
+                    {date_filter}
+                    {employee_clause}
+                    {search_clause}
+                    ORDER BY t.call_date DESC
+                    LIMIT 100
+                """)
+
+                quotes_list = []
+                for row in cur.fetchall():
+                    record = dict(row)
+                    record['call_date'] = str(record['call_date']) if record['call_date'] else None
+
+                    # Parse key_quotes JSONB
+                    quotes = record.get('key_quotes', [])
+                    if isinstance(quotes, str):
+                        import json
+                        try:
+                            quotes = json.loads(quotes)
+                        except:
+                            quotes = []
+
+                    if quotes and isinstance(quotes, list):
+                        for quote in quotes:
+                            quote_entry = {
+                                'recording_id': record['recording_id'],
+                                'call_date': record['call_date'],
+                                'customer_name': record['customer_name'],
+                                'customer_company': record['customer_company'],
+                                'employee_name': record['employee_name'],
+                                'sentiment': record['customer_sentiment'],
+                                'quote': quote if isinstance(quote, str) else str(quote)
+                            }
+                            quotes_list.append(quote_entry)
+
+                result['quotes'] = quotes_list[:200]  # Limit to 200 quotes
+                result['total_quotes'] = len(quotes_list)
+
+                return result
+
+    def get_qa_training_data(
+        self,
+        category: str = None,
+        quality: str = None,
+        faq_only: bool = False,
+        date_range: str = None,
+        start_date: str = None,
+        end_date: str = None,
+        employee_filter: str = None
+    ) -> Dict[str, Any]:
+        """Get Q&A training data from Layer 5."""
+        result = {
+            'total_qa_pairs': 0,
+            'faq_candidates': 0,
+            'unanswered': 0,
+            'qa_pairs': [],
+            'by_category': {},
+            'potential_kb_articles': [],
+            'date_range': date_range or 'all'
+        }
+
+        date_filter = self._build_date_filter(date_range, start_date, end_date)
+        employee_clause = f"AND t.employee_name ILIKE '%{employee_filter}%'" if employee_filter else ""
+
+        with self.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                # Get calls with Q&A pairs
+                cur.execute(f"""
+                    SELECT
+                        t.recording_id,
+                        t.call_date,
+                        t.customer_name,
+                        t.customer_company,
+                        t.employee_name,
+                        m.qa_pairs
+                    FROM transcripts t
+                    JOIN call_advanced_metrics m ON t.recording_id = m.recording_id
+                    WHERE m.qa_pairs IS NOT NULL
+                    AND m.qa_pairs != '{{}}'::jsonb
+                    AND t.call_date IS NOT NULL
+                    {date_filter}
+                    {employee_clause}
+                    ORDER BY t.call_date DESC
+                    LIMIT 200
+                """)
+
+                all_qa_pairs = []
+                category_counts = {}
+                kb_articles = {}
+
+                for row in cur.fetchall():
+                    record = dict(row)
+                    record['call_date'] = str(record['call_date']) if record['call_date'] else None
+
+                    # Parse qa_pairs JSONB
+                    qa_data = record.get('qa_pairs', {})
+                    if isinstance(qa_data, str):
+                        import json
+                        try:
+                            qa_data = json.loads(qa_data)
+                        except:
+                            qa_data = {}
+
+                    # Extract Q&A pairs
+                    pairs = qa_data.get('qa_pairs', []) if isinstance(qa_data, dict) else []
+                    for pair in pairs:
+                        if isinstance(pair, dict):
+                            qa_entry = {
+                                'recording_id': record['recording_id'],
+                                'call_date': record['call_date'],
+                                'customer_company': record['customer_company'],
+                                'employee_name': record['employee_name'],
+                                'question': pair.get('question', ''),
+                                'answer': pair.get('answer', ''),
+                                'category': pair.get('category', 'other'),
+                                'answer_quality': pair.get('answer_quality', 'unknown'),
+                                'could_be_faq': pair.get('could_be_faq', False)
+                            }
+
+                            # Apply filters
+                            if category and qa_entry['category'] != category:
+                                continue
+                            if quality and qa_entry['answer_quality'] != quality:
+                                continue
+                            if faq_only and not qa_entry['could_be_faq']:
+                                continue
+
+                            all_qa_pairs.append(qa_entry)
+
+                            # Count categories
+                            cat = qa_entry['category']
+                            category_counts[cat] = category_counts.get(cat, 0) + 1
+
+                    # Extract potential KB articles
+                    kb_list = qa_data.get('potential_kb_articles', []) if isinstance(qa_data, dict) else []
+                    for article in kb_list:
+                        if article:
+                            kb_articles[article] = kb_articles.get(article, 0) + 1
+
+                result['qa_pairs'] = all_qa_pairs[:100]  # Limit to 100
+                result['total_qa_pairs'] = len(all_qa_pairs)
+                result['faq_candidates'] = len([q for q in all_qa_pairs if q.get('could_be_faq')])
+                result['unanswered'] = len([q for q in all_qa_pairs if q.get('answer_quality') == 'unanswered'])
+                result['by_category'] = category_counts
+                result['potential_kb_articles'] = [
+                    {'article': a, 'count': c}
+                    for a, c in sorted(kb_articles.items(), key=lambda x: x[1], reverse=True)[:20]
+                ]
 
                 return result
 

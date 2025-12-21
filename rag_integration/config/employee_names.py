@@ -292,3 +292,35 @@ def get_employee_first_names() -> list:
         if parts:
             first_names.add(parts[0].lower())
     return list(first_names)
+
+
+def get_employee_name_variations(canonical_name: str) -> list:
+    """
+    Get all name variations that map to a canonical employee name.
+    Used for database queries to match all possible spellings.
+
+    Args:
+        canonical_name: The canonical employee name (e.g., "James Lombardo")
+
+    Returns:
+        List of all variations including the canonical name
+        e.g., ["James Lombardo", "jim", "jim lombardo", "james lombardo", ...]
+    """
+    if not canonical_name:
+        return []
+
+    variations = set()
+    variations.add(canonical_name)  # Include canonical name
+
+    # Find all variations that map to this canonical name
+    for variation, canon in NAME_VARIATIONS.items():
+        if canon == canonical_name:
+            variations.add(variation)
+
+    # Also add first name only (common in transcripts)
+    parts = canonical_name.split()
+    if parts:
+        variations.add(parts[0].lower())  # First name lowercase
+        variations.add(parts[0])  # First name as-is
+
+    return list(variations)

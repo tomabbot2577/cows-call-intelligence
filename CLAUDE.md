@@ -773,6 +773,106 @@ Victoria Eck, Kathy Harden, John Turk, Andrew Blair, Davisha, Lisa Rogers,
 Samuel Barnes
 ```
 
+### Sales & Competitive Intelligence Module (NEW - December 2025)
+
+A new report module at `/sales-intelligence` providing Layer 5 insights:
+
+| Report | Endpoint | Description |
+|--------|----------|-------------|
+| **Sales Pipeline** | `/api/v1/rag/reports/sales-pipeline` | Buying signals and opportunity scores |
+| **Competitor Intelligence** | `/api/v1/rag/reports/competitor-intelligence` | Competitor mentions and analysis |
+| **Compliance Issues** | `/api/v1/rag/reports/compliance-issues` | Compliance and legal concerns |
+| **Urgent Calls** | `/api/v1/rag/reports/urgent-calls` | High-urgency calls requiring attention |
+| **Key Quotes** | `/api/v1/rag/reports/key-quotes` | Notable customer quotes |
+| **FAQ Extraction** | `/api/v1/rag/reports/faq-extraction` | Auto-extracted Q&A pairs |
+| **Sales Call Analyzer** | `/api/v1/rag/reports/sales-call-analysis` | Hormozi Blueprint methodology |
+
+### Hormozi Sales Call Analyzer
+
+Deep analysis of individual sales calls using the **Hormozi Sales Blueprint** methodology:
+
+**Framework Components:**
+- **Opening Analysis** - Proof-Promise-Plan evaluation
+- **Pain Excavation** - 40% of call time on pain points
+- **Objection Handling** - AAA method (Acknowledge, Associate, Ask)
+- **Close Execution** - BANT qualification, stacked closes
+- **Talk Ratio** - Target 33% rep / 66% prospect
+
+**Usage:**
+1. Go to `/sales-intelligence`
+2. Select agent from dropdown (uses canonical employee list)
+3. Select a call from the list
+4. Button turns GREEN when ready
+5. Click "Run Hormozi Blueprint Analysis"
+6. Wait 30-60 seconds for comprehensive analysis
+
+**API Endpoint:**
+```bash
+GET /api/v1/rag/reports/sales-call-analysis?recording_id=<id>
+```
+
+### Vertex RAG Database-Backed Queries (FIXED - December 2025)
+
+Vertex RAG now uses a **hybrid approach** for structured queries:
+
+**How it works:**
+1. Query router extracts filters from natural language (e.g., "high churn risk" → `churn_risk='high'`)
+2. When filters present: Query PostgreSQL database directly
+3. When no filters: Use RAG corpus for semantic search
+4. Format database results as context for Gemini
+5. Generate AI response with actual call data
+
+**Supported Filters:**
+| Filter | Database Column | Type |
+|--------|----------------|------|
+| `churn_risk` | `call_resolutions.churn_risk` | TEXT (none/low/medium/high) |
+| `customer_sentiment` | `insights.customer_sentiment` | TEXT (positive/neutral/negative) |
+| `call_quality_score` | `insights.call_quality_score` | NUMERIC (1-10) |
+| `escalation_required` | `insights.escalation_required` | BOOLEAN |
+| `follow_up_needed` | `insights.follow_up_needed` | BOOLEAN |
+| `call_type` | `insights.call_type` | TEXT (support/billing/sales/etc.) |
+| `employee_name` | `transcripts.employee_name` | TEXT |
+
+**Example Queries That Work:**
+- "Show all calls with high churn risk" → Finds 35 calls
+- "Show billing-related calls" → Finds 232 calls
+- "Find all escalated calls" → Finds 183 calls
+- "Show calls with negative sentiment" → Finds 164 calls
+
+### Employee Name Variations
+
+The system now handles multiple name variations when filtering by employee:
+
+**Problem Solved:**
+- Database has "Jim", "Jim Lombardo", "Jim, Robin Montoni, Zach"
+- Dropdown shows "James Lombardo"
+- Old code: ILIKE '%James Lombardo%' → 0 results
+- New code: ILIKE '%jim%' OR '%jim lombardo%' OR '%james%' → 82+ results
+
+**Function:** `get_employee_name_variations(canonical_name)`
+```python
+# Example
+get_employee_name_variations("James Lombardo")
+# Returns: ['jim', 'jim lombardo', 'james lombardo', 'James', 'james', ...]
+```
+
+### Key Files Updated (December 2025)
+```
+rag_integration/
+├── api/
+│   ├── main.py                    # +955 lines: Sales Intel, Hormozi, API fixes
+│   └── templates/
+│       ├── sales_intelligence.html # NEW: Sales & Competitive Intelligence UI
+│       ├── query.html             # Fixed filter display (dict vs string)
+│       └── base.html              # Added Sales Intel nav link
+├── config/
+│   └── employee_names.py          # +32 lines: get_employee_name_variations()
+├── services/
+│   ├── vertex_rag.py              # +566 lines: Database-backed queries
+│   ├── db_reader.py               # +603 lines: Layer 5 data methods
+│   └── query_router.py            # +21 lines: Text-based churn_risk filter
+```
+
 See `RAG_INTEGRATION.md` for full documentation.
 
 ---

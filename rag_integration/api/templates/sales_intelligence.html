@@ -1,0 +1,771 @@
+{% extends "base.html" %}
+
+{% block title %}Sales & Competitive Intelligence{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2><i class="bi bi-briefcase me-2"></i>Sales & Competitive Intelligence</h2>
+    <span class="badge bg-info">Layer 5 Advanced Metrics</span>
+</div>
+
+<div class="row">
+    <!-- Sales Pipeline Report -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-success text-white">
+                <i class="bi bi-cart-check me-2"></i>Sales Pipeline
+            </div>
+            <div class="card-body">
+                <p>Identify sales opportunities from support calls based on buying signals.</p>
+                <form id="salesPipelineForm">
+                    <div class="mb-3">
+                        <label class="form-label">Minimum Opportunity Score:</label>
+                        <select name="min_score" class="form-select">
+                            <option value="3">3+ (All Opportunities)</option>
+                            <option value="5" selected>5+ (Warm & Hot)</option>
+                            <option value="7">7+ (Hot Only)</option>
+                            <option value="8">8+ (Very Hot)</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Date Range:</label>
+                        <select name="date_range" class="form-select" onchange="toggleCustomDateRange(this, 'salesPipeline')">
+                            <option value="">All Time</option>
+                            <option value="last_30">Last 30 Days</option>
+                            <option value="mtd" selected>Month to Date</option>
+                            <option value="qtd">Quarter to Date</option>
+                            <option value="custom">Custom Range...</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 custom-date-range" id="salesPipelineCustomDates" style="display: none;">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="form-label">Start:</label>
+                                <input type="date" name="start_date" class="form-control">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">End:</label>
+                                <input type="date" name="end_date" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-success" onclick="generateReport('sales-pipeline', 'salesPipelineForm', 'Sales Pipeline')">
+                        <i class="bi bi-file-earmark-text me-1"></i>Generate Report
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Competitor Intelligence Report -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-primary text-white">
+                <i class="bi bi-building me-2"></i>Competitor Intelligence
+            </div>
+            <div class="card-body">
+                <p>Track competitor mentions and switching intent from customer calls.</p>
+                <form id="competitorForm">
+                    <div class="mb-3">
+                        <label class="form-label">Filter by Competitor:</label>
+                        <select name="competitor" class="form-select">
+                            <option value="">All Competitors</option>
+                            <option value="Bullhorn">Bullhorn</option>
+                            <option value="JobDiva">JobDiva</option>
+                            <option value="Crelate">Crelate</option>
+                            <option value="iCIMS">iCIMS</option>
+                            <option value="Greenhouse">Greenhouse</option>
+                            <option value="Lever">Lever</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Date Range:</label>
+                        <select name="date_range" class="form-select" onchange="toggleCustomDateRange(this, 'competitor')">
+                            <option value="">All Time</option>
+                            <option value="last_30">Last 30 Days</option>
+                            <option value="qtd" selected>Quarter to Date</option>
+                            <option value="ytd">Year to Date</option>
+                            <option value="custom">Custom Range...</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 custom-date-range" id="competitorCustomDates" style="display: none;">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="form-label">Start:</label>
+                                <input type="date" name="start_date" class="form-control">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">End:</label>
+                                <input type="date" name="end_date" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="generateReport('competitor-intelligence', 'competitorForm', 'Competitor Intelligence')">
+                        <i class="bi bi-file-earmark-text me-1"></i>Generate Report
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Compliance & Risk Report -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-danger text-white">
+                <i class="bi bi-shield-exclamation me-2"></i>Compliance & Risk
+            </div>
+            <div class="card-body">
+                <p>Identify compliance issues and legal risks from call analysis.</p>
+                <form id="complianceForm">
+                    <div class="mb-3">
+                        <label class="form-label">Maximum Compliance Score:</label>
+                        <select name="max_score" class="form-select">
+                            <option value="50">< 50 (Critical Only)</option>
+                            <option value="60">< 60 (High Risk)</option>
+                            <option value="70" selected>< 70 (Medium+ Risk)</option>
+                            <option value="80">< 80 (All Issues)</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Date Range:</label>
+                        <select name="date_range" class="form-select" onchange="toggleCustomDateRange(this, 'compliance')">
+                            <option value="">All Time</option>
+                            <option value="last_30">Last 30 Days</option>
+                            <option value="mtd" selected>Month to Date</option>
+                            <option value="qtd">Quarter to Date</option>
+                            <option value="custom">Custom Range...</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 custom-date-range" id="complianceCustomDates" style="display: none;">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="form-label">Start:</label>
+                                <input type="date" name="start_date" class="form-control">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">End:</label>
+                                <input type="date" name="end_date" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-danger" onclick="generateReport('compliance-risk', 'complianceForm', 'Compliance & Risk')">
+                        <i class="bi bi-file-earmark-text me-1"></i>Generate Report
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Urgency Queue Report -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-warning text-dark">
+                <i class="bi bi-alarm me-2"></i>Urgency Queue
+            </div>
+            <div class="card-body">
+                <p>Prioritize follow-ups based on urgency detection and SLA risks.</p>
+                <form id="urgencyForm">
+                    <div class="mb-3">
+                        <label class="form-label">Minimum Urgency Score:</label>
+                        <select name="min_score" class="form-select">
+                            <option value="5">5+ (Medium & High)</option>
+                            <option value="7" selected>7+ (High Priority)</option>
+                            <option value="9">9+ (Critical Only)</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Date Range:</label>
+                        <select name="date_range" class="form-select" onchange="toggleCustomDateRange(this, 'urgency')">
+                            <option value="">All Time</option>
+                            <option value="last_30" selected>Last 30 Days</option>
+                            <option value="mtd">Month to Date</option>
+                            <option value="custom">Custom Range...</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 custom-date-range" id="urgencyCustomDates" style="display: none;">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="form-label">Start:</label>
+                                <input type="date" name="start_date" class="form-control">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">End:</label>
+                                <input type="date" name="end_date" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-warning" onclick="generateReport('urgency-queue', 'urgencyForm', 'Urgency Queue')">
+                        <i class="bi bi-file-earmark-text me-1"></i>Generate Report
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Quotes Library -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-info text-white">
+                <i class="bi bi-chat-quote me-2"></i>Key Quotes Library
+            </div>
+            <div class="card-body">
+                <p>Searchable library of customer verbatim quotes for marketing and training.</p>
+                <form id="quotesForm">
+                    <div class="mb-3">
+                        <label class="form-label">Search Quotes:</label>
+                        <input type="text" name="search" class="form-control" placeholder="e.g., reporting, integration, support...">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Date Range:</label>
+                        <select name="date_range" class="form-select" onchange="toggleCustomDateRange(this, 'quotes')">
+                            <option value="">All Time</option>
+                            <option value="last_30">Last 30 Days</option>
+                            <option value="qtd" selected>Quarter to Date</option>
+                            <option value="ytd">Year to Date</option>
+                            <option value="custom">Custom Range...</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 custom-date-range" id="quotesCustomDates" style="display: none;">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="form-label">Start:</label>
+                                <input type="date" name="start_date" class="form-control">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">End:</label>
+                                <input type="date" name="end_date" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-info" onclick="generateReport('key-quotes', 'quotesForm', 'Key Quotes')">
+                        <i class="bi bi-search me-1"></i>Search Quotes
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Q&A Training Data -->
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-header bg-secondary text-white">
+                <i class="bi bi-question-circle me-2"></i>Q&A Training Data
+            </div>
+            <div class="card-body">
+                <p>Extract Q&A pairs for FAQ creation, chatbot training, and KB improvements.</p>
+                <form id="qaForm">
+                    <div class="mb-3">
+                        <label class="form-label">Category:</label>
+                        <select name="category" class="form-select">
+                            <option value="">All Categories</option>
+                            <option value="product">Product</option>
+                            <option value="technical">Technical</option>
+                            <option value="pricing">Pricing</option>
+                            <option value="process">Process</option>
+                            <option value="policy">Policy</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Answer Quality:</label>
+                        <select name="quality" class="form-select">
+                            <option value="">All Quality Levels</option>
+                            <option value="complete">Complete Answers</option>
+                            <option value="partial">Partial Answers</option>
+                            <option value="unanswered">Unanswered</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" name="faq_only" id="faqOnly">
+                        <label class="form-check-label" for="faqOnly">FAQ Candidates Only</label>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Date Range:</label>
+                        <select name="date_range" class="form-select" onchange="toggleCustomDateRange(this, 'qa')">
+                            <option value="">All Time</option>
+                            <option value="last_30">Last 30 Days</option>
+                            <option value="qtd" selected>Quarter to Date</option>
+                            <option value="custom">Custom Range...</option>
+                        </select>
+                    </div>
+                    <div class="mb-3 custom-date-range" id="qaCustomDates" style="display: none;">
+                        <div class="row">
+                            <div class="col-6">
+                                <label class="form-label">Start:</label>
+                                <input type="date" name="start_date" class="form-control">
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">End:</label>
+                                <input type="date" name="end_date" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary" onclick="generateReport('qa-training', 'qaForm', 'Q&A Training Data')">
+                        <i class="bi bi-file-earmark-text me-1"></i>Generate Report
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Sales Call Analyzer - Full Width -->
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card border-dark">
+            <div class="card-header bg-dark text-white">
+                <i class="bi bi-clipboard-data me-2"></i>Sales Call Analyzer (Hormozi Blueprint)
+            </div>
+            <div class="card-body">
+                <p>Deep analysis of sales calls using the Hormozi Sales Blueprint methodology. Evaluates opening, pain excavation, objection handling, and close execution.</p>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Select a Call to Analyze:</label>
+                        <select id="callSelector" class="form-select" onchange="updateSelectedCall()">
+                            <option value="">-- Select a call --</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Filter by Agent:</label>
+                        <select id="agentFilter" class="form-select" onchange="loadCallsList()">
+                            <option value="">All Agents</option>
+                            {% for agent in agents %}
+                            <option value="{{ agent }}">{{ agent }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Date Range:</label>
+                        <select id="callDateRange" class="form-select" onchange="loadCallsList()">
+                            <option value="last_30">Last 30 Days</option>
+                            <option value="this_month">This Month</option>
+                            <option value="this_quarter">This Quarter</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button type="button" class="btn btn-outline-dark w-100" onclick="loadCallsList()">
+                            <i class="bi bi-arrow-clockwise me-1"></i>Refresh
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Selected Call Info -->
+                <div id="selectedCallInfo" class="alert alert-light border" style="display: none;">
+                    <div class="row">
+                        <div class="col-md-3"><strong>Date:</strong> <span id="callDate">-</span></div>
+                        <div class="col-md-3"><strong>Agent:</strong> <span id="callAgent">-</span></div>
+                        <div class="col-md-3"><strong>Customer:</strong> <span id="callCustomer">-</span></div>
+                        <div class="col-md-3"><strong>Duration:</strong> <span id="callDuration">-</span> min</div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-3"><strong>Sentiment:</strong> <span id="callSentiment">-</span></div>
+                        <div class="col-md-3"><strong>Quality:</strong> <span id="callQuality">-</span>/10</div>
+                        <div class="col-md-6"><strong>Summary:</strong> <span id="callSummary">-</span></div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-dark btn-lg" id="analyzeBtn" onclick="analyzeSalesCall()">
+                    <i class="bi bi-graph-up me-2"></i>Run Hormozi Blueprint Analysis
+                </button>
+                <small class="text-muted ms-3" id="analyzeBtnHint">
+                    <i class="bi bi-arrow-up text-warning"></i> First select a call above, then click to analyze
+                </small>
+
+                <!-- Analysis Framework Reference -->
+                <div class="mt-4">
+                    <button class="btn btn-outline-secondary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#analysisFramework">
+                        <i class="bi bi-info-circle me-1"></i>View Analysis Framework
+                    </button>
+                    <div class="collapse mt-3" id="analysisFramework">
+                        <div class="card card-body bg-light">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h6><i class="bi bi-1-circle me-1"></i>Opening (Proof-Promise-Plan)</h6>
+                                    <ul class="small mb-3">
+                                        <li>Credibility established immediately?</li>
+                                        <li>Outcome/transformation stated?</li>
+                                        <li>Clear agenda set?</li>
+                                    </ul>
+
+                                    <h6><i class="bi bi-2-circle me-1"></i>Pain Excavation (40% of call)</h6>
+                                    <ul class="small mb-3">
+                                        <li>Past solutions explored</li>
+                                        <li>What was MISSING from each?</li>
+                                        <li>Cost quantified (time/money/status)</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6><i class="bi bi-3-circle me-1"></i>Objection Handling (AAA)</h6>
+                                    <ul class="small mb-3">
+                                        <li><strong>A</strong>cknowledge (validate)</li>
+                                        <li><strong>A</strong>ssociate (success story)</li>
+                                        <li><strong>A</strong>sk (follow-up question)</li>
+                                    </ul>
+
+                                    <h6><i class="bi bi-4-circle me-1"></i>Talk Ratio Target</h6>
+                                    <ul class="small mb-3">
+                                        <li>Rep: 33% (questions, not statements)</li>
+                                        <li>Prospect: 66% (doing the talking)</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-4">
+                                    <h6><i class="bi bi-exclamation-triangle me-1 text-warning"></i>Red Flags</h6>
+                                    <ul class="small mb-3">
+                                        <li>Rushed to pitch (< 5 min on pain)</li>
+                                        <li>Answered questions blindly</li>
+                                        <li>Lost frame control</li>
+                                        <li>Commission breath detected</li>
+                                        <li>Talked past the close</li>
+                                    </ul>
+
+                                    <h6><i class="bi bi-trophy me-1 text-success"></i>Success Indicators</h6>
+                                    <ul class="small">
+                                        <li>BANT confirmed before ask</li>
+                                        <li>3-pillar pitch under 2 min</li>
+                                        <li>Stacked closes on objections</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Report Output -->
+<div class="card mt-4" id="reportOutput" style="display: none;">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="bi bi-file-text me-2"></i><span id="reportTitle">Report</span></span>
+        <span class="badge bg-secondary" id="reportTime"></span>
+    </div>
+    <div class="card-body">
+        <div class="response-box" id="reportContent" style="white-space: pre-wrap; font-family: inherit;"></div>
+    </div>
+</div>
+
+<!-- Loading Overlay -->
+<div id="loadingOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: center;">
+    <div class="card" style="max-width: 400px; text-align: center;">
+        <div class="card-body p-4">
+            <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <h5 class="mb-2">Generating Report...</h5>
+            <p class="text-muted mb-3" id="loadingMessage">Querying Layer 5 data and analyzing with AI. This may take 15-30 seconds.</p>
+            <button type="button" class="btn btn-outline-secondary" onclick="cancelReport()">
+                <i class="bi bi-x-circle me-1"></i>Cancel
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+let currentAbortController = null;
+
+function toggleCustomDateRange(selectElement, formType) {
+    const customDatesDiv = document.getElementById(formType + 'CustomDates');
+    if (selectElement.value === 'custom') {
+        customDatesDiv.style.display = 'block';
+        const today = new Date();
+        const startOfMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+        const startInput = customDatesDiv.querySelector('[name="start_date"]');
+        const endInput = customDatesDiv.querySelector('[name="end_date"]');
+        if (!startInput.value) {
+            startInput.value = startOfMonth.toISOString().split('T')[0];
+        }
+        if (!endInput.value) {
+            endInput.value = today.toISOString().split('T')[0];
+        }
+    } else {
+        customDatesDiv.style.display = 'none';
+    }
+}
+
+async function generateReport(endpoint, formId, reportName) {
+    const form = document.getElementById(formId);
+    const formData = new FormData(form);
+
+    showLoading(`Analyzing ${reportName} data...`);
+
+    try {
+        currentAbortController = new AbortController();
+
+        // Build query parameters
+        const params = new URLSearchParams();
+        for (let [key, value] of formData.entries()) {
+            if (value && value !== '') {
+                // Handle checkbox
+                if (key === 'faq_only') {
+                    params.append(key, 'true');
+                } else {
+                    params.append(key, value);
+                }
+            }
+        }
+
+        const url = `/api/v1/rag/reports/${endpoint}?${params.toString()}`;
+        const response = await fetch(url, {
+            signal: currentAbortController.signal
+        });
+
+        if (!response.ok) {
+            throw new Error(`Server error: ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        let title = reportName;
+        if (data.data) {
+            if (data.data.total_opportunities !== undefined) {
+                title += ` (${data.data.total_opportunities} opportunities)`;
+            } else if (data.data.total_mentions !== undefined) {
+                title += ` (${data.data.total_mentions} mentions)`;
+            } else if (data.data.total_issues !== undefined) {
+                title += ` (${data.data.total_issues} issues)`;
+            } else if (data.data.total_urgent !== undefined) {
+                title += ` (${data.data.total_urgent} urgent calls)`;
+            } else if (data.data.total_quotes !== undefined) {
+                title += ` (${data.data.total_quotes} quotes)`;
+            } else if (data.data.total_qa_pairs !== undefined) {
+                title += ` (${data.data.total_qa_pairs} Q&A pairs)`;
+            }
+        }
+
+        showReport(title, data.response);
+
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            hideLoading();
+            return;
+        }
+        showReport('Error', 'Failed to generate report: ' + error.message);
+    }
+}
+
+function showLoading(message) {
+    document.getElementById('loadingMessage').textContent = message || 'Generating report...';
+    document.getElementById('loadingOverlay').style.display = 'flex';
+    document.getElementById('reportOutput').style.display = 'none';
+}
+
+function hideLoading() {
+    document.getElementById('loadingOverlay').style.display = 'none';
+}
+
+function cancelReport() {
+    if (currentAbortController) {
+        currentAbortController.abort();
+        currentAbortController = null;
+    }
+    hideLoading();
+}
+
+function showReport(title, content) {
+    hideLoading();
+    document.getElementById('reportOutput').style.display = 'block';
+    document.getElementById('reportTitle').textContent = title;
+    document.getElementById('reportContent').textContent = content;
+    document.getElementById('reportTime').textContent = new Date().toLocaleString();
+
+    document.getElementById('reportOutput').scrollIntoView({ behavior: 'smooth' });
+}
+
+// ==========================================
+// SALES CALL ANALYZER FUNCTIONS
+// ==========================================
+
+let callsData = [];
+let selectedCall = null;
+
+// Load calls list on page load
+document.addEventListener('DOMContentLoaded', function() {
+    loadCallsList();
+});
+
+async function loadCallsList() {
+    const agentFilter = document.getElementById('agentFilter').value;
+    const dateRange = document.getElementById('callDateRange').value;
+    const selector = document.getElementById('callSelector');
+
+    selector.innerHTML = '<option value="">Loading calls...</option>';
+    selector.disabled = true;
+
+    try {
+        const params = new URLSearchParams();
+        if (agentFilter) params.append('employee', agentFilter);
+        if (dateRange) params.append('date_range', dateRange);
+        params.append('limit', '50');
+
+        const response = await fetch(`/api/v1/rag/reports/sales-calls-list?${params.toString()}`);
+        if (!response.ok) throw new Error('Failed to load calls');
+
+        const data = await response.json();
+        callsData = data.calls || [];
+
+        // Populate selector
+        selector.innerHTML = '<option value="">-- Select a call to analyze (' + callsData.length + ' available) --</option>';
+        callsData.forEach((call, index) => {
+            const date = call.call_date || 'Unknown date';
+            const agent = call.employee_name || 'Unknown agent';
+            const customer = call.customer_name || call.customer_company || 'Unknown';
+            const duration = call.duration_minutes ? `${call.duration_minutes}m` : '';
+            const sentiment = call.customer_sentiment ? ` [${call.customer_sentiment}]` : '';
+
+            const option = document.createElement('option');
+            option.value = index;
+            option.textContent = `${date} - ${agent} → ${customer} ${duration}${sentiment}`;
+            selector.appendChild(option);
+        });
+
+        selector.disabled = false;
+
+    } catch (error) {
+        selector.innerHTML = '<option value="">Error loading calls</option>';
+        console.error('Error loading calls:', error);
+    }
+}
+
+function updateSelectedCall() {
+    const selector = document.getElementById('callSelector');
+    const index = selector.value;
+    const infoDiv = document.getElementById('selectedCallInfo');
+    const analyzeBtn = document.getElementById('analyzeBtn');
+    const hint = document.getElementById('analyzeBtnHint');
+
+    console.log('updateSelectedCall called, index:', index);
+
+    if (index === '' || index === undefined) {
+        infoDiv.style.display = 'none';
+        analyzeBtn.classList.remove('btn-success');
+        analyzeBtn.classList.add('btn-dark');
+        hint.innerHTML = '<i class="bi bi-arrow-up text-warning"></i> First select a call above, then click to analyze';
+        selectedCall = null;
+        console.log('No call selected');
+        return;
+    }
+
+    selectedCall = callsData[parseInt(index)];
+    console.log('Selected call:', selectedCall);
+
+    if (!selectedCall) {
+        infoDiv.style.display = 'none';
+        selectedCall = null;
+        console.log('Call data not found');
+        return;
+    }
+
+    // Update button style to show it's ready
+    analyzeBtn.classList.remove('btn-dark');
+    analyzeBtn.classList.add('btn-success');
+    hint.innerHTML = '<i class="bi bi-check-circle text-success"></i> Call selected! Click button to analyze';
+
+    // Update info display
+    console.log('Call selected, ready to analyze. Recording ID:', selectedCall.recording_id);
+    document.getElementById('callDate').textContent = selectedCall.call_date || '-';
+    document.getElementById('callAgent').textContent = selectedCall.employee_name || '-';
+    document.getElementById('callCustomer').textContent = selectedCall.customer_name || selectedCall.customer_company || '-';
+    document.getElementById('callDuration').textContent = selectedCall.duration_minutes || '-';
+    document.getElementById('callSentiment').textContent = selectedCall.customer_sentiment || '-';
+    document.getElementById('callQuality').textContent = selectedCall.call_quality_score || '-';
+    document.getElementById('callSummary').textContent = (selectedCall.summary || '-').substring(0, 150) + (selectedCall.summary && selectedCall.summary.length > 150 ? '...' : '');
+
+    infoDiv.style.display = 'block';
+    analyzeBtn.disabled = false;
+}
+
+async function analyzeSalesCall() {
+    console.log('analyzeSalesCall called, selectedCall:', selectedCall);
+
+    if (!selectedCall) {
+        // Show a more visible warning
+        const selector = document.getElementById('callSelector');
+        selector.style.border = '3px solid #dc3545';
+        selector.style.boxShadow = '0 0 10px rgba(220, 53, 69, 0.5)';
+        selector.focus();
+
+        alert('⚠️ Please select a call from the dropdown first!\n\nClick on the "Select a Call to Analyze" dropdown and choose one of the available calls.');
+
+        // Reset border after 3 seconds
+        setTimeout(() => {
+            selector.style.border = '';
+            selector.style.boxShadow = '';
+        }, 3000);
+        return;
+    }
+
+    const analyzeBtn = document.getElementById('analyzeBtn');
+    analyzeBtn.disabled = true;
+    analyzeBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span>Analyzing...';
+
+    showLoading('Running Hormozi Blueprint Analysis... This comprehensive analysis takes 30-60 seconds.');
+    console.log('Loading shown, calling API for recording_id:', selectedCall.recording_id);
+
+    try {
+        currentAbortController = new AbortController();
+
+        const url = `/api/v1/rag/reports/sales-call-analysis?recording_id=${selectedCall.recording_id}`;
+        console.log('Fetching:', url);
+
+        const response = await fetch(url, {
+            signal: currentAbortController.signal
+        });
+
+        console.log('Response status:', response.status);
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('API error:', errorText);
+            throw new Error(`Server error: ${response.status} - ${errorText}`);
+        }
+
+        const data = await response.json();
+        console.log('Analysis received, data keys:', Object.keys(data));
+
+        // Build title with call info
+        let title = 'Hormozi Sales Analysis';
+        if (data.call) {
+            title += ` - ${data.call.employee || 'Agent'} (${data.call.date})`;
+            if (data.call.duration_minutes) {
+                title += ` - ${data.call.duration_minutes}min`;
+            }
+        }
+
+        // Show the analysis
+        let content = '';
+        if (data.call) {
+            content += `CALL DETAILS\n`;
+            content += `━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+            content += `Recording ID: ${data.call.recording_id}\n`;
+            content += `Date: ${data.call.date} ${data.call.time || ''}\n`;
+            content += `Duration: ${data.call.duration_minutes} minutes\n`;
+            content += `Agent: ${data.call.employee || 'Unknown'}\n`;
+            content += `Customer: ${data.call.customer || 'Unknown'} (${data.call.company || 'Unknown'})\n`;
+            content += `Call Type: ${data.call.call_type || 'Unknown'}\n`;
+            content += `Sentiment: ${data.call.sentiment || 'Unknown'}\n`;
+            content += `Quality Score: ${data.call.quality_score || 'N/A'}/10\n`;
+            content += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n`;
+        }
+
+        content += data.analysis || data.response || 'No analysis available';
+
+        showReport(title, content);
+
+    } catch (error) {
+        if (error.name === 'AbortError') {
+            hideLoading();
+            return;
+        }
+        showReport('Analysis Error', 'Failed to analyze call: ' + error.message);
+    } finally {
+        analyzeBtn.disabled = false;
+        analyzeBtn.classList.remove('btn-dark');
+        analyzeBtn.classList.add('btn-success');
+        analyzeBtn.innerHTML = '<i class="bi bi-graph-up me-2"></i>Run Hormozi Blueprint Analysis';
+    }
+}
+</script>
+{% endblock %}
