@@ -393,9 +393,12 @@ async def reports_page(request: Request):
 
 @app.get("/export", response_class=HTMLResponse)
 async def export_page(request: Request):
-    """Export management page."""
+    """Export management page. Admin only."""
     if not check_auth(request):
         return RedirectResponse(url="/login", status_code=303)
+
+    if not is_admin(request):
+        return RedirectResponse(url="/?error=Admin+access+required", status_code=303)
 
     pipeline = get_pipeline()
     status = pipeline.get_status()
@@ -436,9 +439,12 @@ async def api_export(
     background_tasks: BackgroundTasks,
     export_request: ExportRequest
 ):
-    """Trigger export pipeline."""
+    """Trigger export pipeline. Admin only."""
     if not check_auth(request):
         raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
 
     try:
         since = None
