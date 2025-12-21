@@ -212,15 +212,26 @@
                 <p>Searchable library of customer verbatim quotes for marketing and training.</p>
                 <form id="quotesForm">
                     <div class="mb-3">
-                        <label class="form-label">Search Quotes:</label>
-                        <input type="text" name="search" class="form-control" placeholder="e.g., reporting, integration, support...">
+                        <label class="form-label">Topic/Category:</label>
+                        <select name="search" class="form-select">
+                            <option value="" selected>📚 Browse All Quotes</option>
+                            <option value="training">📖 Training & Learning</option>
+                            <option value="support">🎧 Support Experience</option>
+                            <option value="feature">⭐ Feature Requests</option>
+                            <option value="billing">💳 Billing & Pricing</option>
+                            <option value="integration">🔗 Integrations</option>
+                            <option value="reporting">📊 Reports & Analytics</option>
+                            <option value="workflow">⚙️ Workflow & Process</option>
+                            <option value="happy">😊 Positive Feedback</option>
+                            <option value="frustrated">😤 Pain Points</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Date Range:</label>
                         <select name="date_range" class="form-select" onchange="toggleCustomDateRange(this, 'quotes')">
-                            <option value="">All Time</option>
+                            <option value="" selected>All Time</option>
                             <option value="last_30">Last 30 Days</option>
-                            <option value="qtd" selected>Quarter to Date</option>
+                            <option value="qtd">Quarter to Date</option>
                             <option value="ytd">Year to Date</option>
                             <option value="custom">Custom Range...</option>
                         </select>
@@ -238,7 +249,7 @@
                         </div>
                     </div>
                     <button type="button" class="btn btn-info" onclick="generateReport('key-quotes', 'quotesForm', 'Key Quotes')">
-                        <i class="bi bi-search me-1"></i>Search Quotes
+                        <i class="bi bi-search me-1"></i>Browse Quotes
                     </button>
                 </form>
             </div>
