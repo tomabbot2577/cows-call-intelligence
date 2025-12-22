@@ -567,6 +567,67 @@ class GoogleDriveManager:
             'service_account': self.credentials.service_account_email if self.credentials else None
         }
 
+    def make_public(self, file_id: str) -> str:
+        """
+        Make a file publicly accessible and return download URL.
+
+        Args:
+            file_id: File ID to make public
+
+        Returns:
+            Direct download URL
+        """
+        try:
+            # Create public permission
+            permission = {
+                'type': 'anyone',
+                'role': 'reader'
+            }
+
+            self.service.permissions().create(
+                fileId=file_id,
+                body=permission,
+                fields='id'
+            ).execute()
+
+            logger.info(f"Made file public: {file_id}")
+
+            # Return direct download URL
+            return f"https://drive.google.com/uc?export=download&id={file_id}"
+
+        except HttpError as e:
+            logger.error(f"Failed to make file public: {e}")
+            raise
+
+    def upload_and_share(
+        self,
+        file_path: str,
+        file_name: Optional[str] = None,
+        folder_id: Optional[str] = None
+    ) -> tuple:
+        """
+        Upload file and make it publicly accessible.
+
+        Args:
+            file_path: Path to file to upload
+            file_name: Name for file in Drive
+            folder_id: Folder ID
+
+        Returns:
+            Tuple of (file_id, public_url)
+        """
+        # Upload file
+        file_id = self.upload_file(
+            file_path,
+            file_name=file_name,
+            folder_id=folder_id
+        )
+
+        # Make public
+        public_url = self.make_public(file_id)
+
+        return file_id, public_url
+
     def close(self):
         """
         Clean up resources

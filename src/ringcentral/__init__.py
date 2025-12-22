@@ -1,5 +1,7 @@
 """
 RingCentral API integration package
+
+Provides access to RingCentral Voice and Video APIs.
 """
 
 from .auth import RingCentralAuth
@@ -11,6 +13,8 @@ from .exceptions import (
     RateLimitError,
     RecordingNotFoundError
 )
+from .video_client import RCVideoClient
+from .video_sync_job import RCVideoSyncJob
 
 __all__ = [
     'RingCentralAuth',
@@ -19,5 +23,7 @@ __all__ = [
     'RingCentralAPIError',
     'AuthenticationError',
     'RateLimitError',
-    'RecordingNotFoundError'
+    'RecordingNotFoundError',
+    'RCVideoClient',
+    'RCVideoSyncJob'
 ]

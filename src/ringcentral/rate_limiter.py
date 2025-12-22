@@ -17,30 +17,62 @@ class RateLimiter:
     """
     Rate limiter for RingCentral API requests
 
-    RingCentral Rate Limits:
-    - Heavy: 10 requests/minute
-    - Medium: 40 requests/minute
-    - Light: 50 requests/minute
-    - Auth: 5 requests/minute
+    RingCentral Rate Limits (per user/extension):
+    - Heavy: 10 requests/60 secs, penalty 60 secs
+    - Medium: 40 requests/60 secs, penalty 60 secs
+    - Light: 50 requests/60 secs, penalty 60 secs
+    - Auth: 5 requests/60 secs, penalty 60 secs
+    - SMS: 40 requests/60 secs, penalty 30 secs
     """
 
-    # Rate limit groups (requests per minute)
+    # Rate limit groups (requests per 60 seconds)
     RATE_LIMITS = {
         'heavy': 10,
         'medium': 40,
         'light': 50,
         'auth': 5,
+        'sms': 40,
         'default': 40  # Conservative default
+    }
+
+    # Penalty intervals (seconds) - time to wait after rate limit hit
+    PENALTY_INTERVALS = {
+        'heavy': 60,
+        'medium': 60,
+        'light': 60,
+        'auth': 60,
+        'sms': 30,
+        'default': 60
     }
 
     # Endpoint to rate limit group mapping
     ENDPOINT_GROUPS = {
+        # Auth endpoints
         '/restapi/oauth/token': 'auth',
         '/restapi/oauth/revoke': 'auth',
+        '/restapi/oauth/authorize': 'auth',
+
+        # Call log endpoints (medium)
         '/account/~/call-log': 'medium',
         '/account/~/extension/~/call-log': 'medium',
-        '/recording/': 'heavy',  # Recording downloads
-        '/content': 'heavy',  # Recording content
+
+        # Recording endpoints (heavy)
+        '/recording/': 'heavy',
+        '/content': 'heavy',
+
+        # Video API endpoints (light)
+        '/rcvideo/v1/history/meetings': 'light',
+        '/rcvideo/v1/account/': 'light',
+        '/rcvideo/v1/recordings': 'light',
+
+        # Account/Extension info (light)
+        '/restapi/v1.0/account/': 'light',
+        '/restapi/v2/accounts/': 'light',
+        '/extension/': 'light',
+
+        # SMS endpoints
+        '/sms': 'sms',
+        '/mms': 'sms',
     }
 
     def __init__(self, default_group: str = 'medium'):
@@ -187,8 +219,9 @@ class RateLimiter:
 
             return retry_seconds
 
-        # No Retry-After header, use exponential backoff
-        return 60
+        # No Retry-After header, use penalty interval for this endpoint group
+        group = self._get_endpoint_group(endpoint)
+        return self.PENALTY_INTERVALS.get(group, self.PENALTY_INTERVALS['default'])
 
     def check_rate_limit_reset(self, endpoint: str) -> Optional[float]:
         """
