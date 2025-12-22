@@ -240,7 +240,7 @@ class DashboardMetricsService:
         with self.get_connection() as conn:
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
                 # Get call metrics from call_log
-                # Match employee by extension mapping OR name for BOTH inbound and outbound
+                # Match employee by extension mapping, call_log names, OR transcripts employee_name
                 # Also calculate wait time from call_legs (time between first and last leg)
                 cur.execute("""
                     WITH employee_calls AS (
@@ -261,14 +261,18 @@ class DashboardMetricsService:
                             ON c.to_extension_number = e_to.extension_number
                         LEFT JOIN extension_employee_map e_from
                             ON c.from_extension_number = e_from.extension_number
+                        LEFT JOIN transcripts t
+                            ON c.ringcentral_id = t.recording_id
                         WHERE c.start_time::date BETWEEN %s AND %s
                           AND (
-                              -- Inbound: employee is the recipient
+                              -- Match via extension mapping
                               e_to.employee_name ILIKE ANY(%s)
-                              OR c.to_name ILIKE ANY(%s)
-                              -- Outbound: employee is the caller
                               OR e_from.employee_name ILIKE ANY(%s)
+                              -- Match via call_log names
+                              OR c.to_name ILIKE ANY(%s)
                               OR c.from_name ILIKE ANY(%s)
+                              -- Match via transcripts employee_name (historical data)
+                              OR t.employee_name ILIKE ANY(%s)
                           )
                     )
                     SELECT
@@ -294,7 +298,7 @@ class DashboardMetricsService:
                                  OR EXTRACT(HOUR FROM start_time AT TIME ZONE 'America/New_York') >= 17)
                         ) as voicemail_after_hours
                     FROM employee_calls
-                """, (period_start, period_end, name_patterns, name_patterns, name_patterns, name_patterns))
+                """, (period_start, period_end, name_patterns, name_patterns, name_patterns, name_patterns, name_patterns))
 
                 metrics = dict(cur.fetchone())
 
@@ -312,12 +316,15 @@ class DashboardMetricsService:
                             ON c.to_extension_number = e_to.extension_number
                         LEFT JOIN extension_employee_map e_from
                             ON c.from_extension_number = e_from.extension_number
+                        LEFT JOIN transcripts t
+                            ON c.ringcentral_id = t.recording_id
                         WHERE c.start_time::date BETWEEN %s AND %s
                           AND (
                               e_to.employee_name ILIKE ANY(%s)
-                              OR c.to_name ILIKE ANY(%s)
                               OR e_from.employee_name ILIKE ANY(%s)
+                              OR c.to_name ILIKE ANY(%s)
                               OR c.from_name ILIKE ANY(%s)
+                              OR t.employee_name ILIKE ANY(%s)
                           )
                     )
                     SELECT
@@ -328,7 +335,7 @@ class DashboardMetricsService:
                     FROM employee_calls
                     GROUP BY EXTRACT(HOUR FROM start_time)
                     ORDER BY hour
-                """, (period_start, period_end, name_patterns, name_patterns, name_patterns, name_patterns))
+                """, (period_start, period_end, name_patterns, name_patterns, name_patterns, name_patterns, name_patterns))
 
                 hourly = {int(row['hour']): {
                     'total': row['count'],
