@@ -113,7 +113,7 @@ class RAGExportTracker:
     def __init__(self, database_url: Optional[str] = None):
         self.database_url = database_url or os.getenv(
             "RAG_DATABASE_URL",
-            "" + os.getenv('DATABASE_URL', '')"
+            
         )
 
     @contextmanager

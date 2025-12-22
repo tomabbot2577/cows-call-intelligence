@@ -32,7 +32,7 @@ logger = logging.getLogger(__name__)
 def get_db_connection():
     """Get database connection."""
     return psycopg2.connect(
-        '" + os.getenv('DATABASE_URL', '')'
+        os.getenv('DATABASE_URL', '')
     )
 
 

@@ -56,7 +56,7 @@ class OpenRouterEnricher:
 
         self.db_url = os.getenv(
             'RAG_DATABASE_URL',
-            '" + os.getenv('DATABASE_URL', '')'
+            os.getenv('DATABASE_URL', '')
         )
 
         # Connection pool for parallel access
@@ -255,7 +255,7 @@ def ensure_columns():
     """Ensure enrichment columns exist."""
     db_url = os.getenv(
         'RAG_DATABASE_URL',
-        '" + os.getenv('DATABASE_URL', '')'
+        os.getenv('DATABASE_URL', '')
     )
 
     with psycopg2.connect(db_url) as conn:

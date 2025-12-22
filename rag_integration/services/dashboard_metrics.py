@@ -25,10 +25,7 @@ logger = logging.getLogger(__name__)
 
 def get_db_url() -> str:
     """Get database connection URL."""
-    return os.getenv(
-        'RAG_DATABASE_URL',
-        '" + os.getenv('DATABASE_URL', '')'
-    )
+    return os.getenv('RAG_DATABASE_URL') or os.getenv('DATABASE_URL', '')
 
 
 class DashboardMetricsService:

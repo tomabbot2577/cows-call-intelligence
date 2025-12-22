@@ -42,7 +42,7 @@ class GentleFreshdeskSync:
         self.domain = os.getenv('FRESHDESK_DOMAIN', 'mainsequencetechnology')
         self.api_key = os.getenv('FRESHDESK_API_KEY')
         self.db_url = os.getenv('RAG_DATABASE_URL',
-                                '" + os.getenv('DATABASE_URL', '')')
+                                os.getenv('DATABASE_URL', ''))
 
         self.base_url = f"https://{self.domain}.freshdesk.com/api/v2"
         self.auth = (self.api_key, 'X')

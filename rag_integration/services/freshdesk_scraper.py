@@ -43,7 +43,7 @@ class FreshdeskScraper:
         # Database connection
         self.connection_string = connection_string or os.getenv(
             "RAG_DATABASE_URL",
-            "" + os.getenv('DATABASE_URL', '')"
+            
         )
 
         # Cache for agent names

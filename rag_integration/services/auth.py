@@ -45,10 +45,7 @@ class AuthService:
         """Initialize with database connection."""
         import os
         # Use same database as DatabaseReader (call_insights has the transcripts and users)
-        self.connection_string = connection_string or os.getenv(
-            "RAG_DATABASE_URL",
-            "" + os.getenv('DATABASE_URL', '')"
-        )
+        self.connection_string = connection_string or os.getenv("RAG_DATABASE_URL") or os.getenv("DATABASE_URL", "")
 
     @contextmanager
     def get_connection(self):

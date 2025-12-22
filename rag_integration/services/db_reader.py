@@ -60,7 +60,7 @@ class DatabaseReader:
         # Use RAG-specific database URL or default to call_insights
         self.database_url = database_url or os.getenv(
             "RAG_DATABASE_URL",
-            "" + os.getenv('DATABASE_URL', '')"
+            
         )
 
     @contextmanager

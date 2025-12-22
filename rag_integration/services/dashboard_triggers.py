@@ -26,7 +26,7 @@ class DashboardTriggerService:
     def __init__(self):
         self.db_url = os.getenv(
             'RAG_DATABASE_URL',
-            '" + os.getenv('DATABASE_URL', '')'
+            os.getenv('DATABASE_URL', '')
         )
         # Email configuration
         self.smtp_host = os.getenv('SMTP_HOST', 'smtp.gmail.com')

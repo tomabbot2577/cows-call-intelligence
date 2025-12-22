@@ -42,7 +42,7 @@ def get_qa_count_from_db() -> int:
     """Get current Q&A count directly from database."""
     import psycopg2
     db_url = os.getenv('RAG_DATABASE_URL',
-                       '" + os.getenv('DATABASE_URL', '')')
+                       os.getenv('DATABASE_URL', ''))
     try:
         conn = psycopg2.connect(db_url)
         cur = conn.cursor()
