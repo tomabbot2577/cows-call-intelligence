@@ -123,16 +123,33 @@
                 </div>
             </div>
         </div>
-        {% if result.ticket_id or result.company %}
-        <div class="card-footer text-muted small">
-            {% if result.ticket_id %}
-            <i class="bi bi-hash"></i> Ticket #{{ result.ticket_id }}
-            {% endif %}
-            {% if result.company and result.company != 'Unknown' %}
-            <span class="ms-2"><i class="bi bi-building"></i> {{ result.company }}</span>
-            {% endif %}
+        <div class="card-footer d-flex justify-content-between align-items-center">
+            <div class="text-muted small">
+                {% if result.ticket_id %}
+                <i class="bi bi-hash"></i> Ticket #{{ result.ticket_id }}
+                {% endif %}
+                {% if result.company and result.company != 'Unknown' %}
+                <span class="ms-2"><i class="bi bi-building"></i> {{ result.company }}</span>
+                {% endif %}
+            </div>
+            <div class="star-rating"
+                 data-qa-id="{{ 'fd_' ~ result.ticket_id if result.source == 'freshdesk' else 'call_' ~ result.call_id }}"
+                 data-source="{{ result.source }}"
+                 data-current-rating="{{ result.avg_rating|default(0) }}">
+                <small class="text-muted me-2">Rate this answer:</small>
+                {% for i in range(1, 6) %}
+                <i class="bi bi-star{% if result.avg_rating and result.avg_rating >= i %}-fill{% endif %} star-btn"
+                   data-rating="{{ i }}"
+                   style="cursor: pointer; color: #ffc107; font-size: 1.2rem;"
+                   onmouseover="hoverStars(this, {{ i }})"
+                   onmouseout="resetStars(this)"
+                   onclick="submitRating(this, {{ i }})"></i>
+                {% endfor %}
+                {% if result.rating_count and result.rating_count > 0 %}
+                <small class="text-muted ms-2">({{ result.rating_count }} rating{{ 's' if result.rating_count != 1 else '' }})</small>
+                {% endif %}
+            </div>
         </div>
-        {% endif %}
     </div>
     {% endfor %}
 </div>
@@ -214,6 +231,94 @@ function recordClick(articleId, queryId) {
     });
 }
 
+// Star rating functions
+function hoverStars(element, rating) {
+    const container = element.closest('.star-rating');
+    const stars = container.querySelectorAll('.star-btn');
+    stars.forEach((star, index) => {
+        if (index < rating) {
+            star.classList.remove('bi-star');
+            star.classList.add('bi-star-fill');
+        } else {
+            star.classList.remove('bi-star-fill');
+            star.classList.add('bi-star');
+        }
+    });
+}
+
+function resetStars(element) {
+    const container = element.closest('.star-rating');
+    const currentRating = parseFloat(container.dataset.currentRating) || 0;
+    const stars = container.querySelectorAll('.star-btn');
+    stars.forEach((star, index) => {
+        if (index < currentRating) {
+            star.classList.remove('bi-star');
+            star.classList.add('bi-star-fill');
+        } else {
+            star.classList.remove('bi-star-fill');
+            star.classList.add('bi-star');
+        }
+    });
+}
+
+async function submitRating(element, rating) {
+    const container = element.closest('.star-rating');
+    const qaId = container.dataset.qaId;
+    const sourceType = container.dataset.source;
+    const searchQuery = document.getElementById('searchInput')?.value || '';
+
+    try {
+        const formData = new FormData();
+        formData.append('qa_id', qaId);
+        formData.append('source_type', sourceType);
+        formData.append('rating', rating);
+        formData.append('search_query', searchQuery);
+
+        const response = await fetch('/api/v1/kb/rate', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            // Update the current rating display
+            container.dataset.currentRating = rating;
+            const stars = container.querySelectorAll('.star-btn');
+            stars.forEach((star, index) => {
+                if (index < rating) {
+                    star.classList.remove('bi-star');
+                    star.classList.add('bi-star-fill');
+                } else {
+                    star.classList.remove('bi-star-fill');
+                    star.classList.add('bi-star');
+                }
+            });
+
+            // Show brief feedback
+            const ratingCount = container.querySelector('small:last-child');
+            if (ratingCount && ratingCount.textContent.includes('rating')) {
+                // Update existing count
+                const match = ratingCount.textContent.match(/\d+/);
+                if (match) {
+                    const newCount = parseInt(match[0]) + 1;
+                    ratingCount.textContent = `(${newCount} rating${newCount !== 1 ? 's' : ''})`;
+                }
+            } else {
+                // Add count display
+                const countSpan = document.createElement('small');
+                countSpan.className = 'text-muted ms-2';
+                countSpan.textContent = '(1 rating)';
+                container.appendChild(countSpan);
+            }
+
+            // Flash green briefly
+            container.style.backgroundColor = '#d4edda';
+            setTimeout(() => { container.style.backgroundColor = ''; }, 500);
+        }
+    } catch (error) {
+        console.error('Error submitting rating:', error);
+    }
+}
+
 function showLoading() {
     document.getElementById('loadingIndicator').style.display = 'block';
     document.getElementById('resultsContainer').style.display = 'none';
@@ -253,6 +358,11 @@ document.querySelectorAll('.popular-search').forEach(function(link) {
 
 // Hide loading when page finishes loading (in case of back navigation)
 window.addEventListener('pageshow', function() {
+    hideLoading();
+});
+
+// Also hide any loading overlay from previous page
+document.addEventListener('DOMContentLoaded', function() {
     hideLoading();
 });
 </script>

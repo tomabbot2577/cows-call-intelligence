@@ -138,22 +138,41 @@
 
 {% if result %}
 <!-- Results -->
-<div class="card">
+<div class="card report-output" id="reportOutput">
     <div class="card-header d-flex justify-content-between align-items-center">
         <span>
-            <i class="bi bi-chat-quote me-2"></i>Response
+            <i class="bi bi-chat-quote me-2"></i><span class="report-title" id="reportTitle">Response</span>
         </span>
-        <span>
+        <div class="d-flex align-items-center gap-2">
             {% if result.date_range %}
-            <span class="badge bg-info me-2">
+            <span class="badge bg-info">
                 <i class="bi bi-calendar3 me-1"></i>{{ result.date_range }}
             </span>
             {% endif %}
-            <span class="badge {{ 'badge-gemini' if result.system == 'gemini' else 'badge-vertex' }} me-2">
+            <span class="badge {{ 'badge-gemini' if result.system == 'gemini' else 'badge-vertex' }}">
                 {{ result.system | upper }}
             </span>
             <span class="badge bg-secondary">{{ result.query_time_ms }}ms</span>
-        </span>
+            <!-- Email Report Button -->
+            <div class="dropdown email-report-dropdown">
+                <button class="btn btn-sm dropdown-toggle fw-bold" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: #8e44ad; color: white; border: none;">
+                    <i class="bi bi-envelope-fill me-1"></i>Email Report
+                </button>
+                <div class="dropdown-menu dropdown-menu-end p-3" style="min-width: 320px;" onclick="event.stopPropagation();">
+                    <h6 class="dropdown-header px-0">Send Report To:</h6>
+                    <select class="form-select form-select-sm mb-2 email-recipient-select" onchange="handleRecipientChange(this)">
+                        <option value="">Loading recipients...</option>
+                    </select>
+                    <input type="email" class="form-control form-control-sm mb-2 email-custom-input" placeholder="Enter email address..." style="display: none;">
+                    <label class="form-label small mb-1">Add Comments (optional):</label>
+                    <textarea class="form-control form-control-sm mb-2 email-comments" rows="3" placeholder="Add a personal note..."></textarea>
+                    <button type="button" class="btn btn-primary btn-sm w-100" onclick="sendReportEmail(this)">
+                        <i class="bi bi-send me-1"></i>Send Email
+                    </button>
+                    <div class="email-status mt-2 small"></div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="card-body">
         {% if result.filters %}
@@ -169,7 +188,7 @@
         </div>
         {% endif %}
 
-        <div class="response-box">{{ result.response }}</div>
+        <div class="response-box report-content" id="reportContent">{{ result.response }}</div>
 
         {% if result.citations %}
         <div class="mt-3">

@@ -1,0 +1,849 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page_title }} - COWS{% endblock %}
+
+{% block extra_css %}
+<style>
+    .metric-card {
+        background: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        text-align: center;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .metric-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    .metric-value {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #2c3e50;
+        margin-bottom: 0.25rem;
+    }
+    .metric-label {
+        font-size: 0.875rem;
+        color: #6c757d;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .metric-card.positive .metric-value { color: #27ae60; }
+    .metric-card.warning .metric-value { color: #f39c12; }
+    .metric-card.danger .metric-value { color: #e74c3c; }
+
+    .productivity-bar {
+        height: 24px;
+        background: #e9ecef;
+        border-radius: 12px;
+        overflow: hidden;
+        margin: 1rem 0;
+    }
+    .productivity-fill {
+        height: 100%;
+        border-radius: 12px;
+        transition: width 0.5s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: 600;
+    }
+    .productivity-fill.grade-a { background: linear-gradient(90deg, #27ae60, #2ecc71); }
+    .productivity-fill.grade-b { background: linear-gradient(90deg, #3498db, #5dade2); }
+    .productivity-fill.grade-c { background: linear-gradient(90deg, #f39c12, #f1c40f); }
+    .productivity-fill.grade-d { background: linear-gradient(90deg, #e67e22, #d35400); }
+    .productivity-fill.grade-f { background: linear-gradient(90deg, #e74c3c, #c0392b); }
+
+    .grade-badge {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 1.25rem;
+    }
+    .grade-a { background: #d4edda; color: #155724; }
+    .grade-b { background: #d1ecf1; color: #0c5460; }
+    .grade-c { background: #fff3cd; color: #856404; }
+    .grade-d { background: #ffeaa7; color: #856404; }
+    .grade-f { background: #f8d7da; color: #721c24; }
+
+    .section-card {
+        background: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        margin-bottom: 1.5rem;
+    }
+    .section-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #3498db;
+    }
+
+    .metrics-table {
+        width: 100%;
+    }
+    .metrics-table tr[title] {
+        cursor: help;
+    }
+    .metrics-table tr[title]:hover {
+        background: #f8f9fa;
+    }
+    .metrics-table td {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #eee;
+    }
+    .metrics-table td:last-child {
+        text-align: right;
+        font-weight: 600;
+    }
+
+    .period-btn {
+        padding: 0.375rem 0.75rem;
+        border: 1px solid #dee2e6;
+        background: white;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .period-btn:hover {
+        background: #f8f9fa;
+    }
+    .period-btn.active {
+        background: #3498db;
+        color: white;
+        border-color: #3498db;
+    }
+
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255,255,255,0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+    .loading-overlay.hidden { display: none; }
+
+    .chart-container {
+        position: relative;
+        height: 250px;
+    }
+
+    .sentiment-bar {
+        display: flex;
+        border-radius: 4px;
+        overflow: hidden;
+        height: 24px;
+    }
+    .sentiment-positive { background: #27ae60; }
+    .sentiment-neutral { background: #95a5a6; }
+    .sentiment-negative { background: #e74c3c; }
+
+    .aging-bar {
+        display: flex;
+        border-radius: 4px;
+        overflow: hidden;
+        height: 24px;
+        margin-bottom: 0.5rem;
+    }
+    .aging-0-1 { background: #27ae60; }
+    .aging-1-3 { background: #2ecc71; }
+    .aging-3-5 { background: #f1c40f; }
+    .aging-5-7 { background: #e67e22; }
+    .aging-7plus { background: #e74c3c; }
+
+    {% if is_admin_view %}
+    .back-link {
+        margin-bottom: 1rem;
+    }
+    {% endif %}
+
+    .talk-distribution {
+        margin-top: 1rem;
+    }
+    .talk-bar {
+        display: flex;
+        border-radius: 4px;
+        overflow: hidden;
+        height: 28px;
+        margin-bottom: 0.5rem;
+    }
+    .talk-employee { background: #3498db; }
+    .talk-caller { background: #9b59b6; }
+    .talk-silence { background: #bdc3c7; }
+    .talk-bar > div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="text-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;"></div>
+        <p class="mt-3">Loading dashboard...</p>
+    </div>
+</div>
+
+<div class="container-fluid py-4">
+    {% if is_admin_view %}
+    <div class="back-link">
+        <a href="/dashboard/admin" class="btn btn-outline-secondary btn-sm">
+            <i class="bi bi-arrow-left"></i> Back to Team Dashboard
+        </a>
+    </div>
+    {% endif %}
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="h3 mb-1">
+                {% if is_admin_view %}
+                <i class="bi bi-person-circle"></i> {{ employee_name }}
+                {% else %}
+                <i class="bi bi-speedometer2"></i> My Dashboard
+                {% endif %}
+            </h1>
+            <p class="text-muted mb-0">
+                <span id="periodLabel">MTD</span> &bull;
+                <span id="lastUpdated">Loading...</span>
+            </p>
+        </div>
+        <div>
+            <!-- Period Selector -->
+            <div class="btn-group" role="group">
+                <button class="period-btn" data-period="today">Today</button>
+                <button class="period-btn" data-period="wtd">WTD</button>
+                <button class="period-btn" data-period="last_week">Last Week</button>
+                <button class="period-btn active" data-period="mtd">MTD</button>
+                <button class="period-btn" data-period="qtd">QTD</button>
+                <button class="period-btn" data-period="ytd">YTD</button>
+            </div>
+            <button class="btn btn-outline-primary ms-2" onclick="refreshDashboard()">
+                <i class="bi bi-arrow-clockwise"></i>
+            </button>
+            {% if is_admin_view %}
+            <div class="dropdown d-inline-block ms-2">
+                <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    <i class="bi bi-envelope"></i> Send Report
+                </button>
+                <div class="dropdown-menu dropdown-menu-end p-3" style="min-width: 300px;">
+                    <h6 class="dropdown-header">Email Activity Report</h6>
+                    <div class="mb-2">
+                        <label class="form-label small">Recipient</label>
+                        <select class="form-select form-select-sm email-recipient-select" onchange="handleRecipientChange(this)">
+                            <option value="">-- Select recipient --</option>
+                            <option value="__custom__">✏️ Enter custom email...</option>
+                        </select>
+                        <input type="email" class="form-control form-control-sm mt-1 email-custom-input"
+                               placeholder="Enter email address" style="display: none;">
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label small">Comments (optional)</label>
+                        <textarea class="form-control form-control-sm email-comments" rows="2"
+                                  placeholder="Add a note..."></textarea>
+                    </div>
+                    <button class="btn btn-primary btn-sm w-100" onclick="sendUserReport(this)">
+                        <i class="bi bi-send"></i> Send Report
+                    </button>
+                    <div class="email-status mt-2 small"></div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- KPI Cards Row -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="metric-card" id="cardTotalCalls">
+                <div class="metric-value" id="totalCalls">-</div>
+                <div class="metric-label">Total Calls</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="metric-card" id="cardAnswerRate">
+                <div class="metric-value" id="answerRate">-%</div>
+                <div class="metric-label">Answer Rate</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="metric-card" id="cardQuality">
+                <div class="metric-value" id="avgQuality">-</div>
+                <div class="metric-label">Avg Quality Score</div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="metric-card" id="cardProductivity">
+                <div class="metric-value" id="productivityScore">-</div>
+                <div class="metric-label">Productivity Score</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Productivity Score Bar -->
+    <div class="section-card">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+            <span class="section-title mb-0" style="border: none; padding: 0;">
+                <i class="bi bi-graph-up-arrow"></i> Productivity Score
+            </span>
+            <span class="grade-badge" id="productivityGrade">-</span>
+        </div>
+        <div class="productivity-bar">
+            <div class="productivity-fill" id="productivityFill" style="width: 0%;">
+                <span id="productivityPercent">0%</span>
+            </div>
+        </div>
+        <small class="text-muted">
+            Based on: Answer rate, Call quality, Resolution rate, Ticket closure, Escalations, Sentiment
+        </small>
+    </div>
+
+    <!-- Call & Ticket Metrics Row -->
+    <div class="row">
+        <!-- Call Metrics -->
+        <div class="col-md-6">
+            <div class="section-card">
+                <h5 class="section-title"><i class="bi bi-telephone"></i> Call Metrics</h5>
+                <table class="metrics-table">
+                    <tr title="Number of calls that were answered/connected">
+                        <td>Answered Calls</td>
+                        <td id="answeredCalls">-</td>
+                    </tr>
+                    <tr title="Number of calls that were not answered (caller hung up before answer)">
+                        <td>Missed Calls</td>
+                        <td id="missedCalls">-</td>
+                    </tr>
+                    <tr title="Total number of calls that went to voicemail">
+                        <td>Voicemail (Total)</td>
+                        <td id="voicemailCalls">-</td>
+                    </tr>
+                    <tr title="Voicemails during Business Hours (8am-5pm) / After Hours (before 8am or after 5pm)">
+                        <td>VM Business / After Hrs</td>
+                        <td><span id="vmBusinessHours">-</span> / <span id="vmAfterHours">-</span></td>
+                    </tr>
+                    <tr title="Inbound calls (received) / Outbound calls (made)">
+                        <td>Inbound / Outbound</td>
+                        <td><span id="inboundCalls">-</span> / <span id="outboundCalls">-</span></td>
+                    </tr>
+                    <tr title="Average time callers waited before the call was answered">
+                        <td>Avg Wait Time</td>
+                        <td id="avgWaitTime">-</td>
+                    </tr>
+                    <tr title="Number of calls where the caller waited more than 1 minute before being answered">
+                        <td>Calls >1 min Wait</td>
+                        <td id="callsOver1MinWait">-</td>
+                    </tr>
+                    <tr title="Average duration of all calls">
+                        <td>Avg Duration</td>
+                        <td id="avgDuration">-</td>
+                    </tr>
+                    <tr title="Total time spent on all calls combined">
+                        <td>Total Talk Time</td>
+                        <td id="totalDuration">-</td>
+                    </tr>
+                </table>
+
+                <!-- Talk Time Distribution -->
+                <div class="talk-distribution mt-4">
+                    <h6 class="text-muted">Talk Time Distribution</h6>
+                    <div class="talk-bar" id="talkBar">
+                        <div style="width:100%;background:#ddd;color:#666;justify-content:center;">No data</div>
+                    </div>
+                    <div class="d-flex justify-content-between small text-muted">
+                        <span><span class="badge" style="background:#3498db">&nbsp;</span> Employee</span>
+                        <span><span class="badge" style="background:#9b59b6">&nbsp;</span> Caller</span>
+                        <span><span class="badge" style="background:#bdc3c7">&nbsp;</span> Silence/Hold</span>
+                    </div>
+                </div>
+
+                <!-- Hourly Volume Chart -->
+                <div class="mt-4">
+                    <h6 class="text-muted">Hourly Call Volume</h6>
+                    <div class="chart-container">
+                        <canvas id="hourlyChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ticket Metrics -->
+        <div class="col-md-6">
+            <div class="section-card">
+                <h5 class="section-title"><i class="bi bi-ticket-detailed"></i> Ticket Metrics</h5>
+                <table class="metrics-table">
+                    <tr title="Number of support tickets created/opened during the selected period">
+                        <td>Tickets Opened (Period)</td>
+                        <td id="ticketsOpened">-</td>
+                    </tr>
+                    <tr title="Number of support tickets closed/resolved during the selected period">
+                        <td>Tickets Closed (Period)</td>
+                        <td id="ticketsClosed">-</td>
+                    </tr>
+                    <tr title="Total number of tickets currently open (not yet resolved)">
+                        <td>Currently Open Total</td>
+                        <td id="ticketsOpen">-</td>
+                    </tr>
+                    <tr class="text-danger" title="Open tickets that are more than 5 days old - these need attention!">
+                        <td><i class="bi bi-exclamation-circle"></i> Open >5 Days (Overdue)</td>
+                        <td id="ticketsOverdue">-</td>
+                    </tr>
+                </table>
+
+                <!-- Ticket Aging -->
+                <div class="mt-4">
+                    <h6 class="text-muted">Ticket Aging Distribution</h6>
+                    <div class="aging-bar" id="agingBar"></div>
+                    <div class="d-flex justify-content-between small text-muted">
+                        <span><span class="badge" style="background:#27ae60">&nbsp;</span> 0-1d</span>
+                        <span><span class="badge" style="background:#2ecc71">&nbsp;</span> 1-3d</span>
+                        <span><span class="badge" style="background:#f1c40f">&nbsp;</span> 3-5d</span>
+                        <span><span class="badge" style="background:#e67e22">&nbsp;</span> 5-7d</span>
+                        <span><span class="badge" style="background:#e74c3c">&nbsp;</span> 7d+</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quality Metrics Row -->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="section-card">
+                <h5 class="section-title"><i class="bi bi-emoji-smile"></i> Customer Sentiment</h5>
+                <div class="sentiment-bar" id="sentimentBar"></div>
+                <div class="d-flex justify-content-between mt-2">
+                    <span><span class="badge bg-success">Positive</span> <span id="positiveCount">-</span></span>
+                    <span><span class="badge bg-secondary">Neutral</span> <span id="neutralCount">-</span></span>
+                    <span><span class="badge bg-danger">Negative</span> <span id="negativeCount">-</span></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="section-card">
+                <h5 class="section-title"><i class="bi bi-shield-check"></i> Quality Indicators</h5>
+                <table class="metrics-table">
+                    <tr>
+                        <td>First Contact Resolution</td>
+                        <td id="fcrCount">-</td>
+                    </tr>
+                    <tr>
+                        <td>Escalations</td>
+                        <td id="escalationCount">-</td>
+                    </tr>
+                    <tr>
+                        <td>High Churn Risk Calls</td>
+                        <td id="churnRiskCount">-</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+    const employeeName = "{{ employee_name }}";
+    let currentPeriod = "mtd";
+    let hourlyChart = null;
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        // Period button handlers
+        document.querySelectorAll('.period-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.period-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentPeriod = this.dataset.period;
+                document.getElementById('periodLabel').textContent = this.textContent;
+                loadDashboard();
+            });
+        });
+
+        // Initial load
+        loadDashboard();
+
+        // Auto-refresh every 5 minutes
+        setInterval(loadDashboard, 5 * 60 * 1000);
+    });
+
+    function refreshDashboard() {
+        loadDashboard();
+    }
+
+    async function loadDashboard() {
+        console.log('loadDashboard called for:', employeeName, 'period:', currentPeriod);
+        showLoading(true);
+
+        try {
+            const url = `/api/v1/dashboard/metrics?employee=${encodeURIComponent(employeeName)}&period=${currentPeriod}`;
+            console.log('Fetching:', url);
+            const response = await fetch(url);
+            console.log('Response status:', response.status);
+
+            if (!response.ok) {
+                throw new Error('Failed to load dashboard data: ' + response.status);
+            }
+
+            const result = await response.json();
+            console.log('API result:', result);
+
+            if (result.success && result.data) {
+                console.log('Calling updateDashboard with data');
+                updateDashboard(result.data);
+                console.log('updateDashboard completed');
+            } else {
+                console.error('Dashboard load failed - no data:', result);
+                document.getElementById('lastUpdated').textContent = 'Error: No data returned';
+            }
+        } catch (error) {
+            console.error('Dashboard error:', error);
+            document.getElementById('lastUpdated').textContent = 'Error: ' + error.message;
+        } finally {
+            showLoading(false);
+            console.log('loadDashboard finished');
+        }
+    }
+
+    function updateDashboard(data) {
+        // Update last updated time
+        document.getElementById('lastUpdated').textContent =
+            'Updated: ' + new Date(data.generated_at).toLocaleTimeString();
+
+        // Call metrics
+        const calls = data.calls || {};
+        document.getElementById('totalCalls').textContent = calls.total_calls || 0;
+        document.getElementById('answerRate').textContent = (calls.answer_rate || 0) + '%';
+        document.getElementById('answeredCalls').textContent = calls.answered_calls || 0;
+        document.getElementById('missedCalls').textContent = calls.missed_calls || 0;
+        document.getElementById('voicemailCalls').textContent = calls.voicemail_calls || 0;
+        document.getElementById('vmBusinessHours').textContent = calls.voicemail_business_hours || 0;
+        document.getElementById('vmAfterHours').textContent = calls.voicemail_after_hours || 0;
+        document.getElementById('inboundCalls').textContent = calls.inbound_calls || 0;
+        document.getElementById('outboundCalls').textContent = calls.outbound_calls || 0;
+        document.getElementById('avgWaitTime').textContent = formatDuration(calls.avg_wait_time_seconds || 0);
+        document.getElementById('callsOver1MinWait').textContent = calls.calls_over_1_min_wait || 0;
+        document.getElementById('avgDuration').textContent = formatDuration(calls.avg_duration_seconds || 0);
+        document.getElementById('totalDuration').textContent = formatDuration(calls.total_duration_seconds || 0);
+
+        // Color code answer rate
+        const answerCard = document.getElementById('cardAnswerRate');
+        answerCard.className = 'metric-card';
+        if (calls.answer_rate >= 90) answerCard.classList.add('positive');
+        else if (calls.answer_rate >= 75) answerCard.classList.add('warning');
+        else answerCard.classList.add('danger');
+
+        // Ticket metrics
+        const tickets = data.tickets || {};
+        document.getElementById('ticketsOpened').textContent = tickets.tickets_opened || 0;
+        document.getElementById('ticketsClosed').textContent = tickets.tickets_closed || 0;
+        document.getElementById('ticketsOpen').textContent = tickets.tickets_open_total || 0;
+        document.getElementById('ticketsOverdue').textContent = tickets.tickets_over_5_days || 0;
+
+        // Quality metrics
+        const quality = data.quality || {};
+        const sentiment = quality.sentiment_distribution || {positive: 0, neutral: 0, negative: 0};
+        document.getElementById('avgQuality').textContent = (quality.avg_quality_score || 0).toFixed(1);
+        document.getElementById('positiveCount').textContent = sentiment.positive || 0;
+        document.getElementById('neutralCount').textContent = sentiment.neutral || 0;
+        document.getElementById('negativeCount').textContent = sentiment.negative || 0;
+        document.getElementById('fcrCount').textContent = quality.first_contact_resolution_count || 0;
+        document.getElementById('escalationCount').textContent = quality.escalation_count || 0;
+        document.getElementById('churnRiskCount').textContent = quality.churn_risk_high_count || 0;
+
+        // Quality card color
+        const qualityCard = document.getElementById('cardQuality');
+        qualityCard.className = 'metric-card';
+        if (quality.avg_quality_score >= 7) qualityCard.classList.add('positive');
+        else if (quality.avg_quality_score >= 5) qualityCard.classList.add('warning');
+        else qualityCard.classList.add('danger');
+
+        // Productivity
+        const prod = data.productivity || {score: 0, grade: 'F'};
+        document.getElementById('productivityScore').textContent = prod.score || 0;
+
+        const gradeEl = document.getElementById('productivityGrade');
+        const grade = prod.grade || 'F';
+        gradeEl.textContent = grade;
+        gradeEl.className = 'grade-badge grade-' + grade.charAt(0).toLowerCase();
+
+        const fillEl = document.getElementById('productivityFill');
+        fillEl.style.width = (prod.score || 0) + '%';
+        fillEl.className = 'productivity-fill grade-' + grade.charAt(0).toLowerCase();
+        document.getElementById('productivityPercent').textContent = (prod.score || 0) + '%';
+
+        // Productivity card color
+        const prodCard = document.getElementById('cardProductivity');
+        prodCard.className = 'metric-card';
+        if (prod.score >= 80) prodCard.classList.add('positive');
+        else if (prod.score >= 60) prodCard.classList.add('warning');
+        else prodCard.classList.add('danger');
+
+        // Update charts (with null checks)
+        updateHourlyChart(calls.hourly_volume || {});
+        updateSentimentBar(sentiment);
+        updateAgingBar(tickets.aging_distribution || {});
+        updateTalkDistribution(calls.employee_talk_pct);
+    }
+
+    function updateHourlyChart(hourlyData) {
+        const ctx = document.getElementById('hourlyChart').getContext('2d');
+
+        // Prepare data for all 24 hours
+        const labels = [];
+        const inboundData = [];
+        const outboundData = [];
+
+        for (let h = 0; h < 24; h++) {
+            labels.push(h + ':00');
+            const hourData = hourlyData[h] || { inbound: 0, outbound: 0 };
+            inboundData.push(hourData.inbound || 0);
+            outboundData.push(hourData.outbound || 0);
+        }
+
+        if (hourlyChart) {
+            hourlyChart.destroy();
+        }
+
+        hourlyChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: labels,
+                datasets: [
+                    {
+                        label: 'Inbound',
+                        data: inboundData,
+                        backgroundColor: '#3498db',
+                        borderRadius: 4
+                    },
+                    {
+                        label: 'Outbound',
+                        data: outboundData,
+                        backgroundColor: '#9b59b6',
+                        borderRadius: 4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' }
+                },
+                scales: {
+                    x: { stacked: true },
+                    y: { stacked: true, beginAtZero: true }
+                }
+            }
+        });
+    }
+
+    function updateSentimentBar(sentiment) {
+        const total = sentiment.positive + sentiment.neutral + sentiment.negative;
+        if (total === 0) {
+            document.getElementById('sentimentBar').innerHTML = '<div style="width:100%;background:#ddd;text-align:center;color:#666;">No data</div>';
+            return;
+        }
+
+        const posPct = (sentiment.positive / total * 100).toFixed(1);
+        const neutPct = (sentiment.neutral / total * 100).toFixed(1);
+        const negPct = (sentiment.negative / total * 100).toFixed(1);
+
+        document.getElementById('sentimentBar').innerHTML = `
+            <div class="sentiment-positive" style="width:${posPct}%" title="Positive: ${sentiment.positive}"></div>
+            <div class="sentiment-neutral" style="width:${neutPct}%" title="Neutral: ${sentiment.neutral}"></div>
+            <div class="sentiment-negative" style="width:${negPct}%" title="Negative: ${sentiment.negative}"></div>
+        `;
+    }
+
+    function updateAgingBar(aging) {
+        const total = Object.values(aging).reduce((a, b) => a + b, 0);
+        if (total === 0) {
+            document.getElementById('agingBar').innerHTML = '<div style="width:100%;background:#ddd;text-align:center;color:#666;">No open tickets</div>';
+            return;
+        }
+
+        const d01 = aging['0-1 days'] || 0;
+        const d13 = aging['1-3 days'] || 0;
+        const d35 = aging['3-5 days'] || 0;
+        const d57 = aging['5-7 days'] || 0;
+        const d7p = aging['7+ days'] || 0;
+
+        document.getElementById('agingBar').innerHTML = `
+            <div class="aging-0-1" style="width:${d01/total*100}%" title="0-1 days: ${d01}"></div>
+            <div class="aging-1-3" style="width:${d13/total*100}%" title="1-3 days: ${d13}"></div>
+            <div class="aging-3-5" style="width:${d35/total*100}%" title="3-5 days: ${d35}"></div>
+            <div class="aging-5-7" style="width:${d57/total*100}%" title="5-7 days: ${d57}"></div>
+            <div class="aging-7plus" style="width:${d7p/total*100}%" title="7+ days: ${d7p}"></div>
+        `;
+    }
+
+    function formatDuration(seconds) {
+        if (!seconds) return '-';
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.round(seconds % 60);
+        if (mins >= 60) {
+            const hrs = Math.floor(mins / 60);
+            const remainMins = mins % 60;
+            return `${hrs}h ${remainMins}m`;
+        }
+        return `${mins}m ${secs}s`;
+    }
+
+    function showLoading(show) {
+        document.getElementById('loadingOverlay').classList.toggle('hidden', !show);
+    }
+
+    function updateTalkDistribution(employeePct) {
+        const talkBar = document.getElementById('talkBar');
+
+        if (!employeePct || employeePct <= 0) {
+            talkBar.innerHTML = '<div style="width:100%;background:#ddd;color:#666;justify-content:center;">No data available</div>';
+            return;
+        }
+
+        // Calculate percentages (assume rest is caller + some silence)
+        const empPct = Math.min(employeePct, 100);
+        // Typical call: employee 40%, caller 50%, silence 10%
+        const callerPct = Math.min(100 - empPct - 5, 60); // Estimate caller portion
+        const silencePct = Math.max(100 - empPct - callerPct, 0);
+
+        talkBar.innerHTML = `
+            <div class="talk-employee" style="width:${empPct}%">${empPct.toFixed(0)}%</div>
+            <div class="talk-caller" style="width:${callerPct}%">${callerPct.toFixed(0)}%</div>
+            <div class="talk-silence" style="width:${silencePct}%">${silencePct > 5 ? silencePct.toFixed(0) + '%' : ''}</div>
+        `;
+    }
+
+    {% if is_admin_view %}
+    // Send report email functionality
+    async function sendUserReport(buttonElement) {
+        const container = buttonElement.closest('.dropdown-menu');
+        const selectEl = container.querySelector('.email-recipient-select');
+        const customInput = container.querySelector('.email-custom-input');
+        const comments = container.querySelector('.email-comments').value.trim();
+        const statusDiv = container.querySelector('.email-status');
+
+        // Get recipient
+        let recipient = selectEl.value;
+        if (recipient === '__custom__') {
+            recipient = customInput.value.trim();
+        }
+
+        if (!recipient || recipient === '__custom__') {
+            statusDiv.innerHTML = '<span class="text-danger"><i class="bi bi-exclamation-circle"></i> Please select or enter a recipient</span>';
+            return;
+        }
+
+        if (!recipient.includes('@')) {
+            statusDiv.innerHTML = '<span class="text-danger"><i class="bi bi-exclamation-circle"></i> Please enter a valid email address</span>';
+            return;
+        }
+
+        statusDiv.innerHTML = '<span class="text-info"><i class="bi bi-hourglass-split"></i> Sending report...</span>';
+
+        try {
+            // Build report content from current dashboard data
+            const reportContent = buildReportContent();
+
+            const response = await fetch('/api/v1/email/send-report', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    recipient_email: recipient,
+                    report_title: `Activity Report - ${employeeName} - ${currentPeriod}`,
+                    report_content: comments ? `COMMENTS:\n${comments}\n\n${reportContent}` : reportContent,
+                    report_type: 'activity_report'
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                statusDiv.innerHTML = '<span class="text-success"><i class="bi bi-check-circle"></i> Report sent successfully!</span>';
+                container.querySelector('.email-comments').value = '';
+                setTimeout(() => {
+                    const dropdown = bootstrap.Dropdown.getInstance(container.previousElementSibling);
+                    if (dropdown) dropdown.hide();
+                    statusDiv.innerHTML = '';
+                }, 2000);
+            } else {
+                statusDiv.innerHTML = `<span class="text-danger"><i class="bi bi-x-circle"></i> ${data.detail || 'Failed to send'}</span>`;
+            }
+        } catch (error) {
+            statusDiv.innerHTML = `<span class="text-danger"><i class="bi bi-x-circle"></i> Error: ${error.message}</span>`;
+        }
+    }
+
+    function buildReportContent() {
+        // Build text report from dashboard elements
+        const lines = [
+            `ACTIVITY REPORT - ${employeeName}`,
+            `Period: ${document.getElementById('periodLabel').textContent}`,
+            `Generated: ${new Date().toLocaleString()}`,
+            '',
+            '═'.repeat(50),
+            'CALL METRICS',
+            '═'.repeat(50),
+            `Total Calls:      ${document.getElementById('totalCalls').textContent}`,
+            `Answer Rate:      ${document.getElementById('answerRate').textContent}`,
+            `Answered Calls:   ${document.getElementById('answeredCalls').textContent}`,
+            `Missed Calls:     ${document.getElementById('missedCalls').textContent}`,
+            `Inbound/Outbound: ${document.getElementById('inboundCalls').textContent} / ${document.getElementById('outboundCalls').textContent}`,
+            `Avg Duration:     ${document.getElementById('avgDuration').textContent}`,
+            '',
+            '═'.repeat(50),
+            'TICKET METRICS',
+            '═'.repeat(50),
+            `Tickets Opened:   ${document.getElementById('ticketsOpened').textContent}`,
+            `Tickets Closed:   ${document.getElementById('ticketsClosed').textContent}`,
+            `Open Total:       ${document.getElementById('ticketsOpen').textContent}`,
+            `Overdue (>5 days):${document.getElementById('ticketsOverdue').textContent}`,
+            '',
+            '═'.repeat(50),
+            'QUALITY METRICS',
+            '═'.repeat(50),
+            `Avg Quality Score:    ${document.getElementById('avgQuality').textContent}`,
+            `FCR Count:            ${document.getElementById('fcrCount').textContent}`,
+            `Escalations:          ${document.getElementById('escalationCount').textContent}`,
+            `High Churn Risk:      ${document.getElementById('churnRiskCount').textContent}`,
+            '',
+            '═'.repeat(50),
+            'PRODUCTIVITY',
+            '═'.repeat(50),
+            `Score: ${document.getElementById('productivityScore').textContent}/100`,
+            `Grade: ${document.getElementById('productivityGrade').textContent}`,
+            '',
+            '═'.repeat(50),
+            `View Dashboard: ${window.location.href}`
+        ];
+        return lines.join('\n');
+    }
+
+    // Populate email recipients on load
+    document.addEventListener('DOMContentLoaded', function() {
+        loadEmailRecipients();
+        const selectEl = document.querySelector('.email-recipient-select');
+        if (selectEl && window.cowsEmail && window.cowsEmail.loaded) {
+            populateRecipientSelect(selectEl);
+        }
+    });
+    {% endif %}
+</script>
+{% endblock %}

@@ -100,7 +100,9 @@ Format each result clearly with Problem, Solution, Resolved By, Customer, and Da
                     'call_id': row['recording_id'],
                     'source': source_type,
                     'quality_score': row.get('call_quality_score'),
-                    'resolution_status': row.get('resolution_status')
+                    'resolution_status': row.get('resolution_status'),
+                    'avg_rating': float(row.get('avg_rating') or 0),
+                    'rating_count': int(row.get('rating_count') or 0)
                 }
                 # Add Freshdesk-specific fields
                 if source_type == 'freshdesk':
@@ -153,10 +155,11 @@ Format each result clearly with Problem, Solution, Resolved By, Customer, and Da
             }
 
     def _search_database(self, query: str, limit: int = 20) -> List[Dict]:
-        """Search the database directly using full-text search - includes call resolutions AND Freshdesk Q&A"""
+        """Search the database directly using full-text search - includes call resolutions AND Freshdesk Q&A.
+        Results are ranked by a combination of text relevance and user ratings."""
         with self.get_connection() as conn:
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
-                # Search call resolutions
+                # Search call resolutions with ratings
                 cur.execute("""
                     SELECT
                         cr.recording_id,
@@ -172,10 +175,18 @@ Format each result clearly with Problem, Solution, Resolved By, Customer, and Da
                         ts_rank(
                             to_tsvector('english', COALESCE(cr.problem_statement, '') || ' ' || COALESCE(cr.resolution_details, '')),
                             plainto_tsquery('english', %s)
-                        ) as rank
+                        ) as rank,
+                        COALESCE(r.avg_rating, 0) as avg_rating,
+                        COALESCE(r.rating_count, 0) as rating_count
                     FROM call_resolutions cr
                     JOIN transcripts t ON cr.recording_id = t.recording_id
                     LEFT JOIN insights i ON cr.recording_id = i.recording_id
+                    LEFT JOIN (
+                        SELECT qa_id, AVG(rating)::DECIMAL(3,2) as avg_rating, COUNT(*) as rating_count
+                        FROM kb_ratings
+                        WHERE source_type = 'call'
+                        GROUP BY qa_id
+                    ) r ON r.qa_id = 'call_' || cr.recording_id
                     WHERE cr.problem_statement IS NOT NULL
                       AND cr.problem_statement != 'Unable to determine'
                       AND cr.resolution_details IS NOT NULL
@@ -192,37 +203,54 @@ Format each result clearly with Problem, Solution, Resolved By, Customer, and Da
 
                 call_results = [dict(row) for row in cur.fetchall()]
 
-                # Search Freshdesk Q&A
+                # Search Freshdesk Q&A with ratings
                 freshdesk_results = []
                 try:
                     cur.execute("""
                         SELECT
-                            qa_id as recording_id,
-                            question as problem_statement,
-                            answer as resolution_details,
+                            f.qa_id as recording_id,
+                            f.question as problem_statement,
+                            f.answer as resolution_details,
                             'resolved' as resolution_status,
-                            agent_name as employee_name,
-                            requester_email as customer_name,
-                            category as customer_company,
-                            resolved_at as call_date,
+                            f.agent_name as employee_name,
+                            f.requester_email as customer_name,
+                            f.category as customer_company,
+                            f.resolved_at as call_date,
                             NULL as call_quality_score,
                             'freshdesk' as source_type,
-                            ticket_id,
-                            ts_rank(search_vector, plainto_tsquery('english', %s)) as rank
-                        FROM kb_freshdesk_qa
-                        WHERE search_vector @@ plainto_tsquery('english', %s)
-                           OR question ILIKE %s
-                           OR answer ILIKE %s
-                        ORDER BY rank DESC, resolved_at DESC
+                            f.ticket_id,
+                            ts_rank(f.search_vector, plainto_tsquery('english', %s)) as rank,
+                            COALESCE(f.avg_rating, 0) as avg_rating,
+                            COALESCE(f.rating_count, 0) as rating_count
+                        FROM kb_freshdesk_qa f
+                        WHERE f.search_vector @@ plainto_tsquery('english', %s)
+                           OR f.question ILIKE %s
+                           OR f.answer ILIKE %s
+                        ORDER BY rank DESC, f.resolved_at DESC
                         LIMIT %s
                     """, (query, query, f'%{query}%', f'%{query}%', limit))
                     freshdesk_results = [dict(row) for row in cur.fetchall()]
                 except Exception as e:
                     logger.warning(f"Freshdesk search failed (table may not exist): {e}")
 
-                # Combine and sort by rank
+                # Combine and sort by weighted score: rank + rating boost
+                # Higher rated answers get boosted in results
                 all_results = call_results + freshdesk_results
-                all_results.sort(key=lambda x: x.get('rank', 0), reverse=True)
+
+                def calculate_score(result):
+                    base_rank = float(result.get('rank', 0) or 0)
+                    avg_rating = float(result.get('avg_rating', 0) or 0)
+                    rating_count = int(result.get('rating_count', 0) or 0)
+
+                    # Relevance is primary, but stars boost the score
+                    # 1-star = 1.1x, 2-star = 1.2x, ... 5-star = 1.5x
+                    if rating_count > 0 and avg_rating > 0:
+                        rating_multiplier = 1.0 + (avg_rating / 10.0)  # 1.1x to 1.5x
+                        return base_rank * rating_multiplier
+                    else:
+                        return base_rank
+
+                all_results.sort(key=calculate_score, reverse=True)
 
                 return all_results[:limit]
 

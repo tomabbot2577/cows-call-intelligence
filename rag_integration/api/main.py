@@ -2,8 +2,12 @@
 
 import os
 import sys
+import smtplib
+import ssl
 from datetime import datetime
 from typing import Optional, List, Dict, Any
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 import logging
 from pathlib import Path
 
@@ -25,6 +29,7 @@ from rag_integration.services.db_reader import DatabaseReader
 from rag_integration.services.gemini_file_search import GeminiFileSearchService
 from rag_integration.services.vertex_rag import VertexRAGService
 from rag_integration.services.query_router import UnifiedQueryService, QueryRouter
+from rag_integration.services.dashboard_metrics import DashboardMetricsService, get_metrics_service
 from rag_integration.jobs.export_pipeline import ExportPipeline
 
 # Setup logging
@@ -152,6 +157,91 @@ class ExportRequest(BaseModel):
     skip_gcs: bool = False
     skip_gemini: bool = False
     skip_vertex: bool = False
+
+
+class EmailReportRequest(BaseModel):
+    recipient_email: str
+    report_title: str
+    report_content: str
+    report_type: Optional[str] = "general"
+
+
+# Email configuration from environment
+def get_email_config():
+    """Get email configuration from environment."""
+    from dotenv import load_dotenv
+    load_dotenv('/var/www/call-recording-system/.env')
+
+    return {
+        "smtp_host": os.getenv("SMTP_HOST", "smtp.gmail.com"),
+        "smtp_port": int(os.getenv("SMTP_PORT", "587")),
+        "smtp_user": os.getenv("SMTP_USER", ""),
+        "smtp_password": os.getenv("GMAIL_APP_PASSWORD", os.getenv("SMTP_PASSWORD", "")).replace(" ", ""),
+        "from_name": "PCR COWS Intelligence"
+    }
+
+
+def send_email(to_email: str, subject: str, body: str) -> Dict[str, Any]:
+    """Send email via SMTP with improved deliverability."""
+    import uuid
+    from email.utils import formatdate, make_msgid
+
+    config = get_email_config()
+
+    if not config["smtp_user"] or not config["smtp_password"]:
+        raise ValueError("SMTP credentials not configured")
+
+    msg = MIMEMultipart('alternative')
+    msg['Subject'] = subject
+    msg['From'] = f"Main Sequence Technology <{config['smtp_user']}>"
+    msg['To'] = to_email
+    msg['Reply-To'] = config['smtp_user']
+    msg['Date'] = formatdate(localtime=True)
+    msg['Message-ID'] = make_msgid(domain='mainsequence.net')
+
+    # Add headers to improve deliverability
+    msg['X-Priority'] = '3'  # Normal priority
+    msg['X-Mailer'] = 'Main Sequence Report System'
+
+    # Plain text version first (important for spam filters)
+    plain_body = f"""
+{body}
+
+---
+This report was shared with you by a colleague at Main Sequence Technology.
+Generated: {datetime.now().strftime('%B %d, %Y at %I:%M %p')}
+    """
+
+    # Clean HTML version
+    html_body = f"""<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px;">
+    <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; border-left: 4px solid #3498db;">
+        <pre style="white-space: pre-wrap; word-wrap: break-word; font-family: inherit; margin: 0;">{body}</pre>
+    </div>
+    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee; color: #666; font-size: 12px;">
+        <p>This report was shared with you by a colleague at Main Sequence Technology.</p>
+        <p>Generated: {datetime.now().strftime('%B %d, %Y at %I:%M %p')}</p>
+    </div>
+</body>
+</html>"""
+
+    # Attach plain text first, then HTML (order matters for spam filters)
+    msg.attach(MIMEText(plain_body, 'plain', 'utf-8'))
+    msg.attach(MIMEText(html_body, 'html', 'utf-8'))
+
+    context = ssl.create_default_context()
+
+    with smtplib.SMTP(config["smtp_host"], config["smtp_port"]) as server:
+        server.starttls(context=context)
+        server.login(config["smtp_user"], config["smtp_password"])
+        server.send_message(msg)
+
+    return {"success": True, "recipient": to_email}
 
 
 # Health check
@@ -1337,6 +1427,99 @@ async def api_kb_stats(
     stats = kb.get_stats(days=days)
 
     return stats
+
+
+@app.post("/api/v1/kb/rate")
+async def api_kb_rate(
+    request: Request,
+    qa_id: str = Form(...),
+    source_type: str = Form(...),
+    rating: int = Form(...),
+    search_query: str = Form(None)
+):
+    """API: Rate a knowledge base answer (1-5 stars)"""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if rating < 1 or rating > 5:
+        raise HTTPException(status_code=400, detail="Rating must be between 1 and 5")
+
+    user = get_current_user(request)
+    user_id = user.get('username', 'anonymous') if user else 'anonymous'
+
+    # Use SimpleKBService for write operations (DatabaseReader is read-only)
+    kb = get_kb_service()
+    try:
+        with kb.get_connection() as conn:
+            with conn.cursor() as cur:
+                # Insert rating
+                cur.execute("""
+                    INSERT INTO kb_ratings (qa_id, source_type, rating, search_query, user_id)
+                    VALUES (%s, %s, %s, %s, %s)
+                """, (qa_id, source_type, rating, search_query, user_id))
+
+                # Update avg_rating in kb_freshdesk_qa if it's a freshdesk result
+                if source_type == 'freshdesk':
+                    # Extract ticket_id from qa_id (e.g., 'fd_123456' -> 123456)
+                    ticket_id = qa_id.replace('fd_', '') if qa_id.startswith('fd_') else qa_id
+
+                    cur.execute("""
+                        UPDATE kb_freshdesk_qa
+                        SET avg_rating = (
+                            SELECT AVG(rating)::DECIMAL(3,2)
+                            FROM kb_ratings
+                            WHERE qa_id = %s AND source_type = 'freshdesk'
+                        ),
+                        rating_count = (
+                            SELECT COUNT(*)
+                            FROM kb_ratings
+                            WHERE qa_id = %s AND source_type = 'freshdesk'
+                        )
+                        WHERE qa_id = %s OR ticket_id::text = %s
+                    """, (qa_id, qa_id, qa_id, ticket_id))
+
+        logger.info(f"Rating saved: {qa_id} = {rating} stars by {user_id}")
+
+        return {
+            "success": True,
+            "qa_id": qa_id,
+            "rating": rating,
+            "message": "Thank you for rating!"
+        }
+
+    except Exception as e:
+        logger.error(f"Error saving rating: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/kb/rating/{qa_id}")
+async def api_kb_get_rating(request: Request, qa_id: str):
+    """API: Get average rating for a Q/A"""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    db = get_db()
+    try:
+        with db.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                cur.execute("""
+                    SELECT
+                        AVG(rating)::DECIMAL(3,2) as avg_rating,
+                        COUNT(*) as rating_count
+                    FROM kb_ratings
+                    WHERE qa_id = %s
+                """, (qa_id,))
+                result = cur.fetchone()
+
+                return {
+                    "qa_id": qa_id,
+                    "avg_rating": float(result['avg_rating']) if result['avg_rating'] else None,
+                    "rating_count": result['rating_count'] or 0
+                }
+
+    except Exception as e:
+        logger.error(f"Error getting rating: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
 
 
 # ==========================================
@@ -2831,6 +3014,767 @@ async def api_sales_calls_list(
 
     except Exception as e:
         logger.error(f"Sales calls list error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# ==========================================
+# EMAIL REPORT ENDPOINTS
+# ==========================================
+
+@app.get("/api/v1/email/recipients")
+async def api_email_recipients(request: Request):
+    """Get list of users for email recipient dropdown."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        db = get_db()
+        with db.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                cur.execute("""
+                    SELECT username, email, role
+                    FROM users
+                    WHERE is_active = true AND email IS NOT NULL
+                    ORDER BY username
+                """)
+                users = [dict(row) for row in cur.fetchall()]
+
+                return {
+                    "recipients": users,
+                    "count": len(users)
+                }
+
+    except Exception as e:
+        logger.error(f"Email recipients error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/v1/email/send-report")
+async def api_send_report_email(request: Request, email_request: EmailReportRequest):
+    """Send a report via email."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        user = get_current_user(request)
+        sender_name = user.get('username', 'Unknown') if user else 'Unknown'
+
+        # Generate clean subject line (avoid spam triggers)
+        report_type_labels = {
+            "sales-pipeline": "Sales Pipeline Report",
+            "competitor-intelligence": "Competitor Analysis",
+            "compliance-risk": "Compliance Review",
+            "urgency-queue": "Priority Items",
+            "key-quotes": "Customer Quotes Summary",
+            "qa-training": "Training Data Summary",
+            "sales-call-analysis": "Call Analysis",
+            "churn": "Customer Risk Report",
+            "agent": "Performance Report",
+            "sentiment": "Customer Feedback Summary",
+            "quality": "Quality Review"
+        }
+
+        report_label = report_type_labels.get(email_request.report_type, "Report")
+
+        # Clean subject - no brackets, no ALL CAPS, conversational
+        subject = f"{report_label} from {sender_name}"
+
+        # Add sender info to body
+        body = f"Shared by: {sender_name}\n"
+        body += f"Report: {email_request.report_title}\n"
+        body += "-" * 50 + "\n\n"
+        body += email_request.report_content
+
+        result = send_email(
+            to_email=email_request.recipient_email,
+            subject=subject,
+            body=body
+        )
+
+        logger.info(f"Report emailed to {email_request.recipient_email} by {sender_name}")
+
+        return {
+            "success": True,
+            "message": f"Report sent to {email_request.recipient_email}",
+            "subject": subject
+        }
+
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except smtplib.SMTPAuthenticationError:
+        raise HTTPException(status_code=500, detail="Email authentication failed - check SMTP credentials")
+    except Exception as e:
+        logger.error(f"Send report email error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# ============================================================================
+# USER ACTIVITY DASHBOARD
+# ============================================================================
+
+@app.get("/dashboard", response_class=HTMLResponse)
+async def dashboard_page(request: Request):
+    """User dashboard - shows the logged-in user's own metrics."""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+
+    user = get_current_user(request)
+
+    return templates.TemplateResponse("dashboard_user.html", {
+        "request": request,
+        "user": user,
+        "employee_name": user.get('employee_name') or user.get('display_name'),
+        "is_admin": user.get('role') == 'admin',
+        "page_title": "My Dashboard"
+    })
+
+
+@app.get("/dashboard/admin", response_class=HTMLResponse)
+async def admin_dashboard_page(request: Request):
+    """Admin dashboard - shows all users' metrics."""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    user = get_current_user(request)
+    employees = get_canonical_employee_list()
+
+    return templates.TemplateResponse("dashboard_admin.html", {
+        "request": request,
+        "user": user,
+        "employees": employees,
+        "page_title": "Team Dashboard"
+    })
+
+
+@app.get("/dashboard/admin/user/{employee_name}", response_class=HTMLResponse)
+async def admin_user_detail_page(request: Request, employee_name: str):
+    """Admin view of a specific user's dashboard."""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    user = get_current_user(request)
+
+    return templates.TemplateResponse("dashboard_user.html", {
+        "request": request,
+        "user": user,
+        "employee_name": employee_name,
+        "is_admin": True,
+        "is_admin_view": True,
+        "page_title": f"Dashboard - {employee_name}"
+    })
+
+
+@app.get("/api/v1/dashboard/metrics")
+async def api_dashboard_metrics(
+    request: Request,
+    employee: Optional[str] = None,
+    period: str = "today",
+    start_date: Optional[str] = None,
+    end_date: Optional[str] = None
+):
+    """
+    Get dashboard metrics for an employee.
+
+    Query Parameters:
+        employee: Employee name (optional, defaults to current user for non-admins)
+        period: today, wtd, last_week, mtd, qtd, ytd, custom
+        start_date: For custom period (YYYY-MM-DD)
+        end_date: For custom period (YYYY-MM-DD)
+    """
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    user = get_current_user(request)
+    is_user_admin = user.get('role') == 'admin'
+
+    # Determine which employee to get metrics for
+    if employee:
+        # Non-admins can only view their own data
+        if not is_user_admin:
+            user_employee = user.get('employee_name') or user.get('display_name')
+            if employee.lower() != user_employee.lower():
+                raise HTTPException(status_code=403, detail="Access denied")
+        target_employee = employee
+    else:
+        # Default to current user's data
+        target_employee = user.get('employee_name') or user.get('display_name')
+
+    if not target_employee:
+        raise HTTPException(status_code=400, detail="Employee name not found")
+
+    try:
+        service = get_metrics_service()
+        metrics = service.get_combined_metrics(
+            employee_name=target_employee,
+            period=period,
+            start_date=start_date,
+            end_date=end_date
+        )
+
+        return {
+            "success": True,
+            "data": metrics,
+            "generated_at": datetime.now().isoformat()
+        }
+
+    except Exception as e:
+        logger.error(f"Dashboard metrics error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/dashboard/admin/team")
+async def api_admin_team_metrics(
+    request: Request,
+    period: str = "today",
+    min_activity: int = 1
+):
+    """
+    Get metrics for all active team members (admin only).
+
+    Query Parameters:
+        period: today, wtd, last_week, mtd, qtd, ytd
+        min_activity: Minimum calls OR tickets to be included (default: 1)
+    """
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    try:
+        service = get_metrics_service()
+        team_metrics = service.get_team_metrics(period=period, min_activity=min_activity)
+
+        # Calculate team totals
+        team_totals = {
+            'total_employees': len(team_metrics),
+            'total_calls': sum(m['calls']['total_calls'] for m in team_metrics),
+            'total_answered': sum(m['calls']['answered_calls'] for m in team_metrics),
+            'avg_answer_rate': 0,
+            'avg_quality_score': 0,
+            'total_tickets_closed': sum(m['tickets']['tickets_closed'] for m in team_metrics),
+            'total_overdue': sum(m['tickets']['tickets_over_5_days'] for m in team_metrics),
+            'avg_productivity_score': 0
+        }
+
+        if team_totals['total_calls'] > 0:
+            team_totals['avg_answer_rate'] = round(
+                team_totals['total_answered'] / team_totals['total_calls'] * 100, 1
+            )
+
+        if team_metrics:
+            team_totals['avg_productivity_score'] = round(
+                sum(m['productivity']['score'] for m in team_metrics) / len(team_metrics), 1
+            )
+            # Calculate avg quality score
+            quality_scores = [m['quality']['avg_quality_score'] for m in team_metrics
+                            if m['quality']['avg_quality_score'] is not None]
+            if quality_scores:
+                team_totals['avg_quality_score'] = round(sum(quality_scores) / len(quality_scores), 1)
+
+        return {
+            "success": True,
+            "period": period,
+            "team_totals": team_totals,
+            "employees": team_metrics,
+            "generated_at": datetime.now().isoformat()
+        }
+
+    except Exception as e:
+        logger.error(f"Admin team metrics error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/dashboard/admin/export")
+async def api_export_team_metrics(
+    request: Request,
+    period: str = "today",
+    format: str = "csv"
+):
+    """Export team metrics as CSV (admin only)."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    try:
+        service = get_metrics_service()
+        team_metrics = service.get_team_metrics(period=period)
+
+        # Generate CSV
+        import csv
+        import io
+
+        output = io.StringIO()
+        writer = csv.writer(output)
+
+        # Header
+        writer.writerow([
+            'Employee', 'Total Calls', 'Answered', 'Missed', 'Answer Rate %',
+            'Avg Duration (s)', 'Inbound', 'Outbound',
+            'Tickets Opened', 'Tickets Closed', 'Open Total', 'Overdue (>5d)',
+            'Avg Quality', 'Escalations', 'Productivity Score', 'Grade'
+        ])
+
+        # Data rows
+        for m in team_metrics:
+            writer.writerow([
+                m['employee_name'],
+                m['calls']['total_calls'],
+                m['calls']['answered_calls'],
+                m['calls']['missed_calls'],
+                m['calls']['answer_rate'],
+                round(m['calls']['avg_duration_seconds'], 1),
+                m['calls']['inbound_calls'],
+                m['calls']['outbound_calls'],
+                m['tickets']['tickets_opened'],
+                m['tickets']['tickets_closed'],
+                m['tickets']['tickets_open_total'],
+                m['tickets']['tickets_over_5_days'],
+                m['quality']['avg_quality_score'],
+                m['quality']['escalation_count'],
+                m['productivity']['score'],
+                m['productivity']['grade']
+            ])
+
+        csv_content = output.getvalue()
+
+        from fastapi.responses import Response
+        return Response(
+            content=csv_content,
+            media_type="text/csv",
+            headers={
+                "Content-Disposition": f"attachment; filename=team_metrics_{period}_{datetime.now().strftime('%Y%m%d')}.csv"
+            }
+        )
+
+    except Exception as e:
+        logger.error(f"Export team metrics error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/dashboard/periods")
+async def api_dashboard_periods(request: Request):
+    """Get available period options for dashboard."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    from datetime import date, timedelta
+    today = date.today()
+
+    return {
+        "periods": [
+            {"value": "today", "label": "Today", "start": today.isoformat(), "end": today.isoformat()},
+            {"value": "wtd", "label": "Week to Date",
+             "start": (today - timedelta(days=today.weekday())).isoformat(), "end": today.isoformat()},
+            {"value": "last_week", "label": "Last Week",
+             "start": (today - timedelta(days=today.weekday() + 7)).isoformat(),
+             "end": (today - timedelta(days=today.weekday() + 1)).isoformat()},
+            {"value": "mtd", "label": "Month to Date",
+             "start": date(today.year, today.month, 1).isoformat(), "end": today.isoformat()},
+            {"value": "qtd", "label": "Quarter to Date",
+             "start": date(today.year, ((today.month - 1) // 3) * 3 + 1, 1).isoformat(), "end": today.isoformat()},
+            {"value": "ytd", "label": "Year to Date",
+             "start": date(today.year, 1, 1).isoformat(), "end": today.isoformat()},
+            {"value": "custom", "label": "Custom Range", "start": None, "end": None}
+        ]
+    }
+
+
+# ============================================================================
+# ADMIN: FRESHDESK AGENT MAPPING
+# ============================================================================
+
+@app.get("/admin/agent-mapping", response_class=HTMLResponse)
+async def admin_agent_mapping_page(request: Request):
+    """Admin page to manage Freshdesk agent to PCR employee mappings."""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    user = get_current_user(request)
+    employees = get_canonical_employee_list()
+
+    return templates.TemplateResponse("admin_agent_mapping.html", {
+        "request": request,
+        "user": user,
+        "employees": employees,
+        "page_title": "Agent Mapping"
+    })
+
+
+@app.get("/api/v1/admin/agent-mappings")
+async def api_get_agent_mappings(request: Request):
+    """Get all Freshdesk agent mappings."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    import psycopg2
+    db_url = os.getenv(
+        'RAG_DATABASE_URL',
+        'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights'
+    )
+
+    try:
+        conn = psycopg2.connect(db_url)
+        with conn.cursor(cursor_factory=RealDictCursor) as cur:
+            cur.execute("""
+                SELECT
+                    id,
+                    freshdesk_agent_name,
+                    pcr_employee_name,
+                    ticket_count,
+                    first_seen_at,
+                    last_seen_at,
+                    mapped_by,
+                    mapped_at,
+                    auto_matched
+                FROM freshdesk_agent_map
+                ORDER BY ticket_count DESC
+            """)
+            mappings = [dict(row) for row in cur.fetchall()]
+
+        conn.close()
+
+        # Convert datetimes to strings
+        for m in mappings:
+            for key in ['first_seen_at', 'last_seen_at', 'mapped_at']:
+                if m.get(key):
+                    m[key] = m[key].isoformat()
+
+        return {
+            "success": True,
+            "mappings": mappings,
+            "total": len(mappings),
+            "unmapped_count": sum(1 for m in mappings if not m['pcr_employee_name'])
+        }
+
+    except Exception as e:
+        logger.error(f"Get agent mappings error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/v1/admin/agent-mappings/{agent_id}")
+async def api_update_agent_mapping(
+    request: Request,
+    agent_id: int,
+    pcr_employee: Optional[str] = Form(None)
+):
+    """Update a Freshdesk agent mapping."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    user = get_current_user(request)
+    import psycopg2
+    db_url = os.getenv(
+        'RAG_DATABASE_URL',
+        'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights'
+    )
+
+    try:
+        conn = psycopg2.connect(db_url)
+        with conn.cursor() as cur:
+            cur.execute("""
+                UPDATE freshdesk_agent_map
+                SET pcr_employee_name = %s,
+                    mapped_by = %s,
+                    mapped_at = NOW(),
+                    auto_matched = FALSE,
+                    updated_at = NOW()
+                WHERE id = %s
+            """, (pcr_employee if pcr_employee else None,
+                  user.get('username'),
+                  agent_id))
+            conn.commit()
+
+        conn.close()
+
+        return {
+            "success": True,
+            "message": f"Mapping updated for agent ID {agent_id}"
+        }
+
+    except Exception as e:
+        logger.error(f"Update agent mapping error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# =========================================
+# Email Trigger Management Routes
+# =========================================
+
+from rag_integration.services.dashboard_triggers import get_trigger_service
+
+
+@app.get("/admin/triggers", response_class=HTMLResponse)
+async def admin_triggers_page(request: Request):
+    """Admin page to manage email triggers."""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    user = get_current_user(request)
+    employees = get_canonical_employee_list()
+
+    return templates.TemplateResponse("admin_triggers.html", {
+        "request": request,
+        "user": user,
+        "employees": employees,
+        "page_title": "Email Triggers"
+    })
+
+
+@app.get("/api/v1/triggers")
+async def api_list_triggers(
+    request: Request,
+    active_only: bool = False
+):
+    """List all email triggers."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    try:
+        service = get_trigger_service()
+        triggers = service.list_triggers(active_only=active_only)
+
+        # Convert datetime objects to strings for JSON serialization
+        for t in triggers:
+            for key in ['created_at', 'updated_at', 'last_triggered_at', 'schedule_time']:
+                if t.get(key) and hasattr(t[key], 'isoformat'):
+                    t[key] = t[key].isoformat()
+
+        return {"success": True, "data": triggers}
+
+    except Exception as e:
+        logger.error(f"List triggers error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/v1/triggers")
+async def api_create_trigger(request: Request):
+    """Create a new email trigger."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    try:
+        body = await request.json()
+        user = get_current_user(request)
+
+        service = get_trigger_service()
+        trigger_id = service.create_trigger(body, created_by=user.get('username'))
+
+        return {
+            "success": True,
+            "trigger_id": trigger_id,
+            "message": "Trigger created successfully"
+        }
+
+    except Exception as e:
+        logger.error(f"Create trigger error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/triggers/{trigger_id}")
+async def api_get_trigger(request: Request, trigger_id: int):
+    """Get a specific trigger."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    try:
+        service = get_trigger_service()
+        trigger = service.get_trigger(trigger_id)
+
+        if not trigger:
+            raise HTTPException(status_code=404, detail="Trigger not found")
+
+        # Convert datetime objects
+        for key in ['created_at', 'updated_at', 'last_triggered_at', 'schedule_time']:
+            if trigger.get(key) and hasattr(trigger[key], 'isoformat'):
+                trigger[key] = trigger[key].isoformat()
+
+        return {"success": True, "data": trigger}
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Get trigger error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.put("/api/v1/triggers/{trigger_id}")
+async def api_update_trigger(request: Request, trigger_id: int):
+    """Update an existing trigger."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    try:
+        body = await request.json()
+        service = get_trigger_service()
+        success = service.update_trigger(trigger_id, body)
+
+        if not success:
+            raise HTTPException(status_code=404, detail="Trigger not found or no changes made")
+
+        return {"success": True, "message": "Trigger updated successfully"}
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Update trigger error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.delete("/api/v1/triggers/{trigger_id}")
+async def api_delete_trigger(request: Request, trigger_id: int):
+    """Delete a trigger."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    try:
+        service = get_trigger_service()
+        success = service.delete_trigger(trigger_id)
+
+        if not success:
+            raise HTTPException(status_code=404, detail="Trigger not found")
+
+        return {"success": True, "message": "Trigger deleted successfully"}
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Delete trigger error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/v1/triggers/{trigger_id}/test")
+async def api_test_trigger(
+    request: Request,
+    trigger_id: int,
+    employee: Optional[str] = None
+):
+    """
+    Test a trigger without sending email.
+    Returns what would happen if the trigger was evaluated.
+    """
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    try:
+        trigger_service = get_trigger_service()
+        metrics_service = get_metrics_service()
+
+        trigger = trigger_service.get_trigger(trigger_id)
+        if not trigger:
+            raise HTTPException(status_code=404, detail="Trigger not found")
+
+        # Get employees to test
+        if employee:
+            employees = [employee]
+        elif trigger.get('applies_to') == 'specific_users' and trigger.get('target_employees'):
+            employees = trigger['target_employees']
+        else:
+            # Get first 5 active employees for testing
+            team = metrics_service.get_team_metrics(period='today')
+            employees = [m['employee_name'] for m in team[:5]]
+
+        results = []
+        for emp in employees:
+            metrics = metrics_service.get_combined_metrics(emp, 'today')
+            evaluation = trigger_service.evaluate_trigger(trigger, emp, metrics)
+            recipients = trigger_service._get_recipients(trigger, emp)
+
+            results.append({
+                'employee': emp,
+                'would_fire': evaluation['should_fire'],
+                'reason': evaluation.get('reason', ''),
+                'recipients': recipients,
+                'metrics_summary': {
+                    'answer_rate': metrics.get('calls', {}).get('answer_rate', 0),
+                    'quality_score': metrics.get('quality', {}).get('avg_quality_score', 0),
+                    'productivity_score': metrics.get('productivity', {}).get('score', 0)
+                }
+            })
+
+        return {
+            "success": True,
+            "trigger_name": trigger.get('name'),
+            "test_results": results,
+            "message": f"Tested against {len(employees)} employees"
+        }
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Test trigger error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/triggers/history")
+async def api_trigger_history(
+    request: Request,
+    trigger_id: Optional[int] = None,
+    employee: Optional[str] = None,
+    limit: int = 50
+):
+    """Get trigger execution history."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    if not is_admin(request):
+        raise HTTPException(status_code=403, detail="Admin access required")
+
+    try:
+        service = get_trigger_service()
+        history = service.get_trigger_history(
+            trigger_id=trigger_id,
+            employee_name=employee,
+            limit=limit
+        )
+
+        # Convert datetime objects
+        for h in history:
+            if h.get('triggered_at') and hasattr(h['triggered_at'], 'isoformat'):
+                h['triggered_at'] = h['triggered_at'].isoformat()
+
+        return {"success": True, "data": history}
+
+    except Exception as e:
+        logger.error(f"Get trigger history error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 

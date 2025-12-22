@@ -33,6 +33,7 @@ CANONICAL_EMPLOYEES = [
     "Davisha",
     "Lisa Rogers",
     "Samuel Barnes",
+    "Tyler Trautman",
 ]
 
 # Map variations to canonical names (case-insensitive lookup)
@@ -173,6 +174,11 @@ NAME_VARIATIONS = {
     "sam": "Samuel Barnes",
     "samuel barnes": "Samuel Barnes",
     "barnes, samuel": "Samuel Barnes",
+
+    # Tyler Trautman
+    "tyler": "Tyler Trautman",
+    "tyler trautman": "Tyler Trautman",
+    "trautman, tyler": "Tyler Trautman",
 }
 
 # Names that are NOT employees (customers, etc.)

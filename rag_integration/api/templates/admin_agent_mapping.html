@@ -1,0 +1,406 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page_title }} - COWS{% endblock %}
+
+{% block extra_css %}
+<style>
+    .section-card {
+        background: white;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        margin-bottom: 1.5rem;
+    }
+    .section-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #3498db;
+    }
+
+    .mapping-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+    .mapping-table th {
+        background: #f8f9fa;
+        padding: 0.75rem;
+        text-align: left;
+        font-weight: 600;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #495057;
+        border-bottom: 2px solid #dee2e6;
+    }
+    .mapping-table td {
+        padding: 0.75rem;
+        border-bottom: 1px solid #eee;
+        vertical-align: middle;
+    }
+    .mapping-table tr:hover { background: #f8f9fa; }
+
+    .unmapped-row { background: #fff3cd; }
+    .mapped-row { background: #d4edda; }
+    .auto-matched-row { background: #d1ecf1; }
+
+    .status-badge {
+        display: inline-block;
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 600;
+    }
+    .status-unmapped { background: #f8d7da; color: #721c24; }
+    .status-mapped { background: #d4edda; color: #155724; }
+    .status-auto { background: #d1ecf1; color: #0c5460; }
+
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255,255,255,0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+    .loading-overlay.hidden { display: none; }
+
+    .filter-group {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+    }
+    .filter-group select, .filter-group input {
+        max-width: 250px;
+    }
+
+    .stats-row {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    .stat-item {
+        text-align: center;
+    }
+    .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #2c3e50;
+    }
+    .stat-label {
+        font-size: 0.875rem;
+        color: #6c757d;
+        text-transform: uppercase;
+    }
+    .stat-value.unmapped { color: #e74c3c; }
+    .stat-value.mapped { color: #27ae60; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="loading-overlay hidden" id="loadingOverlay">
+    <div class="text-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;"></div>
+        <p class="mt-3">Saving mapping...</p>
+    </div>
+</div>
+
+<div class="container-fluid py-4">
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="h3 mb-1">
+                <i class="bi bi-diagram-3"></i> Freshdesk Agent Mapping
+            </h1>
+            <p class="text-muted mb-0">
+                Map Freshdesk support agents to PCR employee names for unified reporting
+            </p>
+        </div>
+        <div>
+            <a href="/dashboard/admin" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Back to Dashboard
+            </a>
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="section-card">
+        <div class="stats-row">
+            <div class="stat-item">
+                <div class="stat-value" id="totalAgents">-</div>
+                <div class="stat-label">Total Agents</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value mapped" id="mappedCount">-</div>
+                <div class="stat-label">Mapped</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value unmapped" id="unmappedCount">-</div>
+                <div class="stat-label">Unmapped</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="autoMatchedCount">-</div>
+                <div class="stat-label">Auto-Matched</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="section-card">
+        <div class="filter-group">
+            <select class="form-select" id="filterStatus" onchange="applyFilters()">
+                <option value="all">All Agents</option>
+                <option value="unmapped">Unmapped Only</option>
+                <option value="mapped">Mapped Only</option>
+                <option value="auto">Auto-Matched Only</option>
+            </select>
+            <input type="text" class="form-control" id="searchInput"
+                   placeholder="Search agent names..." oninput="applyFilters()">
+        </div>
+    </div>
+
+    <!-- Mapping Table -->
+    <div class="section-card">
+        <h5 class="section-title"><i class="bi bi-table"></i> Agent Mappings</h5>
+
+        <div class="table-responsive">
+            <table class="mapping-table" id="mappingTable">
+                <thead>
+                    <tr>
+                        <th>Freshdesk Agent</th>
+                        <th>Status</th>
+                        <th>PCR Employee</th>
+                        <th>Ticket Count</th>
+                        <th>Last Seen</th>
+                        <th>Mapped By</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="mappingTableBody">
+                    <!-- Populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-3 text-muted small">
+            Showing <span id="visibleCount">0</span> of <span id="totalCount">0</span> agents
+        </div>
+    </div>
+
+    <!-- Help -->
+    <div class="section-card">
+        <h5 class="section-title"><i class="bi bi-question-circle"></i> How Mapping Works</h5>
+        <ul class="mb-0">
+            <li><strong>Unmapped agents</strong> (red) have tickets but aren't linked to PCR employees</li>
+            <li><strong>Auto-matched agents</strong> (blue) were automatically linked based on name similarity</li>
+            <li><strong>Manually mapped agents</strong> (green) were set by an admin</li>
+            <li>Select "Clear mapping" to unlink an agent from an employee</li>
+            <li>Mappings affect the User Dashboard ticket metrics</li>
+        </ul>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">
+                    <i class="bi bi-pencil"></i> Edit Mapping
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form id="editForm" onsubmit="saveMapping(event)">
+                <div class="modal-body">
+                    <input type="hidden" id="editAgentId">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Freshdesk Agent</label>
+                        <p class="form-control-plaintext" id="editAgentName">-</p>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold" for="editPcrEmployee">Map to PCR Employee</label>
+                        <select class="form-select" id="editPcrEmployee">
+                            <option value="">-- Clear mapping --</option>
+                            {% for emp in employees %}
+                            <option value="{{ emp }}">{{ emp }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-check"></i> Save Mapping
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    let allMappings = [];
+    let editModal;
+
+    document.addEventListener('DOMContentLoaded', function() {
+        editModal = new bootstrap.Modal(document.getElementById('editModal'));
+        loadMappings();
+    });
+
+    async function loadMappings() {
+        try {
+            const response = await fetch('/api/v1/admin/agent-mappings');
+            if (!response.ok) throw new Error('Failed to load mappings');
+
+            const result = await response.json();
+            if (result.success) {
+                allMappings = result.data;
+                updateStats();
+                applyFilters();
+            }
+        } catch (error) {
+            console.error('Load error:', error);
+            alert('Failed to load mappings: ' + error.message);
+        }
+    }
+
+    function updateStats() {
+        const total = allMappings.length;
+        const mapped = allMappings.filter(m => m.pcr_employee_name).length;
+        const unmapped = allMappings.filter(m => !m.pcr_employee_name).length;
+        const auto = allMappings.filter(m => m.auto_matched).length;
+
+        document.getElementById('totalAgents').textContent = total;
+        document.getElementById('mappedCount').textContent = mapped;
+        document.getElementById('unmappedCount').textContent = unmapped;
+        document.getElementById('autoMatchedCount').textContent = auto;
+        document.getElementById('totalCount').textContent = total;
+    }
+
+    function applyFilters() {
+        const status = document.getElementById('filterStatus').value;
+        const search = document.getElementById('searchInput').value.toLowerCase();
+
+        let filtered = allMappings;
+
+        // Status filter
+        if (status === 'unmapped') {
+            filtered = filtered.filter(m => !m.pcr_employee_name);
+        } else if (status === 'mapped') {
+            filtered = filtered.filter(m => m.pcr_employee_name && !m.auto_matched);
+        } else if (status === 'auto') {
+            filtered = filtered.filter(m => m.auto_matched);
+        }
+
+        // Search filter
+        if (search) {
+            filtered = filtered.filter(m =>
+                m.freshdesk_agent_name.toLowerCase().includes(search) ||
+                (m.pcr_employee_name && m.pcr_employee_name.toLowerCase().includes(search))
+            );
+        }
+
+        renderTable(filtered);
+    }
+
+    function renderTable(mappings) {
+        const tbody = document.getElementById('mappingTableBody');
+
+        tbody.innerHTML = mappings.map(m => {
+            let rowClass = 'unmapped-row';
+            let statusBadge = '<span class="status-badge status-unmapped">Unmapped</span>';
+
+            if (m.pcr_employee_name) {
+                if (m.auto_matched) {
+                    rowClass = 'auto-matched-row';
+                    statusBadge = '<span class="status-badge status-auto">Auto-matched</span>';
+                } else {
+                    rowClass = 'mapped-row';
+                    statusBadge = '<span class="status-badge status-mapped">Mapped</span>';
+                }
+            }
+
+            const lastSeen = m.last_seen_at
+                ? new Date(m.last_seen_at).toLocaleDateString()
+                : '-';
+            const mappedBy = m.mapped_by || '-';
+            const pcrEmployee = m.pcr_employee_name || '<span class="text-muted">Not mapped</span>';
+
+            return `
+                <tr class="${rowClass}">
+                    <td><strong>${m.freshdesk_agent_name}</strong></td>
+                    <td>${statusBadge}</td>
+                    <td>${pcrEmployee}</td>
+                    <td>${m.ticket_count}</td>
+                    <td>${lastSeen}</td>
+                    <td>${mappedBy}</td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary"
+                                onclick="openEdit(${m.id}, '${escapeHtml(m.freshdesk_agent_name)}', '${m.pcr_employee_name || ''}')">
+                            <i class="bi bi-pencil"></i> Edit
+                        </button>
+                    </td>
+                </tr>
+            `;
+        }).join('');
+
+        document.getElementById('visibleCount').textContent = mappings.length;
+    }
+
+    function openEdit(id, agentName, currentEmployee) {
+        document.getElementById('editAgentId').value = id;
+        document.getElementById('editAgentName').textContent = agentName;
+        document.getElementById('editPcrEmployee').value = currentEmployee;
+        editModal.show();
+    }
+
+    async function saveMapping(event) {
+        event.preventDefault();
+
+        const agentId = document.getElementById('editAgentId').value;
+        const pcrEmployee = document.getElementById('editPcrEmployee').value;
+
+        document.getElementById('loadingOverlay').classList.remove('hidden');
+
+        try {
+            const formData = new FormData();
+            formData.append('pcr_employee', pcrEmployee);
+
+            const response = await fetch(`/api/v1/admin/agent-mappings/${agentId}`, {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) throw new Error('Failed to save mapping');
+
+            const result = await response.json();
+            if (result.success) {
+                editModal.hide();
+                loadMappings();
+            } else {
+                throw new Error(result.message || 'Save failed');
+            }
+        } catch (error) {
+            console.error('Save error:', error);
+            alert('Failed to save mapping: ' + error.message);
+        } finally {
+            document.getElementById('loadingOverlay').classList.add('hidden');
+        }
+    }
+
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML.replace(/'/g, "\\'");
+    }
+</script>
+{% endblock %}

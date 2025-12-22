@@ -163,6 +163,17 @@
                             <i class="bi bi-book"></i> Knowledge Base
                         </a>
                     </li>
+                    <li class="nav-item">
+                        {% if request.session.get('user') and request.session.user.role == 'admin' %}
+                        <a class="nav-link {% if '/dashboard' in request.url.path %}active{% endif %}" href="/dashboard/admin">
+                            <i class="bi bi-people"></i> Team Dashboard
+                        </a>
+                        {% else %}
+                        <a class="nav-link {% if '/dashboard' in request.url.path %}active{% endif %}" href="/dashboard">
+                            <i class="bi bi-speedometer2"></i> My Dashboard
+                        </a>
+                        {% endif %}
+                    </li>
                     {% if request.session.get('user') and request.session.user.role == 'admin' %}
                     <li class="nav-item mt-3">
                         <small class="text-muted px-3">ADMIN</small>
@@ -201,6 +212,149 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Global Email Report Functionality -->
+    <script>
+    // Email report state
+    window.cowsEmail = {
+        recipients: [],
+        currentReportType: 'general',
+        currentReportTitle: 'Report',
+        loaded: false
+    };
+
+    // Load email recipients on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        loadEmailRecipients();
+    });
+
+    async function loadEmailRecipients() {
+        if (window.cowsEmail.loaded) return;
+        try {
+            const response = await fetch('/api/v1/email/recipients');
+            if (response.ok) {
+                const data = await response.json();
+                window.cowsEmail.recipients = data.recipients || [];
+                window.cowsEmail.loaded = true;
+                // Update any existing dropdowns
+                document.querySelectorAll('.email-recipient-select').forEach(select => {
+                    populateRecipientSelect(select);
+                });
+            }
+        } catch (error) {
+            console.error('Failed to load email recipients:', error);
+        }
+    }
+
+    function populateRecipientSelect(select) {
+        select.innerHTML = '<option value="">-- Select recipient --</option>';
+        select.innerHTML += '<option value="__custom__">✏️ Enter custom email...</option>';
+        window.cowsEmail.recipients.forEach(user => {
+            const option = document.createElement('option');
+            option.value = user.email;
+            option.textContent = `${user.username} (${user.email})`;
+            select.appendChild(option);
+        });
+    }
+
+    function handleRecipientChange(select) {
+        const container = select.closest('.email-report-dropdown');
+        const customInput = container.querySelector('.email-custom-input');
+        if (select.value === '__custom__') {
+            customInput.style.display = 'block';
+            customInput.focus();
+        } else {
+            customInput.style.display = 'none';
+        }
+    }
+
+    async function sendReportEmail(buttonElement) {
+        // Find the parent dropdown container
+        const container = buttonElement.closest('.email-report-dropdown');
+        const selectValue = container.querySelector('.email-recipient-select').value;
+        const customInput = container.querySelector('.email-custom-input');
+        const comments = container.querySelector('.email-comments').value.trim();
+        const statusDiv = container.querySelector('.email-status');
+
+        // Get recipient - either from select or custom input
+        let recipient = selectValue;
+        if (selectValue === '__custom__') {
+            recipient = customInput ? customInput.value.trim() : '';
+        }
+
+        // Find the report content - look for nearby report output
+        const reportOutput = document.querySelector('#reportOutput, .report-output');
+        const reportContent = reportOutput ?
+            (reportOutput.querySelector('#reportContent, .report-content')?.textContent || '') : '';
+        const reportTitle = reportOutput ?
+            (reportOutput.querySelector('#reportTitle, .report-title')?.textContent || window.cowsEmail.currentReportTitle) :
+            window.cowsEmail.currentReportTitle;
+
+        if (!recipient || recipient === '__custom__') {
+            statusDiv.innerHTML = '<span class="text-danger"><i class="bi bi-exclamation-circle"></i> Please select or enter a recipient</span>';
+            return;
+        }
+
+        // Basic email validation
+        if (!recipient.includes('@')) {
+            statusDiv.innerHTML = '<span class="text-danger"><i class="bi bi-exclamation-circle"></i> Please enter a valid email address</span>';
+            return;
+        }
+
+        if (!reportContent) {
+            statusDiv.innerHTML = '<span class="text-danger"><i class="bi bi-exclamation-circle"></i> No report content found</span>';
+            return;
+        }
+
+        statusDiv.innerHTML = '<span class="text-info"><i class="bi bi-hourglass-split"></i> Sending...</span>';
+
+        // Prepend comments if provided
+        let fullContent = reportContent;
+        if (comments) {
+            fullContent = `COMMENTS FROM SENDER:\n${comments}\n\n${'='.repeat(50)}\n\n${reportContent}`;
+        }
+
+        try {
+            const response = await fetch('/api/v1/email/send-report', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    recipient_email: recipient,
+                    report_title: reportTitle,
+                    report_content: fullContent,
+                    report_type: window.cowsEmail.currentReportType
+                })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                statusDiv.innerHTML = '<span class="text-success"><i class="bi bi-check-circle"></i> Sent!</span>';
+                container.querySelector('.email-comments').value = '';
+                // Auto-close dropdown
+                setTimeout(() => {
+                    const dropdownBtn = container.querySelector('[data-bs-toggle="dropdown"]');
+                    if (dropdownBtn) {
+                        const dropdown = bootstrap.Dropdown.getInstance(dropdownBtn);
+                        if (dropdown) dropdown.hide();
+                    }
+                    statusDiv.innerHTML = '';
+                }, 2000);
+            } else {
+                statusDiv.innerHTML = `<span class="text-danger"><i class="bi bi-x-circle"></i> ${data.detail || 'Failed'}</span>`;
+            }
+        } catch (error) {
+            statusDiv.innerHTML = `<span class="text-danger"><i class="bi bi-x-circle"></i> Error</span>`;
+        }
+    }
+
+    // Helper to set report context
+    function setReportContext(type, title) {
+        window.cowsEmail.currentReportType = type || 'general';
+        window.cowsEmail.currentReportTitle = title || 'Report';
+    }
+    </script>
+
     {% block extra_js %}{% endblock %}
 </body>
 </html>

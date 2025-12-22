@@ -27,16 +27,16 @@
                 <div class="mt-3">
                     <small class="text-muted">Popular searches:</small>
                     <div class="mt-2 d-flex flex-wrap gap-1">
-                        <a href="/knowledge-base/search?q=email integration" class="badge bg-primary text-white text-decoration-none">email integration</a>
-                        <a href="/knowledge-base/search?q=PCRecruiter login issue" class="badge bg-primary text-white text-decoration-none">PCRecruiter login issue</a>
-                        <a href="/knowledge-base/search?q=RingCentral voicemail" class="badge bg-primary text-white text-decoration-none">RingCentral voicemail</a>
-                        <a href="/knowledge-base/search?q=LinkedIn integration" class="badge bg-primary text-white text-decoration-none">LinkedIn integration</a>
-                        <a href="/knowledge-base/search?q=database search error" class="badge bg-primary text-white text-decoration-none">database search error</a>
-                        <a href="/knowledge-base/search?q=add new user" class="badge bg-secondary text-white text-decoration-none">add new user</a>
-                        <a href="/knowledge-base/search?q=candidate import" class="badge bg-secondary text-white text-decoration-none">candidate import</a>
-                        <a href="/knowledge-base/search?q=training request" class="badge bg-secondary text-white text-decoration-none">training request</a>
-                        <a href="/knowledge-base/search?q=phone capture" class="badge bg-secondary text-white text-decoration-none">phone capture</a>
-                        <a href="/knowledge-base/search?q=account setup" class="badge bg-secondary text-white text-decoration-none">account setup</a>
+                        <a href="/knowledge-base/search?q=email integration" class="badge bg-primary text-white text-decoration-none popular-search">email integration</a>
+                        <a href="/knowledge-base/search?q=PCRecruiter login issue" class="badge bg-primary text-white text-decoration-none popular-search">PCRecruiter login issue</a>
+                        <a href="/knowledge-base/search?q=RingCentral voicemail" class="badge bg-primary text-white text-decoration-none popular-search">RingCentral voicemail</a>
+                        <a href="/knowledge-base/search?q=LinkedIn integration" class="badge bg-primary text-white text-decoration-none popular-search">LinkedIn integration</a>
+                        <a href="/knowledge-base/search?q=database search error" class="badge bg-primary text-white text-decoration-none popular-search">database search error</a>
+                        <a href="/knowledge-base/search?q=add new user" class="badge bg-secondary text-white text-decoration-none popular-search">add new user</a>
+                        <a href="/knowledge-base/search?q=candidate import" class="badge bg-secondary text-white text-decoration-none popular-search">candidate import</a>
+                        <a href="/knowledge-base/search?q=training request" class="badge bg-secondary text-white text-decoration-none popular-search">training request</a>
+                        <a href="/knowledge-base/search?q=phone capture" class="badge bg-secondary text-white text-decoration-none popular-search">phone capture</a>
+                        <a href="/knowledge-base/search?q=account setup" class="badge bg-secondary text-white text-decoration-none popular-search">account setup</a>
                     </div>
                 </div>
             </div>
@@ -116,15 +116,23 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Feedback Buttons -->
-                        <div class="mt-3 pt-3 border-top">
-                            <span class="text-muted me-2">Was this helpful?</span>
-                            <button class="btn btn-sm btn-outline-success me-1" onclick="submitFeedback({{ search_results.search_id }}, true, {{ loop.index0 }})">
-                                <i class="bi bi-hand-thumbs-up"></i> Yes
-                            </button>
-                            <button class="btn btn-sm btn-outline-danger" onclick="submitFeedback({{ search_results.search_id }}, false, {{ loop.index0 }})">
-                                <i class="bi bi-hand-thumbs-down"></i> No
-                            </button>
+                        <!-- Star Rating -->
+                        <div class="mt-3 pt-3 border-top d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="text-muted me-2">Rate this answer:</span>
+                                <span class="star-rating" data-qa-id="{{ 'fd_' ~ result.ticket_id if result.source == 'freshdesk' else 'call_' ~ result.call_id }}" data-source="{{ result.source }}">
+                                    {% for i in range(1, 6) %}
+                                    <i class="bi bi-star star-btn fs-5" data-rating="{{ i }}" style="cursor: pointer; color: #ffc107;" onmouseover="hoverStars(this, {{ i }})" onmouseout="resetStars(this)" onclick="submitRating(this, {{ i }})"></i>
+                                    {% endfor %}
+                                </span>
+                                <span class="rating-status ms-2 small"></span>
+                            </div>
+                            {% if result.avg_rating %}
+                            <div class="text-muted small">
+                                <i class="bi bi-star-fill text-warning"></i> {{ "%.1f"|format(result.avg_rating) }}/5
+                                <span class="text-muted">({{ result.rating_count or 0 }} ratings)</span>
+                            </div>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -280,10 +288,122 @@
         </div>
     </div>
 </div>
+<!-- Loading Overlay -->
+<div id="loadingOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: center;">
+    <div class="card" style="max-width: 400px; text-align: center;">
+        <div class="card-body p-4">
+            <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <h5 class="mb-2">Searching Knowledge Base...</h5>
+            <p class="text-muted mb-0" id="loadingMessage">Finding the best answers for you using AI</p>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block extra_js %}
 <script>
+function showLoading(searchTerm) {
+    document.getElementById('loadingOverlay').style.display = 'flex';
+    if (searchTerm) {
+        document.getElementById('loadingMessage').textContent = `Searching for "${searchTerm}"...`;
+    }
+}
+
+function hideLoading() {
+    document.getElementById('loadingOverlay').style.display = 'none';
+}
+
+// Show loading on form submit
+document.querySelector('form[action="/knowledge-base/search"]').addEventListener('submit', function(e) {
+    const query = document.querySelector('input[name="query"]').value.trim();
+    if (query) {
+        showLoading(query);
+    }
+});
+
+// Show loading on popular search click
+document.querySelectorAll('.popular-search').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+        const searchTerm = this.textContent.trim();
+        showLoading(searchTerm);
+    });
+});
+
+// Hide loading when page finishes (for back button)
+window.addEventListener('pageshow', function() {
+    hideLoading();
+});
+
+// Star rating functions
+function hoverStars(starElement, rating) {
+    const container = starElement.closest('.star-rating');
+    const stars = container.querySelectorAll('.star-btn');
+    stars.forEach((star, index) => {
+        if (index < rating) {
+            star.classList.remove('bi-star');
+            star.classList.add('bi-star-fill');
+        } else {
+            star.classList.remove('bi-star-fill');
+            star.classList.add('bi-star');
+        }
+    });
+}
+
+function resetStars(starElement) {
+    const container = starElement.closest('.star-rating');
+    const currentRating = parseInt(container.dataset.currentRating) || 0;
+    const stars = container.querySelectorAll('.star-btn');
+    stars.forEach((star, index) => {
+        if (index < currentRating) {
+            star.classList.remove('bi-star');
+            star.classList.add('bi-star-fill');
+        } else {
+            star.classList.remove('bi-star-fill');
+            star.classList.add('bi-star');
+        }
+    });
+}
+
+async function submitRating(starElement, rating) {
+    const container = starElement.closest('.star-rating');
+    const qaId = container.dataset.qaId;
+    const sourceType = container.dataset.source;
+    const statusSpan = container.parentElement.querySelector('.rating-status');
+    const searchQuery = '{{ query|default("", true) }}';
+
+    // Set current rating visually
+    container.dataset.currentRating = rating;
+    hoverStars(starElement, rating);
+
+    try {
+        const formData = new FormData();
+        formData.append('qa_id', qaId);
+        formData.append('source_type', sourceType);
+        formData.append('rating', rating);
+        formData.append('search_query', searchQuery);
+
+        const response = await fetch('/api/v1/kb/rate', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            statusSpan.innerHTML = '<span class="text-success"><i class="bi bi-check-circle"></i> Saved!</span>';
+            // Show toast
+            const toast = new bootstrap.Toast(document.getElementById('feedbackToast'));
+            toast.show();
+            setTimeout(() => { statusSpan.innerHTML = ''; }, 3000);
+        } else {
+            statusSpan.innerHTML = '<span class="text-danger"><i class="bi bi-x-circle"></i> Error</span>';
+        }
+    } catch (error) {
+        console.error('Error submitting rating:', error);
+        statusSpan.innerHTML = '<span class="text-danger"><i class="bi bi-x-circle"></i> Error</span>';
+    }
+}
+
 async function submitFeedback(searchId, helpful, resultIndex) {
     try {
         const formData = new FormData();
