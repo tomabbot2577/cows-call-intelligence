@@ -36,7 +36,7 @@ logger = logging.getLogger(__name__)
 def get_db_connection():
     return psycopg2.connect(
         os.getenv('RAG_DATABASE_URL',
-                  'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights')
+                  '" + os.getenv('DATABASE_URL', '')')
     )
 
 

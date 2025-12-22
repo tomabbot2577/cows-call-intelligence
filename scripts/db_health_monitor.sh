@@ -8,7 +8,7 @@ LOG_FILE="$LOG_DIR/db_health.log"
 ALERT_FILE="$LOG_DIR/db_alerts.log"
 
 # Database credentials
-export PGPASSWORD="REDACTED_DB_PASSWORD"
+export PGPASSWORD="${PG_PASSWORD:-$(grep PG_PASSWORD .env 2>/dev/null | cut -d= -f2)}"
 DB_USER="call_insights_user"
 DB_NAME="call_insights"
 DB_HOST="localhost"

@@ -150,7 +150,7 @@ echo "[Database]" >> "$ALERT_FILE"
 DB_CHECK=$(python3 -c "
 import psycopg2
 try:
-    conn = psycopg2.connect('postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights')
+    conn = psycopg2.connect('postgresql://call_insights_user:${PG_PASSWORD:-$(grep PG_PASSWORD .env 2>/dev/null | cut -d= -f2)}@localhost/call_insights')
     cur = conn.cursor()
     cur.execute('SELECT 1')
     print('OK')

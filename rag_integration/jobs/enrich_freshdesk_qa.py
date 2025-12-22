@@ -49,7 +49,7 @@ class FreshdeskQAEnricher:
 
         self.db_url = os.getenv(
             'RAG_DATABASE_URL',
-            'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights'
+            '" + os.getenv('DATABASE_URL', '')'
         )
 
     def get_unenriched_qa(self, limit: int = 100) -> List[Dict]:
@@ -185,7 +185,7 @@ def ensure_enrichment_columns():
     """Add enrichment columns to kb_freshdesk_qa table if they don't exist."""
     db_url = os.getenv(
         'RAG_DATABASE_URL',
-        'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights'
+        '" + os.getenv('DATABASE_URL', '')'
     )
 
     with psycopg2.connect(db_url) as conn:

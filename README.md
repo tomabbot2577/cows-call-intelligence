@@ -198,7 +198,7 @@ GOOGLE_DRIVE_FOLDER_ID=your_folder_id
 GOOGLE_IMPERSONATE_EMAIL=user@domain.com
 
 # PostgreSQL Database
-DATABASE_URL=postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights
+DATABASE_URL=postgresql://call_insights_user:[your_password]@localhost/call_insights
 
 # OpenRouter (AI Insights)
 OPENROUTER_API_KEY=your_openrouter_key
@@ -222,7 +222,7 @@ sudo systemctl reload nginx
 # Create database and user
 sudo -u postgres psql <<EOF
 CREATE DATABASE call_insights;
-CREATE USER call_insights_user WITH PASSWORD 'REDACTED_DB_PASSWORD';
+CREATE USER call_insights_user WITH PASSWORD '[your_password]';
 GRANT ALL PRIVILEGES ON DATABASE call_insights TO call_insights_user;
 \c call_insights
 GRANT ALL ON SCHEMA public TO call_insights_user;

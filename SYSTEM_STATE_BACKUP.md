@@ -85,7 +85,7 @@ RINGCENTRAL_JWT_TOKEN=eyJraWQiOiI4NzYyZjU5OGQwNTk0NGRiODZiZjVjYTk3ODA0NzYwOCIsIn
 RINGCENTRAL_SERVER_URL=https://platform.ringcentral.com
 
 # Database
-DATABASE_URL="postgresql://call_system:REDACTED_PASSWORD@localhost:5432/call_recordings"
+DATABASE_URL="postgresql://call_system:[see .env]@localhost:5432/call_recordings"
 
 # Salad Cloud API
 SALAD_API_KEY=REDACTED_SALAD_API_KEY

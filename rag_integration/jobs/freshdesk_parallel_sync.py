@@ -53,7 +53,7 @@ def sync_date_range(args):
 
     domain = os.getenv('FRESHDESK_DOMAIN', 'mainsequencetechnology')
     api_key = os.getenv('FRESHDESK_API_KEY')
-    db_url = os.getenv('RAG_DATABASE_URL', 'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights')
+    db_url = os.getenv('RAG_DATABASE_URL', '" + os.getenv('DATABASE_URL', '')')
 
     base_url = f"https://{domain}.freshdesk.com/api/v2"
     auth = (api_key, 'X')

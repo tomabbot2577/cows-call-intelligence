@@ -81,7 +81,7 @@ python layer5_advanced_metrics.py --limit 100
 
 ### Step 4: Check Progress
 ```bash
-PGPASSWORD=REDACTED_DB_PASSWORD psql -U call_insights_user -d call_insights -h localhost -c "
+PGPASSWORD=$PG_PASSWORD psql -U call_insights_user -d call_insights -h localhost -c "
 SELECT 
     (SELECT COUNT(*) FROM transcripts WHERE transcript_text IS NOT NULL) as transcribed,
     (SELECT COUNT(*) FROM insights) as layer2,
@@ -109,12 +109,12 @@ python src/migration/import_to_rag.py
 
 ## DATABASE INFO
 
-- **Connection:** `postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights`
+- **Connection:** `postgresql://call_insights_user:[see .env]@localhost/call_insights`
 - **Tables:** transcripts, insights, call_resolutions, call_recommendations, call_advanced_metrics, transcript_embeddings
 
 ## CREDENTIALS
-- **PostgreSQL:** call_insights_user / REDACTED_DB_PASSWORD @ localhost
-- **Sudo:** !@#Pokey123
+- **PostgreSQL:** call_insights_user / [see .env] @ localhost
+- **Sudo:** [not stored in git]
 - **Vertex AI project:** call-insights-rag-prod
 - **GCS bucket:** call-insights-rag-data-west
 - **OpenRouter API:** Uses `google/gemini-2.5-flash` model

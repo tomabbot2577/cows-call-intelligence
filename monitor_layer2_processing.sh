@@ -12,7 +12,7 @@ echo "$(date): Starting Layer 2 monitoring loop" >> $LOG_FILE
 
 while true; do
     # Get current count of enhanced records
-    ENHANCED_COUNT=$(PGPASSWORD=REDACTED_DB_PASSWORD psql -U call_insights_user -d call_insights -h localhost -t -c "SELECT COUNT(*) FROM insights WHERE sentiment_reasoning IS NOT NULL;" | xargs)
+    ENHANCED_COUNT=$(PGPASSWORD=${PG_PASSWORD} psql -U call_insights_user -d call_insights -h localhost -t -c "SELECT COUNT(*) FROM insights WHERE sentiment_reasoning IS NOT NULL;" | xargs)
 
     # Get number of running processes
     RUNNING=$(ps aux | grep "python layer2_sentiment_enhanced.py" | grep -v grep | wc -l)

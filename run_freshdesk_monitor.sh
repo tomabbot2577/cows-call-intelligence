@@ -40,7 +40,7 @@ fi
 # Get current counts
 TOTAL=$($VENV -c "
 import psycopg2
-conn = psycopg2.connect('postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights')
+conn = psycopg2.connect('postgresql://call_insights_user:${PG_PASSWORD}@localhost/call_insights')
 cur = conn.cursor()
 cur.execute('SELECT COUNT(*) FROM kb_freshdesk_qa')
 print(cur.fetchone()[0])
@@ -62,7 +62,7 @@ fi
 # Get new count
 NEW_TOTAL=$($VENV -c "
 import psycopg2
-conn = psycopg2.connect('postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights')
+conn = psycopg2.connect('postgresql://call_insights_user:${PG_PASSWORD}@localhost/call_insights')
 cur = conn.cursor()
 cur.execute('SELECT COUNT(*) FROM kb_freshdesk_qa')
 print(cur.fetchone()[0])
@@ -75,7 +75,7 @@ log "After sync: $NEW_TOTAL total (+$ADDED new)"
 if [ $SYNC_EXIT -eq 0 ] && [ "$NEW_TOTAL" -gt 0 ]; then
     ENRICHED=$($VENV -c "
 import psycopg2
-conn = psycopg2.connect('postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights')
+conn = psycopg2.connect('postgresql://call_insights_user:${PG_PASSWORD}@localhost/call_insights')
 cur = conn.cursor()
 cur.execute('SELECT COUNT(*) FROM kb_freshdesk_qa WHERE enriched_at IS NOT NULL')
 print(cur.fetchone()[0])

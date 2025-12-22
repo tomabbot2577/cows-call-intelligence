@@ -10,7 +10,7 @@ echo "Starting continuous AI processing - Batch ID: $BATCH_ID, Size: $BATCH_SIZE
 
 while true; do
     # Check if there are still records to process
-    REMAINING=$(PGPASSWORD=REDACTED_DB_PASSWORD psql -U call_insights_user -d call_insights -h localhost -t -c "
+    REMAINING=$(PGPASSWORD=${PG_PASSWORD} psql -U call_insights_user -d call_insights -h localhost -t -c "
         SELECT COUNT(*)
         FROM transcript_embeddings te
         WHERE NOT EXISTS (

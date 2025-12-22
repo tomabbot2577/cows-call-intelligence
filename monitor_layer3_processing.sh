@@ -12,7 +12,7 @@ echo "$(date): Starting Layer 3 monitoring loop" >> $LOG_FILE
 
 while true; do
     # Get current count of Layer 3 enhanced records
-    ENHANCED_COUNT=$(PGPASSWORD=REDACTED_DB_PASSWORD psql -U call_insights_user -d call_insights -h localhost -t -c "SELECT COUNT(*) FROM call_resolutions WHERE problem_complexity IS NOT NULL;" | xargs)
+    ENHANCED_COUNT=$(PGPASSWORD=${PG_PASSWORD} psql -U call_insights_user -d call_insights -h localhost -t -c "SELECT COUNT(*) FROM call_resolutions WHERE problem_complexity IS NOT NULL;" | xargs)
 
     # Get number of running processes
     RUNNING=$(ps aux | grep "python /tmp/layer3_resolution_enhanced.py" | grep -v grep | wc -l)

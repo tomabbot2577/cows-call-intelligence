@@ -34,8 +34,8 @@ Session(app)
 # Create sessions directory
 Path(app.config['SESSION_FILE_DIR']).mkdir(parents=True, exist_ok=True)
 
-# Password hash for !pcr123
-PASSWORD_HASH = generate_password_hash('!pcr123')
+# Password hash from environment variable
+PASSWORD_HASH = generate_password_hash(os.getenv('DASHBOARD_PASSWORD', ''))
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -50,7 +50,7 @@ def get_db_connection():
     db_config = {
         'dbname': 'call_insights',
         'user': 'call_insights_user',
-        'password': 'REDACTED_DB_PASSWORD',
+        'password': os.getenv('PG_PASSWORD', ''),
         'host': 'localhost',
         'port': 5432
     }
@@ -425,7 +425,7 @@ def view_transcript(recording_id):
         db_config = {
             'dbname': 'call_insights',
             'user': 'call_insights_user',
-            'password': 'REDACTED_DB_PASSWORD',
+            'password': os.getenv('PG_PASSWORD', ''),
             'host': 'localhost',
             'port': 5432
         }
@@ -560,7 +560,7 @@ def get_transcript(recording_id):
         db_config = {
             'dbname': 'call_insights',
             'user': 'call_insights_user',
-            'password': 'REDACTED_DB_PASSWORD',
+            'password': os.getenv('PG_PASSWORD', ''),
             'host': 'localhost',
             'port': 5432
         }

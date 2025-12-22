@@ -20,7 +20,7 @@ class PostgreSQLInsightsManager:
         self.db_config = {
             'dbname': 'call_insights',
             'user': 'call_insights_user',
-            'password': 'REDACTED_DB_PASSWORD',
+            'password': os.getenv('PG_PASSWORD', ''),
             'host': 'localhost',
             'port': 5432
         }

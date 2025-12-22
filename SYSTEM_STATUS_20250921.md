@@ -27,7 +27,7 @@
 
 ### 4. Web Dashboard ✅ FULLY OPERATIONAL
 - **URL:** http://31.97.102.13:5001
-- **Password:** !pcr123
+- **Password:** [see .env]
 - **Features Working:**
   - ✅ Insights list and filtering
   - ✅ Detailed insight views

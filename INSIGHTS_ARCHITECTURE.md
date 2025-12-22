@@ -14,7 +14,7 @@ This document describes the implemented AI insights architecture for the call re
 
 - **AI Engine:** GPT-3.5-turbo (OpenAI)
 - **Insights Generated:** 1 complete analysis (growing continuously)
-- **Web Dashboard:** http://31.97.102.13:5001 (password: !pcr123)
+- **Web Dashboard:** http://31.97.102.13:5001 (password: [see .env])
 - **Processing:** Integrated into batch pipeline
 - **Storage:** Multi-format (JSON, SQLite, organized files)
 - **Status:** Production ready and actively generating insights

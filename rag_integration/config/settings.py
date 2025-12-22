@@ -63,11 +63,8 @@ class RAGConfig:
             # Vertex AI RAG
             vertex_corpus_name=os.getenv("VERTEX_CORPUS_NAME", "mst_call_intelligence"),
 
-            # Database
-            database_url=os.getenv(
-                "DATABASE_URL",
-                "postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights"
-            ),
+            # Database - DATABASE_URL must be set in .env
+            database_url=os.getenv("DATABASE_URL", ""),
 
             # Paths
             export_dir=Path(os.getenv(

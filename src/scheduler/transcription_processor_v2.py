@@ -38,7 +38,7 @@ class TranscriptionProcessorV2:
         """Initialize the transcription processor"""
 
         # Database connection
-        self.db_url = 'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights'
+        self.db_url = '" + os.getenv('DATABASE_URL', '')'
 
         # Initialize Salad transcriber
         self.transcriber = SaladTranscriberEnhanced(

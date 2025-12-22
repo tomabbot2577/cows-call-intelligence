@@ -283,7 +283,7 @@ AND LENGTH(t.transcript_text) > 100;
 ### Status Monitoring:
 ```bash
 # Check processing progress
-PGPASSWORD=REDACTED_DB_PASSWORD psql -U call_insights_user -d call_insights -h localhost -c "
+PGPASSWORD=$PG_PASSWORD psql -U call_insights_user -d call_insights -h localhost -c "
 SELECT
     (SELECT COUNT(*) FROM transcript_embeddings) as embeddings,
     (SELECT COUNT(*) FROM insights) as insights,

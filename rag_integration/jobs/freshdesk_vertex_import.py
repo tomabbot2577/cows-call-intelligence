@@ -45,7 +45,7 @@ GCS_BUCKET = 'call-recording-rag-data'
 GCS_PREFIX = 'freshdesk'
 CREDENTIALS_PATH = '/var/www/call-recording-system/config/google_service_account.json'
 DATABASE_URL = os.getenv('RAG_DATABASE_URL',
-    'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights')
+    '" + os.getenv('DATABASE_URL', '')')
 EXPORT_DIR = '/var/www/call-recording-system/data/rag_exports'
 
 # Vertex AI RAG limits

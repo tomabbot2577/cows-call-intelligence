@@ -106,7 +106,7 @@ try:
     conn = psycopg2.connect(
         dbname='call_insights',
         user='call_insights_user',
-        password='REDACTED_DB_PASSWORD',
+        password=os.getenv('PG_PASSWORD', ''),
         host='localhost',
         cursor_factory=RealDictCursor
     )

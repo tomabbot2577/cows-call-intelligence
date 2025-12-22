@@ -10,7 +10,7 @@ echo "Starting AI processing - Batch ID: $BATCH_ID"
 
 while true; do
     # Check remaining
-    REMAINING=$(PGPASSWORD=REDACTED_DB_PASSWORD psql -U call_insights_user -d call_insights -h localhost -t -c "
+    REMAINING=$(PGPASSWORD=${PG_PASSWORD} psql -U call_insights_user -d call_insights -h localhost -t -c "
         SELECT COUNT(*)
         FROM transcript_embeddings te
         WHERE NOT EXISTS (
@@ -27,7 +27,7 @@ while true; do
     echo "Processing batch - $REMAINING records remaining"
 
     # Get batch of recordings to process
-    RECORDINGS=$(PGPASSWORD=REDACTED_DB_PASSWORD psql -U call_insights_user -d call_insights -h localhost -t -c "
+    RECORDINGS=$(PGPASSWORD=${PG_PASSWORD} psql -U call_insights_user -d call_insights -h localhost -t -c "
         SELECT te.recording_id
         FROM transcript_embeddings te
         WHERE NOT EXISTS (

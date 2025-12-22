@@ -47,7 +47,7 @@ class RingCentralCheckerV2:
         self.server_url = os.getenv('RC_SERVER_URL') or os.getenv('RINGCENTRAL_SERVER_URL', 'https://platform.ringcentral.com')
 
         # Database connection - use call_insights database (not call_recordings from DATABASE_URL)
-        self.db_url = 'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights'
+        self.db_url = '" + os.getenv('DATABASE_URL', '')'
 
         if not all([self.client_id, self.client_secret, self.jwt_token]):
             raise ValueError("Missing required RingCentral credentials in environment")

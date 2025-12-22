@@ -5,7 +5,7 @@
 | Resource | URL | Auth |
 |----------|-----|------|
 | COWS Web UI | http://31.97.102.13:8081 | Username/password |
-| Legacy Dashboard | http://31.97.102.13:5001 | Password: `!pcr123` |
+| Legacy Dashboard | http://31.97.102.13:5001 | Password: `[see .env]` |
 | Audio Server | http://31.97.102.13:8080/audio/ | - |
 
 ## System Overview
@@ -24,7 +24,7 @@ AI-powered call recording system that:
 
 ```
 PostgreSQL 14 with pgvector
-Connection: postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights
+Connection: postgresql://[user]:[password]@localhost/call_insights (see .env)
 ```
 
 **Key Tables:**
@@ -200,7 +200,7 @@ sudo systemctl restart cows-rag-api.service
 tail -f /var/log/cows/rag-api.log
 
 # Database queries
-PGPASSWORD=REDACTED_DB_PASSWORD psql -U call_insights_user -d call_insights -h localhost
+PGPASSWORD=$PG_PASSWORD psql -U call_insights_user -d call_insights -h localhost
 
 # Check processing status
 python src/scheduler/transcription_processor.py --status

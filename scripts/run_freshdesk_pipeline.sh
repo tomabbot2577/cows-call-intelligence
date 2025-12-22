@@ -25,7 +25,7 @@ echo "========================================" >> "$LOG_FILE"
 # Get counts before
 BEFORE_COUNT=$(python -c "
 import psycopg2
-conn = psycopg2.connect('postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights')
+conn = psycopg2.connect('postgresql://call_insights_user:${PG_PASSWORD:-$(grep PG_PASSWORD .env 2>/dev/null | cut -d= -f2)}@localhost/call_insights')
 cur = conn.cursor()
 cur.execute('SELECT COUNT(*) FROM kb_freshdesk_qa')
 print(cur.fetchone()[0])
@@ -33,7 +33,7 @@ print(cur.fetchone()[0])
 
 ENRICHED_BEFORE=$(python -c "
 import psycopg2
-conn = psycopg2.connect('postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights')
+conn = psycopg2.connect('postgresql://call_insights_user:${PG_PASSWORD:-$(grep PG_PASSWORD .env 2>/dev/null | cut -d= -f2)}@localhost/call_insights')
 cur = conn.cursor()
 cur.execute('SELECT COUNT(*) FROM kb_freshdesk_qa WHERE enriched_at IS NOT NULL')
 print(cur.fetchone()[0])
@@ -52,7 +52,7 @@ python -m rag_integration.jobs.freshdesk_sync_cron >> "$LOG_FILE" 2>&1
 
 AFTER_SYNC=$(python -c "
 import psycopg2
-conn = psycopg2.connect('postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights')
+conn = psycopg2.connect('postgresql://call_insights_user:${PG_PASSWORD:-$(grep PG_PASSWORD .env 2>/dev/null | cut -d= -f2)}@localhost/call_insights')
 cur = conn.cursor()
 cur.execute('SELECT COUNT(*) FROM kb_freshdesk_qa')
 print(cur.fetchone()[0])
@@ -69,7 +69,7 @@ echo "--- STEP 2: AI Enrichment ---" >> "$LOG_FILE"
 
 PENDING=$(python -c "
 import psycopg2
-conn = psycopg2.connect('postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights')
+conn = psycopg2.connect('postgresql://call_insights_user:${PG_PASSWORD:-$(grep PG_PASSWORD .env 2>/dev/null | cut -d= -f2)}@localhost/call_insights')
 cur = conn.cursor()
 cur.execute('SELECT COUNT(*) FROM kb_freshdesk_qa WHERE enriched_at IS NULL')
 print(cur.fetchone()[0])
@@ -87,7 +87,7 @@ fi
 
 ENRICHED_AFTER=$(python -c "
 import psycopg2
-conn = psycopg2.connect('postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights')
+conn = psycopg2.connect('postgresql://call_insights_user:${PG_PASSWORD:-$(grep PG_PASSWORD .env 2>/dev/null | cut -d= -f2)}@localhost/call_insights')
 cur = conn.cursor()
 cur.execute('SELECT COUNT(*) FROM kb_freshdesk_qa WHERE enriched_at IS NOT NULL')
 print(cur.fetchone()[0])

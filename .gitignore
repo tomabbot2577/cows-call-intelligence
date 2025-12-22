@@ -19,3 +19,17 @@ config/google_service_account.json*
 config/vertex_ai_service_account.json*
 *service_account*.json*
 *.backup
+
+# Environment and secrets
+.env*
+!.env.example
+secrets/
+*.secret
+*_secret*
+*_key*
+!*_key.py
+
+# Runtime data
+data/alerts/
+data/pipeline_status.json
+data/scheduler/

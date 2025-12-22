@@ -1,8 +1,8 @@
 """
 Simple Authentication Service with Role-Based Access
 Users: first letter + lastname (e.g., rmontoni)
-Default password: @mst123
-Admin: admin / !pcr123
+Default password: see .env (DEFAULT_USER_PASSWORD)
+Admin: admin / see .env (ADMIN_PASSWORD)
 """
 
 import hashlib
@@ -36,9 +36,10 @@ def verify_password(password: str, hashed: str) -> bool:
 class AuthService:
     """Simple authentication with user/admin roles."""
 
-    # Default passwords for new users
-    DEFAULT_USER_PASSWORD = "@mst123"
-    ADMIN_PASSWORD = "!pcr123"
+    # Default passwords from environment
+    import os as _os
+    DEFAULT_USER_PASSWORD = _os.getenv("DEFAULT_USER_PASSWORD", "")
+    ADMIN_PASSWORD = _os.getenv("ADMIN_PASSWORD", "")
 
     def __init__(self, connection_string: str = None):
         """Initialize with database connection."""
@@ -46,7 +47,7 @@ class AuthService:
         # Use same database as DatabaseReader (call_insights has the transcripts and users)
         self.connection_string = connection_string or os.getenv(
             "RAG_DATABASE_URL",
-            "postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights"
+            "" + os.getenv('DATABASE_URL', '')"
         )
 
     @contextmanager

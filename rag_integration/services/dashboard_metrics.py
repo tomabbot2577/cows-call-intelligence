@@ -27,7 +27,7 @@ def get_db_url() -> str:
     """Get database connection URL."""
     return os.getenv(
         'RAG_DATABASE_URL',
-        'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights'
+        '" + os.getenv('DATABASE_URL', '')'
     )
 
 

@@ -10,7 +10,7 @@ The AI-Powered Call Recording System includes a comprehensive web-based analytic
 
 - **URL:** http://31.97.102.13:5001
 - **Authentication:** Password-protected
-- **Credentials:** `!pcr123`
+- **Credentials:** `[see .env]`
 - **Session Duration:** 8 hours
 - **Framework:** Flask with Bootstrap frontend
 
@@ -291,7 +291,7 @@ python web/insights_dashboard.py
 #### Authentication Issues
 ```bash
 # Verify password hash
-python -c "from werkzeug.security import check_password_hash, generate_password_hash; print(check_password_hash(generate_password_hash('!pcr123'), '!pcr123'))"
+python -c "from werkzeug.security import check_password_hash, generate_password_hash; print(check_password_hash(generate_password_hash('[see .env]'), '[see .env]'))"
 
 # Clear sessions
 rm -rf web/sessions/*
@@ -343,7 +343,7 @@ ls -la web/sessions/
 ## 📞 Quick Access
 
 **Dashboard URL:** http://31.97.102.13:5001
-**Password:** !pcr123
+**Password:** [see .env]
 **Documentation:** This file
 **Support:** Check logs in `/var/www/call-recording-system/logs/`
 

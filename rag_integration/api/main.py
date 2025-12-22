@@ -1797,7 +1797,7 @@ async def admin_add_user(
 
     import psycopg2
     conn = psycopg2.connect(os.getenv('RAG_DATABASE_URL',
-        'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights'))
+        '" + os.getenv('DATABASE_URL', '')'))
 
     try:
         with conn.cursor() as cur:
@@ -1837,7 +1837,7 @@ async def admin_edit_user(
 
     import psycopg2
     conn = psycopg2.connect(os.getenv('RAG_DATABASE_URL',
-        'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights'))
+        '" + os.getenv('DATABASE_URL', '')'))
 
     try:
         with conn.cursor() as cur:
@@ -1871,7 +1871,7 @@ async def admin_delete_user(request: Request, username: str):
 
     import psycopg2
     conn = psycopg2.connect(os.getenv('RAG_DATABASE_URL',
-        'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights'))
+        '" + os.getenv('DATABASE_URL', '')'))
 
     try:
         with conn.cursor() as cur:
@@ -3424,7 +3424,7 @@ async def api_get_agent_mappings(request: Request):
     import psycopg2
     db_url = os.getenv(
         'RAG_DATABASE_URL',
-        'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights'
+        '" + os.getenv('DATABASE_URL', '')'
     )
 
     try:
@@ -3483,7 +3483,7 @@ async def api_update_agent_mapping(
     import psycopg2
     db_url = os.getenv(
         'RAG_DATABASE_URL',
-        'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights'
+        '" + os.getenv('DATABASE_URL', '')'
     )
 
     try:

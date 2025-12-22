@@ -97,7 +97,7 @@ python -m uvicorn rag_integration.api.main:app --host 0.0.0.0 --port 8081
 
 # 4. Access Web UI
 # http://your-server:8081
-# Password: !pcr123
+# Password: [see .env]
 ```
 
 ## Components
@@ -233,10 +233,10 @@ VERTEX_CORPUS_NAME=mst_call_intelligence
 
 # RAG API
 RAG_API_PORT=8081
-RAG_API_PASSWORD=!pcr123
+RAG_API_PASSWORD=[stored in .env]
 
 # Database (read-only access)
-RAG_DATABASE_URL=postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights
+RAG_DATABASE_URL=postgresql://[user]:[password]@localhost/call_insights
 
 # Email Reports (optional)
 REPORT_FROM_EMAIL=reports@example.com
@@ -526,7 +526,7 @@ rag_integration/
 sudo systemctl status postgresql
 
 # Test connection
-PGPASSWORD='REDACTED_DB_PASSWORD' psql -U call_insights_user -d call_insights -h localhost -c "SELECT 1"
+PGPASSWORD='$PG_PASSWORD' psql -U call_insights_user -d call_insights -h localhost -c "SELECT 1"
 
 # Check RAG_DATABASE_URL in .env
 ```
@@ -587,7 +587,7 @@ python -m uvicorn rag_integration.api.main:app --host 0.0.0.0 --port 8081
 If 0 calls are ready for export, run the analysis pipelines:
 ```bash
 # Check layer counts
-PGPASSWORD='REDACTED_DB_PASSWORD' psql -U call_insights_user -d call_insights -h localhost -c "
+PGPASSWORD='$PG_PASSWORD' psql -U call_insights_user -d call_insights -h localhost -c "
 SELECT 'Layer 5' as layer, COUNT(*) FROM call_advanced_metrics
 UNION ALL
 SELECT 'Layer 4', COUNT(*) FROM call_recommendations
@@ -623,7 +623,7 @@ python process_advanced_metrics.py
 - API requires authentication cookie
 - Credentials stored in `.env` (not in git)
 - Service account JSON excluded from git
-- Password: `!pcr123` (same as main dashboard)
+- Password: `[see .env]` (same as main dashboard)
 
 ## JSONL Structure for Vertex AI
 
