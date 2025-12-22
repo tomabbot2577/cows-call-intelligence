@@ -477,6 +477,103 @@
     </div>
 </div>
 
+<!-- Interactive Coaching Panel (Hormozi Style) -->
+<div class="card mt-4 border-warning" id="coachingPanel" style="display: none;">
+    <div class="card-header bg-warning text-dark d-flex justify-content-between align-items-center">
+        <span><i class="bi bi-person-workspace me-2"></i><strong>🎯 Interactive Hormozi Coaching Session</strong></span>
+        <button type="button" class="btn btn-sm btn-outline-dark" onclick="toggleCoachingPanel()">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+    <div class="card-body">
+        <!-- Coaching Mode Selector -->
+        <div class="mb-4">
+            <h6 class="text-muted mb-3">Select Coaching Mode:</h6>
+            <div class="btn-group flex-wrap" role="group">
+                <button type="button" class="btn btn-outline-primary coaching-mode-btn" data-mode="roleplay" onclick="startCoachingMode('roleplay')">
+                    <i class="bi bi-people-fill me-1"></i>Role-Play Practice
+                </button>
+                <button type="button" class="btn btn-outline-danger coaching-mode-btn" data-mode="objection" onclick="startCoachingMode('objection')">
+                    <i class="bi bi-shield-exclamation me-1"></i>Objection Gauntlet
+                </button>
+                <button type="button" class="btn btn-outline-success coaching-mode-btn" data-mode="pain" onclick="startCoachingMode('pain')">
+                    <i class="bi bi-heart-pulse me-1"></i>Pain Cycle Drill
+                </button>
+                <button type="button" class="btn btn-outline-info coaching-mode-btn" data-mode="opening" onclick="startCoachingMode('opening')">
+                    <i class="bi bi-door-open me-1"></i>Opening Practice
+                </button>
+                <button type="button" class="btn btn-outline-secondary coaching-mode-btn" data-mode="close" onclick="startCoachingMode('close')">
+                    <i class="bi bi-check-circle me-1"></i>Close Execution
+                </button>
+            </div>
+        </div>
+
+        <!-- Coaching Session Area -->
+        <div id="coachingSession" style="display: none;">
+            <!-- Current Scenario Context -->
+            <div class="alert alert-info mb-3" id="scenarioContext">
+                <strong><i class="bi bi-info-circle me-1"></i>Scenario:</strong>
+                <span id="scenarioDescription">Loading...</span>
+            </div>
+
+            <!-- Chat Interface -->
+            <div class="border rounded p-3 mb-3" style="height: 400px; overflow-y: auto; background: #f8f9fa;" id="coachingChat">
+                <div class="text-center text-muted py-5">
+                    <i class="bi bi-chat-dots display-4"></i>
+                    <p class="mt-2">Select a coaching mode above to start practicing</p>
+                </div>
+            </div>
+
+            <!-- User Input -->
+            <div class="input-group">
+                <input type="text" class="form-control form-control-lg" id="coachingInput"
+                       placeholder="Type your response as the sales rep..."
+                       onkeypress="if(event.key === 'Enter') sendCoachingResponse()">
+                <button class="btn btn-primary btn-lg" type="button" onclick="sendCoachingResponse()">
+                    <i class="bi bi-send-fill"></i>
+                </button>
+            </div>
+            <small class="text-muted">Press Enter or click Send. The AI will play the prospect and coach you.</small>
+
+            <!-- Quick Actions -->
+            <div class="mt-3">
+                <button class="btn btn-sm btn-outline-secondary me-1" onclick="getCoachHint()">
+                    <i class="bi bi-lightbulb me-1"></i>Get Hint
+                </button>
+                <button class="btn btn-sm btn-outline-secondary me-1" onclick="showIdealResponse()">
+                    <i class="bi bi-star me-1"></i>Show Ideal Response
+                </button>
+                <button class="btn btn-sm btn-outline-secondary me-1" onclick="nextScenario()">
+                    <i class="bi bi-skip-forward me-1"></i>Next Scenario
+                </button>
+                <button class="btn btn-sm btn-outline-danger" onclick="resetCoaching()">
+                    <i class="bi bi-arrow-counterclockwise me-1"></i>Reset
+                </button>
+            </div>
+        </div>
+
+        <!-- Coaching Stats -->
+        <div class="row mt-4" id="coachingStats" style="display: none;">
+            <div class="col-md-3 text-center">
+                <h3 class="text-primary" id="statResponses">0</h3>
+                <small class="text-muted">Responses</small>
+            </div>
+            <div class="col-md-3 text-center">
+                <h3 class="text-success" id="statScore">0%</h3>
+                <small class="text-muted">Avg Score</small>
+            </div>
+            <div class="col-md-3 text-center">
+                <h3 class="text-warning" id="statStreak">0</h3>
+                <small class="text-muted">Good Streak</small>
+            </div>
+            <div class="col-md-3 text-center">
+                <h3 class="text-info" id="statImproved">0</h3>
+                <small class="text-muted">Improvements</small>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Loading Overlay -->
 <div id="loadingOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; justify-content: center; align-items: center;">
     <div class="card" style="max-width: 400px; text-align: center;">
@@ -764,6 +861,10 @@ async function analyzeSalesCall() {
         const data = await response.json();
         console.log('Analysis received, data keys:', Object.keys(data));
 
+        // Store analysis for coaching
+        lastAnalysis = data.analysis || '';
+        lastCallData = data.call || selectedCall;
+
         // Build title with call info
         let title = 'Hormozi Sales Analysis';
         if (data.call) {
@@ -793,6 +894,9 @@ async function analyzeSalesCall() {
 
         showReport(title, content);
 
+        // Show coaching panel after analysis
+        showCoachingPanel();
+
     } catch (error) {
         if (error.name === 'AbortError') {
             hideLoading();
@@ -805,6 +909,309 @@ async function analyzeSalesCall() {
         analyzeBtn.classList.add('btn-success');
         analyzeBtn.innerHTML = '<i class="bi bi-graph-up me-2"></i>Run Hormozi Blueprint Analysis';
     }
+}
+
+// ==========================================
+// INTERACTIVE COACHING SYSTEM (HORMOZI STYLE)
+// ==========================================
+
+let lastAnalysis = '';
+let lastCallData = null;
+let currentCoachingMode = null;
+let coachingHistory = [];
+let coachingStats = { responses: 0, totalScore: 0, streak: 0, improvements: 0 };
+
+const COACHING_SCENARIOS = {
+    roleplay: {
+        name: 'Role-Play Practice',
+        description: 'Practice the full sales conversation. I\'ll play the prospect based on the analyzed call.',
+        prompts: [
+            'Hi, I scheduled a demo of your software. What can you tell me about it?',
+            'We\'re looking for a new ATS system. Our current process is pretty manual.',
+            'I\'ve heard of your product but I\'m not sure if it\'s right for us.',
+        ]
+    },
+    objection: {
+        name: 'Objection Gauntlet',
+        description: 'Rapid-fire objection handling. Use the AAA method: Acknowledge, Associate, Ask.',
+        prompts: [
+            'That sounds expensive. What\'s the pricing?',
+            'I need to think about it and discuss with my team.',
+            'We tried an ATS before and it didn\'t work out.',
+            'Can you just send me some information?',
+            'I don\'t have time for this right now.',
+            'My boss would never approve this.',
+            'We\'re locked into a contract with our current vendor.',
+        ]
+    },
+    pain: {
+        name: 'Pain Cycle Drill',
+        description: 'Practice excavating pain. Goal: Spend 40% of time here and quantify the cost of inaction.',
+        prompts: [
+            'We\'re mostly using spreadsheets right now. It works okay.',
+            'Yeah, recruiting takes a lot of time but that\'s just how it is.',
+            'We lose track of candidates sometimes but it\'s not a huge deal.',
+            'Our process is fine, we just want to see what else is out there.',
+        ]
+    },
+    opening: {
+        name: 'Opening Practice',
+        description: 'Nail the Proof-Promise-Plan opening in 15-20 seconds. Establish credibility and set the agenda.',
+        prompts: [
+            '[The call just connected. The prospect says: "Hello?"]',
+            '[Prospect picks up] "Hi, I think I have a demo scheduled?"',
+            '[Prospect sounds busy] "Yeah, make it quick, I\'ve got another call in 20 minutes."',
+        ]
+    },
+    close: {
+        name: 'Close Execution',
+        description: 'Practice closing techniques. Confirm BANT before asking, use stacked closes.',
+        prompts: [
+            'This all sounds good, but I want to make sure it\'s the right fit.',
+            'What would the next steps look like?',
+            'I like what I\'ve seen. What happens now?',
+            'Let me think about it and get back to you.',
+        ]
+    }
+};
+
+function showCoachingPanel() {
+    document.getElementById('coachingPanel').style.display = 'block';
+    document.getElementById('coachingPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function toggleCoachingPanel() {
+    const panel = document.getElementById('coachingPanel');
+    panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+}
+
+function startCoachingMode(mode) {
+    currentCoachingMode = mode;
+    const scenario = COACHING_SCENARIOS[mode];
+
+    // Update UI
+    document.querySelectorAll('.coaching-mode-btn').forEach(btn => {
+        btn.classList.remove('active', 'btn-primary', 'btn-danger', 'btn-success', 'btn-info', 'btn-secondary');
+        btn.classList.add('btn-outline-' + getButtonColor(btn.dataset.mode));
+    });
+
+    const activeBtn = document.querySelector(`.coaching-mode-btn[data-mode="${mode}"]`);
+    activeBtn.classList.remove('btn-outline-' + getButtonColor(mode));
+    activeBtn.classList.add('btn-' + getButtonColor(mode), 'active');
+
+    document.getElementById('coachingSession').style.display = 'block';
+    document.getElementById('coachingStats').style.display = 'flex';
+    document.getElementById('scenarioDescription').textContent = scenario.description;
+
+    // Clear chat and start with prospect
+    coachingHistory = [];
+    const chat = document.getElementById('coachingChat');
+    chat.innerHTML = '';
+
+    // Add coach introduction
+    addChatMessage('coach', `🎯 **${scenario.name}**\n\n${scenario.description}\n\n*Remember: "The person who cares most about the prospect wins the sale."*`);
+
+    // Add first prospect message
+    const firstPrompt = scenario.prompts[Math.floor(Math.random() * scenario.prompts.length)];
+    setTimeout(() => {
+        addChatMessage('prospect', firstPrompt);
+        coachingHistory.push({ role: 'prospect', content: firstPrompt });
+    }, 500);
+
+    document.getElementById('coachingInput').focus();
+}
+
+function getButtonColor(mode) {
+    const colors = { roleplay: 'primary', objection: 'danger', pain: 'success', opening: 'info', close: 'secondary' };
+    return colors[mode] || 'secondary';
+}
+
+function addChatMessage(role, content) {
+    const chat = document.getElementById('coachingChat');
+    const div = document.createElement('div');
+    div.className = `mb-3 ${role === 'user' ? 'text-end' : ''}`;
+
+    let bgColor, icon, label;
+    switch(role) {
+        case 'prospect':
+            bgColor = 'bg-light border';
+            icon = '👤';
+            label = 'Prospect';
+            break;
+        case 'coach':
+            bgColor = 'bg-warning bg-opacity-25 border-warning';
+            icon = '🎯';
+            label = 'Coach';
+            break;
+        case 'user':
+            bgColor = 'bg-primary text-white';
+            icon = '💼';
+            label = 'You (Sales Rep)';
+            break;
+        case 'feedback':
+            bgColor = 'bg-success bg-opacity-25 border-success';
+            icon = '✅';
+            label = 'Feedback';
+            break;
+    }
+
+    div.innerHTML = `
+        <div class="d-inline-block p-3 rounded ${bgColor}" style="max-width: 85%; text-align: left;">
+            <small class="text-muted d-block mb-1">${icon} ${label}</small>
+            <div style="white-space: pre-wrap;">${formatMarkdown(content)}</div>
+        </div>
+    `;
+    chat.appendChild(div);
+    chat.scrollTop = chat.scrollHeight;
+}
+
+function formatMarkdown(text) {
+    return text
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/`(.*?)`/g, '<code>$1</code>')
+        .replace(/\n/g, '<br>');
+}
+
+async function sendCoachingResponse() {
+    const input = document.getElementById('coachingInput');
+    const userResponse = input.value.trim();
+
+    if (!userResponse) return;
+
+    input.value = '';
+    input.disabled = true;
+
+    // Add user message
+    addChatMessage('user', userResponse);
+    coachingHistory.push({ role: 'user', content: userResponse });
+
+    // Show typing indicator
+    const typingDiv = document.createElement('div');
+    typingDiv.id = 'typingIndicator';
+    typingDiv.className = 'mb-3';
+    typingDiv.innerHTML = `
+        <div class="d-inline-block p-3 rounded bg-light border">
+            <small class="text-muted">🎯 Coach is analyzing...</small>
+            <div class="spinner-border spinner-border-sm ms-2" role="status"></div>
+        </div>
+    `;
+    document.getElementById('coachingChat').appendChild(typingDiv);
+
+    try {
+        const response = await fetch('/api/v1/coaching/respond', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                mode: currentCoachingMode,
+                user_response: userResponse,
+                history: coachingHistory,
+                call_context: lastCallData,
+                analysis_context: lastAnalysis.substring(0, 3000)
+            })
+        });
+
+        const data = await response.json();
+
+        // Remove typing indicator
+        document.getElementById('typingIndicator')?.remove();
+
+        if (data.feedback) {
+            addChatMessage('feedback', data.feedback);
+            updateStats(data.score || 5);
+        }
+
+        if (data.next_prompt) {
+            setTimeout(() => {
+                addChatMessage('prospect', data.next_prompt);
+                coachingHistory.push({ role: 'prospect', content: data.next_prompt });
+            }, 1000);
+        }
+
+    } catch (error) {
+        document.getElementById('typingIndicator')?.remove();
+        addChatMessage('coach', `❌ Error: ${error.message}. Try again.`);
+    }
+
+    input.disabled = false;
+    input.focus();
+}
+
+function updateStats(score) {
+    coachingStats.responses++;
+    coachingStats.totalScore += score;
+
+    if (score >= 7) {
+        coachingStats.streak++;
+        if (score >= 8) coachingStats.improvements++;
+    } else {
+        coachingStats.streak = 0;
+    }
+
+    document.getElementById('statResponses').textContent = coachingStats.responses;
+    document.getElementById('statScore').textContent = Math.round(coachingStats.totalScore / coachingStats.responses) + '%';
+    document.getElementById('statStreak').textContent = coachingStats.streak;
+    document.getElementById('statImproved').textContent = coachingStats.improvements;
+}
+
+async function getCoachHint() {
+    addChatMessage('coach', `💡 **Hint for ${COACHING_SCENARIOS[currentCoachingMode].name}:**\n\nRemember the Hormozi framework:\n- **Acknowledge** their concern\n- **Associate** with a success story\n- **Ask** a follow-up question\n\n*"The person asking questions is the person closing."*`);
+}
+
+async function showIdealResponse() {
+    const lastProspect = coachingHistory.filter(h => h.role === 'prospect').pop();
+    if (!lastProspect) return;
+
+    try {
+        const response = await fetch('/api/v1/coaching/ideal-response', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                mode: currentCoachingMode,
+                prospect_message: lastProspect.content
+            })
+        });
+
+        const data = await response.json();
+        addChatMessage('coach', `⭐ **Ideal Response:**\n\n"${data.ideal_response}"\n\n**Why this works:** ${data.explanation}`);
+
+    } catch (error) {
+        addChatMessage('coach', '❌ Could not generate ideal response. Try again.');
+    }
+}
+
+function nextScenario() {
+    if (!currentCoachingMode) return;
+
+    const scenario = COACHING_SCENARIOS[currentCoachingMode];
+    const newPrompt = scenario.prompts[Math.floor(Math.random() * scenario.prompts.length)];
+
+    addChatMessage('coach', '➡️ **Next scenario...**');
+    setTimeout(() => {
+        addChatMessage('prospect', newPrompt);
+        coachingHistory.push({ role: 'prospect', content: newPrompt });
+    }, 500);
+}
+
+function resetCoaching() {
+    coachingHistory = [];
+    coachingStats = { responses: 0, totalScore: 0, streak: 0, improvements: 0 };
+
+    document.getElementById('coachingChat').innerHTML = `
+        <div class="text-center text-muted py-5">
+            <i class="bi bi-chat-dots display-4"></i>
+            <p class="mt-2">Select a coaching mode above to start practicing</p>
+        </div>
+    `;
+
+    document.getElementById('coachingSession').style.display = 'none';
+    document.getElementById('coachingStats').style.display = 'none';
+
+    document.querySelectorAll('.coaching-mode-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+
+    currentCoachingMode = null;
 }
 </script>
 {% endblock %}

@@ -462,6 +462,8 @@
     const employeeName = "{{ employee_name }}";
     let currentPeriod = "mtd";
     let hourlyChart = null;
+    let currentAbortController = null;  // Track ongoing request
+    let requestId = 0;  // Track request order
 
     // Initialize
     document.addEventListener('DOMContentLoaded', function() {
@@ -488,36 +490,67 @@
     }
 
     async function loadDashboard() {
-        console.log('loadDashboard called for:', employeeName, 'period:', currentPeriod);
+        // Cancel any in-flight request
+        if (currentAbortController) {
+            currentAbortController.abort();
+        }
+        currentAbortController = new AbortController();
+
+        // Track this request
+        const thisRequestId = ++requestId;
+        const requestedPeriod = currentPeriod;  // Capture current period for this request
+
+        console.log(`[${thisRequestId}] loadDashboard called for: ${employeeName}, period: ${requestedPeriod}`);
         showLoading(true);
 
         try {
-            const url = `/api/v1/dashboard/metrics?employee=${encodeURIComponent(employeeName)}&period=${currentPeriod}`;
-            console.log('Fetching:', url);
-            const response = await fetch(url);
-            console.log('Response status:', response.status);
+            const url = `/api/v1/dashboard/metrics?employee=${encodeURIComponent(employeeName)}&period=${requestedPeriod}`;
+            console.log(`[${thisRequestId}] Fetching: ${url}`);
+
+            const response = await fetch(url, { signal: currentAbortController.signal });
+            console.log(`[${thisRequestId}] Response status: ${response.status}`);
 
             if (!response.ok) {
                 throw new Error('Failed to load dashboard data: ' + response.status);
             }
 
             const result = await response.json();
-            console.log('API result:', result);
+
+            // CRITICAL: Check if this response is still relevant
+            if (thisRequestId !== requestId) {
+                console.log(`[${thisRequestId}] Ignoring stale response (current is ${requestId})`);
+                return;
+            }
+
+            // Also verify the response period matches what we requested
+            if (result.data && result.data.period !== requestedPeriod) {
+                console.warn(`[${thisRequestId}] Period mismatch: requested ${requestedPeriod}, got ${result.data.period}`);
+                return;
+            }
+
+            console.log(`[${thisRequestId}] API result for ${requestedPeriod}:`, result);
 
             if (result.success && result.data) {
-                console.log('Calling updateDashboard with data');
+                console.log(`[${thisRequestId}] Updating dashboard with ${requestedPeriod} data: total=${result.data.calls?.total_calls}, in=${result.data.calls?.inbound_calls}, out=${result.data.calls?.outbound_calls}`);
                 updateDashboard(result.data);
-                console.log('updateDashboard completed');
+                console.log(`[${thisRequestId}] updateDashboard completed`);
             } else {
-                console.error('Dashboard load failed - no data:', result);
+                console.error(`[${thisRequestId}] Dashboard load failed - no data:`, result);
                 document.getElementById('lastUpdated').textContent = 'Error: No data returned';
             }
         } catch (error) {
-            console.error('Dashboard error:', error);
+            if (error.name === 'AbortError') {
+                console.log(`[${thisRequestId}] Request was cancelled`);
+                return;  // Don't show error for cancelled requests
+            }
+            console.error(`[${thisRequestId}] Dashboard error:`, error);
             document.getElementById('lastUpdated').textContent = 'Error: ' + error.message;
         } finally {
-            showLoading(false);
-            console.log('loadDashboard finished');
+            // Only hide loading if this is the current request
+            if (thisRequestId === requestId) {
+                showLoading(false);
+            }
+            console.log(`[${thisRequestId}] loadDashboard finished`);
         }
     }
 

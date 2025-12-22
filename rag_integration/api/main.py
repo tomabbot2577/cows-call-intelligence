@@ -2747,6 +2747,158 @@ Provide scores out of 10 for each category:
 - Close Execution: /10
 - Overall Call Score: /10
 
+---
+
+## 🎯 HORMOZI COACHING PLAN
+
+"The person who cares most about the prospect wins the sale." Based on this call, here's the coaching plan:
+
+### THE ONE THING (Focus This Week)
+Identify the SINGLE highest-impact improvement. Don't overwhelm with 28 corrections—ONE skill mastered beats 10 skills attempted.
+
+**Priority Skill:** [Identify from: Clarify/Label/Pain Cycle/Vacation Sell/Objection Handling/Reinforce]
+- Current Performance: X/10
+- Target: X/10
+- Why This First: [How this will impact close rate]
+
+### CLOSER FRAMEWORK GAPS
+
+For each phase where the rep fell short, provide specific coaching:
+
+**C - Clarify:** Did they remind the prospect why they're on the call?
+- Gap identified: [what was missing]
+- Script to drill: "What made you take the time to hop on the call today?"
+- Coach note: Never accept "I just want information" — dig for the real problem
+
+**L - Label:** Did they establish the GAP clearly?
+- Gap identified: [what was missing]
+- Script to drill: "So just to make sure I'm clear—you want to get to X, you're currently at Y, and Z has been holding you back. Is that right?"
+
+**O - Overview Pain:** Did they spend 40% of the call here? Did they quantify the cost of inaction?
+- Gap identified: [what was missing]
+- Questions to drill:
+  - "What have you tried so far?"
+  - "What did that cost you in time/money?"
+  - "What is it costing you every month to NOT solve this?"
+- Coach note: "The Pain is the Pitch" — if they rushed past pain, they have nothing to sell against
+
+**S - Sell Vacation:** Did they paint the destination or describe the plane ride?
+- Gap identified: [what was missing]
+- Script to drill: "Imagine 90 days from now when [their specific goal]..."
+- Coach note: Features = plane ride. Transformation = vacation. Sell the vacation.
+
+**E - Explain Concerns:** How did they handle objections?
+- Objection category faced: [TIME / MONEY / DECISION-MAKER / DETAILS / STALL]
+- Did they use AAA? (Acknowledge → Associate → Ask)
+- Gap identified: [what was missing]
+- Better response to drill: "[specific rebuttal for this objection type]"
+
+**R - Reinforce:** Did they set up a warm handoff?
+- Gap identified: [what was missing]
+- BAMFAM executed? (Book A Meeting From A Meeting)
+
+### OBJECTION DRILL CARD
+
+Based on objections faced in this call, create a drill card:
+
+| Objection Heard | Category | Rep's Response | Better Response |
+|-----------------|----------|----------------|-----------------|
+| "[quote]" | [category] | [what they said] | "[Hormozi-style response]" |
+
+**Rapid-Fire Questions to Memorize:**
+When you get "I need to think about it":
+- "What's your main concern?"
+- "What are you afraid of having happen?"
+- "What would make this a yes?"
+- "What would make this a no?"
+
+### SCRIPT MECHANICS FIXES
+
+**Opening (Proof-Promise-Plan):** Did they nail the first 15-20 seconds?
+- Issue: [what went wrong]
+- Correct format: "We've helped [people like them] achieve [their goal]. Here's how this call will go—at the end we'll see if it makes sense. If not, no sweat."
+
+**Tone & Delivery Notes:**
+- Words to EMPHASIZE: [identify from transcript]
+- Where to SLOW DOWN: [identify key moments]
+- Where they lost FRAME: [identify if prospect took control]
+
+### CONVICTION CHECK
+
+"If a prospect knew everything you know about the product, they should buy."
+
+**Conviction Gaps Detected:**
+- [Did they sound uncertain? Quote the moment]
+- [Did they apologize for price? Quote the moment]
+- [Did "commission breath" show? Quote the moment]
+
+**Conviction Rebuild Actions:**
+1. Read 3 customer testimonials before next call
+2. Record yourself when you're "hot" and analyze what's different
+3. Remember: You're not selling—you're helping them justify a decision they already want to make
+
+### MINDSET RESET
+
+**Current Mindset Indicator:** [What they said/did that reveals their mental state]
+
+**Hormozi Principle to Internalize:**
+- [ ] "Be kind, not nice" — Kind people genuinely help even when uncomfortable
+- [ ] "Objections do not mean no" — Unless they explicitly say NO, don't assume no
+- [ ] "People want to buy" — They're only hesitant because they've been burned before
+- [ ] "Volume negates luck" — Double the reps of the best closer on your team
+
+**Affirmation:** "I'm here to genuinely help. I care more about this prospect than they care about themselves."
+
+### ROLE-PLAY PRESCRIPTION
+
+**Drill #1: [Specific CLOSER phase to practice]**
+- Have coach play prospect
+- Run the script 5-6 times in quick succession
+- Focus on: [specific element - tone, pacing, emphasis]
+- Success = rep can deliver without thinking
+
+**Drill #2: Objection Gauntlet**
+- Coach rapid-fires these objections:
+  1. "[specific objection from this call]"
+  2. "That's way too expensive"
+  3. "I need to talk to my [spouse/partner/boss]"
+  4. "Can you send me more information?"
+- Rep must use AAA method for each
+- Stack 2-3 closes per objection
+
+### VOLUME PRESCRIPTION
+
+"The relationship between volume and skill: The more you do, the better you get. The better you get, the more you do."
+
+**This Week's Volume Target:**
+- Calls to make: [current average × 1.5]
+- Role-play sessions: [minimum 3]
+- Testimonials to read: [daily]
+- Script run-throughs: [5 per day]
+
+### NEXT CALL CHECKLIST
+
+Before the next call, rep must confirm:
+- [ ] Script printed with tone markers (underline=slow, CAPS=emphasize)
+- [ ] Pain cycle questions memorized
+- [ ] Cost of inaction calculation ready
+- [ ] Top 3 objection responses rehearsed
+- [ ] "Pre-breathe ready" — nothing the prospect says will surprise me
+
+### SUCCESS METRICS (Track Next 5 Calls)
+
+| Metric | Target | Actual |
+|--------|--------|--------|
+| Time in Pain Cycle | 40%+ of call | ___ |
+| Objections handled with AAA | 100% | ___ |
+| BAMFAM executed | 100% | ___ |
+| Script adherence | 100% first 2/3 | ___ |
+| Asked "What would make this a yes?" | Every stall | ___ |
+
+---
+
+*"Closers ask hard questions because they genuinely care. If you come at it from 'I want the best thing for you,' you will always be on their side of the table."* — Alex Hormozi
+
 Provide analysis with specific quotes from the transcript where possible.
 '''
 
@@ -3105,6 +3257,215 @@ async def api_send_report_email(request: Request, email_request: EmailReportRequ
         raise HTTPException(status_code=500, detail="Email authentication failed - check SMTP credentials")
     except Exception as e:
         logger.error(f"Send report email error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# ============================================================================
+# INTERACTIVE HORMOZI COACHING API
+# ============================================================================
+
+HORMOZI_COACHING_PROMPT = '''You are an expert sales coach trained in Alex Hormozi's sales methodology.
+
+Your coaching philosophy:
+- "The person who cares most about the prospect wins the sale"
+- "Volume negates luck" - push for massive repetition
+- "Sales is an education process over a bridge of trust"
+- "Be kind, not nice" - genuinely help even when uncomfortable
+- "Don't be cute" - do the fundamentals flawlessly every time
+
+CLOSER Framework:
+- C: Clarify why they're here (connect action to problem)
+- L: Label the gap (current state → desired state → obstacle)
+- O: Overview past pain (40% of call, quantify cost of inaction)
+- S: Sell the vacation (outcomes, not features)
+- E: Explain concerns (AAA: Acknowledge, Associate, Ask)
+- R: Reinforce the decision (warm handoff, BAMFAM)
+
+When coaching, you will:
+1. Evaluate the sales rep's response against Hormozi principles
+2. Provide specific, actionable feedback with scores (1-10)
+3. Quote what they said and suggest improvements
+4. Continue the role-play as the prospect
+5. Be direct but encouraging - "kind, not nice"
+'''
+
+class CoachingRequest(BaseModel):
+    mode: str
+    user_response: str
+    history: list = []
+    call_context: dict = None
+    analysis_context: str = None
+
+class IdealResponseRequest(BaseModel):
+    mode: str
+    prospect_message: str
+
+
+@app.post("/api/v1/coaching/respond")
+async def coaching_respond(request: Request, coaching_req: CoachingRequest):
+    """Interactive coaching - evaluate response and continue role-play."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        from google import genai
+        from google.genai import types
+
+        config = get_config_instance()
+        client = genai.Client(api_key=config.gemini_api_key)
+
+        # Build conversation history
+        history_text = ""
+        for msg in coaching_req.history[-6:]:  # Last 6 messages for context
+            role = msg.get('role', 'unknown')
+            content = msg.get('content', '')
+            history_text += f"{role.upper()}: {content}\n\n"
+
+        # Mode-specific coaching focus
+        mode_focus = {
+            'roleplay': "Evaluate their overall sales conversation skills. Focus on whether they're following the CLOSER framework.",
+            'objection': "Focus on their objection handling. Did they use AAA (Acknowledge, Associate, Ask)? Did they avoid 'death trap' details?",
+            'pain': "Focus on pain excavation. Did they dig deep? Did they quantify cost of inaction? Did they ask about past solutions?",
+            'opening': "Focus on their opening. Did they use Proof-Promise-Plan in 15-20 seconds? Did they set a clear agenda?",
+            'close': "Focus on close execution. Did they confirm BANT first? Did they use stacked closes? Did they avoid talking past the close?"
+        }
+
+        coaching_focus = mode_focus.get(coaching_req.mode, mode_focus['roleplay'])
+
+        prompt = f"""{HORMOZI_COACHING_PROMPT}
+
+COACHING MODE: {coaching_req.mode}
+FOCUS: {coaching_focus}
+
+CONVERSATION SO FAR:
+{history_text}
+
+SALES REP'S LATEST RESPONSE:
+"{coaching_req.user_response}"
+
+Please provide:
+1. **SCORE (1-10):** Rate this response against Hormozi principles
+2. **FEEDBACK:** 2-3 sentences on what they did well and what to improve. Be specific - quote their words.
+3. **HORMOZI TIP:** One specific technique from the framework they should apply
+4. **NEXT_PROMPT:** Continue as the prospect - respond naturally to what they said, creating a realistic conversation flow.
+
+Format your response as JSON:
+{{
+    "score": 7,
+    "feedback": "Your feedback here...",
+    "hormozi_tip": "Remember: [specific tip]",
+    "next_prompt": "Prospect's next response..."
+}}
+"""
+
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                temperature=0.7,
+                max_output_tokens=1024
+            )
+        )
+
+        # Parse JSON response
+        text = response.text.strip()
+        if text.startswith('```'):
+            text = text.split('\n', 1)[1]
+        if text.endswith('```'):
+            text = text.rsplit('\n', 1)[0]
+
+        import json
+        try:
+            data = json.loads(text)
+        except:
+            # Fallback if JSON parsing fails
+            data = {
+                "score": 5,
+                "feedback": text[:500],
+                "hormozi_tip": "Remember the CLOSER framework.",
+                "next_prompt": "Interesting. Tell me more about that."
+            }
+
+        # Format feedback message
+        feedback = f"**Score: {data.get('score', 5)}/10**\n\n"
+        feedback += data.get('feedback', '') + "\n\n"
+        feedback += f"💡 *{data.get('hormozi_tip', '')}*"
+
+        return {
+            "feedback": feedback,
+            "score": data.get('score', 5),
+            "next_prompt": data.get('next_prompt', 'Tell me more about that.')
+        }
+
+    except Exception as e:
+        logger.error(f"Coaching respond error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/v1/coaching/ideal-response")
+async def coaching_ideal_response(request: Request, req: IdealResponseRequest):
+    """Generate the ideal Hormozi-style response for a prospect message."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        from google import genai
+        from google.genai import types
+
+        config = get_config_instance()
+        client = genai.Client(api_key=config.gemini_api_key)
+
+        mode_context = {
+            'roleplay': "a full sales conversation",
+            'objection': "handling objections with AAA method",
+            'pain': "excavating pain and quantifying cost of inaction",
+            'opening': "the Proof-Promise-Plan opening",
+            'close': "closing with BANT confirmation and stacked closes"
+        }
+
+        prompt = f"""{HORMOZI_COACHING_PROMPT}
+
+The prospect just said: "{req.prospect_message}"
+
+This is a practice scenario for {mode_context.get(req.mode, 'sales')}.
+
+Provide the IDEAL Hormozi-style response a top closer would give.
+
+Format as JSON:
+{{
+    "ideal_response": "The exact words the rep should say...",
+    "explanation": "Why this response works according to Hormozi principles (2-3 sentences)"
+}}
+"""
+
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                temperature=0.3,
+                max_output_tokens=512
+            )
+        )
+
+        text = response.text.strip()
+        if text.startswith('```'):
+            text = text.split('\n', 1)[1]
+        if text.endswith('```'):
+            text = text.rsplit('\n', 1)[0]
+
+        import json
+        try:
+            data = json.loads(text)
+        except:
+            data = {
+                "ideal_response": text[:300],
+                "explanation": "This response follows Hormozi's framework."
+            }
+
+        return data
+
+    except Exception as e:
+        logger.error(f"Ideal response error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 

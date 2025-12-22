@@ -309,6 +309,8 @@
     let currentPeriod = "mtd";
     let teamData = [];
     let currentSort = { column: 'productivity_score', direction: 'desc' };
+    let currentAbortController = null;  // Track ongoing request
+    let requestId = 0;  // Track request order
 
     document.addEventListener('DOMContentLoaded', function() {
         // Period button handlers
@@ -346,21 +348,45 @@
     }
 
     async function loadDashboard() {
+        // Cancel any in-flight request
+        if (currentAbortController) {
+            currentAbortController.abort();
+        }
+        currentAbortController = new AbortController();
+
+        // Track this request
+        const thisRequestId = ++requestId;
+        const requestedPeriod = currentPeriod;
+
         showLoading(true);
 
         try {
-            const response = await fetch(`/api/v1/dashboard/admin/team?period=${currentPeriod}`);
+            const response = await fetch(`/api/v1/dashboard/admin/team?period=${requestedPeriod}`, {
+                signal: currentAbortController.signal
+            });
             if (!response.ok) throw new Error('Failed to load team data');
 
             const result = await response.json();
+
+            // Check if this response is still relevant
+            if (thisRequestId !== requestId) {
+                console.log(`[${thisRequestId}] Ignoring stale admin response`);
+                return;
+            }
+
             if (result.success) {
                 updateDashboard(result);
             }
         } catch (error) {
+            if (error.name === 'AbortError') {
+                return;  // Request was cancelled
+            }
             console.error('Dashboard error:', error);
             alert('Failed to load dashboard: ' + error.message);
         } finally {
-            showLoading(false);
+            if (thisRequestId === requestId) {
+                showLoading(false);
+            }
         }
     }
 

@@ -302,6 +302,12 @@ class DashboardMetricsService:
 
                 metrics = dict(cur.fetchone())
 
+                # Debug logging
+                logger.info(f"get_call_metrics: employee={employee_name}, period={period}, "
+                           f"dates={period_start} to {period_end}, "
+                           f"total={metrics.get('total_calls')}, "
+                           f"inbound={metrics.get('inbound_calls')}, outbound={metrics.get('outbound_calls')}")
+
                 # Calculate answer rate
                 total = metrics['total_calls'] or 0
                 answered = metrics['answered_calls'] or 0
