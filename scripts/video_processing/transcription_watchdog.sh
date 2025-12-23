@@ -7,8 +7,8 @@ source venv/bin/activate
 
 LOG_FILE="logs/transcription_watchdog.log"
 PID_FILE="data/transcription_batch.pid"
-WORKERS=5
-LIMIT=100
+WORKERS=2
+LIMIT=50
 
 log() {
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> $LOG_FILE

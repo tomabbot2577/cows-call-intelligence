@@ -38,8 +38,8 @@ log "Found $PENDING meetings pending analysis"
 # Create lock
 echo $$ > "$LOCK_FILE"
 
-# Run batch analysis with 8 workers, limit 50 per run
-python scripts/video_processing/batch_layer_analysis.py --limit 50 --workers 8 >> "$LOG_FILE" 2>&1
+# Run batch analysis with 2 workers (reduced - caught up)
+python scripts/video_processing/batch_layer_analysis.py --limit 50 --workers 2 >> "$LOG_FILE" 2>&1
 EXIT_CODE=$?
 
 # Remove lock

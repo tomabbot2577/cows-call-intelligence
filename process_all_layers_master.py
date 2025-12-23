@@ -44,14 +44,27 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Database configuration
-DB_CONFIG = {
-    'dbname': 'call_insights',
-    'user': 'call_insights_user',
-    'password': os.getenv('PG_PASSWORD', ''),
-    'host': 'localhost',
-    'port': 5432
-}
+# Database configuration - use RAG_DATABASE_URL or fallback to individual params
+DB_URL = os.getenv('RAG_DATABASE_URL', '')
+if DB_URL:
+    # Parse URL for DB_CONFIG
+    import urllib.parse
+    parsed = urllib.parse.urlparse(DB_URL)
+    DB_CONFIG = {
+        'dbname': parsed.path[1:],
+        'user': parsed.username,
+        'password': parsed.password,
+        'host': parsed.hostname,
+        'port': parsed.port or 5432
+    }
+else:
+    DB_CONFIG = {
+        'dbname': 'call_insights',
+        'user': 'call_insights_user',
+        'password': os.getenv('PG_PASSWORD', 'REDACTED_DB_PASSWORD'),
+        'host': 'localhost',
+        'port': 5432
+    }
 
 # Model configuration - Using OpenRouter (paid Gemini for speed)
 PRIMARY_MODEL = 'google/gemini-2.0-flash-001'
