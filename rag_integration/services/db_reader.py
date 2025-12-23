@@ -630,7 +630,7 @@ class DatabaseReader:
                     ORDER BY t.call_date DESC
                     LIMIT 10
                 """, (name_patterns,))
-                result['recent_calls'] = [
+                recent_calls = [
                     {
                         'call_id': row['recording_id'],
                         'date': str(row['call_date']),
@@ -641,10 +641,103 @@ class DatabaseReader:
                         'summary': row['summary'] or 'No summary',
                         'quality': row['call_quality_score'],
                         'sentiment': row['customer_sentiment'],
-                        'call_type': row['call_type']
+                        'call_type': row['call_type'],
+                        'source_type': 'call',
+                        'source_label': 'Call Recording'
                     }
                     for row in cur.fetchall()
                 ]
+
+                # Also get video meetings hosted by this agent
+                video_date_filter = date_filter.replace('t.call_date', 'vm.start_time')
+                try:
+                    cur.execute(f"""
+                        SELECT
+                            vm.id as video_id,
+                            vm.title,
+                            vm.start_time,
+                            vm.participant_count,
+                            vm.overall_sentiment,
+                            vm.meeting_quality_score,
+                            vm.learning_score,
+                            vm.learning_state,
+                            vm.churn_risk_level
+                        FROM video_meetings vm
+                        WHERE (LOWER(vm.host_name) LIKE ANY(%s))
+                          AND vm.layer1_complete = TRUE
+                        {video_date_filter}
+                        ORDER BY vm.start_time DESC
+                        LIMIT 10
+                    """, (name_patterns,))
+                    for row in cur.fetchall():
+                        recent_calls.append({
+                            'call_id': f"video_{row['video_id']}",
+                            'video_id': row['video_id'],
+                            'date': str(row['start_time'].date()) if row['start_time'] else 'Unknown',
+                            'from_number': 'N/A',
+                            'to_number': 'N/A',
+                            'customer_name': f"{row['participant_count'] or 0} participants",
+                            'company': row['title'] or 'Video Meeting',
+                            'summary': f"Learning: {row['learning_state'] or 'N/A'}, Score: {row['learning_score'] or 'N/A'}",
+                            'quality': row['meeting_quality_score'],
+                            'sentiment': row['overall_sentiment'],
+                            'call_type': 'training',
+                            'source_type': 'video',
+                            'source_label': 'Video Meeting',
+                            'learning_score': row['learning_score'],
+                            'learning_state': row['learning_state'],
+                            'churn_risk': row['churn_risk_level']
+                        })
+                except Exception as e:
+                    logger.warning(f"Video meeting agent query failed: {e}")
+
+                # Sort by date descending
+                recent_calls.sort(key=lambda x: x['date'], reverse=True)
+                result['recent_calls'] = recent_calls[:15]
+
+                # Get video meeting stats for this agent
+                try:
+                    cur.execute(f"""
+                        SELECT
+                            COUNT(*) as total_video_meetings,
+                            AVG(vm.meeting_quality_score) as avg_video_quality,
+                            AVG(vm.learning_score) as avg_learning_score,
+                            COUNT(*) FILTER (WHERE vm.learning_state = 'aha_zone') as aha_moments,
+                            COUNT(*) FILTER (WHERE vm.learning_state = 'struggling') as struggling_sessions,
+                            COUNT(*) FILTER (WHERE vm.churn_risk_level = 'high') as high_risk_sessions
+                        FROM video_meetings vm
+                        WHERE (LOWER(vm.host_name) LIKE ANY(%s))
+                          AND vm.layer1_complete = TRUE
+                        {video_date_filter}
+                    """, (name_patterns,))
+                    video_stats = cur.fetchone()
+                    result['video_meetings'] = {
+                        'total': video_stats['total_video_meetings'] or 0,
+                        'avg_quality': float(video_stats['avg_video_quality']) if video_stats['avg_video_quality'] else 0,
+                        'avg_learning_score': float(video_stats['avg_learning_score']) if video_stats['avg_learning_score'] else 0,
+                        'aha_moments': video_stats['aha_moments'] or 0,
+                        'struggling_sessions': video_stats['struggling_sessions'] or 0,
+                        'high_risk_sessions': video_stats['high_risk_sessions'] or 0
+                    }
+
+                    # Learning state distribution for video meetings
+                    cur.execute(f"""
+                        SELECT vm.learning_state, COUNT(*) as count
+                        FROM video_meetings vm
+                        WHERE (LOWER(vm.host_name) LIKE ANY(%s))
+                          AND vm.learning_state IS NOT NULL
+                          AND vm.layer1_complete = TRUE
+                        {video_date_filter}
+                        GROUP BY vm.learning_state
+                    """, (name_patterns,))
+                    result['learning_state_distribution'] = {row['learning_state']: row['count'] for row in cur.fetchall()}
+                except Exception as e:
+                    logger.warning(f"Video meeting stats query failed: {e}")
+                    result['video_meetings'] = {'total': 0}
+                    result['learning_state_distribution'] = {}
+
+                # Update total calls to include video meetings
+                result['total_calls'] = result['total_calls'] + result['video_meetings'].get('total', 0)
 
                 result['agent_name'] = canonical
                 result['date_range'] = date_range or 'all_time'
@@ -752,10 +845,74 @@ class DatabaseReader:
                         'summary': row['summary'] or 'No summary available',
                         'topics': row['key_topics'] or [],
                         'issues': row['improvement_suggestions'] or [],
-                        'sentiment': row['customer_sentiment'] or 'unknown'
+                        'sentiment': row['customer_sentiment'] or 'unknown',
+                        'source_type': 'call',
+                        'source_label': 'Call Recording'
                     })
 
-                result['high_risk_calls'] = high_risk_calls
+                # Also get video meetings with churn risk
+                video_risk_filter = "vm.churn_risk_level = 'high'" if risk_level == 'high' else "vm.churn_risk_level IN ('high', 'medium')" if risk_level == 'medium' else "vm.churn_risk_level IS NOT NULL AND vm.churn_risk_level NOT IN ('none', 'low')"
+                video_date_filter = date_filter.replace('t.call_date', 'vm.start_time')
+                video_employee_filter = employee_filter_clause.replace('t.employee_name', 'vm.host_name')
+
+                video_query = f"""
+                    SELECT
+                        vm.id as video_id,
+                        vm.title,
+                        vm.start_time,
+                        vm.host_name,
+                        vm.overall_sentiment,
+                        vm.sentiment_score,
+                        vm.meeting_quality_score,
+                        vm.churn_risk_level,
+                        vm.learning_state,
+                        vm.participant_count
+                    FROM video_meetings vm
+                    WHERE {video_risk_filter}
+                      AND vm.start_time IS NOT NULL
+                      AND vm.layer1_complete = TRUE
+                      {video_date_filter}
+                      {video_employee_filter}
+                    ORDER BY
+                        CASE vm.churn_risk_level
+                            WHEN 'high' THEN 1
+                            WHEN 'medium' THEN 2
+                            ELSE 3
+                        END,
+                        vm.start_time DESC
+                    LIMIT 50
+                """
+                try:
+                    cur.execute(video_query, employee_params if employee_params else None)
+                    for row in cur.fetchall():
+                        high_risk_calls.append({
+                            'call_id': f"video_{row['video_id']}",
+                            'video_id': row['video_id'],
+                            'call_date': str(row['start_time'].date()) if row['start_time'] else 'Unknown',
+                            'from_number': 'N/A',
+                            'to_number': 'N/A',
+                            'customer_name': f"{row['participant_count'] or 0} participants",
+                            'customer_company': row['title'] or 'Video Meeting',
+                            'agent': row['host_name'] or 'Unknown',
+                            'quality_score': row['meeting_quality_score'],
+                            'risk_level': row['churn_risk_level'] or 'unknown',
+                            'summary': f"Video meeting: {row['title']}. Learning state: {row['learning_state'] or 'unknown'}",
+                            'topics': [],
+                            'issues': [],
+                            'sentiment': row['overall_sentiment'] or 'unknown',
+                            'source_type': 'video',
+                            'source_label': 'Video Meeting'
+                        })
+                except Exception as e:
+                    logger.warning(f"Video meeting churn query failed: {e}")
+
+                # Sort combined results by risk level and date
+                high_risk_calls.sort(key=lambda x: (
+                    0 if x['risk_level'] == 'high' else 1 if x['risk_level'] == 'medium' else 2,
+                    x['call_date']
+                ), reverse=False)
+
+                result['high_risk_calls'] = high_risk_calls[:50]  # Limit total
                 result['total_high_risk'] = len(high_risk_calls)
 
                 # Risk distribution
@@ -1195,10 +1352,71 @@ class DatabaseReader:
                         'topics': row['key_topics'] or [],
                         'coaching_notes': row['coaching_notes'] or 'None',
                         'churn_risk': row['churn_risk'] or 'unknown',
-                        'issues': row['improvement_suggestions'] or []
+                        'issues': row['improvement_suggestions'] or [],
+                        'source_type': 'call',
+                        'source_label': 'Call Recording'
                     })
 
-                result['calls'] = calls
+                # Add video meetings with matching sentiment
+                video_sentiment_clause = "vm.overall_sentiment = 'negative'" if sentiment_filter == 'negative' else "vm.overall_sentiment = 'positive'" if sentiment_filter == 'positive' else "vm.overall_sentiment IS NOT NULL"
+                video_date_filter = date_filter_with_t.replace('t.call_date', 'vm.start_time')
+                video_employee_filter = employee_filter_clause.replace('t.employee_name', 'vm.host_name')
+
+                try:
+                    video_query = f"""
+                        SELECT
+                            vm.id as video_id,
+                            vm.title,
+                            vm.start_time,
+                            vm.host_name,
+                            vm.overall_sentiment,
+                            vm.sentiment_score,
+                            vm.meeting_quality_score,
+                            vm.learning_score,
+                            vm.learning_state,
+                            vm.churn_risk_level,
+                            vm.participant_count
+                        FROM video_meetings vm
+                        WHERE {video_sentiment_clause}
+                          AND vm.start_time IS NOT NULL
+                          AND vm.layer1_complete = TRUE
+                          {video_date_filter}
+                          {video_employee_filter}
+                        ORDER BY vm.start_time DESC
+                        LIMIT 20
+                    """
+                    cur.execute(video_query, [employee_patterns] if employee_patterns else None)
+                    for row in cur.fetchall():
+                        calls.append({
+                            'call_id': f"video_{row['video_id']}",
+                            'video_id': row['video_id'],
+                            'call_date': str(row['start_time'].date()) if row['start_time'] else 'Unknown',
+                            'from_number': 'N/A',
+                            'to_number': 'N/A',
+                            'customer_name': f"{row['participant_count'] or 0} participants",
+                            'customer_company': row['title'] or 'Video Meeting',
+                            'employee_name': row['host_name'] or 'Unknown',
+                            'sentiment': row['overall_sentiment'],
+                            'sentiment_reasoning': f"Sentiment score: {row['sentiment_score'] or 'N/A'}",
+                            'quality_score': row['meeting_quality_score'],
+                            'overall_rating': row['sentiment_score'],
+                            'call_type': 'training',
+                            'summary': f"Learning state: {row['learning_state'] or 'N/A'}, Score: {row['learning_score'] or 'N/A'}",
+                            'topics': [],
+                            'coaching_notes': f"Learning score: {row['learning_score'] or 'N/A'}",
+                            'churn_risk': row['churn_risk_level'] or 'unknown',
+                            'issues': [],
+                            'source_type': 'video',
+                            'source_label': 'Video Meeting',
+                            'learning_score': row['learning_score'],
+                            'learning_state': row['learning_state']
+                        })
+                except Exception as e:
+                    logger.warning(f"Video meeting sentiment query failed: {e}")
+
+                # Sort combined results by date
+                calls.sort(key=lambda x: x['call_date'], reverse=True)
+                result['calls'] = calls[:50]
                 result['total_matching'] = len(calls)
 
                 # Sentiment by agent
@@ -1467,10 +1685,68 @@ class DatabaseReader:
                         'summary': row['summary'] or 'No summary',
                         'topics': row['key_topics'] or [],
                         'coaching_notes': row['coaching_notes'] or 'None',
-                        'improvements': improvements[:5]
+                        'improvements': improvements[:5],
+                        'source_type': 'call',
+                        'source_label': 'Call Recording'
                     })
 
-                result['low_quality_calls'] = low_quality_calls
+                # Add low quality video meetings
+                video_date_filter = date_filter_with_t.replace('t.call_date', 'vm.start_time')
+                video_employee_filter = employee_filter_clause.replace('t.employee_name', 'vm.host_name')
+
+                try:
+                    video_query = f"""
+                        SELECT
+                            vm.id as video_id,
+                            vm.title,
+                            vm.start_time,
+                            vm.host_name,
+                            vm.overall_sentiment,
+                            vm.meeting_quality_score,
+                            vm.learning_score,
+                            vm.learning_state,
+                            vm.churn_risk_level,
+                            vm.participant_count
+                        FROM video_meetings vm
+                        WHERE vm.meeting_quality_score IS NOT NULL
+                          AND vm.meeting_quality_score < 5
+                          AND vm.start_time IS NOT NULL
+                          AND vm.layer1_complete = TRUE
+                          {video_date_filter}
+                          {video_employee_filter}
+                        ORDER BY vm.meeting_quality_score ASC, vm.start_time DESC
+                        LIMIT 15
+                    """
+                    cur.execute(video_query, [employee_patterns] if employee_patterns else None)
+                    for row in cur.fetchall():
+                        low_quality_calls.append({
+                            'call_id': f"video_{row['video_id']}",
+                            'video_id': row['video_id'],
+                            'call_date': str(row['start_time'].date()) if row['start_time'] else 'Unknown',
+                            'from_number': 'N/A',
+                            'to_number': 'N/A',
+                            'customer_name': f"{row['participant_count'] or 0} participants",
+                            'customer_company': row['title'] or 'Video Meeting',
+                            'employee_name': row['host_name'] or 'Unknown',
+                            'quality_score': row['meeting_quality_score'],
+                            'quality_reasoning': f"Learning state: {row['learning_state'] or 'N/A'}",
+                            'sentiment': row['overall_sentiment'],
+                            'call_type': 'training',
+                            'summary': f"Learning score: {row['learning_score'] or 'N/A'}, State: {row['learning_state'] or 'N/A'}",
+                            'topics': [],
+                            'coaching_notes': f"Churn risk: {row['churn_risk_level'] or 'N/A'}",
+                            'improvements': [],
+                            'source_type': 'video',
+                            'source_label': 'Video Meeting',
+                            'learning_score': row['learning_score'],
+                            'learning_state': row['learning_state']
+                        })
+                except Exception as e:
+                    logger.warning(f"Video meeting quality query failed: {e}")
+
+                # Sort by quality score ascending
+                low_quality_calls.sort(key=lambda x: x['quality_score'] or 0)
+                result['low_quality_calls'] = low_quality_calls[:40]
                 result['total_low_quality'] = len(low_quality_calls)
 
                 # Quality by agent
@@ -2158,6 +2434,335 @@ class DatabaseReader:
                 ]
 
                 return result
+
+    # ============================================================================
+    # VIDEO MEETING METHODS
+    # ============================================================================
+
+    def get_video_meetings(
+        self,
+        limit: int = 50,
+        offset: int = 0,
+        meeting_type: str = None,
+        trainer: str = None,
+        sentiment: str = None,
+        learning_state: str = None,
+        date_range: str = None,
+        start_date: str = None,
+        end_date: str = None
+    ) -> Dict[str, Any]:
+        """Get video meetings with filters."""
+        with self.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                # Build WHERE clause
+                conditions = ["source = 'ringcentral'", "transcript_text IS NOT NULL"]
+                params = []
+
+                if meeting_type:
+                    conditions.append("meeting_type = %s")
+                    params.append(meeting_type)
+
+                if trainer:
+                    conditions.append("host_name ILIKE %s")
+                    params.append(f"%{trainer}%")
+
+                if sentiment:
+                    conditions.append("overall_sentiment = %s")
+                    params.append(sentiment)
+
+                if learning_state:
+                    conditions.append("learning_state = %s")
+                    params.append(learning_state)
+
+                # Date filter
+                if start_date and end_date:
+                    conditions.append("start_time >= %s AND start_time < %s + INTERVAL '1 day'")
+                    params.extend([start_date, end_date])
+                elif date_range == 'last_30':
+                    conditions.append("start_time >= CURRENT_DATE - INTERVAL '30 days'")
+                elif date_range == 'this_month':
+                    conditions.append("start_time >= DATE_TRUNC('month', CURRENT_DATE)")
+
+                where_clause = " AND ".join(conditions)
+
+                # Get total count
+                cur.execute(f"SELECT COUNT(*) FROM video_meetings WHERE {where_clause}", params)
+                total = cur.fetchone()['count']
+
+                # Get meetings
+                query = f"""
+                    SELECT id, title, host_name, host_email, start_time, duration_seconds,
+                           meeting_type, participant_count, overall_sentiment, sentiment_score,
+                           meeting_quality_score, churn_risk_level, learning_score, learning_state,
+                           layer1_complete, layer2_complete, layer3_complete, layer4_complete,
+                           layer5_complete, layer6_complete
+                    FROM video_meetings
+                    WHERE {where_clause}
+                    ORDER BY start_time DESC
+                    LIMIT %s OFFSET %s
+                """
+                params.extend([limit, offset])
+                cur.execute(query, params)
+                meetings = cur.fetchall()
+
+                return {
+                    'meetings': [dict(m) for m in meetings],
+                    'total': total,
+                    'limit': limit,
+                    'offset': offset
+                }
+
+    def get_video_meeting_detail(self, meeting_id: int) -> Optional[Dict[str, Any]]:
+        """Get full video meeting details including participants and analysis."""
+        with self.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                # Get meeting
+                cur.execute("""
+                    SELECT id, title, host_name, host_email, start_time, end_time,
+                           duration_seconds, meeting_type, recording_url, transcript_text,
+                           participant_count, internal_participant_count, external_participant_count,
+                           overall_sentiment, sentiment_score, meeting_quality_score,
+                           churn_risk_level, learning_score, learning_state,
+                           ai_analysis_json, created_at, updated_at
+                    FROM video_meetings
+                    WHERE id = %s
+                """, [meeting_id])
+                meeting = cur.fetchone()
+
+                if not meeting:
+                    return None
+
+                result = dict(meeting)
+
+                # Get participants
+                cur.execute("""
+                    SELECT participant_name, participant_email, company_name, role_type,
+                           is_internal, is_trainer, is_trainee, speaking_time_percentage,
+                           questions_asked, engagement_level
+                    FROM video_meeting_participants
+                    WHERE meeting_id = %s
+                    ORDER BY speaking_time_percentage DESC NULLS LAST
+                """, [meeting_id])
+                result['participants'] = [dict(p) for p in cur.fetchall()]
+
+                # Get Q&A pairs
+                cur.execute("""
+                    SELECT question, answer, category, quality
+                    FROM video_meeting_qa_pairs
+                    WHERE video_meeting_id = %s
+                    ORDER BY created_at
+                """, [meeting_id])
+                result['qa_pairs'] = [dict(qa) for qa in cur.fetchall()]
+
+                return result
+
+    def get_video_meeting_stats(self) -> Dict[str, Any]:
+        """Get video meeting statistics."""
+        with self.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                cur.execute("""
+                    SELECT
+                        COUNT(*) as total_meetings,
+                        COUNT(*) FILTER (WHERE transcript_text IS NOT NULL) as transcribed,
+                        COUNT(*) FILTER (WHERE layer1_complete = TRUE) as analyzed,
+                        COUNT(*) FILTER (WHERE learning_state IS NOT NULL) as with_learning,
+                        AVG(duration_seconds)::int as avg_duration,
+                        AVG(sentiment_score) as avg_sentiment,
+                        AVG(meeting_quality_score) as avg_quality,
+                        AVG(learning_score) as avg_learning,
+                        COUNT(DISTINCT host_name) as unique_hosts
+                    FROM video_meetings
+                    WHERE source = 'ringcentral'
+                """)
+                stats = dict(cur.fetchone())
+
+                # Sentiment distribution
+                cur.execute("""
+                    SELECT overall_sentiment, COUNT(*) as count
+                    FROM video_meetings
+                    WHERE source = 'ringcentral' AND overall_sentiment IS NOT NULL
+                    GROUP BY overall_sentiment
+                """)
+                stats['sentiment_distribution'] = {r['overall_sentiment']: r['count'] for r in cur.fetchall()}
+
+                # Learning state distribution
+                cur.execute("""
+                    SELECT learning_state, COUNT(*) as count
+                    FROM video_meetings
+                    WHERE source = 'ringcentral' AND learning_state IS NOT NULL
+                    GROUP BY learning_state
+                """)
+                stats['learning_distribution'] = {r['learning_state']: r['count'] for r in cur.fetchall()}
+
+                # Top trainers
+                cur.execute("""
+                    SELECT host_name, COUNT(*) as meeting_count,
+                           AVG(meeting_quality_score) as avg_quality
+                    FROM video_meetings
+                    WHERE source = 'ringcentral' AND host_name IS NOT NULL
+                    GROUP BY host_name
+                    ORDER BY meeting_count DESC
+                    LIMIT 10
+                """)
+                stats['top_trainers'] = [dict(r) for r in cur.fetchall()]
+
+                return stats
+
+    def get_video_training_report(
+        self,
+        trainer: str = None,
+        date_range: str = None,
+        start_date: str = None,
+        end_date: str = None
+    ) -> Dict[str, Any]:
+        """Get training effectiveness report from video meetings."""
+        with self.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                conditions = ["source = 'ringcentral'", "layer6_complete = TRUE"]
+                params = []
+
+                if trainer:
+                    conditions.append("host_name ILIKE %s")
+                    params.append(f"%{trainer}%")
+
+                if start_date and end_date:
+                    conditions.append("start_time >= %s AND start_time < %s + INTERVAL '1 day'")
+                    params.extend([start_date, end_date])
+                elif date_range == 'last_30':
+                    conditions.append("start_time >= CURRENT_DATE - INTERVAL '30 days'")
+
+                where_clause = " AND ".join(conditions)
+
+                # Overall metrics
+                cur.execute(f"""
+                    SELECT
+                        COUNT(*) as total_sessions,
+                        AVG(learning_score) as avg_learning_score,
+                        AVG(meeting_quality_score) as avg_quality,
+                        AVG(sentiment_score) as avg_satisfaction,
+                        COUNT(*) FILTER (WHERE learning_state = 'aha_zone') as aha_moments,
+                        COUNT(*) FILTER (WHERE learning_state = 'struggling') as struggling,
+                        COUNT(*) FILTER (WHERE churn_risk_level = 'high') as high_risk
+                    FROM video_meetings
+                    WHERE {where_clause}
+                """, params)
+                metrics = dict(cur.fetchone())
+
+                # Learning state breakdown
+                cur.execute(f"""
+                    SELECT learning_state, COUNT(*) as count
+                    FROM video_meetings
+                    WHERE {where_clause} AND learning_state IS NOT NULL
+                    GROUP BY learning_state
+                """, params)
+                metrics['learning_states'] = {r['learning_state']: r['count'] for r in cur.fetchall()}
+
+                # Recent sessions with issues
+                cur.execute(f"""
+                    SELECT id, title, host_name, start_time, learning_state,
+                           learning_score, churn_risk_level
+                    FROM video_meetings
+                    WHERE {where_clause}
+                      AND (learning_state IN ('struggling', 'overwhelmed') OR churn_risk_level = 'high')
+                    ORDER BY start_time DESC
+                    LIMIT 10
+                """, params)
+                metrics['attention_needed'] = [dict(r) for r in cur.fetchall()]
+
+                # Q&A insights
+                cur.execute(f"""
+                    SELECT qa.category, COUNT(*) as count
+                    FROM video_meeting_qa_pairs qa
+                    JOIN video_meetings vm ON qa.video_meeting_id = vm.id
+                    WHERE {where_clause.replace('source', 'vm.source').replace('layer6_complete', 'vm.layer6_complete').replace('host_name', 'vm.host_name').replace('start_time', 'vm.start_time')}
+                    GROUP BY qa.category
+                    ORDER BY count DESC
+                    LIMIT 10
+                """, params)
+                metrics['top_question_categories'] = [dict(r) for r in cur.fetchall()]
+
+                return metrics
+
+    def get_learning_module_stats(self) -> Dict[str, Any]:
+        """Get learning module statistics from video meetings."""
+        with self.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                # Overall stats
+                cur.execute("""
+                    SELECT
+                        COUNT(*) as total_sessions,
+                        AVG(learning_score) as avg_learning_score,
+                        COUNT(*) FILTER (WHERE learning_state = 'aha_zone') as aha_moments,
+                        COUNT(*) FILTER (WHERE learning_state IN ('struggling', 'overwhelmed')) as struggling,
+                        COUNT(*) FILTER (WHERE churn_risk_level = 'high') as high_churn_risk
+                    FROM video_meetings
+                    WHERE source = 'ringcentral' AND layer1_complete = TRUE
+                """)
+                stats = dict(cur.fetchone())
+
+                # Q&A pair count
+                cur.execute("""
+                    SELECT COUNT(*) as qa_pairs
+                    FROM video_meeting_qa_pairs
+                """)
+                stats['qa_pairs'] = cur.fetchone()['qa_pairs'] or 0
+
+                # Learning state distribution
+                cur.execute("""
+                    SELECT learning_state, COUNT(*) as count
+                    FROM video_meetings
+                    WHERE source = 'ringcentral' AND learning_state IS NOT NULL
+                    GROUP BY learning_state
+                    ORDER BY count DESC
+                """)
+                stats['learning_distribution'] = {r['learning_state']: r['count'] for r in cur.fetchall()}
+
+                # Top trainers by learning impact
+                cur.execute("""
+                    SELECT host_name,
+                           COUNT(*) as session_count,
+                           AVG(learning_score) as avg_learning,
+                           AVG(meeting_quality_score) as avg_quality
+                    FROM video_meetings
+                    WHERE source = 'ringcentral'
+                      AND host_name IS NOT NULL
+                      AND learning_score IS NOT NULL
+                    GROUP BY host_name
+                    HAVING COUNT(*) >= 2
+                    ORDER BY AVG(learning_score) DESC
+                    LIMIT 10
+                """)
+                stats['top_trainers'] = [dict(r) for r in cur.fetchall()]
+
+                # Top Q&A categories
+                cur.execute("""
+                    SELECT category, COUNT(*) as count
+                    FROM video_meeting_qa_pairs
+                    WHERE category IS NOT NULL
+                    GROUP BY category
+                    ORDER BY count DESC
+                    LIMIT 8
+                """)
+                stats['top_categories'] = [dict(r) for r in cur.fetchall()]
+
+                return stats
+
+    def get_learning_attention_needed(self, limit: int = 10) -> List[Dict[str, Any]]:
+        """Get video meetings that need attention (struggling, overwhelmed, high churn)."""
+        with self.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                cur.execute("""
+                    SELECT id, title, host_name, start_time, learning_state,
+                           learning_score, churn_risk_level, overall_sentiment
+                    FROM video_meetings
+                    WHERE source = 'ringcentral'
+                      AND layer1_complete = TRUE
+                      AND (learning_state IN ('struggling', 'overwhelmed')
+                           OR churn_risk_level = 'high')
+                    ORDER BY start_time DESC
+                    LIMIT %s
+                """, [limit])
+                return [dict(r) for r in cur.fetchall()]
 
 
 if __name__ == "__main__":

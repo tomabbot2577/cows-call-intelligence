@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+
+{% block title %}Learning Module - COWS{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2>Training & Learning Analytics</h2>
+            <p class="text-muted">Layer 6 AI-powered learning analysis from video meetings</p>
+        </div>
+    </div>
+
+    <!-- Summary Stats -->
+    <div class="row mb-4">
+        <div class="col-md-2">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                    <h3 class="mb-0">{{ stats.total_sessions or 0 }}</h3>
+                    <small>Training Sessions</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card bg-success text-white">
+                <div class="card-body text-center">
+                    <h3 class="mb-0">{{ "%.1f"|format(stats.avg_learning_score or 0) }}</h3>
+                    <small>Avg Learning Score</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card bg-info text-white">
+                <div class="card-body text-center">
+                    <h3 class="mb-0">{{ stats.aha_moments or 0 }}</h3>
+                    <small>Aha Moments</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card bg-warning text-dark">
+                <div class="card-body text-center">
+                    <h3 class="mb-0">{{ stats.struggling or 0 }}</h3>
+                    <small>Struggling</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card bg-danger text-white">
+                <div class="card-body text-center">
+                    <h3 class="mb-0">{{ stats.high_churn_risk or 0 }}</h3>
+                    <small>High Churn Risk</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card bg-secondary text-white">
+                <div class="card-body text-center">
+                    <h3 class="mb-0">{{ stats.qa_pairs or 0 }}</h3>
+                    <small>Q&A Pairs</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Learning State Distribution -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header">Learning State Distribution</div>
+                <div class="card-body">
+                    {% for state, count in (stats.learning_distribution or {}).items() %}
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="badge fs-6 {% if state == 'aha_zone' %}bg-success{% elif state == 'struggling' %}bg-warning text-dark{% elif state == 'overwhelmed' %}bg-danger{% elif state == 'building' %}bg-info{% else %}bg-secondary{% endif %}">
+                            {{ state }}
+                        </span>
+                        <div class="d-flex align-items-center" style="width: 60%">
+                            <div class="progress flex-grow-1 me-2" style="height: 20px;">
+                                <div class="progress-bar {% if state == 'aha_zone' %}bg-success{% elif state == 'struggling' %}bg-warning{% elif state == 'overwhelmed' %}bg-danger{% else %}bg-info{% endif %}"
+                                     style="width: {{ (count / (stats.total_sessions or 1) * 100)|int }}%">
+                                </div>
+                            </div>
+                            <span class="badge bg-dark">{{ count }}</span>
+                        </div>
+                    </div>
+                    {% else %}
+                    <p class="text-muted text-center">No learning data yet</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Trainers -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header">Top Trainers by Learning Impact</div>
+                <div class="card-body">
+                    {% for trainer in stats.top_trainers or [] %}
+                    <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+                        <div>
+                            <strong>{{ trainer.host_name }}</strong>
+                            <br><small class="text-muted">{{ trainer.session_count }} sessions</small>
+                        </div>
+                        <div class="text-end">
+                            <span class="badge {% if trainer.avg_learning >= 8 %}bg-success{% elif trainer.avg_learning >= 6 %}bg-warning text-dark{% else %}bg-danger{% endif %} fs-6">
+                                {{ "%.1f"|format(trainer.avg_learning or 0) }}
+                            </span>
+                            <br><small class="text-muted">learning score</small>
+                        </div>
+                    </div>
+                    {% else %}
+                    <p class="text-muted text-center">No trainer data yet</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Recent Sessions Needing Attention -->
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-header bg-warning text-dark">Sessions Needing Attention</div>
+                <div class="card-body">
+                    {% for session in attention_needed or [] %}
+                    <div class="mb-3 pb-2 border-bottom">
+                        <a href="/video-meetings/{{ session.id }}" class="text-decoration-none">
+                            {{ session.title[:35] }}{% if session.title|length > 35 %}...{% endif %}
+                        </a>
+                        <div class="mt-1">
+                            <span class="badge {% if session.learning_state == 'struggling' %}bg-warning text-dark{% elif session.learning_state == 'overwhelmed' %}bg-danger{% else %}bg-secondary{% endif %}">
+                                {{ session.learning_state }}
+                            </span>
+                            {% if session.churn_risk_level == 'high' %}
+                            <span class="badge bg-danger">High Churn Risk</span>
+                            {% endif %}
+                            <small class="text-muted ms-2">{{ session.start_time.strftime('%m/%d') if session.start_time else '' }}</small>
+                        </div>
+                    </div>
+                    {% else %}
+                    <p class="text-success text-center">No sessions need attention</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Training Sessions -->
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Recent Training Sessions</span>
+            <a href="/video-meetings" class="btn btn-sm btn-outline-primary">View All</a>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Date</th>
+                            <th>Session</th>
+                            <th>Trainer</th>
+                            <th>Participants</th>
+                            <th>Learning Score</th>
+                            <th>Learning State</th>
+                            <th>Quality</th>
+                            <th>Churn Risk</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for s in recent_sessions or [] %}
+                        <tr>
+                            <td>{{ s.start_time.strftime('%Y-%m-%d') if s.start_time else 'N/A' }}</td>
+                            <td>
+                                <a href="/video-meetings/{{ s.id }}">
+                                    {{ s.title[:40] }}{% if s.title|length > 40 %}...{% endif %}
+                                </a>
+                            </td>
+                            <td>{{ s.host_name or 'Unknown' }}</td>
+                            <td>{{ s.participant_count or 0 }}</td>
+                            <td>
+                                {% if s.learning_score %}
+                                <span class="badge {% if s.learning_score >= 8 %}bg-success{% elif s.learning_score >= 6 %}bg-warning text-dark{% else %}bg-danger{% endif %} fs-6">
+                                    {{ "%.1f"|format(s.learning_score) }}
+                                </span>
+                                {% else %}
+                                <span class="badge bg-light text-dark">-</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if s.learning_state %}
+                                <span class="badge {% if s.learning_state == 'aha_zone' %}bg-success{% elif s.learning_state == 'struggling' %}bg-warning text-dark{% elif s.learning_state == 'overwhelmed' %}bg-danger{% else %}bg-info{% endif %}">
+                                    {{ s.learning_state }}
+                                </span>
+                                {% else %}
+                                <span class="badge bg-light text-dark">-</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if s.meeting_quality_score %}
+                                {{ "%.1f"|format(s.meeting_quality_score) }}
+                                {% else %}-{% endif %}
+                            </td>
+                            <td>
+                                {% if s.churn_risk_level == 'high' %}
+                                <span class="badge bg-danger">High</span>
+                                {% elif s.churn_risk_level == 'medium' %}
+                                <span class="badge bg-warning text-dark">Medium</span>
+                                {% else %}
+                                <span class="badge bg-success">Low</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="8" class="text-center text-muted py-4">
+                                No training sessions found
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Q&A Categories from Training -->
+    {% if stats.top_categories %}
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">Top Question Categories from Training Sessions</div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for cat in stats.top_categories %}
+                        <div class="col-md-3 mb-2">
+                            <div class="d-flex justify-content-between align-items-center p-2 bg-light rounded">
+                                <span>{{ cat.category }}</span>
+                                <span class="badge bg-primary">{{ cat.count }}</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

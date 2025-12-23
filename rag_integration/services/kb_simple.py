@@ -84,16 +84,40 @@ Format each result clearly with Problem, Solution, Resolved By, Customer, and Da
                 except Exception as e:
                     logger.warning(f"Gemini query failed: {e}")
 
-            # Combine results
+            # Combine results with deduplication
             results = []
+            seen_questions = set()  # Track unique question+person combinations
+
+            def normalize_question(q):
+                """Normalize question for deduplication."""
+                if not q:
+                    return ''
+                # Lowercase, strip whitespace, remove punctuation
+                import re
+                return re.sub(r'[^\w\s]', '', q.lower().strip())
+
+            def get_dedup_key(question, person):
+                """Create deduplication key from question and person."""
+                norm_q = normalize_question(question)
+                norm_p = (person or 'unknown').lower().strip()
+                return f"{norm_q}|{norm_p}"
 
             # Add database results first (these have structured data)
-            for row in db_results[:10]:
+            for row in db_results[:20]:  # Process more to allow for dedup filtering
                 source_type = row.get('source_type', 'call')
+                question = row['problem_statement']
+                person = row['employee_name'] or 'Unknown'
+
+                # Check for duplicates
+                dedup_key = get_dedup_key(question, person)
+                if dedup_key in seen_questions:
+                    continue  # Skip duplicate
+                seen_questions.add(dedup_key)
+
                 result = {
-                    'question': row['problem_statement'],
+                    'question': question,
                     'answer': row['resolution_details'],
-                    'resolved_by': row['employee_name'] or 'Unknown',
+                    'resolved_by': person,
                     'customer': row['customer_name'] or 'Unknown',
                     'company': row['customer_company'] or 'Unknown',
                     'date': str(row['call_date']) if row['call_date'] else 'Unknown',
@@ -104,13 +128,23 @@ Format each result clearly with Problem, Solution, Resolved By, Customer, and Da
                     'avg_rating': float(row.get('avg_rating') or 0),
                     'rating_count': int(row.get('rating_count') or 0)
                 }
-                # Add Freshdesk-specific fields
+                # Add source-specific fields and labels
                 if source_type == 'freshdesk':
                     result['ticket_id'] = row.get('ticket_id')
                     result['source_label'] = 'Freshdesk Ticket'
+                    result['source_icon'] = 'bi-ticket-detailed'
+                elif source_type == 'video':
+                    result['video_meeting_id'] = row.get('video_meeting_id')
+                    result['video_title'] = row.get('video_title')
+                    result['source_label'] = 'Video Meeting'
+                    result['source_icon'] = 'bi-camera-video'
                 else:
                     result['source_label'] = 'Call Recording'
+                    result['source_icon'] = 'bi-telephone'
                 results.append(result)
+
+                if len(results) >= 10:  # Limit final results
+                    break
 
             # If we got RAG results, add summary
             rag_summary = None
@@ -233,9 +267,47 @@ Format each result clearly with Problem, Solution, Resolved By, Customer, and Da
                 except Exception as e:
                     logger.warning(f"Freshdesk search failed (table may not exist): {e}")
 
+                # Search Video Meeting Q&A pairs
+                video_results = []
+                try:
+                    cur.execute("""
+                        SELECT
+                            'video_' || vq.id as recording_id,
+                            vq.question as problem_statement,
+                            vq.answer as resolution_details,
+                            'complete' as resolution_status,
+                            vm.host_name as employee_name,
+                            NULL as customer_name,
+                            vq.category as customer_company,
+                            vm.start_time as call_date,
+                            vm.meeting_quality_score as call_quality_score,
+                            'video' as source_type,
+                            vm.id as video_meeting_id,
+                            vm.title as video_title,
+                            ts_rank(
+                                to_tsvector('english', COALESCE(vq.question, '') || ' ' || COALESCE(vq.answer, '')),
+                                plainto_tsquery('english', %s)
+                            ) as rank,
+                            0 as avg_rating,
+                            0 as rating_count
+                        FROM video_meeting_qa_pairs vq
+                        JOIN video_meetings vm ON vq.video_meeting_id = vm.id
+                        WHERE (
+                            to_tsvector('english', COALESCE(vq.question, '') || ' ' || COALESCE(vq.answer, ''))
+                            @@ plainto_tsquery('english', %s)
+                            OR vq.question ILIKE %s
+                            OR vq.answer ILIKE %s
+                        )
+                        ORDER BY rank DESC, vm.start_time DESC
+                        LIMIT %s
+                    """, (query, query, f'%{query}%', f'%{query}%', limit))
+                    video_results = [dict(row) for row in cur.fetchall()]
+                except Exception as e:
+                    logger.warning(f"Video Q&A search failed (table may not exist): {e}")
+
                 # Combine and sort by weighted score: rank + rating boost
                 # Higher rated answers get boosted in results
-                all_results = call_results + freshdesk_results
+                all_results = call_results + freshdesk_results + video_results
 
                 def calculate_score(result):
                     base_rank = float(result.get('rank', 0) or 0)
@@ -252,7 +324,20 @@ Format each result clearly with Problem, Solution, Resolved By, Customer, and Da
 
                 all_results.sort(key=calculate_score, reverse=True)
 
-                return all_results[:limit]
+                # Deduplicate by question + employee (keep first/highest ranked)
+                import re
+                seen = set()
+                deduped = []
+                for r in all_results:
+                    q = r.get('problem_statement', '') or ''
+                    e = r.get('employee_name', '') or 'unknown'
+                    # Normalize for comparison
+                    key = f"{re.sub(r'[^a-z0-9]', '', q.lower())}|{e.lower().strip()}"
+                    if key not in seen:
+                        seen.add(key)
+                        deduped.append(r)
+
+                return deduped[:limit]
 
     def _log_search(
         self,

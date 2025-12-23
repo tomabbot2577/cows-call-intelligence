@@ -4139,6 +4139,234 @@ async def api_trigger_history(
         raise HTTPException(status_code=500, detail=str(e))
 
 
+# ============================================================================
+# VIDEO MEETING INTELLIGENCE API
+# ============================================================================
+
+@app.get("/learning", response_class=HTMLResponse)
+async def learning_module_page(request: Request):
+    """Learning module dashboard page."""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+
+    try:
+        db = get_db()
+        stats = db.get_learning_module_stats()
+        recent_sessions = db.get_video_meetings(limit=15)
+        attention_needed = db.get_learning_attention_needed(limit=10)
+
+        return templates.TemplateResponse("learning_module.html", {
+            "request": request,
+            "stats": stats,
+            "recent_sessions": recent_sessions.get('meetings', []),
+            "attention_needed": attention_needed
+        })
+    except Exception as e:
+        logger.error(f"Learning module page error: {e}")
+        return templates.TemplateResponse("learning_module.html", {
+            "request": request,
+            "stats": {},
+            "recent_sessions": [],
+            "attention_needed": [],
+            "error": str(e)
+        })
+
+
+@app.get("/video-meetings", response_class=HTMLResponse)
+async def video_meetings_page(request: Request):
+    """Video meetings dashboard page."""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+
+    try:
+        db = get_db()
+        stats = db.get_video_meeting_stats()
+        meetings = db.get_video_meetings(limit=20)
+
+        return templates.TemplateResponse("video_meetings.html", {
+            "request": request,
+            "stats": stats,
+            "meetings": meetings['meetings'],
+            "total": meetings['total']
+        })
+    except Exception as e:
+        logger.error(f"Video meetings page error: {e}")
+        return templates.TemplateResponse("video_meetings.html", {
+            "request": request,
+            "stats": {},
+            "meetings": [],
+            "total": 0,
+            "error": str(e)
+        })
+
+
+@app.get("/video-meetings/{meeting_id}", response_class=HTMLResponse)
+async def video_meeting_detail_page(request: Request, meeting_id: int):
+    """Video meeting detail page."""
+    if not check_auth(request):
+        return RedirectResponse(url="/login", status_code=303)
+
+    try:
+        db = get_db()
+        meeting = db.get_video_meeting_detail(meeting_id)
+
+        if not meeting:
+            raise HTTPException(status_code=404, detail="Meeting not found")
+
+        return templates.TemplateResponse("video_meeting_detail.html", {
+            "request": request,
+            "meeting": meeting
+        })
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Video meeting detail error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/video-meetings")
+async def api_video_meetings(
+    request: Request,
+    limit: int = 50,
+    offset: int = 0,
+    meeting_type: str = None,
+    trainer: str = None,
+    sentiment: str = None,
+    learning_state: str = None,
+    date_range: str = None,
+    start_date: str = None,
+    end_date: str = None
+):
+    """Get video meetings with filters."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        db = get_db()
+        result = db.get_video_meetings(
+            limit=limit,
+            offset=offset,
+            meeting_type=meeting_type,
+            trainer=trainer,
+            sentiment=sentiment,
+            learning_state=learning_state,
+            date_range=date_range,
+            start_date=start_date,
+            end_date=end_date
+        )
+
+        # Convert datetime objects
+        for m in result['meetings']:
+            if m.get('start_time') and hasattr(m['start_time'], 'isoformat'):
+                m['start_time'] = m['start_time'].isoformat()
+
+        return {"success": True, "data": result}
+
+    except Exception as e:
+        logger.error(f"Video meetings API error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/video-meetings/stats")
+async def api_video_meeting_stats(request: Request):
+    """Get video meeting statistics."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        db = get_db()
+        stats = db.get_video_meeting_stats()
+        return {"success": True, "data": stats}
+
+    except Exception as e:
+        logger.error(f"Video meeting stats error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/video-meetings/{meeting_id}")
+async def api_video_meeting_detail(request: Request, meeting_id: int):
+    """Get video meeting details."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        db = get_db()
+        meeting = db.get_video_meeting_detail(meeting_id)
+
+        if not meeting:
+            raise HTTPException(status_code=404, detail="Meeting not found")
+
+        # Convert datetime objects
+        for key in ['start_time', 'end_time', 'created_at', 'updated_at']:
+            if meeting.get(key) and hasattr(meeting[key], 'isoformat'):
+                meeting[key] = meeting[key].isoformat()
+
+        return {"success": True, "data": meeting}
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Video meeting detail API error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/rag/reports/training-effectiveness")
+async def api_training_report(
+    request: Request,
+    trainer: str = None,
+    date_range: str = None,
+    start_date: str = None,
+    end_date: str = None
+):
+    """Get training effectiveness report from video meetings."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        db = get_db()
+        report = db.get_video_training_report(
+            trainer=trainer,
+            date_range=date_range,
+            start_date=start_date,
+            end_date=end_date
+        )
+
+        # Generate summary
+        if report['total_sessions'] > 0:
+            avg_learning = report.get('avg_learning_score') or 0
+            learning_grade = 'A' if avg_learning >= 8 else 'B' if avg_learning >= 7 else 'C' if avg_learning >= 6 else 'D'
+
+            summary = f"""## Training Effectiveness Report
+
+**Sessions Analyzed:** {report['total_sessions']}
+**Average Learning Score:** {avg_learning:.1f}/10 (Grade: {learning_grade})
+**Average Quality:** {(report.get('avg_quality') or 0):.1f}/10
+**Average Satisfaction:** {(report.get('avg_satisfaction') or 0):.1f}/10
+
+### Learning Outcomes
+- **Aha Moments:** {report.get('aha_moments', 0)} sessions
+- **Struggling:** {report.get('struggling', 0)} sessions
+- **High Churn Risk:** {report.get('high_risk', 0)} sessions
+"""
+            if report.get('attention_needed'):
+                summary += "\n### Sessions Needing Attention\n"
+                for s in report['attention_needed'][:5]:
+                    summary += f"- [{s['title'][:40]}...](/video-meetings/{s['id']}) - {s['learning_state']}\n"
+        else:
+            summary = "No training sessions found matching the criteria."
+
+        return {
+            "report": "training_effectiveness",
+            "response": summary,
+            "data": report,
+            "generated_at": datetime.now().isoformat()
+        }
+
+    except Exception as e:
+        logger.error(f"Training report error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 def create_app():
     """Factory function for creating the app."""
     return app

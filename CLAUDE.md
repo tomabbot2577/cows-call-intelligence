@@ -101,21 +101,25 @@ Connection: postgresql://[user]:[password]@localhost/call_insights (see .env)
 | 3 | Resolution Tracking | churn_risk, resolution_effectiveness, empathy_score, loop_closure |
 | 4 | Recommendations | process_improvements, coaching_points, follow_up_actions |
 | 5 | Advanced Metrics | Layer 5 metrics for detailed analysis |
+| 6 | Learning Analytics | learning_score, learning_state, training effectiveness (video meetings only) |
 
 ## COWS Platform Features
 
 ### Knowledge Base (`/knowledge-base`)
-- Full-text search across Freshdesk tickets + call transcripts
+- Full-text search across Freshdesk tickets + call transcripts + video meeting Q&A
 - AI summaries via Google Gemini
-- 5,300+ Q&A pairs from Freshdesk
+- 5,300+ Q&A pairs from Freshdesk + 300+ from video meetings
+- Source labels: Call Recording, Freshdesk Ticket, Video Meeting
+- Automatic deduplication of Q&A pairs
 
 ### Reports (`/reports`, `/sales-intelligence`)
-- Churn Risk: `/api/v1/rag/reports/churn`
-- Agent Performance: `/api/v1/rag/reports/agent/{name}`
+- Churn Risk: `/api/v1/rag/reports/churn` (includes video meetings)
+- Agent Performance: `/api/v1/rag/reports/agent/{name}` (includes video meetings + Layer 6 learning stats)
 - Sales Pipeline: `/api/v1/rag/reports/sales-pipeline`
 - Key Quotes: `/api/v1/rag/reports/key-quotes`
 - Q&A Training: `/api/v1/rag/reports/qa-training`
 - Hormozi Analysis: `/api/v1/rag/reports/sales-call-analysis?recording_id=<id>`
+- Training Effectiveness: `/api/v1/rag/reports/training-effectiveness` (video meetings only)
 
 ### Vertex RAG Filters
 Supported natural language filters:
@@ -187,6 +191,53 @@ Real-time agent productivity tracking with call + ticket metrics.
 - `rag_integration/api/templates/dashboard_admin.html` - Admin dashboard UI
 - `rag_integration/jobs/aggregate_daily_metrics.py` - Daily cron job
 - `rag_integration/jobs/evaluate_triggers.py` - Trigger evaluation cron
+
+### Video Meeting Intelligence (`/video-meetings`, `/learning`)
+
+AI-powered analysis of RingCentral video meetings with 6-layer analysis.
+
+**URLs:**
+| Route | Access | Description |
+|-------|--------|-------------|
+| `/video-meetings` | All users | Video meetings dashboard |
+| `/video-meetings/{id}` | All users | Meeting detail with transcript + analysis |
+| `/learning` | All users | Training & learning analytics (Layer 6) |
+| `/api/v1/video-meetings` | API | Video meetings list with filters |
+| `/api/v1/video-meetings/stats` | API | Aggregate statistics |
+| `/api/v1/video-meetings/{id}` | API | Meeting detail |
+
+**6-Layer Video Analysis:**
+- Layer 1-5: Same as call analysis (entities, sentiment, quality, recommendations, metrics)
+- Layer 6: Learning analytics (UTL metrics, learning state, training effectiveness)
+
+**Learning States:**
+- `aha_zone` - Breakthrough moments, high engagement
+- `building` - Steady progress, absorbing information
+- `stable` - Maintaining knowledge, no new learning
+- `struggling` - Difficulty understanding, needs support
+- `overwhelmed` - Too much information, risk of churn
+
+**Database Tables:**
+- `video_meetings` - Meeting metadata, transcripts, analysis scores
+- `video_meeting_participants` - Participant details, speaking time, engagement
+- `video_meeting_qa_pairs` - Extracted Q&A for knowledge base
+
+**Cron Jobs:**
+```cron
+# Video transcription - every 5 min
+*/5 * * * * /var/www/call-recording-system/scripts/video_processing/transcription_watchdog.sh
+
+# Layer analysis - every 10 min (8 parallel workers)
+*/10 * * * * /var/www/call-recording-system/scripts/video_processing/layer_analysis_watchdog.sh
+```
+
+**Key Files:**
+- `scripts/video_processing/batch_layer_analysis.py` - 6-layer AI analysis
+- `scripts/video_processing/transcription_watchdog.sh` - Transcription cron
+- `scripts/video_processing/layer_analysis_watchdog.sh` - Analysis cron
+- `rag_integration/api/templates/video_meetings.html` - Meetings list UI
+- `rag_integration/api/templates/video_meeting_detail.html` - Meeting detail UI
+- `rag_integration/api/templates/learning_module.html` - Learning analytics UI
 
 ## Common Commands
 

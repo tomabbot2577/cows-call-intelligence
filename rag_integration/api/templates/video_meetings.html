@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+
+{% block title %}Video Meetings - COWS{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2>Video Meeting Intelligence</h2>
+            <p class="text-muted">AI-analyzed training sessions and video meetings</p>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="row mb-4">
+        <div class="col-md-2">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                    <h3 class="mb-0">{{ stats.total_meetings or 0 }}</h3>
+                    <small>Total Meetings</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card bg-success text-white">
+                <div class="card-body text-center">
+                    <h3 class="mb-0">{{ stats.analyzed or 0 }}</h3>
+                    <small>Analyzed</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card bg-info text-white">
+                <div class="card-body text-center">
+                    <h3 class="mb-0">{{ "%.1f"|format(stats.avg_learning or 0) }}</h3>
+                    <small>Avg Learning</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card bg-warning text-dark">
+                <div class="card-body text-center">
+                    <h3 class="mb-0">{{ "%.1f"|format(stats.avg_quality or 0) }}</h3>
+                    <small>Avg Quality</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card bg-secondary text-white">
+                <div class="card-body text-center">
+                    <h3 class="mb-0">{{ stats.unique_hosts or 0 }}</h3>
+                    <small>Trainers</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card bg-dark text-white">
+                <div class="card-body text-center">
+                    <h3 class="mb-0">{{ ((stats.avg_duration or 0) / 60)|int }}</h3>
+                    <small>Avg Min</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <form id="filterForm" class="row g-3">
+                <div class="col-md-3">
+                    <label class="form-label">Trainer</label>
+                    <select class="form-select" name="trainer" id="trainerFilter">
+                        <option value="">All Trainers</option>
+                        {% for trainer in stats.top_trainers or [] %}
+                        <option value="{{ trainer.host_name }}">{{ trainer.host_name }} ({{ trainer.meeting_count }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Sentiment</label>
+                    <select class="form-select" name="sentiment" id="sentimentFilter">
+                        <option value="">All</option>
+                        <option value="positive">Positive</option>
+                        <option value="neutral">Neutral</option>
+                        <option value="negative">Negative</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Learning State</label>
+                    <select class="form-select" name="learning_state" id="learningFilter">
+                        <option value="">All</option>
+                        <option value="aha_zone">Aha Zone</option>
+                        <option value="building">Building</option>
+                        <option value="stable">Stable</option>
+                        <option value="struggling">Struggling</option>
+                        <option value="overwhelmed">Overwhelmed</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <label class="form-label">Date Range</label>
+                    <select class="form-select" name="date_range" id="dateFilter">
+                        <option value="">All Time</option>
+                        <option value="last_30">Last 30 Days</option>
+                        <option value="this_month">This Month</option>
+                    </select>
+                </div>
+                <div class="col-md-3 d-flex align-items-end">
+                    <button type="submit" class="btn btn-primary me-2">Filter</button>
+                    <button type="button" class="btn btn-outline-secondary" onclick="clearFilters()">Clear</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Meetings Table -->
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Video Meetings ({{ total }} total)</span>
+            <a href="/api/v1/rag/reports/training-effectiveness" class="btn btn-sm btn-outline-primary" target="_blank">
+                Training Report
+            </a>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Date</th>
+                            <th>Title</th>
+                            <th>Host</th>
+                            <th>Duration</th>
+                            <th>Participants</th>
+                            <th>Sentiment</th>
+                            <th>Quality</th>
+                            <th>Learning</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="meetingsTable">
+                        {% for m in meetings %}
+                        <tr>
+                            <td>{{ m.start_time.strftime('%Y-%m-%d') if m.start_time else 'N/A' }}</td>
+                            <td>
+                                <a href="/video-meetings/{{ m.id }}">
+                                    {{ m.title[:50] }}{% if m.title|length > 50 %}...{% endif %}
+                                </a>
+                            </td>
+                            <td>{{ m.host_name or 'Unknown' }}</td>
+                            <td>{{ ((m.duration_seconds or 0) / 60)|int }} min</td>
+                            <td>{{ m.participant_count or 0 }}</td>
+                            <td>
+                                {% if m.overall_sentiment == 'positive' %}
+                                <span class="badge bg-success">Positive</span>
+                                {% elif m.overall_sentiment == 'negative' %}
+                                <span class="badge bg-danger">Negative</span>
+                                {% else %}
+                                <span class="badge bg-secondary">Neutral</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if m.meeting_quality_score %}
+                                <span class="badge {% if m.meeting_quality_score >= 8 %}bg-success{% elif m.meeting_quality_score >= 6 %}bg-warning text-dark{% else %}bg-danger{% endif %}">
+                                    {{ "%.1f"|format(m.meeting_quality_score) }}
+                                </span>
+                                {% else %}
+                                <span class="badge bg-light text-dark">-</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if m.learning_state %}
+                                <span class="badge {% if m.learning_state == 'aha_zone' %}bg-success{% elif m.learning_state == 'struggling' %}bg-warning text-dark{% elif m.learning_state == 'overwhelmed' %}bg-danger{% else %}bg-info{% endif %}">
+                                    {{ m.learning_state }}
+                                </span>
+                                {% else %}
+                                <span class="badge bg-light text-dark">-</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="/video-meetings/{{ m.id }}" class="btn btn-sm btn-outline-primary">View</a>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="9" class="text-center text-muted py-4">
+                                No video meetings found
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Learning Distribution Chart -->
+    {% if stats.learning_distribution %}
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Learning State Distribution</div>
+                <div class="card-body">
+                    {% for state, count in stats.learning_distribution.items() %}
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span>{{ state }}</span>
+                        <div class="d-flex align-items-center" style="width: 70%">
+                            <div class="progress flex-grow-1 me-2" style="height: 20px;">
+                                <div class="progress-bar {% if state == 'aha_zone' %}bg-success{% elif state == 'struggling' %}bg-warning{% elif state == 'overwhelmed' %}bg-danger{% else %}bg-info{% endif %}"
+                                     style="width: {{ (count / stats.analyzed * 100) if stats.analyzed else 0 }}%">
+                                </div>
+                            </div>
+                            <span class="badge bg-secondary">{{ count }}</span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Top Trainers</div>
+                <div class="card-body">
+                    {% for trainer in stats.top_trainers or [] %}
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span>{{ trainer.host_name }}</span>
+                        <div>
+                            <span class="badge bg-primary">{{ trainer.meeting_count }} meetings</span>
+                            {% if trainer.avg_quality %}
+                            <span class="badge {% if trainer.avg_quality >= 8 %}bg-success{% elif trainer.avg_quality >= 6 %}bg-warning text-dark{% else %}bg-danger{% endif %}">
+                                {{ "%.1f"|format(trainer.avg_quality) }} quality
+                            </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<script>
+function clearFilters() {
+    document.getElementById('trainerFilter').value = '';
+    document.getElementById('sentimentFilter').value = '';
+    document.getElementById('learningFilter').value = '';
+    document.getElementById('dateFilter').value = '';
+    window.location.href = '/video-meetings';
+}
+
+document.getElementById('filterForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const params = new URLSearchParams();
+
+    const trainer = document.getElementById('trainerFilter').value;
+    const sentiment = document.getElementById('sentimentFilter').value;
+    const learning = document.getElementById('learningFilter').value;
+    const dateRange = document.getElementById('dateFilter').value;
+
+    if (trainer) params.set('trainer', trainer);
+    if (sentiment) params.set('sentiment', sentiment);
+    if (learning) params.set('learning_state', learning);
+    if (dateRange) params.set('date_range', dateRange);
+
+    // Reload with filters via API and update table
+    fetch('/api/v1/video-meetings?' + params.toString())
+        .then(r => r.json())
+        .then(data => {
+            if (data.success) {
+                updateTable(data.data.meetings);
+            }
+        });
+});
+
+function updateTable(meetings) {
+    const tbody = document.getElementById('meetingsTable');
+    if (!meetings.length) {
+        tbody.innerHTML = '<tr><td colspan="9" class="text-center text-muted py-4">No video meetings found</td></tr>';
+        return;
+    }
+
+    tbody.innerHTML = meetings.map(m => `
+        <tr>
+            <td>${m.start_time ? m.start_time.split('T')[0] : 'N/A'}</td>
+            <td><a href="/video-meetings/${m.id}">${(m.title || '').substring(0, 50)}${(m.title || '').length > 50 ? '...' : ''}</a></td>
+            <td>${m.host_name || 'Unknown'}</td>
+            <td>${Math.floor((m.duration_seconds || 0) / 60)} min</td>
+            <td>${m.participant_count || 0}</td>
+            <td><span class="badge ${m.overall_sentiment === 'positive' ? 'bg-success' : m.overall_sentiment === 'negative' ? 'bg-danger' : 'bg-secondary'}">${m.overall_sentiment || 'neutral'}</span></td>
+            <td>${m.meeting_quality_score ? `<span class="badge ${m.meeting_quality_score >= 8 ? 'bg-success' : m.meeting_quality_score >= 6 ? 'bg-warning text-dark' : 'bg-danger'}">${m.meeting_quality_score.toFixed(1)}</span>` : '<span class="badge bg-light text-dark">-</span>'}</td>
+            <td>${m.learning_state ? `<span class="badge ${m.learning_state === 'aha_zone' ? 'bg-success' : m.learning_state === 'struggling' ? 'bg-warning text-dark' : m.learning_state === 'overwhelmed' ? 'bg-danger' : 'bg-info'}">${m.learning_state}</span>` : '<span class="badge bg-light text-dark">-</span>'}</td>
+            <td><a href="/video-meetings/${m.id}" class="btn btn-sm btn-outline-primary">View</a></td>
+        </tr>
+    `).join('');
+}
+</script>
+{% endblock %}

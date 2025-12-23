@@ -1,0 +1,308 @@
+{% extends "base.html" %}
+
+{% block title %}{{ meeting.title[:50] }} - Video Meeting{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <!-- Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/video-meetings">Video Meetings</a></li>
+                    <li class="breadcrumb-item active">{{ meeting.title[:40] }}...</li>
+                </ol>
+            </nav>
+            <h2>{{ meeting.title }}</h2>
+            <p class="text-muted">
+                <span class="badge bg-primary">VIDEO MEETING</span>
+                {{ meeting.start_time.strftime('%B %d, %Y at %I:%M %p') if meeting.start_time else 'Unknown date' }}
+                | Host: {{ meeting.host_name or 'Unknown' }}
+                | Duration: {{ ((meeting.duration_seconds or 0) / 60)|int }} minutes
+            </p>
+        </div>
+    </div>
+
+    <!-- Metrics Cards -->
+    <div class="row mb-4">
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h4 class="mb-0 {% if meeting.sentiment_score and meeting.sentiment_score >= 7 %}text-success{% elif meeting.sentiment_score and meeting.sentiment_score < 5 %}text-danger{% else %}text-warning{% endif %}">
+                        {{ "%.1f"|format(meeting.sentiment_score or 0) }}
+                    </h4>
+                    <small class="text-muted">Sentiment</small>
+                    <div><span class="badge {% if meeting.overall_sentiment == 'positive' %}bg-success{% elif meeting.overall_sentiment == 'negative' %}bg-danger{% else %}bg-secondary{% endif %}">{{ meeting.overall_sentiment or 'neutral' }}</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h4 class="mb-0 {% if meeting.meeting_quality_score and meeting.meeting_quality_score >= 8 %}text-success{% elif meeting.meeting_quality_score and meeting.meeting_quality_score < 6 %}text-danger{% else %}text-warning{% endif %}">
+                        {{ "%.1f"|format(meeting.meeting_quality_score or 0) }}
+                    </h4>
+                    <small class="text-muted">Quality Score</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h4 class="mb-0 text-info">{{ "%.1f"|format(meeting.learning_score or 0) }}</h4>
+                    <small class="text-muted">Learning Score</small>
+                    {% if meeting.learning_state %}
+                    <div><span class="badge {% if meeting.learning_state == 'aha_zone' %}bg-success{% elif meeting.learning_state == 'struggling' %}bg-warning text-dark{% elif meeting.learning_state == 'overwhelmed' %}bg-danger{% else %}bg-info{% endif %}">{{ meeting.learning_state }}</span></div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h4 class="mb-0">{{ meeting.participant_count or 0 }}</h4>
+                    <small class="text-muted">Participants</small>
+                    <div>
+                        <span class="badge bg-primary">{{ meeting.internal_participant_count or 0 }} internal</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h4 class="mb-0 {% if meeting.churn_risk_level == 'high' %}text-danger{% elif meeting.churn_risk_level == 'medium' %}text-warning{% else %}text-success{% endif %}">
+                        {{ meeting.churn_risk_level or 'low' }}
+                    </h4>
+                    <small class="text-muted">Churn Risk</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h4 class="mb-0">{{ meeting.qa_pairs|length }}</h4>
+                    <small class="text-muted">Q&A Pairs</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Left Column: Analysis -->
+        <div class="col-md-8">
+            <!-- Participants -->
+            <div class="card mb-4">
+                <div class="card-header">Participants ({{ meeting.participants|length }})</div>
+                <div class="card-body p-0">
+                    <table class="table table-sm mb-0">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Company</th>
+                                <th>Speaking %</th>
+                                <th>Engagement</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for p in meeting.participants %}
+                            <tr>
+                                <td>
+                                    {{ p.participant_name }}
+                                    {% if p.is_trainer %}<span class="badge bg-primary">Trainer</span>{% endif %}
+                                    {% if p.is_trainee %}<span class="badge bg-info">Trainee</span>{% endif %}
+                                    {% if p.is_internal %}<span class="badge bg-secondary">Internal</span>{% endif %}
+                                </td>
+                                <td>{{ p.role_type or '-' }}</td>
+                                <td>{{ p.company_name or '-' }}</td>
+                                <td>
+                                    {% if p.speaking_time_percentage %}
+                                    <div class="progress" style="height: 20px;">
+                                        <div class="progress-bar" style="width: {{ p.speaking_time_percentage }}%">
+                                            {{ p.speaking_time_percentage }}%
+                                        </div>
+                                    </div>
+                                    {% else %}-{% endif %}
+                                </td>
+                                <td>
+                                    {% if p.engagement_level %}
+                                    <span class="badge {% if p.engagement_level == 'high' %}bg-success{% elif p.engagement_level == 'low' %}bg-danger{% else %}bg-warning text-dark{% endif %}">
+                                        {{ p.engagement_level }}
+                                    </span>
+                                    {% else %}-{% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Q&A Pairs -->
+            {% if meeting.qa_pairs %}
+            <div class="card mb-4">
+                <div class="card-header">Knowledge Base Q&A Pairs</div>
+                <div class="card-body">
+                    {% for qa in meeting.qa_pairs %}
+                    <div class="mb-3 p-3 bg-light rounded">
+                        <div class="fw-bold text-primary mb-2">Q: {{ qa.question }}</div>
+                        <div class="text-dark">A: {{ qa.answer }}</div>
+                        {% if qa.category %}
+                        <div class="mt-2"><span class="badge bg-secondary">{{ qa.category }}</span></div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- AI Analysis JSON (collapsible) -->
+            {% if meeting.ai_analysis_json %}
+            <div class="card mb-4">
+                <div class="card-header">
+                    <a class="text-decoration-none" data-bs-toggle="collapse" href="#analysisJson">
+                        Full AI Analysis (click to expand)
+                    </a>
+                </div>
+                <div class="collapse" id="analysisJson">
+                    <div class="card-body">
+                        <pre class="bg-dark text-light p-3 rounded" style="max-height: 500px; overflow-y: auto;">{{ meeting.ai_analysis_json | tojson(indent=2) }}</pre>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Transcript -->
+            {% if meeting.transcript_text %}
+            <div class="card">
+                <div class="card-header d-flex justify-content-between">
+                    <span>Transcript</span>
+                    <button class="btn btn-sm btn-outline-secondary" onclick="copyTranscript()">Copy</button>
+                </div>
+                <div class="card-body" style="max-height: 600px; overflow-y: auto;">
+                    <pre id="transcript" class="mb-0" style="white-space: pre-wrap;">{{ meeting.transcript_text }}</pre>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Right Column: Sidebar -->
+        <div class="col-md-4">
+            <!-- Meeting Info -->
+            <div class="card mb-4">
+                <div class="card-header">Meeting Info</div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4">Type</dt>
+                        <dd class="col-sm-8">{{ meeting.meeting_type or 'Unknown' }}</dd>
+
+                        <dt class="col-sm-4">Host</dt>
+                        <dd class="col-sm-8">{{ meeting.host_name }}<br><small class="text-muted">{{ meeting.host_email }}</small></dd>
+
+                        <dt class="col-sm-4">Started</dt>
+                        <dd class="col-sm-8">{{ meeting.start_time.strftime('%Y-%m-%d %H:%M') if meeting.start_time else 'N/A' }}</dd>
+
+                        <dt class="col-sm-4">Duration</dt>
+                        <dd class="col-sm-8">{{ ((meeting.duration_seconds or 0) / 60)|int }} minutes</dd>
+                    </dl>
+                </div>
+            </div>
+
+            <!-- Layer 6 Learning Analysis -->
+            {% if meeting.ai_analysis_json and meeting.ai_analysis_json.layer6_learning %}
+            {% set l6 = meeting.ai_analysis_json.layer6_learning %}
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">Layer 6: Learning Analysis</div>
+                <div class="card-body">
+                    {% if l6.utl_metrics %}
+                    <h6>UTL Metrics</h6>
+                    <ul class="list-unstyled">
+                        <li>Learning Score: <strong>{{ l6.utl_metrics.learning_score }}</strong></li>
+                        <li>Entropy Delta: {{ l6.utl_metrics.entropy_delta }}</li>
+                        <li>Coherence Delta: {{ l6.utl_metrics.coherence_delta }}</li>
+                        <li>Emotional Coeff: {{ l6.utl_metrics.emotional_coefficient }}</li>
+                    </ul>
+                    {% endif %}
+
+                    {% if l6.learning_state %}
+                    <h6>Learning State</h6>
+                    <p>
+                        <span class="badge {% if l6.learning_state.current_state == 'aha_zone' %}bg-success{% elif l6.learning_state.current_state == 'struggling' %}bg-warning text-dark{% else %}bg-info{% endif %} fs-6">
+                            {{ l6.learning_state.current_state }}
+                        </span>
+                        <span class="badge bg-secondary">{{ l6.learning_state.trajectory }}</span>
+                    </p>
+                    {% endif %}
+
+                    {% if l6.new_hire_readiness %}
+                    <h6>Readiness Assessment</h6>
+                    <p>
+                        <span class="badge {% if l6.new_hire_readiness.status == 'ready' %}bg-success{% elif l6.new_hire_readiness.status == 'not_ready' %}bg-danger{% else %}bg-warning text-dark{% endif %} fs-6">
+                            {{ l6.new_hire_readiness.status }}
+                        </span>
+                    </p>
+                    {% if l6.new_hire_readiness.skill_gaps %}
+                    <p class="text-muted small">Skill gaps: {{ l6.new_hire_readiness.skill_gaps | join(', ') }}</p>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Key Quotes -->
+            {% if meeting.ai_analysis_json and meeting.ai_analysis_json.key_quotes %}
+            <div class="card mb-4">
+                <div class="card-header">Key Quotes</div>
+                <div class="card-body">
+                    {% for quote in meeting.ai_analysis_json.key_quotes[:5] %}
+                    <blockquote class="blockquote fs-6 mb-3">
+                        <p>"{{ quote.quote }}"</p>
+                        <footer class="blockquote-footer">{{ quote.speaker }}
+                            <span class="badge {% if quote.sentiment == 'positive' %}bg-success{% elif quote.sentiment == 'negative' %}bg-danger{% else %}bg-secondary{% endif %}">{{ quote.type }}</span>
+                        </footer>
+                    </blockquote>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Recommendations -->
+            {% if meeting.ai_analysis_json and meeting.ai_analysis_json.layer4_recommendations %}
+            {% set l4 = meeting.ai_analysis_json.layer4_recommendations %}
+            <div class="card">
+                <div class="card-header">Recommendations</div>
+                <div class="card-body">
+                    {% if l4.trainer_coaching and l4.trainer_coaching.improvements %}
+                    <h6>Trainer Improvements</h6>
+                    <ul class="small">
+                        {% for i in l4.trainer_coaching.improvements[:3] %}
+                        <li>{{ i }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+
+                    {% if l4.process_improvements %}
+                    <h6>Process Improvements</h6>
+                    <ul class="small">
+                        {% for p in l4.process_improvements[:3] %}
+                        <li>{{ p.improvement }}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<script>
+function copyTranscript() {
+    const text = document.getElementById('transcript').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Transcript copied to clipboard');
+    });
+}
+</script>
+{% endblock %}
