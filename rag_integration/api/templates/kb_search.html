@@ -87,6 +87,8 @@
             <div>
                 {% if result.source == 'freshdesk' %}
                 <span class="badge bg-warning text-dark"><i class="bi bi-ticket-perforated"></i> Freshdesk</span>
+                {% elif result.source == 'video' %}
+                <span class="badge bg-info"><i class="bi bi-camera-video"></i> Video Meeting</span>
                 {% else %}
                 <span class="badge bg-primary"><i class="bi bi-telephone"></i> Call Recording</span>
                 {% endif %}
@@ -127,13 +129,15 @@
             <div class="text-muted small">
                 {% if result.ticket_id %}
                 <i class="bi bi-hash"></i> Ticket #{{ result.ticket_id }}
+                {% elif result.video_meeting_id %}
+                <i class="bi bi-camera-video"></i> {{ result.video_title or 'Video Meeting' }}
                 {% endif %}
                 {% if result.company and result.company != 'Unknown' %}
                 <span class="ms-2"><i class="bi bi-building"></i> {{ result.company }}</span>
                 {% endif %}
             </div>
             <div class="star-rating"
-                 data-qa-id="{{ 'fd_' ~ result.ticket_id if result.source == 'freshdesk' else 'call_' ~ result.call_id }}"
+                 data-qa-id="{{ 'fd_' ~ result.ticket_id if result.source == 'freshdesk' else ('video_' ~ result.video_meeting_id if result.source == 'video' else 'call_' ~ result.call_id) }}"
                  data-source="{{ result.source }}"
                  data-current-rating="{{ result.avg_rating|default(0) }}">
                 <small class="text-muted me-2">Rate this answer:</small>
