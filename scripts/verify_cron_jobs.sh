@@ -149,8 +149,10 @@ source venv/bin/activate 2>/dev/null
 echo "[Database]" >> "$ALERT_FILE"
 DB_CHECK=$(python3 -c "
 import psycopg2
+import os
 try:
-    conn = psycopg2.connect('postgresql://call_insights_user:${PG_PASSWORD:-$(grep PG_PASSWORD .env 2>/dev/null | cut -d= -f2)}@localhost/call_insights')
+    db_url = os.environ.get('RAG_DATABASE_URL', 'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights')
+    conn = psycopg2.connect(db_url)
     cur = conn.cursor()
     cur.execute('SELECT 1')
     print('OK')

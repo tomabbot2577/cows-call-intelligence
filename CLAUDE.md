@@ -239,6 +239,50 @@ AI-powered analysis of RingCentral video meetings with 6-layer analysis.
 - `rag_integration/api/templates/video_meeting_detail.html` - Meeting detail UI
 - `rag_integration/api/templates/learning_module.html` - Learning analytics UI
 
+### Coaching & Learning Center (`/learning`)
+
+Joy-focused coaching system that combines phone calls AND video meetings to help employees improve.
+
+**Philosophy:** 3:1 strengths to improvements ratio - celebrate wins before growth opportunities.
+
+**URLs:**
+| Route | Access | Description |
+|-------|--------|-------------|
+| `/learning` | All users | Combined coaching dashboard |
+| `/api/v1/coaching/feed` | API | Combined coaching data (calls + video) |
+| `/api/v1/coaching/employee/{name}` | API | Employee coaching progress |
+| `/api/v1/coaching/queue` | API | Interactions needing attention |
+| `/api/v1/coaching/stats` | API | Overall coaching statistics |
+
+**Tabs:**
+- **Coaching Feed** - Strengths, growth areas, suggested phrases for all interactions
+- **Needs Attention** - High churn risk, high customer effort, struggling learners
+- **Training Sessions** - Video meeting learning analytics
+- **Analytics** - Sentiment distribution, top coaching topics
+
+**Metrics Tracked:**
+- Customer Effort Score (CES) - 1-10, lower is better
+- Empathy Score, Active Listening Score
+- Loop Closure Score (problem resolution)
+- Learning Score/State (video meetings)
+- Strengths and Growth Opportunities
+
+**Attention Queue Triggers:**
+- High churn risk (medium/high)
+- High customer effort (CES > 7)
+- Low quality score (< 5)
+- Negative sentiment
+- Struggling/overwhelmed learners
+
+**Data Sources:**
+- **Phone Calls**: `call_recommendations` (strengths, improvements, phrases) + `call_resolutions` (CES, empathy, quality)
+- **Video Meetings**: `ai_analysis_json.layer6_learning` (coaching recommendations, learning state)
+
+**Key Files:**
+- `rag_integration/services/db_reader.py` - Coaching data query methods
+- `rag_integration/api/templates/learning_module.html` - Coaching UI
+- `rag_integration/api/templates/video_meeting_detail.html` - Meeting coaching card
+
 ## Common Commands
 
 ```bash
