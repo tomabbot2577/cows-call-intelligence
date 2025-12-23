@@ -305,24 +305,17 @@ Format each result clearly with Problem, Solution, Resolved By, Customer, and Da
                 except Exception as e:
                     logger.warning(f"Video Q&A search failed (table may not exist): {e}")
 
-                # Combine and sort by weighted score: rank + rating boost
-                # Higher rated answers get boosted in results
+                # Combine and sort by relevance first, then star rating as tiebreaker
                 all_results = call_results + freshdesk_results + video_results
 
-                def calculate_score(result):
-                    base_rank = float(result.get('rank', 0) or 0)
+                def get_sort_key(result):
+                    # Primary: relevance rank (higher is better)
+                    rank = float(result.get('rank', 0) or 0)
+                    # Secondary: star rating as tiebreaker (higher is better)
                     avg_rating = float(result.get('avg_rating', 0) or 0)
-                    rating_count = int(result.get('rating_count', 0) or 0)
+                    return (rank, avg_rating)
 
-                    # Relevance is primary, but stars boost the score
-                    # 1-star = 1.1x, 2-star = 1.2x, ... 5-star = 1.5x
-                    if rating_count > 0 and avg_rating > 0:
-                        rating_multiplier = 1.0 + (avg_rating / 10.0)  # 1.1x to 1.5x
-                        return base_rank * rating_multiplier
-                    else:
-                        return base_rank
-
-                all_results.sort(key=calculate_score, reverse=True)
+                all_results.sort(key=get_sort_key, reverse=True)
 
                 # Deduplicate by question + employee (keep first/highest ranked)
                 import re
