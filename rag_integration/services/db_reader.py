@@ -2455,7 +2455,7 @@ class DatabaseReader:
         with self.get_connection() as conn:
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
                 # Build WHERE clause
-                conditions = ["source = 'ringcentral'", "transcript_text IS NOT NULL"]
+                conditions = ["source IN ('ringcentral', 'fathom')", "transcript_text IS NOT NULL"]
                 params = []
 
                 if meeting_type:
@@ -2572,7 +2572,7 @@ class DatabaseReader:
                         AVG(learning_score) as avg_learning,
                         COUNT(DISTINCT host_name) as unique_hosts
                     FROM video_meetings
-                    WHERE source = 'ringcentral'
+                    WHERE source IN ('ringcentral', 'fathom')
                 """)
                 stats = dict(cur.fetchone())
 
@@ -2580,7 +2580,7 @@ class DatabaseReader:
                 cur.execute("""
                     SELECT overall_sentiment, COUNT(*) as count
                     FROM video_meetings
-                    WHERE source = 'ringcentral' AND overall_sentiment IS NOT NULL
+                    WHERE source IN ('ringcentral', 'fathom') AND overall_sentiment IS NOT NULL
                     GROUP BY overall_sentiment
                 """)
                 stats['sentiment_distribution'] = {r['overall_sentiment']: r['count'] for r in cur.fetchall()}
@@ -2589,7 +2589,7 @@ class DatabaseReader:
                 cur.execute("""
                     SELECT learning_state, COUNT(*) as count
                     FROM video_meetings
-                    WHERE source = 'ringcentral' AND learning_state IS NOT NULL
+                    WHERE source IN ('ringcentral', 'fathom') AND learning_state IS NOT NULL
                     GROUP BY learning_state
                 """)
                 stats['learning_distribution'] = {r['learning_state']: r['count'] for r in cur.fetchall()}
@@ -2599,7 +2599,7 @@ class DatabaseReader:
                     SELECT host_name, COUNT(*) as meeting_count,
                            AVG(meeting_quality_score) as avg_quality
                     FROM video_meetings
-                    WHERE source = 'ringcentral' AND host_name IS NOT NULL
+                    WHERE source IN ('ringcentral', 'fathom') AND host_name IS NOT NULL
                     GROUP BY host_name
                     ORDER BY meeting_count DESC
                     LIMIT 10
@@ -2618,7 +2618,7 @@ class DatabaseReader:
         """Get training effectiveness report from video meetings."""
         with self.get_connection() as conn:
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
-                conditions = ["source = 'ringcentral'", "layer6_complete = TRUE"]
+                conditions = ["source IN ('ringcentral', 'fathom')", "layer6_complete = TRUE"]
                 params = []
 
                 if trainer:
@@ -2696,7 +2696,7 @@ class DatabaseReader:
                         COUNT(*) FILTER (WHERE learning_state IN ('struggling', 'overwhelmed')) as struggling,
                         COUNT(*) FILTER (WHERE churn_risk_level = 'high') as high_churn_risk
                     FROM video_meetings
-                    WHERE source = 'ringcentral' AND layer1_complete = TRUE
+                    WHERE source IN ('ringcentral', 'fathom') AND layer1_complete = TRUE
                 """)
                 stats = dict(cur.fetchone())
 
@@ -2711,7 +2711,7 @@ class DatabaseReader:
                 cur.execute("""
                     SELECT learning_state, COUNT(*) as count
                     FROM video_meetings
-                    WHERE source = 'ringcentral' AND learning_state IS NOT NULL
+                    WHERE source IN ('ringcentral', 'fathom') AND learning_state IS NOT NULL
                     GROUP BY learning_state
                     ORDER BY count DESC
                 """)
@@ -2724,7 +2724,7 @@ class DatabaseReader:
                            AVG(learning_score) as avg_learning,
                            AVG(meeting_quality_score) as avg_quality
                     FROM video_meetings
-                    WHERE source = 'ringcentral'
+                    WHERE source IN ('ringcentral', 'fathom')
                       AND host_name IS NOT NULL
                       AND learning_score IS NOT NULL
                     GROUP BY host_name
@@ -2755,7 +2755,7 @@ class DatabaseReader:
                     SELECT id, title, host_name, start_time, learning_state,
                            learning_score, churn_risk_level, overall_sentiment
                     FROM video_meetings
-                    WHERE source = 'ringcentral'
+                    WHERE source IN ('ringcentral', 'fathom')
                       AND layer1_complete = TRUE
                       AND (learning_state IN ('struggling', 'overwhelmed')
                            OR churn_risk_level = 'high')
@@ -2896,7 +2896,7 @@ class DatabaseReader:
                             churn_risk_level,
                             ai_analysis_json
                         FROM video_meetings
-                        WHERE source = 'ringcentral'
+                        WHERE source IN ('ringcentral', 'fathom')
                           AND layer1_complete = TRUE
                           AND ai_analysis_json IS NOT NULL
                           {video_employee_filter}
@@ -3033,7 +3033,7 @@ class DatabaseReader:
                         AVG(meeting_quality_score) as avg_quality,
                         AVG(learning_score) as avg_learning
                     FROM video_meetings
-                    WHERE source = 'ringcentral'
+                    WHERE source IN ('ringcentral', 'fathom')
                       AND ({video_pattern_clauses})
                       {video_date_filter}
                 """, patterns)
@@ -3205,7 +3205,7 @@ class DatabaseReader:
                             ELSE 'Needs Review'
                         END as attention_reason
                     FROM video_meetings
-                    WHERE source = 'ringcentral'
+                    WHERE source IN ('ringcentral', 'fathom')
                       AND layer1_complete = TRUE
                       AND start_time >= CURRENT_DATE - INTERVAL '30 days'
                       AND (
@@ -3285,7 +3285,7 @@ class DatabaseReader:
                         SUM(CASE WHEN churn_risk_level = 'high' THEN 1 ELSE 0 END) as high_churn,
                         SUM(CASE WHEN learning_state IN ('struggling', 'overwhelmed') THEN 1 ELSE 0 END) as struggling
                     FROM video_meetings
-                    WHERE source = 'ringcentral'
+                    WHERE source IN ('ringcentral', 'fathom')
                       AND layer1_complete = TRUE
                       AND start_time >= CURRENT_DATE - INTERVAL '30 days'
                 """)

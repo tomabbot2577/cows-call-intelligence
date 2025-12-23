@@ -69,9 +69,9 @@ else
     log "Process running with $RUNNING_PROCS instances"
 fi
 
-# Also check for the layer analysis
+# Also check for the layer analysis (includes both RingCentral and Fathom)
 LAYER_PENDING=$(PGPASSWORD='REDACTED_DB_PASSWORD' psql -U call_insights_user -h localhost -d call_insights -t -c \
-    "SELECT COUNT(*) FROM video_meetings WHERE source='ringcentral' AND transcript_text IS NOT NULL AND (layer1_complete IS NULL OR layer1_complete = FALSE);" 2>/dev/null | tr -d ' ')
+    "SELECT COUNT(*) FROM video_meetings WHERE source IN ('ringcentral', 'fathom') AND transcript_text IS NOT NULL AND (layer1_complete IS NULL OR layer1_complete = FALSE);" 2>/dev/null | tr -d ' ')
 
 if [ "$LAYER_PENDING" -gt 0 ] 2>/dev/null; then
     LAYER_RUNNING=$(ps aux | grep "batch_layer_analysis.py" | grep -v grep | wc -l)

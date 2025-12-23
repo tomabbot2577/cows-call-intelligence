@@ -93,7 +93,7 @@ class BatchLayerAnalyzer:
                            SUBSTRING(transcript_text, 1, 25000) as transcript_text,
                            duration_seconds, meeting_type
                     FROM video_meetings
-                    WHERE source = 'ringcentral'
+                    WHERE source IN ('ringcentral', 'fathom')
                       AND transcript_text IS NOT NULL
                       AND (layer1_complete IS NULL OR layer1_complete = FALSE)
                     ORDER BY start_time DESC NULLS LAST
