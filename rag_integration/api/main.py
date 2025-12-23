@@ -1699,6 +1699,19 @@ async def admin_users_page(request: Request):
     auth = get_auth_service()
     users = auth.list_users()
 
+    # Add Fathom key status to each user
+    import psycopg2
+    conn = psycopg2.connect(os.getenv('RAG_DATABASE_URL', os.getenv('DATABASE_URL', '')))
+    try:
+        with conn.cursor() as cur:
+            cur.execute("SELECT employee_email FROM fathom_api_keys WHERE is_active = TRUE")
+            fathom_emails = {row[0].lower() for row in cur.fetchall()}
+
+        for u in users:
+            u['has_fathom_key'] = u.get('email', '').lower() in fathom_emails if u.get('email') else False
+    finally:
+        conn.close()
+
     return templates.TemplateResponse("admin_users.html", {
         "request": request,
         "user": get_current_user(request),
@@ -1786,7 +1799,8 @@ async def admin_add_user(
     email: str = Form(...),
     role: str = Form("user"),
     employee_name: str = Form(None),
-    password: str = Form("changeme123")
+    password: str = Form("changeme123"),
+    fathom_api_key: str = Form(None)
 ):
     """Admin: Add a new user"""
     if not check_auth(request):
@@ -1808,6 +1822,22 @@ async def admin_add_user(
                 INSERT INTO users (username, password_hash, display_name, email, role, employee_name, is_active, must_change_password)
                 VALUES (%s, %s, %s, %s, %s, %s, true, true)
             """, (username, password_hash, display_name, email, role, employee_name))
+
+            # Add Fathom API key if provided
+            if fathom_api_key and fathom_api_key.strip():
+                try:
+                    from src.fathom.key_manager import FathomKeyManager
+                    km = FathomKeyManager()
+                    km.add_employee(
+                        employee_name=display_name,
+                        employee_email=email,
+                        api_key=fathom_api_key.strip(),
+                        team=None,
+                        is_admin=(role == 'admin')
+                    )
+                except Exception as fathom_err:
+                    logger.warning(f"Failed to add Fathom key: {fathom_err}")
+
             conn.commit()
 
         return RedirectResponse(url=f"/admin/users?message=User {username} added", status_code=303)
@@ -1826,7 +1856,8 @@ async def admin_edit_user(
     email: str = Form(...),
     role: str = Form(...),
     employee_name: str = Form(None),
-    is_active: str = Form(None)
+    is_active: str = Form(None),
+    fathom_api_key: str = Form(None)
 ):
     """Admin: Edit an existing user"""
     if not check_auth(request):
@@ -1847,6 +1878,22 @@ async def admin_edit_user(
                 SET display_name = %s, email = %s, role = %s, employee_name = %s, is_active = %s
                 WHERE id = %s
             """, (display_name, email, role, employee_name, active, user_id))
+
+            # Update Fathom API key if provided (non-empty)
+            if fathom_api_key and fathom_api_key.strip():
+                try:
+                    from src.fathom.key_manager import FathomKeyManager
+                    km = FathomKeyManager()
+                    km.add_employee(
+                        employee_name=display_name,
+                        employee_email=email,
+                        api_key=fathom_api_key.strip(),
+                        team=None,
+                        is_admin=(role == 'admin')
+                    )
+                except Exception as fathom_err:
+                    logger.warning(f"Failed to update Fathom key: {fathom_err}")
+
             conn.commit()
 
         return RedirectResponse(url=f"/admin/users?message=User updated", status_code=303)
