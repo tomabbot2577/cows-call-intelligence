@@ -65,20 +65,213 @@
 {% if search_results %}
 <!-- Results Header -->
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h5>
-        {% if search_results.result_count > 0 %}
-        Found {{ search_results.result_count }} result{{ 's' if search_results.result_count != 1 else '' }}
-        {% else %}
-        No results found
+    <div>
+        <h5 class="mb-0">
+            {% if search_results.result_count > 0 %}
+            Showing {{ search_results.result_count }} of {{ search_results.total_matches or search_results.result_count }} result{{ 's' if (search_results.total_matches or search_results.result_count) != 1 else '' }}
+            {% else %}
+            No results found
+            {% endif %}
+            {% if query %}for "{{ query }}"{% endif %}
+        </h5>
+        {% if search_results.total_by_source %}
+        <small class="text-muted">
+            {% for source, count in search_results.total_by_source.items() %}
+            {% if count > 0 %}
+            <span class="badge bg-light text-dark me-1">
+                {% if source == 'freshdesk' %}<i class="bi bi-ticket-perforated"></i>{% elif source == 'video' %}<i class="bi bi-camera-video"></i>{% else %}<i class="bi bi-telephone"></i>{% endif %}
+                {{ count }}
+            </span>
+            {% endif %}
+            {% endfor %}
+        </small>
         {% endif %}
-        {% if query %}for "{{ query }}"{% endif %}
-    </h5>
-    {% if search_results.search_id %}
-    <small class="text-muted">Search ID: {{ search_results.search_id }}</small>
-    {% endif %}
+    </div>
+    <div class="d-flex align-items-center gap-2">
+        {% if sort is defined and sort %}
+        <span class="badge bg-primary">
+            <i class="bi bi-sort-{% if sort == 'recent' %}down{% else %}numeric-down{% endif %} me-1"></i>
+            Sorted by {{ 'most recent' if sort == 'recent' else 'highest rated' }}
+        </span>
+        {% endif %}
+        {% if search_results.search_id %}
+        <small class="text-muted">Search ID: {{ search_results.search_id }}</small>
+        {% endif %}
+    </div>
 </div>
 
+{% if active_filters and active_filters|length > 0 %}
+<!-- Active Filters -->
+<div class="alert alert-secondary mb-3">
+    <i class="bi bi-filter me-2"></i><strong>Active Filters:</strong>
+    {% for key, value in active_filters.items() %}
+    <span class="badge bg-primary me-1">
+        {{ key }}: {{ value }}
+        <a href="/knowledge-base/search?q={{ query }}{% for k, v in active_filters.items() if k != key %}&{{ k }}={{ v|urlencode }}{% endfor %}" class="text-white ms-1" title="Remove filter">
+            <i class="bi bi-x"></i>
+        </a>
+    </span>
+    {% endfor %}
+    <a href="/knowledge-base/search?q={{ query }}" class="btn btn-sm btn-outline-secondary ms-2">
+        <i class="bi bi-x-circle me-1"></i>Clear All
+    </a>
+</div>
+{% endif %}
+
+{% if search_results.narrowing_suggestions and search_results.narrowing_suggestions|length > 0 %}
+<!-- Smart Filter Panel -->
+<div class="card border-info mb-3">
+    <div class="card-header bg-info text-white">
+        <i class="bi bi-funnel me-2"></i><strong>{{ search_results.total_matches }} results found</strong> - Use filters to narrow down
+    </div>
+    <div class="card-body">
+        <!-- AI Smart Question -->
+        <div class="alert alert-light border mb-3" id="smartQuestion">
+            <div class="d-flex align-items-start">
+                <i class="bi bi-robot fs-4 text-primary me-3"></i>
+                <div class="flex-grow-1">
+                    <strong>Let me help you find what you need:</strong>
+                    <p class="mb-2 mt-1" id="aiQuestion">What specifically are you looking for?</p>
+                    <div class="btn-group btn-group-sm flex-wrap" id="aiOptions">
+                        <button type="button" class="btn btn-outline-primary ai-option" data-action="recent">Most recent solutions</button>
+                        <button type="button" class="btn btn-outline-primary ai-option" data-action="best">Highest rated answers</button>
+                        <button type="button" class="btn btn-outline-primary ai-option" data-action="expert">From a specific expert</button>
+                        <button type="button" class="btn btn-outline-primary ai-option" data-action="category">By topic/category</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Selection Form -->
+        <form id="filterForm" action="/knowledge-base/search" method="get">
+            <input type="hidden" name="q" value="{{ query }}">
+
+            <div class="row g-3">
+                <!-- Source Filter -->
+                {% for suggestion in search_results.narrowing_suggestions if suggestion.type == 'source' %}
+                <div class="col-md-4">
+                    <label class="form-label fw-bold"><i class="bi bi-collection me-1"></i>Source Type</label>
+                    <div class="border rounded p-2 bg-light" style="max-height: 150px; overflow-y: auto;">
+                        {% for opt in suggestion.options %}
+                        <div class="form-check">
+                            <input class="form-check-input filter-checkbox" type="radio" name="source"
+                                   value="{{ opt.value }}" id="source_{{ opt.value }}"
+                                   {{ 'checked' if active_filters.source == opt.value else '' }}>
+                            <label class="form-check-label" for="source_{{ opt.value }}">
+                                {% if opt.value == 'freshdesk' %}<i class="bi bi-ticket-perforated text-warning"></i>{% elif opt.value == 'video' %}<i class="bi bi-camera-video text-info"></i>{% else %}<i class="bi bi-telephone text-primary"></i>{% endif %}
+                                {{ opt.value|capitalize }} <span class="badge bg-secondary">{{ opt.count }}</span>
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+
+                <!-- Employee Filter -->
+                {% for suggestion in search_results.narrowing_suggestions if suggestion.type == 'employee' %}
+                <div class="col-md-4">
+                    <label class="form-label fw-bold"><i class="bi bi-person me-1"></i>Resolved By</label>
+                    <div class="border rounded p-2 bg-light" style="max-height: 150px; overflow-y: auto;">
+                        {% for opt in suggestion.options %}
+                        <div class="form-check">
+                            <input class="form-check-input filter-checkbox" type="radio" name="employee"
+                                   value="{{ opt.value }}" id="emp_{{ loop.index }}"
+                                   {{ 'checked' if active_filters.employee == opt.value else '' }}>
+                            <label class="form-check-label" for="emp_{{ loop.index }}">
+                                {{ opt.value }} <span class="badge bg-secondary">{{ opt.count }}</span>
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+
+                <!-- Category Filter -->
+                {% for suggestion in search_results.narrowing_suggestions if suggestion.type == 'category' %}
+                <div class="col-md-4">
+                    <label class="form-label fw-bold"><i class="bi bi-folder me-1"></i>Category</label>
+                    <div class="border rounded p-2 bg-light" style="max-height: 150px; overflow-y: auto;">
+                        {% for opt in suggestion.options %}
+                        <div class="form-check">
+                            <input class="form-check-input filter-checkbox" type="radio" name="category"
+                                   value="{{ opt.value }}" id="cat_{{ loop.index }}"
+                                   {{ 'checked' if active_filters.category == opt.value else '' }}>
+                            <label class="form-check-label" for="cat_{{ loop.index }}">
+                                {{ opt.value }} <span class="badge bg-secondary">{{ opt.count }}</span>
+                            </label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Apply Button -->
+            <div class="mt-3 d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="text-muted" id="selectedFiltersCount">Select filters above to narrow results</span>
+                </div>
+                <div>
+                    <a href="/knowledge-base/search?q={{ query }}" class="btn btn-outline-secondary me-2">
+                        <i class="bi bi-x-circle me-1"></i>Clear Filters
+                    </a>
+                    <button type="submit" class="btn btn-primary" id="applyFiltersBtn">
+                        <i class="bi bi-funnel me-1"></i>Apply Filters
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+{% endif %}
+
 {% if search_results.results %}
+<!-- Search Refinement Box -->
+<div class="card border-secondary mb-3">
+    <div class="card-body py-2">
+        <div class="row align-items-center g-2">
+            <div class="col-md-6">
+                <div class="input-group input-group-sm">
+                    <span class="input-group-text"><i class="bi bi-plus-circle"></i></span>
+                    <input type="text" class="form-control" id="refineKeywords"
+                           placeholder="Add keywords to narrow results..."
+                           onkeypress="if(event.key==='Enter') refineSearch()">
+                    <button class="btn btn-primary" type="button" onclick="refineSearch()">
+                        <i class="bi bi-search me-1"></i>Refine
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex align-items-center flex-wrap gap-1">
+                    <small class="text-muted me-1">Suggestions:</small>
+                    {% if search_results.keyword_suggestions %}
+                        {% for sug in search_results.keyword_suggestions %}
+                        <button type="button" class="btn btn-sm btn-outline-info refine-chip"
+                                onclick="addKeyword('{{ sug }}')">+ {{ sug }}</button>
+                        {% endfor %}
+                    {% else %}
+                        {% set suggestions = [] %}
+                        {% for r in search_results.results[:10] %}
+                            {% if r.resolved_by and r.resolved_by != 'Unknown' and r.resolved_by not in suggestions %}
+                                {% set _ = suggestions.append(r.resolved_by) %}
+                            {% endif %}
+                        {% endfor %}
+                        {% for r in search_results.results[:10] %}
+                            {% if r.company and r.company != 'Unknown' and r.company not in suggestions %}
+                                {% set _ = suggestions.append(r.company) %}
+                            {% endif %}
+                        {% endfor %}
+                        {% for sug in suggestions[:4] %}
+                        <button type="button" class="btn btn-sm btn-outline-info refine-chip"
+                                onclick="addKeyword('{{ sug }}')">+ {{ sug }}</button>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Results List -->
 <div class="mb-4">
     {% for result in search_results.results %}
@@ -157,6 +350,24 @@
     </div>
     {% endfor %}
 </div>
+
+{% if search_results.total_matches and search_results.total_matches > search_results.result_count %}
+<!-- Load More Button -->
+<div class="text-center mb-4">
+    <p class="text-muted mb-2">
+        Showing {{ search_results.result_count }} of {{ search_results.total_matches }} results
+    </p>
+    <button type="button" id="loadMoreBtn" class="btn btn-outline-primary" onclick="loadMore()">
+        <i class="bi bi-arrow-down-circle me-1"></i>Load More Results
+    </button>
+    <div id="loadMoreSpinner" class="mt-2" style="display: none;">
+        <div class="spinner-border spinner-border-sm text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <span class="text-muted ms-2">Loading more results...</span>
+    </div>
+</div>
+{% endif %}
 
 {% if search_results.rag_summary %}
 <!-- AI Analysis (Collapsible) -->
@@ -344,18 +555,60 @@ function cancelSearch() {
     window.location.href = '/knowledge-base/search';
 }
 
-// Show loading on form submit
+// Search refinement functions
+function refineSearch() {
+    const keywords = document.getElementById('refineKeywords').value.trim();
+    if (keywords) {
+        const currentQuery = '{{ query|replace("'", "\\'") }}';
+        const newQuery = currentQuery + ' ' + keywords;
+        showLoading();
+        window.location.href = '/knowledge-base/search?q=' + encodeURIComponent(newQuery);
+    }
+}
+
+function addKeyword(keyword) {
+    const input = document.getElementById('refineKeywords');
+    if (input.value) {
+        input.value += ' ' + keyword;
+    } else {
+        input.value = keyword;
+    }
+    input.focus();
+}
+
+// Show loading on form submit and remove empty params
 document.getElementById('searchForm').addEventListener('submit', function(e) {
     const query = document.getElementById('searchInput').value.trim();
     if (query) {
         showLoading();
         searchController = new AbortController();
+
+        // Remove empty form fields before submit to keep URL clean
+        const form = e.target;
+        const emptyInputs = form.querySelectorAll('select, input');
+        emptyInputs.forEach(input => {
+            if (!input.value || input.value === '') {
+                input.disabled = true; // Disabled fields don't get submitted
+            }
+        });
     }
 });
 
 // Show loading on popular search click
 document.querySelectorAll('.popular-search').forEach(function(link) {
     link.addEventListener('click', function(e) {
+        showLoading();
+    });
+});
+
+// Show loading on filter link click
+document.querySelectorAll('.filter-link').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+        // Update loading text for filtering
+        const loadingTitle = document.querySelector('#loadingIndicator h4');
+        const loadingSubtitle = document.querySelector('#loadingIndicator .text-muted');
+        if (loadingTitle) loadingTitle.textContent = 'Applying Filter...';
+        if (loadingSubtitle) loadingSubtitle.textContent = 'Narrowing your search results';
         showLoading();
     });
 });
@@ -368,6 +621,173 @@ window.addEventListener('pageshow', function() {
 // Also hide any loading overlay from previous page
 document.addEventListener('DOMContentLoaded', function() {
     hideLoading();
+    initFilterPanel();
 });
+
+// Initialize filter panel interactions
+function initFilterPanel() {
+    // Update selected filters count when checkboxes change
+    const filterCheckboxes = document.querySelectorAll('.filter-checkbox');
+    const selectedFiltersCount = document.getElementById('selectedFiltersCount');
+    const applyBtn = document.getElementById('applyFiltersBtn');
+
+    function updateFilterCount() {
+        const checked = document.querySelectorAll('.filter-checkbox:checked');
+        if (checked.length === 0) {
+            if (selectedFiltersCount) selectedFiltersCount.textContent = 'Select filters above to narrow results';
+            if (applyBtn) applyBtn.innerHTML = '<i class="bi bi-funnel me-1"></i>Apply Filters';
+        } else {
+            const filterNames = [];
+            checked.forEach(cb => {
+                const label = document.querySelector(`label[for="${cb.id}"]`);
+                if (label) filterNames.push(cb.name + ': ' + cb.value);
+            });
+            if (selectedFiltersCount) selectedFiltersCount.innerHTML = '<strong>' + checked.length + ' filter(s) selected:</strong> ' + filterNames.join(', ');
+            if (applyBtn) applyBtn.innerHTML = '<i class="bi bi-funnel-fill me-1"></i>Apply ' + checked.length + ' Filter(s)';
+        }
+    }
+
+    filterCheckboxes.forEach(cb => cb.addEventListener('change', updateFilterCount));
+    updateFilterCount(); // Initial update
+
+    // Filter form submit - show loading
+    const filterForm = document.getElementById('filterForm');
+    if (filterForm) {
+        filterForm.addEventListener('submit', function(e) {
+            const loadingTitle = document.querySelector('#loadingIndicator h4');
+            const loadingSubtitle = document.querySelector('#loadingIndicator .text-muted');
+            if (loadingTitle) loadingTitle.textContent = 'Applying Filters...';
+            if (loadingSubtitle) loadingSubtitle.textContent = 'Narrowing your search results';
+            showLoading();
+        });
+    }
+
+    // AI smart option buttons
+    document.querySelectorAll('.ai-option').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const action = this.dataset.action;
+            const questionEl = document.getElementById('aiQuestion');
+            const optionsEl = document.getElementById('aiOptions');
+
+            switch(action) {
+                case 'recent':
+                    // Sort by most recent - add sort param
+                    window.location.href = window.location.href + (window.location.href.includes('?') ? '&' : '?') + 'sort=recent';
+                    break;
+                case 'best':
+                    // Sort by highest rated
+                    window.location.href = window.location.href + (window.location.href.includes('?') ? '&' : '?') + 'sort=rating';
+                    break;
+                case 'expert':
+                    // Show employee filter options prominently
+                    questionEl.textContent = 'Select an expert from the "Resolved By" filter on the right, then click Apply Filters.';
+                    optionsEl.innerHTML = '<span class="text-success"><i class="bi bi-arrow-right"></i> Select from the employee list</span>';
+                    // Highlight employee section
+                    const empSection = document.querySelector('label[for^="emp_"]');
+                    if (empSection) {
+                        empSection.closest('.col-md-4').classList.add('border', 'border-primary', 'rounded');
+                        empSection.closest('.col-md-4').scrollIntoView({behavior: 'smooth', block: 'center'});
+                    }
+                    break;
+                case 'category':
+                    // Show category filter options
+                    questionEl.textContent = 'Select a category from the filter options, then click Apply Filters.';
+                    optionsEl.innerHTML = '<span class="text-success"><i class="bi bi-arrow-right"></i> Select from the category list</span>';
+                    const catSection = document.querySelector('label[for^="cat_"]');
+                    if (catSection) {
+                        catSection.closest('.col-md-4').classList.add('border', 'border-primary', 'rounded');
+                        catSection.closest('.col-md-4').scrollIntoView({behavior: 'smooth', block: 'center'});
+                    }
+                    break;
+            }
+        });
+    });
+}
+
+// Load More results via AJAX
+let currentOffset = {{ search_results.result_count if search_results else 0 }};
+async function loadMore() {
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    const loadMoreSpinner = document.getElementById('loadMoreSpinner');
+
+    if (loadMoreBtn) loadMoreBtn.disabled = true;
+    if (loadMoreSpinner) loadMoreSpinner.style.display = 'block';
+
+    try {
+        // Get current query and filters from URL
+        const params = new URLSearchParams(window.location.search);
+        params.set('offset', currentOffset);
+        params.set('ajax', '1');
+
+        const response = await fetch('/knowledge-base/search?' + params.toString());
+        const data = await response.json();
+
+        if (data.results && data.results.length > 0) {
+            // Append new results to the results container
+            const resultsContainer = document.querySelector('.mb-4');
+            data.results.forEach(result => {
+                const resultHtml = createResultCard(result);
+                resultsContainer.insertAdjacentHTML('beforeend', resultHtml);
+            });
+
+            currentOffset += data.results.length;
+
+            // Update "showing X of Y" text
+            const showingText = document.querySelector('#loadMoreBtn').previousElementSibling;
+            if (showingText) {
+                showingText.textContent = `Showing ${currentOffset} of ${data.total_matches} results`;
+            }
+
+            // Hide button if no more results
+            if (currentOffset >= data.total_matches) {
+                if (loadMoreBtn) loadMoreBtn.style.display = 'none';
+                if (loadMoreSpinner) loadMoreSpinner.innerHTML = '<p class="text-muted">All results loaded</p>';
+            }
+        }
+    } catch (error) {
+        console.error('Error loading more results:', error);
+    } finally {
+        if (loadMoreBtn) loadMoreBtn.disabled = false;
+        if (loadMoreSpinner) loadMoreSpinner.style.display = 'none';
+    }
+}
+
+function createResultCard(result) {
+    const sourceIcon = result.source === 'freshdesk' ? 'ticket-perforated' : (result.source === 'video' ? 'camera-video' : 'telephone');
+    const sourceBg = result.source === 'freshdesk' ? 'warning text-dark' : (result.source === 'video' ? 'info' : 'primary');
+    const sourceLabel = result.source === 'freshdesk' ? 'Freshdesk' : (result.source === 'video' ? 'Video Meeting' : 'Call Recording');
+
+    const qualityBadge = result.quality_score ?
+        `<span class="badge bg-${result.quality_score >= 7 ? 'success' : (result.quality_score >= 4 ? 'warning' : 'danger')}">Quality: ${result.quality_score}/10</span>` : '';
+    const dateBadge = result.date && result.date !== 'Unknown' ?
+        `<small class="text-muted ms-2"><i class="bi bi-calendar"></i> ${result.date}</small>` : '';
+
+    return `
+    <div class="card mb-3">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <div>
+                <span class="badge bg-${sourceBg}"><i class="bi bi-${sourceIcon}"></i> ${sourceLabel}</span>
+                ${result.resolved_by && result.resolved_by !== 'Unknown' ? `<span class="badge bg-secondary ms-1"><i class="bi bi-person"></i> ${result.resolved_by}</span>` : ''}
+                ${result.customer && result.customer !== 'Unknown' ? `<span class="badge bg-info ms-1">${result.customer}</span>` : ''}
+            </div>
+            <div>${qualityBadge}${dateBadge}</div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-5">
+                    <h6 class="text-primary"><i class="bi bi-question-circle me-1"></i>Question</h6>
+                    <p class="mb-0">${result.question}</p>
+                </div>
+                <div class="col-md-1 d-flex align-items-center justify-content-center">
+                    <i class="bi bi-arrow-right fs-4 text-muted"></i>
+                </div>
+                <div class="col-md-6">
+                    <h6 class="text-success"><i class="bi bi-check-circle me-1"></i>Answer</h6>
+                    <p class="mb-0">${result.answer}</p>
+                </div>
+            </div>
+        </div>
+    </div>`;
+}
 </script>
 {% endblock %}

@@ -25,6 +25,10 @@ from datetime import datetime
 
 sys.path.insert(0, '/var/www/call-recording-system')
 
+# Load environment variables
+from dotenv import load_dotenv
+load_dotenv('/var/www/call-recording-system/.env')
+
 import psycopg2
 from psycopg2.extras import RealDictCursor, Json
 import requests

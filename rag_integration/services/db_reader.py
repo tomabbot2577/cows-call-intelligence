@@ -3123,17 +3123,42 @@ class DatabaseReader:
 
                 return result
 
-    def get_coaching_queue(self, limit: int = 20) -> List[Dict[str, Any]]:
+    def get_coaching_queue(self, limit: int = 20, strict: bool = True) -> List[Dict[str, Any]]:
         """
         Get interactions that need coaching attention.
         Includes low-quality calls, high customer effort, struggling learners.
+
+        Args:
+            limit: Maximum number of items to return
+            strict: If True, only return items matching needs_attention_count criteria
+                   (quality < 5, effort > 7, struggling/overwhelmed)
         """
         results = []
 
         with self.get_connection() as conn:
             with conn.cursor(cursor_factory=RealDictCursor) as cur:
                 # Low quality or high effort calls needing attention
-                cur.execute("""
+                # When strict=True, only include items that match needs_attention_count criteria
+                if strict:
+                    where_clause = """
+                        t.call_date >= CURRENT_DATE - INTERVAL '30 days'
+                        AND (
+                            i.call_quality_score < 5
+                            OR res.customer_effort_score > 7
+                        )
+                    """
+                else:
+                    where_clause = """
+                        t.call_date >= CURRENT_DATE - INTERVAL '30 days'
+                        AND (
+                            res.churn_risk = 'high'
+                            OR res.customer_effort_score > 7
+                            OR i.call_quality_score < 5
+                            OR i.customer_sentiment = 'negative'
+                        )
+                    """
+
+                cur.execute(f"""
                     SELECT
                         t.recording_id as id,
                         'call' as source_type,
@@ -3147,23 +3172,20 @@ class DatabaseReader:
                         i.customer_sentiment as sentiment,
                         rec.employee_improvements as improvements,
                         CASE
-                            WHEN res.churn_risk = 'high' THEN 'High Churn Risk'
                             WHEN res.customer_effort_score > 7 THEN 'High Customer Effort'
                             WHEN i.call_quality_score < 5 THEN 'Low Quality Score'
+                            WHEN res.churn_risk = 'high' THEN 'High Churn Risk'
                             ELSE 'Needs Review'
                         END as attention_reason
                     FROM transcripts t
                     LEFT JOIN insights i ON t.recording_id = i.recording_id
                     LEFT JOIN call_resolutions res ON t.recording_id = res.recording_id
                     LEFT JOIN call_recommendations rec ON t.recording_id = rec.recording_id
-                    WHERE t.call_date >= CURRENT_DATE - INTERVAL '30 days'
-                      AND (
-                          res.churn_risk = 'high'
-                          OR res.customer_effort_score > 7
-                          OR i.call_quality_score < 5
-                          OR i.customer_sentiment = 'negative'
-                      )
-                    ORDER BY t.call_date DESC
+                    WHERE {where_clause}
+                    ORDER BY
+                        CASE WHEN i.call_quality_score < 5 THEN 0 ELSE 1 END,
+                        CASE WHEN res.customer_effort_score > 7 THEN 0 ELSE 1 END,
+                        t.call_date DESC
                     LIMIT %s
                 """, [limit])
 
@@ -3184,7 +3206,28 @@ class DatabaseReader:
                     })
 
                 # Struggling video meetings
-                cur.execute("""
+                # When strict=True, only include struggling/overwhelmed learners
+                if strict:
+                    video_where = """
+                        source IN ('ringcentral', 'fathom')
+                        AND layer1_complete = TRUE
+                        AND start_time >= CURRENT_DATE - INTERVAL '30 days'
+                        AND learning_state IN ('struggling', 'overwhelmed')
+                    """
+                else:
+                    video_where = """
+                        source IN ('ringcentral', 'fathom')
+                        AND layer1_complete = TRUE
+                        AND start_time >= CURRENT_DATE - INTERVAL '30 days'
+                        AND (
+                            churn_risk_level = 'high'
+                            OR learning_state IN ('struggling', 'overwhelmed')
+                            OR meeting_quality_score < 5
+                            OR overall_sentiment = 'negative'
+                        )
+                    """
+
+                cur.execute(f"""
                     SELECT
                         id,
                         'video' as source_type,
@@ -3198,23 +3241,19 @@ class DatabaseReader:
                         churn_risk_level as churn_risk,
                         overall_sentiment as sentiment,
                         CASE
-                            WHEN churn_risk_level = 'high' THEN 'High Churn Risk'
                             WHEN learning_state = 'overwhelmed' THEN 'Trainee Overwhelmed'
                             WHEN learning_state = 'struggling' THEN 'Trainee Struggling'
+                            WHEN churn_risk_level = 'high' THEN 'High Churn Risk'
                             WHEN meeting_quality_score < 5 THEN 'Low Quality Score'
                             ELSE 'Needs Review'
                         END as attention_reason
                     FROM video_meetings
-                    WHERE source IN ('ringcentral', 'fathom')
-                      AND layer1_complete = TRUE
-                      AND start_time >= CURRENT_DATE - INTERVAL '30 days'
-                      AND (
-                          churn_risk_level = 'high'
-                          OR learning_state IN ('struggling', 'overwhelmed')
-                          OR meeting_quality_score < 5
-                          OR overall_sentiment = 'negative'
-                      )
-                    ORDER BY start_time DESC
+                    WHERE {video_where}
+                    ORDER BY
+                        CASE WHEN learning_state = 'overwhelmed' THEN 0
+                             WHEN learning_state = 'struggling' THEN 1
+                             ELSE 2 END,
+                        start_time DESC
                     LIMIT %s
                 """, [limit])
 

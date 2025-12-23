@@ -1303,30 +1303,76 @@ async def knowledge_base_page(request: Request):
     })
 
 
-@app.get("/knowledge-base/search", response_class=HTMLResponse)
+@app.get("/knowledge-base/search")
 async def kb_search_get(
     request: Request,
     q: str = None,
-    category: str = None
+    category: str = None,
+    source: str = None,
+    employee: str = None,
+    offset: int = 0,
+    sort: str = None,
+    ajax: str = None
 ):
     """KB search page (GET - for links and bookmarks)"""
+    from fastapi.responses import JSONResponse
+
     if not check_auth(request):
+        if ajax == '1':
+            return JSONResponse({"error": "Not authenticated"}, status_code=401)
         return RedirectResponse(url="/login", status_code=303)
 
     kb = get_kb_service()
     session_id = request.cookies.get('session', 'anonymous')
-    stats = kb.get_stats(days=30)
 
+    # Validate sort parameter
+    if sort and sort not in ['recent', 'rating']:
+        sort = None
+
+    # AJAX request for pagination - return JSON
+    if ajax == '1' and q:
+        filters = {}
+        if source:
+            filters['source'] = source
+        if employee:
+            filters['employee'] = employee
+        if category:
+            filters['category'] = category
+
+        search_results = kb.search(q, agent_id=session_id, filters=filters if filters else None, offset=offset, sort=sort)
+        return JSONResponse({
+            "results": search_results.get('results', []),
+            "total_matches": search_results.get('total_matches', 0),
+            "result_count": search_results.get('result_count', 0)
+        })
+
+    # Regular HTML response
+    stats = kb.get_stats(days=30)
     search_results = None
+    active_filters = {}
     if q:
-        search_results = kb.search(q, agent_id=session_id)
+        # Build filters dict from query params
+        filters = {}
+        if source:
+            filters['source'] = source
+            active_filters['source'] = source
+        if employee:
+            filters['employee'] = employee
+            active_filters['employee'] = employee
+        if category:
+            filters['category'] = category
+            active_filters['category'] = category
+
+        search_results = kb.search(q, agent_id=session_id, filters=filters if filters else None, sort=sort)
 
     return templates.TemplateResponse("kb_search.html", {
         "request": request,
         "stats": stats,
         "search_results": search_results,
         "query": q or "",
-        "category": category
+        "category": category,
+        "active_filters": active_filters,
+        "sort": sort
     })
 
 
@@ -1349,7 +1395,9 @@ async def kb_search_submit(
         "request": request,
         "stats": stats,
         "search_results": results,
-        "query": query
+        "query": query,
+        "active_filters": {},
+        "sort": None
     })
 
 

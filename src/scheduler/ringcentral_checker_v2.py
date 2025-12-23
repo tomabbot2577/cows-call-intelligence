@@ -21,6 +21,10 @@ from typing import List, Dict, Any, Optional
 # Add parent directory to path
 sys.path.insert(0, '/var/www/call-recording-system')
 
+# Load environment variables
+from dotenv import load_dotenv
+load_dotenv('/var/www/call-recording-system/.env')
+
 from ringcentral import SDK
 
 # Configure logging
@@ -46,8 +50,8 @@ class RingCentralCheckerV2:
         self.jwt_token = os.getenv('RC_JWT_TOKEN') or os.getenv('RINGCENTRAL_JWT_TOKEN')
         self.server_url = os.getenv('RC_SERVER_URL') or os.getenv('RINGCENTRAL_SERVER_URL', 'https://platform.ringcentral.com')
 
-        # Database connection - use call_insights database (not call_recordings from DATABASE_URL)
-        self.db_url = os.getenv('DATABASE_URL', '')
+        # Database connection - use call_insights database (RAG_DATABASE_URL, not call_recordings from DATABASE_URL)
+        self.db_url = os.getenv('RAG_DATABASE_URL', os.getenv('DATABASE_URL', ''))
 
         if not all([self.client_id, self.client_secret, self.jwt_token]):
             raise ValueError("Missing required RingCentral credentials in environment")
@@ -343,17 +347,45 @@ class RingCentralCheckerV2:
         recording_id = call_data['ringcentral_id']
         output_path = self.queue_dir / f"{recording_id}.mp3"
 
-        # Check if already downloaded
+        # Check if already downloaded (and is actually audio, not metadata JSON)
         if output_path.exists():
-            logger.debug(f"Recording {recording_id} already in queue")
-            return str(output_path)
+            file_size = output_path.stat().st_size
+            # Valid audio files should be at least 10KB, metadata JSON is ~200 bytes
+            if file_size > 10000:
+                logger.debug(f"Recording {recording_id} already in queue ({file_size:,} bytes)")
+                return str(output_path)
+            else:
+                # Remove invalid file and re-download
+                logger.info(f"Removing invalid recording file {recording_id} ({file_size} bytes)")
+                output_path.unlink()
 
         try:
             logger.info(f"Downloading recording {recording_id}")
-            response = self.platform.get(call_data['recording_uri'])
+
+            # recording_uri points to metadata endpoint - append /content for audio
+            recording_uri = call_data['recording_uri']
+            if not recording_uri.endswith('/content'):
+                content_uri = recording_uri.rstrip('/') + '/content'
+            else:
+                content_uri = recording_uri
+
+            response = self.platform.get(content_uri)
+            content = response.body()
+
+            # Validate we got actual audio content (not JSON metadata)
+            if len(content) < 1000:
+                # Likely an error or empty response
+                logger.warning(f"Recording {recording_id} content too small ({len(content)} bytes), may be error response")
+                # Check if it's JSON error
+                try:
+                    json.loads(content)
+                    logger.error(f"Recording {recording_id} returned JSON instead of audio")
+                    return None
+                except:
+                    pass  # Not JSON, proceed
 
             with open(output_path, 'wb') as f:
-                f.write(response.body())
+                f.write(content)
 
             file_size = output_path.stat().st_size
             logger.info(f"Downloaded {recording_id} ({file_size:,} bytes)")

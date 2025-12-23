@@ -42,18 +42,20 @@
             </div>
         </div>
         <div class="col-md-2">
-            <div class="card bg-warning text-dark">
+            <div class="card bg-warning text-dark" style="cursor: pointer;" onclick="showNeedsAttention()" title="Click to view items needing attention">
                 <div class="card-body text-center py-3">
                     <h3 class="mb-0">{{ coaching_stats.needs_attention_count or 0 }}</h3>
                     <small>Needs Attention</small>
+                    <div class="small mt-1"><i class="bi bi-box-arrow-in-right"></i> Click to view</div>
                 </div>
             </div>
         </div>
         <div class="col-md-2">
-            <div class="card bg-danger text-white">
+            <div class="card bg-danger text-white" style="cursor: pointer;" onclick="showNeedsAttention()" title="Click to view high churn risk items">
                 <div class="card-body text-center py-3">
                     <h3 class="mb-0">{{ coaching_stats.churn_risk_high or 0 }}</h3>
                     <small>High Churn Risk</small>
+                    <div class="small mt-1"><i class="bi bi-box-arrow-in-right"></i> Click to view</div>
                 </div>
             </div>
         </div>
@@ -522,4 +524,19 @@
         </div>
     </div>
 </div>
+
+<script>
+function showNeedsAttention() {
+    // Switch to the "Needs Attention" tab
+    const queueTab = document.getElementById('queue-tab');
+    if (queueTab) {
+        // Use Bootstrap's tab API to switch tabs
+        const tab = new bootstrap.Tab(queueTab);
+        tab.show();
+
+        // Scroll to the tab content
+        document.getElementById('queue').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+</script>
 {% endblock %}

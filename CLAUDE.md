@@ -111,6 +111,8 @@ Connection: postgresql://[user]:[password]@localhost/call_insights (see .env)
 - 5,300+ Q&A pairs from Freshdesk + 300+ from video meetings
 - Source labels: Call Recording, Freshdesk Ticket, Video Meeting
 - Automatic deduplication of Q&A pairs
+- **Search Refinement**: Keyword suggestions to narrow results (product/feature focused)
+- Multi-select filters with Apply button for batch filtering
 
 ### Reports (`/reports`, `/sales-intelligence`)
 - Churn Risk: `/api/v1/rag/reports/churn` (includes video meetings)
@@ -267,12 +269,14 @@ Joy-focused coaching system that combines phone calls AND video meetings to help
 - Learning Score/State (video meetings)
 - Strengths and Growth Opportunities
 
-**Attention Queue Triggers:**
-- High churn risk (medium/high)
-- High customer effort (CES > 7)
+**Attention Queue Triggers (strict matching for accurate counts):**
 - Low quality score (< 5)
-- Negative sentiment
-- Struggling/overwhelmed learners
+- High customer effort (CES > 7)
+- Struggling/overwhelmed learners (video meetings)
+
+**Interactive Features:**
+- Click "Needs Attention" stat card to jump directly to attention queue
+- Click "High Churn Risk" stat card to view at-risk interactions
 
 **Data Sources:**
 - **Phone Calls**: `call_recommendations` (strengths, improvements, phrases) + `call_resolutions` (CES, empathy, quality)
@@ -354,7 +358,16 @@ python src/scheduler/transcription_processor.py --reprocess-failed
 **Check pipeline status:**
 ```bash
 cat data/scheduler/last_check.json
+cat data/scheduler/last_check_v2.json  # V2 checker state
 ```
+
+**RingCentral recordings downloading as JSON (not audio):**
+- Fixed in `ringcentral_checker_v2.py` - must append `/content` to recording URI
+- V2 checker validates file size > 10KB to detect invalid downloads
+
+**AI Layers database connection error:**
+- Scripts must load dotenv: `from dotenv import load_dotenv; load_dotenv('/var/www/call-recording-system/.env')`
+- Both `ringcentral_checker_v2.py` and `process_all_layers_master.py` include this
 
 **Disk space:**
 ```bash
@@ -365,6 +378,11 @@ find /data/processed -name "*.mp3" -mtime +30 -delete
 **Database health:**
 ```bash
 curl http://localhost:8081/health
+```
+
+**Check AI layers status:**
+```bash
+python process_all_layers_master.py --status
 ```
 
 ## PC Recruiter Employees (Canonical List)
