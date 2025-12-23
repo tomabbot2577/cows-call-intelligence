@@ -170,11 +170,93 @@ class FreshdeskVertexImporter:
             }
         }
 
+    def get_video_meeting_qa(self) -> List[Dict[str, Any]]:
+        """Fetch video meeting Q&A data from database."""
+        conn = psycopg2.connect(DATABASE_URL)
+        cur = conn.cursor()
+
+        cur.execute("""
+            SELECT
+                qa.id, qa.video_meeting_id, qa.question, qa.answer,
+                qa.category, qa.tags, qa.quality,
+                vm.title, vm.host_name, vm.meeting_type,
+                vm.overall_sentiment, vm.learning_state, vm.source
+            FROM video_meeting_qa_pairs qa
+            JOIN video_meetings vm ON qa.video_meeting_id = vm.id
+            WHERE qa.answer IS NOT NULL AND qa.answer != ''
+            ORDER BY qa.id
+        """)
+
+        columns = [desc[0] for desc in cur.description]
+        rows = cur.fetchall()
+
+        cur.close()
+        conn.close()
+
+        return [dict(zip(columns, row)) for row in rows]
+
+    def format_video_qa_for_vertex(self, data: Dict[str, Any]) -> Dict[str, Any]:
+        """Format a video meeting Q&A pair for Vertex AI RAG."""
+        source_label = 'Fathom' if data.get('source') == 'fathom' else 'RingCentral'
+
+        content_parts = [
+            f"[SOURCE: {source_label.upper()} VIDEO MEETING]",
+            f"Meeting: {data.get('title', 'N/A')}",
+            f"Host: {data.get('host_name', 'N/A')}",
+            f"Type: {data.get('meeting_type', 'N/A')}",
+            "",
+            "QUESTION:",
+            str(data.get('question', '')),
+            "",
+            "ANSWER:",
+            str(data.get('answer', '')),
+        ]
+
+        if data.get('category'):
+            content_parts.append(f"\nCategory: {data['category']}")
+
+        text_content = "\n".join(content_parts)
+
+        tags = data.get('tags', [])
+        if isinstance(tags, str):
+            try:
+                tags = json.loads(tags)
+            except:
+                tags = []
+
+        return {
+            "id": f"vm_{data.get('id')}",
+            "content": {
+                "mime_type": "text/plain",
+                "text": text_content
+            },
+            "struct_data": {
+                "qa_id": f"vm_{data.get('id')}",
+                "meeting_id": data.get('video_meeting_id'),
+                "source_type": "video_meeting",
+                "video_source": data.get('source', 'ringcentral'),
+                "category": data.get('category'),
+                "host_name": data.get('host_name'),
+                "meeting_type": data.get('meeting_type'),
+                "sentiment": data.get('overall_sentiment'),
+                "learning_state": data.get('learning_state'),
+                "tags": tags
+            }
+        }
+
     def export_to_jsonl(self) -> List[str]:
-        """Export Freshdesk data to split JSONL files."""
+        """Export Freshdesk and Video Meeting data to split JSONL files."""
         logger.info("Fetching Freshdesk data...")
-        data = self.get_freshdesk_data()
-        logger.info(f"Found {len(data)} enriched Q&A pairs")
+        freshdesk_data = self.get_freshdesk_data()
+        logger.info(f"Found {len(freshdesk_data)} enriched Freshdesk Q&A pairs")
+
+        logger.info("Fetching Video Meeting Q&A data...")
+        video_data = self.get_video_meeting_qa()
+        logger.info(f"Found {len(video_data)} video meeting Q&A pairs")
+
+        # Combine data
+        data = freshdesk_data + video_data
+        logger.info(f"Total Q&A pairs to export: {len(data)}")
 
         if not data:
             return []
@@ -195,7 +277,11 @@ class FreshdeskVertexImporter:
 
             with open(part_file, 'w') as f:
                 for record in part_data:
-                    formatted = self.format_for_vertex_rag(record)
+                    # Use appropriate formatter based on record type
+                    if 'video_meeting_id' in record:
+                        formatted = self.format_video_qa_for_vertex(record)
+                    else:
+                        formatted = self.format_for_vertex_rag(record)
                     f.write(json.dumps(formatted) + '\n')
 
             size_mb = os.path.getsize(part_file) / 1024 / 1024
