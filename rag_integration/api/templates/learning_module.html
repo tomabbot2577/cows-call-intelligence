@@ -1,247 +1,525 @@
 {% extends "base.html" %}
 
-{% block title %}Learning Module - COWS{% endblock %}
+{% block title %}Coaching & Learning - COWS{% endblock %}
 
 {% block content %}
 <div class="container-fluid py-4">
     <div class="row mb-4">
         <div class="col-12">
-            <h2>Training & Learning Analytics</h2>
-            <p class="text-muted">Layer 6 AI-powered learning analysis from video meetings</p>
+            <h2>Coaching & Learning Center</h2>
+            <p class="text-muted">AI-powered coaching insights from all calls and video meetings</p>
         </div>
     </div>
 
-    <!-- Summary Stats -->
+    <!-- Combined Stats Row -->
     <div class="row mb-4">
         <div class="col-md-2">
             <div class="card bg-primary text-white">
-                <div class="card-body text-center">
-                    <h3 class="mb-0">{{ stats.total_sessions or 0 }}</h3>
-                    <small>Training Sessions</small>
+                <div class="card-body text-center py-3">
+                    <h3 class="mb-0">{{ coaching_stats.total_interactions or 0 }}</h3>
+                    <small>Total Interactions</small>
+                    <div class="small mt-1">
+                        <i class="bi bi-telephone"></i> {{ coaching_stats.total_calls or 0 }} |
+                        <i class="bi bi-camera-video"></i> {{ coaching_stats.total_video_meetings or 0 }}
+                    </div>
                 </div>
             </div>
         </div>
         <div class="col-md-2">
             <div class="card bg-success text-white">
-                <div class="card-body text-center">
-                    <h3 class="mb-0">{{ "%.1f"|format(stats.avg_learning_score or 0) }}</h3>
-                    <small>Avg Learning Score</small>
+                <div class="card-body text-center py-3">
+                    <h3 class="mb-0">{{ "%.1f"|format(coaching_stats.avg_quality_score or 0) }}</h3>
+                    <small>Avg Quality Score</small>
                 </div>
             </div>
         </div>
         <div class="col-md-2">
             <div class="card bg-info text-white">
-                <div class="card-body text-center">
-                    <h3 class="mb-0">{{ stats.aha_moments or 0 }}</h3>
-                    <small>Aha Moments</small>
+                <div class="card-body text-center py-3">
+                    <h3 class="mb-0">{{ coaching_stats.high_performers_count or 0 }}</h3>
+                    <small>High Performers</small>
                 </div>
             </div>
         </div>
         <div class="col-md-2">
             <div class="card bg-warning text-dark">
-                <div class="card-body text-center">
-                    <h3 class="mb-0">{{ stats.struggling or 0 }}</h3>
-                    <small>Struggling</small>
+                <div class="card-body text-center py-3">
+                    <h3 class="mb-0">{{ coaching_stats.needs_attention_count or 0 }}</h3>
+                    <small>Needs Attention</small>
                 </div>
             </div>
         </div>
         <div class="col-md-2">
             <div class="card bg-danger text-white">
-                <div class="card-body text-center">
-                    <h3 class="mb-0">{{ stats.high_churn_risk or 0 }}</h3>
+                <div class="card-body text-center py-3">
+                    <h3 class="mb-0">{{ coaching_stats.churn_risk_high or 0 }}</h3>
                     <small>High Churn Risk</small>
                 </div>
             </div>
         </div>
         <div class="col-md-2">
             <div class="card bg-secondary text-white">
-                <div class="card-body text-center">
-                    <h3 class="mb-0">{{ stats.qa_pairs or 0 }}</h3>
-                    <small>Q&A Pairs</small>
+                <div class="card-body text-center py-3">
+                    <h3 class="mb-0">{{ "%.1f"|format(coaching_stats.avg_customer_effort or 0) }}</h3>
+                    <small>Avg Customer Effort</small>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <!-- Learning State Distribution -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div class="card-header">Learning State Distribution</div>
-                <div class="card-body">
-                    {% for state, count in (stats.learning_distribution or {}).items() %}
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="badge fs-6 {% if state == 'aha_zone' %}bg-success{% elif state == 'struggling' %}bg-warning text-dark{% elif state == 'overwhelmed' %}bg-danger{% elif state == 'building' %}bg-info{% else %}bg-secondary{% endif %}">
-                            {{ state }}
-                        </span>
-                        <div class="d-flex align-items-center" style="width: 60%">
-                            <div class="progress flex-grow-1 me-2" style="height: 20px;">
-                                <div class="progress-bar {% if state == 'aha_zone' %}bg-success{% elif state == 'struggling' %}bg-warning{% elif state == 'overwhelmed' %}bg-danger{% else %}bg-info{% endif %}"
-                                     style="width: {{ (count / (stats.total_sessions or 1) * 100)|int }}%">
+    <!-- Tabs for different views -->
+    <ul class="nav nav-tabs mb-4" id="coachingTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="feed-tab" data-bs-toggle="tab" data-bs-target="#feed" type="button">
+                <i class="bi bi-chat-quote"></i> Coaching Feed
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="queue-tab" data-bs-toggle="tab" data-bs-target="#queue" type="button">
+                <i class="bi bi-exclamation-triangle"></i> Needs Attention
+                {% if coaching_queue|length > 0 %}
+                <span class="badge bg-danger">{{ coaching_queue|length }}</span>
+                {% endif %}
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="training-tab" data-bs-toggle="tab" data-bs-target="#training" type="button">
+                <i class="bi bi-mortarboard"></i> Training Sessions
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="topics-tab" data-bs-toggle="tab" data-bs-target="#topics" type="button">
+                <i class="bi bi-bar-chart"></i> Analytics
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="coachingTabContent">
+        <!-- Coaching Feed Tab -->
+        <div class="tab-pane fade show active" id="feed" role="tabpanel">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span><i class="bi bi-chat-quote me-2"></i>Recent Coaching Insights</span>
+                            <span class="text-muted">Showing calls and video meetings with coaching data</span>
+                        </div>
+                        <div class="card-body p-0">
+                            {% for item in coaching_feed or [] %}
+                            <div class="border-bottom p-3 {% if loop.index is odd %}bg-light{% endif %}">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <span class="badge {% if item.source_type == 'call' %}bg-primary{% else %}bg-info{% endif %} me-2">
+                                            {% if item.source_type == 'call' %}
+                                            <i class="bi bi-telephone"></i>
+                                            {% else %}
+                                            <i class="bi bi-camera-video"></i>
+                                            {% endif %}
+                                            {{ item.source_label }}
+                                        </span>
+                                        <strong>{{ item.employee_name or 'Unknown' }}</strong>
+                                        {% if item.customer_name %}
+                                        <span class="text-muted"> with {{ item.customer_name }}</span>
+                                        {% endif %}
+                                        {% if item.title %}
+                                        <span class="text-muted"> - {{ item.title[:50] }}{% if item.title|length > 50 %}...{% endif %}</span>
+                                        {% endif %}
+                                    </div>
+                                    <div class="text-end">
+                                        <small class="text-muted">{{ item.date[:10] if item.date else '' }}</small>
+                                        {% if item.quality_score %}
+                                        <span class="badge {% if item.quality_score >= 8 %}bg-success{% elif item.quality_score >= 6 %}bg-warning text-dark{% else %}bg-danger{% endif %} ms-2">
+                                            {{ "%.1f"|format(item.quality_score) }}
+                                        </span>
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <!-- Strengths (Celebrate Wins) -->
+                                    {% if item.strengths %}
+                                    <div class="col-md-5">
+                                        <div class="mb-2">
+                                            <strong class="text-success"><i class="bi bi-trophy me-1"></i>Strengths:</strong>
+                                            <ul class="mb-0 ps-3">
+                                                {% for s in item.strengths[:3] %}
+                                                <li class="small">{{ s }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+
+                                    <!-- Growth Opportunities -->
+                                    {% if item.improvements %}
+                                    <div class="col-md-4">
+                                        <div class="mb-2">
+                                            <strong class="text-primary"><i class="bi bi-arrow-up-circle me-1"></i>Growth Areas:</strong>
+                                            <ul class="mb-0 ps-3">
+                                                {% for i in item.improvements[:2] %}
+                                                <li class="small">{{ i }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+
+                                    <!-- Suggested Phrases -->
+                                    {% if item.suggested_phrases %}
+                                    <div class="col-md-3">
+                                        <div class="mb-2">
+                                            <strong class="text-info"><i class="bi bi-quote me-1"></i>Try saying:</strong>
+                                            {% for phrase in item.suggested_phrases[:1] %}
+                                            <p class="small fst-italic mb-0 text-muted">"{{ phrase[:100] }}{% if phrase|length > 100 %}...{% endif %}"</p>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+
+                                <!-- Metrics Row -->
+                                <div class="d-flex gap-3 mt-2 flex-wrap">
+                                    {% if item.customer_effort_score %}
+                                    <small class="text-muted">
+                                        <i class="bi bi-speedometer2"></i> Effort:
+                                        <span class="{% if item.customer_effort_score <= 3 %}text-success{% elif item.customer_effort_score <= 6 %}text-warning{% else %}text-danger{% endif %}">
+                                            {{ "%.1f"|format(item.customer_effort_score) }}
+                                        </span>
+                                    </small>
+                                    {% endif %}
+                                    {% if item.empathy_score %}
+                                    <small class="text-muted">
+                                        <i class="bi bi-heart"></i> Empathy: {{ "%.1f"|format(item.empathy_score) }}
+                                    </small>
+                                    {% endif %}
+                                    {% if item.closure_score %}
+                                    <small class="text-muted">
+                                        <i class="bi bi-check-circle"></i> Loop Closure: {{ "%.1f"|format(item.closure_score) }}
+                                    </small>
+                                    {% endif %}
+                                    {% if item.learning_score %}
+                                    <small class="text-muted">
+                                        <i class="bi bi-mortarboard"></i> Learning: {{ "%.1f"|format(item.learning_score) }}
+                                    </small>
+                                    {% endif %}
+                                    {% if item.learning_state %}
+                                    <span class="badge {% if item.learning_state == 'aha_zone' %}bg-success{% elif item.learning_state == 'struggling' %}bg-warning text-dark{% elif item.learning_state == 'overwhelmed' %}bg-danger{% else %}bg-secondary{% endif %}">
+                                        {{ item.learning_state }}
+                                    </span>
+                                    {% endif %}
+                                    {% if item.churn_risk == 'high' %}
+                                    <span class="badge bg-danger"><i class="bi bi-exclamation-triangle"></i> High Churn Risk</span>
+                                    {% endif %}
                                 </div>
                             </div>
-                            <span class="badge bg-dark">{{ count }}</span>
+                            {% else %}
+                            <div class="text-center text-muted py-5">
+                                No coaching data available yet. Coaching insights will appear here as calls and meetings are analyzed.
+                            </div>
+                            {% endfor %}
                         </div>
                     </div>
-                    {% else %}
-                    <p class="text-muted text-center">No learning data yet</p>
-                    {% endfor %}
                 </div>
             </div>
         </div>
 
-        <!-- Top Trainers -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div class="card-header">Top Trainers by Learning Impact</div>
-                <div class="card-body">
-                    {% for trainer in stats.top_trainers or [] %}
-                    <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
-                        <div>
-                            <strong>{{ trainer.host_name }}</strong>
-                            <br><small class="text-muted">{{ trainer.session_count }} sessions</small>
+        <!-- Needs Attention Tab -->
+        <div class="tab-pane fade" id="queue" role="tabpanel">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header bg-warning text-dark">
+                            <i class="bi bi-exclamation-triangle me-2"></i>Interactions Needing Coaching Attention
                         </div>
-                        <div class="text-end">
-                            <span class="badge {% if trainer.avg_learning >= 8 %}bg-success{% elif trainer.avg_learning >= 6 %}bg-warning text-dark{% else %}bg-danger{% endif %} fs-6">
-                                {{ "%.1f"|format(trainer.avg_learning or 0) }}
-                            </span>
-                            <br><small class="text-muted">learning score</small>
-                        </div>
-                    </div>
-                    {% else %}
-                    <p class="text-muted text-center">No trainer data yet</p>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-
-        <!-- Recent Sessions Needing Attention -->
-        <div class="col-md-4 mb-4">
-            <div class="card h-100">
-                <div class="card-header bg-warning text-dark">Sessions Needing Attention</div>
-                <div class="card-body">
-                    {% for session in attention_needed or [] %}
-                    <div class="mb-3 pb-2 border-bottom">
-                        <a href="/video-meetings/{{ session.id }}" class="text-decoration-none">
-                            {{ session.title[:35] }}{% if session.title|length > 35 %}...{% endif %}
-                        </a>
-                        <div class="mt-1">
-                            <span class="badge {% if session.learning_state == 'struggling' %}bg-warning text-dark{% elif session.learning_state == 'overwhelmed' %}bg-danger{% else %}bg-secondary{% endif %}">
-                                {{ session.learning_state }}
-                            </span>
-                            {% if session.churn_risk_level == 'high' %}
-                            <span class="badge bg-danger">High Churn Risk</span>
-                            {% endif %}
-                            <small class="text-muted ms-2">{{ session.start_time.strftime('%m/%d') if session.start_time else '' }}</small>
-                        </div>
-                    </div>
-                    {% else %}
-                    <p class="text-success text-center">No sessions need attention</p>
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Recent Training Sessions -->
-    <div class="card">
-        <div class="card-header d-flex justify-content-between align-items-center">
-            <span>Recent Training Sessions</span>
-            <a href="/video-meetings" class="btn btn-sm btn-outline-primary">View All</a>
-        </div>
-        <div class="card-body p-0">
-            <div class="table-responsive">
-                <table class="table table-hover mb-0">
-                    <thead class="table-light">
-                        <tr>
-                            <th>Date</th>
-                            <th>Session</th>
-                            <th>Trainer</th>
-                            <th>Participants</th>
-                            <th>Learning Score</th>
-                            <th>Learning State</th>
-                            <th>Quality</th>
-                            <th>Churn Risk</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for s in recent_sessions or [] %}
-                        <tr>
-                            <td>{{ s.start_time.strftime('%Y-%m-%d') if s.start_time else 'N/A' }}</td>
-                            <td>
-                                <a href="/video-meetings/{{ s.id }}">
-                                    {{ s.title[:40] }}{% if s.title|length > 40 %}...{% endif %}
-                                </a>
-                            </td>
-                            <td>{{ s.host_name or 'Unknown' }}</td>
-                            <td>{{ s.participant_count or 0 }}</td>
-                            <td>
-                                {% if s.learning_score %}
-                                <span class="badge {% if s.learning_score >= 8 %}bg-success{% elif s.learning_score >= 6 %}bg-warning text-dark{% else %}bg-danger{% endif %} fs-6">
-                                    {{ "%.1f"|format(s.learning_score) }}
-                                </span>
-                                {% else %}
-                                <span class="badge bg-light text-dark">-</span>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if s.learning_state %}
-                                <span class="badge {% if s.learning_state == 'aha_zone' %}bg-success{% elif s.learning_state == 'struggling' %}bg-warning text-dark{% elif s.learning_state == 'overwhelmed' %}bg-danger{% else %}bg-info{% endif %}">
-                                    {{ s.learning_state }}
-                                </span>
-                                {% else %}
-                                <span class="badge bg-light text-dark">-</span>
-                                {% endif %}
-                            </td>
-                            <td>
-                                {% if s.meeting_quality_score %}
-                                {{ "%.1f"|format(s.meeting_quality_score) }}
-                                {% else %}-{% endif %}
-                            </td>
-                            <td>
-                                {% if s.churn_risk_level == 'high' %}
-                                <span class="badge bg-danger">High</span>
-                                {% elif s.churn_risk_level == 'medium' %}
-                                <span class="badge bg-warning text-dark">Medium</span>
-                                {% else %}
-                                <span class="badge bg-success">Low</span>
-                                {% endif %}
-                            </td>
-                        </tr>
-                        {% else %}
-                        <tr>
-                            <td colspan="8" class="text-center text-muted py-4">
-                                No training sessions found
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <!-- Top Q&A Categories from Training -->
-    {% if stats.top_categories %}
-    <div class="row mt-4">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header">Top Question Categories from Training Sessions</div>
-                <div class="card-body">
-                    <div class="row">
-                        {% for cat in stats.top_categories %}
-                        <div class="col-md-3 mb-2">
-                            <div class="d-flex justify-content-between align-items-center p-2 bg-light rounded">
-                                <span>{{ cat.category }}</span>
-                                <span class="badge bg-primary">{{ cat.count }}</span>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Type</th>
+                                            <th>Employee</th>
+                                            <th>Details</th>
+                                            <th>Reason</th>
+                                            <th>Quality</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for q in coaching_queue or [] %}
+                                        <tr>
+                                            <td>{{ q.date[:10] if q.date else 'N/A' }}</td>
+                                            <td>
+                                                <span class="badge {% if q.source_type == 'call' %}bg-primary{% else %}bg-info{% endif %}">
+                                                    {{ q.source_label }}
+                                                </span>
+                                            </td>
+                                            <td>{{ q.employee_name or 'Unknown' }}</td>
+                                            <td>
+                                                {% if q.customer_name %}{{ q.customer_name }}{% endif %}
+                                                {% if q.title %}{{ q.title[:30] }}...{% endif %}
+                                            </td>
+                                            <td><span class="badge bg-danger">{{ q.attention_reason }}</span></td>
+                                            <td>
+                                                {% if q.quality_score %}
+                                                <span class="{% if q.quality_score < 5 %}text-danger{% else %}text-muted{% endif %}">
+                                                    {{ "%.1f"|format(q.quality_score) }}
+                                                </span>
+                                                {% else %}-{% endif %}
+                                            </td>
+                                            <td>
+                                                {% if q.source_type == 'video' %}
+                                                <a href="/video-meetings/{{ q.id }}" class="btn btn-sm btn-outline-primary">
+                                                    <i class="bi bi-eye"></i> View
+                                                </a>
+                                                {% else %}
+                                                <a href="/query?recording_id={{ q.id }}" class="btn btn-sm btn-outline-primary">
+                                                    <i class="bi bi-eye"></i> View
+                                                </a>
+                                                {% endif %}
+                                            </td>
+                                        </tr>
+                                        {% else %}
+                                        <tr>
+                                            <td colspan="7" class="text-center text-success py-4">
+                                                <i class="bi bi-check-circle me-2"></i>No interactions need immediate attention
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Training Sessions Tab -->
+        <div class="tab-pane fade" id="training" role="tabpanel">
+            <div class="row mb-4">
+                <!-- Learning State Distribution -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">Learning State Distribution</div>
+                        <div class="card-body">
+                            {% for state, count in (stats.learning_distribution or {}).items() %}
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge fs-6 {% if state == 'aha_zone' %}bg-success{% elif state == 'struggling' %}bg-warning text-dark{% elif state == 'overwhelmed' %}bg-danger{% elif state == 'building' %}bg-info{% else %}bg-secondary{% endif %}">
+                                    {{ state }}
+                                </span>
+                                <div class="d-flex align-items-center" style="width: 60%">
+                                    <div class="progress flex-grow-1 me-2" style="height: 20px;">
+                                        <div class="progress-bar {% if state == 'aha_zone' %}bg-success{% elif state == 'struggling' %}bg-warning{% elif state == 'overwhelmed' %}bg-danger{% else %}bg-info{% endif %}"
+                                             style="width: {{ (count / (stats.total_sessions or 1) * 100)|int }}%">
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-dark">{{ count }}</span>
+                                </div>
+                            </div>
+                            {% else %}
+                            <p class="text-muted text-center">No learning data yet</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Trainers -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">Top Trainers by Learning Impact</div>
+                        <div class="card-body">
+                            {% for trainer in stats.top_trainers or [] %}
+                            <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+                                <div>
+                                    <strong>{{ trainer.host_name }}</strong>
+                                    <br><small class="text-muted">{{ trainer.session_count }} sessions</small>
+                                </div>
+                                <div class="text-end">
+                                    <span class="badge {% if trainer.avg_learning >= 8 %}bg-success{% elif trainer.avg_learning >= 6 %}bg-warning text-dark{% else %}bg-danger{% endif %} fs-6">
+                                        {{ "%.1f"|format(trainer.avg_learning or 0) }}
+                                    </span>
+                                    <br><small class="text-muted">learning score</small>
+                                </div>
+                            </div>
+                            {% else %}
+                            <p class="text-muted text-center">No trainer data yet</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video Sessions Needing Attention -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header bg-warning text-dark">Video Sessions Needing Attention</div>
+                        <div class="card-body">
+                            {% for session in attention_needed or [] %}
+                            <div class="mb-3 pb-2 border-bottom">
+                                <a href="/video-meetings/{{ session.id }}" class="text-decoration-none">
+                                    {{ session.title[:35] }}{% if session.title|length > 35 %}...{% endif %}
+                                </a>
+                                <div class="mt-1">
+                                    <span class="badge {% if session.learning_state == 'struggling' %}bg-warning text-dark{% elif session.learning_state == 'overwhelmed' %}bg-danger{% else %}bg-secondary{% endif %}">
+                                        {{ session.learning_state }}
+                                    </span>
+                                    {% if session.churn_risk_level == 'high' %}
+                                    <span class="badge bg-danger">High Churn Risk</span>
+                                    {% endif %}
+                                    <small class="text-muted ms-2">{{ session.start_time.strftime('%m/%d') if session.start_time else '' }}</small>
+                                </div>
+                            </div>
+                            {% else %}
+                            <p class="text-success text-center">No sessions need attention</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Training Sessions Table -->
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <span>Recent Training Sessions</span>
+                    <a href="/video-meetings" class="btn btn-sm btn-outline-primary">View All</a>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Session</th>
+                                    <th>Trainer</th>
+                                    <th>Participants</th>
+                                    <th>Learning Score</th>
+                                    <th>Learning State</th>
+                                    <th>Quality</th>
+                                    <th>Churn Risk</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for s in recent_sessions or [] %}
+                                <tr>
+                                    <td>{{ s.start_time.strftime('%Y-%m-%d') if s.start_time else 'N/A' }}</td>
+                                    <td>
+                                        <a href="/video-meetings/{{ s.id }}">
+                                            {{ s.title[:40] }}{% if s.title|length > 40 %}...{% endif %}
+                                        </a>
+                                    </td>
+                                    <td>{{ s.host_name or 'Unknown' }}</td>
+                                    <td>{{ s.participant_count or 0 }}</td>
+                                    <td>
+                                        {% if s.learning_score %}
+                                        <span class="badge {% if s.learning_score >= 8 %}bg-success{% elif s.learning_score >= 6 %}bg-warning text-dark{% else %}bg-danger{% endif %} fs-6">
+                                            {{ "%.1f"|format(s.learning_score) }}
+                                        </span>
+                                        {% else %}
+                                        <span class="badge bg-light text-dark">-</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if s.learning_state %}
+                                        <span class="badge {% if s.learning_state == 'aha_zone' %}bg-success{% elif s.learning_state == 'struggling' %}bg-warning text-dark{% elif s.learning_state == 'overwhelmed' %}bg-danger{% else %}bg-info{% endif %}">
+                                            {{ s.learning_state }}
+                                        </span>
+                                        {% else %}
+                                        <span class="badge bg-light text-dark">-</span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if s.meeting_quality_score %}
+                                        {{ "%.1f"|format(s.meeting_quality_score) }}
+                                        {% else %}-{% endif %}
+                                    </td>
+                                    <td>
+                                        {% if s.churn_risk_level == 'high' %}
+                                        <span class="badge bg-danger">High</span>
+                                        {% elif s.churn_risk_level == 'medium' %}
+                                        <span class="badge bg-warning text-dark">Medium</span>
+                                        {% else %}
+                                        <span class="badge bg-success">Low</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% else %}
+                                <tr>
+                                    <td colspan="8" class="text-center text-muted py-4">
+                                        No training sessions found
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Analytics Tab -->
+        <div class="tab-pane fade" id="topics" role="tabpanel">
+            <div class="row">
+                <!-- Sentiment Distribution -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">Sentiment Distribution (Last 30 Days)</div>
+                        <div class="card-body">
+                            {% for sentiment, count in (coaching_stats.sentiment_distribution or {}).items() %}
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge fs-6 {% if sentiment == 'positive' %}bg-success{% elif sentiment == 'negative' %}bg-danger{% else %}bg-secondary{% endif %}">
+                                    {{ sentiment }}
+                                </span>
+                                <div class="d-flex align-items-center" style="width: 60%">
+                                    <div class="progress flex-grow-1 me-2" style="height: 20px;">
+                                        <div class="progress-bar {% if sentiment == 'positive' %}bg-success{% elif sentiment == 'negative' %}bg-danger{% else %}bg-secondary{% endif %}"
+                                             style="width: {{ (count / (coaching_stats.total_calls or 1) * 100)|int }}%">
+                                        </div>
+                                    </div>
+                                    <span class="badge bg-dark">{{ count }}</span>
+                                </div>
+                            </div>
+                            {% else %}
+                            <p class="text-muted text-center">No sentiment data yet</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top Coaching Topics -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">Top Coaching Topics</div>
+                        <div class="card-body">
+                            {% for topic in coaching_stats.top_coaching_topics or [] %}
+                            <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+                                <span>{{ topic.topic }}</span>
+                                <span class="badge bg-primary">{{ topic.count }}</span>
+                            </div>
+                            {% else %}
+                            <p class="text-muted text-center">No coaching topics yet</p>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Q&A Categories -->
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">Top Q&A Categories (Training)</div>
+                        <div class="card-body">
+                            {% for cat in stats.top_categories or [] %}
+                            <div class="d-flex justify-content-between align-items-center mb-2 pb-2 border-bottom">
+                                <span>{{ cat.category }}</span>
+                                <span class="badge bg-info">{{ cat.count }}</span>
+                            </div>
+                            {% else %}
+                            <p class="text-muted text-center">No Q&A categories yet</p>
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    {% endif %}
 </div>
 {% endblock %}

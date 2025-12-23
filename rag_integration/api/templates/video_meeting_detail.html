@@ -88,6 +88,127 @@
         </div>
     </div>
 
+    <!-- Coaching Insights Card (Prominent) -->
+    {% if meeting.ai_analysis_json %}
+    {% set l6 = meeting.ai_analysis_json.get('layer6_learning', {}) %}
+    {% set l4 = meeting.ai_analysis_json.get('layer4_recommendations', {}) %}
+    {% set coaching = l6.get('coaching_recommendations', {}) %}
+    {% set trainer_coaching = l4.get('trainer_coaching', {}) %}
+    {% set teaching = l6.get('trainer_teaching_analysis', {}) %}
+
+    <div class="card mb-4 border-success">
+        <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+            <span><i class="bi bi-trophy me-2"></i>Coaching Insights</span>
+            <span class="badge bg-light text-dark">Joy-Focused Coaching</span>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <!-- Celebrate Wins (Strengths) -->
+                <div class="col-md-4">
+                    <h6 class="text-success"><i class="bi bi-star-fill me-1"></i>Celebrate Wins</h6>
+                    <ul class="list-unstyled">
+                        {% if trainer_coaching.get('strengths') %}
+                            {% for s in trainer_coaching.strengths[:3] %}
+                            <li class="mb-2"><i class="bi bi-check-circle text-success me-1"></i>{{ s }}</li>
+                            {% endfor %}
+                        {% elif l6.get('trainee_learning_profile') %}
+                            <li class="mb-2"><i class="bi bi-check-circle text-success me-1"></i>Knowledge Level: {{ l6.trainee_learning_profile.get('knowledge_level', 'N/A') }}</li>
+                            <li class="mb-2"><i class="bi bi-check-circle text-success me-1"></i>Learning Style: {{ l6.trainee_learning_profile.get('learning_style', 'N/A') }}</li>
+                        {% else %}
+                            <li class="text-muted">Analysis in progress...</li>
+                        {% endif %}
+                    </ul>
+                    {% if teaching %}
+                    <div class="mt-3">
+                        <small class="text-muted">Teaching Scores:</small>
+                        <div class="d-flex gap-2 mt-1">
+                            {% if teaching.get('teaching_clarity') %}
+                            <span class="badge {% if teaching.teaching_clarity >= 7 %}bg-success{% elif teaching.teaching_clarity >= 5 %}bg-warning text-dark{% else %}bg-danger{% endif %}">
+                                Clarity: {{ teaching.teaching_clarity }}/10
+                            </span>
+                            {% endif %}
+                            {% if teaching.get('pacing_score') %}
+                            <span class="badge {% if teaching.pacing_score >= 7 %}bg-success{% elif teaching.pacing_score >= 5 %}bg-warning text-dark{% else %}bg-danger{% endif %}">
+                                Pacing: {{ teaching.pacing_score }}/10
+                            </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Growth Opportunities -->
+                <div class="col-md-4">
+                    <h6 class="text-primary"><i class="bi bi-arrow-up-circle me-1"></i>Growth Opportunities</h6>
+                    <ul class="list-unstyled">
+                        {% set all_improvements = [] %}
+                        {% if trainer_coaching.get('improvements') %}
+                            {% for i in trainer_coaching.improvements[:2] %}
+                            <li class="mb-2"><i class="bi bi-lightbulb text-warning me-1"></i>{{ i }}</li>
+                            {% endfor %}
+                        {% endif %}
+                        {% if coaching.get('for_trainer') %}
+                            {% for rec in coaching.for_trainer[:2] %}
+                            <li class="mb-2"><i class="bi bi-lightbulb text-warning me-1"></i>{{ rec }}</li>
+                            {% endfor %}
+                        {% endif %}
+                        {% if not trainer_coaching.get('improvements') and not coaching.get('for_trainer') %}
+                            <li class="text-muted">No specific improvements identified</li>
+                        {% endif %}
+                    </ul>
+                    {% if trainer_coaching.get('coaching_priorities') %}
+                    <div class="mt-3">
+                        <small class="text-muted">Priority Focus:</small>
+                        {% for p in trainer_coaching.coaching_priorities[:2] %}
+                        <div class="mt-1">
+                            <span class="badge {% if p.priority == 'high' %}bg-danger{% else %}bg-warning text-dark{% endif %}">{{ p.area }}</span>
+                            <small class="text-muted ms-1">{{ p.suggestion[:50] }}...</small>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- One Thing to Try Next -->
+                <div class="col-md-4">
+                    <h6 class="text-info"><i class="bi bi-bullseye me-1"></i>Next Session Focus</h6>
+                    {% if coaching.get('for_trainee') %}
+                    <div class="alert alert-info py-2 mb-2">
+                        <strong>For Trainee:</strong>
+                        <ul class="mb-0 ps-3">
+                            {% for rec in coaching.for_trainee[:2] %}
+                            <li class="small">{{ rec }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+
+                    {% if l6.get('new_hire_readiness') %}
+                    <div class="alert {% if l6.new_hire_readiness.status == 'ready' %}alert-success{% elif l6.new_hire_readiness.status == 'not_ready' %}alert-warning{% else %}alert-info{% endif %} py-2">
+                        <strong>Readiness:</strong>
+                        <span class="badge {% if l6.new_hire_readiness.status == 'ready' %}bg-success{% elif l6.new_hire_readiness.status == 'not_ready' %}bg-danger{% else %}bg-warning text-dark{% endif %}">
+                            {{ l6.new_hire_readiness.status }}
+                        </span>
+                        {% if l6.new_hire_readiness.estimated_sessions_to_proficiency %}
+                        <div class="small mt-1">Est. sessions to proficiency: {{ l6.new_hire_readiness.estimated_sessions_to_proficiency }}</div>
+                        {% endif %}
+                    </div>
+                    {% endif %}
+
+                    {% if meeting.ai_analysis_json.get('best_practices', {}).get('techniques_to_improve') %}
+                    <div class="mt-2">
+                        <small class="text-muted">Techniques to improve:</small>
+                        {% for t in meeting.ai_analysis_json.best_practices.techniques_to_improve[:2] %}
+                        <div class="small"><i class="bi bi-arrow-right text-primary"></i> {{ t.recommendation }}</div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
     <div class="row">
         <!-- Left Column: Analysis -->
         <div class="col-md-8">

@@ -2764,6 +2764,570 @@ class DatabaseReader:
                 """, [limit])
                 return [dict(r) for r in cur.fetchall()]
 
+    # ==========================================
+    # COACHING & LEARNING FEED
+    # ==========================================
+
+    def get_coaching_feed(
+        self,
+        employee_name: str = None,
+        limit: int = 50,
+        include_calls: bool = True,
+        include_video: bool = True
+    ) -> List[Dict[str, Any]]:
+        """
+        Get combined coaching data from calls and video meetings.
+        Returns a unified format with strengths, improvements, and suggested phrases.
+        """
+        results = []
+
+        with self.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                # Get call coaching data
+                if include_calls:
+                    employee_filter = ""
+                    if employee_name:
+                        patterns = get_employee_search_patterns(employee_name)
+                        pattern_clauses = " OR ".join([f"t.employee_name ILIKE %s" for _ in patterns])
+                        employee_filter = f"AND ({pattern_clauses})"
+
+                    query = f"""
+                        SELECT
+                            t.recording_id,
+                            t.call_date as interaction_date,
+                            t.employee_name,
+                            t.customer_name,
+                            t.customer_company,
+                            i.call_quality_score,
+                            i.customer_sentiment,
+                            i.summary,
+                            rec.employee_strengths,
+                            rec.employee_improvements,
+                            rec.suggested_phrases,
+                            rec.coaching_session_topics,
+                            rec.communication_effectiveness_score,
+                            rec.problem_solving_score,
+                            rec.customer_advocacy_score,
+                            res.customer_effort_score,
+                            res.empathy_score,
+                            res.active_listening_score,
+                            res.done_well,
+                            res.improvement_suggestions,
+                            res.closure_score,
+                            res.churn_risk
+                        FROM transcripts t
+                        LEFT JOIN insights i ON t.recording_id = i.recording_id
+                        LEFT JOIN call_recommendations rec ON t.recording_id = rec.recording_id
+                        LEFT JOIN call_resolutions res ON t.recording_id = res.recording_id
+                        WHERE t.call_date IS NOT NULL
+                          AND (rec.employee_strengths IS NOT NULL
+                               OR rec.employee_improvements IS NOT NULL
+                               OR res.done_well IS NOT NULL)
+                          {employee_filter}
+                        ORDER BY t.call_date DESC
+                        LIMIT %s
+                    """
+
+                    params = []
+                    if employee_name:
+                        params.extend(patterns)
+                    params.append(limit)
+
+                    cur.execute(query, params)
+
+                    for row in cur.fetchall():
+                        # Combine strengths from both tables
+                        strengths = []
+                        if row['employee_strengths']:
+                            strengths.extend(row['employee_strengths'])
+                        if row['done_well']:
+                            strengths.extend(row['done_well'])
+
+                        # Combine improvements
+                        improvements = []
+                        if row['employee_improvements']:
+                            improvements.extend(row['employee_improvements'])
+                        if row['improvement_suggestions']:
+                            improvements.extend(row['improvement_suggestions'])
+
+                        results.append({
+                            'id': row['recording_id'],
+                            'source_type': 'call',
+                            'source_label': 'Phone Call',
+                            'date': str(row['interaction_date']) if row['interaction_date'] else None,
+                            'employee_name': row['employee_name'],
+                            'customer_name': row['customer_name'],
+                            'customer_company': row['customer_company'],
+                            'summary': row['summary'],
+                            'quality_score': float(row['call_quality_score']) if row['call_quality_score'] else None,
+                            'sentiment': row['customer_sentiment'],
+                            'churn_risk': row['churn_risk'],
+                            # Coaching data
+                            'strengths': strengths[:5],  # Limit to top 5
+                            'improvements': improvements[:3],  # Limit to 3 (growth-focused)
+                            'suggested_phrases': row['suggested_phrases'] or [],
+                            'coaching_topics': row['coaching_session_topics'] or [],
+                            # Scores
+                            'customer_effort_score': float(row['customer_effort_score']) if row['customer_effort_score'] else None,
+                            'empathy_score': float(row['empathy_score']) if row['empathy_score'] else None,
+                            'communication_score': float(row['communication_effectiveness_score']) if row['communication_effectiveness_score'] else None,
+                            'problem_solving_score': float(row['problem_solving_score']) if row['problem_solving_score'] else None,
+                            'closure_score': float(row['closure_score']) if row['closure_score'] else None,
+                        })
+
+                # Get video meeting coaching data
+                if include_video:
+                    video_employee_filter = ""
+                    if employee_name:
+                        patterns = get_employee_search_patterns(employee_name)
+                        pattern_clauses = " OR ".join([f"host_name ILIKE %s" for _ in patterns])
+                        video_employee_filter = f"AND ({pattern_clauses})"
+
+                    video_query = f"""
+                        SELECT
+                            id,
+                            title,
+                            start_time as interaction_date,
+                            host_name as employee_name,
+                            overall_sentiment,
+                            meeting_quality_score,
+                            learning_score,
+                            learning_state,
+                            churn_risk_level,
+                            ai_analysis_json
+                        FROM video_meetings
+                        WHERE source = 'ringcentral'
+                          AND layer1_complete = TRUE
+                          AND ai_analysis_json IS NOT NULL
+                          {video_employee_filter}
+                        ORDER BY start_time DESC
+                        LIMIT %s
+                    """
+
+                    video_params = []
+                    if employee_name:
+                        video_params.extend(patterns)
+                    video_params.append(limit)
+
+                    cur.execute(video_query, video_params)
+
+                    for row in cur.fetchall():
+                        ai_data = row['ai_analysis_json'] or {}
+                        layer6 = ai_data.get('layer6_learning', {})
+                        layer4 = ai_data.get('layer4_recommendations', {})
+
+                        coaching = layer6.get('coaching_recommendations', {})
+                        trainer_coaching = layer4.get('trainer_coaching', {})
+
+                        # Extract coaching data
+                        strengths = trainer_coaching.get('strengths', [])
+                        improvements = trainer_coaching.get('improvements', [])
+                        for_trainer = coaching.get('for_trainer', [])
+                        for_trainee = coaching.get('for_trainee', [])
+
+                        # Combine all improvements
+                        all_improvements = improvements + for_trainer + for_trainee
+
+                        results.append({
+                            'id': row['id'],
+                            'source_type': 'video',
+                            'source_label': 'Video Meeting',
+                            'date': str(row['interaction_date']) if row['interaction_date'] else None,
+                            'employee_name': row['employee_name'],
+                            'title': row['title'],
+                            'summary': ai_data.get('fathom_summary', ''),
+                            'quality_score': float(row['meeting_quality_score']) if row['meeting_quality_score'] else None,
+                            'sentiment': row['overall_sentiment'],
+                            'churn_risk': row['churn_risk_level'],
+                            'learning_score': float(row['learning_score']) if row['learning_score'] else None,
+                            'learning_state': row['learning_state'],
+                            # Coaching data
+                            'strengths': strengths[:5],
+                            'improvements': all_improvements[:3],
+                            'suggested_phrases': [],
+                            'coaching_topics': trainer_coaching.get('coaching_priorities', []),
+                            # Teaching analysis scores
+                            'teaching_clarity': layer6.get('trainer_teaching_analysis', {}).get('teaching_clarity'),
+                            'pacing_score': layer6.get('trainer_teaching_analysis', {}).get('pacing_score'),
+                            'scaffolding_quality': layer6.get('trainer_teaching_analysis', {}).get('scaffolding_quality'),
+                        })
+
+        # Sort combined results by date
+        results.sort(key=lambda x: x['date'] or '', reverse=True)
+        return results[:limit]
+
+    def get_employee_coaching_progress(
+        self,
+        employee_name: str,
+        period: str = 'mtd'
+    ) -> Dict[str, Any]:
+        """
+        Track coaching metrics and improvement trends for an employee.
+        """
+        result = {
+            'employee_name': employee_name,
+            'period': period,
+            'total_interactions': 0,
+            'calls': 0,
+            'video_meetings': 0,
+            'avg_quality_score': None,
+            'avg_effort_score': None,
+            'avg_empathy_score': None,
+            'churn_risk_distribution': {},
+            'top_strengths': [],
+            'areas_for_growth': [],
+            'score_trends': []
+        }
+
+        # Build date filter based on period
+        if period == 'today':
+            date_filter = "AND call_date >= CURRENT_DATE"
+            video_date_filter = "AND start_time >= CURRENT_DATE"
+        elif period == 'wtd':
+            date_filter = "AND call_date >= DATE_TRUNC('week', CURRENT_DATE)"
+            video_date_filter = "AND start_time >= DATE_TRUNC('week', CURRENT_DATE)"
+        elif period == 'mtd':
+            date_filter = "AND call_date >= DATE_TRUNC('month', CURRENT_DATE)"
+            video_date_filter = "AND start_time >= DATE_TRUNC('month', CURRENT_DATE)"
+        elif period == 'qtd':
+            date_filter = "AND call_date >= DATE_TRUNC('quarter', CURRENT_DATE)"
+            video_date_filter = "AND start_time >= DATE_TRUNC('quarter', CURRENT_DATE)"
+        else:  # 'all' or default
+            date_filter = ""
+            video_date_filter = ""
+
+        patterns = get_employee_search_patterns(employee_name)
+
+        with self.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                # Call metrics
+                pattern_clauses = " OR ".join([f"t.employee_name ILIKE %s" for _ in patterns])
+
+                cur.execute(f"""
+                    SELECT
+                        COUNT(*) as call_count,
+                        AVG(i.call_quality_score) as avg_quality,
+                        AVG(res.customer_effort_score) as avg_effort,
+                        AVG(res.empathy_score) as avg_empathy,
+                        AVG(rec.communication_effectiveness_score) as avg_communication
+                    FROM transcripts t
+                    LEFT JOIN insights i ON t.recording_id = i.recording_id
+                    LEFT JOIN call_resolutions res ON t.recording_id = res.recording_id
+                    LEFT JOIN call_recommendations rec ON t.recording_id = rec.recording_id
+                    WHERE ({pattern_clauses})
+                    {date_filter}
+                """, patterns)
+
+                call_stats = cur.fetchone()
+                result['calls'] = call_stats['call_count'] or 0
+                result['avg_quality_score'] = float(call_stats['avg_quality']) if call_stats['avg_quality'] else None
+                result['avg_effort_score'] = float(call_stats['avg_effort']) if call_stats['avg_effort'] else None
+                result['avg_empathy_score'] = float(call_stats['avg_empathy']) if call_stats['avg_empathy'] else None
+
+                # Video meeting metrics
+                video_pattern_clauses = " OR ".join([f"host_name ILIKE %s" for _ in patterns])
+
+                cur.execute(f"""
+                    SELECT
+                        COUNT(*) as video_count,
+                        AVG(meeting_quality_score) as avg_quality,
+                        AVG(learning_score) as avg_learning
+                    FROM video_meetings
+                    WHERE source = 'ringcentral'
+                      AND ({video_pattern_clauses})
+                      {video_date_filter}
+                """, patterns)
+
+                video_stats = cur.fetchone()
+                result['video_meetings'] = video_stats['video_count'] or 0
+                result['total_interactions'] = result['calls'] + result['video_meetings']
+
+                # Aggregate top strengths from calls
+                cur.execute(f"""
+                    SELECT rec.employee_strengths
+                    FROM transcripts t
+                    JOIN call_recommendations rec ON t.recording_id = rec.recording_id
+                    WHERE ({pattern_clauses})
+                      AND rec.employee_strengths IS NOT NULL
+                    {date_filter}
+                    LIMIT 20
+                """, patterns)
+
+                all_strengths = []
+                for row in cur.fetchall():
+                    if row['employee_strengths']:
+                        all_strengths.extend(row['employee_strengths'])
+
+                from collections import Counter
+                strength_counts = Counter(all_strengths)
+                result['top_strengths'] = [s for s, _ in strength_counts.most_common(5)]
+
+                # Aggregate areas for growth
+                cur.execute(f"""
+                    SELECT rec.employee_improvements
+                    FROM transcripts t
+                    JOIN call_recommendations rec ON t.recording_id = rec.recording_id
+                    WHERE ({pattern_clauses})
+                      AND rec.employee_improvements IS NOT NULL
+                    {date_filter}
+                    LIMIT 20
+                """, patterns)
+
+                all_improvements = []
+                for row in cur.fetchall():
+                    if row['employee_improvements']:
+                        all_improvements.extend(row['employee_improvements'])
+
+                improvement_counts = Counter(all_improvements)
+                result['areas_for_growth'] = [i for i, _ in improvement_counts.most_common(3)]
+
+                # Churn risk distribution
+                cur.execute(f"""
+                    SELECT res.churn_risk, COUNT(*) as count
+                    FROM transcripts t
+                    JOIN call_resolutions res ON t.recording_id = res.recording_id
+                    WHERE ({pattern_clauses})
+                      AND res.churn_risk IS NOT NULL
+                    {date_filter}
+                    GROUP BY res.churn_risk
+                """, patterns)
+
+                result['churn_risk_distribution'] = {row['churn_risk']: row['count'] for row in cur.fetchall()}
+
+                # Weekly score trends
+                cur.execute(f"""
+                    SELECT
+                        DATE_TRUNC('week', t.call_date) as week,
+                        AVG(i.call_quality_score) as avg_quality,
+                        AVG(res.customer_effort_score) as avg_effort,
+                        COUNT(*) as call_count
+                    FROM transcripts t
+                    LEFT JOIN insights i ON t.recording_id = i.recording_id
+                    LEFT JOIN call_resolutions res ON t.recording_id = res.recording_id
+                    WHERE ({pattern_clauses})
+                      AND t.call_date >= CURRENT_DATE - INTERVAL '12 weeks'
+                    GROUP BY DATE_TRUNC('week', t.call_date)
+                    ORDER BY week DESC
+                    LIMIT 12
+                """, patterns)
+
+                result['score_trends'] = [
+                    {
+                        'week': str(row['week'].date()) if row['week'] else None,
+                        'avg_quality': float(row['avg_quality']) if row['avg_quality'] else None,
+                        'avg_effort': float(row['avg_effort']) if row['avg_effort'] else None,
+                        'count': row['call_count']
+                    }
+                    for row in cur.fetchall()
+                ]
+
+                return result
+
+    def get_coaching_queue(self, limit: int = 20) -> List[Dict[str, Any]]:
+        """
+        Get interactions that need coaching attention.
+        Includes low-quality calls, high customer effort, struggling learners.
+        """
+        results = []
+
+        with self.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                # Low quality or high effort calls needing attention
+                cur.execute("""
+                    SELECT
+                        t.recording_id as id,
+                        'call' as source_type,
+                        'Phone Call' as source_label,
+                        t.call_date as interaction_date,
+                        t.employee_name,
+                        t.customer_name,
+                        i.call_quality_score as quality_score,
+                        res.customer_effort_score,
+                        res.churn_risk,
+                        i.customer_sentiment as sentiment,
+                        rec.employee_improvements as improvements,
+                        CASE
+                            WHEN res.churn_risk = 'high' THEN 'High Churn Risk'
+                            WHEN res.customer_effort_score > 7 THEN 'High Customer Effort'
+                            WHEN i.call_quality_score < 5 THEN 'Low Quality Score'
+                            ELSE 'Needs Review'
+                        END as attention_reason
+                    FROM transcripts t
+                    LEFT JOIN insights i ON t.recording_id = i.recording_id
+                    LEFT JOIN call_resolutions res ON t.recording_id = res.recording_id
+                    LEFT JOIN call_recommendations rec ON t.recording_id = rec.recording_id
+                    WHERE t.call_date >= CURRENT_DATE - INTERVAL '30 days'
+                      AND (
+                          res.churn_risk = 'high'
+                          OR res.customer_effort_score > 7
+                          OR i.call_quality_score < 5
+                          OR i.customer_sentiment = 'negative'
+                      )
+                    ORDER BY t.call_date DESC
+                    LIMIT %s
+                """, [limit])
+
+                for row in cur.fetchall():
+                    results.append({
+                        'id': row['id'],
+                        'source_type': row['source_type'],
+                        'source_label': row['source_label'],
+                        'date': str(row['interaction_date']) if row['interaction_date'] else None,
+                        'employee_name': row['employee_name'],
+                        'customer_name': row['customer_name'],
+                        'quality_score': float(row['quality_score']) if row['quality_score'] else None,
+                        'customer_effort_score': float(row['customer_effort_score']) if row['customer_effort_score'] else None,
+                        'churn_risk': row['churn_risk'],
+                        'sentiment': row['sentiment'],
+                        'attention_reason': row['attention_reason'],
+                        'improvements': row['improvements'] or []
+                    })
+
+                # Struggling video meetings
+                cur.execute("""
+                    SELECT
+                        id,
+                        'video' as source_type,
+                        'Video Meeting' as source_label,
+                        start_time as interaction_date,
+                        host_name as employee_name,
+                        title,
+                        meeting_quality_score as quality_score,
+                        learning_score,
+                        learning_state,
+                        churn_risk_level as churn_risk,
+                        overall_sentiment as sentiment,
+                        CASE
+                            WHEN churn_risk_level = 'high' THEN 'High Churn Risk'
+                            WHEN learning_state = 'overwhelmed' THEN 'Trainee Overwhelmed'
+                            WHEN learning_state = 'struggling' THEN 'Trainee Struggling'
+                            WHEN meeting_quality_score < 5 THEN 'Low Quality Score'
+                            ELSE 'Needs Review'
+                        END as attention_reason
+                    FROM video_meetings
+                    WHERE source = 'ringcentral'
+                      AND layer1_complete = TRUE
+                      AND start_time >= CURRENT_DATE - INTERVAL '30 days'
+                      AND (
+                          churn_risk_level = 'high'
+                          OR learning_state IN ('struggling', 'overwhelmed')
+                          OR meeting_quality_score < 5
+                          OR overall_sentiment = 'negative'
+                      )
+                    ORDER BY start_time DESC
+                    LIMIT %s
+                """, [limit])
+
+                for row in cur.fetchall():
+                    results.append({
+                        'id': row['id'],
+                        'source_type': row['source_type'],
+                        'source_label': row['source_label'],
+                        'date': str(row['interaction_date']) if row['interaction_date'] else None,
+                        'employee_name': row['employee_name'],
+                        'title': row['title'],
+                        'quality_score': float(row['quality_score']) if row['quality_score'] else None,
+                        'learning_score': float(row['learning_score']) if row['learning_score'] else None,
+                        'learning_state': row['learning_state'],
+                        'churn_risk': row['churn_risk'],
+                        'sentiment': row['sentiment'],
+                        'attention_reason': row['attention_reason']
+                    })
+
+        # Sort by date
+        results.sort(key=lambda x: x['date'] or '', reverse=True)
+        return results[:limit]
+
+    def get_coaching_summary_stats(self) -> Dict[str, Any]:
+        """Get overall coaching statistics combining calls and video meetings."""
+        stats = {
+            'total_interactions': 0,
+            'total_calls': 0,
+            'total_video_meetings': 0,
+            'avg_quality_score': None,
+            'avg_customer_effort': None,
+            'needs_attention_count': 0,
+            'high_performers_count': 0,
+            'churn_risk_high': 0,
+            'sentiment_distribution': {},
+            'top_coaching_topics': []
+        }
+
+        with self.get_connection() as conn:
+            with conn.cursor(cursor_factory=RealDictCursor) as cur:
+                # Call stats
+                cur.execute("""
+                    SELECT
+                        COUNT(*) as call_count,
+                        AVG(i.call_quality_score) as avg_quality,
+                        AVG(res.customer_effort_score) as avg_effort,
+                        SUM(CASE WHEN res.churn_risk = 'high' THEN 1 ELSE 0 END) as high_churn,
+                        SUM(CASE WHEN i.call_quality_score >= 8 THEN 1 ELSE 0 END) as high_performers,
+                        SUM(CASE WHEN i.call_quality_score < 5 OR res.customer_effort_score > 7 THEN 1 ELSE 0 END) as needs_attention
+                    FROM transcripts t
+                    LEFT JOIN insights i ON t.recording_id = i.recording_id
+                    LEFT JOIN call_resolutions res ON t.recording_id = res.recording_id
+                    WHERE t.call_date >= CURRENT_DATE - INTERVAL '30 days'
+                """)
+
+                call_stats = cur.fetchone()
+                stats['total_calls'] = call_stats['call_count'] or 0
+                stats['avg_quality_score'] = float(call_stats['avg_quality']) if call_stats['avg_quality'] else None
+                stats['avg_customer_effort'] = float(call_stats['avg_effort']) if call_stats['avg_effort'] else None
+                stats['churn_risk_high'] = call_stats['high_churn'] or 0
+                stats['high_performers_count'] = call_stats['high_performers'] or 0
+                stats['needs_attention_count'] = call_stats['needs_attention'] or 0
+
+                # Video meeting stats
+                cur.execute("""
+                    SELECT
+                        COUNT(*) as video_count,
+                        SUM(CASE WHEN churn_risk_level = 'high' THEN 1 ELSE 0 END) as high_churn,
+                        SUM(CASE WHEN learning_state IN ('struggling', 'overwhelmed') THEN 1 ELSE 0 END) as struggling
+                    FROM video_meetings
+                    WHERE source = 'ringcentral'
+                      AND layer1_complete = TRUE
+                      AND start_time >= CURRENT_DATE - INTERVAL '30 days'
+                """)
+
+                video_stats = cur.fetchone()
+                stats['total_video_meetings'] = video_stats['video_count'] or 0
+                stats['churn_risk_high'] += video_stats['high_churn'] or 0
+                stats['needs_attention_count'] += video_stats['struggling'] or 0
+                stats['total_interactions'] = stats['total_calls'] + stats['total_video_meetings']
+
+                # Sentiment distribution (calls only for now)
+                cur.execute("""
+                    SELECT customer_sentiment, COUNT(*) as count
+                    FROM insights i
+                    JOIN transcripts t ON i.recording_id = t.recording_id
+                    WHERE t.call_date >= CURRENT_DATE - INTERVAL '30 days'
+                      AND customer_sentiment IS NOT NULL
+                    GROUP BY customer_sentiment
+                """)
+
+                stats['sentiment_distribution'] = {row['customer_sentiment']: row['count'] for row in cur.fetchall()}
+
+                # Top coaching topics
+                cur.execute("""
+                    SELECT coaching_session_topics
+                    FROM call_recommendations
+                    WHERE coaching_session_topics IS NOT NULL
+                      AND array_length(coaching_session_topics, 1) > 0
+                    LIMIT 100
+                """)
+
+                all_topics = []
+                for row in cur.fetchall():
+                    if row['coaching_session_topics']:
+                        all_topics.extend(row['coaching_session_topics'])
+
+                from collections import Counter
+                topic_counts = Counter(all_topics)
+                stats['top_coaching_topics'] = [{'topic': t, 'count': c} for t, c in topic_counts.most_common(10)]
+
+                return stats
+
 
 if __name__ == "__main__":
     # Test the database reader

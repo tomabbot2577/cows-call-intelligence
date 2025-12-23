@@ -4145,21 +4145,31 @@ async def api_trigger_history(
 
 @app.get("/learning", response_class=HTMLResponse)
 async def learning_module_page(request: Request):
-    """Learning module dashboard page."""
+    """Learning module dashboard page with coaching data."""
     if not check_auth(request):
         return RedirectResponse(url="/login", status_code=303)
 
     try:
         db = get_db()
+        # Original learning stats
         stats = db.get_learning_module_stats()
         recent_sessions = db.get_video_meetings(limit=15)
         attention_needed = db.get_learning_attention_needed(limit=10)
+
+        # New coaching data - combines calls + video meetings
+        coaching_stats = db.get_coaching_summary_stats()
+        coaching_feed = db.get_coaching_feed(limit=30)
+        coaching_queue = db.get_coaching_queue(limit=15)
 
         return templates.TemplateResponse("learning_module.html", {
             "request": request,
             "stats": stats,
             "recent_sessions": recent_sessions.get('meetings', []),
-            "attention_needed": attention_needed
+            "attention_needed": attention_needed,
+            # Coaching additions
+            "coaching_stats": coaching_stats,
+            "coaching_feed": coaching_feed,
+            "coaching_queue": coaching_queue
         })
     except Exception as e:
         logger.error(f"Learning module page error: {e}")
@@ -4168,6 +4178,9 @@ async def learning_module_page(request: Request):
             "stats": {},
             "recent_sessions": [],
             "attention_needed": [],
+            "coaching_stats": {},
+            "coaching_feed": [],
+            "coaching_queue": [],
             "error": str(e)
         })
 
@@ -4364,6 +4377,95 @@ async def api_training_report(
 
     except Exception as e:
         logger.error(f"Training report error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+# ============================================================================
+# COACHING & LEARNING API
+# ============================================================================
+
+@app.get("/api/v1/coaching/feed")
+async def api_coaching_feed(
+    request: Request,
+    employee: str = None,
+    limit: int = 50,
+    include_calls: bool = True,
+    include_video: bool = True
+):
+    """Get coaching feed with combined call and video meeting coaching data."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        db = get_db()
+        feed = db.get_coaching_feed(
+            employee_name=employee,
+            limit=limit,
+            include_calls=include_calls,
+            include_video=include_video
+        )
+        return {"success": True, "data": feed, "count": len(feed)}
+
+    except Exception as e:
+        logger.error(f"Coaching feed API error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/coaching/employee/{employee_name}")
+async def api_employee_coaching(
+    request: Request,
+    employee_name: str,
+    period: str = "mtd"
+):
+    """Get coaching progress for a specific employee."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        db = get_db()
+        progress = db.get_employee_coaching_progress(employee_name, period)
+        coaching_feed = db.get_coaching_feed(employee_name=employee_name, limit=20)
+
+        return {
+            "success": True,
+            "progress": progress,
+            "recent_coaching": coaching_feed
+        }
+
+    except Exception as e:
+        logger.error(f"Employee coaching API error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/coaching/queue")
+async def api_coaching_queue(request: Request, limit: int = 20):
+    """Get interactions needing coaching attention."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        db = get_db()
+        queue = db.get_coaching_queue(limit=limit)
+        return {"success": True, "data": queue, "count": len(queue)}
+
+    except Exception as e:
+        logger.error(f"Coaching queue API error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/v1/coaching/stats")
+async def api_coaching_stats(request: Request):
+    """Get overall coaching statistics."""
+    if not check_auth(request):
+        raise HTTPException(status_code=401, detail="Not authenticated")
+
+    try:
+        db = get_db()
+        stats = db.get_coaching_summary_stats()
+        return {"success": True, "data": stats}
+
+    except Exception as e:
+        logger.error(f"Coaching stats API error: {e}")
         raise HTTPException(status_code=500, detail=str(e))
 
 
