@@ -230,7 +230,7 @@ try:
         body = f.read()
 
     msg = MIMEMultipart()
-    msg['Subject'] = '[ALERT] PCR COWS Pipeline - Errors Detected $(date +%Y-%m-%d)'
+    msg['Subject'] = '[ALERT] ConvoMetrics Pipeline - Errors Detected $(date +%Y-%m-%d)'
     msg['From'] = smtp_user
     msg['To'] = to_email
     msg.attach(MIMEText(body, 'plain'))

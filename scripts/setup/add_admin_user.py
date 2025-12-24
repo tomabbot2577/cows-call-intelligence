@@ -210,7 +210,7 @@ def verify_user(email: str, encryption_key: bytes) -> bool:
 
 def main():
     print("=" * 60)
-    print("COWS Video Meeting Intelligence - Admin User Setup")
+    print("ConvoMetrics BLT - Admin User Setup")
     print("=" * 60)
 
     # Step 1: Get or create encryption key

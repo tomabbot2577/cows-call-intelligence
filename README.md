@@ -408,12 +408,12 @@ rm data/batch_progress.json
 python process_queue_batch_final.py --limit 100 --rate-limit 3
 ```
 
-## 🌐 PCR COWS Workflow Intelligence Platform
+## 🌐 ConvoMetrics - BLT Workflow: Client PC Recruiter
 
 The system includes an AI-powered web platform for intelligent call analysis:
 
 - **URL:** http://31.97.102.13:8081
-- **Branding:** PCR COWS Workflow Intelligence Platform
+- **Branding:** ConvoMetrics - Behavior Learning & Teaching Workflow Platform (BLT)
 
 ### Features
 | Module | Description |
@@ -430,7 +430,7 @@ See [RAG_INTEGRATION.md](RAG_INTEGRATION.md) for full documentation.
 ## 📚 Documentation
 
 - [CLAUDE.md](CLAUDE.md) - Project context and current status
-- [RAG_INTEGRATION.md](RAG_INTEGRATION.md) - PCR COWS platform documentation
+- [RAG_INTEGRATION.md](RAG_INTEGRATION.md) - ConvoMetrics BLT platform documentation
 - [BATCH_PROCESSING_GUIDE.md](BATCH_PROCESSING_GUIDE.md) - Detailed batch processing instructions
 - [SYSTEM_DOCUMENTATION.md](SYSTEM_DOCUMENTATION.md) - Complete system architecture
 - [N8N_API_DOCUMENTATION.md](N8N_API_DOCUMENTATION.md) - N8N workflow integration

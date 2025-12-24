@@ -1,4 +1,4 @@
-# COWS Platform - Current Status
+# ConvoMetrics BLT Platform - Current Status
 
 **Last Updated:** 2025-12-23
 

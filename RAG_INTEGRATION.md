@@ -1,8 +1,8 @@
-# PCR COWS Workflow Intelligence Platform - RAG Integration
+# ConvoMetrics - BLT Workflow: Client PC Recruiter - RAG Integration
 
 ## Overview
 
-The **PCR COWS Workflow Intelligence Platform** provides AI-powered intelligent querying capabilities using a dual RAG (Retrieval Augmented Generation) approach:
+The **ConvoMetrics - BLT Workflow: Client PC Recruiter** (Behavior Learning & Teaching) provides AI-powered intelligent querying capabilities using a dual RAG (Retrieval Augmented Generation) approach:
 
 - **Gemini RAG** - For semantic, open-ended queries (Primary)
 - **Vertex AI RAG** - For structured, filtered queries (Secondary)

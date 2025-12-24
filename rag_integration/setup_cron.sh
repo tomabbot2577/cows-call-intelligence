@@ -7,7 +7,7 @@ sudo chown www-data:www-data /var/log/cows
 
 # Create cron file
 cat << 'EOF' | sudo tee /etc/cron.d/cows-rag
-# COWS RAG Integration Cron Jobs
+# ConvoMetrics BLT Integration Cron Jobs
 
 # Daily incremental export at 2 AM
 0 2 * * * www-data cd /var/www/call-recording-system && /var/www/call-recording-system/venv/bin/python -m rag_integration.jobs.export_pipeline >> /var/log/cows/rag_export.log 2>&1

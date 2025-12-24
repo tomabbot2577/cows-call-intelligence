@@ -426,7 +426,7 @@ class DashboardTriggerService:
         # Default subject
         subject = trigger.get('email_subject_template')
         if not subject:
-            subject = f"[COWS Alert] {trigger_name} - {employee_name}"
+            subject = f"[ConvoMetrics Alert] {trigger_name} - {employee_name}"
 
         # Variable substitution
         subject = subject.replace('{employee_name}', employee_name)
@@ -497,7 +497,7 @@ class DashboardTriggerService:
 
 <hr style="margin-top: 30px; border: none; border-top: 1px solid #ddd;">
 <p style="color: #666; font-size: 12px;">
-This is an automated alert from PCR COWS Workflow Intelligence Platform.
+This is an automated alert from ConvoMetrics - BLT Workflow: Client PC Recruiter.
 To modify this trigger, visit the <a href="http://31.97.102.13:8081/admin/triggers">Trigger Settings</a>.
 </p>
 </body>

@@ -1,10 +1,10 @@
 #!/bin/bash
-# Install and setup COWS RAG Integration
+# Install and setup ConvoMetrics BLT Integration
 
 set -e
 
 echo "=========================================="
-echo "COWS RAG Integration - Installation Script"
+echo "ConvoMetrics BLT - Installation Script"
 echo "=========================================="
 
 # Check if running as root or with sudo

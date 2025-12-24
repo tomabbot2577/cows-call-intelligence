@@ -3,7 +3,7 @@
 Test RingCentral Video API Access
 
 Tests whether the existing RingCentral JWT can access video meeting history.
-Part of COWS Video Meeting Intelligence integration.
+Part of ConvoMetrics Video Meeting Intelligence integration.
 
 Usage:
     python scripts/test/test_ringcentral_video.py
@@ -314,7 +314,7 @@ class RingCentralVideoTest:
 def main():
     print("=" * 60)
     print("RingCentral Video API Test")
-    print("COWS Video Meeting Intelligence")
+    print("ConvoMetrics Video Meeting Intelligence")
     print("=" * 60)
 
     try:

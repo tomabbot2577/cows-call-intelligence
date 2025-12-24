@@ -38,7 +38,7 @@ logger = logging.getLogger(__name__)
 
 # Initialize FastAPI app
 app = FastAPI(
-    title="COWS RAG API",
+    title="ConvoMetrics BLT API",
     description="Hybrid RAG system for call intelligence",
     version="1.0.0"
 )
@@ -177,7 +177,7 @@ def get_email_config():
         "smtp_port": int(os.getenv("SMTP_PORT", "587")),
         "smtp_user": os.getenv("SMTP_USER", ""),
         "smtp_password": os.getenv("GMAIL_APP_PASSWORD", os.getenv("SMTP_PASSWORD", "")).replace(" ", ""),
-        "from_name": "PCR COWS Intelligence"
+        "from_name": "ConvoMetrics BLT"
     }
 
 
@@ -1311,7 +1311,7 @@ async def kb_search_get(
     source: str = None,
     employee: str = None,
     offset: int = 0,
-    sort: str = None,
+    sort: str = "recent",
     ajax: str = None
 ):
     """KB search page (GET - for links and bookmarks)"""

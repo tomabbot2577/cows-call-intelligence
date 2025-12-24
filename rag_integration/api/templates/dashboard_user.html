@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ page_title }} - COWS{% endblock %}
+{% block title %}{{ page_title }} - ConvoMetrics{% endblock %}
 
 {% block extra_css %}
 <style>
@@ -873,7 +873,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         loadEmailRecipients();
         const selectEl = document.querySelector('.email-recipient-select');
-        if (selectEl && window.cowsEmail && window.cowsEmail.loaded) {
+        if (selectEl && window.convoMetricsEmail && window.convoMetricsEmail.loaded) {
             populateRecipientSelect(selectEl);
         }
     });

@@ -204,7 +204,7 @@ def test_meeting_details(client: FathomClient, recording_id: int):
 def main():
     print("=" * 60)
     print("Fathom AI API Test")
-    print("COWS Video Meeting Intelligence")
+    print("ConvoMetrics Video Meeting Intelligence")
     print("=" * 60)
 
     # Test 1: Key Manager

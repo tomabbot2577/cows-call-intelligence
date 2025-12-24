@@ -4,7 +4,7 @@
 
 | Resource | URL | Auth |
 |----------|-----|------|
-| COWS Web UI | http://31.97.102.13:8081 | Username/password |
+| ConvoMetrics Web UI | http://31.97.102.13:8081 | Username/password |
 | Legacy Dashboard | http://31.97.102.13:5001 | Password: `[see .env]` |
 | Audio Server | http://31.97.102.13:8080/audio/ | - |
 
@@ -55,7 +55,7 @@ Connection: postgresql://[user]:[password]@localhost/call_insights (see .env)
 │       └── models.py
 ├── rag_integration/
 │   ├── api/
-│   │   ├── main.py               # FastAPI app (COWS platform)
+│   │   ├── main.py               # FastAPI app (ConvoMetrics BLT platform)
 │   │   └── templates/            # Jinja2 templates
 │   ├── services/
 │   │   ├── db_reader.py          # Read-only PostgreSQL
@@ -103,7 +103,7 @@ Connection: postgresql://[user]:[password]@localhost/call_insights (see .env)
 | 5 | Advanced Metrics | Layer 5 metrics for detailed analysis |
 | 6 | Learning Analytics | learning_score, learning_state, training effectiveness (video meetings only) |
 
-## COWS Platform Features
+## ConvoMetrics Platform Features
 
 ### Knowledge Base (`/knowledge-base`)
 - Full-text search across Freshdesk tickets + call transcripts + video meeting Q&A

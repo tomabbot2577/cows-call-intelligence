@@ -540,13 +540,8 @@ Format each result clearly with Problem, Solution, Resolved By, Customer, and Da
                         call_sql += " AND t.employee_name ILIKE %s"
                         call_params.append(f'%{employee_filter}%')
 
-                    # Apply sorting
-                    if sort == 'recent':
-                        call_sql += " ORDER BY t.call_date DESC NULLS LAST, rank DESC LIMIT %s"
-                    elif sort == 'rating':
-                        call_sql += " ORDER BY avg_rating DESC NULLS LAST, rank DESC LIMIT %s"
-                    else:
-                        call_sql += " ORDER BY rank DESC, t.call_date DESC LIMIT %s"
+                    # Always order by relevance to get best matches; display sort applied later
+                    call_sql += " ORDER BY rank DESC, t.call_date DESC LIMIT %s"
                     call_params.append(limit)
 
                     cur.execute(call_sql, tuple(call_params))
@@ -590,13 +585,8 @@ Format each result clearly with Problem, Solution, Resolved By, Customer, and Da
                             fd_sql += " AND f.category ILIKE %s"
                             fd_params.append(f'%{category_filter}%')
 
-                        # Apply sorting
-                        if sort == 'recent':
-                            fd_sql += " ORDER BY f.resolved_at DESC NULLS LAST, rank DESC LIMIT %s"
-                        elif sort == 'rating':
-                            fd_sql += " ORDER BY avg_rating DESC NULLS LAST, rank DESC LIMIT %s"
-                        else:
-                            fd_sql += " ORDER BY rank DESC, f.resolved_at DESC LIMIT %s"
+                        # Always order by relevance to get best matches; display sort applied later
+                        fd_sql += " ORDER BY rank DESC, f.resolved_at DESC LIMIT %s"
                         fd_params.append(limit)
 
                         cur.execute(fd_sql, tuple(fd_params))
@@ -641,13 +631,8 @@ Format each result clearly with Problem, Solution, Resolved By, Customer, and Da
                             video_sql += " AND vm.host_name ILIKE %s"
                             video_params.append(f'%{employee_filter}%')
 
-                        # Apply sorting
-                        if sort == 'recent':
-                            video_sql += " ORDER BY vm.start_time DESC NULLS LAST, rank DESC LIMIT %s"
-                        elif sort == 'rating':
-                            video_sql += " ORDER BY avg_rating DESC NULLS LAST, rank DESC LIMIT %s"
-                        else:
-                            video_sql += " ORDER BY rank DESC, vm.start_time DESC LIMIT %s"
+                        # Always order by relevance to get best matches; display sort applied later
+                        video_sql += " ORDER BY rank DESC, vm.start_time DESC LIMIT %s"
                         video_params.append(limit)
 
                         cur.execute(video_sql, tuple(video_params))
@@ -674,27 +659,47 @@ Format each result clearly with Problem, Solution, Resolved By, Customer, and Da
                 all_results = call_results + freshdesk_results + video_results
 
                 def get_sort_key(result):
-                    # Primary: normalized relevance rank (0-1 scale, higher is better)
+                    from datetime import datetime
+                    
+                    # Parse date for sorting
+                    date_str = result.get('call_date', '') or ''
+                    try:
+                        if isinstance(date_str, datetime):
+                            date_val = date_str.timestamp()
+                        elif date_str and date_str != 'Unknown':
+                            date_val = datetime.fromisoformat(str(date_str).replace('Z', '+00:00')).timestamp()
+                        else:
+                            date_val = 0
+                    except:
+                        date_val = 0
+
+                    # Relevance rank (0-1 scale)
                     rank = float(result.get('normalized_rank', 0) or 0)
 
-                    # Secondary: answer quality score based on length
-                    # Short answers (<100 chars) get penalized, longer answers get boosted
+                    # Answer quality score based on length
                     answer = result.get('resolution_details', '') or ''
                     answer_len = len(answer)
                     if answer_len < 100:
-                        quality = 0.5  # Penalty for very short
+                        quality = 0.5
                     elif answer_len < 200:
-                        quality = 0.8  # Slight penalty
+                        quality = 0.8
                     elif answer_len < 500:
-                        quality = 1.0  # Normal
+                        quality = 1.0
                     else:
-                        quality = 1.2  # Boost for comprehensive answers
+                        quality = 1.2
 
-                    # Tertiary: star rating as final tiebreaker
                     avg_rating = float(result.get('avg_rating', 0) or 0)
 
-                    # Combined score: rank * quality, then rating
-                    return (rank * quality, avg_rating)
+                    # Sort based on user preference
+                    if sort == 'recent':
+                        # Date descending, relevance as tiebreaker
+                        return (date_val, rank * quality, avg_rating)
+                    elif sort == 'rating':
+                        # Rating descending, relevance as tiebreaker
+                        return (avg_rating, rank * quality, date_val)
+                    else:
+                        # Relevance (default)
+                        return (rank * quality, avg_rating, date_val)
 
                 all_results.sort(key=get_sort_key, reverse=True)
 
