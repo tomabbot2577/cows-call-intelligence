@@ -48,7 +48,7 @@ def test_process_calls():
                     os.environ[key] = value.strip('"')
     
     # Get API keys
-    salad_api_key = os.getenv('SALAD_API_KEY', 'REDACTED_SALAD_API_KEY')
+    salad_api_key = os.getenv('SALAD_API_KEY', '')
     google_creds = os.getenv('GOOGLE_CREDENTIALS_PATH', '/var/www/call-recording-system/config/google_service_account.json')
     
     logger.info("=" * 60)

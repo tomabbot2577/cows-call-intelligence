@@ -4,6 +4,7 @@
 
 cd /var/www/call-recording-system
 source venv/bin/activate
+source .env 2>/dev/null || true
 
 LOG_FILE="logs/transcription_watchdog.log"
 PID_FILE="data/transcription_batch.pid"
@@ -15,10 +16,10 @@ log() {
 }
 
 # Check how many transcriptions are pending
-PENDING=$(PGPASSWORD='REDACTED_DB_PASSWORD' psql -U call_insights_user -h localhost -d call_insights -t -c \
+PENDING=$(PGPASSWORD="${PG_PASSWORD:-$DB_PASSWORD}" psql -U call_insights_user -h localhost -d call_insights -t -c \
     "SELECT COUNT(*) FROM video_meetings WHERE source='ringcentral' AND transcript_text IS NULL;" 2>/dev/null | tr -d ' ')
 
-COMPLETED=$(PGPASSWORD='REDACTED_DB_PASSWORD' psql -U call_insights_user -h localhost -d call_insights -t -c \
+COMPLETED=$(PGPASSWORD="${PG_PASSWORD:-$DB_PASSWORD}" psql -U call_insights_user -h localhost -d call_insights -t -c \
     "SELECT COUNT(*) FROM video_meetings WHERE source='ringcentral' AND transcript_text IS NOT NULL;" 2>/dev/null | tr -d ' ')
 
 log "Status: $COMPLETED transcribed, $PENDING pending"
@@ -70,7 +71,7 @@ else
 fi
 
 # Also check for the layer analysis (includes both RingCentral and Fathom)
-LAYER_PENDING=$(PGPASSWORD='REDACTED_DB_PASSWORD' psql -U call_insights_user -h localhost -d call_insights -t -c \
+LAYER_PENDING=$(PGPASSWORD="${PG_PASSWORD:-$DB_PASSWORD}" psql -U call_insights_user -h localhost -d call_insights -t -c \
     "SELECT COUNT(*) FROM video_meetings WHERE source IN ('ringcentral', 'fathom') AND transcript_text IS NOT NULL AND (layer1_complete IS NULL OR layer1_complete = FALSE);" 2>/dev/null | tr -d ' ')
 
 if [ "$LAYER_PENDING" -gt 0 ] 2>/dev/null; then

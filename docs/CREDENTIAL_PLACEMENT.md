@@ -17,9 +17,9 @@ nano .env
 Add your credentials:
 ```env
 # RingCentral API
-RINGCENTRAL_CLIENT_ID=REDACTED_CLIENT_ID
-RINGCENTRAL_CLIENT_SECRET=REDACTED_CLIENT_SECRET
-RINGCENTRAL_JWT_TOKEN=eyJraWQiOiI4NzYyZjU5OGQwNTk0NGRiODZiZjVjYTk3ODA0NzYwOCIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0...
+RINGCENTRAL_CLIENT_ID=YOUR_CLIENT_ID_HERE
+RINGCENTRAL_CLIENT_SECRET=YOUR_CLIENT_SECRET_HERE
+RINGCENTRAL_JWT_TOKEN=YOUR_JWT_TOKEN_HERE
 RINGCENTRAL_SERVER_URL=https://platform.ringcentral.com
 ```
 
@@ -121,12 +121,12 @@ curl -X POST https://platform.ringcentral.com/restapi/oauth2/token \
 Your complete `.env` file should look like:
 ```env
 # Database
-DATABASE_URL=postgresql://call_system:YourPassword@localhost:5432/call_recordings
+DATABASE_URL=postgresql://call_system:YOUR_PASSWORD@localhost:5432/call_recordings
 
 # RingCentral API
-RINGCENTRAL_CLIENT_ID=REDACTED_CLIENT_ID
-RINGCENTRAL_CLIENT_SECRET=REDACTED_CLIENT_SECRET
-RINGCENTRAL_JWT_TOKEN=eyJraWQiOiI4NzYyZjU5OGQwNTk0NGRiODZiZjVjYTk3ODA0NzYwOCIsInR5cCI6IkpXVCIsImFsZyI6IlJTMjU2In0...
+RINGCENTRAL_CLIENT_ID=YOUR_CLIENT_ID
+RINGCENTRAL_CLIENT_SECRET=YOUR_CLIENT_SECRET
+RINGCENTRAL_JWT_TOKEN=YOUR_JWT_TOKEN
 RINGCENTRAL_SERVER_URL=https://platform.ringcentral.com
 RINGCENTRAL_ACCOUNT_ID=~  # Optional, defaults to ~
 
@@ -153,7 +153,7 @@ git commit -m "Added credentials"  # NEVER DO THIS!
 2. **Don't hardcode in Python:**
 ```python
 # WRONG
-client_id = "REDACTED_CLIENT_ID"  # NEVER DO THIS!
+client_id = "YOUR_CLIENT_ID"  # NEVER DO THIS!
 ```
 
 3. **Don't share credentials publicly**

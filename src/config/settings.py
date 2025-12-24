@@ -25,7 +25,7 @@ class Settings:
         self.transcription_service = os.getenv('TRANSCRIPTION_SERVICE', 'salad')  # 'salad' or 'whisper'
 
         # Salad Cloud Settings (Best Practices Configuration)
-        self.salad_api_key = os.getenv('SALAD_API_KEY', 'REDACTED_SALAD_API_KEY')
+        self.salad_api_key = os.getenv('SALAD_API_KEY', '')
         self.salad_org_name = os.getenv('SALAD_ORG_NAME', 'default')
         self.salad_engine = 'full'  # Always use 'full' for best quality
         self.salad_language = os.getenv('SALAD_LANGUAGE', 'en-US')  # American English

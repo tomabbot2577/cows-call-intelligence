@@ -10,7 +10,7 @@ import sys
 sys.path.insert(0, '/var/www/call-recording-system')
 
 # Set API key
-os.environ['OPENROUTER_API_KEY'] = 'REDACTED_OPENROUTER_KEY'
+os.environ['OPENROUTER_API_KEY'] = 'os.getenv('OPENROUTER_API_KEY', '')'
 
 from config.task_optimized_llm_config import TaskOptimizedLLMConfig
 

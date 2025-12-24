@@ -19,6 +19,7 @@ config/google_service_account.json*
 config/vertex_ai_service_account.json*
 *service_account*.json*
 *.backup
+*.bak
 
 # Environment and secrets
 .env*
@@ -29,7 +30,24 @@ secrets/
 *_key*
 !*_key.py
 
+# Claude Code local settings (may contain approved commands with credentials)
+.claude/settings.local.json
+
+# Output files that may contain sensitive data
+*.out
+batch_processor*.out
+
 # Runtime data
 data/alerts/
 data/pipeline_status.json
 data/scheduler/
+data/video_audio_temp/
+data/sample_*.json
+
+# Documentation with sensitive info (use sanitized versions)
+SYSTEM_STATE_BACKUP.md
+TRANSCRIPT_ENRICHMENT_GUIDE.md
+salad_integration_notes.md
+*_BACKUP.md
+*_backup.md
+*.pid

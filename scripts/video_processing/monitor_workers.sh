@@ -1,6 +1,7 @@
 #!/bin/bash
 cd /var/www/call-recording-system
 source venv/bin/activate
+source .env 2>/dev/null || true
 
 LOG_FILE="logs/worker_monitor.log"
 
@@ -16,8 +17,8 @@ while true; do
         echo "$(date): Restarted PID: $!" >> $LOG_FILE
     else
         # Check progress
-        TRANSCRIBED=$(PGPASSWORD='REDACTED_DB_PASSWORD' psql -U call_insights_user -h localhost -d call_insights -t -c "SELECT COUNT(*) FROM video_meetings WHERE source='ringcentral' AND transcript_text IS NOT NULL;")
-        PENDING=$(PGPASSWORD='REDACTED_DB_PASSWORD' psql -U call_insights_user -h localhost -d call_insights -t -c "SELECT COUNT(*) FROM video_meetings WHERE source='ringcentral' AND transcript_text IS NULL;")
+        TRANSCRIBED=$(PGPASSWORD="${PG_PASSWORD:-$DB_PASSWORD}" psql -U call_insights_user -h localhost -d call_insights -t -c "SELECT COUNT(*) FROM video_meetings WHERE source='ringcentral' AND transcript_text IS NOT NULL;")
+        PENDING=$(PGPASSWORD="${PG_PASSWORD:-$DB_PASSWORD}" psql -U call_insights_user -h localhost -d call_insights -t -c "SELECT COUNT(*) FROM video_meetings WHERE source='ringcentral' AND transcript_text IS NULL;")
         echo "$(date): Workers running. Transcribed: $TRANSCRIBED, Pending: $PENDING" >> $LOG_FILE
     fi
     

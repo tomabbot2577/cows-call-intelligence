@@ -65,7 +65,7 @@ else:
     DB_CONFIG = {
         'dbname': 'call_insights',
         'user': 'call_insights_user',
-        'password': os.getenv('PG_PASSWORD', 'REDACTED_DB_PASSWORD'),
+        'password': os.getenv('PG_PASSWORD', ''),
         'host': 'localhost',
         'port': 5432
     }
@@ -73,7 +73,7 @@ else:
 # Model configuration - Using OpenRouter (paid Gemini for speed)
 PRIMARY_MODEL = 'google/gemini-2.0-flash-001'
 SECONDARY_MODEL = 'google/gemini-2.0-flash-001'
-OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY', 'REDACTED_OPENROUTER_KEY')
+OPENROUTER_API_KEY = os.getenv('OPENROUTER_API_KEY', '')
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 
 

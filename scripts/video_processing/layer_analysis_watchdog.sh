@@ -4,6 +4,7 @@
 
 cd /var/www/call-recording-system
 source venv/bin/activate
+source .env 2>/dev/null || true
 
 LOG_FILE="logs/layer_analysis_watchdog.log"
 LOCK_FILE="/tmp/layer_analysis.lock"
@@ -25,7 +26,7 @@ if [ -f "$LOCK_FILE" ]; then
 fi
 
 # Check if there are pending meetings
-PENDING=$(PGPASSWORD='REDACTED_DB_PASSWORD' psql -U call_insights_user -h localhost -d call_insights -t -c \
+PENDING=$(PGPASSWORD="${PG_PASSWORD:-$DB_PASSWORD}" psql -U call_insights_user -h localhost -d call_insights -t -c \
     "SELECT COUNT(*) FROM video_meetings WHERE transcript_text IS NOT NULL AND (layer1_complete IS NULL OR layer1_complete = FALSE);" 2>/dev/null | tr -d ' ')
 
 if [ "$PENDING" -eq 0 ] 2>/dev/null; then

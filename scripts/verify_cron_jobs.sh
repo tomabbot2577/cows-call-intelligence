@@ -151,7 +151,12 @@ DB_CHECK=$(python3 -c "
 import psycopg2
 import os
 try:
-    db_url = os.environ.get('RAG_DATABASE_URL', 'postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights')
+    db_url = os.environ.get('RAG_DATABASE_URL')
+    if not db_url:
+        pg_pass = os.environ.get('PG_PASSWORD', '')
+        db_url = f'postgresql://call_insights_user:{pg_pass}@localhost/call_insights' if pg_pass else None
+    if not db_url:
+        raise ValueError('RAG_DATABASE_URL or PG_PASSWORD not set')
     conn = psycopg2.connect(db_url)
     cur = conn.cursor()
     cur.execute('SELECT 1')

@@ -81,7 +81,7 @@ def main():
     print("Testing OpenRouter embedding API...")
 
     # Set environment variables
-    os.environ['OPENROUTER_API_KEY'] = 'REDACTED_OPENROUTER_KEY'
+    os.environ['OPENROUTER_API_KEY'] = ''''
 
     mgr = OpenRouterEmbeddingsManager()
 

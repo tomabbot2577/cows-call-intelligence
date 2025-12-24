@@ -66,10 +66,17 @@ class BatchLayerAnalyzer:
             raise ValueError("GEMINI_API_KEY not set")
         self.gemini_client = genai.Client(api_key=api_key)
 
-        # Database connection
+        # Database connection - must use environment variables
         db_url = os.getenv('RAG_DATABASE_URL') or os.getenv('DATABASE_URL')
         if not db_url:
-            db_url = "postgresql://call_insights_user:REDACTED_DB_PASSWORD@localhost/call_insights"
+            # Construct from individual env vars
+            pg_user = os.getenv('PG_USER', 'call_insights_user')
+            pg_pass = os.getenv('PG_PASSWORD', os.getenv('DB_PASSWORD', ''))
+            pg_host = os.getenv('PG_HOST', 'localhost')
+            pg_db = os.getenv('PG_DATABASE', 'call_insights')
+            if not pg_pass:
+                raise ValueError("Database password not set - check PG_PASSWORD or DATABASE_URL in .env")
+            db_url = f"postgresql://{pg_user}:{pg_pass}@{pg_host}/{pg_db}"
         self.engine = create_engine(db_url)
         self.Session = sessionmaker(bind=self.engine)
 
